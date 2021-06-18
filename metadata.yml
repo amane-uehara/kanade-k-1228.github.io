@@ -1,3 +1,5 @@
-title:
-author: Kanade
-language: jp
+lang: jp
+author-meta: "@kanade_k_1228"
+title-suffix: "| Kanade's Website"
+include-before: <p>include-before</p>
+include-after: <p>include-after</p>
