@@ -115,28 +115,6 @@
         list-style: square;
       }
 
-      ul.header-nav {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-      }
-      ul.header-nav a {
-        width: 25%;
-        padding: 8px;
-        background-color: #ffccff;
-        color: #d64acf;
-        overflow: hidden;
-        text-align: center;
-        font-weight: bold;
-        font-size: 25px;
-        transition: 0.3s;
-      }
-      ul.header-nav a:hover {
-        background-color: #ffaaff;
-        color: #ff0000;
-      }
       div.card {
         width: 100%;
         padding: 0.3em;
@@ -153,14 +131,26 @@
         margin: 0;
       }
       header > ul {
-        width: 100%;
         margin: 0;
         padding: 0;
-      }
-      header > li {
         list-style: none;
-        display: block;
+        display: flex;
+        flex-direction: row;
+      }
+      header > a {
         width: 25%;
+        padding: 8px;
+        background-color: #ffccff;
+        color: #d64acf;
+        overflow: hidden;
+        text-align: center;
+        font-weight: bold;
+        font-size: 25px;
+        transition: 0.3s;
+      }
+      header > a:hover {
+        background-color: #ffaaff;
+        color: #ff0000;
       }
     </style>
     $for(css)$
@@ -171,15 +161,13 @@
     <article>
       <header>
         <ul>
+          <li><a href="/">Home</a></li>
           <li><a href="/Portfolio/">Portfolio</a></li>
           <li><a href="/Lab/">Lab</a></li>
           <li><a href="/Essay/">Essay</a></li>
         </ul>
-        $if(title)$
         <h1>$title$</h1>
-        $endif$ $if(date)$
         <p class="date">$date$</p>
-        $endif$
       </header>
       $if(toc)$
       <nav id="$idprefix$TOC" role="doc-toc">
