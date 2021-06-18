@@ -5,3 +5,5 @@
 [Essay](./Essay/)
 
 [Portfolio](./Portfolio/)
+
+$$\frac{a}{b^c}$$
