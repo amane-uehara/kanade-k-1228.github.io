@@ -14,15 +14,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get -y install pandoc
-      - name: Create File List
-        id: files-list
+      - name: Convert MD to HTML
         run: |
           mkdir out
-          echo "::set-output name=files::$(printf '"%s" ' *.md)"
-      - name: Convert MD to HTML
-        run: pandoc -s -o index.html --template=template.html --toc --mathjax index.md
+          for f in *.md; do pandoc "$f" -s -o "out/${f%.txt}.html --template=template.html --toc --mathjax"; done
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: out
