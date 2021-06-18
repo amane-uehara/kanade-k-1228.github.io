@@ -19,7 +19,7 @@
 $$
 \partial_t\rho+\partial_i(\rho u_i)=0
 $$
-非圧縮
+### 非圧縮
 $$
 \partial_iu_i=0
 $$
