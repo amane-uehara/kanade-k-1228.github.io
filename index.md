@@ -2,14 +2,9 @@
 %
 % 2021-6-18
 
-
-# Wellcome to Kanade's Homepage
-
-[Lab](./Lab/)
-
-[Essay](./Essay/)
-
-[Portfolio](./Portfolio/)
+- [Lab](./Lab/)
+- [Essay](./Essay/)
+- [Portfolio](./Portfolio/)
 
 $$
 \frac{a}{b^c}

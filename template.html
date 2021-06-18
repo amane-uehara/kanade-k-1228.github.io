@@ -25,7 +25,7 @@
     $endif$
     <title>$title$$if(title-suffix)$ $title-suffix$$endif$</title>
     <style>
-      $styles.html()$
+      /* $styles.html()$ */
     </style>
     $for(css)$
     <link rel="stylesheet" href="$css$" />
@@ -37,9 +37,7 @@
       <h1 class="title">$title$</h1>
       $if(subtitle)$
       <p class="subtitle">$subtitle$</p>
-      $endif$ $for(author)$
-      <p class="author">$author$</p>
-      $endfor$ $if(date)$
+      $endif$ $if(date)$
       <p class="date">$date$</p>
       $endif$
     </header>
