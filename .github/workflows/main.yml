@@ -12,7 +12,7 @@ jobs:
       - name: Convert MD to HTML
         uses: docker://pandoc/core:2.9
         with:
-          args: "-s -o index.html --template=./meta/template.html --metadata-file=./meta/metadata.yml --mathjax index.md"
+          args: "-s -o index.html --template=meta/template.html --metadata-file=meta/metadata.yml --mathjax index.md"
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
