@@ -142,6 +142,16 @@
       header > h1 {
         margin: 0;
       }
+      header > ul {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      header > li {
+        list-style: none;
+        display: block;
+        width: 25%;
+      }
     </style>
     $for(css)$
     <link rel="stylesheet" href="$css$" />
@@ -155,7 +165,7 @@
         <li><a href="/Essay/">Essay</a></li>
       </ul>
       $if(title)$
-      <h1 class="title">$title$</h1>
+      <h1>$title$</h1>
       $endif$ $if(date)$
       <p class="date">$date$</p>
       $endif$
