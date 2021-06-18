@@ -1,13 +1,7 @@
----
-title: Kanade's Homepage
-author: @kanade_k_1228
-date: 2021-6-18
-keywords:
-- キーワード１
-- キーワード２
-description: 
-  概要欄
----
+% Homepage
+%
+% 2021-6-18
+
 
 # Wellcome to Kanade's Homepage
 
