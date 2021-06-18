@@ -23,17 +23,13 @@
     $endif$ $if(description-meta)$
     <meta name="description" content="$description-meta$" />
     $endif$
-    <title>$title$$if(title-suffix)$$title-suffix$$endif$</title>
+    <title>$title$$if(title-suffix)$ $title-suffix$$endif$</title>
     <style>
       $styles.html()$
     </style>
     $for(css)$
     <link rel="stylesheet" href="$css$" />
     $endfor$ $if(math)$ $math$ $endif$
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-    <![endif]-->
-    $for(header-includes)$ $header-includes$ $endfor$
   </head>
   <body>
     $for(include-before)$ $include-before$ $endfor$ $if(title)$
