@@ -12,8 +12,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Pandoc
         run: |
-          apt-get update
-          apt-get -y install pandoc
+          sudo apt-get update
+          sudo apt-get -y install pandoc
       - name: Create File List
         id: files-list
         run: |
