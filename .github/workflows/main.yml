@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: docker://pandoc/core:2.9
+      - name: Convert MD to HTML
+        uses: docker://pandoc/core:2.9
         with:
-          args: "--help"
+          args: "--template=template.html index.md"
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
