@@ -6,4 +6,6 @@
 
 [Portfolio](./Portfolio/)
 
-$$\frac{a}{b^c}$$
+$$
+\frac{a}{b^c}
+$$
