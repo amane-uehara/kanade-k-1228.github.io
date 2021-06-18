@@ -8,13 +8,14 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
+    $if(date)$
     <meta name="dcterms.date" content="$date$" />
-    $if(keywords)$
+    $endif$ $if(keywords)$
     <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
     $endif$ $if(description)$
     <meta name="description" content="$description$" />
     $endif$
-    <title>$title$ | Kanade's Website</title>
+    <title>$if(title)$$title$$endif$ | Kanade's Website</title>
     <style>
       body {
         margin: 0;
