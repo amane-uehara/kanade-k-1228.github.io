@@ -17,9 +17,9 @@ jobs:
       - name: Convert MD to HTML
         run: |
           mkdir out
-          for file in `\find . -maxdepth 3 -name '*.md'`; do pandoc "$file" -s --template=template.html --toc --mathjax > ./out/${file%.md}.html ; done
+          for file in `\find . -maxdepth 1 -name '*.md'`; do pandoc "$f" -s -o "${f%.md}.html" --template=template.html --toc --mathjax; done
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: out
+          publish_dir: ./
