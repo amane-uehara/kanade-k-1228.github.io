@@ -17,7 +17,7 @@ jobs:
       - name: Convert MD to HTML
         run: |
           mkdir out
-          for f in *.md; do pandoc "$f" -s -o "out/${f%.txt}.html" --template=template.html --toc --mathjax; done
+          for f in *.md; do pandoc "$f" -s -o "out/${f%.md}.html" --template=template.html --toc --mathjax; done
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

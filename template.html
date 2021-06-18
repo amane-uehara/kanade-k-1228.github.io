@@ -167,8 +167,11 @@
           <li><a href="/Lab/">Lab</a></li>
           <li><a href="/Essay/">Essay</a></li>
         </ul>
+        $if(title)$
         <h1 style="margin: 0">$title$</h1>
+        $endif$ $if(date)$
         <p class="date">$date$</p>
+        $endif$
       </header>
       $if(toc)$
       <nav>$table-of-contents$</nav>
