@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="author" content="@kanade_k_1228" />
+          <title> | Kanade's Website</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e4f0fc;
+        font-size: 16px;
+        font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+          "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        line-height: 1.5;
+        color: #202020;
+      }
+
+      article {
+        display: block;
+        margin: 0 auto;
+      }
+      @media (min-width: 1220px) {
+        article {
+          width: 1200px;
+        }
+      }
+      @media (max-width: 1219px) {
+        article {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #d64acf;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: #ffccff;
+      }
+      h2 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #2c8ecf;
+        font-size: 20px;
+        font-weight: bold;
+        background: #bbddff;
+      }
+      h3 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.5em;
+      }
+      h4 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.7em;
+      }
+      p {
+        margin: 0.1em 0 0.1em 1em;
+      }
+      small {
+        font-size: 10px;
+      }
+      a {
+        color: #2c8ecf;
+      }
+      a:hover {
+        color: #ff0000;
+      }
+      table {
+        margin: 0.3em auto;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #e8ffbd;
+      }
+      td {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #f0f0ff;
+      }
+      ul {
+        margin: 0.1em 0 0.1em 1em;
+        padding: 0 0 0 1.5em;
+        list-style: disc;
+      }
+      ul ul {
+        margin: 0;
+        list-style: circle;
+      }
+      ul ul ul {
+        margin: 0;
+        list-style: square;
+      }
+
+      blockquote {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+
+      div.card {
+        width: 100%;
+        padding: 0.3em;
+      }
+      div.card img {
+        width: 100%;
+      }
+      div.cardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+      }
+      header > ul > li {
+        width: 25%;
+        text-align: center;
+      }
+      header > ul > li > a {
+        display: block;
+      }
+
+      nav {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+      nav > ul {
+        margin: 0;
+      }
+    </style>
+        <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <article>
+      <header>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Portfolio/">Portfolio</a></li>
+          <li><a href="/Lab/">Lab</a></li>
+          <li><a href="/Essay/">Essay</a></li>
+        </ul>
+               </header>
+            <nav><ul>
+<li><a href="#流体力学">流体力学</a><ul>
+<li><a href="#場">場</a></li>
+<li><a href="#条件">条件</a></li>
+<li><a href="#質量保存則連続の式">質量保存則（連続の式）</a></li>
+<li><a href="#運動量保存則運動方程式">運動量保存則（運動方程式）</a></li>
+<li><a href="#ニュートン流体の構成方程式">ニュートン流体の構成方程式</a></li>
+<li><a href="#ナビエストークス方程式">ナビエストークス方程式</a></li>
+<li><a href="#π定理">※π定理</a></li>
+<li><a href="#平行平板ボアズイユ流クェット流">平行平板（ボアズイユ流・クェット流）</a></li>
+<li><a href="#円管">円管</a></li>
+<li><a href="#境界層">境界層</a><ul>
+<li><a href="#平板上非定常">平板上非定常</a></li>
+</ul></li>
+<li><a href="#渦度">渦度</a></li>
+<li><a href="#section"></a></li>
+</ul></li>
+</ul></nav>
+       <h1 id="流体力学">流体力学</h1>
+<h2 id="場">場</h2>
+<ul>
+<li><span class="math inline">\(u\)</span> : 速度</li>
+<li><span class="math inline">\(\omega\)</span> : 渦度</li>
+<li><span class="math inline">\(\sigma\)</span> : 応力</li>
+<li><span class="math inline">\(\rho\)</span> : 密度</li>
+<li><span class="math inline">\(p\)</span> : 圧力</li>
+<li><span class="math inline">\(g\)</span> : 外力加速度</li>
+</ul>
+<h2 id="条件">条件</h2>
+<ul>
+<li>非圧縮
+<ul>
+<li>マッハ数が小さい</li>
+</ul></li>
+<li>非粘性</li>
+<li>非回転</li>
+<li>定常・発達</li>
+</ul>
+<h2 id="質量保存則連続の式">質量保存則（連続の式）</h2>
+<p><span class="math display">\[
+\partial_t\rho+\partial_i(\rho u_i)=0
+\]</span> ### 非圧縮 <span class="math display">\[
+\partial_iu_i=0
+\]</span></p>
+<h2 id="運動量保存則運動方程式">運動量保存則（運動方程式）</h2>
+<p><span class="math display">\[
+\partial_t(\rho u_i)+\partial_j(\rho u_i u_j)=\partial_i\sigma_{ii}+\rho g_i
+\]</span></p>
+<h2 id="ニュートン流体の構成方程式">ニュートン流体の構成方程式</h2>
+<p><span class="math display">\[
+\sigma_{ij}=(-p+\lambda\partial_ku_k)\delta_{ij}+\mu d_{(ij)}
+\]</span></p>
+<p>静圧 <span class="math inline">\(p\)</span></p>
+<p>速度勾配 <span class="math inline">\(d_{ij}:=\partial_ju_i\)</span></p>
+<p>対称速度勾配 <span class="math inline">\(d_{(ij)}:=(d_{ij}+d_{ji})/2\)</span></p>
+<h2 id="ナビエストークス方程式">ナビエストークス方程式</h2>
+<p><span class="math display">\[
+\partial_t(\rho u_i)+\partial_j(\rho u_iu_j)=-\partial_i\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\partial_j(\partial_ju_i+\partial_iu_j)+\rho g_i
+\]</span></p>
+<p>実在流れ</p>
+<p><span class="math display">\[
+\rho \partial_t u_i + \rho u_j \partial_j u_i = -\partial_i p + \mu \partial_j \partial_j u_i + \rho g_i
+\]</span></p>
+<p>無次元化 <span class="math inline">\(D,V,L\)</span></p>
+<p><span class="math display">\[
+\rho \partial_t u_i + \rho u_j \partial_j u_i = -\partial_i p + \frac{\mu}{DVL} \partial_j \partial_j u_i + \rho g_i
+\]</span></p>
+<p>レイノルズ数 <span class="math inline">\(Re:=\frac{\rho V L}{\mu}\)</span> と外力場 <span class="math inline">\(g_i\)</span> が同じなら相似な流れになる．</p>
+<h2 id="π定理">※π定理</h2>
+<p>法則が <span class="math inline">\(n\)</span> 個の変数 <span class="math inline">\((q_1,q_2,,,q_n)\)</span> で表現されていて，変数が <span class="math inline">\(k\)</span> 個の独立な基本単位で表されるとき，</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th><span class="math inline">\(e_1\)</span></th>
+<th>…</th>
+<th><span class="math inline">\(e_k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(q_1\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">:</td>
+<td></td>
+<td><span class="math inline">\(\Mu\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(q_n\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(k=\mathrm{rank}\,\Mu\)</span></p>
+<p>無次元数の数 <span class="math inline">\(=\mathrm{null}\,\Mu\)</span></p>
+<h2 id="平行平板ボアズイユ流クェット流">平行平板（ボアズイユ流・クェット流）</h2>
+<h2 id="円管">円管</h2>
+<h2 id="境界層">境界層</h2>
+<h3 id="平板上非定常">平板上非定常</h3>
+<p><span class="math display">\[
+\partial_t u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
+\partial_x u + \partial_y v = 0
+\]</span></p>
+<p>条件</p>
+<p><span class="math display">\[
+\begin{aligned}
+u(x,y,0)&amp;=0\\
+u(x,0,t)&amp;=U_0 (t&gt;0)\\
+u(x,\infty,t)&amp;=0\\
+\partial_x u &amp;= 0\\
+\partial_x p &amp;= 0
+\end{aligned}
+\]</span></p>
+<p>解</p>
+<p><span class="math display">\[
+\partial_tu=\mu\partial_y^2u
+\]</span></p>
+<p>境界層</p>
+<p><span class="math display">\[
+\delta(t)=\sqrt{\mu t}
+\]</span></p>
+<h2 id="渦度">渦度</h2>
+<h2 id="section"></h2>
+    </article>
+  </body>
+</html>

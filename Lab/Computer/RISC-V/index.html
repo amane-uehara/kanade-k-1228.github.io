@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="author" content="@kanade_k_1228" />
+          <title> | Kanade's Website</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e4f0fc;
+        font-size: 16px;
+        font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+          "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        line-height: 1.5;
+        color: #202020;
+      }
+
+      article {
+        display: block;
+        margin: 0 auto;
+      }
+      @media (min-width: 1220px) {
+        article {
+          width: 1200px;
+        }
+      }
+      @media (max-width: 1219px) {
+        article {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #d64acf;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: #ffccff;
+      }
+      h2 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #2c8ecf;
+        font-size: 20px;
+        font-weight: bold;
+        background: #bbddff;
+      }
+      h3 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.5em;
+      }
+      h4 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.7em;
+      }
+      p {
+        margin: 0.1em 0 0.1em 1em;
+      }
+      small {
+        font-size: 10px;
+      }
+      a {
+        color: #2c8ecf;
+      }
+      a:hover {
+        color: #ff0000;
+      }
+      table {
+        margin: 0.3em auto;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #e8ffbd;
+      }
+      td {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #f0f0ff;
+      }
+      ul {
+        margin: 0.1em 0 0.1em 1em;
+        padding: 0 0 0 1.5em;
+        list-style: disc;
+      }
+      ul ul {
+        margin: 0;
+        list-style: circle;
+      }
+      ul ul ul {
+        margin: 0;
+        list-style: square;
+      }
+
+      blockquote {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+
+      div.card {
+        width: 100%;
+        padding: 0.3em;
+      }
+      div.card img {
+        width: 100%;
+      }
+      div.cardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+      }
+      header > ul > li {
+        width: 25%;
+        text-align: center;
+      }
+      header > ul > li > a {
+        display: block;
+      }
+
+      nav {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+      nav > ul {
+        margin: 0;
+      }
+    </style>
+        <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <article>
+      <header>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Portfolio/">Portfolio</a></li>
+          <li><a href="/Lab/">Lab</a></li>
+          <li><a href="/Essay/">Essay</a></li>
+        </ul>
+               </header>
+            <nav><ul>
+<li><a href="#risc-v">RISC-V</a><ul>
+<li><a href="#rv32iのアーキテクチャ">RV32Iのアーキテクチャ</a><ul>
+<li><a href="#レジスタ一覧">レジスタ一覧</a></li>
+<li><a href="#命令フォーマット">命令フォーマット</a></li>
+<li><a href="#ロード">ロード</a></li>
+<li><a href="#ストア">ストア</a></li>
+<li><a href="#分岐ジャンプ">分岐・ジャンプ</a></li>
+</ul></li>
+</ul></li>
+</ul></nav>
+       <h1 id="risc-v">RISC-V</h1>
+<h2 id="rv32iのアーキテクチャ">RV32Iのアーキテクチャ</h2>
+<h3 id="レジスタ一覧">レジスタ一覧</h3>
+<table>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>name</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x0</td>
+<td>zero</td>
+<td>値はゼロで固定</td>
+</tr>
+<tr class="even">
+<td>x1</td>
+<td>ra</td>
+<td>戻りアドレス</td>
+</tr>
+<tr class="odd">
+<td>x2</td>
+<td>sp</td>
+<td>スタックポインタ</td>
+</tr>
+<tr class="even">
+<td>x3</td>
+<td>gp</td>
+<td>グローバルポインタ</td>
+</tr>
+<tr class="odd">
+<td>x4</td>
+<td>tp</td>
+<td>スレッドポインタ</td>
+</tr>
+<tr class="even">
+<td>x5~x7</td>
+<td>t0~t3</td>
+<td>一時レジスタ（関数呼び出し前後で保持されない）</td>
+</tr>
+<tr class="odd">
+<td>x8</td>
+<td>fp</td>
+<td>フレームポインタ</td>
+</tr>
+<tr class="even">
+<td>x8~x9</td>
+<td>s0~s1</td>
+<td>保存レジスタ（関数呼び出し前後で保持される）</td>
+</tr>
+<tr class="odd">
+<td>x10~x11</td>
+<td>a0~a1</td>
+<td>関数の引数/返値</td>
+</tr>
+<tr class="even">
+<td>x12~x17</td>
+<td>a2~a7</td>
+<td>関数の引数</td>
+</tr>
+<tr class="odd">
+<td>x18~x27</td>
+<td>s2~s11</td>
+<td>保存レジスタ</td>
+</tr>
+<tr class="even">
+<td>x28~x31</td>
+<td>t3~t6</td>
+<td>一時レジスタ</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>pc</td>
+<td>プログラムカウンタはレジスタとしてアクセスできない</td>
+</tr>
+</tbody>
+</table>
+<h3 id="命令フォーマット">命令フォーマット</h3>
+<h3 id="ロード">ロード</h3>
+<p><code>x[rd] = sext?( M[x[rs1] + sext(imm)] [7?15?31? : 0] )</code></p>
+<p>b(byte)/h(halfword)/w(word)で，メモリから読み出す長さを決めます．</p>
+<p>()signed/(u)unsignedで，メモリから持ってきた値を符号拡張するかを決めます．</p>
+<h3 id="ストア">ストア</h3>
+<p><code>M[ x[rs1] + sext(imm) ] = x[rs2] [7?15?31?:0]</code></p>
+<p>b(byte)/h(halfword)/w(word)で，メモリに書き込む長さを決めます．</p>
+<h3 id="分岐ジャンプ">分岐・ジャンプ</h3>
+    </article>
+  </body>
+</html>

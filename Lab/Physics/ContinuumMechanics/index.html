@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="author" content="@kanade_k_1228" />
+          <title> | Kanade's Website</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e4f0fc;
+        font-size: 16px;
+        font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+          "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        line-height: 1.5;
+        color: #202020;
+      }
+
+      article {
+        display: block;
+        margin: 0 auto;
+      }
+      @media (min-width: 1220px) {
+        article {
+          width: 1200px;
+        }
+      }
+      @media (max-width: 1219px) {
+        article {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #d64acf;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: #ffccff;
+      }
+      h2 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #2c8ecf;
+        font-size: 20px;
+        font-weight: bold;
+        background: #bbddff;
+      }
+      h3 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.5em;
+      }
+      h4 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.7em;
+      }
+      p {
+        margin: 0.1em 0 0.1em 1em;
+      }
+      small {
+        font-size: 10px;
+      }
+      a {
+        color: #2c8ecf;
+      }
+      a:hover {
+        color: #ff0000;
+      }
+      table {
+        margin: 0.3em auto;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #e8ffbd;
+      }
+      td {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #f0f0ff;
+      }
+      ul {
+        margin: 0.1em 0 0.1em 1em;
+        padding: 0 0 0 1.5em;
+        list-style: disc;
+      }
+      ul ul {
+        margin: 0;
+        list-style: circle;
+      }
+      ul ul ul {
+        margin: 0;
+        list-style: square;
+      }
+
+      blockquote {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+
+      div.card {
+        width: 100%;
+        padding: 0.3em;
+      }
+      div.card img {
+        width: 100%;
+      }
+      div.cardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+      }
+      header > ul > li {
+        width: 25%;
+        text-align: center;
+      }
+      header > ul > li > a {
+        display: block;
+      }
+
+      nav {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+      nav > ul {
+        margin: 0;
+      }
+    </style>
+        <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <article>
+      <header>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Portfolio/">Portfolio</a></li>
+          <li><a href="/Lab/">Lab</a></li>
+          <li><a href="/Essay/">Essay</a></li>
+        </ul>
+               </header>
+            <nav><ul>
+<li><a href="#連続体力学">連続体力学</a><ul>
+<li><a href="#登場人物">登場人物</a></li>
+<li><a href="#連続体上の微分">連続体上の微分</a></li>
+<li><a href="#保存則">保存則</a><ul>
+<li><a href="#質量保存則">質量保存則</a></li>
+<li><a href="#運動量保存則運動方程式">運動量保存則（運動方程式）</a></li>
+<li><a href="#エネルギー保存則">エネルギー保存則</a></li>
+</ul></li>
+</ul></li>
+</ul></nav>
+       <h1 id="連続体力学">連続体力学</h1>
+<p><a href="https://ocw.kyoto-u.ac.jp/course/9/">Book</a></p>
+<h2 id="登場人物">登場人物</h2>
+<ul>
+<li><span class="math inline">\(v\)</span> 速度</li>
+<li><span class="math inline">\(\sigma\)</span> 応力（面積力）</li>
+<li><span class="math inline">\(K\)</span> 体積力</li>
+</ul>
+<h2 id="連続体上の微分">連続体上の微分</h2>
+<p>連続体中の点を指定するには，初期状態での位置か，変位後の位置のどちらかを与えればいい（連続体の変位がわかれば変換できる）．連続体上の場は，初期位置をインデックスとして<span class="math inline">\(F(t,\bold{x}_0)\)</span>または現在位置をインデックスとして<span class="math inline">\(f(t,\bold{x})\)</span>と表現される．</p>
+<p><span class="math display">\[
+F(t,\bold{x}_0)=f(t,\bold{x}(\bold{x}_0,t))
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dt}F=\left(\frac{\partial}{\partial t}+\frac{dx_i}{d t}\frac{\partial}{\partial x_i}\right)f
+\]</span></p>
+<p><span class="math display">\[
+D_t:=\partial_t+v_i\partial_i
+\]</span></p>
+<h2 id="保存則">保存則</h2>
+<h3 id="質量保存則">質量保存則</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\partial_t\rho&amp;+\partial_i(\rho v_i)&amp;=0\\
+D_t\rho&amp;+\rho\partial_iv_i&amp;=0
+\end{aligned}
+\]</span></p>
+<h3 id="運動量保存則運動方程式">運動量保存則（運動方程式）</h3>
+<p><span class="math display">\[
+D_tv_i=\frac{1}{\rho}\partial_j\sigma_{ji}+K_i
+\]</span></p>
+<h3 id="エネルギー保存則">エネルギー保存則</h3>
+<p>検査体積について，dt (運動エネルギー + 内部エネルギー) = 体積力による仕事率 + 面積力による仕事率 - 熱流束</p>
+<p><span class="math display">\[
+\frac{d}{dt}\int_V \left(\frac{1}{2}\rho v^2 + \rho\epsilon\right) dV = \int_V \left(\rho K \cdot v\right) dV + \int_S ((\sigma\cdot n)\cdot v) dS - \int_S (q \cdot n) dS
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+D_t \left(\frac{1}{2}\rho v^2\right)&amp;=v_j\partial_i\sigma_{ij}+\rho K_iv_i \\
+D_t \left(\rho\epsilon\right)       &amp;= \sigma_{ij}\partial_i v_j - \partial_i q_i \\
+D_t \left(\frac{1}{2}\rho v^2 + \rho\epsilon\right)&amp;=\partial_i(\sigma_{ij} v_i - q_i)+\rho K_iv_i \\
+\end{aligned}
+\]</span></p>
+    </article>
+  </body>
+</html>
