@@ -1,4 +1,6 @@
-# Lab
+% Lab
+%
+%
 
 [RISC-V](./Computer/RISC-V/)
 

@@ -8,7 +8,8 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title> | Kanade's Website</title>
+        <meta name="dcterms.date" content="2021-06-20" />
+          <title>Pandoc と GitHub で超簡単にサイトを作る | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -164,11 +165,33 @@
           <li><a href="/Lab/">Lab</a></li>
           <li><a href="/Essay/">Essay</a></li>
         </ul>
-               </header>
+                <h1 style="margin: 0">Pandoc と GitHub で超簡単にサイトを作る</h1>
+                 <p class="date">2021-06-20</p>
+              </header>
             <nav><ul>
-<li><a href="#pandoc-と-github-で超簡単にサイトを作る">Pandoc と GitHub で超簡単にサイトを作る</a></li>
+<li><a href="#システム概要">システム概要</a></li>
+<li><a href="#pandoc">Pandoc</a></li>
+<li><a href="#github-pages">GitHub Pages</a></li>
+<li><a href="#github-actions">GitHub Actions</a></li>
 </ul></nav>
-       <h1 id="pandoc-と-github-で超簡単にサイトを作る">Pandoc と GitHub で超簡単にサイトを作る</h1>
+       <p>自由度が高く保守性も高いブログシステムができたのでメモしておきます</p>
+<h2 id="システム概要">システム概要</h2>
+<ul>
+<li>記事をローカルの Markdown Viewer で見ながら編集</li>
+<li>Git に Push すると変換＆デプロイ</li>
+<li>で　ぎ　だ　！（アル中カラカラ</li>
+</ul>
+<h2 id="pandoc">Pandoc</h2>
+<ul>
+<li>いろんな種類の文書を変換してくれる
+<ul>
+<li>神</li>
+</ul></li>
+<li>Markdown → HTML の変換をさせる</li>
+<li>テンプレート上に流しこんでくれる</li>
+</ul>
+<h2 id="github-pages">GitHub Pages</h2>
+<h2 id="github-actions">GitHub Actions</h2>
     </article>
   </body>
 </html>
