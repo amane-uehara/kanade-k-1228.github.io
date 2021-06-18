@@ -12,13 +12,14 @@
          <title>Homepage | Kanade's Website</title>
     <style>
       body {
+        margin: 0;
         background-color: #e4f0fc;
         font-size: 16px;
         font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
           "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
           "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
         line-height: 1.5;
-        color: #555555;
+        color: #202020;
       }
 
       article {
@@ -122,9 +123,6 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      header > h1 {
-        margin: 0;
-      }
       header > ul {
         margin: 0;
         padding: 0;
@@ -132,18 +130,22 @@
         display: flex;
         flex-direction: row;
       }
-      header > a {
+      header > ul > li {
         width: 25%;
+      }
+      header > ul > li > a {
+        display: block;
         padding: 8px;
         background-color: #ffccff;
         color: #d64acf;
         overflow: hidden;
         text-align: center;
+        text-decoration: none;
         font-weight: bold;
         font-size: 25px;
         transition: 0.3s;
       }
-      header > a:hover {
+      header > ul > li > a:hover {
         background-color: #ffaaff;
         color: #ff0000;
       }
@@ -159,18 +161,16 @@
           <li><a href="/Lab/">Lab</a></li>
           <li><a href="/Essay/">Essay</a></li>
         </ul>
-        <h1>Homepage</h1>
+        <h1 style="margin: 0">Homepage</h1>
         <p class="date">2021-6-18</p>
       </header>
-            <nav id="TOC" role="doc-toc">
-         <ul>
+            <nav id="TOC" role="doc-toc"><ul>
 <li><a href="#h2">h2</a>
 <ul>
 <li><a href="#h3">h3</a></li>
 </ul></li>
 <li><a href="#h2-1">h2</a></li>
-</ul>
-      </nav>
+</ul></nav>
        <p><span class="math display">\[
 \frac{a}{b^c}
 \]</span></p>
