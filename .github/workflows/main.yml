@@ -8,11 +8,19 @@ jobs:
   convert_via_pandoc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Pandoc
+        run: |
+          apt-get update
+          apt-get -y install pandoc
+      - name: Create File List
+        id: files-list
+        run: |
+          mkdir out
+          echo "::set-output name=files::$(printf '"%s" ' *.md)"
       - name: Convert MD to HTML
-        uses: docker://pandoc/core:2.9
-        with:
-          args: "-s -o index.html --template=template.html --toc --mathjax index.md"
+        run: pandoc -s -o index.html --template=template.html --toc --mathjax index.md
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
