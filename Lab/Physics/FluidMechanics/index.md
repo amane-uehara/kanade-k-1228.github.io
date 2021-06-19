@@ -7,7 +7,7 @@
 - 速度 $u_i$
   - 変形速度 $d_{ij} := \partial_j u_i$ → 歪み速度 $S_{ij}:=d_{(ij)}$ + 回転速度 $\Omega_{ij}:=d_{[ij]}$
   - 渦度 $\omega_k := \epsilon_{ijk}d_{ij}$
--  応力 $\sigma_{ij}$
+- 応力 $\sigma_{ij}$
 - 密度 $\rho$
 - 圧力 $p$
 - 外力 $g_i$
@@ -101,7 +101,38 @@ $k=\mathrm{rank}\,M$
 
 無次元数の数 $=\mathrm{null}\,M$
 
+## 解析
+#### 二次元
+$$\begin{aligned}
+\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} &= 0 \\
+\rho \left( \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} \right) &= -\frac{\partial p}{\partial x} + \mu \left(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}\right) + \rho g_x \\
+\rho \left( \frac{\partial v}{\partial t} + u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} \right) &= -\frac{\partial p}{\partial y} + \mu \left(\frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2}\right) + \rho g_y 
+\end{aligned}
+$$
+
+#### 円筒 $(r,\theta,z)$
+$$
+\frac{1}{r}\frac{\partial}{\partial r}(ru_r) + \frac{1}{r}\frac{\partial }{\partial \theta} u_\theta + \frac{\partial}{\partial z} u_z = 0 \\
+\begin{aligned}
+\rho\left( \frac{\partial u_r}{\partial t} + u_r \frac{\partial u_r}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_r}{\partial \theta} - \frac{u_\theta^2}{r} + u_z\frac{\partial u_r}{\partial z} \right) =&
+ -\frac{\partial p}{\partial r} + \mu \left[ \frac{\partial}{\partial r} \left(\frac{1}{r}\frac{\partial}{\partial r}(ru_r)\right) + \frac{1}{r^2}\frac{\partial^2 u_r}{\partial \theta^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial\theta} + \frac{\partial^2 u_r}{\partial z^2} \right] + \rho g_r \\
+\rho\left( \frac{\partial u_\theta}{\partial t} + u_r \frac{\partial u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial \theta} + \frac{u_ru_\theta}{r} + u_z\frac{\partial u_\theta}{\partial z} \right) =&
+ -\frac{1}{r}\frac{\partial p}{\partial\theta} + \mu \left[ \frac{\partial}{\partial r} \left(\frac{1}{r}\frac{\partial}{\partial r}(ru_\theta)\right) + \frac{1}{r^2}\frac{\partial^2 u_\theta}{\partial \theta^2} + \frac{2}{r^2}\frac{\partial u_r}{\partial\theta} + \frac{\partial^2 u_\theta}{\partial z^2} \right] + \rho g_\theta \\
+\rho\left( \frac{\partial u_z}{\partial t} + u_r \frac{\partial u_z}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_z}{\partial \theta} + u_z\frac{\partial u_z}{\partial z} \right) =&
+ -\frac{\partial p}{\partial z} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial}{\partial r}u_z\right) + \frac{1}{r^2}\frac{\partial^2 u_z}{\partial \theta^2} + \frac{\partial^2 u_z}{\partial z^2} \right] + \rho g_z
+\end{aligned}
+$$
+
+#### 軸対称 $\partial_\theta=0$
+
+
+
 ## 層流
+
+### 平行平板
+
+
+
 
 ## 境界層
 
