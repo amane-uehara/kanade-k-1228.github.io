@@ -180,22 +180,28 @@
                 <h1 style="margin: 0">流体力学</h1>
                </header>
             <nav><ul>
+<li><a href="#基礎方程式">基礎方程式</a><ul>
 <li><a href="#場">場</a></li>
 <li><a href="#条件">条件</a></li>
 <li><a href="#質量保存則連続の式">質量保存則（連続の式）</a></li>
 <li><a href="#運動量保存則運動方程式">運動量保存則（運動方程式）</a></li>
 <li><a href="#ニュートン流体の構成方程式">ニュートン流体の構成方程式</a></li>
 <li><a href="#ナビエストークス方程式">ナビエストークス方程式</a></li>
-<li><a href="#π定理">※π定理</a></li>
+<li><a href="#π定理">π定理</a></li>
+</ul></li>
 <li><a href="#平行平板ボアズイユ流クェット流">平行平板（ボアズイユ流・クェット流）</a></li>
 <li><a href="#円管">円管</a></li>
 <li><a href="#境界層">境界層</a><ul>
 <li><a href="#平板上非定常">平板上非定常</a></li>
 </ul></li>
-<li><a href="#渦度">渦度</a></li>
-<li><a href="#section"></a></li>
+<li><a href="#流体の運動学">流体の運動学</a><ul>
+<li><a href="#運動の記述">運動の記述</a></li>
+<li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
+<li><a href="#第二法則">第二法則</a></li>
+</ul></li>
 </ul></nav>
-       <h2 id="場">場</h2>
+       <h2 id="基礎方程式">基礎方程式</h2>
+<h3 id="場">場</h3>
 <ul>
 <li><span class="math inline">\(u\)</span> : 速度</li>
 <li><span class="math inline">\(\omega\)</span> : 渦度</li>
@@ -204,7 +210,7 @@
 <li><span class="math inline">\(p\)</span> : 圧力</li>
 <li><span class="math inline">\(g\)</span> : 外力加速度</li>
 </ul>
-<h2 id="条件">条件</h2>
+<h3 id="条件">条件</h3>
 <ul>
 <li>非圧縮
 <ul>
@@ -214,24 +220,25 @@
 <li>非回転</li>
 <li>定常・発達</li>
 </ul>
-<h2 id="質量保存則連続の式">質量保存則（連続の式）</h2>
+<h3 id="質量保存則連続の式">質量保存則（連続の式）</h3>
 <p><span class="math display">\[
 \partial_t\rho+\partial_i(\rho u_i)=0
-\]</span> ### 非圧縮 <span class="math display">\[
+\]</span></p>
+<p>非圧縮 <span class="math display">\[
 \partial_iu_i=0
 \]</span></p>
-<h2 id="運動量保存則運動方程式">運動量保存則（運動方程式）</h2>
+<h3 id="運動量保存則運動方程式">運動量保存則（運動方程式）</h3>
 <p><span class="math display">\[
 \partial_t(\rho u_i)+\partial_j(\rho u_i u_j)=\partial_i\sigma_{ii}+\rho g_i
 \]</span></p>
-<h2 id="ニュートン流体の構成方程式">ニュートン流体の構成方程式</h2>
+<h3 id="ニュートン流体の構成方程式">ニュートン流体の構成方程式</h3>
 <p><span class="math display">\[
 \sigma_{ij}=(-p+\lambda\partial_ku_k)\delta_{ij}+\mu d_{(ij)}
 \]</span></p>
 <p>静圧 <span class="math inline">\(p\)</span></p>
 <p>速度勾配 <span class="math inline">\(d_{ij}:=\partial_ju_i\)</span></p>
 <p>対称速度勾配 <span class="math inline">\(d_{(ij)}:=(d_{ij}+d_{ji})/2\)</span></p>
-<h2 id="ナビエストークス方程式">ナビエストークス方程式</h2>
+<h3 id="ナビエストークス方程式">ナビエストークス方程式</h3>
 <p><span class="math display">\[
 \partial_t(\rho u_i)+\partial_j(\rho u_iu_j)=-\partial_i\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\partial_j(\partial_ju_i+\partial_iu_j)+\rho g_i
 \]</span></p>
@@ -244,7 +251,7 @@
 \rho \partial_t u_i + \rho u_j \partial_j u_i = -\partial_i p + \frac{\mu}{DVL} \partial_j \partial_j u_i + \rho g_i
 \]</span></p>
 <p>レイノルズ数 <span class="math inline">\(Re:=\frac{\rho V L}{\mu}\)</span> と外力場 <span class="math inline">\(g_i\)</span> が同じなら相似な流れになる．</p>
-<h2 id="π定理">※π定理</h2>
+<h3 id="π定理">π定理</h3>
 <p>法則が <span class="math inline">\(n\)</span> 個の変数 <span class="math inline">\((q_1,q_2,,,q_n)\)</span> で表現されていて，変数が <span class="math inline">\(k\)</span> 個の独立な基本単位で表されるとき，</p>
 <table>
 <thead>
@@ -304,8 +311,51 @@ u(x,\infty,t)&amp;=0\\
 <p><span class="math display">\[
 \delta(t)=\sqrt{\mu t}
 \]</span></p>
-<h2 id="渦度">渦度</h2>
-<h2 id="section"></h2>
+<h2 id="流体の運動学">流体の運動学</h2>
+<h3 id="運動の記述">運動の記述</h3>
+<ul>
+<li>速度場 <span class="math inline">\(u\)</span></li>
+<li>速度勾配テンソル <span class="math inline">\(d_{ij} := \partial_ju_i\)</span></li>
+<li>変形速度テンソル <span class="math inline">\(s_{ij} := d_{(ij)}\)</span>
+<ul>
+<li>圧縮引張
+<ul>
+<li>対称テンソルなので主軸が存在する</li>
+<li>体積変化は <span class="math inline">\((1+\lambda_1)(1+\lambda_2)(1+\lambda_3) \sim 1 + \lambda_1+\lambda_2+\lambda_3 = 1 + \Lambda\)</span></li>
+<li>非圧縮の場合，トレース <span class="math inline">\(\Lambda=0\)</span></li>
+</ul></li>
+<li>ずり変形
+<ul>
+<li>非対格成分はひし形状の変形を表す</li>
+<li>体積は保存</li>
+</ul></li>
+</ul></li>
+<li>渦度 <span class="math inline">\(\omega_k := \epsilon_{ijk}d_{ij}\)</span>
+<ul>
+<li>速度勾配テンソルの反対称成分 <span class="math inline">\(\Omega_{ij}:=d_{[ij]}=\epsilon_{ijk}\omega_k\)</span></li>
+<li>回転を表すソレノイダル場（ <span class="math inline">\(\partial_k\omega_k=0\)</span>）</li>
+</ul></li>
+<li>渦線
+<ul>
+<li>渦度ベクトルを繋いだ線</li>
+<li>渦線の接ベクトルが渦度ベクトルと一致する</li>
+<li><span class="math inline">\(\frac{dx_i}{\omega_i}=\mathrm{const}\)</span></li>
+</ul></li>
+<li>渦菅
+<ul>
+<li>ある閉曲線を通過する渦線のなす閉曲面</li>
+<li>渦菅表面から渦度の出入りはない（渦菅表面の法線ベクトルと渦度ベクトルは直交）</li>
+</ul></li>
+<li>渦糸
+<ul>
+<li>断面積が微小な渦菅</li>
+<li>渦菅は曲線とみなせる</li>
+<li>渦菅内の渦度は一定（Helmholtzの第三法則）</li>
+</ul></li>
+</ul>
+<h3 id="helmholtzの法則">Helmholtzの法則</h3>
+<h4 id="第一法則渦度方程式">第一法則（渦度方程式）</h4>
+<h3 id="第二法則">第二法則</h3>
     </article>
   </body>
 </html>
