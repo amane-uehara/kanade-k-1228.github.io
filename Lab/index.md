@@ -16,6 +16,10 @@
 
 []()
 
+## 数学
+
+[解析学](./Mathmatics/Analysis/)
+
 ## 物理
 
 [電磁気学](./Physics/Electromagnetism/)
