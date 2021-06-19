@@ -128,15 +128,13 @@ $$
 
 ## 円管内層流
 
-軸対称 $\partial_\theta=0$, 発達流 $\partial_z=0$, 定常 $\partial_t=0$
+軸対称 $\partial_\theta=0, u_\theta=0$, 発達流 $\partial_z=0$, 定常 $\partial_t=0$, 円管表面で $u=0$
 
 $$
-
+\frac{dp}{dz} = \mu\frac{1}{r}\frac{d}{dr}\left(r\frac{du_z}{dr}\right)
 $$
 
 ### 平行平板
-
-
 
 
 ## 境界層

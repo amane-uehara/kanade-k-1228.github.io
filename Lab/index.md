@@ -27,3 +27,8 @@
 [連続体力学](./Physics/ContinuumMechanics/)
 
 [流体力学](./Physics/FluidMechanics/)
+
+[統計力学](./Physics/ContinuumMechanics/)
+
+[伝熱工学](./Physics/HeatTransfer/)
+
