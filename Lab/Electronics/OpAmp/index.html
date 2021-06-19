@@ -91,18 +91,18 @@
         text-align: center;
         background-color: #f0f0ff;
       }
-      ul {
+
+      ul,
+      ol {
         margin: 0.1em 0 0.1em 1em;
         padding: 0 0 0 1.5em;
-        list-style: disc;
       }
-      ul ul {
+
+      ul ul,
+      ul ul ul,
+      ol ol,
+      ol ol ol {
         margin: 0;
-        list-style: circle;
-      }
-      ul ul ul {
-        margin: 0;
-        list-style: square;
       }
 
       blockquote {
@@ -204,6 +204,21 @@ V_{out}\rightarrow -\frac{1}{RC}\int_0^t V_{in} dt
 <p><span class="math display">\[
 V_{out}=\rightarrow -R_f\sum_{i=1}^n \frac{V_i}{R_i}
 \]</span></p>
+      <ol>
+        <li>aaa</li>
+        <ol>
+          <li>iii</li>
+        </ol>
+      </ol>
+      <ul>
+        <li>aaa</li>
+        <ul>
+          <li>iii</li>
+          <ul>
+            <li>iii</li>
+          </ul>
+        </ul>
+      </ul>
     </article>
   </body>
 </html>

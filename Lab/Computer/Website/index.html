@@ -91,18 +91,18 @@
         text-align: center;
         background-color: #f0f0ff;
       }
-      ul {
+
+      ul,
+      ol {
         margin: 0.1em 0 0.1em 1em;
         padding: 0 0 0 1.5em;
-        list-style: disc;
       }
-      ul ul {
+
+      ul ul,
+      ul ul ul,
+      ol ol,
+      ol ol ol {
         margin: 0;
-        list-style: circle;
-      }
-      ul ul ul {
-        margin: 0;
-        list-style: square;
       }
 
       blockquote {
@@ -202,6 +202,21 @@
 <ul>
 <li>diff から変更があったファイルだけ調べて変換をすると早くなるよね</li>
 </ul>
+      <ol>
+        <li>aaa</li>
+        <ol>
+          <li>iii</li>
+        </ol>
+      </ol>
+      <ul>
+        <li>aaa</li>
+        <ul>
+          <li>iii</li>
+          <ul>
+            <li>iii</li>
+          </ul>
+        </ul>
+      </ul>
     </article>
   </body>
 </html>

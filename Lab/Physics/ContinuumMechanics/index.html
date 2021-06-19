@@ -90,18 +90,18 @@
         text-align: center;
         background-color: #f0f0ff;
       }
-      ul {
+
+      ul,
+      ol {
         margin: 0.1em 0 0.1em 1em;
         padding: 0 0 0 1.5em;
-        list-style: disc;
       }
-      ul ul {
+
+      ul ul,
+      ul ul ul,
+      ol ol,
+      ol ol ol {
         margin: 0;
-        list-style: circle;
-      }
-      ul ul ul {
-        margin: 0;
-        list-style: square;
       }
 
       blockquote {
@@ -216,6 +216,21 @@ D_t \left(\rho\epsilon\right)       &amp;= \sigma_{ij}\partial_i v_j - \partial_
 D_t \left(\frac{1}{2}\rho v^2 + \rho\epsilon\right)&amp;=\partial_i(\sigma_{ij} v_i - q_i)+\rho K_iv_i \\
 \end{aligned}
 \]</span></p>
+      <ol>
+        <li>aaa</li>
+        <ol>
+          <li>iii</li>
+        </ol>
+      </ol>
+      <ul>
+        <li>aaa</li>
+        <ul>
+          <li>iii</li>
+          <ul>
+            <li>iii</li>
+          </ul>
+        </ul>
+      </ul>
     </article>
   </body>
 </html>
