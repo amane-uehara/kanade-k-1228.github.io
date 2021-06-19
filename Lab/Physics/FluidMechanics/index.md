@@ -3,20 +3,23 @@
 %
 
 ## 基礎方程式
-### 場
-- $u$ : 速度
-- $\omega$ : 渦度
-- $\sigma$ : 応力
-- $\rho$ : 密度
-- $p$ : 圧力
-- $g$ : 外力加速度
+### 流体の記述
+- 速度 $u_i$
+  - 変形速度 $d_{ij} := \partial_j u_i$ → 歪み速度 $S_{ij}:=d_{(ij)}$ + 回転速度 $\Omega_{ij}:=d_{[ij]}$
+  - 渦度 $\omega_k := \epsilon_{ijk}d_{ij}$
+-  応力 $\sigma_{ij}$
+- 密度 $\rho$
+- 圧力 $p$
+- 外力 $g_i$
 
-### 条件
+### さまざまな条件
 - 非圧縮
   - マッハ数が小さい
+  - だいたいこれ
 - 非粘性
+  - 粘性項が消える
 - 非回転
-- 定常・発達
+  - 速度場の回転がない場合
 
 ### 質量保存則（連続の式）
 $$
@@ -34,17 +37,35 @@ $$
 \partial_t(\rho u_i)+\partial_j(\rho u_i u_j)=\partial_i\sigma_{ii}+\rho g_i
 $$
 
-### ニュートン流体の構成方程式
+### 構成則
+
+構成方程式の一般式
 
 $$
-\sigma_{ij}=(-p+\lambda\partial_ku_k)\delta_{ij}+\mu d_{(ij)}
+\sigma_{ij}=\mathcal{F}(d_{kl})
 $$
 
-静圧 $p$
+1. 静水圧
 
-速度勾配 $d_{ij}:=\partial_ju_i$ 
+$$
+\sigma_{ij} = -p\delta_{ij}
+$$
 
-対称速度勾配 $d_{(ij)}:=(d_{ij}+d_{ji})/2$
+2. 変形速度テンソル（対称・等方的）
+
+$$
+\sigma_{ij} = C_{ijkl}d_{kl}
+$$
+
+$$
+C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambda_{il}\lambda_{jk}
+$$
+
+ニュートン流体の構成方程式
+
+$$
+\sigma_{ij} = \left( -p + \frac{2}{3} \mu S_{kk} \right) \delta_{ij} + 2 \mu S_{ij}
+$$
 
 ### ナビエストークス方程式
 
@@ -52,10 +73,10 @@ $$
 \partial_t(\rho u_i)+\partial_j(\rho u_iu_j)=-\partial_i\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\partial_j(\partial_ju_i+\partial_iu_j)+\rho g_i
 $$
 
-実在流れ
+非圧縮
 
 $$
-\rho \partial_t u_i + \rho u_j \partial_j u_i = -\partial_i p + \mu \partial_j \partial_j u_i + \rho g_i
+\rho ( \partial_t u_i + u_j \partial_j u_i ) = -\partial_i p + \mu \partial_j \partial_j u_i + \rho g_i
 $$
 
 無次元化 $D,V,L$ 
@@ -80,13 +101,11 @@ $k=\mathrm{rank}\,M$
 
 無次元数の数 $=\mathrm{null}\,M$
 
-## 平行平板（ボアズイユ流・クェット流）
-
-## 円管
+## 層流
 
 ## 境界層
 
-### 平板上非定常
+## 非定常
 
 $$
 \partial_t u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
@@ -118,13 +137,12 @@ $$
 $$
 
 ## 流体の運動学
-
 ### 運動の記述
 
 - 速度場 $u$
 - 速度勾配テンソル $d_{ij} := \partial_ju_i$
 - 変形速度テンソル $s_{ij} := d_{(ij)}$
-  - 圧縮引張
+  - 軸変形
     - 対称テンソルなので主軸が存在する
     - 体積変化は $(1+\lambda_1)(1+\lambda_2)(1+\lambda_3) \sim 1 + \lambda_1+\lambda_2+\lambda_3 = 1 + \Lambda$
     - 非圧縮の場合，トレース $\Lambda=0$ 
@@ -150,6 +168,18 @@ $$
 
 #### 第一法則（渦度方程式）
 
-### 第二法則
+
+#### 第二法則
+
+「渦度は流体粒子に凍結している」
+
+粘性がなく，密度が圧力のみに依存し（バロトロピー流体），体積力が保存力なら，渦線を構成する粒子は常に同じで，渦線と流体は一緒に移動する．
+
+### ランキン渦
+
+剛体回転する円柱
+
+
+
 
 

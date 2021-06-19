@@ -181,44 +181,51 @@
                </header>
             <nav><ul>
 <li><a href="#基礎方程式">基礎方程式</a><ul>
-<li><a href="#場">場</a></li>
-<li><a href="#条件">条件</a></li>
+<li><a href="#流体の記述">流体の記述</a></li>
+<li><a href="#さまざまな条件">さまざまな条件</a></li>
 <li><a href="#質量保存則連続の式">質量保存則（連続の式）</a></li>
 <li><a href="#運動量保存則運動方程式">運動量保存則（運動方程式）</a></li>
-<li><a href="#ニュートン流体の構成方程式">ニュートン流体の構成方程式</a></li>
+<li><a href="#構成則">構成則</a></li>
 <li><a href="#ナビエストークス方程式">ナビエストークス方程式</a></li>
 <li><a href="#π定理">π定理</a></li>
 </ul></li>
-<li><a href="#平行平板ボアズイユ流クェット流">平行平板（ボアズイユ流・クェット流）</a></li>
-<li><a href="#円管">円管</a></li>
-<li><a href="#境界層">境界層</a><ul>
-<li><a href="#平板上非定常">平板上非定常</a></li>
-</ul></li>
+<li><a href="#層流">層流</a></li>
+<li><a href="#境界層">境界層</a></li>
+<li><a href="#非定常">非定常</a></li>
 <li><a href="#流体の運動学">流体の運動学</a><ul>
 <li><a href="#運動の記述">運動の記述</a></li>
 <li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
-<li><a href="#第二法則">第二法則</a></li>
+<li><a href="#ランキン渦">ランキン渦</a></li>
 </ul></li>
 </ul></nav>
        <h2 id="基礎方程式">基礎方程式</h2>
-<h3 id="場">場</h3>
+<h3 id="流体の記述">流体の記述</h3>
 <ul>
-<li><span class="math inline">\(u\)</span> : 速度</li>
-<li><span class="math inline">\(\omega\)</span> : 渦度</li>
-<li><span class="math inline">\(\sigma\)</span> : 応力</li>
-<li><span class="math inline">\(\rho\)</span> : 密度</li>
-<li><span class="math inline">\(p\)</span> : 圧力</li>
-<li><span class="math inline">\(g\)</span> : 外力加速度</li>
+<li>速度 <span class="math inline">\(u_i\)</span>
+<ul>
+<li>変形速度 <span class="math inline">\(d_{ij} := \partial_j u_i\)</span> → 歪み速度 <span class="math inline">\(S_{ij}:=d_{(ij)}\)</span> + 回転速度 <span class="math inline">\(\Omega_{ij}:=d_{[ij]}\)</span></li>
+<li>渦度 <span class="math inline">\(\omega_k := \epsilon_{ijk}d_{ij}\)</span></li>
+</ul></li>
+<li>応力 <span class="math inline">\(\sigma_{ij}\)</span></li>
+<li>密度 <span class="math inline">\(\rho\)</span></li>
+<li>圧力 <span class="math inline">\(p\)</span></li>
+<li>外力 <span class="math inline">\(g_i\)</span></li>
 </ul>
-<h3 id="条件">条件</h3>
+<h3 id="さまざまな条件">さまざまな条件</h3>
 <ul>
 <li>非圧縮
 <ul>
 <li>マッハ数が小さい</li>
+<li>だいたいこれ</li>
 </ul></li>
-<li>非粘性</li>
-<li>非回転</li>
-<li>定常・発達</li>
+<li>非粘性
+<ul>
+<li>粘性項が消える</li>
+</ul></li>
+<li>非回転
+<ul>
+<li>速度場の回転がない場合</li>
+</ul></li>
 </ul>
 <h3 id="質量保存則連続の式">質量保存則（連続の式）</h3>
 <p><span class="math display">\[
@@ -231,20 +238,37 @@
 <p><span class="math display">\[
 \partial_t(\rho u_i)+\partial_j(\rho u_i u_j)=\partial_i\sigma_{ii}+\rho g_i
 \]</span></p>
-<h3 id="ニュートン流体の構成方程式">ニュートン流体の構成方程式</h3>
+<h3 id="構成則">構成則</h3>
+<p>構成方程式の一般式</p>
 <p><span class="math display">\[
-\sigma_{ij}=(-p+\lambda\partial_ku_k)\delta_{ij}+\mu d_{(ij)}
+\sigma_{ij}=\mathcal{F}(d_{kl})
 \]</span></p>
-<p>静圧 <span class="math inline">\(p\)</span></p>
-<p>速度勾配 <span class="math inline">\(d_{ij}:=\partial_ju_i\)</span></p>
-<p>対称速度勾配 <span class="math inline">\(d_{(ij)}:=(d_{ij}+d_{ji})/2\)</span></p>
+<ol type="1">
+<li>静水圧</li>
+</ol>
+<p><span class="math display">\[
+\sigma_{ij} = -p\delta_{ij}
+\]</span></p>
+<ol start="2" type="1">
+<li>変形速度テンソル（対称・等方的）</li>
+</ol>
+<p><span class="math display">\[
+\sigma_{ij} = C_{ijkl}d_{kl}
+\]</span></p>
+<p><span class="math display">\[
+C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambda_{il}\lambda_{jk}
+\]</span></p>
+<p>ニュートン流体の構成方程式</p>
+<p><span class="math display">\[
+\sigma_{ij} = \left( -p + \frac{2}{3} \mu S_{kk} \right) \delta_{ij} + 2 \mu S_{ij}
+\]</span></p>
 <h3 id="ナビエストークス方程式">ナビエストークス方程式</h3>
 <p><span class="math display">\[
 \partial_t(\rho u_i)+\partial_j(\rho u_iu_j)=-\partial_i\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\partial_j(\partial_ju_i+\partial_iu_j)+\rho g_i
 \]</span></p>
-<p>実在流れ</p>
+<p>非圧縮</p>
 <p><span class="math display">\[
-\rho \partial_t u_i + \rho u_j \partial_j u_i = -\partial_i p + \mu \partial_j \partial_j u_i + \rho g_i
+\rho ( \partial_t u_i + u_j \partial_j u_i ) = -\partial_i p + \mu \partial_j \partial_j u_i + \rho g_i
 \]</span></p>
 <p>無次元化 <span class="math inline">\(D,V,L\)</span></p>
 <p><span class="math display">\[
@@ -285,10 +309,9 @@
 </table>
 <p><span class="math inline">\(k=\mathrm{rank}\,M\)</span></p>
 <p>無次元数の数 <span class="math inline">\(=\mathrm{null}\,M\)</span></p>
-<h2 id="平行平板ボアズイユ流クェット流">平行平板（ボアズイユ流・クェット流）</h2>
-<h2 id="円管">円管</h2>
+<h2 id="層流">層流</h2>
 <h2 id="境界層">境界層</h2>
-<h3 id="平板上非定常">平板上非定常</h3>
+<h2 id="非定常">非定常</h2>
 <p><span class="math display">\[
 \partial_t u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
 \partial_x u + \partial_y v = 0
@@ -318,7 +341,7 @@ u(x,\infty,t)&amp;=0\\
 <li>速度勾配テンソル <span class="math inline">\(d_{ij} := \partial_ju_i\)</span></li>
 <li>変形速度テンソル <span class="math inline">\(s_{ij} := d_{(ij)}\)</span>
 <ul>
-<li>圧縮引張
+<li>軸変形
 <ul>
 <li>対称テンソルなので主軸が存在する</li>
 <li>体積変化は <span class="math inline">\((1+\lambda_1)(1+\lambda_2)(1+\lambda_3) \sim 1 + \lambda_1+\lambda_2+\lambda_3 = 1 + \Lambda\)</span></li>
@@ -355,7 +378,11 @@ u(x,\infty,t)&amp;=0\\
 </ul>
 <h3 id="helmholtzの法則">Helmholtzの法則</h3>
 <h4 id="第一法則渦度方程式">第一法則（渦度方程式）</h4>
-<h3 id="第二法則">第二法則</h3>
+<h4 id="第二法則">第二法則</h4>
+<p>「渦度は流体粒子に凍結している」</p>
+<p>粘性がなく，密度が圧力のみに依存し（バロトロピー流体），体積力が保存力なら，渦線を構成する粒子は常に同じで，渦線と流体は一緒に移動する．</p>
+<h3 id="ランキン渦">ランキン渦</h3>
+<p>剛体回転する円柱</p>
     </article>
   </body>
 </html>
