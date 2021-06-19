@@ -112,7 +112,9 @@ $$
 
 #### 円筒 $(r,\theta,z)$
 $$
-\frac{1}{r}\frac{\partial}{\partial r}(ru_r) + \frac{1}{r}\frac{\partial }{\partial \theta} u_\theta + \frac{\partial}{\partial z} u_z = 0 \\
+\frac{1}{r}\frac{\partial}{\partial r}(ru_r) + \frac{1}{r}\frac{\partial }{\partial \theta} u_\theta + \frac{\partial}{\partial z} u_z = 0
+$$
+$$
 \begin{aligned}
 \rho\left( \frac{\partial u_r}{\partial t} + u_r \frac{\partial u_r}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_r}{\partial \theta} - \frac{u_\theta^2}{r} + u_z\frac{\partial u_r}{\partial z} \right) =&
  -\frac{\partial p}{\partial r} + \mu \left[ \frac{\partial}{\partial r} \left(\frac{1}{r}\frac{\partial}{\partial r}(ru_r)\right) + \frac{1}{r^2}\frac{\partial^2 u_r}{\partial \theta^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial\theta} + \frac{\partial^2 u_r}{\partial z^2} \right] + \rho g_r \\
@@ -123,7 +125,14 @@ $$
 \end{aligned}
 $$
 
-## 層流
+
+## 円管内層流
+
+軸対称 $\partial_\theta=0$, 発達流 $\partial_z=0$, 定常 $\partial_t=0$
+
+$$
+
+$$
 
 ### 平行平板
 
