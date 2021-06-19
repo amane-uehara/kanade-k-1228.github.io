@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-114187773-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-114187773-1");
+    </script>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="author" content="@kanade_k_1228" />
+          <title>解析学 | Kanade's Website</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e4f0fc;
+        font-size: 16px;
+        font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+          "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        line-height: 1.5;
+        color: #202020;
+      }
+
+      article {
+        display: block;
+        margin: 0 auto;
+      }
+      @media (min-width: 1220px) {
+        article {
+          width: 1200px;
+        }
+      }
+      @media (max-width: 1219px) {
+        article {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #d64acf;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: #ffccff;
+      }
+      h2 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #2c8ecf;
+        font-size: 20px;
+        font-weight: bold;
+        background: #bbddff;
+      }
+      h3 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.5em;
+      }
+      h4 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.7em;
+      }
+      p {
+        margin: 0.1em 0 0.1em 1em;
+      }
+      small {
+        font-size: 10px;
+      }
+      a {
+        color: #2c8ecf;
+      }
+      a:hover {
+        color: #ff0000;
+      }
+      table {
+        margin: 0.3em auto;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #e8ffbd;
+      }
+      td {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #f0f0ff;
+      }
+
+      ul,
+      ol {
+        margin: 0.1em 0 0.1em 1em;
+        padding: 0 0 0 1.5em;
+      }
+
+      ul ul,
+      ul ul ul,
+      ol ol,
+      ol ol ol {
+        margin: 0;
+      }
+
+      blockquote {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+
+      div.card {
+        width: 100%;
+        padding: 0.3em;
+      }
+      div.card img {
+        width: 100%;
+      }
+      div.cardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+      }
+      header > ul > li {
+        width: 25%;
+        text-align: center;
+      }
+      header > ul > li > a {
+        display: block;
+      }
+      nav {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+      nav > ul {
+        margin: 0;
+      }
+    </style>
+    
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <article>
+      <header>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Portfolio/">Portfolio</a></li>
+          <li><a href="/Lab/">Lab</a></li>
+          <li><a href="/Essay/">Essay</a></li>
+        </ul>
+                <h1 style="margin: 0">解析学</h1>
+               </header>
+            <nav><ul>
+<li><a href="#極限">極限</a></li>
+<li><a href="#連続">連続</a><ul>
+<li><a href="#二変数の中間値の定理">二変数の中間値の定理</a></li>
+</ul></li>
+<li><a href="#一般の写像">一般の写像</a><ul>
+<li><a href="#偏微分">偏微分</a></li>
+<li><a href="#合成写像">合成写像</a></li>
+<li><a href="#連鎖律">連鎖律</a></li>
+</ul></li>
+<li><a href="#高次偏導関数">高次偏導関数</a></li>
+<li><a href="#テイラーの定理">テイラーの定理</a></li>
+<li><a href="#極大極小">極大・極小</a><ul>
+<li><a href="#ヘッシアン">ヘッシアン</a></li>
+</ul></li>
+<li><a href="#曲線">曲線</a><ul>
+<li><a href="#パラメタ曲線">パラメタ曲線</a></li>
+<li><a href="#微分可能な曲線">微分可能な曲線</a></li>
+<li><a href="#定理">定理</a></li>
+<li><a href="#接線">接線</a></li>
+<li><a href="#例サイクロイド">例：サイクロイド</a></li>
+<li><a href="#二階微分">二階微分</a></li>
+<li><a href="#極座標表示を持つ曲線">極座標表示を持つ曲線</a></li>
+<li><a href="#例カージオイド">例：カージオイド</a></li>
+</ul></li>
+<li><a href="#陰関数定理">陰関数定理</a></li>
+<li><a href="#特異点">特異点</a></li>
+<li><a href="#条件付き極値">条件付き極値</a><ul>
+<li><a href="#ラグランジュの未定乗数法">ラグランジュの未定乗数法</a></li>
+</ul></li>
+</ul></nav>
+       <h2 id="極限">極限</h2>
+<p>平面上のあらゆる方向から近づける． <span class="math display">\[
+\forall \varepsilon \gt 0 , \exists \delta \gt 0 \\
+0 \lt |\boldsymbol{x}-\boldsymbol{a}|\lt\delta \\
+\Rightarrow |f(\boldsymbol{x})-c|\lt\varepsilon
+\]</span></p>
+<p>例:</p>
+<p><span class="math display">\[
+f(x,y)=\frac{2xy}{x^2+y^2}\rightarrow???((x,y)\rightarrow(0,0))\\
+(x,y)=(t\cos\theta,t\sin\theta)\\
+f(x,y)=\frac{2t^2\sin\theta\cos\theta}{t^2(\sin^2\theta+\cos^2\theta)}=\sin(2\theta)\\
+f\rightarrow\sin(2\theta)
+\]</span></p>
+<p><span class="math inline">\(\theta\)</span>に依存するため極限値は存在しない．</p>
+<h2 id="連続">連続</h2>
+<p><span class="math display">\[
+f(\boldsymbol{x})\rightarrow f(\boldsymbol{a})\\(\boldsymbol{x}\rightarrow\boldsymbol{a})
+\]</span></p>
+<h3 id="二変数の中間値の定理">二変数の中間値の定理</h3>
+<p><span class="math display">\[
+\exists \boldsymbol{C}\in(\boldsymbol{A}と\boldsymbol{B}をつなぐ曲線)\\
+f(\boldsymbol{A})\lt f(\boldsymbol{C})\lt f(\boldsymbol{A})
+\]</span> ## 偏微分 ## 全微分 ## 連鎖律 ### 連鎖律１ <span class="math inline">\(f(\boldsymbol{x})\)は\(U\subset \mathbb{R}^2\)</span> 上の関数で，<span class="math inline">\(\boldsymbol{x}=\boldsymbol{a}\)</span> で全微分可能． <span class="math inline">\(x(t),y(t)\)</span> は <span class="math inline">\(I\subset \mathbb{R}\)</span> 上の関数で，<span class="math inline">\((x(t),y(t))\in U(\forall t\in I)\)</span>，<span class="math inline">\(t=c\)</span> で微分可能． このとき(z(t)=f(x(t),y(t)))は(t=c)で微分可能で，[z’(c)=f_x()x’(c)+f_y()y’(c)] (f())は(U)上で(C<sup>2)級． (x(t),y(t),z(t))は(I)上で(C</sup>1)級． [=+] #### 証明 ### 連鎖律２ (x(s,t),y(s,t))は(V<sup>2)上の関数で，((x(s,t),y(s,t))U((s,t)V))，((s,t)=)で全微分可能． (=(x(),y())． このとき，(V)上の関数(z=f(x(s,t),y(s,t)))は((s,t)=)で微分可能で， <span class="math display">\[
+z_s(\boldsymbol{c})=f_x(\boldsymbol{a})x_s(\boldsymbol{c})+f_y(\boldsymbol{a})y_s(\boldsymbol{c}) \\
+z_t(\boldsymbol{c})=f_x(\boldsymbol{a})x_t(\boldsymbol{c})+f_y(\boldsymbol{a})y_t(\boldsymbol{c})
+\]</span> (f(),x(s,t),y(s,t))が(C</sup>1)級ならば，(z(s,t))も(C^1)級． [=+\ =+]</p>
+ヤコビ行列(J)を用いて， [J=
+<span class="math display">\[\begin{pmatrix}
+\frac{\partial x}{\partial s} &amp; \frac{\partial x}{\partial t} \\
+\frac{\partial y}{\partial s} &amp; \frac{\partial y}{\partial t}
+\end{pmatrix}\]</span>
+<p>] [(,)= (,)J]</p>
+<p>ヤコビ行列の行列式をヤコビアンという． [=J=-]</p>
+<p>座標変換で面積がヤコビアン倍される．</p>
+<h2 id="一般の写像">一般の写像</h2>
+<p>(={x_1,x_2,,,x_n},={a_1,a_2,,,a_n}^n)</p>
+<p>(U<sup>n)を定義域とし，(</sup>m)に値を持つ写像(F:U^m)は，(F=(f_1,f_2,,,f_n))と書ける．ただし，(f_i:U)はn変数関数．[Fが連続関数f_1,f_2,,,f_nが連続関数]</p>
+<h3 id="偏微分">偏微分</h3>
+<p>[=(,,,,)]</p>
+<h3 id="合成写像">合成写像</h3>
+<p>[VU^m]</p>
+<h3 id="連鎖律">連鎖律</h3>
+<p>[=+,,,+]</p>
+<h2 id="高次偏導関数">高次偏導関数</h2>
+<p>2変数関数(f()=f(x,y))の(x)に関する偏導関数(f_x())が存在し，</p>
+<h2 id="テイラーの定理">テイラーの定理</h2>
+<p>[f(x,y)=<em>{}a</em>{m,n}x<sup>my</sup>n \ f(x,y)=<em>{}a</em>{m,n}m(m-1)…(m-i+1)n(n-1)…(n-j+1)x<sup>{m-i}y</sup>{n-j} \ a_{i,j}=f(0,0) ] [f(x,y)=<em>{}a</em>{m,n}(x-a)<sup>m(y-b)</sup>n \ a_{i,j}=f(a,b) ]</p>
+<h2 id="極大極小">極大・極小</h2>
+<p>(f())が(=)で極大・極小とは，[0,0|-|\ f()f()]</p>
+<p>以下，(f())は()の近くで定義された(C^2)関数，(=(a,b))は(f)の停留点((f_x()=f_y()=0))とする．</p>
+<p>もし，(f)が()で極小ならば，任意の方向で2階微分が正でなくてはいけない．</p>
+<p>(x=a+mt,y=b+nt)として，[(0)=(m+n)<sup>2f()=m</sup>2f_{xx}()+2mnf_{xy}()+n^2f_{yy}()0]が全ての((m,n)=(0,0))で成り立つ．</p>
+<p>その必要十分条件は，[f_{xx}()0,f_{yy}()0\ {f_{xy}()}^2-f_{xx}()f_{yy}()0]</p>
+<p>逆に，({f_{xy}()}^2-f_{xx}()f_{yy}()0)のとき，方向二階微分は正にも負にもなりうる．このとき()は(f())の峠点・鞍点という．</p>
+<h3 id="ヘッシアン">ヘッシアン</h3>
+<p>(C^2)関数(f())のヘッシアン</p>
+<p>[H():=det\begin{pmatrix} f_{xx} &amp; f_{xy} \ f_{yx} &amp; f_{yy} \end{pmatrix}=f_{xx}f_{yy}-{f_{xy}}^2]</p>
+<h2 id="曲線">曲線</h2>
+<h3 id="パラメタ曲線">パラメタ曲線</h3>
+<p>(f(t),g(t)):(I)上の連続関数．</p>
+(C={(
+<span class="math display">\[\begin{array}{c}f(t)\\g(t)\end{array}\]</span>
+<p>)<sup>2|tI}</sup>2)を(t)をパラメタとする曲線という．</p>
+※(C)は写像((
+<span class="math display">\[\begin{array}{c}f\\g\end{array}\]</span>
+<p>):I^2)の像</p>
+<p>同じ曲線でもパラメタの取り方は様々．</p>
+<h3 id="微分可能な曲線">微分可能な曲線</h3>
+<p>(C)は微分可能／(C<sup>1)級の曲線である(:=)(f(t),g(t))どちらも微分可能／(C</sup>1)級</p>
+例：(I)上の関数(f(x))のグラフは，(C={(
+<span class="math display">\[\begin{array}{c}x\\f(x)\end{array}\]</span>
+<p>)|xI})と(x)をパラメタとする曲線であり，(f(x))が微分可能／(C<sup>1)級()(C)は微分可能／(C</sup>1)級．</p>
+<h3 id="定理">定理</h3>
+((
+<span class="math display">\[\begin{array}{c}x\\y\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}f(t)\\g(t)\end{array}\]</span>
+<p>)(tI))を(C^1)級の曲線とする．(f’(a)=0(aI))ならば，(t=a)の近くで(y)は(x)の関数であり，(==)</p>
+<h4 id="証明">証明</h4>
+<p>(f’(t)0)の場合．</p>
+<p>よって(f(x))は単調増加なので，逆関数(t=h(x))が存在する．</p>
+<p>(y=g(t)=g(h(x)))と，(x)の(C^1)関数</p>
+<p>[==]</p>
+<h3 id="接線">接線</h3>
+曲線(C:(
+<span class="math display">\[\begin{array}{c}x\\y\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}f(t)\\g(t)\end{array}\]</span>
+)(tI))は(C^1)級で(aI,(
+<span class="math display">\[\begin{array}{c}f(t)\\g(t)\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}0\\0\end{array}\]</span>
+<p>))とする．</p>
+このとき，点((
+<span class="math display">\[\begin{array}{c}f(a)\\g(a)\end{array}\]</span>
+))で(C)は接線を持ち，その式は，[(
+<span class="math display">\[\begin{array}{c}x\\y\end{array}\]</span>
+)=k(
+<span class="math display">\[\begin{array}{c}f&#39;(a)\\g&#39;(a)\end{array}\]</span>
+)+(
+<span class="math display">\[\begin{array}{c}f(a)\\g(a)\end{array}\]</span>
+<p>)(k)]または，(k)を消去して，[f’(a)(y-g(a))=g’(a)(x-f(a))]</p>
+<h3 id="例サイクロイド">例：サイクロイド</h3>
+[=(
+<span class="math display">\[\begin{array}{c}t-\sin t\\1-\cos t\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}f(t)\\g(t)\end{array}\]</span>
+<p>)]</p>
+<p>(f(t),g(t))が(C<sup>{})級なので，(C</sup>{})級の曲線．</p>
+<p>(f’(t)=1-t)なので，(t=2k(k))なら(f’(t)=0)．</p>
+<p>[===]</p>
+<p>[===()’(1-t)^{-1}=-0]</p>
+<h3 id="二階微分">二階微分</h3>
+<p>(x(t),y(t))が二階微分可能で，(x’(a)=0)のとき，(t=a)の近くで(y)は(x)で二階微分可能で，[===]</p>
+<h3 id="極座標表示を持つ曲線">極座標表示を持つ曲線</h3>
+[(
+<span class="math display">\[\begin{array}{c}x\\y\end{array}\]</span>
+)=r()(
+<span class="math display">\[\begin{array}{c}\cos \theta\\\sin \theta\end{array}\]</span>
+<p>)]</p>
+(r())が微分可能なとき，接ベクトルは，[(
+<span class="math display">\[\begin{array}{c}x&#39;(\theta)\\y&#39;(\theta)\end{array}\]</span>
+)=r’()(
+<span class="math display">\[\begin{array}{c}\cos \theta\\\sin \theta\end{array}\]</span>
+)+r()(
+<span class="math display">\[\begin{array}{c}-\sin \theta\\\cos \theta\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}\cos \theta &amp; -\sin \theta \\\sin \theta &amp; \cos \theta\end{array}\]</span>
+)(
+<span class="math display">\[\begin{array}{c}r&#39;(\theta)\\r(\theta)\end{array}\]</span>
+<p>)]</p>
+[(
+<span class="math display">\[\begin{array}{c}x&#39;(\theta)\\y(\theta)\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}0\\0\end{array}\]</span>
+)(
+<span class="math display">\[\begin{array}{c}r&#39;(\theta)\\r(\theta)\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}0\\0\end{array}\]</span>
+<p>)]それ以外のとき，局所的にグラフ．</p>
+<h3 id="例カージオイド">例：カージオイド</h3>
+<p>[r()=1+]</p>
+[(
+<span class="math display">\[\begin{array}{c}x&#39;(\theta)\\y(\theta)\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}\sin\theta(1+2\cos\theta)\\0\end{array}\]</span>
+)(
+<span class="math display">\[\begin{array}{c}r&#39;(\theta)\\r(\theta)\end{array}\]</span>
+)=(
+<span class="math display">\[\begin{array}{c}0\\0\end{array}\]</span>
+<p>)]</p>
+<h2 id="陰関数定理">陰関数定理</h2>
+(f(x,y):{(a,b)近傍で定義,f(a,b)=0,C^1}) [f_y(a,b)0! (x) {
+<span class="math display">\[\begin{array}{l}
+        \phi(a)=b \\
+        f(x,\phi(x))=0
+        \end{array}\]</span>
+<p>.]</p>
+<p>[’(x)=-]</p>
+<p>(y=(x))を(f(x,y))の陰関数という．</p>
+<h4 id="証明-1">証明</h4>
+(C)の((a,b))における接線 [f_x(a,b)(x-a)+f_y(a,b)(y-b)=0]
+</p>
+<h4 id="例">例</h4>
+<h2 id="特異点">特異点</h2>
+<p>(f(x,y):C^1)が定める曲線(C:f(x,y)=0)上の点((a,b))が特異点であるとは，[f_x(a,b)=f_y(a,b)=0]</p>
+<p>陰関数定理：非特異点の近くでは，Cはグラフ</p>
+<h4 id="例-1">例</h4>
+<h2 id="条件付き極値">条件付き極値</h2>
+<p>(U:)開集合，(f(x,y),g(x,y):C^1)，曲線(C:g(x,y)=0)</p>
+<p>((x,y))が(C)上を動くという条件下で(f(x,y))の極値を考える．</p>
+<p>(C:(x,y)=(x(t),y(t)))とパラメタ表示されるとき，(f(x(t),y(t)))の極値を考える．</p>
+<p>とくに(y=(x))のグラフのとき，(f(x,(x)))の極値を考えること．</p>
+<h3 id="ラグランジュの未定乗数法">ラグランジュの未定乗数法</h3>
+<p>(f(x,y),g(x,y):U上,C^1)</p>
+<p>(g(x,y)=0)のとき(f(a,b))で極値をとるとする．</p>
+<p>(F(x,y,):=f(x,y)-g(x,y))</p>
+<p>((a,b))が曲線(C)の特異点でない[F_x(x,y,)=F_y(x,y,)=0]</p>
+<h4 id="証明-2">証明</h4>
+<p>(g_y(a,b)0)の場合を考える．</p>
+<p>((a,b))の近くでは，(C)は(y=(x))</p>
+<p>[<span class="math display">\[\begin{eqnarray}\frac{d}{dx}f(x,\phi(x))&amp;=&amp;f_x(x,y)+f_y(x,y)\phi&#39;(x)\\&amp;=&amp;f_x(x,y)+f_y(x,y)\left(-\frac{g_x(x,y)}{g_y(x,y)}\right)\end{eqnarray}\]</span>]</p>
+    </article>
+  </body>
+</html>
