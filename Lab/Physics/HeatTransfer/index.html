@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-114187773-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-114187773-1");
+    </script>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="author" content="@kanade_k_1228" />
+          <title>熱工学 | Kanade's Website</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e4f0fc;
+        font-size: 16px;
+        font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+          "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        line-height: 1.5;
+        color: #202020;
+      }
+
+      article {
+        display: block;
+        margin: 0 auto;
+      }
+      @media (min-width: 1220px) {
+        article {
+          width: 1200px;
+        }
+      }
+      @media (max-width: 1219px) {
+        article {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #d64acf;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: #ffccff;
+      }
+      h2 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #2c8ecf;
+        font-size: 20px;
+        font-weight: bold;
+        background: #bbddff;
+      }
+      h3 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.5em;
+      }
+      h4 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.7em;
+      }
+      p {
+        margin: 0.1em 0 0.1em 1em;
+      }
+      small {
+        font-size: 10px;
+      }
+      a {
+        color: #2c8ecf;
+      }
+      a:hover {
+        color: #ff0000;
+      }
+      table {
+        margin: 0.3em auto;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #e8ffbd;
+      }
+      td {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #f0f0ff;
+      }
+
+      ul,
+      ol {
+        margin: 0.1em 0 0.1em 1em;
+        padding: 0 0 0 1.5em;
+      }
+
+      ul ul,
+      ul ul ul,
+      ol ol,
+      ol ol ol {
+        margin: 0;
+      }
+
+      blockquote {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+
+      div.card {
+        width: 100%;
+        padding: 0.3em;
+      }
+      div.card img {
+        width: 100%;
+      }
+      div.cardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+      }
+      header > ul > li {
+        width: 25%;
+        text-align: center;
+      }
+      header > ul > li > a {
+        display: block;
+      }
+      nav {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+      nav > ul {
+        margin: 0;
+      }
+    </style>
+    
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <article>
+      <header>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Portfolio/">Portfolio</a></li>
+          <li><a href="/Lab/">Lab</a></li>
+          <li><a href="/Essay/">Essay</a></li>
+        </ul>
+                <h1 style="margin: 0">熱工学</h1>
+               </header>
+            <nav><ul>
+<li><a href="#伝熱の形態">伝熱の形態</a><ul>
+<li><a href="#熱伝導">熱伝導</a></li>
+</ul></li>
+<li><a href="#熱伝導方程式">熱伝導方程式</a><ul>
+<li><a href="#等方性材料-lambda_xlambda_ylambda_zlambda">等方性材料 (<span class="math inline">\(\lambda_x=\lambda_y=\lambda_z=\lambda\)</span>)</a></li>
+<li><a href="#定物性">定物性</a></li>
+<li><a href="#定常">定常</a></li>
+<li><a href="#内部発熱なし">内部発熱なし</a></li>
+<li><a href="#初期条件">初期条件</a></li>
+<li><a href="#境界条件">境界条件</a></li>
+<li><a href="#無次元化">無次元化</a></li>
+</ul></li>
+<li><a href="#次元定常熱伝導">1次元定常熱伝導</a><ul>
+<li><a href="#sigma0"><span class="math inline">\(\sigma=0\)</span></a></li>
+</ul></li>
+</ul></nav>
+       <h2 id="伝熱の形態">伝熱の形態</h2>
+<h3 id="熱伝導">熱伝導</h3>
+<ul>
+<li>フーリエの法則 <span class="math display">\[ q = \frac{dQ}{dA} = -\lambda \frac{dT}{dx} \]</span> 熱流束 = 断面あたりの熱量 = - 温度勾配 ### 熱伝達 (Convective Heat Transfer)</li>
+<li>分子の集団が移動</li>
+<li>強制対流（ファン）</li>
+<li>自然対流</li>
+<li>ニュートンの冷却法則 <span class="math display">\[ q = h(T_w-T_\infty) \]</span></li>
+<li>速度境界層</li>
+<li>温度境界層 ### 熱放射 (Thermal Radiation)</li>
+<li>ステファン-ボルツマンの式（黒体の熱放射） <span class="math display">\[ q_b = \sigma T^4 \]</span></li>
+<li>Gray Body ### いろいろ</li>
+<li>相変化</li>
+<li>物質移動</li>
+<li>高速</li>
+<li>希薄</li>
+<li>マイクロ</li>
+<li>極低温：超流動</li>
+<li>超高速：非フーリエ</li>
+<li>バイオ：食品 ## 熱伝導率・温度伝導率 ### 気体 <span class="math display">\[ \alpha = \frac{\lambda}{\rho c}=\frac{1}{3}vl \]</span></li>
+<li>理想気体 ### 液体 <span class="math display">\[ \alpha = a l_0 \]</span></li>
+<li><span class="math inline">\(a\)</span> : 音速</li>
+<li><span class="math inline">\(l_0^3\)</span> : 分子が占める体積 ### 固体 <span class="math display">\[ \lambda = \lambda_p + \lambda_e \]</span></li>
+<li><span class="math inline">\(\lambda_p\)</span> : フォノン（格子振動）</li>
+<li><span class="math inline">\(\lambda_e=\frac{1}{3}\rho c\)</span>? : 自由電子</li>
+<li>金属</li>
+<li>常温の金属では <span class="math inline">\(\lambda_e&gt;&gt;\lambda_p\)</span></li>
+<li>格子振動による散乱
+<ul>
+<li>界面・欠陥などによる散乱</li>
+<li><span class="math display">\[ \lambda_e = \frac{1}{aT^2 + b/T}\]</span></li>
+</ul></li>
+<li>Wiedemann-Franz-Lorenz式（熱伝導率と電気伝導率の関係） <span class="math display">\[ \frac{\lambda_e}{\sigma T} = \frac{\pi^2}{3}\left(\frac{k}{e}\right)^2 = 2.45\times10^{-8}\left[\frac{V^2}{K^2}\right] \]</span></li>
+<li>格子振動 <span class="math display">\[ \lambda_p=\frac{1}{3}\rho c v_p l_p \]</span></li>
+<li><span class="math inline">\(c\)</span> : フォノンの比熱</li>
+<li><span class="math inline">\(\rho\)</span> :</li>
+<li><span class="math inline">\(c\)</span> :</li>
+</ul>
+<h2 id="熱伝導方程式">熱伝導方程式</h2>
+<p><span class="math display">\[
+\rho c \partial_t T = \partial_i(\lambda^i \, \partial^i T) + w
+\]</span></p>
+<h3 id="等方性材料-lambda_xlambda_ylambda_zlambda">等方性材料 (<span class="math inline">\(\lambda_x=\lambda_y=\lambda_z=\lambda\)</span>)</h3>
+<p><span class="math display">\[
+\rho c \partial_t T = \partial_i(\lambda \, \partial^i T) + w
+\]</span></p>
+<h3 id="定物性">定物性</h3>
+<p><span class="math display">\[
+\partial_t T = \alpha \partial_i\partial^i T +  \frac{w}{\rho c}\\
+温度伝導率\alpha:=\frac{\lambda}{\rho c}
+\]</span></p>
+<h3 id="定常">定常</h3>
+<p><span class="math display">\[
+ \partial_i\partial^i T +  \frac{w}{\lambda}=0
+\]</span></p>
+<p>ポアソン型の偏微分方程式</p>
+<h3 id="内部発熱なし">内部発熱なし</h3>
+<p><span class="math display">\[
+ \partial_i\partial^i T =0
+\]</span> ラプラス方程式</p>
+<h3 id="初期条件">初期条件</h3>
+<p><span class="math display">\[
+T(t=0)=T(x,y,z)
+\]</span></p>
+<h3 id="境界条件">境界条件</h3>
+<p>表面のある微小面<span class="math inline">\(s\)</span>でのエネルギーバランスを考える．微小面の法線方向の軸<span class="math inline">\(n\)</span>，加熱量<span class="math inline">\(q_s\)</span>，外界の無限遠点までの熱伝達率<span class="math inline">\(h\)</span>とすると， <span class="math display">\[
+-\lambda\frac{\partial T}{\partial n} - h (T_s - T_\infty) + q_s=0
+\]</span></p>
+<ul>
+<li><p>第1種 : 温度 : <span class="math inline">\(h\rightarrow \infty\)</span> <span class="math display">\[
+T_s=T_\infty
+\]</span></p></li>
+<li><p>第2種 : 熱流束 : <span class="math inline">\(h\rightarrow 0\)</span> <span class="math display">\[
+\lambda\partial_n T = q_s
+\]</span></p></li>
+<li><p>第3種 : 熱伝達 : <span class="math inline">\(q_s = 0\)</span> <span class="math display">\[
+-\lambda\partial_n T = h (T_s-T_\infty)
+\]</span></p></li>
+</ul>
+<h3 id="無次元化">無次元化</h3>
+<h2 id="次元定常熱伝導">1次元定常熱伝導</h2>
+<p>対称な空間（平板，円柱，球殻）の熱伝導 <span class="math display">\[
+\frac{1}{r^\sigma}\partial_r(\lambda r^\sigma\partial_r T) + w = 0
+\]</span></p>
+<h3 id="sigma0"><span class="math inline">\(\sigma=0\)</span></h3>
+<p><span class="math display">\[
+\partial_x (\lambda \partial_x T) + w = 0
+\]</span> xで積分して， <span class="math display">\[
+\lambda\partial_x T + \int_0^x w dx = c_1
+\]</span> 熱伝導率・内部発熱が一定の場合は， <span class="math display">\[
+\lambda\partial_x T + w x = c_1
+\]</span> xで積分して， <span class="math display">\[
+T = -\frac{w}{2\lambda}x^2 + c_1 x + c_2
+\]</span> 境界条件 - <span class="math inline">\(T(x_1)=T_1\quad T(x_2)=T_2\)</span></p>
+<ul>
+<li><span class="math inline">\(T(0)=T_1\quad -\lambda\partial_x T = h(T_2-T_\infty)\)</span></li>
+</ul>
+    </article>
+  </body>
+</html>

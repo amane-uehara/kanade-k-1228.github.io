@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-114187773-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-114187773-1");
+    </script>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="author" content="@kanade_k_1228" />
+          <title>統計力学 | Kanade's Website</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e4f0fc;
+        font-size: 16px;
+        font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+          "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        line-height: 1.5;
+        color: #202020;
+      }
+
+      article {
+        display: block;
+        margin: 0 auto;
+      }
+      @media (min-width: 1220px) {
+        article {
+          width: 1200px;
+        }
+      }
+      @media (max-width: 1219px) {
+        article {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #d64acf;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: #ffccff;
+      }
+      h2 {
+        display: block;
+        margin: 0.1em 0 0.1em 0;
+        padding: 8px;
+        color: #2c8ecf;
+        font-size: 20px;
+        font-weight: bold;
+        background: #bbddff;
+      }
+      h3 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.5em;
+      }
+      h4 {
+        font-weight: bold;
+        margin: 0.1em 0 0.1em 0.7em;
+      }
+      p {
+        margin: 0.1em 0 0.1em 1em;
+      }
+      small {
+        font-size: 10px;
+      }
+      a {
+        color: #2c8ecf;
+      }
+      a:hover {
+        color: #ff0000;
+      }
+      table {
+        margin: 0.3em auto;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #e8ffbd;
+      }
+      td {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #f0f0ff;
+      }
+
+      ul,
+      ol {
+        margin: 0.1em 0 0.1em 1em;
+        padding: 0 0 0 1.5em;
+      }
+
+      ul ul,
+      ul ul ul,
+      ol ol,
+      ol ol ol {
+        margin: 0;
+      }
+
+      blockquote {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+
+      div.card {
+        width: 100%;
+        padding: 0.3em;
+      }
+      div.card img {
+        width: 100%;
+      }
+      div.cardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+      }
+      header > ul > li {
+        width: 25%;
+        text-align: center;
+      }
+      header > ul > li > a {
+        display: block;
+      }
+      nav {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.1em 1em 0.1em 1em;
+      }
+      nav > ul {
+        margin: 0;
+      }
+    </style>
+    
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <article>
+      <header>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Portfolio/">Portfolio</a></li>
+          <li><a href="/Lab/">Lab</a></li>
+          <li><a href="/Essay/">Essay</a></li>
+        </ul>
+                <h1 style="margin: 0">統計力学</h1>
+               </header>
+            <nav><ul>
+<li><a href="#熱力学の復習">熱力学の復習</a><ul>
+<li><a href="#基本法則">基本法則</a></li>
+<li><a href="#マクスウェルの関係式">マクスウェルの関係式</a></li>
+<li><a href="#一般の熱力学的状態方程式">一般の熱力学的状態方程式</a></li>
+</ul></li>
+<li><a href="#ミクロカノニカル分布">ミクロカノニカル分布</a></li>
+<li><a href="#エントロピー">エントロピー</a><ul>
+<li><a href="#配置エントロピー">配置エントロピー</a></li>
+</ul></li>
+<li><a href="#カノニカル分布カノニカルアンサンブル正準分布">カノニカル分布（カノニカルアンサンブル）（正準分布）</a></li>
+</ul></nav>
+       <h2 id="熱力学の復習">熱力学の復習</h2>
+<h3 id="基本法則">基本法則</h3>
+<p>第一法則 <span class="math display">\[ dU = δQ + δW \]</span> 第二法則 <span class="math display">\[ \oint δQ/T \leq 0 \]</span></p>
+<ul>
+<li>準静的 <span class="math display">\[ δW = -pdV \]</span></li>
+<li>可逆 <span class="math display">\[ dS = δQ/T = 0 \]</span></li>
+<li>準静的・可逆 <span class="math display">\[ dU = TdS - pdV \]</span></li>
+<li>物質の増減 <span class="math display">\[ dU = TdS - pdV + \mu dN \]</span></li>
+</ul>
+<h3 id="マクスウェルの関係式">マクスウェルの関係式</h3>
+<ol type="1">
+<li><p>エネルギー <span class="math inline">\(U(S,V)\)</span> <span class="math display">\[ dU = TdS - pdV \]</span></p>
+<p><span class="math display">\[
+dU = \left(\frac{\partial U}{\partial V}\right)dV + \left(\frac{\partial U}{\partial S}\right)dS
+\]</span></p>
+<p>を比較すると，</p>
+<p><span class="math display">\[ -p = \left(\frac{\partial U}{\partial V}\right) \]</span> <span class="math display">\[ T = \left(\frac{\partial U}{\partial S}\right) \]</span></p>
+<p>U が C^2 以上なら二階微分は可換で</p>
+<p><span class="math display">\[
+\left(\frac{\partial p}{\partial S}\right)_V = -\left(\frac{\partial T}{\partial V}\right)_S
+\]</span></p></li>
+<li>ヘルムホルツエネルギー <span class="math inline">\(F(T,V) = U - TS\)</span></li>
+<li><p>ギブスエネルギー <span class="math inline">\(G = U - TS + pV\)</span></p></li>
+</ol>
+<h3 id="一般の熱力学的状態方程式">一般の熱力学的状態方程式</h3>
+<p>エネルギー保存</p>
+<p><span class="math display">\[
+dU=Tds-PdV
+\]</span></p>
+<p><span class="math display">\[
+\left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial S}{\partial V}\right)_T-P
+\]</span></p>
+<p>マクスウェルの関係式</p>
+<p><span class="math display">\[
+\left(\frac{\partial S}{\partial V}\right)_T=\left(\frac{\partial P}{\partial T}\right)_V
+\]</span></p>
+<p>より，</p>
+<p><span class="math display">\[
+\left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial P}{\partial T}\right)_V-P
+\]</span></p>
+<p>※ <span class="math inline">\(U,p,V,T\)</span> の関係式になった</p>
+<h2 id="ミクロカノニカル分布">ミクロカノニカル分布</h2>
+<p><span class="math inline">\(N\)</span> 個の粒子があり，全エネルギーが <span class="math inline">\(E\)</span> の系について，エネルギー状態 <span class="math inline">\(E_i\)</span> にある粒子の数 <span class="math inline">\(N_i\)</span> を知りたい．</p>
+<p><span class="math display">\[
+\sum_i N_i  = N \\
+\sum_i E_i N_i  = E
+\]</span></p>
+<p>粒子ひとつひとつを区別した，微視的状態は等確率に出現するが， 粒子を区別せずに巨視的状態として見たときは，分布に偏りがある．</p>
+<p>ある巨視的状態に含まれる微視的状態の数は</p>
+<p><span class="math display">\[
+W(N_0,N_1,,,)=\frac{N!}{N_0!N_1!...}
+\]</span></p>
+<p>最もよく出現する巨視的状態 <span class="math inline">\((N_0,N_1,,,)\)</span> は <span class="math inline">\(W\)</span> が最大となる状態で，</p>
+<p><span class="math display">\[
+N_i = C\exp\left(-\frac{E_i}{k_BT}\right)
+\]</span></p>
+<p>これをボルツマン分布という．</p>
+<p>Nが十分大きいとき，粒子系はボルツマン分布になっている．</p>
+<p>導出：</p>
+<h2 id="エントロピー">エントロピー</h2>
+<p>ある微視的状態 <span class="math inline">\(i\)</span> が出現する確率 <span class="math inline">\(P_i\)</span></p>
+<p><span class="math display">\[
+S=-k_B\sum_i P_i\ln P_i
+\]</span></p>
+<p>ミクロカノニカルの場合 <span class="math inline">\(P_i=1/W\)</span> なので，</p>
+<p><span class="math display">\[
+S=k_B\ln W
+\]</span></p>
+<p>エントロピー：熱力学 と 微視的状態数：統計力学 を結びつける式になっている．</p>
+<p>ボルツマン分布の場合</p>
+<p><span class="math display">\[
+S = k_B (N\ln N - \sum_i N_i \ln N_i) = k_B N\ln N - k_B N \ln C + \frac{E}{T}
+\]</span></p>
+<h3 id="配置エントロピー">配置エントロピー</h3>
+<p><span class="math inline">\(\mathbb{N}\)</span> マスの空間（１マスの体積<span class="math inline">\(v\)</span>）に <span class="math inline">\(n\)</span> 個の分子を排他的に配置する．</p>
+<p>微視的状態数 <span class="math display">\[
+W=\frac{N^n}{n!}
+\]</span></p>
+<p>配置エントロピー <span class="math display">\[
+S=k_b\ln(\frac{N^n}{n!})
+\]</span></p>
+<p><span class="math display">\[
+\frac{d S}{d V} = \frac{k_B}{v}\frac{d}{dN}\{n\ln N-\ln(n!)\} = \frac{k_B n}{V}
+\]</span></p>
+<p>一方，熱力学から <span class="math display">\[
+\left(\frac{\partial S}{\partial V}\right)_U=\frac{P}{T}
+\]</span></p>
+<p>状態方程式</p>
+<p><span class="math display">\[
+PV=nk_BT
+\]</span></p>
+<h2 id="カノニカル分布カノニカルアンサンブル正準分布">カノニカル分布（カノニカルアンサンブル）（正準分布）</h2>
+<p>熱浴Bとそれに接する系A</p>
+<p><span class="math display">\[
+N_A+N_B=N\\
+E_A+E_B=E\\
+W(E_A,E_B)=W_A(E_A)W_B(E-E_A)
+\]</span></p>
+<p><span class="math display">\[
+W(E)=\sum_{E_A+E_B=E}W(E_A,E_B)=\sum_{E_A}W_A(E_A)W_B(E-E_A)=W_A*W_B
+\]</span></p>
+    </article>
+  </body>
+</html>
