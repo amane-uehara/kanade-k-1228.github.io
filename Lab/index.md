@@ -24,6 +24,8 @@
 
 ## 物理
 
+[解析力学](./Physics/AnalyticalMechanics/)
+
 [電磁気学](./Physics/Electromagnetism/)
 
 [熱力学](./Physics/ThermoDynamics/)
