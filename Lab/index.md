@@ -26,6 +26,8 @@
 
 [電磁気学](./Physics/Electromagnetism/)
 
+[熱力学](./Physics/ThermoDynamics/)
+
 [連続体力学](./Physics/ContinuumMechanics/)
 
 [流体力学](./Physics/FluidMechanics/)

@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>移動現象論 | Kanade's Website</title>
+          <title>熱力学 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -238,139 +238,53 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">移動現象論</h1>
+                <h1 style="margin: 0">熱力学</h1>
                </header>
             <nav><ul>
-<li><a href="#輸送の一般式">輸送の一般式</a><ul>
-<li><a href="#相反定理">相反定理</a></li>
-</ul></li>
-<li><a href="#流束">流束</a></li>
-<li><a href="#輸送方程式">輸送方程式</a><ul>
-<li><a href="#連続の式">連続の式</a></li>
-</ul></li>
-<li><a href="#分子の移動">分子の移動</a><ul>
-<li><a href="#マクスウェルの速度分布則">マクスウェルの速度分布則</a></li>
-<li><a href="#クヌッセン数">クヌッセン数</a></li>
-<li><a href="#ボルツマンの輸送方程式">ボルツマンの輸送方程式</a></li>
-<li><a href="#境界条件">境界条件</a></li>
-</ul></li>
+<li><a href="#基本法則">基本法則</a></li>
+<li><a href="#マクスウェルの関係式">マクスウェルの関係式</a></li>
+<li><a href="#一般の熱力学的状態方程式">一般の熱力学的状態方程式</a></li>
 </ul></nav>
-       <h2 id="輸送の一般式">輸送の一般式</h2>
+       <h2 id="基本法則">基本法則</h2>
+<p>第一法則 <span class="math display">\[ dU = δQ + δW \]</span> 第二法則 <span class="math display">\[ \oint δQ/T \leq 0 \]</span></p>
+<ul>
+<li>準静的 <span class="math display">\[ δW = -pdV \]</span></li>
+<li>可逆 <span class="math display">\[ dS = δQ/T = 0 \]</span></li>
+<li>準静的・可逆 <span class="math display">\[ dU = TdS - pdV \]</span></li>
+<li>物質の増減 <span class="math display">\[ dU = TdS - pdV + \mu dN \]</span></li>
+</ul>
+<h2 id="マクスウェルの関係式">マクスウェルの関係式</h2>
+<ol type="1">
+<li><p>エネルギー <span class="math inline">\(U(S,V)\)</span> <span class="math display">\[ dU = TdS - pdV \]</span></p>
 <p><span class="math display">\[
-\begin{aligned}
-J_i &amp;=&amp; &amp;L_{ik} &amp;&amp; X_k \\
-流束 &amp;=&amp; &amp;輸送係数 &amp;&amp; 駆動力 \\
-\end{aligned}
+dU = \left(\frac{\partial U}{\partial V}\right)dV + \left(\frac{\partial U}{\partial S}\right)dS
 \]</span></p>
-<p>駆動力があまり大きくないときに成り立つ現象論的な線形近似</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>流束</th>
-<th>駆動力</th>
-<th>輸送係数</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>粒子拡散</td>
-<td>粒子</td>
-<td>濃度勾配</td>
-<td>拡散係数</td>
-</tr>
-<tr class="even">
-<td>熱伝導</td>
-<td>熱</td>
-<td>温度勾配</td>
-<td>熱伝導率</td>
-</tr>
-<tr class="odd">
-<td>粘性</td>
-<td>運動量</td>
-<td>速度勾配</td>
-<td>粘性係数</td>
-</tr>
-</tbody>
-</table>
-<h3 id="相反定理">相反定理</h3>
+<p>を比較すると，</p>
+<p><span class="math display">\[ -p = \left(\frac{\partial U}{\partial V}\right) \]</span> <span class="math display">\[ T = \left(\frac{\partial U}{\partial S}\right) \]</span></p>
+<p>U が C^2 以上なら二階微分は可換で</p>
 <p><span class="math display">\[
-L_{ik}=L_{ki}
-\]</span></p>
-<h2 id="流束">流束</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
-<td style="text-align: center;">スカラー</td>
-<td>物理量</td>
-<td><span class="math inline">\([M]\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\rho\)</span></td>
-<td style="text-align: center;">スカラー場</td>
-<td><span class="math inline">\(p\)</span> の密度場</td>
-<td><span class="math inline">\([M/L^3]\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(v\)</span></td>
-<td style="text-align: center;">ベクトル場</td>
-<td>媒体の速度場</td>
-<td><span class="math inline">\([L/T]\)</span></td>
-</tr>
-</tbody>
-</table>
+\left(\frac{\partial p}{\partial S}\right)_V = -\left(\frac{\partial T}{\partial V}\right)_S
+\]</span></p></li>
+<li>ヘルムホルツエネルギー <span class="math inline">\(F(T,V) = U - TS\)</span></li>
+<li><p>ギブスエネルギー <span class="math inline">\(G = U - TS + pV\)</span></p></li>
+</ol>
+<h2 id="一般の熱力学的状態方程式">一般の熱力学的状態方程式</h2>
+<p>エネルギー保存</p>
 <p><span class="math display">\[
-J^i = \rho v^i \quad [M/L^2T]
+dU=Tds-PdV
 \]</span></p>
-<p>単位時間単位面積当たりに通過する量</p>
-<h2 id="輸送方程式">輸送方程式</h2>
 <p><span class="math display">\[
-\partial_t \rho + \partial_i J^i = \sigma
+\left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial S}{\partial V}\right)_T-P
 \]</span></p>
-<p>湧き出し密度 : <span class="math inline">\(\sigma\)</span></p>
-<h3 id="連続の式">連続の式</h3>
+<p>マクスウェルの関係式</p>
 <p><span class="math display">\[
-\partial_t \rho + \partial_i J^i = 0
+\left(\frac{\partial S}{\partial V}\right)_T=\left(\frac{\partial P}{\partial T}\right)_V
 \]</span></p>
-<h2 id="分子の移動">分子の移動</h2>
-<h3 id="マクスウェルの速度分布則">マクスウェルの速度分布則</h3>
-<h3 id="クヌッセン数">クヌッセン数</h3>
-<p>代表長さ <span class="math inline">\(L\)</span> に対する，平均自由行程 <span class="math inline">\(l\)</span> の比</p>
+<p>より，</p>
 <p><span class="math display">\[
-\mathrm{Kn}:=\frac{l}{L}
+\left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial P}{\partial T}\right)_V-P
 \]</span></p>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Kn &lt; 0.01</td>
-<td>連続流</td>
-<td style="text-align: center;">平衡</td>
-<td>マクスウェル分布</td>
-<td>分子間がいっぱい衝突して平衡に近づく</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.01 &lt; Kn &lt; 10</td>
-<td>☆ 中間流</td>
-<td style="text-align: center;">↓</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">10 &lt; Kn</td>
-<td>自由分子流</td>
-<td style="text-align: center;">非平衡</td>
-<td>ボルツマン輸送方程式</td>
-<td>不均一がなかなか消えない</td>
-</tr>
-</tbody>
-</table>
-<h3 id="ボルツマンの輸送方程式">ボルツマンの輸送方程式</h3>
-<p>高クヌッセン数の世界</p>
-<h3 id="境界条件">境界条件</h3>
-<p>自由分子流の場合はこれだけで流れが決まる（分子間の衝突がないので）</p>
-<h4 id="鏡面反射">鏡面反射</h4>
-<h4 id="拡散反射">拡散反射</h4>
+<p>※ <span class="math inline">\(U,p,V,T\)</span> の関係式</p>
     </article>
   </body>
 </html>
