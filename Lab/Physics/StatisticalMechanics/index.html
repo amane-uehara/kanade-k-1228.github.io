@@ -246,6 +246,11 @@
 <li><a href="#マクスウェルの関係式">マクスウェルの関係式</a></li>
 <li><a href="#一般の熱力学的状態方程式">一般の熱力学的状態方程式</a></li>
 </ul></li>
+<li><a href="#位相空間">位相空間</a><ul>
+<li><a href="#gamma空間"><span class="math inline">\(\Gamma\)</span>空間</a></li>
+<li><a href="#ハミルトンの運動方程式">ハミルトンの運動方程式</a></li>
+<li><a href="#熱平衡と統計的物理量の存在">熱平衡と統計的物理量の存在</a></li>
+</ul></li>
 <li><a href="#ミクロカノニカル分布">ミクロカノニカル分布</a></li>
 <li><a href="#エントロピー">エントロピー</a><ul>
 <li><a href="#配置エントロピー">配置エントロピー</a></li>
@@ -294,6 +299,42 @@ dU=Tds-PdV
 \left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial P}{\partial T}\right)_V-P
 \]</span></p>
 <p>※ <span class="math inline">\(U,p,V,T\)</span> の関係式</p>
+<h2 id="位相空間">位相空間</h2>
+<h3 id="gamma空間"><span class="math inline">\(\Gamma\)</span>空間</h3>
+<p><span class="math inline">\(N\)</span> 質点系の状態 → <span class="math inline">\(6N\)</span> 次元空間の一点（代表点）</p>
+<h4 id="ハミルトニアン">ハミルトニアン</h4>
+<p><span class="math display">\[
+H(q,p)=\sum\frac{p^2}{2m}+\Phi(q)
+\]</span></p>
+<h4 id="エルゴード面">エルゴード面</h4>
+<p><span class="math display">\[
+H(q,p)=\mathrm{Const}
+\]</span></p>
+<p>孤立系はエネルギーを保存するのでエルゴード面上を運動する</p>
+<h3 id="ハミルトンの運動方程式">ハミルトンの運動方程式</h3>
+<p><span class="math display">\[
+\dot{q}=\frac{\partial H}{\partial p},\, \dot{p}=-\frac{\partial H}{\partial q}
+\]</span></p>
+<p>軌跡は交わらない（交点に2通りの速度が存在することになるので）</p>
+<h3 id="熱平衡と統計的物理量の存在">熱平衡と統計的物理量の存在</h3>
+<p>ある系の物理量 <span class="math inline">\(Q(q,p)\)</span> を観測したとき，観測値は観測時間平均</p>
+<p><span class="math display">\[
+\langle Q \rangle = \int_0^\tau Q(q(t)),p(t)) dt
+\]</span></p>
+<p>熱平衡状態の場合，（微小時間のゆらぎが無視できる程度の）十分な測定時間をとれば一定の観測値になっていてほしい．</p>
+<blockquote>
+<p>軌道がエルゴード面上のすべての点を等確率で通過する</p>
+</blockquote>
+<p><span class="math inline">\(\Gamma\)</span>空間中の微小体積を軌道が通過する確率を <span class="math inline">\(\rho(q,p)dqdp\)</span> とする</p>
+<p>統計平均</p>
+<p><span class="math display">\[
+\bar{Q}=\int Q(q,p)\rho(q,p) dqdp
+\]</span></p>
+<blockquote>
+<p>系の軌道がエルゴード的であるとき， <span class="math display">\[
+\langle Q \rangle=\bar{Q}
+\]</span></p>
+</blockquote>
 <h2 id="ミクロカノニカル分布">ミクロカノニカル分布</h2>
 <p><span class="math inline">\(N\)</span> 個の粒子があり，全エネルギーが <span class="math inline">\(E\)</span> の系について，エネルギー状態 <span class="math inline">\(E_i\)</span> にある粒子の数 <span class="math inline">\(N_i\)</span> を知りたい．</p>
 <p><span class="math display">\[
