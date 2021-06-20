@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>研究室へようこそ | Kanade's Website</title>
+          <title>移動現象論 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -238,32 +238,51 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">研究室へようこそ</h1>
+                <h1 style="margin: 0">移動現象論</h1>
                </header>
             <nav><ul>
-<li><a href="#コンピュータ">コンピュータ</a></li>
-<li><a href="#電子">電子</a></li>
-<li><a href="#制御ロボット">制御・ロボット</a></li>
-<li><a href="#数学">数学</a></li>
-<li><a href="#物理">物理</a></li>
+<li><a href="#流束流束密度">流束・流束密度</a></li>
+<li><a href="#輸送方程式">輸送方程式</a></li>
+<li><a href="#連続の式">連続の式</a></li>
+<li><a href="#section"></a></li>
 </ul></nav>
-       <h2 id="コンピュータ">コンピュータ</h2>
-<p><a href="./Computer/RISC-V/">RISC-V</a></p>
-<p><a href="./Computer/Website/">簡単なブログサイトの作り方</a></p>
-<h2 id="電子">電子</h2>
-<p><a href="./Electronics/OpAmp/">オペアンプ</a></p>
-<h2 id="制御ロボット">制御・ロボット</h2>
-<p><a href=""></a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/Analysis/">解析学</a></p>
-<p><a href="./Mathmatics/CovarianceContravariance/">共変・反変</a></p>
-<h2 id="物理">物理</h2>
-<p><a href="./Physics/Electromagnetism/">電磁気学</a></p>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<p><a href="./Physics/StatisticalMechanics/">統計力学</a></p>
-<p><a href="./Physics/HeatTransfer/">伝熱工学</a></p>
-<p><a href="./Physics/TransportPhenomena/">輸送現象論</a></p>
+       <table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: center;">スカラー</td>
+<td>物理量</td>
+<td><span class="math inline">\([M]\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\rho\)</span></td>
+<td style="text-align: center;">スカラー場</td>
+<td><span class="math inline">\(p\)</span> の密度場</td>
+<td><span class="math inline">\([M/L^3]\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(v\)</span></td>
+<td style="text-align: center;">ベクトル場</td>
+<td>媒体の速度場</td>
+<td><span class="math inline">\([L/T]\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="流束流束密度">流束・流束密度</h3>
+<p><span class="math display">\[
+J^i = \rho v^i \quad [M/L^2T]
+\]</span></p>
+<p>単位時間単位面積当たりに通過する量</p>
+<h3 id="輸送方程式">輸送方程式</h3>
+<p><span class="math display">\[
+\partial_t \rho + \partial_i J^i = \sigma
+\]</span></p>
+<p>湧き出し密度 : <span class="math inline">\(\sigma\)</span></p>
+<h3 id="連続の式">連続の式</h3>
+<p><span class="math display">\[
+\partial_t \rho + \partial_i J^i = 0
+\]</span></p>
+<h3 id="section"></h3>
     </article>
   </body>
 </html>

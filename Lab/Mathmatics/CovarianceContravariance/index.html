@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>研究室へようこそ | Kanade's Website</title>
+          <title>共変・反変 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -238,32 +238,42 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">研究室へようこそ</h1>
+                <h1 style="margin: 0">共変・反変</h1>
                </header>
             <nav><ul>
-<li><a href="#コンピュータ">コンピュータ</a></li>
-<li><a href="#電子">電子</a></li>
-<li><a href="#制御ロボット">制御・ロボット</a></li>
-<li><a href="#数学">数学</a></li>
-<li><a href="#物理">物理</a></li>
+<li><a href="#共変反変">共変・反変</a></li>
+<li><a href="#例">例：</a></li>
 </ul></nav>
-       <h2 id="コンピュータ">コンピュータ</h2>
-<p><a href="./Computer/RISC-V/">RISC-V</a></p>
-<p><a href="./Computer/Website/">簡単なブログサイトの作り方</a></p>
-<h2 id="電子">電子</h2>
-<p><a href="./Electronics/OpAmp/">オペアンプ</a></p>
-<h2 id="制御ロボット">制御・ロボット</h2>
-<p><a href=""></a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/Analysis/">解析学</a></p>
-<p><a href="./Mathmatics/CovarianceContravariance/">共変・反変</a></p>
-<h2 id="物理">物理</h2>
-<p><a href="./Physics/Electromagnetism/">電磁気学</a></p>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<p><a href="./Physics/StatisticalMechanics/">統計力学</a></p>
-<p><a href="./Physics/HeatTransfer/">伝熱工学</a></p>
-<p><a href="./Physics/TransportPhenomena/">輸送現象論</a></p>
+       <p>座標変換に対して二通りのふるまいがあるということ．</p>
+<h2 id="共変反変">共変・反変</h2>
+<p>あるベクトル <span class="math inline">\(a\)</span> を基底 <span class="math inline">\(e_i\)</span> と成分 <span class="math inline">\(a^i\)</span> で表す．</p>
+<p><span class="math display">\[
+a = a^ie_i
+\]</span></p>
+<p>座標を <span class="math inline">\(e&#39;_i\)</span> に変換する．</p>
+<p><span class="math display">\[
+e&#39;_i = E^j_ie_j
+\]</span></p>
+<p>このとき <span class="math inline">\(e&#39;_i\)</span> に対する成分 <span class="math inline">\(a&#39;^i\)</span> は，</p>
+<p><span class="math display">\[
+a&#39;^i = E^i_ja^j
+\]</span></p>
+<p>説明</p>
+<p><span class="math display">\[
+\begin{aligned}
+a&#39;^ie&#39;_i &amp;= E^i_ja^je&#39;_i \\
+         &amp;= a^je_j
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p>座標変換に対して <span class="math display">\[
+\begin{aligned}
+共変：a&#39;_i=E^j_ia_j \\
+反変：a&#39;^i=E^i_ja^j
+\end{aligned}
+\]</span></p>
+</blockquote>
+<h2 id="例">例：</h2>
     </article>
   </body>
 </html>
