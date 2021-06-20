@@ -67,7 +67,7 @@ $$
 \left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial P}{\partial T}\right)_V-P
 $$
 
-※ $U,p,V,T$ の関係式になった
+※ $U,p,V,T$ の関係式
 
 ## ミクロカノニカル分布
 
@@ -163,3 +163,7 @@ $$
 $$
 W(E)=\sum_{E_A+E_B=E}W(E_A,E_B)=\sum_{E_A}W_A(E_A)W_B(E-E_A)=W_A*W_B
 $$
+
+## 気体分子運動論
+
+

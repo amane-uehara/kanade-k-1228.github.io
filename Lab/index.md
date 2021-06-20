@@ -28,7 +28,7 @@
 
 [流体力学](./Physics/FluidMechanics/)
 
-[統計力学](./Physics/ContinuumMechanics/)
+[統計力学](./Physics/StatisticalMechanics/)
 
 [伝熱工学](./Physics/HeatTransfer/)
 
