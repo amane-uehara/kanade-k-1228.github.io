@@ -251,8 +251,10 @@
 <li><a href="#ハミルトンの運動方程式">ハミルトンの運動方程式</a></li>
 <li><a href="#熱平衡と統計的物理量の存在">熱平衡と統計的物理量の存在</a></li>
 <li><a href="#リウビルの定理">リウビルの定理</a></li>
-</ul></li>
 <li><a href="#ミクロカノニカル分布">ミクロカノニカル分布</a></li>
+<li><a href="#等確率の原理">等確率の原理</a></li>
+</ul></li>
+<li><a href="#ミクロカノニカルアンサンブル">ミクロカノニカルアンサンブル</a></li>
 <li><a href="#エントロピー">エントロピー</a><ul>
 <li><a href="#配置エントロピー">配置エントロピー</a></li>
 </ul></li>
@@ -337,24 +339,58 @@ H(q,p)=\mathrm{Const}
 \]</span></p>
 </blockquote>
 <h3 id="リウビルの定理">リウビルの定理</h3>
-<h2 id="ミクロカノニカル分布">ミクロカノニカル分布</h2>
-<p><span class="math inline">\(N\)</span> 個の粒子があり，全エネルギーが <span class="math inline">\(E\)</span> の系について，エネルギー状態 <span class="math inline">\(E_i\)</span> にある粒子の数 <span class="math inline">\(N_i\)</span> を知りたい．</p>
+<p><span class="math inline">\(\Gamma\)</span>空間のある閉曲面内の代表点の集合を考える．これらの点が運動してもその点が存在する領域の面積は保存される．</p>
+<h3 id="ミクロカノニカル分布">ミクロカノニカル分布</h3>
+<p>エルゴード面上の一様な分布</p>
+<p>正確には微小な等エネルギー領域 <span class="math inline">\(E \leq H(q,p)\leq E+dE\)</span> で <span class="math inline">\(\rho(q,p)=\mathrm{Const}\)</span></p>
+<h3 id="等確率の原理">等確率の原理</h3>
+<blockquote>
+<p>同じエネルギーを持つ微視的状態の出現確率は等しい</p>
+</blockquote>
+<p>ミクロカノニカル分布をこのように言い換えても（とりあえずたぶん）問題ない</p>
+<h2 id="ミクロカノニカルアンサンブル">ミクロカノニカルアンサンブル</h2>
+<p><span class="math inline">\(N\)</span> 個の粒子があり，全エネルギーが <span class="math inline">\(E\)</span> の系について，エネルギーが <span class="math inline">\(E_i\)</span> である状態 <span class="math inline">\(i\)</span> に存在している粒子の数 <span class="math inline">\(N_i\)</span> を知りたい．</p>
 <p><span class="math display">\[
 \sum_i N_i  = N \\
 \sum_i E_i N_i  = E
 \]</span></p>
-<p>粒子ひとつひとつを区別した，微視的状態は等確率に出現するが， 粒子を区別せずに巨視的状態として見たときは，分布に偏りがある．</p>
+<p>粒子ひとつひとつを区別した微視的状態は等確率に出現するが， 粒子を区別せずに巨視的状態として見たときは，分布に偏りが生ずる．</p>
 <p>ある巨視的状態に含まれる微視的状態の数は</p>
 <p><span class="math display">\[
-W(N_0,N_1,,,)=\frac{N!}{N_0!N_1!...}
+W(N_0,N_1,,,)=\frac{N!}{N_1!N_2!...}
 \]</span></p>
-<p>最もよく出現する巨視的状態 <span class="math inline">\((N_0,N_1,,,)\)</span> は <span class="math inline">\(W\)</span> が最大となる状態で，</p>
+<p>最もよく出現する巨視的状態 <span class="math inline">\((N_1,N_2,,,)\)</span> は <span class="math inline">\(W\)</span> が最大となる状態で，</p>
 <p><span class="math display">\[
 N_i = C\exp\left(-\frac{E_i}{k_BT}\right)
 \]</span></p>
 <p>これをボルツマン分布という．</p>
 <p>Nが十分大きいとき，粒子系はボルツマン分布になっている．</p>
-<p>導出：</p>
+<h4 id="導出">導出</h4>
+<p><span class="math display">\[
+\begin{aligned}
+\log W &amp;= \log N! - \sum_i \log N_i! \\
+&amp;= N\log N - N - \sum_i (N_i\log N_i - N_i) \\
+&amp;= N\log N - \sum_i (N_i\log N_i) \\
+\end{aligned}
+\]</span></p>
+<p>これを最大とする <span class="math inline">\((N_1,N_2,,,)\)</span> を求めたい．</p>
+<p><span class="math display">\[
+F(N_1,N_2,,,\alpha,\beta) := \log W(N_1,N_2,,,) - \alpha \left(\sum_i N_i-N\right) - \beta \left(\sum_i E_iN_i - E \right)
+\]</span></p>
+<p>とおくと，ラグランジュの未定乗数法により</p>
+<p><span class="math display">\[
+\frac{\partial F}{\partial N_i} = 0
+\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\partial F &amp;= \partial \left( -\sum_i N_i \log N_i - \alpha \sum_i N_i - \beta \sum_i E_iN_i \right) \\
+           &amp;= \sum_i (-\log N_i -\alpha -\beta E_i) \partial N_i \\
+\frac{\partial F}{\partial N_i} &amp;= -\log N_i - \alpha - \beta E_i \\
+                                &amp;= 0
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+N_i = A_i \exp(\beta E_i)
+\]</span></p>
 <h2 id="エントロピー">エントロピー</h2>
 <p>ある微視的状態 <span class="math inline">\(i\)</span> が出現する確率 <span class="math inline">\(P_i\)</span></p>
 <p><span class="math display">\[
