@@ -80,10 +80,10 @@ $$
 ### 化学ポテンシャル
 
 $$
-\begin{alignedat}
+\begin{aligned}
 \mu_P &=\frac{\partial G}{\partial N_P}&=&\frac{\partial M}{\partial N_P}g+M\frac{\partial g}{\partial \phi}\frac{\partial \phi}{\partial N_P}&=&m_P\{g+\phi g'\} \\
 \mu_S &=\frac{\partial G}{\partial N_S}&=&\frac{\partial M}{\partial N_S}g+M\frac{\partial g}{\partial \phi}\frac{\partial \phi}{\partial N_S}&=&m_S\{g+(1-\phi) g'\} \\
-\end{alignedat}
+\end{aligned}
 $$
 
 
