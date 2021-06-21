@@ -3,6 +3,7 @@
 %
 
 ノートが置いてあります．
+
 ## コンピュータ
 
 [RISC-V](./Computer/RISC-V/)
@@ -15,7 +16,7 @@
 
 ## 制御・ロボット
 
-[]()
+[現代制御論](./Control/ModernControlTheory/)
 
 ## 数学
 
