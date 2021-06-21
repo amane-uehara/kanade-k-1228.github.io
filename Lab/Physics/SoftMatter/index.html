@@ -137,7 +137,7 @@
       }
 
       header > ul {
-        margin: 0;
+        margin: 0.5em 0 0.5em 0;
         padding: 0;
         list-style: none;
         display: flex;
@@ -154,6 +154,7 @@
       div#header-links {
         height: 50px;
         display: flex;
+        margin: 0.5em 0 0.5em 0;
         justify-content: space-evenly;
       }
       div#header-links > a {
@@ -328,10 +329,10 @@ f(c,T,P)=\rho g(\phi,T,P)
 <p>溶液はほとんど非圧縮なので <span class="math inline">\(\rho=\mathrm{Const}\)</span> となるので <span class="math inline">\(g\)</span> に成り立つことが <span class="math inline">\(f\)</span> にも成り立つ</p>
 <h3 id="化学ポテンシャル">化学ポテンシャル</h3>
 <p><span class="math display">\[
-\begin{alignedat}
+\begin{aligned}
 \mu_P &amp;=\frac{\partial G}{\partial N_P}&amp;=&amp;\frac{\partial M}{\partial N_P}g+M\frac{\partial g}{\partial \phi}\frac{\partial \phi}{\partial N_P}&amp;=&amp;m_P\{g+\phi g&#39;\} \\
 \mu_S &amp;=\frac{\partial G}{\partial N_S}&amp;=&amp;\frac{\partial M}{\partial N_S}g+M\frac{\partial g}{\partial \phi}\frac{\partial \phi}{\partial N_S}&amp;=&amp;m_S\{g+(1-\phi) g&#39;\} \\
-\end{alignedat}
+\end{aligned}
 \]</span></p>
 <h3 id="溶液の混合">溶液の混合</h3>
 <p><span class="math inline">\((M_1,\phi_1)\)</span> と <span class="math inline">\((M_2,\phi_2)\)</span> を混合比 <span class="math inline">\(x=\frac{M_1}{M_1+M_2}\)</span> で混合して一様な溶液 <span class="math inline">\((M,\phi)\)</span> ができた．このとき <span class="math inline">\(g\)</span> は以下の不等式が要請される．</p>
