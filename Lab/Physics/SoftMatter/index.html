@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>研究室へようこそ | Kanade's Website</title>
+          <title>ソフトマター | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -238,42 +238,130 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">研究室へようこそ</h1>
+                <h1 style="margin: 0">ソフトマター</h1>
                </header>
             <nav><ul>
-<li><a href="#電子">電子</a></li>
-<li><a href="#制御ロボット">制御・ロボット</a></li>
-<li><a href="#数学">数学</a></li>
-<li><a href="#物理">物理</a></li>
+<li><a href="#ソフトマターとは">ソフトマターとは</a><ul>
+<li><a href="#動特性">動特性</a></li>
+</ul></li>
+<li><a href="#溶液">溶液</a><ul>
+<li><a href="#濃度">濃度</a></li>
+<li><a href="#自由エネルギー">自由エネルギー</a></li>
+<li><a href="#化学ポテンシャル">化学ポテンシャル</a></li>
+<li><a href="#溶液の混合">溶液の混合</a></li>
+<li><a href="#相分離">相分離</a></li>
+<li><a href="#浸透圧">浸透圧</a></li>
+</ul></li>
+<li><a href="#格子模型">格子模型</a></li>
 </ul></nav>
-       <p>ノートが置いてあります． ## コンピュータ</p>
-<p><a href="./Computer/RISC-V/">RISC-V</a></p>
-<p><a href="./Computer/Website/">簡単なブログサイトの作り方</a></p>
-<h2 id="電子">電子</h2>
-<p><a href="./Electronics/OpAmp/">オペアンプ</a></p>
-<h2 id="制御ロボット">制御・ロボット</h2>
-<p><a href=""></a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/Analysis/">解析学</a></p>
-<p><a href="./Mathmatics/CovarianceContravariance/">共変・反変</a></p>
-<p><a href="">四元数</a></p>
-<p><a href="">外積代数</a></p>
-<p><a href="">クリフォート代数</a></p>
-<h2 id="物理">物理</h2>
-<p><a href="./Physics/AnalyticalMechanics/">解析力学</a></p>
-<p><a href="./Physics/ThermoDynamics/">熱力学</a></p>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<p><a href="./Physics/StatisticalMechanics/">統計力学</a></p>
-<p><a href="./Physics/HeatTransfer/">伝熱工学</a></p>
-<p><a href="./Physics/TransportPhenomena/">輸送現象論</a></p>
-<p><a href="./Physics/SoftMatter/">ソフトマター</a></p>
-<p><a href="./Physics/Electromagnetism/">電磁気学</a></p>
-<p><a href="./Physics/SpecialRelativity/">特殊相対性理論</a></p>
-<p><a href="./Physics/GeneralTheoryOfRelativity/">一般相対性理論</a></p>
-<p><a href="./Physics/QuantumMechanics/">量子力学</a></p>
-<p><a href="./Physics/QuantumElectroDynamics/">量子電磁気学</a></p>
-<p><a href="./Physics/RelativisticQuantumMechanics/">相対論的量子論</a></p>
+       <h2 id="ソフトマターとは">ソフトマターとは</h2>
+<ul>
+<li>高分子</li>
+<li>コロイド
+<ul>
+<li>ゾル（流動性がある）</li>
+<li>ゲル（流動性がない）</li>
+</ul></li>
+<li>液晶
+<ul>
+<li>結晶</li>
+<li>スメチック液晶</li>
+<li>ネマチック液晶</li>
+<li>等方性液体</li>
+</ul></li>
+<li>界面活性剤
+<ul>
+<li>ミセル</li>
+</ul></li>
+</ul>
+<h3 id="動特性">動特性</h3>
+<ul>
+<li>非線形
+<ul>
+<li>小さな外力でも非線形な応答をする</li>
+</ul></li>
+<li>非平衡性
+<ul>
+<li>緩和時間が長い</li>
+</ul></li>
+</ul>
+<h2 id="溶液">溶液</h2>
+<p>溶質が溶媒中に<em>均一に</em>溶けている液体</p>
+<ul>
+<li>温度 <span class="math inline">\(T\)</span></li>
+<li>圧力 <span class="math inline">\(P\)</span></li>
+<li>体積 <span class="math inline">\(V\)</span></li>
+<li>溶質・溶媒の
+<ul>
+<li>分子数 <span class="math inline">\(N_P\)</span> <span class="math inline">\(N_S\)</span></li>
+<li>分子量 <span class="math inline">\(m_P\)</span> <span class="math inline">\(m_S\)</span></li>
+<li>質量 <span class="math inline">\(m_PN_P\)</span> <span class="math inline">\(m_SN_S\)</span></li>
+</ul></li>
+<li>全質量 <span class="math inline">\(M=m_PN_P+m_SN_S\)</span></li>
+<li>密度 <span class="math inline">\(\rho=M/V\)</span></li>
+</ul>
+<h3 id="濃度">濃度</h3>
+<p>重量濃度 <span class="math display">\[
+c=\frac{m_PN_P}{V}
+\]</span></p>
+<p>数密度 <span class="math display">\[
+n=\frac{N_P}{V}
+\]</span></p>
+<p>重量分率 <span class="math display">\[
+\phi=\frac{m_PN_P}{M}=\frac{m_PN_P}{m_PN_P+M_SN_S}
+\]</span></p>
+<h3 id="自由エネルギー">自由エネルギー</h3>
+<blockquote>
+<p><span class="math display">\[
+G(N_P,N_S,T,P)
+\]</span></p>
+</blockquote>
+<p>ギブス自由エネルギーは示量変数なので</p>
+<p><span class="math display">\[
+G(N_P,N_S,T,P)=Mg(\phi,T,P)
+\]</span></p>
+<p>単位質量あたりの自由エネルギー <span class="math inline">\(g\)</span></p>
+<p>単位体積あたりの自由エネルギー</p>
+<p><span class="math display">\[
+f(c,T,P)=\rho g(\phi,T,P)
+\]</span></p>
+<p>溶液はほとんど非圧縮なので <span class="math inline">\(\rho=\mathrm{Const}\)</span> となるので <span class="math inline">\(g\)</span> に成り立つことが <span class="math inline">\(f\)</span> にも成り立つ</p>
+<h3 id="化学ポテンシャル">化学ポテンシャル</h3>
+<p><span class="math display">\[
+\begin{alignedat}
+\mu_P &amp;=\frac{\partial G}{\partial N_P}&amp;=&amp;\frac{\partial M}{\partial N_P}g+M\frac{\partial g}{\partial \phi}\frac{\partial \phi}{\partial N_P}&amp;=&amp;m_P\{g+\phi g&#39;\} \\
+\mu_S &amp;=\frac{\partial G}{\partial N_S}&amp;=&amp;\frac{\partial M}{\partial N_S}g+M\frac{\partial g}{\partial \phi}\frac{\partial \phi}{\partial N_S}&amp;=&amp;m_S\{g+(1-\phi) g&#39;\} \\
+\end{alignedat}
+\]</span></p>
+<h3 id="溶液の混合">溶液の混合</h3>
+<p><span class="math inline">\((M_1,\phi_1)\)</span> と <span class="math inline">\((M_2,\phi_2)\)</span> を混合比 <span class="math inline">\(x=\frac{M_1}{M_1+M_2}\)</span> で混合して一様な溶液 <span class="math inline">\((M,\phi)\)</span> ができた．このとき <span class="math inline">\(g\)</span> は以下の不等式が要請される．</p>
+<p><span class="math display">\[
+\begin{aligned}
+M_1g(\phi_1) + M_2g(\phi_2) &amp;\geq Mg(\phi) \\
+混合前の自由エネルギー &amp;\geq 混合後の自由エネルギー
+\end{aligned}
+\]</span></p>
+<p>混合後の濃度は混合比を用いて，</p>
+<p><span class="math display">\[
+\phi=x\phi_1+(1-x)\phi_2
+\]</span></p>
+<p>なので，<span class="math inline">\(\phi_1&lt;\phi&lt;\phi_2\)</span> で <span class="math inline">\(g(\phi)\)</span> は下に凸．</p>
+<p>上に凸な部分がある場合，混合しても均一に混ざらず，相分離する．</p>
+<h3 id="相分離">相分離</h3>
+<p>溶液 <span class="math inline">\((M,\phi)\)</span> が <span class="math inline">\(\phi_1&lt;\phi&lt;\phi_2\)</span> に相分離しているとき，それぞれの相の質量は，</p>
+<p><span class="math display">\[
+M_1 = \frac{\phi_2-\phi}{\phi_2-\phi_1}M \quad M_2 = \frac{\phi-\phi_1}{\phi_2-\phi_1}M
+\]</span></p>
+<p>溶液の質量保存 <span class="math inline">\(M=M_1+M_2\)</span></p>
+<p>溶質の質量保存 <span class="math inline">\(M\phi=M_1\phi_1+M_2\phi_2\)</span></p>
+<h3 id="浸透圧">浸透圧</h3>
+<p>熱力学的力</p>
+<p>全体の自由エネルギー <span class="math inline">\(G_{TOT}\)</span></p>
+<p>半透膜を押して溶液の体積を <span class="math inline">\(dV\)</span> 変化させる仕事は <span class="math inline">\(\Pi dv\)</span> なので</p>
+<p><span class="math display">\[
+\Pi = \frac{\partial G_{TOT}(V)}{\parallel V}
+\]</span></p>
+<h2 id="格子模型">格子模型</h2>
     </article>
   </body>
 </html>
