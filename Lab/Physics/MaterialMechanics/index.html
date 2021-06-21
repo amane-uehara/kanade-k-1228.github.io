@@ -241,7 +241,66 @@
 
                 <h1 style="margin: 0">材料力学</h1>
                </header>
-       
+            <nav><ul>
+<li><a href="#引張圧縮">引張・圧縮</a><ul>
+<li><a href="#ポアソン比">ポアソン比</a></li>
+</ul></li>
+<li><a href="#せん断">せん断</a></li>
+<li><a href="#曲げ">曲げ</a><ul>
+<li><a href="#オイラーベルヌーイの仮定">オイラーベルヌーイの仮定</a></li>
+</ul></li>
+<li><a href="#ねじり">ねじり</a></li>
+<li><a href="#たわみ">たわみ</a><ul>
+<li><a href="#幾何条件">幾何条件</a></li>
+<li><a href="#曲げ応力">曲げ応力</a></li>
+<li><a href="#たわみの基礎式">たわみの基礎式</a></li>
+</ul></li>
+<li><a href="#座屈">座屈</a></li>
+</ul></nav>
+       <h2 id="引張圧縮">引張・圧縮</h2>
+<h3 id="ポアソン比">ポアソン比</h3>
+<h2 id="せん断">せん断</h2>
+<h2 id="曲げ">曲げ</h2>
+<h3 id="オイラーベルヌーイの仮定">オイラーベルヌーイの仮定</h3>
+<h2 id="ねじり">ねじり</h2>
+<h2 id="たわみ">たわみ</h2>
+<h3 id="幾何条件">幾何条件</h3>
+<p><img src="./tawami.drawio.svg" /></p>
+<p><span class="math display">\[
+ds = \rho ( -d \theta )
+\]</span></p>
+<p><span class="math display">\[
+dx = \cos \theta ds
+\]</span></p>
+<p><span class="math display">\[
+\theta = \tan^{-1} \frac{dv}{dx}
+\]</span></p>
+<p><span class="math display">\[
+\frac{d\theta}{dx} = \frac{1}{1+\left(\frac{dx}{dv}\right)^2}
+\]</span></p>
+<p><span class="math inline">\(\theta&lt;&lt;1\)</span> のとき</p>
+<p><span class="math display">\[
+\frac{1}{\rho}=-\frac{d^2v}{dx^2}
+\]</span></p>
+<h3 id="曲げ応力">曲げ応力</h3>
+<p><span class="math display">\[
+\frac{1}{\rho}=\frac{M}{EI}
+\]</span></p>
+<h3 id="たわみの基礎式">たわみの基礎式</h3>
+<h2 id="座屈">座屈</h2>
+<p>たわみ <span class="math inline">\(v(x)\)</span> 荷重 <span class="math inline">\(P\)</span></p>
+<p><span class="math display">\[
+\frac{d^2v}{dx^2}=-\frac{M}{EI}=-\frac{P}{EI}v
+\]</span></p>
+<p><span class="math inline">\(\alpha=\sqrt{P/EI}\)</span> と置いて，<span class="math inline">\(\frac{d^2v}{dx^2}+\alpha^2v=0\)</span> を 境界条件 <span class="math inline">\(v(0)=0,v(L)=0\)</span> で解くと，<span class="math inline">\(n\)</span> をパラメタとして，</p>
+<p><span class="math display">\[
+P=\frac{n^2\pi^2}{L^2}EI,\quad v=c_1\sin\frac{n\pi}{L}x
+\]</span></p>
+<p><span class="math inline">\(n=1\)</span> のときの <span class="math inline">\(P\)</span> が限界荷重</p>
+<p><span class="math display">\[
+P_{CR}=\frac{\pi^2}{L^2}EI,\quad v_{CR}=c_1\sin\frac{\pi}{L}
+\]</span></p>
+<p><span class="math inline">\(c_1\)</span> が残るので変位はわからんが限界荷重はわかる</p>
     </article>
   </body>
 </html>
