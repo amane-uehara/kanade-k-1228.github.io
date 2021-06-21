@@ -38,6 +38,8 @@
 
 [連続体力学](./Physics/ContinuumMechanics/)
 
+[材料力学](./Physics/MaterialMechanics/)
+
 [流体力学](./Physics/FluidMechanics/)
 
 [統計力学](./Physics/StatisticalMechanics/)
