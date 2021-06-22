@@ -53,7 +53,13 @@ $$
 
 ### たわみの基礎式
 
-
+$$
+\begin{aligned}
+    \frac{d^2v}{dx^2} &= -\frac{M}{EI} \\
+    \theta &= \frac{dv}{dx} = -\int\frac{M}{EI}dx+C \\
+    v &= -\int\int\frac{M}{EI}dxdx+C_1x+C_2
+\end{aligned}
+$$
 
 ## 座屈
 

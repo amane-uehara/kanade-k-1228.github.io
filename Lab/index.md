@@ -10,6 +10,8 @@
 
 [簡単なブログサイトの作り方](./Computer/Website/)
 
+[スパコン並列計算プログラミング](./Computer/SuperComputer/)
+
 ## 電子
 
 [オペアンプ](./Electronics/OpAmp/)

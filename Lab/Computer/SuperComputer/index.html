@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>材料力学 | Kanade's Website</title>
+          <title>スパコン並列計算プログラミング | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -232,75 +232,136 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">材料力学</h1>
+                <h1 style="margin: 0">スパコン並列計算プログラミング</h1>
                </header>
             <nav><ul>
-<li><a href="#引張圧縮">引張・圧縮</a><ul>
-<li><a href="#ポアソン比">ポアソン比</a></li>
+<li><a href="#並列">並列</a><ul>
+<li><a href="#アムダールの法則">アムダールの法則</a></li>
 </ul></li>
-<li><a href="#せん断">せん断</a></li>
-<li><a href="#曲げ">曲げ</a><ul>
-<li><a href="#オイラーベルヌーイの仮定">オイラーベルヌーイの仮定</a></li>
+<li><a href="#mpi">MPI</a></li>
+<li><a href="#メモリアクセスの癖">メモリアクセスの癖</a></li>
+<li><a href="#行列積">行列積</a></li>
+<li><a href="#線形連立方程式">線形連立方程式</a><ul>
+<li><a href="#ガウス消去法">ガウス消去法</a></li>
+<li><a href="#lu分解法">LU分解法</a></li>
 </ul></li>
-<li><a href="#ねじり">ねじり</a></li>
-<li><a href="#たわみ">たわみ</a><ul>
-<li><a href="#幾何条件">幾何条件</a></li>
-<li><a href="#曲げ応力">曲げ応力</a></li>
-<li><a href="#たわみの基礎式">たわみの基礎式</a></li>
+<li><a href="#lu分解">LU分解</a><ul>
+<li><a href="#外積形式ガウス法">外積形式ガウス法</a></li>
+<li><a href="#内積形式ガウス法">内積形式ガウス法</a></li>
+<li><a href="#クラウト法">クラウト法</a></li>
 </ul></li>
-<li><a href="#座屈">座屈</a></li>
+<li><a href="#固有値問題">固有値問題</a></li>
 </ul></nav>
-       <h2 id="引張圧縮">引張・圧縮</h2>
-<h3 id="ポアソン比">ポアソン比</h3>
-<h2 id="せん断">せん断</h2>
-<h2 id="曲げ">曲げ</h2>
-<h3 id="オイラーベルヌーイの仮定">オイラーベルヌーイの仮定</h3>
-<h2 id="ねじり">ねじり</h2>
-<h2 id="たわみ">たわみ</h2>
-<h3 id="幾何条件">幾何条件</h3>
-<p><img src="./tawami.drawio.svg" /></p>
+       <h2 id="並列">並列</h2>
+<ul>
+<li>並列
+<ul>
+<li>時間的に独立</li>
+</ul></li>
+<li>並行
+<ul>
+<li>タイムシェアリング</li>
+</ul></li>
+</ul>
+<h4 id="命令データ">命令・データ</h4>
+<ul>
+<li>SISD：単一命令・単一データ</li>
+<li>SIMD：単一命令・複数データ</li>
+<li>MISD：複数命令・単一データ</li>
+<li>MIMD：複数命令・複数データ</li>
+</ul>
+<h4 id="アドレス空間">アドレス空間</h4>
+<ul>
+<li>共有メモリ
+<ul>
+<li>メモリはバスにひとつ</li>
+</ul></li>
+<li>分散共有メモリ
+<ul>
+<li>メモリが各CPUごとに分割して置いてある</li>
+<li>アドレス空間はひとつ</li>
+</ul></li>
+<li>分散メモリ
+<ul>
+<li>CPUごとにアドレス空間がある</li>
+</ul></li>
+</ul>
+<h3 id="アムダールの法則">アムダールの法則</h3>
+<p>実行時間 = 並列化できない処理 + 並列で分割できる処理 / 並列数</p>
+<p>並列化できない処理，全スレッドで共通の処理を減らすことで，並列化を活かすことができる．</p>
+<h2 id="mpi">MPI</h2>
+<h2 id="メモリアクセスの癖">メモリアクセスの癖</h2>
+<h2 id="行列積">行列積</h2>
+<h2 id="線形連立方程式">線形連立方程式</h2>
+<p><span class="math inline">\(Ax=b\)</span> なる <span class="math inline">\(x\)</span> を求めたい</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A_{11}\)</span></td>
+<td><span class="math inline">\(A_{12}\)</span></td>
+<td><span class="math inline">\(A_{13}\)</span></td>
+<td><span class="math inline">\(b_1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A_{21}\)</span></td>
+<td><span class="math inline">\(A_{22}\)</span></td>
+<td><span class="math inline">\(A_{23}\)</span></td>
+<td><span class="math inline">\(b_2\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A_{31}\)</span></td>
+<td><span class="math inline">\(A_{32}\)</span></td>
+<td><span class="math inline">\(A_{33}\)</span></td>
+<td><span class="math inline">\(b_3\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ガウス消去法">ガウス消去法</h3>
+<ol type="1">
+<li>行基本変形で上三角に変換する．ただし対角成分を <span class="math inline">\(1\)</span> にする．ベクトルの演算を<span class="math inline">\(O(1)\)</span>とすると，<span class="math inline">\(N+(N-1)+(N-2)\cdots=O(N^2)\)</span></li>
+</ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(A&#39;_{12}\)</span></td>
+<td><span class="math inline">\(A&#39;_{13}\)</span></td>
+<td><span class="math inline">\(b&#39;_1\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(A&#39;_{23}\)</span></td>
+<td><span class="math inline">\(b&#39;_2\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(b&#39;_3\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>Forward Elimination</li>
+</ol>
+<p><span class="math inline">\(x_n=b&#39;_n\)</span> から順番に <span class="math inline">\(x_i\)</span> が求まる</p>
+<p>負荷バランスが悪いので並列化に向かない</p>
+<h3 id="lu分解法">LU分解法</h3>
+<ol type="1">
+<li><span class="math inline">\(A=LU\)</span> （<span class="math inline">\(A\)</span> を下三角 <span class="math inline">\(L\)</span> と上三角 <span class="math inline">\(U\)</span> に分解する）</li>
+<li><span class="math inline">\(Lc=b\)</span> （前進代入 <span class="math inline">\(c_1\)</span>から順番に求まる）O(n)</li>
+<li><span class="math inline">\(Ux=c\)</span> （後退代入 <span class="math inline">\(x_n\)</span>から逆順に求まる）O(n)</li>
+</ol>
+<h2 id="lu分解">LU分解</h2>
+<p>A のメモリをそのまま使って LU を記憶したい（実際に解く問題は n が非常に大きいので）</p>
+<h3 id="外積形式ガウス法">外積形式ガウス法</h3>
+<h3 id="内積形式ガウス法">内積形式ガウス法</h3>
+<h3 id="クラウト法">クラウト法</h3>
+<h2 id="固有値問題">固有値問題</h2>
 <p><span class="math display">\[
-ds = \rho ( -d \theta )
+\det (A-I\lambda) = 0 
 \]</span></p>
-<p><span class="math display">\[
-dx = \cos \theta ds
-\]</span></p>
-<p><span class="math display">\[
-\theta = \tan^{-1} \frac{dv}{dx}
-\]</span></p>
-<p><span class="math display">\[
-\frac{d\theta}{dx} = \frac{1}{1+\left(\frac{dx}{dv}\right)^2}
-\]</span></p>
-<p><span class="math inline">\(\theta&lt;&lt;1\)</span> のとき</p>
-<p><span class="math display">\[
-\frac{1}{\rho}=-\frac{d^2v}{dx^2}
-\]</span></p>
-<h3 id="曲げ応力">曲げ応力</h3>
-<p><span class="math display">\[
-\frac{1}{\rho}=\frac{M}{EI}
-\]</span></p>
-<h3 id="たわみの基礎式">たわみの基礎式</h3>
-<p><span class="math display">\[
-\begin{aligned}
-    \frac{d^2v}{dx^2} &amp;= -\frac{M}{EI} \\
-    \theta &amp;= \frac{dv}{dx} = -\int\frac{M}{EI}dx+C \\
-    v &amp;= -\int\int\frac{M}{EI}dxdx+C_1x+C_2
-\end{aligned}
-\]</span></p>
-<h2 id="座屈">座屈</h2>
-<p>たわみ <span class="math inline">\(v(x)\)</span> 荷重 <span class="math inline">\(P\)</span></p>
-<p><span class="math display">\[
-\frac{d^2v}{dx^2}=-\frac{M}{EI}=-\frac{P}{EI}v
-\]</span></p>
-<p><span class="math inline">\(\alpha=\sqrt{P/EI}\)</span> と置いて，<span class="math inline">\(\frac{d^2v}{dx^2}+\alpha^2v=0\)</span> を 境界条件 <span class="math inline">\(v(0)=0,v(L)=0\)</span> で解くと，<span class="math inline">\(n\)</span> をパラメタとして，</p>
-<p><span class="math display">\[
-P=\frac{n^2\pi^2}{L^2}EI,\quad v=c_1\sin\frac{n\pi}{L}x
-\]</span></p>
-<p><span class="math inline">\(n=1\)</span> のときの <span class="math inline">\(P\)</span> が限界荷重</p>
-<p><span class="math display">\[
-P_{CR}=\frac{\pi^2}{L^2}EI,\quad v_{CR}=c_1\sin\frac{\pi}{L}
-\]</span></p>
-<p><span class="math inline">\(c_1\)</span> が残るので変位はわからんが限界荷重はわかる</p>
     </article>
   </body>
 </html>
