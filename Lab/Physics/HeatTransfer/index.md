@@ -378,13 +378,15 @@ function calcNu(){
 | $T_S$      | <input type="number" id="nu-ts"></input>                |
 | $T_\infty$ | <input type="number" id="nu-tinf"></input>              |
 | $Pr$       | <input type="number" id="nu-pr" value="8"></input>      |
-| $N\!u_L$   | <span id="nu-nu">aaa</span>                             |
-| $h_L$      | <span id="nu-h">aaa</span>                              |
 
 
 <button onclick="calcNu()">計算</button>                
 
 
+|          |                            |                             |
+| -------- | -------------------------- | --------------------------- |
+| $N\!u_L$ | $0.332 Pr^{1/3}Re_x^{1/2}$ | <span id="nu-nu">aaa</span> |
+| $h_L$    | $\frac{\lambda}{L}N\!u_L$  | <span id="nu-h">aaa</span>  |
 
 
 ## 自然対流熱伝導
