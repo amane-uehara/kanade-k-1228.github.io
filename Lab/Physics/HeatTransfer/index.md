@@ -378,8 +378,8 @@ function calcNu(){
 | $T_S$      | <input type="number" id="nu-ts"></input>                |
 | $T_\infty$ | <input type="number" id="nu-tinf"></input>              |
 | $Pr$       | <input type="number" id="nu-pr" value="8"></input>      |
-| $N\!u_L$   | <output id="nu-nu">aaa</output>                         |
-| $h_L$      | <output id="nu-h">aaa</output>                          |
+| $N\!u_L$   | <span id="nu-nu">aaa</span>                             |
+| $h_L$      | <span id="nu-h">aaa</span>                              |
 
 
 <button onclick="calcNu()">計算</button>                
