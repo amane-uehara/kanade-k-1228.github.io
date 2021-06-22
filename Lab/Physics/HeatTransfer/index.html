@@ -238,6 +238,7 @@
             <nav><ul>
 <li><a href="#伝熱の形態">伝熱の形態</a><ul>
 <li><a href="#熱伝導">熱伝導</a></li>
+<li><a href="#熱伝達-convective-heat-transfer">熱伝達 (Convective Heat Transfer)</a></li>
 <li><a href="#熱放射-thermal-radiation">熱放射 (Thermal Radiation)</a></li>
 <li><a href="#いろいろ">いろいろ</a></li>
 </ul></li>
@@ -246,17 +247,14 @@
 <li><a href="#液体">液体</a></li>
 <li><a href="#固体">固体</a></li>
 </ul></li>
-<li><a href="#熱伝導方程式">熱伝導方程式</a><ul>
-<li><a href="#等方性材料-lambda_xlambda_ylambda_zlambda">等方性材料 (<span class="math inline">\(\lambda_x=\lambda_y=\lambda_z=\lambda\)</span>)</a></li>
-<li><a href="#定物性">定物性</a></li>
-<li><a href="#定常">定常</a></li>
-<li><a href="#内部発熱なし">内部発熱なし</a></li>
+<li><a href="#熱伝導-1">熱伝導</a><ul>
+<li><a href="#熱伝導方程式">熱伝導方程式</a></li>
 <li><a href="#初期条件">初期条件</a></li>
 <li><a href="#境界条件">境界条件</a></li>
 <li><a href="#無次元化">無次元化</a></li>
 </ul></li>
 <li><a href="#次元定常熱伝導">1次元定常熱伝導</a><ul>
-<li><a href="#sigma0"><span class="math inline">\(\sigma=0\)</span></a></li>
+<li><a href="#平板">平板</a></li>
 </ul></li>
 <li><a href="#熱伝達">熱伝達</a><ul>
 <li><a href="#熱伝達の基礎方程式">熱伝達の基礎方程式</a></li>
@@ -276,28 +274,40 @@
        <h2 id="伝熱の形態">伝熱の形態</h2>
 <h3 id="熱伝導">熱伝導</h3>
 <ul>
-<li>フーリエの法則 <span class="math display">\[ q = \frac{dQ}{dA} = -\lambda \frac{dT}{dx} \]</span> 熱流束 = 断面あたりの熱量 = - 温度勾配 ### 熱伝達 (Convective Heat Transfer)</li>
-<li>分子の集団が移動</li>
+<li>フーリエの法則 <span class="math display">\[
+\begin{aligned}
+  &amp;q &amp;=&amp; \frac{dQ}{dA} &amp;=&amp; -\lambda \frac{dT}{dx}\\
+ &amp;熱流束 &amp;=&amp; 断面あたりの通過熱量 &amp;=&amp; - 温度勾配
+\end{aligned}
+\]</span></li>
+</ul>
+<h3 id="熱伝達-convective-heat-transfer">熱伝達 (Convective Heat Transfer)</h3>
+<ul>
+<li>分子の集団が移動しながら熱エネルギーを伝える</li>
+<li>ニュートンの冷却法則 <span class="math display">\[ 
+q = h(T_w-T_\infty) 
+\]</span></li>
 <li>強制対流（ファン）</li>
 <li>自然対流</li>
-<li>ニュートンの冷却法則 <span class="math display">\[ q = h(T_w-T_\infty) \]</span></li>
-<li>速度境界層</li>
-<li>温度境界層</li>
 </ul>
 <h3 id="熱放射-thermal-radiation">熱放射 (Thermal Radiation)</h3>
 <ul>
-<li>ステファン-ボルツマンの式（黒体の熱放射） <span class="math display">\[ q_b = \sigma T^4 \]</span></li>
-<li>Gray Body</li>
+<li>ステファン-ボルツマンの式（黒体の熱放射） <span class="math display">\[
+q_b = \sigma T^4
+\]</span></li>
+<li>実際は黒体ほどではない Gray Body</li>
 </ul>
 <h3 id="いろいろ">いろいろ</h3>
 <ul>
-<li>相変化</li>
+<li>相変化，</li>
 <li>物質移動</li>
 <li>高速</li>
 <li>希薄</li>
 <li>マイクロ</li>
-<li>極低温：超流動</li>
-<li>超高速：非フーリエ</li>
+<li>極低温</li>
+<li>超流動</li>
+<li>超高速</li>
+<li>非フーリエ</li>
 <li>バイオ：食品</li>
 </ul>
 <h2 id="熱伝導率温度伝導率">熱伝導率・温度伝導率</h2>
@@ -307,25 +317,25 @@
 <p><span class="math display">\[ \alpha = a l_0 \]</span> - <span class="math inline">\(a\)</span> : 音速 - <span class="math inline">\(l_0^3\)</span> : 分子が占める体積</p>
 <h3 id="固体">固体</h3>
 <p><span class="math display">\[ \lambda = \lambda_p + \lambda_e \]</span> - <span class="math inline">\(\lambda_p\)</span> : フォノン（格子振動） - <span class="math inline">\(\lambda_e=\frac{1}{3}\rho c\)</span>? : 自由電子 - 金属 - 常温の金属では <span class="math inline">\(\lambda_e&gt;&gt;\lambda_p\)</span> - 格子振動による散乱 - 界面・欠陥などによる散乱 - <span class="math display">\[ \lambda_e = \frac{1}{aT^2 + b/T}\]</span> - Wiedemann-Franz-Lorenz式（熱伝導率と電気伝導率の関係） <span class="math display">\[ \frac{\lambda_e}{\sigma T} = \frac{\pi^2}{3}\left(\frac{k}{e}\right)^2 = 2.45\times10^{-8}\left[\frac{V^2}{K^2}\right] \]</span> - 格子振動 <span class="math display">\[ \lambda_p=\frac{1}{3}\rho c v_p l_p \]</span> - <span class="math inline">\(c\)</span> : フォノンの比熱 - <span class="math inline">\(\rho\)</span> : - <span class="math inline">\(c\)</span> :</p>
-<h2 id="熱伝導方程式">熱伝導方程式</h2>
+<h2 id="熱伝導-1">熱伝導</h2>
+<h3 id="熱伝導方程式">熱伝導方程式</h3>
 <p><span class="math display">\[
 \rho c \partial_t T = \partial_i(\lambda^i \, \partial^i T) + w
 \]</span></p>
-<h3 id="等方性材料-lambda_xlambda_ylambda_zlambda">等方性材料 (<span class="math inline">\(\lambda_x=\lambda_y=\lambda_z=\lambda\)</span>)</h3>
+<h4 id="等方性材料-lambda_xlambda_ylambda_zlambda">等方性材料 (<span class="math inline">\(\lambda_x=\lambda_y=\lambda_z=\lambda\)</span>)</h4>
 <p><span class="math display">\[
 \rho c \partial_t T = \partial_i(\lambda \, \partial^i T) + w
 \]</span></p>
-<h3 id="定物性">定物性</h3>
+<h4 id="定物性">定物性</h4>
 <p><span class="math display">\[
 \partial_t T = \alpha \partial_i\partial^i T +  \frac{w}{\rho c}\\
 温度伝導率\alpha:=\frac{\lambda}{\rho c}
 \]</span></p>
-<h3 id="定常">定常</h3>
+<h4 id="定常">定常</h4>
 <p><span class="math display">\[
  \partial_i\partial^i T +  \frac{w}{\lambda}=0
-\]</span></p>
-<p>ポアソン型の偏微分方程式</p>
-<h3 id="内部発熱なし">内部発熱なし</h3>
+\]</span> ポアソン型の偏微分方程式</p>
+<h4 id="内部発熱なし">内部発熱なし</h4>
 <p><span class="math display">\[
  \partial_i\partial^i T =0
 \]</span> ラプラス方程式</p>
@@ -337,34 +347,43 @@ T(t=0)=T(x,y,z)
 <p>表面のある微小面<span class="math inline">\(s\)</span>でのエネルギーバランスを考える．微小面の法線方向の軸<span class="math inline">\(n\)</span>，加熱量<span class="math inline">\(q_s\)</span>，外界の無限遠点までの熱伝達率<span class="math inline">\(h\)</span>とすると， <span class="math display">\[
 -\lambda\frac{\partial T}{\partial n} - h (T_s - T_\infty) + q_s=0
 \]</span></p>
-<ul>
-<li><p>第1種 : 温度 : <span class="math inline">\(h\rightarrow \infty\)</span> <span class="math display">\[
+<h4 id="第1種-温度-hrightarrow-infty">第1種 : 温度 : <span class="math inline">\(h\rightarrow \infty\)</span></h4>
+<p><span class="math display">\[
 T_s=T_\infty
-\]</span></p></li>
-<li><p>第2種 : 熱流束 : <span class="math inline">\(h\rightarrow 0\)</span> <span class="math display">\[
+\]</span></p>
+<h4 id="第2種-熱流束-hrightarrow-0">第2種 : 熱流束 : <span class="math inline">\(h\rightarrow 0\)</span></h4>
+<p><span class="math display">\[
 \lambda\partial_n T = q_s
-\]</span></p></li>
-<li><p>第3種 : 熱伝達 : <span class="math inline">\(q_s = 0\)</span> <span class="math display">\[
+\]</span></p>
+<h4 id="第3種-熱伝達-q_s-0">第3種 : 熱伝達 : <span class="math inline">\(q_s = 0\)</span></h4>
+<p><span class="math display">\[
 -\lambda\partial_n T = h (T_s-T_\infty)
-\]</span></p></li>
-</ul>
+\]</span></p>
 <h3 id="無次元化">無次元化</h3>
 <h2 id="次元定常熱伝導">1次元定常熱伝導</h2>
 <p>対称な空間（平板，円柱，球殻）の熱伝導 <span class="math display">\[
 \frac{1}{r^\sigma}\partial_r(\lambda r^\sigma\partial_r T) + w = 0
 \]</span></p>
-<h3 id="sigma0"><span class="math inline">\(\sigma=0\)</span></h3>
+<h3 id="平板">平板</h3>
 <p><span class="math display">\[
 \partial_x (\lambda \partial_x T) + w = 0
-\]</span> xで積分して， <span class="math display">\[
+\]</span></p>
+<p>xで積分して，</p>
+<p><span class="math display">\[
 \lambda\partial_x T + \int_0^x w dx = c_1
-\]</span> 熱伝導率・内部発熱が一定の場合は， <span class="math display">\[
+\]</span></p>
+<p>熱伝導率・内部発熱が一定の場合は，</p>
+<p><span class="math display">\[
 \lambda\partial_x T + w x = c_1
-\]</span> xで積分して， <span class="math display">\[
+\]</span></p>
+<p>xで積分して，</p>
+<p><span class="math display">\[
 T = -\frac{w}{2\lambda}x^2 + c_1 x + c_2
-\]</span> 境界条件 - <span class="math inline">\(T(x_1)=T_1\quad T(x_2)=T_2\)</span></p>
+\]</span></p>
+<p>境界条件</p>
 <ul>
-<li><span class="math inline">\(T(0)=T_1\quad -\lambda\partial_x T = h(T_2-T_\infty)\)</span></li>
+<li><p><span class="math inline">\(T(x_1)=T_1\quad T(x_2)=T_2\)</span></p></li>
+<li><p><span class="math inline">\(T(0)=T_1\quad -\lambda\partial_x T = h(T_2-T_\infty)\)</span></p></li>
 </ul>
 <h2 id="熱伝達">熱伝達</h2>
 <p>物体表面 <span class="math inline">\(T_S\)</span>から雰囲気 <span class="math inline">\(T_\infty\)</span> への熱流束を単純に表すと</p>

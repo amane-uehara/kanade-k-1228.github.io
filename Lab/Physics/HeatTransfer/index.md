@@ -6,31 +6,39 @@
 
 ### 熱伝導 
   - フーリエの法則
-    $$ q = \frac{dQ}{dA} = -\lambda \frac{dT}{dx} $$
-    熱流束 = 断面あたりの熱量 = - 温度勾配
+    $$
+    \begin{aligned}
+      &q &=& \frac{dQ}{dA} &=& -\lambda \frac{dT}{dx}\\
+     &熱流束 &=& 断面あたりの通過熱量 &=& - 温度勾配
+    \end{aligned}
+    $$
+
 ### 熱伝達 (Convective Heat Transfer)
-  - 分子の集団が移動
+  - 分子の集団が移動しながら熱エネルギーを伝える
+  - ニュートンの冷却法則
+    $$ 
+    q = h(T_w-T_\infty) 
+    $$
   - 強制対流（ファン）
   - 自然対流
-  - ニュートンの冷却法則
-    $$ q = h(T_w-T_\infty) $$
-  - 速度境界層
-  - 温度境界層
   
 ### 熱放射 (Thermal Radiation)
   - ステファン-ボルツマンの式（黒体の熱放射）
-    $$ q_b = \sigma T^4 $$
-  - Gray Body
-
+    $$
+    q_b = \sigma T^4
+    $$
+  - 実際は黒体ほどではない Gray Body 
 
 ### いろいろ
-  - 相変化
+  - 相変化，
   - 物質移動
   - 高速
   - 希薄
   - マイクロ
-  - 極低温：超流動
-  - 超高速：非フーリエ
+  - 極低温
+  - 超流動
+  - 超高速
+  - 非フーリエ
   - バイオ：食品
   
 ## 熱伝導率・温度伝導率
@@ -61,32 +69,32 @@
   - $\rho$ : 
   - $c$ :
 
-## 熱伝導方程式
+
+## 熱伝導
+
+### 熱伝導方程式
 $$
 \rho c \partial_t T = \partial_i(\lambda^i \, \partial^i T) + w
 $$
 
-### 等方性材料 ($\lambda_x=\lambda_y=\lambda_z=\lambda$)
+#### 等方性材料 ($\lambda_x=\lambda_y=\lambda_z=\lambda$)
 $$
 \rho c \partial_t T = \partial_i(\lambda \, \partial^i T) + w
 $$
 
-### 定物性
+#### 定物性
 $$
 \partial_t T = \alpha \partial_i\partial^i T +  \frac{w}{\rho c}\\
 温度伝導率\alpha:=\frac{\lambda}{\rho c}
 $$
 
-### 定常
-
+#### 定常
 $$
  \partial_i\partial^i T +  \frac{w}{\lambda}=0
 $$
-
 ポアソン型の偏微分方程式
 
-### 内部発熱なし
-
+#### 内部発熱なし
 $$
  \partial_i\partial^i T =0
 $$
@@ -103,17 +111,17 @@ $$
 -\lambda\frac{\partial T}{\partial n} - h (T_s - T_\infty) + q_s=0
 $$
 
-- 第1種 : 温度 : $h\rightarrow \infty$
+#### 第1種 : 温度 : $h\rightarrow \infty$
 $$
 T_s=T_\infty
 $$
 
-- 第2種 : 熱流束 : $h\rightarrow 0$
+#### 第2種 : 熱流束 : $h\rightarrow 0$
 $$
 \lambda\partial_n T = q_s
 $$
 
-- 第3種 : 熱伝達 : $q_s = 0$
+#### 第3種 : 熱伝達 : $q_s = 0$
 $$
 -\lambda\partial_n T = h (T_s-T_\infty)
 $$
@@ -126,23 +134,32 @@ $$
 \frac{1}{r^\sigma}\partial_r(\lambda r^\sigma\partial_r T) + w = 0
 $$
 
-### $\sigma=0$
+### 平板
+
 $$
 \partial_x (\lambda \partial_x T) + w = 0
 $$
+
 xで積分して，
+
 $$
 \lambda\partial_x T + \int_0^x w dx = c_1
 $$
+
 熱伝導率・内部発熱が一定の場合は，
+
 $$
 \lambda\partial_x T + w x = c_1
 $$
+
 xで積分して，
+
 $$
 T = -\frac{w}{2\lambda}x^2 + c_1 x + c_2
 $$
+
 境界条件
+
 -  $T(x_1)=T_1\quad T(x_2)=T_2$
 
 - $T(0)=T_1\quad -\lambda\partial_x T = h(T_2-T_\infty)$
