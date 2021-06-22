@@ -173,13 +173,11 @@
     ></script>
     <script>
       function tweet() {
-        var thisUrl = location.href;
-        var tweet = "スパコン並列計算プログラミング";
         window.open(
-          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
-            thisUrl +
+          "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
+            location.href +
             "&text=" +
-            tweet,
+            "スパコン並列計算プログラミング",
           "_blank"
         );
       }

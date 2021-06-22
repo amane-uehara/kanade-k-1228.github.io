@@ -173,13 +173,11 @@
     ></script>
     <script>
       function tweet() {
-        var thisUrl = location.href;
-        var tweet = "ソフトマター";
         window.open(
-          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
-            thisUrl +
+          "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
+            location.href +
             "&text=" +
-            tweet,
+            "ソフトマター",
           "_blank"
         );
       }
