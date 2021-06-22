@@ -1,4 +1,4 @@
-% 熱工学
+% 伝熱工学
 %
 %
 
@@ -139,4 +139,90 @@ $$
 -  $T(x_1)=T_1\quad T(x_2)=T_2$
 
 - $T(0)=T_1\quad -\lambda\partial_x T = h(T_2-T_\infty)$
+
+
+## 熱伝達
+
+物体表面（温度 $T_S$）から雰囲気（$T_\infty$）への熱流束を単純に表すと
+
+$$
+q=h(T_S-T_\infty)
+$$
+
+熱伝達率 $h$ は複雑な条件を代表した値
+
+物体表面で流速が 0 であれば，フーリエの法則から
+
+$$
+q=-\lambda\left(\frac{\partial T}{\partial n}\right)_{n=0}
+$$
+
+よって熱伝達率は流体の温度勾配によって定まる
+
+$$
+h=-\frac{\lambda}{T_S-T_\infty}\left(\frac{\partial T}{\partial n}\right)_{n=0}
+$$
+
+### 層流・乱流
+
+レイノルズ数 $Re=ux/\nu$ が流れの様子を代表する．
+
+レイノルズ数が小さい領域では層流であるが，限界レイノルズ数 $Re_C$ を超えるあたりで乱流に遷移する．
+
+乱流は熱や運動量の輸送が大きい．
+
+
+### 熱伝達の基礎方程式
+
+- 解析の仮定
+  - 非圧縮
+  - 定常流
+  - 定物性
+  - 内部発熱なし
+  - 圧力仕事・粘性散逸を無視
+- 連続の式
+$$
+\partial_x u + \partial_y v = 0
+$$
+- 運動方程式
+$$
+\begin{aligned}
+u \partial_x u + v \partial_y u = \frac{1}{\rho} \partial_x p + \nu (\partial_x^2 u + \partial_y^2 u) + \frac{F_x}{\rho} \\
+u \partial_x v + v \partial_y v = \frac{1}{\rho} \partial_y p + \nu (\partial_x^2 v + \partial_y^2 v) + \frac{F_y}{\rho}   
+\end{aligned}
+$$
+- エネルギー保存則
+$$
+u \partial_x T + v \partial_y T = \alpha (\partial_x^2 T + \partial_y^2 T)
+$$
+
+温度伝導率 $\alpha:=\frac{\lambda}{\rho c_P}$
+
+### 境界層近似
+
+> 速度境界層 $\delta$ は十分薄い 
+> $$
+> \delta(x) \ll x
+> $$
+
+- 連続の式
+$$
+\partial_x u + \partial_y v = 0
+$$
+- 運動方程式
+$$
+\begin{aligned}
+u \partial_x u + v \partial_y u &= \frac{1}{\rho} \partial_x p + \nu \partial_y^2 u + \frac{F_x}{\rho} \\
+\frac{1}{\rho} \partial_y p &= 0
+\end{aligned}
+$$
+- エネルギー式
+$$
+u \partial_x T + v \partial_y T = \alpha \partial_y^2 T
+$$
+
+
+
+
+
 

@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>熱工学 | Kanade's Website</title>
+          <title>伝熱工学 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -232,7 +232,7 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">熱工学</h1>
+                <h1 style="margin: 0">伝熱工学</h1>
                </header>
             <nav><ul>
 <li><a href="#伝熱の形態">伝熱の形態</a><ul>
@@ -249,6 +249,11 @@
 </ul></li>
 <li><a href="#次元定常熱伝導">1次元定常熱伝導</a><ul>
 <li><a href="#sigma0"><span class="math inline">\(\sigma=0\)</span></a></li>
+</ul></li>
+<li><a href="#熱伝達">熱伝達</a><ul>
+<li><a href="#層流乱流">層流・乱流</a></li>
+<li><a href="#熱伝達の基礎方程式">熱伝達の基礎方程式</a></li>
+<li><a href="#境界層近似">境界層近似</a></li>
 </ul></li>
 </ul></nav>
        <h2 id="伝熱の形態">伝熱の形態</h2>
@@ -347,6 +352,68 @@ T = -\frac{w}{2\lambda}x^2 + c_1 x + c_2
 \]</span> 境界条件 - <span class="math inline">\(T(x_1)=T_1\quad T(x_2)=T_2\)</span></p>
 <ul>
 <li><span class="math inline">\(T(0)=T_1\quad -\lambda\partial_x T = h(T_2-T_\infty)\)</span></li>
+</ul>
+<h2 id="熱伝達">熱伝達</h2>
+<p>物体表面（温度 <span class="math inline">\(T_S\)</span>）から雰囲気（<span class="math inline">\(T_\infty\)</span>）への熱流束を単純に表すと</p>
+<p><span class="math display">\[
+q=h(T_S-T_\infty)
+\]</span></p>
+<p>熱伝達率 <span class="math inline">\(h\)</span> は複雑な条件を代表した値</p>
+<p>物体表面で流速が 0 であれば，フーリエの法則から</p>
+<p><span class="math display">\[
+q=-\lambda\left(\frac{\partial T}{\partial n}\right)_{n=0}
+\]</span></p>
+<p>よって熱伝達率は流体の温度勾配によって定まる</p>
+<p><span class="math display">\[
+h=-\frac{\lambda}{T_S-T_\infty}\left(\frac{\partial T}{\partial n}\right)_{n=0}
+\]</span></p>
+<h3 id="層流乱流">層流・乱流</h3>
+<p>レイノルズ数 <span class="math inline">\(Re=ux/\nu\)</span> が流れの様子を代表する．</p>
+<p>レイノルズ数が小さい領域では層流であるが，限界レイノルズ数 <span class="math inline">\(Re_C\)</span> を超えるあたりで乱流に遷移する．</p>
+<p>乱流は熱や運動量の輸送が大きい．</p>
+<h3 id="熱伝達の基礎方程式">熱伝達の基礎方程式</h3>
+<ul>
+<li>解析の仮定
+<ul>
+<li>非圧縮</li>
+<li>定常流</li>
+<li>定物性</li>
+<li>内部発熱なし</li>
+<li>圧力仕事・粘性散逸を無視</li>
+</ul></li>
+<li>連続の式 <span class="math display">\[
+\partial_x u + \partial_y v = 0
+\]</span></li>
+<li>運動方程式 <span class="math display">\[
+\begin{aligned}
+u \partial_x u + v \partial_y u = \frac{1}{\rho} \partial_x p + \nu (\partial_x^2 u + \partial_y^2 u) + \frac{F_x}{\rho} \\
+u \partial_x v + v \partial_y v = \frac{1}{\rho} \partial_y p + \nu (\partial_x^2 v + \partial_y^2 v) + \frac{F_y}{\rho}   
+\end{aligned}
+\]</span></li>
+<li>エネルギー保存則 <span class="math display">\[
+u \partial_x T + v \partial_y T = \alpha (\partial_x^2 T + \partial_y^2 T)
+\]</span></li>
+</ul>
+<p>温度伝導率 <span class="math inline">\(\alpha:=\frac{\lambda}{\rho c_P}\)</span></p>
+<h3 id="境界層近似">境界層近似</h3>
+<blockquote>
+<p>速度境界層 <span class="math inline">\(\delta\)</span> は十分薄い <span class="math display">\[
+\delta(x) \ll x
+\]</span></p>
+</blockquote>
+<ul>
+<li>連続の式 <span class="math display">\[
+\partial_x u + \partial_y v = 0
+\]</span></li>
+<li>運動方程式 <span class="math display">\[
+\begin{aligned}
+u \partial_x u + v \partial_y u &amp;= \frac{1}{\rho} \partial_x p + \nu \partial_y^2 u + \frac{F_x}{\rho} \\
+\frac{1}{\rho} \partial_y p &amp;= 0
+\end{aligned}
+\]</span></li>
+<li>エネルギー式 <span class="math display">\[
+u \partial_x T + v \partial_y T = \alpha \partial_y^2 T
+\]</span></li>
 </ul>
     </article>
   </body>
