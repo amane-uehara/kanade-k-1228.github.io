@@ -361,11 +361,9 @@ function calcNu(){
 | $T_S$      | <input type="number" id="nu-ts"></input>                |
 | $T_\infty$ | <input type="number" id="nu-tinf"></input>              |
 | $Pr$       | <input type="number" id="nu-pr" value="8"></input>      |
-|            | <button onclick="calcNu();">計算</button>               |
+|            | <button onclick="calcNu()">計算</button>                |
 | $N\!u_L$   | <output id="nu-nu">aaa</output>                         |
 | $h_L$      | <output id="nu-h">aaa</output>                          |
-
-
 
 
 
