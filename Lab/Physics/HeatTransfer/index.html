@@ -33,7 +33,6 @@
         line-height: 1.5;
         color: #202020;
       }
-
       article {
         display: block;
         margin: 0 auto;
@@ -48,7 +47,6 @@
           width: 100%;
         }
       }
-
       h1 {
         display: block;
         margin: 0.5em 0 0.5em 0;
@@ -103,32 +101,27 @@
         text-align: center;
         background-color: #f0f0ff;
       }
-
       ul,
       ol {
         margin: 0.5em 0 0.5em 1em;
         padding: 0 0 0 1.5em;
       }
-
       ul ul,
       ul ul ul,
       ol ol,
       ol ol ol {
         margin: 0;
       }
-
       blockquote {
         border: 1px solid;
         border-radius: 2px;
         background-color: white;
         margin: 0.5em 1em 0.5em 1em;
       }
-
       img {
         display: block;
         margin: 0 auto;
       }
-
       header > ul {
         margin: 0.5em 0 0.5em 0;
         padding: 0;
@@ -143,7 +136,6 @@
       header > ul > li > a {
         display: block;
       }
-
       div#header-links {
         height: 50px;
         display: flex;
@@ -153,7 +145,6 @@
       div#header-links > a {
         text-decoration: none;
       }
-
       nav {
         border: 1px solid;
         border-radius: 2px;
@@ -164,8 +155,7 @@
         margin: 0;
       }
     </style>
-    
-    <script
+        <script
       type="text/javascript"
       id="MathJax-script"
       async
@@ -275,7 +265,12 @@
 <li><a href="#レイノルズのアナロジー">レイノルズのアナロジー</a></li>
 <li><a href="#乱流">乱流</a></li>
 </ul></li>
-<li><a href="#強制対流熱伝導">強制対流熱伝導</a></li>
+<li><a href="#強制対流熱伝導">強制対流熱伝導</a><ul>
+<li><a href="#速度分布プラジウスの解">速度分布：プラジウスの解</a></li>
+<li><a href="#温度分布ポールハウゼンの解">温度分布：ポールハウゼンの解</a></li>
+<li><a href="#熱伝達率">熱伝達率</a></li>
+<li><a href="#計算機">計算機</a></li>
+</ul></li>
 <li><a href="#自然対流熱伝導">自然対流熱伝導</a></li>
 </ul></nav>
        <h2 id="伝熱の形態">伝熱の形態</h2>
@@ -385,6 +380,11 @@ q=-\lambda\left(\frac{\partial T}{\partial n}\right)_{n=0}
 <p><span class="math display">\[
 h=-\frac{\lambda}{T_S-T_\infty}\left(\frac{\partial T}{\partial n}\right)_{n=0}
 \]</span></p>
+<h4 id="ヌッセント数">ヌッセント数</h4>
+<p><span class="math display">\[
+Nu=\frac{hL}{\lambda}=\frac{h(T_S-T_\infty)}{\lambda \frac{T_S-T_\infty}{L}}
+\]</span></p>
+<p>表面から流体へ流れ出る熱のうち，熱伝達と熱伝導の比を表す</p>
 <h3 id="熱伝達の基礎方程式">熱伝達の基礎方程式</h3>
 <ul>
 <li>解析の仮定
@@ -429,6 +429,7 @@ u \partial_x T + v \partial_y T = \alpha \partial_y^2 T
 </ul>
 <h3 id="無次元数">無次元数</h3>
 <p>代表速度 <span class="math inline">\(U_\infty\)</span> 代表長さ <span class="math inline">\(L\)</span> で無次元化する</p>
+<p>※ 定数ではなく添え字が引数の関数</p>
 <h4 id="re-レイノルズ数"><span class="math inline">\(Re\)</span> : レイノルズ数</h4>
 <p>運動方程式の無次元数</p>
 <p><span class="math display">\[
@@ -444,6 +445,7 @@ Pe_L = \frac{U_\infty L}{\alpha}
 <p><span class="math display">\[
 Pr=\frac{Pe}{Re}=\frac{\nu}{\alpha}=\frac{\delta}{\delta_t}
 \]</span></p>
+<p>物性値</p>
 <p>通常は <span class="math inline">\(Pr=1\)</span> すなわち速度境界層と温度境界層は近い厚さ</p>
 <h3 id="レイノルズのアナロジー">レイノルズのアナロジー</h3>
 <p>無次元化された運動方程式とエネルギー式</p>
@@ -453,8 +455,105 @@ Pr=\frac{Pe}{Re}=\frac{\nu}{\alpha}=\frac{\delta}{\delta_t}
 <p>レイノルズ数 <span class="math inline">\(Re=ux/\nu\)</span> が流れの様子を代表する．レイノルズ数が小さい領域では層流であるが，限界レイノルズ数 <span class="math inline">\(Re_C\)</span> を超えるあたりで乱流に遷移する．乱流は熱や運動量の輸送が大きい．</p>
 <p>乱流では速度が不規則に変動するので，速度の時間平均値についてのNS方程式を考える．</p>
 <h2 id="強制対流熱伝導">強制対流熱伝導</h2>
+<p>平板上を流れる流体</p>
+<h3 id="速度分布プラジウスの解">速度分布：プラジウスの解</h3>
+<h3 id="温度分布ポールハウゼンの解">温度分布：ポールハウゼンの解</h3>
+<p>yを無次元化して</p>
+<p><span class="math display">\[
+\nu = \frac{y}{\delta}
+\]</span></p>
+<p>温度を無次元化して</p>
+<p><span class="math display">\[
+\theta=\frac{T_S-T}{T_S-T_\theta}
+\]</span></p>
+<p>としたときのエネルギー式は</p>
+<p><span class="math display">\[
+\frac{d^2\theta}{d\nu^2}+\frac{Pr}{2}f\frac{d\theta}{d\nu}=0
+\]</span></p>
+<p>これを境界条件 <span class="math inline">\(\theta(\nu=0)=T_S,\theta(\nu=\infty)=T_\infty\)</span> で解くと，</p>
+<p><span class="math display">\[
+\theta = 
+\]</span></p>
+<h3 id="熱伝達率">熱伝達率</h3>
+<p><span class="math display">\[
+h=-\frac{\lambda}{T_S-T_\infty}\left(\frac{\partial T}{\partial n}\right)_{n=0}
+\]</span></p>
+<p>を無次元化して</p>
+<p><span class="math display">\[
+Nu_x=\sqrt{Re_x}\left(\frac{\partial \theta}{\partial \nu}\right)_{\nu=0}
+\]</span></p>
+<p>を解く</p>
+<p>プラントル数によって解が異なるが概ね</p>
+<p><span class="math display">\[
+N\!u_x = 0.332 Pr^{1/3}Re_x^{1/2}
+\]</span></p>
+<p><span class="math display">\[
+h_x = \frac{\lambda}{L}N\!u_x
+\]</span></p>
+<h3 id="計算機">計算機</h3>
+<script>
+function calcNu(){
+  const coef = document.getElementById("nu-coef").value;
+  const re = document.getElementById("nu-re").value;
+  const l = document.getElementById("nu-l").value;
+  const lam = document.getElementById("nu-lam").value;
+  const ts = document.getElementById("nu-ts").value;
+  const tinf = document.getElementById("nu-tinf").value;
+  const pr = document.getElementById("nu-pr").value;
+  const nu = coef*(re**(1/2))*(pr**(1/3));
+  const h = lam*nu/l;
+  document.getElementById("nu-nu").innerHTML=nu;
+  document.getElementById("nu-h").innerHTML=h;
+}
+</script>
+<table>
+<tbody>
+<tr class="odd">
+<td>係数</td>
+<td><input type="number" id="nu-coef" value="0.33"></input></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Re_L\)</span></td>
+<td><input type="number" id="nu-re" value="1000"></input></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L\)</span></td>
+<td><input type="number" id="nu-l" value="0.1"></input></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><input type="number" id="nu-lam" value="0.4"></input></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T_S\)</span></td>
+<td><input type="number" id="nu-ts"></input></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T_\infty\)</span></td>
+<td><input type="number" id="nu-tinf"></input></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Pr\)</span></td>
+<td><input type="number" id="nu-pr" value="8"></input></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><button onclick="calcNu();">計算</button></td>
+</tr>
+</tbody>
+</table>
+| <span class="math inline">\(N\!u_L\)</span> |
+<output id="nu-nu">
+aaa
+</output>
+<pre><code>                     |</code></pre>
+| <span class="math inline">\(h_L\)</span> |
+<output id="nu-h">
+aaa
+</output>
+<pre><code>                      |</code></pre>
 <h2 id="自然対流熱伝導">自然対流熱伝導</h2>
-      <button onclick="tweet();">コメント</button>
+      <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

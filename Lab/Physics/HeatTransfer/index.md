@@ -170,6 +170,13 @@ $$
 h=-\frac{\lambda}{T_S-T_\infty}\left(\frac{\partial T}{\partial n}\right)_{n=0}
 $$
 
+#### ヌッセント数
+
+$$
+Nu=\frac{hL}{\lambda}=\frac{h(T_S-T_\infty)}{\lambda \frac{T_S-T_\infty}{L}}
+$$
+
+表面から流体へ流れ出る熱のうち，熱伝達と熱伝導の比を表す
 
 
 ### 熱伝達の基礎方程式
@@ -223,6 +230,8 @@ $$
 
 代表速度 $U_\infty$ 代表長さ $L$ で無次元化する
 
+※ 定数ではなく添え字が引数の関数
+
 #### $Re$ : レイノルズ数
 
 運動方程式の無次元数
@@ -247,6 +256,8 @@ $$
 Pr=\frac{Pe}{Re}=\frac{\nu}{\alpha}=\frac{\delta}{\delta_t}
 $$
 
+物性値
+
 通常は $Pr=1$ すなわち速度境界層と温度境界層は近い厚さ
 
 ### レイノルズのアナロジー
@@ -265,6 +276,97 @@ $$
 
 
 ## 強制対流熱伝導
+
+
+平板上を流れる流体
+
+### 速度分布：プラジウスの解
+
+
+
+### 温度分布：ポールハウゼンの解
+
+yを無次元化して
+
+$$
+\nu = \frac{y}{\delta}
+$$
+
+温度を無次元化して
+
+$$
+\theta=\frac{T_S-T}{T_S-T_\theta}
+$$
+
+としたときのエネルギー式は
+
+$$
+\frac{d^2\theta}{d\nu^2}+\frac{Pr}{2}f\frac{d\theta}{d\nu}=0
+$$
+
+これを境界条件 $\theta(\nu=0)=T_S,\theta(\nu=\infty)=T_\infty$ で解くと，
+
+$$
+\theta = 
+$$
+
+### 熱伝達率
+
+$$
+h=-\frac{\lambda}{T_S-T_\infty}\left(\frac{\partial T}{\partial n}\right)_{n=0}
+$$
+
+を無次元化して
+
+$$
+Nu_x=\sqrt{Re_x}\left(\frac{\partial \theta}{\partial \nu}\right)_{\nu=0}
+$$
+
+を解く
+
+プラントル数によって解が異なるが概ね
+
+$$
+N\!u_x = 0.332 Pr^{1/3}Re_x^{1/2}
+$$
+
+$$
+h_x = \frac{\lambda}{L}N\!u_x
+$$
+
+### 計算機
+
+<script>
+function calcNu(){
+  const coef = document.getElementById("nu-coef").value;
+  const re = document.getElementById("nu-re").value;
+  const l = document.getElementById("nu-l").value;
+  const lam = document.getElementById("nu-lam").value;
+  const ts = document.getElementById("nu-ts").value;
+  const tinf = document.getElementById("nu-tinf").value;
+  const pr = document.getElementById("nu-pr").value;
+  const nu = coef*(re**(1/2))*(pr**(1/3));
+  const h = lam*nu/l;
+  document.getElementById("nu-nu").innerHTML=nu;
+  document.getElementById("nu-h").innerHTML=h;
+}
+</script>
+
+|            |                                                         |
+| ---------- | ------------------------------------------------------- |
+| 係数       | <input type="number" id="nu-coef" value="0.33"></input> |
+| $Re_L$     | <input type="number" id="nu-re" value="1000"></input>   |
+| $L$        | <input type="number" id="nu-l" value="0.1"></input>     |
+| $\lambda$  | <input type="number" id="nu-lam" value="0.4"></input>   |
+| $T_S$      | <input type="number" id="nu-ts"></input>                |
+| $T_\infty$ | <input type="number" id="nu-tinf"></input>              |
+| $Pr$       | <input type="number" id="nu-pr" value="8"></input>      |
+|            | <button onclick="calcNu();">計算</button>               |
+| $N\!u_L$   | <output id="nu-nu">aaa</output>                         |
+| $h_L$      | <output id="nu-h">aaa</output>                          |
+
+
+
 
 
 
