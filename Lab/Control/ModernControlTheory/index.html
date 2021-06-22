@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "現代制御論";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -251,6 +264,7 @@
 \parallel G(s) \parallel_\infty = \max_{0 &lt; \omega &lt; \infty} |G(j\omega)|
 \]</span></p>
 <h2 id="カルマンフィルタ">カルマンフィルタ</h2>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

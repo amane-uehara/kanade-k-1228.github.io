@@ -172,6 +172,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "オペアンプ回路";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -273,6 +286,7 @@ V_{out}\rightarrow -\frac{1}{RC}\int_0^t V_{in} dt
 <p><span class="math display">\[
 V_{out}=\rightarrow -R_f\sum_{i=1}^n \frac{V_i}{R_i}
 \]</span></p>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

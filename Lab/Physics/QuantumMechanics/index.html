@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "量子力学";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -240,6 +253,7 @@
 </ul></nav>
        <h2 id="状態の記述">状態の記述</h2>
 <h2 id="シュレディンガー方程式">シュレディンガー方程式</h2>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

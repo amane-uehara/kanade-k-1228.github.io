@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "材料力学";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -301,6 +314,7 @@ P=\frac{n^2\pi^2}{L^2}EI,\quad v=c_1\sin\frac{n\pi}{L}x
 P_{CR}=\frac{\pi^2}{L^2}EI,\quad v_{CR}=c_1\sin\frac{\pi}{L}
 \]</span></p>
 <p><span class="math inline">\(c_1\)</span> が残るので変位はわからんが限界荷重はわかる</p>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

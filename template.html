@@ -181,6 +181,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "$title$";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -251,6 +264,7 @@
       $if(toc)$
       <nav>$table-of-contents$</nav>
       $endif$ $body$
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "特殊相対性理論";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -242,6 +255,7 @@
        <h2 id="基本原理">基本原理</h2>
 <h2 id="ローレンツ変換">ローレンツ変換</h2>
 <h2 id="固有時">固有時</h2>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

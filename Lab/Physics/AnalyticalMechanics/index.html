@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "解析力学";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -286,6 +299,7 @@ H(q_i,p_i,t)
 \]</span></p>
 <h2 id="保存則">保存則</h2>
 <h2 id="位相空間">位相空間</h2>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

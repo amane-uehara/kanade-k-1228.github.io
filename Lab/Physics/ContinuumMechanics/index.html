@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "連続体力学";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -285,6 +298,7 @@ D_t \left(\rho\epsilon\right)       &amp;= \sigma_{ij}\partial_i v_j - \partial_
 D_t \left(\frac{1}{2}\rho v^2 + \rho\epsilon\right)&amp;=\partial_i(\sigma_{ij} v_i - q_i)+\rho K_iv_i \\
 \end{aligned}
 \]</span></p>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

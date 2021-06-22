@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "解析学";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -447,6 +460,7 @@ z_t(\boldsymbol{c})=f_x(\boldsymbol{a})x_t(\boldsymbol{c})+f_y(\boldsymbol{a})y_
 <p>(g_y(a,b)0)の場合を考える．</p>
 <p>((a,b))の近くでは，(C)は(y=(x))</p>
 <p>[<span class="math display">\[\begin{eqnarray}\frac{d}{dx}f(x,\phi(x))&amp;=&amp;f_x(x,y)+f_y(x,y)\phi&#39;(x)\\&amp;=&amp;f_x(x,y)+f_y(x,y)\left(-\frac{g_x(x,y)}{g_y(x,y)}\right)\end{eqnarray}\]</span>]</p>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

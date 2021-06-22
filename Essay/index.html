@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "雑記";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -239,6 +252,7 @@
 </ul></nav>
        <h2 id="唐揚げと砂丘山の類似性">唐揚げと砂丘・山の類似性</h2>
 <p>パラメタがあって相似則がありそう</p>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

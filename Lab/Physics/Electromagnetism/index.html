@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "電磁気学";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -238,6 +251,7 @@
 \int_S\boldsymbol{B}\cdot d\boldsymbol{S}=0\\
 \nabla\cdot\boldsymbol{B}=0
 \]</span></p>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

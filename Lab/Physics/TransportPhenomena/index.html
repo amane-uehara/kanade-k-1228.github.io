@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "移動現象論";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -367,6 +380,7 @@ J^i = \rho v^i \quad [M/L^2T]
 <h4 id="鏡面反射">鏡面反射</h4>
 <h4 id="拡散反射">拡散反射</h4>
 <h2 id="液体">液体</h2>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>

@@ -171,6 +171,19 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script>
+      function tweet() {
+        var thisUrl = location.href;
+        var tweet = "相対論的量子力学";
+        window.open(
+          "https://twitter.com/intent/tweet?related=kanade_k_1228&url=" +
+            thisUrl +
+            "&text=" +
+            tweet,
+          "_blank"
+        );
+      }
+    </script>
   </head>
   <body>
     <article>
@@ -242,6 +255,7 @@
        <h2 id="クライン-ゴルドン方程式">クライン-ゴルドン方程式</h2>
 <h2 id="スピノル">スピノル</h2>
 <h2 id="ディラック方程式">ディラック方程式</h2>
+      <button onclick="tweet();">コメント</button>
     </article>
   </body>
 </html>
