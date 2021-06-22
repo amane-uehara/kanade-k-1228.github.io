@@ -351,7 +351,6 @@ $$
 h_x = \frac{\lambda}{L}N\!u_x
 $$
 
-### 計算機
 
 <script>
 function calcNu(){
