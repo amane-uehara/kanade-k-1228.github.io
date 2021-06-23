@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>研究室へようこそ | Kanade's Website</title>
+          <title>演算回路 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -170,7 +170,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "研究室へようこそ",
+            "演算回路",
           "_blank"
         );
       }
@@ -236,48 +236,218 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">研究室へようこそ</h1>
+                <h1 style="margin: 0">演算回路</h1>
                </header>
             <nav><ul>
-<li><a href="#コンピュータ">コンピュータ</a></li>
-<li><a href="#電子">電子</a></li>
-<li><a href="#制御ロボット">制御・ロボット</a></li>
-<li><a href="#数学">数学</a></li>
-<li><a href="#物理">物理</a></li>
+<li><a href="#演算回路">演算回路</a><ul>
+<li><a href="#演算の定義">演算の定義</a></li>
+<li><a href="#基本演算">基本演算</a></li>
+<li><a href="#構成定理">構成定理</a></li>
+<li><a href="#基本演算集合">基本演算集合</a></li>
+<li><a href="#最小基本演算集合">最小基本演算集合</a></li>
+<li><a href="#回路サイズ">回路サイズ</a></li>
+<li><a href="#演算時間">演算時間</a></li>
+</ul></li>
+<li><a href="#群演算器">群演算器</a><ul>
+<li><a href="#prefix-sum">Prefix Sum</a></li>
+</ul></li>
+<li><a href="#加算器">加算器</a><ul>
+<li><a href="#並列加算器">並列加算器</a></li>
+</ul></li>
 </ul></nav>
-       <p>ノートが置いてあります．</p>
-<h2 id="コンピュータ">コンピュータ</h2>
-<p><a href="./Computer/RISC-V/">RISC-V</a></p>
-<p><a href="./Computer/Website/">簡単なブログサイトの作り方</a></p>
-<p><a href="./Computer/SuperComputer/">スパコン並列計算プログラミング</a></p>
-<p><a href="./Computer/ArithmeticCircuit/">演算回路</a></p>
-<h2 id="電子">電子</h2>
-<p><a href="./Electronics/OpAmp/">オペアンプ</a></p>
-<p><a href="./Electronics/PCBMaking/">プリント基板</a></p>
-<h2 id="制御ロボット">制御・ロボット</h2>
-<p><a href="./Control/ModernControlTheory/">現代制御論</a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/Analysis/">解析学</a></p>
-<p><a href="./Mathmatics/CovarianceContravariance/">共変・反変</a></p>
-<p><a href="">四元数</a></p>
-<p><a href="">外積代数</a></p>
-<p><a href="">クリフォート代数</a></p>
-<h2 id="物理">物理</h2>
-<p><a href="./Physics/AnalyticalMechanics/">解析力学</a></p>
-<p><a href="./Physics/ThermoDynamics/">熱力学</a></p>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/MaterialMechanics/">材料力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<p><a href="./Physics/StatisticalMechanics/">統計力学</a></p>
-<p><a href="./Physics/HeatTransfer/">伝熱工学</a></p>
-<p><a href="./Physics/TransportPhenomena/">輸送現象論</a></p>
-<p><a href="./Physics/SoftMatter/">ソフトマター</a></p>
-<p><a href="./Physics/Electromagnetism/">電磁気学</a></p>
-<p><a href="./Physics/SpecialRelativity/">特殊相対性理論</a></p>
-<p><a href="./Physics/GeneralTheoryOfRelativity/">一般相対性理論</a></p>
-<p><a href="./Physics/QuantumMechanics/">量子力学</a></p>
-<p><a href="./Physics/QuantumElectroDynamics/">量子電磁気学</a></p>
-<p><a href="./Physics/RelativisticQuantumMechanics/">相対論的量子論</a></p>
+       <h2 id="演算回路">演算回路</h2>
+<h3 id="演算の定義">演算の定義</h3>
+<blockquote>
+<p>入力空間 <span class="math inline">\(2^N\)</span> から 出力空間 <span class="math inline">\(2^M\)</span> への写像 <span class="math display">\[
+f : 2^N \rightarrow 2^M 
+\]</span></p>
+</blockquote>
+<h3 id="基本演算">基本演算</h3>
+<blockquote>
+<p><span class="math display">\[
+f_e : 2 \rightarrow 2
+\]</span></p>
+</blockquote>
+<h3 id="構成定理">構成定理</h3>
+<p>任意の演算がある基本演算集合の元の合成として構成できる．</p>
+<h3 id="基本演算集合">基本演算集合</h3>
+<p>基本演算集合として</p>
+<h3 id="最小基本演算集合">最小基本演算集合</h3>
+<h3 id="回路サイズ">回路サイズ</h3>
+<p>演算 <span class="math inline">\(f\)</span> に必要な基本演算数を評価したい．</p>
+<h3 id="演算時間">演算時間</h3>
+<p>演算 <span class="math inline">\(f\)</span> に必要な時間を評価したい．</p>
+<p>一般に演算時間は入力によって変化するので，入力 <span class="math inline">\(a\)</span> に対する演算時間を <span class="math inline">\(T(f,a)\)</span> とする．</p>
+<p>入力の確率分布を <span class="math inline">\(P(a)\)</span> としたとき，演算時間の期待値を <span class="math inline">\(T(f,P)=\sum P(a)T(f,a)\)</span> とする．</p>
+<p>特に，一様分布に対する演算時間の期待値を <span class="math inline">\(\bar{T}(f)\)</span> とする．</p>
+<h2 id="群演算器">群演算器</h2>
+<p>群 <span class="math inline">\((2^N,\circ)\)</span></p>
+<h3 id="prefix-sum">Prefix Sum</h3>
+<p>入力列 <span class="math inline">\(a_0,a_1\cdots a_{n-1}\)</span> に対して出力列</p>
+<p><span class="math display">\[
+s_i = a_0 \circ a_1 \circ a_2 \cdots \circ a_i
+\]</span></p>
+<p>なる演算器を構成する．</p>
+<p><span class="math inline">\(s_i\)</span> を逐次に求めると <span class="math inline">\(n\)</span> 段必要だが，PrefixSumを使うと <span class="math inline">\(\lceil \log n \rceil\)</span> 段で済ませることができる．</p>
+<h2 id="加算器">加算器</h2>
+<h3 id="並列加算器">並列加算器</h3>
+<p><span class="math display">\[
+(g,p)\circ(g&#39;,p&#39;) = (g + p \cdot g&#39;, p \cdot p&#39;)
+\]</span></p>
+<table>
+<tbody>
+<tr class="odd">
+<td>(g’,p’)</td>
+<td>(0,0)</td>
+<td>(0,1)</td>
+<td>(1,0)</td>
+<td>(1,1)</td>
+</tr>
+<tr class="even">
+<td>(g,p)</td>
+<td>(g,0)</td>
+<td>(g,p)</td>
+<td>(g+p,0)</td>
+<td>(g+p,p)</td>
+</tr>
+<tr class="odd">
+<td>(0,0)</td>
+<td>(0,0)</td>
+<td>(0,0)</td>
+<td>(0,0)</td>
+<td>(0,0)</td>
+</tr>
+<tr class="even">
+<td>(0,1)</td>
+<td>(0,0)</td>
+<td>(0,1)</td>
+<td>(1,0)</td>
+<td>(1,1)</td>
+</tr>
+<tr class="odd">
+<td>(1,0)</td>
+<td>(1,0)</td>
+<td>(1,0)</td>
+<td>(1,0)</td>
+<td>(1,0)</td>
+</tr>
+<tr class="even">
+<td>(1,1)</td>
+<td>(1,0)</td>
+<td>(1,1)</td>
+<td>(1,0)</td>
+<td>(1,1)</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\begin{aligned}
+(G,P)_0&amp;=(g,p)_0\\
+(G,P)_i&amp;=(g,p)_i\circ(G,P)_{i-1}\\
+\end{aligned}
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(a\)</span></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(b\)</span></td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(g = a \cdot b\)</span></td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p = a \oplus b\)</span></td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(G\)</span></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P\)</span></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(s\)</span></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

@@ -21,7 +21,8 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>研究室へようこそ | Kanade's Website</title>
+        <meta name="dcterms.date" content="2021-06-23" />
+          <title>プリント基板 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -170,7 +171,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "研究室へようこそ",
+            "プリント基板",
           "_blank"
         );
       }
@@ -236,48 +237,74 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">研究室へようこそ</h1>
-               </header>
+                <h1 style="margin: 0">プリント基板</h1>
+                 <p align="right">2021-06-23</p>
+              </header>
             <nav><ul>
-<li><a href="#コンピュータ">コンピュータ</a></li>
-<li><a href="#電子">電子</a></li>
-<li><a href="#制御ロボット">制御・ロボット</a></li>
-<li><a href="#数学">数学</a></li>
-<li><a href="#物理">物理</a></li>
+<li><a href="#メーカー比較">メーカー比較</a></li>
+<li><a href="#ガーバデータ出力">ガーバデータ出力</a></li>
 </ul></nav>
-       <p>ノートが置いてあります．</p>
-<h2 id="コンピュータ">コンピュータ</h2>
-<p><a href="./Computer/RISC-V/">RISC-V</a></p>
-<p><a href="./Computer/Website/">簡単なブログサイトの作り方</a></p>
-<p><a href="./Computer/SuperComputer/">スパコン並列計算プログラミング</a></p>
-<p><a href="./Computer/ArithmeticCircuit/">演算回路</a></p>
-<h2 id="電子">電子</h2>
-<p><a href="./Electronics/OpAmp/">オペアンプ</a></p>
-<p><a href="./Electronics/PCBMaking/">プリント基板</a></p>
-<h2 id="制御ロボット">制御・ロボット</h2>
-<p><a href="./Control/ModernControlTheory/">現代制御論</a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/Analysis/">解析学</a></p>
-<p><a href="./Mathmatics/CovarianceContravariance/">共変・反変</a></p>
-<p><a href="">四元数</a></p>
-<p><a href="">外積代数</a></p>
-<p><a href="">クリフォート代数</a></p>
-<h2 id="物理">物理</h2>
-<p><a href="./Physics/AnalyticalMechanics/">解析力学</a></p>
-<p><a href="./Physics/ThermoDynamics/">熱力学</a></p>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/MaterialMechanics/">材料力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<p><a href="./Physics/StatisticalMechanics/">統計力学</a></p>
-<p><a href="./Physics/HeatTransfer/">伝熱工学</a></p>
-<p><a href="./Physics/TransportPhenomena/">輸送現象論</a></p>
-<p><a href="./Physics/SoftMatter/">ソフトマター</a></p>
-<p><a href="./Physics/Electromagnetism/">電磁気学</a></p>
-<p><a href="./Physics/SpecialRelativity/">特殊相対性理論</a></p>
-<p><a href="./Physics/GeneralTheoryOfRelativity/">一般相対性理論</a></p>
-<p><a href="./Physics/QuantumMechanics/">量子力学</a></p>
-<p><a href="./Physics/QuantumElectroDynamics/">量子電磁気学</a></p>
-<p><a href="./Physics/RelativisticQuantumMechanics/">相対論的量子論</a></p>
+       <h2 id="メーカー比較">メーカー比較</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><a href="https://www.pcbgogo.jp/">PCBgogo</a></th>
+<th><a href="https://www.fusionpcb.jp/fusion_pcb.html">FusionPCB</a></th>
+<th><a href="https://www.elecrow.com/pcb-manufacturing.html">ELECROW</a></th>
+<th><a href="https://jlcpcb.com/">JLCPCB</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Eagle .brd</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>50 * 50 × 5</td>
+<td>$5</td>
+<td>$4.9</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>100 * 100 × 5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>120 * 120 × 5</td>
+<td></td>
+<td>$30</td>
+<td></td>
+<td>$9.8</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>10枚以上のときは10枚を何回か発注したほうが安いことがある</li>
+</ul>
+<h2 id="ガーバデータ出力">ガーバデータ出力</h2>
+<ol type="1">
+<li>DRC</li>
+<li>CAM
+<ul>
+<li>レイヤ</li>
+</ul></li>
+<li>gerber</li>
+</ol>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
