@@ -12,9 +12,13 @@
 
 [スパコン並列計算プログラミング](./Computer/SuperComputer/)
 
+[演算回路](./Computer/ArithmeticCircuit/)
+
 ## 電子
 
 [オペアンプ](./Electronics/OpAmp/)
+
+[プリント基板](./Electronics/PCBMaking/)
 
 ## 制御・ロボット
 
