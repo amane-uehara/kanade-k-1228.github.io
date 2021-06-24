@@ -24,17 +24,12 @@
 
 [現代制御論](./Control/ModernControlTheory/)
 
-## 数学
 
-[解析学](./Mathmatics/Analysis/)
+## 機械
 
-[共変・反変](./Mathmatics/CovarianceContravariance/)
+[材料](./Mech/Material/)
 
-[四元数]()
-
-[外積代数]()
-
-[クリフォート代数]()
+[加工機](./Mech/ProcessingMachine/)
 
 ## 物理
 
@@ -67,3 +62,18 @@
 [量子電磁気学](./Physics/QuantumElectroDynamics/)
 
 [相対論的量子論](./Physics/RelativisticQuantumMechanics/)
+
+
+
+## 数学
+
+[解析学](./Mathmatics/Analysis/)
+
+[共変・反変](./Mathmatics/CovarianceContravariance/)
+
+[四元数]()
+
+[外積代数]()
+
+[クリフォート代数]()
+
