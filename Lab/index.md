@@ -29,7 +29,7 @@
 
 [材料](./Mech/Material/)
 
-[加工機](./Mech/ProcessingMachine/)
+[加工](./Mech/Processing/)
 
 ## 物理
 
