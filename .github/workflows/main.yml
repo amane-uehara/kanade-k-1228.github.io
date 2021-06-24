@@ -15,7 +15,7 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install pandoc
       - name: Convert MD to HTML
-        run: find . -name "*.md" | while read i; do pandoc "${i}" -s --template=template.html --toc --mathjax --highlight-style=tango >> "${i%.md}.html"; done
+        run: find . -name "*.md" | while read i; do pandoc "${i}" -s --template=template.html --toc --mathjax >> "${i%.md}.html"; done
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
