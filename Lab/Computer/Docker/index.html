@@ -21,7 +21,8 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>研究室へようこそ | Kanade's Website</title>
+        <meta name="dcterms.date" content="2021-01-07" />
+          <title>Dockerはじめました | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -175,7 +176,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "研究室へようこそ",
+            "Dockerはじめました",
           "_blank"
         );
       }
@@ -241,60 +242,94 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">研究室へようこそ</h1>
-               </header>
+                <h1 style="margin: 0">Dockerはじめました</h1>
+                 <p align="right">2021-01-07</p>
+              </header>
             <nav><ul>
-<li><a href="#コンピュータ">コンピュータ</a><ul>
-<li><a href="#tips">Tips</a></li>
-</ul></li>
-<li><a href="#電子">電子</a></li>
-<li><a href="#制御ロボット">制御・ロボット</a></li>
-<li><a href="#機械">機械</a></li>
-<li><a href="#物理">物理</a></li>
-<li><a href="#数学">数学</a></li>
+<li><a href="#dockerって">Dockerって？</a></li>
+<li><a href="#実験node.js">実験：node.js</a></li>
+<li><a href="#実験typescript">実験：TypeScript</a></li>
 </ul></nav>
-       <p>ノートが置いてあります．</p>
-<h2 id="コンピュータ">コンピュータ</h2>
-<p><a href="./Computer/RISC-V/">RISC-V</a></p>
-<p><a href="./Computer/SuperComputer/">スパコン並列計算プログラミング</a></p>
-<p><a href="./Computer/ArithmeticCircuit/">演算回路</a></p>
-<h3 id="tips">Tips</h3>
-<p><a href="./Computer/Website/">簡単なブログサイトの作り方</a></p>
-<p><a href="./Computer/Docker/">Dockerはじめました</a></p>
-<p><a href="./Computer/ClangFormat/">WSLに接続したVSCodeにclang-formatを追加する</a></p>
-<h2 id="電子">電子</h2>
-<p><a href="./Electronics/OpAmp/">オペアンプ</a></p>
-<p><a href="./Electronics/PCBMaking/">プリント基板</a></p>
-<p><a href="./Electronics/IQS127D/">Azoteq IQS127D （静電容量タッチセンサIC）の使い方</a></p>
-<h2 id="制御ロボット">制御・ロボット</h2>
-<p><a href="./Control/ModernControlTheory/">現代制御論</a></p>
-<h2 id="機械">機械</h2>
-<p><a href="./Mech/Material/">材料</a></p>
-<p><a href="./Mech/Processing/">加工</a></p>
-<h2 id="物理">物理</h2>
-<p><a href="./Physics/PhysicsTheory/">物理学</a></p>
-<p><a href="./Physics/PhysicsMathmatics/">物理数学</a></p>
-<p><a href="./Physics/AnalyticalMechanics/">解析力学</a></p>
-<p><a href="./Physics/ThermoDynamics/">熱力学</a></p>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/MaterialMechanics/">材料力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<p><a href="./Physics/StatisticalMechanics/">統計力学</a></p>
-<p><a href="./Physics/HeatTransfer/">伝熱工学</a></p>
-<p><a href="./Physics/TransportPhenomena/">輸送現象論</a></p>
-<p><a href="./Physics/SoftMatter/">ソフトマター</a></p>
-<p><a href="./Physics/Electromagnetism/">電磁気学</a></p>
-<p><a href="./Physics/SpecialRelativity/">特殊相対性理論</a></p>
-<p><a href="./Physics/GeneralTheoryOfRelativity/">一般相対性理論</a></p>
-<p><a href="./Physics/QuantumMechanics/">量子力学</a></p>
-<p><a href="./Physics/QuantumElectroDynamics/">量子電磁気学</a></p>
-<p><a href="./Physics/RelativisticQuantumMechanics/">相対論的量子論</a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/Analysis/">解析学</a></p>
-<p><a href="./Mathmatics/CovarianceContravariance/">共変・反変</a></p>
-<p><a href="">四元数</a></p>
-<p><a href="">外積代数</a></p>
-<p><a href="">クリフォート代数</a></p>
+       <p>お仕事でちゃんとDockerを使わないといけなくなったので勉強し始めました．</p>
+<h2 id="dockerって">Dockerって？</h2>
+<p>とりあえず“docker しくみ”とかでgoogle先生に聞いて出てきたやつをざざっと読むと，</p>
+<ul>
+<li>仮想化
+<ul>
+<li>バーチャルマシンは重い</li>
+<li>コンテナはホストの機能を使いつつ仮想化するので軽い</li>
+<li>namespace・cgroupeというLinuxの機能がベースにある</li>
+</ul></li>
+<li>イメージ
+<ul>
+<li>イメージというのがある</li>
+<li>レイヤが積み重なった構造をしている</li>
+<li>レイヤは利用時には一つに見える ←？？？</li>
+<li>イメージをビルド？してコンテナを作る</li>
+<li>レイヤのベースに配布されてるubuntuとかを使いがちらしい</li>
+</ul></li>
+<li>コンテナ
+<ul>
+<li>隔離された名前空間</li>
+<li>プロセスはこの中で動く</li>
+</ul></li>
+<li>Dockerfile
+<ul>
+<li>イメージを組み立てる設計図てきなもの</li>
+<li>イメージのレイヤと対応している？</li>
+</ul></li>
+<li>docker-compose.yml
+<ul>
+<li>Dockerfileとの違いがよくわからん</li>
+<li>docker-compose up すると動く</li>
+</ul></li>
+</ul>
+<h2 id="実験node.js">実験：node.js</h2>
+<p><a href="https://ishida-it.com/blog/post/2019-11-21-docker-nodejs/">参考サイト</a></p>
+<p>これを真似する</p>
+<ul>
+<li>docker-compose.ymlを書いて実行
+<ul>
+<li>npm がなんか言ってる</li>
+<li>コンテナ内の./app以下にいろいろたりねぇぞ</li>
+<li>いったんコンテナ内に入って，npmうんぬんかんぬんしてやる</li>
+<li>./src（コンテナ外）に追加された！</li>
+</ul></li>
+<li>これで実行すると……
+<ul>
+<li>localhost:3000になんか出た</li>
+<li>コンテナ側のターミナルにnodeのログが出てる</li>
+</ul></li>
+<li>nodemonを追加してリアルタイムで反映されるようにする</li>
+</ul>
+<h2 id="実験typescript">実験：TypeScript</h2>
+<p><a href="https://qiita.com/reflet/items/538753d5dcf3560567a9:embed:cite">参考サイト</a></p>
+<ul>
+<li>例のごとくdocker-compose.ymlを書く</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">version:</span><span class="at"> </span><span class="st">&quot;3&quot;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">services:</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="fu">app:</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="fu">image:</span><span class="at"> nginx:latest</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="fu">container_name:</span><span class="at"> </span><span class="st">&quot;app&quot;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="fu">ports:</span></a>
+<a class="sourceLine" id="cb1-7" title="7">      <span class="kw">-</span> <span class="st">&quot;8080:80&quot;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="fu">volumes:</span></a>
+<a class="sourceLine" id="cb1-9" title="9">      <span class="kw">-</span> ./src/html:/app</a>
+<a class="sourceLine" id="cb1-10" title="10">      <span class="kw">-</span> ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf</a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12">  <span class="fu">node:</span></a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="fu">image:</span><span class="at"> node:10</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="fu">container_name:</span><span class="at"> node</span></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="fu">tty:</span><span class="at"> </span><span class="ch">true</span></a>
+<a class="sourceLine" id="cb1-16" title="16">    <span class="fu">working_dir:</span><span class="at"> /usr/src/app</span></a>
+<a class="sourceLine" id="cb1-17" title="17">    <span class="fu">volumes:</span></a>
+<a class="sourceLine" id="cb1-18" title="18">      <span class="kw">-</span> ./src:/usr/src/app</a></code></pre></div>
+<ul>
+<li>volumes:のとこがあってればとりあえず動きそう</li>
+</ul>
+<hr />
+<p>docker-compose.ymlを書くだけでとりあえず使えることがわかた</p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

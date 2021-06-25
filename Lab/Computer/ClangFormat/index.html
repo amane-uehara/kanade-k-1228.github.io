@@ -21,7 +21,8 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>研究室へようこそ | Kanade's Website</title>
+        <meta name="dcterms.date" content="2021-01-06" />
+          <title>WSLに接続したVSCodeにclang-formatを追加する | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -175,7 +176,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "研究室へようこそ",
+            "WSLに接続したVSCodeにclang-formatを追加する",
           "_blank"
         );
       }
@@ -241,60 +242,33 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">研究室へようこそ</h1>
-               </header>
+                <h1 style="margin: 0">WSLに接続したVSCodeにclang-formatを追加する</h1>
+                 <p align="right">2021-01-06</p>
+              </header>
             <nav><ul>
-<li><a href="#コンピュータ">コンピュータ</a><ul>
-<li><a href="#tips">Tips</a></li>
-</ul></li>
-<li><a href="#電子">電子</a></li>
-<li><a href="#制御ロボット">制御・ロボット</a></li>
-<li><a href="#機械">機械</a></li>
-<li><a href="#物理">物理</a></li>
-<li><a href="#数学">数学</a></li>
+<li><a href="#llvmをインストール">LLVMをインストール</a></li>
+<li><a href="#wsl側からllvmへのパスを通して">WSL側からLLVMへのパスを通して</a></li>
+<li><a href="#clang-format-の拡張機能をインストールして">clang-format の拡張機能をインストールして</a></li>
+<li><a href="#settings.json">settings.json</a></li>
 </ul></nav>
-       <p>ノートが置いてあります．</p>
-<h2 id="コンピュータ">コンピュータ</h2>
-<p><a href="./Computer/RISC-V/">RISC-V</a></p>
-<p><a href="./Computer/SuperComputer/">スパコン並列計算プログラミング</a></p>
-<p><a href="./Computer/ArithmeticCircuit/">演算回路</a></p>
-<h3 id="tips">Tips</h3>
-<p><a href="./Computer/Website/">簡単なブログサイトの作り方</a></p>
-<p><a href="./Computer/Docker/">Dockerはじめました</a></p>
-<p><a href="./Computer/ClangFormat/">WSLに接続したVSCodeにclang-formatを追加する</a></p>
-<h2 id="電子">電子</h2>
-<p><a href="./Electronics/OpAmp/">オペアンプ</a></p>
-<p><a href="./Electronics/PCBMaking/">プリント基板</a></p>
-<p><a href="./Electronics/IQS127D/">Azoteq IQS127D （静電容量タッチセンサIC）の使い方</a></p>
-<h2 id="制御ロボット">制御・ロボット</h2>
-<p><a href="./Control/ModernControlTheory/">現代制御論</a></p>
-<h2 id="機械">機械</h2>
-<p><a href="./Mech/Material/">材料</a></p>
-<p><a href="./Mech/Processing/">加工</a></p>
-<h2 id="物理">物理</h2>
-<p><a href="./Physics/PhysicsTheory/">物理学</a></p>
-<p><a href="./Physics/PhysicsMathmatics/">物理数学</a></p>
-<p><a href="./Physics/AnalyticalMechanics/">解析力学</a></p>
-<p><a href="./Physics/ThermoDynamics/">熱力学</a></p>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/MaterialMechanics/">材料力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<p><a href="./Physics/StatisticalMechanics/">統計力学</a></p>
-<p><a href="./Physics/HeatTransfer/">伝熱工学</a></p>
-<p><a href="./Physics/TransportPhenomena/">輸送現象論</a></p>
-<p><a href="./Physics/SoftMatter/">ソフトマター</a></p>
-<p><a href="./Physics/Electromagnetism/">電磁気学</a></p>
-<p><a href="./Physics/SpecialRelativity/">特殊相対性理論</a></p>
-<p><a href="./Physics/GeneralTheoryOfRelativity/">一般相対性理論</a></p>
-<p><a href="./Physics/QuantumMechanics/">量子力学</a></p>
-<p><a href="./Physics/QuantumElectroDynamics/">量子電磁気学</a></p>
-<p><a href="./Physics/RelativisticQuantumMechanics/">相対論的量子論</a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/Analysis/">解析学</a></p>
-<p><a href="./Mathmatics/CovarianceContravariance/">共変・反変</a></p>
-<p><a href="">四元数</a></p>
-<p><a href="">外積代数</a></p>
-<p><a href="">クリフォート代数</a></p>
+       <h3 id="llvmをインストール">LLVMをインストール</h3>
+<p><a href="https://releases.llvm.org/download.html">LLVM</a> のclang-format.exeを使う</p>
+<h3 id="wsl側からllvmへのパスを通して">WSL側からLLVMへのパスを通して</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">export</span> <span class="va">PATH=$PATH</span>:/mnt/c/<span class="st">&#39;Program Files&#39;</span>/LLVM/bin</a></code></pre></div>
+<h3 id="clang-format-の拡張機能をインストールして">clang-format の拡張機能をインストールして</h3>
+<p>[https://marketplace.visualstudio.com/items?itemName=xaver.clang-format:embed:cite]</p>
+<h3 id="settings.json">settings.json</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="er">&quot;clang-format.executable&quot;:</span> <span class="er">&quot;/mnt/c/Program</span> <span class="er">Files/LLVM/bin/clang-format.exe&quot;</span></a></code></pre></div>
+<p>（VSCodeにclang-formatの場所を教える）</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="er">&quot;</span><span class="ot">[</span><span class="er">c</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">    <span class="dt">&quot;editor.defaultFormatter&quot;</span><span class="fu">:</span> <span class="st">&quot;xaver.clang-format&quot;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="fu">}</span><span class="er">,</span></a></code></pre></div>
+<p>（言語ごとのフォーマッタの設定）</p>
+<p>を追加すればおｋ</p>
+<p>ついでに</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" title="1">  <span class="er">&quot;editor.formatOnType&quot;:</span> <span class="er">true,</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="er">&quot;editor.formatOnSave&quot;:</span> <span class="er">true,</span></a></code></pre></div>
+<p>を設定しとくと編集時・保存時にフォーマットしてくれるよ</p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
