@@ -20,7 +20,7 @@
 
 [プリント基板](./Electronics/PCBMaking/)
 
-[Azoteq IQS127D （静電容量タッチセンサIC）の使い方](./Electronics/IQS127D/index.md)
+[Azoteq IQS127D （静電容量タッチセンサIC）の使い方](./Electronics/IQS127D/)
 
 ## 制御・ロボット
 
