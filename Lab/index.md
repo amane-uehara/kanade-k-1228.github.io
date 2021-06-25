@@ -20,6 +20,8 @@
 
 [プリント基板](./Electronics/PCBMaking/)
 
+[Azoteq IQS127D （静電容量タッチセンサIC）の使い方](./Electronics/IQS127D/index.md)
+
 ## 制御・ロボット
 
 [現代制御論](./Control/ModernControlTheory/)
@@ -32,6 +34,10 @@
 [加工](./Mech/Processing/)
 
 ## 物理
+
+[物理学](./Physics/PhysicsTheory/)
+
+[物理数学](./Physics/PhysicsMathmatics/)
 
 [解析力学](./Physics/AnalyticalMechanics/)
 
