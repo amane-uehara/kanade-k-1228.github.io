@@ -6,8 +6,8 @@
 
 ## メーカー比較
 
-|               | [PCBgogo](https://www.pcbgogo.jp/) | [FusionPCB](https://www.fusionpcb.jp/fusion_pcb.html) | [ELECROW](https://www.elecrow.com/pcb-manufacturing.html) | [JLCPCB](https://jlcpcb.com/) | [ALLPCB](https://www.allpcb.com/) |
-| ------------- | ---------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- | ----------------------------- | --------------------------------- |
+|               | [PCBgogo](https://www.pcbgogo.jp/) | [FusionPCB](https://www.fusionpcb.jp/fusion_pcb.html) | [ELECROW](https://www.elecrow.com/pcb-manufacturing.html) | [JLCPCB](https://jlcpcb.com/) | [ALLPCB](https://www.allpcb.com/) | [PCBWay](https://www.pcbway.com/) |
+| ------------- | ---------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- | ----------------------------- | --------------------------------- | --------------------------------- |
 | Eagle .brd    |                                    |                                                       |                                                           |                               |                                   |
 |               |                                    |                                                       |                                                           |                               |                                   |
 | 50 * 50 × 5   | $5                                 | $4.9                                                  |                                                           |                               |                                   |
@@ -21,7 +21,7 @@
 
 1. DRC
 2. CAM
-   - レイヤ
+   - レイヤの調整
 3. gerber
 
 

@@ -244,13 +244,59 @@
                 <h1 style="margin: 0">相対論的量子力学</h1>
                </header>
             <nav><ul>
-<li><a href="#クライン-ゴルドン方程式">クライン-ゴルドン方程式</a></li>
-<li><a href="#スピノル">スピノル</a></li>
-<li><a href="#ディラック方程式">ディラック方程式</a></li>
+<li><a href="#ディラック方程式">ディラック方程式</a><ul>
+<li><a href="#ガンマ行列">ガンマ行列</a></li>
+<li><a href="#ローレンツ変換不変性">ローレンツ変換不変性</a></li>
+<li><a href="#エネルギー">エネルギー</a></li>
+</ul></li>
 </ul></nav>
-       <h2 id="クライン-ゴルドン方程式">クライン-ゴルドン方程式</h2>
-<h2 id="スピノル">スピノル</h2>
+       <p><span class="math display">\[
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\]</span></p>
+<p>計量テンソルは <span class="math display">\[
+g_{\mu\nu}=\begin{pmatrix}
+1 &amp;  \\
+ &amp; -1_3  \\
+\end{pmatrix}
+\]</span></p>
 <h2 id="ディラック方程式">ディラック方程式</h2>
+<p><span class="math display">\[
+\left[i\hbar \gamma^\mu \pd{x^\mu}-mc\right] \psi(x) = 0 
+\]</span></p>
+<h3 id="ガンマ行列">ガンマ行列</h3>
+<p><span class="math display">\[
+\gamma^0 = \begin{pmatrix}
+1 &amp; 0 \\ 0 &amp; -1
+\end{pmatrix}
+\gamma^i = \begin{pmatrix}
+0 &amp; \sigma_i \\ -\sigma_i &amp; 0
+\end{pmatrix}
+\]</span></p>
+<h4 id="性質">性質</h4>
+<p><span class="math display">\[
+\begin{aligned}
+\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu &amp;= g^{\mu\nu} \\
+(\gamma^\mu)^\dagger &amp;= g_\mu^\mu\gamma^\mu \\
+(\gamma^\mu)^2 &amp;= g_\mu^\mu \\
+\gamma^\mu\gamma^\nu &amp;= -\gamma^\nu\gamma^\mu  
+\end{aligned}
+\]</span></p>
+<h3 id="ローレンツ変換不変性">ローレンツ変換不変性</h3>
+<p><span class="math inline">\(\psi(x)\rightarrow\psi&#39;(x&#39;)\)</span> に対してディラック方程式がどうなるか</p>
+<h4 id="連続変換">連続変換</h4>
+<h4 id="反転変換">反転変換</h4>
+<h3 id="エネルギー">エネルギー</h3>
+<p>相対論のエネルギー式</p>
+<p><span class="math display">\[
+E^2 = m^2c^4 + p^2c^2
+\]</span></p>
+<p><span class="math display">\[
+i \hbar \pd{t} \psi(x,t) = H\psi(x,t)
+\]</span></p>
+<p><span class="math display">\[
+H = \alpha_0 mc^2 + \alpha_i (-i\hbar \nabla)_i c
+\]</span></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
