@@ -71,13 +71,17 @@
 
 [統計力学](./Physics/StatisticalMechanics/)
 
-### 相対論・量子論
+### 電磁気学
 
 [電磁気学](./Physics/Electromagnetism/)
+
+### 相対論
 
 [特殊相対論](./Physics/SpecialRelativity/)
 
 [一般相対論](./Physics/GeneralTheoryOfRelativity/)
+
+### 量子論
 
 [量子力学](./Physics/QuantumMechanics/)
 
@@ -102,8 +106,7 @@
 ## リンク集
 
 - [特殊関数 グラフィックスライブラリー](http://math-functions-1.watson.jp/index.html)
-  
-### 殿堂入り
+- [bakamoto.sakura.ne.jp](http://bakamoto.sakura.ne.jp/buturi/ronbun.html)
 - [EMANの物理学](https://eman-physics.net/)
 - [物理のかぎしっぽ](http://hooktail.org/wiki/)
 - [ときわ台学](http://www.f-denshi.com/)
