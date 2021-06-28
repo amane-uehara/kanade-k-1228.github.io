@@ -257,7 +257,11 @@
 <li><a href="#配置エントロピー">配置エントロピー</a></li>
 </ul></li>
 <li><a href="#カノニカル分布カノニカルアンサンブル正準分布">カノニカル分布（カノニカルアンサンブル）（正準分布）</a></li>
-<li><a href="#マクスウェルボルツマンの速度分布">マクスウェル・ボルツマンの速度分布</a></li>
+<li><a href="#マクスウェルボルツマンの速度分布">マクスウェル・ボルツマンの速度分布</a><ul>
+<li><a href="#速さの分布">速さの分布</a></li>
+<li><a href="#実際の分子">実際の分子</a></li>
+</ul></li>
+<li><a href="#固体">固体</a></li>
 </ul></nav>
        <h2 id="位相空間">位相空間</h2>
 <h3 id="gamma空間"><span class="math inline">\(\Gamma\)</span>空間</h3>
@@ -410,10 +414,63 @@ f(v_x,v_y,v_z) \propto \exp\left(-\frac{\varepsilon}{k_BT}\right)=\exp\left\{-\f
 <p><span class="math display">\[
 f(v_x,v_y,v_z) = \left(\frac{m}{2\pi k_B T}\right)^{3/2}\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
 \]</span></p>
-<p>速さの分布は</p>
+<h3 id="速さの分布">速さの分布</h3>
 <p><span class="math display">\[
 f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\left(-\frac{mv^2}{2k_BT}\right)
 \]</span></p>
+<p><span class="math display">\[
+v_{max} = \sqrt{\frac{2k_BT}{m}}
+\]</span></p>
+<p><span class="math display">\[
+\langle v \rangle = \int vf(v) dv = \sqrt{\frac{8k_BT}{\pi m}}
+\]</span></p>
+<p><span class="math display">\[
+\langle v^2 \rangle = \int v^2 f(v) dv = \frac{3}{2} \left( \frac{2k_BT}{m} \right)
+\]</span></p>
+<p>平均エネルギー</p>
+<p><span class="math display">\[
+\langle \varepsilon \rangle = \frac{1}{2} m \langle v^2 \rangle = 3 \left(\frac{1}{2}k_BT\right)
+\]</span></p>
+<h3 id="実際の分子">実際の分子</h3>
+<p>単元子分子の比熱 (J/mol)</p>
+<p><span class="math display">\[
+E = N \frac{3}{2} k_B T = \frac{3}{2} RT
+\]</span></p>
+<p><span class="math display">\[
+C_v = \frac{3}{2} R
+\]</span></p>
+<p>二原子分子は 並進運動 (xyz) + 回転運動 (2軸) + 伸縮振動 の自由度</p>
+<p><span class="math display">\[
+C_v = \frac{7}{2}
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Cv</th>
+<th>80K</th>
+<th>100K</th>
+<th>273K</th>
+<th>2000K</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ar</td>
+<td></td>
+<td>1.55R</td>
+<td>1.5R</td>
+<td>1.51R</td>
+</tr>
+<tr class="even">
+<td>N2</td>
+<td>2.58R</td>
+<td>2.5R</td>
+<td>2.93R</td>
+<td>3.29R</td>
+</tr>
+</tbody>
+</table>
+<h2 id="固体">固体</h2>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

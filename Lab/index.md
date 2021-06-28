@@ -105,9 +105,12 @@
 
 ## リンク集
 
-- [特殊関数 グラフィックスライブラリー](http://math-functions-1.watson.jp/index.html)
-- [bakamoto.sakura.ne.jp](http://bakamoto.sakura.ne.jp/buturi/ronbun.html)
-- [EMANの物理学](https://eman-physics.net/)
-- [物理のかぎしっぽ](http://hooktail.org/wiki/)
-- [ときわ台学](http://www.f-denshi.com/)
+[特殊関数 グラフィックスライブラリー](http://math-functions-1.watson.jp/index.html)
 
+[bakamoto.sakura.ne.jp](http://bakamoto.sakura.ne.jp/buturi/ronbun.html)
+
+[EMANの物理学](https://eman-physics.net/)
+
+[物理のかぎしっぽ](http://hooktail.org/wiki/)
+
+[ときわ台学](http://www.f-denshi.com/)
