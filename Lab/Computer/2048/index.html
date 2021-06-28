@@ -274,16 +274,18 @@
 </tbody>
 </table>
 <script>
-    const emptyBoard = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
-
     function init(){
         console.log("init");
-        set(randomPut(emptyBoard));
+        set(randomPut([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]));
     }
 
     function randomPut(board){
-        let i, j, emptyList = [];
-        for(let i=0; i<4; i++) for(let j=0; j<4; j++) if(board[i][j]===0) emptyList.push([i,j]);
+        let emptyList = [];
+        board.map((line,i) => 
+            line.forEach((cell,j)=>{
+                if(cell===0) emptyList.push([i,j]);
+            }) 
+        );
         const k = Math.floor(Math.random()*emptyList.length);
         const ki = emptyList[k][0], kj = emptyList[k][1];
         return board.map((line,i) => line.map((cell,j) => (i===ki && j===kj ? 2 : cell)));
@@ -291,9 +293,11 @@
 
     function set(board){
         console.log(board);
-        for(let i=1; i<=4; i++) for(let j=1; j<=4; j++) if(board[i-1][j-1]){
-            document.getElementById(""+i+j).innerHTML=board[i-1][j-1];
-        }
+        board.map((line,i) => 
+            line.forEach((cell,j)=>{
+                if(cell) document.getElementById(""+i+j).innerHTML = cell;
+            }) 
+        );
     }
 
     function reduct(input){
