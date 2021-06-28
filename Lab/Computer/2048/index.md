@@ -30,7 +30,7 @@
                 if(cell===0) emptyList.push([i,j]);
             }) 
         );
-        const k = Math.floor(Math.random()*emptyList.length);
+        const k = Math.floor(Math.random() * emptyList.length);
         const ki = emptyList[k][0], kj = emptyList[k][1];
         return board.map((line,i) => line.map((cell,j) => (i===ki && j===kj ? 2 : cell)));
     }
@@ -39,7 +39,7 @@
         console.log(board);
         board.map((line,i) => 
             line.forEach((cell,j)=>{
-                if(cell) document.getElementById(""+i+j).innerHTML = cell;
+                if(cell) document.getElementById(""+(i+1)+(j+1)).innerHTML = cell;
             }) 
         );
     }
