@@ -19,15 +19,17 @@
 
 <script>
     const emptyBoard = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+
+    function init(){
+        console.log("init");
+        let board = emptyBoard;
+        board = randomPut(board);
+        show(board);
+    }
+
     function randomPut(board){
         let i, j, emptyList=[], ret=board;
-        for(i=0;i<4;i++){
-            for(j=0;j<4;j++){
-                if(board[i][j]===0){
-                    emptyList.push([i,j]);
-                }
-            }
-        }
+        for(i=0;i<4;i++) for(j=0;j<4;j++) if(board[i][j]===0) emptyList.push([i,j]);
         const k = Math.floor(Math.random()*emptyList.length);
         ret[emptyList[k][0]][emptyList[k][1]]=2;
         return ret;
@@ -53,11 +55,6 @@
         return [out0[0],out1[0],out2[0],out2[1]];
     }
 
-    function init(){
-        let board = emptyBoard;
-        board = randomPut(board);
-        show(board);
-    }
 
     function up(){
         reductLine(board)
