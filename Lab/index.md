@@ -12,6 +12,8 @@
 
 [演算回路](./Computer/ArithmeticCircuit/)
 
+[2048](./Computer/2048/)
+
 ### Tips
 
 [簡単なブログサイトの作り方](./Computer/Website/)
