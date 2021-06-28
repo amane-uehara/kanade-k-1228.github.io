@@ -292,6 +292,7 @@
     }
 
     function show(board){
+        console.log(board);
         let i,j;
         for(i=1;i<=4;i++)for(j=1;j<=4;j++)if(board[i-1][j-1]){
             document.getElementById(""+i+j).innerHTML=board[i-1][j-1];
