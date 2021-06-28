@@ -12,7 +12,7 @@
 
 [演算回路](./Computer/ArithmeticCircuit/)
 
-[2048](./Computer/2048/)
+[2048 on リレーコンピュータ](./Computer/2048/)
 
 ### Tips
 
