@@ -22,7 +22,16 @@
 
     function randomPut(){
         var i, j, count=[];
-        for(i=0;i<4;i++) for(j=0;j<4;j++) if(board[i][j]===0) count.push([i,j]);
+        for(i=0;i<4;i++){
+            for(j=0;j<4;j++){
+                if(board[i][j]===0){
+                    count.push([i,j]);
+                }else{
+                    alert(""+i+j);
+                }
+            }
+        }
+
         const k = Math.floor(Math.random()*count.length);
         board[count[k][0]][count[k][1]]=2;
     }
