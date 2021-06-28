@@ -17,7 +17,17 @@
 | <span id="41"></span> | <span id="42"></span> | <span id="43"></span> | <span id="44"></span> |
 
 
+
+<button onclick="init()">Init</button>
+<button onclick="show()">↑</button>
+<button onclick="show()">↓</button>
+<button onclick="show()">→</button>
+<button onclick="show()">←</button>
+
+
+
 <script>
+    
     function init(){
         console.log("init");
         set(randomPut([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]));
@@ -57,18 +67,10 @@
         return [out0[0],out1[0],out2[0],out2[1]];
     }
 
-
     function up(){
         reductLine(board)
     }
 
 </script>
-
-<button onclick="init()">Init</button>
-<button onclick="show()">↑</button>
-<button onclick="show()">↓</button>
-<button onclick="show()">→</button>
-<button onclick="show()">←</button>
-
 
 
