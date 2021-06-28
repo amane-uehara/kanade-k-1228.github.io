@@ -228,11 +228,51 @@ $$
 f(v_x,v_y,v_z) = \left(\frac{m}{2\pi k_B T}\right)^{3/2}\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
 $$
 
-速さの分布は
+### 速さの分布
 
 $$
 f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\left(-\frac{mv^2}{2k_BT}\right)
 $$
 
+$$
+v_{max} = \sqrt{\frac{2k_BT}{m}}
+$$
 
+$$
+\langle v \rangle = \int vf(v) dv = \sqrt{\frac{8k_BT}{\pi m}}
+$$
 
+$$
+\langle v^2 \rangle = \int v^2 f(v) dv = \frac{3}{2} \left( \frac{2k_BT}{m} \right)
+$$
+
+平均エネルギー
+
+$$
+\langle \varepsilon \rangle = \frac{1}{2} m \langle v^2 \rangle = 3 \left(\frac{1}{2}k_BT\right)
+$$
+
+### 実際の分子
+
+単元子分子の比熱 (J/mol)
+
+$$
+E = N \frac{3}{2} k_B T = \frac{3}{2} RT
+$$
+
+$$
+C_v = \frac{3}{2} R
+$$
+
+二原子分子は 並進運動 (xyz) + 回転運動 (2軸) + 伸縮振動 の自由度
+
+$$
+C_v = \frac{7}{2}
+$$
+
+| Cv  | 80K   | 100K  | 273K  | 2000K |
+| --- | ----- | ----- | ----- | ----- |
+| Ar  |       | 1.55R | 1.5R  | 1.51R |
+| N2  | 2.58R | 2.5R  | 2.93R | 3.29R |
+
+## 固体
