@@ -26,11 +26,11 @@
     }
 
     function randomPut(board){
-        let i, j, emptyList=[], ret=board;
-        for(i=0;i<4;i++) for(j=0;j<4;j++) if(board[i][j]===0) emptyList.push([i,j]);
+        let i, j, emptyList = [];
+        for(let i=0; i<4; i++) for(let j=0; j<4; j++) if(board[i][j]===0) emptyList.push([i,j]);
         const k = Math.floor(Math.random()*emptyList.length);
-        ret[emptyList[k][0]][emptyList[k][1]]=2;
-        return ret;
+        const ki = emptyList[k][0], kj = emptyList[k][1];
+        return board.map((line,i) => line.map((cell,j) => (i===ki && j===kj ? 2 : cell)));
     }
 
     function set(board){
