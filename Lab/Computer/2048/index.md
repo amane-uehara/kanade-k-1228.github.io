@@ -18,25 +18,22 @@
 
 
 <script>
-    let board = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
-
-    function randomPut(){
-        var i, j, count=[];
+    const emptyBoard = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+    function randomPut(board){
+        let i, j, emptyList=[], ret=board;
         for(i=0;i<4;i++){
             for(j=0;j<4;j++){
                 if(board[i][j]===0){
-                    count.push([i,j]);
-                }else{
-                    alert(""+i+j);
+                    emptyList.push([i,j]);
                 }
             }
         }
-
-        const k = Math.floor(Math.random()*count.length);
-        board[count[k][0]][count[k][1]]=2;
+        const k = Math.floor(Math.random()*emptyList.length);
+        ret[emptyList[k][0]][emptyList[k][1]]=2;
+        return ret;
     }
 
-    function show(){
+    function show(board){
         let i,j;
         for(i=1;i<=4;i++)for(j=1;j<=4;j++)if(board[i-1][j-1]){
             document.getElementById(""+i+j).innerHTML=board[i-1][j-1];
@@ -57,9 +54,9 @@
     }
 
     function init(){
-        board = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
-        randomPut();
-        show();
+        let board = emptyBoard;
+        board = randomPut(board);
+        show(board);
     }
 
     function up(){
