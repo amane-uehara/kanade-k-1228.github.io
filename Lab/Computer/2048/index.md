@@ -9,4 +9,5 @@
 
 
 
-<iframe src="./game.html"></iframe>
+<iframe src="./game.html" width="200px"height="200px"></iframe>
+
