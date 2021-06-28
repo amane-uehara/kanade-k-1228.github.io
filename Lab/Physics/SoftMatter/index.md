@@ -129,9 +129,42 @@ $$
 半透膜を押して溶液の体積を $dV$ 変化させる仕事は $\Pi dv$ なので
 
 $$
-\Pi = \frac{\partial G_{TOT}(V)}{\parallel V}
+\Pi = \frac{\partial G_{TOT}(V)}{\partial V}
 $$
 
 ## 格子模型
+
+
+
+
+$$
+\begin{aligned}
+\ln W 
+&= \ln N_{tot}! - \ln N_P! - \ln N_S! \\
+&= N_{tot} \ln N_{tot} - N_{tot} - N_P \ln N_P + N_P - N_S \ln N_S + N_S \\
+&= N_{tot} \ln N_{tot} - N_P \ln N_P - N_S \ln N_S
+\end{aligned}
+$$
+
+$$
+N_P=N_{tot}\phi,\quad N_S=N_{tot}(1-\phi)
+$$
+
+を代入して，
+
+$$
+\begin{aligned}
+\ln W 
+&= N_{tot} \ln N_{tot} - N_{tot}\phi \ln N_{tot}\phi - N_{tot}(1-\phi) \ln N_{tot}(1-\phi) \\
+&= N_{tot} (\ln N_{tot} - \phi \ln N_{tot} - \phi \ln \phi - (1-\phi) \ln N_{tot} - (1-\phi) \ln(1-\phi)) \\
+&= N_{tot} ( - \phi \ln \phi - (1-\phi) \ln(1-\phi)) 
+\end{aligned}
+$$
+
+よって
+$$
+-k_BT\ln W = k_B T N_{tot} ( \phi \ln \phi + (1-\phi) \ln(1-\phi)) 
+$$
+
 
 

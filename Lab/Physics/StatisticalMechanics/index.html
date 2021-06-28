@@ -257,6 +257,7 @@
 <li><a href="#配置エントロピー">配置エントロピー</a></li>
 </ul></li>
 <li><a href="#カノニカル分布カノニカルアンサンブル正準分布">カノニカル分布（カノニカルアンサンブル）（正準分布）</a></li>
+<li><a href="#マクスウェルボルツマンの速度分布">マクスウェル・ボルツマンの速度分布</a></li>
 </ul></nav>
        <h2 id="位相空間">位相空間</h2>
 <h3 id="gamma空間"><span class="math inline">\(\Gamma\)</span>空間</h3>
@@ -299,16 +300,16 @@ H(q,p)=\mathrm{Const}
 <p><span class="math inline">\(\Gamma\)</span>空間のある閉曲面内の代表点の集合を考える．これらの点が運動してもその点が存在する領域の面積は保存される．</p>
 <h3 id="ミクロカノニカル分布">ミクロカノニカル分布</h3>
 <p>エルゴード面上の一様な分布</p>
-<p>正確には微小な等エネルギー領域 <span class="math inline">\(E \leq H(q,p)\leq E+dE\)</span> で <span class="math inline">\(\rho(q,p)=\mathrm{Const}\)</span></p>
+<p>微小な等エネルギー領域 <span class="math inline">\(E \leq H(q,p)\leq E+dE\)</span> で <span class="math inline">\(\rho(q,p)=\mathrm{Const}\)</span></p>
 <h3 id="等確率の原理">等確率の原理</h3>
 <blockquote>
 <p>同じエネルギーを持つ微視的状態の出現確率は等しい</p>
 </blockquote>
-<p>ミクロカノニカル分布をこのように言い換えても（とりあえずたぶん）問題ない</p>
+<p>ミクロカノニカル分布はこう言い換えられる</p>
 <h2 id="ミクロカノニカルアンサンブル">ミクロカノニカルアンサンブル</h2>
 <p><span class="math inline">\(N\)</span> 個の粒子があり，全エネルギーが <span class="math inline">\(E\)</span> の系について，エネルギーが <span class="math inline">\(E_i\)</span> である状態 <span class="math inline">\(i\)</span> に存在している粒子の数 <span class="math inline">\(N_i\)</span> を知りたい．</p>
 <p><span class="math display">\[
-\sum_i N_i  = N \\
+\sum_i N_i  = N, \quad
 \sum_i E_i N_i  = E
 \]</span></p>
 <p>粒子ひとつひとつを区別した微視的状態は等確率に出現するが， 粒子を区別せずに巨視的状態として見たときは，分布に偏りが生ずる．</p>
@@ -353,7 +354,7 @@ N_i = A_i \exp(\beta E_i)
 <p><span class="math display">\[
 S=-k_B\sum_i P_i\ln P_i
 \]</span></p>
-<p>ミクロカノニカルの場合 <span class="math inline">\(P_i=1/W\)</span> なので，</p>
+<p>ミクロカノニカルの場合 <span class="math inline">\(P_i=1/W\)</span> なので，ボルツマンの関係式</p>
 <p><span class="math display">\[
 S=k_B\ln W
 \]</span></p>
@@ -363,7 +364,7 @@ S=k_B\ln W
 S = k_B (N\ln N - \sum_i N_i \ln N_i) = k_B N\ln N - k_B N \ln C + \frac{E}{T}
 \]</span></p>
 <h3 id="配置エントロピー">配置エントロピー</h3>
-<p><span class="math inline">\(\mathbb{N}\)</span> マスの空間（１マスの体積<span class="math inline">\(v\)</span>）に <span class="math inline">\(n\)</span> 個の分子を排他的に配置する．</p>
+<p><span class="math inline">\(N\)</span> マスの空間（１マスの体積 <span class="math inline">\(v\)</span> ）に <span class="math inline">\(n\)</span> 個の分子を排他的に配置する．</p>
 <p>微視的状態数 <span class="math display">\[
 W=\frac{N^n}{n!}
 \]</span></p>
@@ -389,6 +390,29 @@ W(E_A,E_B)=W_A(E_A)W_B(E-E_A)
 \]</span></p>
 <p><span class="math display">\[
 W(E)=\sum_{E_A+E_B=E}W(E_A,E_B)=\sum_{E_A}W_A(E_A)W_B(E-E_A)=W_A*W_B
+\]</span></p>
+<h2 id="マクスウェルボルツマンの速度分布">マクスウェル・ボルツマンの速度分布</h2>
+<p>理想気体の速度分布をミクロカノニカルアンサンブルで考える．</p>
+<p>速度 <span class="math inline">\(v=(v_x,v_y,v_z)\)</span> の分子のエネルギーは</p>
+<p><span class="math display">\[
+\varepsilon=\frac{1}{2}m(v_x^2+v_x^2+v_x^2)
+\]</span></p>
+<p>なので，分布は</p>
+<p><span class="math display">\[
+f(v_x,v_y,v_z) \propto \exp\left(-\frac{\varepsilon}{k_BT}\right)=\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
+\]</span></p>
+<p>正規化</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty} dv_x dv_y dv_z \exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\} = 1
+\]</span></p>
+<p>より係数が決まり，</p>
+<p><span class="math display">\[
+f(v_x,v_y,v_z) = \left(\frac{m}{2\pi k_B T}\right)^{3/2}\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
+\]</span></p>
+<p>速さの分布は</p>
+<p><span class="math display">\[
+f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\left(-\frac{mv^2}{2k_BT}\right)
 \]</span></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

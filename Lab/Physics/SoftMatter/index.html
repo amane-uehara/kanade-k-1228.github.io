@@ -362,9 +362,32 @@ M_1 = \frac{\phi_2-\phi}{\phi_2-\phi_1}M \quad M_2 = \frac{\phi-\phi_1}{\phi_2-\
 <p>全体の自由エネルギー <span class="math inline">\(G_{TOT}\)</span></p>
 <p>半透膜を押して溶液の体積を <span class="math inline">\(dV\)</span> 変化させる仕事は <span class="math inline">\(\Pi dv\)</span> なので</p>
 <p><span class="math display">\[
-\Pi = \frac{\partial G_{TOT}(V)}{\parallel V}
+\Pi = \frac{\partial G_{TOT}(V)}{\partial V}
 \]</span></p>
 <h2 id="格子模型">格子模型</h2>
+<p><span class="math display">\[
+\begin{aligned}
+\ln W 
+&amp;= \ln N_{tot}! - \ln N_P! - \ln N_S! \\
+&amp;= N_{tot} \ln N_{tot} - N_{tot} - N_P \ln N_P + N_P - N_S \ln N_S + N_S \\
+&amp;= N_{tot} \ln N_{tot} - N_P \ln N_P - N_S \ln N_S
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+N_P=N_{tot}\phi,\quad N_S=N_{tot}(1-\phi)
+\]</span></p>
+<p>を代入して，</p>
+<p><span class="math display">\[
+\begin{aligned}
+\ln W 
+&amp;= N_{tot} \ln N_{tot} - N_{tot}\phi \ln N_{tot}\phi - N_{tot}(1-\phi) \ln N_{tot}(1-\phi) \\
+&amp;= N_{tot} (\ln N_{tot} - \phi \ln N_{tot} - \phi \ln \phi - (1-\phi) \ln N_{tot} - (1-\phi) \ln(1-\phi)) \\
+&amp;= N_{tot} ( - \phi \ln \phi - (1-\phi) \ln(1-\phi)) 
+\end{aligned}
+\]</span></p>
+<p>よって <span class="math display">\[
+-k_BT\ln W = k_B T N_{tot} ( \phi \ln \phi + (1-\phi) \ln(1-\phi)) 
+\]</span></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

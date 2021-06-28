@@ -64,20 +64,20 @@ $\Gamma$空間のある閉曲面内の代表点の集合を考える．これら
 
 エルゴード面上の一様な分布
 
-正確には微小な等エネルギー領域 $E \leq H(q,p)\leq E+dE$ で $\rho(q,p)=\mathrm{Const}$
+微小な等エネルギー領域 $E \leq H(q,p)\leq E+dE$ で $\rho(q,p)=\mathrm{Const}$
 
 ### 等確率の原理
 
 > 同じエネルギーを持つ微視的状態の出現確率は等しい
 
-ミクロカノニカル分布をこのように言い換えても（とりあえずたぶん）問題ない
+ミクロカノニカル分布はこう言い換えられる
 
 ## ミクロカノニカルアンサンブル
 
 $N$ 個の粒子があり，全エネルギーが $E$ の系について，エネルギーが $E_i$ である状態 $i$ に存在している粒子の数 $N_i$ を知りたい．
 
 $$
-\sum_i N_i  = N \\
+\sum_i N_i  = N, \quad
 \sum_i E_i N_i  = E
 $$
 
@@ -117,11 +117,9 @@ $$
 
 とおくと，ラグランジュの未定乗数法により
 
-
 $$
 \frac{\partial F}{\partial N_i} = 0
 $$
-
 
 $$\begin{aligned}
 \partial F &= \partial \left( -\sum_i N_i \log N_i - \alpha \sum_i N_i - \beta \sum_i E_iN_i \right) \\
@@ -143,7 +141,7 @@ $$
 S=-k_B\sum_i P_i\ln P_i
 $$
 
-ミクロカノニカルの場合 $P_i=1/W$ なので，
+ミクロカノニカルの場合 $P_i=1/W$ なので，ボルツマンの関係式
 
 $$
 S=k_B\ln W
@@ -159,7 +157,7 @@ $$
 
 ### 配置エントロピー
 
-$\mathbb{N}$ マスの空間（１マスの体積$v$）に $n$ 個の分子を排他的に配置する．
+$N$ マスの空間（１マスの体積 $v$ ）に $n$ 個の分子を排他的に配置する．
 
 微視的状態数
 $$
@@ -199,3 +197,42 @@ $$
 $$
 W(E)=\sum_{E_A+E_B=E}W(E_A,E_B)=\sum_{E_A}W_A(E_A)W_B(E-E_A)=W_A*W_B
 $$
+
+
+## マクスウェル・ボルツマンの速度分布
+
+理想気体の速度分布をミクロカノニカルアンサンブルで考える．
+
+速度 $v=(v_x,v_y,v_z)$ の分子のエネルギーは 
+
+$$
+\varepsilon=\frac{1}{2}m(v_x^2+v_x^2+v_x^2)
+$$
+
+なので，分布は
+
+$$
+f(v_x,v_y,v_z) \propto \exp\left(-\frac{\varepsilon}{k_BT}\right)=\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
+$$
+
+正規化
+
+$$
+\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty} dv_x dv_y dv_z \exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\} = 1
+$$
+
+より係数が決まり，
+
+$$
+f(v_x,v_y,v_z) = \left(\frac{m}{2\pi k_B T}\right)^{3/2}\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
+$$
+
+速さの分布は
+
+$$
+f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\left(-\frac{mv^2}{2k_BT}\right)
+$$
+
+
+
