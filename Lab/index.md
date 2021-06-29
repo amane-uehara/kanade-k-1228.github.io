@@ -12,6 +12,10 @@
 
 [演算回路](./Computer/ArithmeticCircuit/)
 
+### リレーコンピュータ
+
+[リレーコンピュータ製作日記](./Computer/RelayComputerMaking/)
+
 [2048 on リレーコンピュータ](./Computer/2048/)
 
 ### Tips
