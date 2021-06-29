@@ -252,7 +252,9 @@
 <li><a href="#純粋関数モジュール">純粋関数モジュール</a></li>
 <li><a href="#内部状態を持つモジュール">内部状態を持つモジュール</a></li>
 </ul></li>
-<li><a href="#isa">ISA</a></li>
+<li><a href="#isa">ISA</a><ul>
+<li><a href="#疑似命令">疑似命令</a></li>
+</ul></li>
 <li><a href="#プログラムの例">プログラムの例</a><ul>
 <li><a href="#カップ麺タイマー">カップ麺タイマー</a></li>
 </ul></li>
@@ -265,8 +267,11 @@
 <p><img src="./DefaultArch.drawio.svg" /></p>
 <h2 id="拡張モジュール">拡張モジュール</h2>
 <h3 id="純粋関数モジュール">純粋関数モジュール</h3>
+<h4 id="ビットディスプレイ">ビットディスプレイ</h4>
+<p>ライトを並べただけ</p>
 <h3 id="内部状態を持つモジュール">内部状態を持つモジュール</h3>
-<p>DFFを持つモジュール</p>
+<h4 id="メモリ">メモリ</h4>
+<h4 id="入力スイッチ">入力スイッチ</h4>
 <h4 id="疑似乱数モジュール">疑似乱数モジュール</h4>
 <p>線形合同法</p>
 <p><span class="math display">\[
@@ -276,8 +281,7 @@ X&#39; = (AX + B) \% M
 <table>
 <thead>
 <tr class="header">
-<th>Function</th>
-<th>OP</th>
+<th></th>
 <th>OPR1</th>
 <th>OPR2</th>
 <th></th>
@@ -285,61 +289,65 @@ X&#39; = (AX + B) \% M
 </thead>
 <tbody>
 <tr class="odd">
-<td>NOP</td>
-<td>00</td>
-<td>0</td>
-<td>0</td>
-<td>何もしない</td>
-</tr>
-<tr class="even">
-<td>JMPIF</td>
-<td>01</td>
-<td>Condition</td>
-<td>JumpTo</td>
-<td>Condition（条件文）を満たす場合，JumpTo にジャンプする</td>
-</tr>
-<tr class="odd">
 <td>MOV</td>
-<td>10</td>
-<td>SourceAddr</td>
-<td>DirectionAddr</td>
-<td>メモリの SourceAddr 番地の値を DirectionAddr 番地に書き込む</td>
+<td>From</td>
+<td>To</td>
+<td>メモリの From 番地の値を To 番地に書き込む</td>
 </tr>
 <tr class="even">
 <td></td>
-<td></td>
-<td>0xFF</td>
+<td>Pointer</td>
 <td></td>
 <td>番地をポインタ指定</td>
 </tr>
 <tr class="odd">
 <td></td>
 <td></td>
-<td></td>
-<td>0xFF</td>
+<td>Pointer</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td></td>
-<td>0xFF</td>
-<td>0xFF</td>
+<td>Pointer</td>
+<td>Pointer</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>LOAD</td>
-<td>11</td>
 <td>Immidiate</td>
-<td>DirectionAddr</td>
+<td>To</td>
+<td>即値をアドレスに書き込む</td>
+</tr>
+<tr class="even">
 <td></td>
+<td></td>
+<td>Pointer</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>JMPIF</td>
+<td>Condition</td>
+<td>JumpTo</td>
+<td>Condition（条件文）を満たす場合，JumpTo にジャンプする</td>
 </tr>
 </tbody>
 </table>
+<h3 id="疑似命令">疑似命令</h3>
+<ul>
+<li>NOP = MOV 0 0</li>
+</ul>
 <h2 id="プログラムの例">プログラムの例</h2>
 <h3 id="カップ麺タイマー">カップ麺タイマー</h3>
 <p>10 Hz で動作させたとき，1 クロックが 0.1 秒なので，1800 クロックをカウントすれば，3分が測れる．</p>
 <h4 id="プログラム">プログラム</h4>
 <table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 82%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Label</th>
@@ -362,93 +370,30 @@ X&#39; = (AX + B) \% M
 <td>LOAD</td>
 <td>0xB4 = 180</td>
 <td>A</td>
-<td style="text-align: left;">A の値をディクリメントしてカウントする．</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align: left;">以下のループ 1 回あたりに 10 クロックかかるので，</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align: left;">ループが 180 周したときに 3 分になる．</td>
+<td style="text-align: left;">A の値をディクリメントしてカウントする．<br/>以下のループ 1 回あたりに 10 クロックかかるので<br/>ループが 180 周したときに 3 分になる</td>
 </tr>
 <tr class="odd">
 <td>COUNT</td>
 <td>MOV</td>
 <td>DEC</td>
 <td>A</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">A–;</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>NOP</td>
+<td>NOP × 8</td>
 <td></td>
 <td></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
 <td></td>
 <td>JMPIF</td>
 <td>A!=0</td>
 <td>COUNT</td>
 <td style="text-align: left;">A が 0 でなければ COUNT に戻る</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>END</td>
 <td>LOAD</td>
 <td>0xFF</td>
@@ -554,65 +499,15 @@ X&#39; = (AX + B) \% M
 </tr>
 <tr class="odd">
 <td></td>
-<td>NOP</td>
+<td>:</td>
 <td></td>
 <td></td>
-<td>0x05</td>
-<td>00</td>
-<td>0x00</td>
-<td>0x00</td>
+<td>:</td>
+<td>:</td>
+<td>:</td>
+<td>:</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td>0x06</td>
-<td>00</td>
-<td>0x00</td>
-<td>0x00</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td>0x07</td>
-<td>00</td>
-<td>0x00</td>
-<td>0x00</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td>0x08</td>
-<td>00</td>
-<td>0x00</td>
-<td>0x00</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td>0x09</td>
-<td>00</td>
-<td>0x00</td>
-<td>0x00</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>NOP</td>
-<td></td>
-<td></td>
-<td>0x0A</td>
-<td>00</td>
-<td>0x00</td>
-<td>0x00</td>
-</tr>
-<tr class="odd">
 <td></td>
 <td>NOP</td>
 <td></td>
@@ -622,7 +517,7 @@ X&#39; = (AX + B) \% M
 <td>0x00</td>
 <td>0x00</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>JMPIF</td>
 <td>A!=0</td>
@@ -632,7 +527,7 @@ X&#39; = (AX + B) \% M
 <td>0b00000011</td>
 <td>0x03</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>END</td>
 <td>LOAD</td>
 <td>0xFF</td>
