@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <meta name="author" content="@kanade_k_1228" />
-          <title>リレーコンピュータ製作日記 | Kanade's Website</title>
+          <title>リレーコンピュータ | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -175,7 +175,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "リレーコンピュータ製作日記",
+            "リレーコンピュータ",
           "_blank"
         );
       }
@@ -241,9 +241,389 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">リレーコンピュータ製作日記</h1>
+                <h1 style="margin: 0">リレーコンピュータ</h1>
                </header>
-       
+            <nav><ul>
+<li><a href="#アーキテクチャ">アーキテクチャ</a></li>
+<li><a href="#isa">ISA</a></li>
+<li><a href="#プログラムの例">プログラムの例</a><ul>
+<li><a href="#カップ麺タイマー">カップ麺タイマー</a></li>
+</ul></li>
+</ul></nav>
+       <h2 id="アーキテクチャ">アーキテクチャ</h2>
+<p><img src="./arch.drawio.svg" /></p>
+<h2 id="isa">ISA</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>OP</th>
+<th>OPR1</th>
+<th>OPR2</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NOP</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>何もしない</td>
+</tr>
+<tr class="even">
+<td>JMPIF</td>
+<td>01</td>
+<td>Condition</td>
+<td>JumpTo</td>
+<td>Condition（条件文）を満たす場合，JumpTo にジャンプする</td>
+</tr>
+<tr class="odd">
+<td>MOV</td>
+<td>10</td>
+<td>SourceAddr</td>
+<td>DirectionAddr</td>
+<td>メモリの SourceAddr 番地の値を DirectionAddr 番地に書き込む</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>0xFF</td>
+<td></td>
+<td>番地をポインタ指定</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>0xFF</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>0xFF</td>
+<td>0xFF</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>LOAD</td>
+<td>11</td>
+<td>Immidiate</td>
+<td>DirectionAddr</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="プログラムの例">プログラムの例</h2>
+<h3 id="カップ麺タイマー">カップ麺タイマー</h3>
+<p>10 Hz で動作させたとき，1 クロックが 0.1 秒なので，1800 クロックをカウントすれば，3分が測れる．</p>
+<h4 id="プログラム">プログラム</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Label</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INIT</td>
+<td>LOAD</td>
+<td>0x00</td>
+<td>Display</td>
+<td>画面をクリアする</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>LOAD</td>
+<td>0xB4 = 180</td>
+<td>A</td>
+<td>A の値をディクリメントしてカウントする．</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>以下のループ 1 回あたりに 10 クロックかかるので，</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ループが 180 周したときに 3 分になる．</td>
+</tr>
+<tr class="odd">
+<td>COUNT</td>
+<td>MOV</td>
+<td>DEC</td>
+<td>A</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>JMPIF</td>
+<td>A!=0</td>
+<td>COUNT</td>
+<td>A が 0 でなければ COUNT に戻る</td>
+</tr>
+<tr class="odd">
+<td>END</td>
+<td>LOAD</td>
+<td>0xFF</td>
+<td>Display</td>
+<td>画面（ここでは 8 個の LED）に値を出力する．</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ハードウェア構成">ハードウェア構成</h4>
+<p>必要なモジュールは</p>
+<ul>
+<li>メモリ</li>
+<li>ディクリメント</li>
+<li>ディスプレイ</li>
+</ul>
+<p>これをアドレス空間に配置する</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">アドレス</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">予約済</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">予約済</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">0x01</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x02</td>
+<td style="text-align: center;">DEC(A)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Display</td>
+<td style="text-align: center;">0x03</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="バイナリ">バイナリ</h4>
+<p>各モジュールのアドレスが決まったので，アセンブリをバイナリに変換していく．</p>
+<table>
+<thead>
+<tr class="header">
+<th>Label</th>
+<th></th>
+<th></th>
+<th></th>
+<th>行</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INIT</td>
+<td>LOAD</td>
+<td>0x00</td>
+<td>Display</td>
+<td>0x00</td>
+<td>11</td>
+<td>0x00</td>
+<td>0x03</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>LOAD</td>
+<td>0xB4</td>
+<td>A</td>
+<td>0x01</td>
+<td>11</td>
+<td>0xB4</td>
+<td>0x01</td>
+</tr>
+<tr class="odd">
+<td>COUNT</td>
+<td>MOV</td>
+<td>DEC</td>
+<td>A</td>
+<td>0x03</td>
+<td>10</td>
+<td>0x02</td>
+<td>0x01</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x04</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x05</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x06</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x07</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x08</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x09</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x0A</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>NOP</td>
+<td></td>
+<td></td>
+<td>0x0B</td>
+<td>00</td>
+<td>0x00</td>
+<td>0x00</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>JMPIF</td>
+<td>A!=0</td>
+<td>COUNT</td>
+<td>0x0C</td>
+<td>01</td>
+<td>0b00000011</td>
+<td>0x03</td>
+</tr>
+<tr class="odd">
+<td>END</td>
+<td>LOAD</td>
+<td>0xFF</td>
+<td>Display</td>
+<td>0x0D</td>
+<td>11</td>
+<td>0xFF</td>
+<td>0x03</td>
+</tr>
+</tbody>
+</table>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

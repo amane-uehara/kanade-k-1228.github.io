@@ -247,6 +247,131 @@
 <p><img src="./reduct.drawio.svg" /></p>
 <iframe src="./game.html" width="200px" height="250px">
 </iframe>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">label</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">INIT</td>
+<td>LOAD</td>
+<td>0x0F</td>
+<td>RAND_RANGE</td>
+<td>乱数器の範囲を 0~15 に設定</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">PUT</td>
+<td>MOV</td>
+<td>RAND</td>
+<td>POINTER</td>
+<td>空のマスに 2 を埋める</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td>JMPIF</td>
+<td>PUT</td>
+<td>[POINTER]!=0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">WAIT_BUTTON</td>
+<td>JMPIF</td>
+<td>UP</td>
+<td>BUTTON==UP</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td></td>
+<td>DOWN</td>
+<td>BUTTON==DOWN</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td></td>
+<td>LEFT</td>
+<td>BUTTON==LEFT</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td></td>
+<td>RIGHT</td>
+<td>BUTTON==RIGHT</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td>GOTO</td>
+<td>WAIT_BUTTON</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">UP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td>GOTO</td>
+<td>PUT</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">DOWN</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td>GOTO</td>
+<td>PUT</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">LEFT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td>GOTO</td>
+<td>PUT</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">RIGHT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td>GOTO</td>
+<td>PUT</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

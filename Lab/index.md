@@ -14,7 +14,7 @@
 
 ### リレーコンピュータ
 
-[リレーコンピュータ製作日記](./Computer/RelayComputerMaking/)
+[リレーコンピュータ](./Computer/RelayComputer/)
 
 [2048 on リレーコンピュータ](./Computer/2048/)
 
