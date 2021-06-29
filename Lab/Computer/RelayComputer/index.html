@@ -244,14 +244,34 @@
                 <h1 style="margin: 0">リレーコンピュータ</h1>
                </header>
             <nav><ul>
-<li><a href="#アーキテクチャ">アーキテクチャ</a></li>
+<li><a href="#アーキテクチャ">アーキテクチャ</a><ul>
+<li><a href="#最小アーキテクチャ">最小アーキテクチャ</a></li>
+<li><a href="#拡張アーキテクチャ">拡張アーキテクチャ</a></li>
+</ul></li>
+<li><a href="#拡張モジュール">拡張モジュール</a><ul>
+<li><a href="#純粋関数モジュール">純粋関数モジュール</a></li>
+<li><a href="#内部状態を持つモジュール">内部状態を持つモジュール</a></li>
+</ul></li>
 <li><a href="#isa">ISA</a></li>
 <li><a href="#プログラムの例">プログラムの例</a><ul>
 <li><a href="#カップ麺タイマー">カップ麺タイマー</a></li>
 </ul></li>
 </ul></nav>
        <h2 id="アーキテクチャ">アーキテクチャ</h2>
-<p><img src="./arch.drawio.svg" /></p>
+<h3 id="最小アーキテクチャ">最小アーキテクチャ</h3>
+<p><img src="./CoreArch.drawio.svg" /></p>
+<h3 id="拡張アーキテクチャ">拡張アーキテクチャ</h3>
+<p>アドレス空間に拡張モジュールを配置することで計算ができるようになります</p>
+<p><img src="./DefaultArch.drawio.svg" /></p>
+<h2 id="拡張モジュール">拡張モジュール</h2>
+<h3 id="純粋関数モジュール">純粋関数モジュール</h3>
+<h3 id="内部状態を持つモジュール">内部状態を持つモジュール</h3>
+<p>DFFを持つモジュール</p>
+<h4 id="疑似乱数モジュール">疑似乱数モジュール</h4>
+<p>線形合同法</p>
+<p><span class="math display">\[
+X&#39; = (AX + B) \% M
+\]</span></p>
 <h2 id="isa">ISA</h2>
 <table>
 <thead>
@@ -326,7 +346,7 @@
 <th></th>
 <th></th>
 <th></th>
-<th></th>
+<th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
@@ -335,105 +355,105 @@
 <td>LOAD</td>
 <td>0x00</td>
 <td>Display</td>
-<td>画面をクリアする</td>
+<td style="text-align: left;">画面をクリアする</td>
 </tr>
 <tr class="even">
 <td></td>
 <td>LOAD</td>
 <td>0xB4 = 180</td>
 <td>A</td>
-<td>A の値をディクリメントしてカウントする．</td>
+<td style="text-align: left;">A の値をディクリメントしてカウントする．</td>
 </tr>
 <tr class="odd">
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td>以下のループ 1 回あたりに 10 クロックかかるので，</td>
+<td style="text-align: left;">以下のループ 1 回あたりに 10 クロックかかるので，</td>
 </tr>
 <tr class="even">
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td>ループが 180 周したときに 3 分になる．</td>
+<td style="text-align: left;">ループが 180 周したときに 3 分になる．</td>
 </tr>
 <tr class="odd">
 <td>COUNT</td>
 <td>MOV</td>
 <td>DEC</td>
 <td>A</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>NOP</td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>JMPIF</td>
 <td>A!=0</td>
 <td>COUNT</td>
-<td>A が 0 でなければ COUNT に戻る</td>
+<td style="text-align: left;">A が 0 でなければ COUNT に戻る</td>
 </tr>
 <tr class="odd">
 <td>END</td>
 <td>LOAD</td>
 <td>0xFF</td>
 <td>Display</td>
-<td>画面（ここでは 8 個の LED）に値を出力する．</td>
+<td style="text-align: left;">画面（ここでは 8 個の LED）に値を出力する．</td>
 </tr>
 </tbody>
 </table>
