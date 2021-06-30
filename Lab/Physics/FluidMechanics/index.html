@@ -253,8 +253,9 @@
 <li><a href="#ナビエストークス方程式">ナビエストークス方程式</a></li>
 <li><a href="#π定理">π定理</a></li>
 </ul></li>
-<li><a href="#解析">解析</a><ul>
+<li><a href="#厳密解">厳密解</a><ul>
 <li><a href="#円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</a></li>
+<li><a href="#例血管の分岐murrayの法則">例：血管の分岐（Murrayの法則）</a></li>
 <li><a href="#平行平板">平行平板</a></li>
 </ul></li>
 <li><a href="#非定常">非定常</a></li>
@@ -381,7 +382,7 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 </table>
 <p><span class="math inline">\(k=\mathrm{rank}\,M\)</span></p>
 <p>無次元数の数 <span class="math inline">\(=\mathrm{null}\,M\)</span></p>
-<h2 id="解析">解析</h2>
+<h2 id="厳密解">厳密解</h2>
 <h4 id="二次元">二次元</h4>
 <p><span class="math display">\[\begin{aligned}
 \pd[u]{x} + \pd[v]{y} &amp;= 0 \\
@@ -390,10 +391,14 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \end{aligned}
 \]</span></p>
 <h4 id="円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></h4>
-<p>$$ \begin{aligned}  (ru_r) +   u_+  u_z &amp;= 0 \</p>
-<p>(  + u_r  +   -  + u_z  ) &amp;= - +  -   +  ] + g_r \</p>
-<p>(  + u_r  +   +  + u_z  ) &amp;= - +  +   +  ] + g_\</p>
-<p>(  + u_r  +   + u_z ) &amp;= - +  +  ] + g_z \end{aligned} $$</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{\theta} u_\theta + \pd{z} u_z &amp;= 0 \\
+\rho \left( \pd[u_r]{t} + u_r \pd[u_r]{r} + \frac{u_\theta}{r} \pd[u_r]{\theta} - \frac{u_\theta^2}{r} + u_z \pd[u_r]{z} \right) &amp;= -\pd[p]{r} + \mu \left[ \pd{r} \left(\frac{1}{r}\pd{r}(ru_r)\right) + \frac{1}{r^2}\pdd[u_r]{\theta} - \frac{2}{r^2} \pd[u_\theta]{\theta} + \pdd[u_r]{z} \right] + \rho g_r \\
+\rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) &amp;= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
+\rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &amp;= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
+\end{aligned}
+\]</span></p>
 <h3 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h3>
 <p>半径 <span class="math inline">\(R\)</span> の円管</p>
 <p>軸対称 <span class="math inline">\(\partial_\theta=0, u_\theta=0\)</span>, 発達流 <span class="math inline">\(\partial_z=0\)</span>, 定常 <span class="math inline">\(\pd{t}=0\)</span>, 円管表面で <span class="math inline">\(u=0\)</span></p>
@@ -412,8 +417,25 @@ u_z &amp;= \frac{1}{4\mu} \d[p]{z} r^2 + C_1 \ln r + C_2 \\
 \]</span></p>
 <p><span class="math inline">\(u_x(r)\)</span> は有限なので <span class="math inline">\(C_1=0\)</span> ，また円管表面で <span class="math inline">\(u_z(R)=0\)</span> より</p>
 <p><span class="math display">\[
-u_z(r) = -\frac{1}{4\mu} \d[p]{z} (R^2-r^2)
+u_z(r) = \frac{1}{4\mu} \left(-\d[p]{z}\right) (R^2-r^2)
 \]</span></p>
+<p>中心流速は</p>
+<p><span class="math display">\[
+u_0 = u(0) = \frac{1}{4\mu} \left(-\d[p]{z}\right) R^2
+\]</span></p>
+<p>流量は</p>
+<p><span class="math display">\[
+Q = \int_0^R 2 \pi r u(r) dr = \frac{\pi}{8\mu} \left(-\d[p]{z}\right) R^4
+\]</span></p>
+<p>平均流速は</p>
+<p><span class="math display">\[
+U = \frac{Q}{\pi R^2} = \frac{u_0}{2}
+\]</span></p>
+<p>表面の摩擦応力は</p>
+<p><span class="math display">\[
+\tau = \frac{1}{2} \left(-\d[p]{z}\right) R
+\]</span></p>
+<h3 id="例血管の分岐murrayの法則">例：血管の分岐（Murrayの法則）</h3>
 <h3 id="平行平板">平行平板</h3>
 <h2 id="非定常">非定常</h2>
 <p><span class="math display">\[
