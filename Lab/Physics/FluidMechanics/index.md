@@ -2,10 +2,16 @@
 %
 %
 
+$$
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+$$
+
 ## 基礎方程式
 ### 流体の記述
 - 速度 $u_i$
-  - 変形速度 $d_{ij} := \partial_j u_i$ → 歪み速度 $S_{ij}:=d_{(ij)}$ + 回転速度 $\Omega_{ij}:=d_{[ij]}$
+  - 変形速度 $d_{ij} := \pd{x_j} u_i$ → 歪み速度 $S_{ij}:=d_{(ij)}$ + 回転速度 $\Omega_{ij}:=d_{[ij]}$
   - 渦度 $\omega_k := \epsilon_{ijk}d_{ij}$
 - 応力 $\sigma_{ij}$
 - 密度 $\rho$
@@ -23,18 +29,18 @@
 
 ### 質量保存則（連続の式）
 $$
-\partial_t\rho+\partial_i(\rho u_i)=0
+\pd{t}\rho+\pd{x_i}(\rho u_i)=0
 $$
 
-非圧縮
+#### 非圧縮
 $$
-\partial_iu_i=0
+\pd{x_i}u_i=0
 $$
 
 ### 運動量保存則（運動方程式）
 
 $$
-\partial_t(\rho u_i)+\partial_j(\rho u_i u_j)=\partial_i\sigma_{ii}+\rho g_i
+\pd{t}(\rho u_i) + \pd{x_j}(\rho u_i u_j)=\pd{x_i}\sigma_{ii}+\rho g_i
 $$
 
 ### 構成則
@@ -70,22 +76,25 @@ $$
 ### ナビエストークス方程式
 
 $$
-\partial_t(\rho u_i)+\partial_j(\rho u_iu_j)=-\partial_i\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\partial_j(\partial_ju_i+\partial_iu_j)+\rho g_i
+
+\pd{t}(\rho u_i)+\pd{x_j}(\rho u_iu_j)=-\pd{x_i}\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\pd{x_j}\left(\pd{x_j}u_i+\pd{x_i}u_j\right)+\rho g_i
 $$
 
-非圧縮
+#### 非圧縮
 
 $$
-\rho ( \partial_t u_i + u_j \partial_j u_i ) = -\partial_i p + \mu \partial_j \partial_j u_i + \rho g_i
+\rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
 $$
 
-無次元化 $D,V,L$ 
+#### 無次元化 $D,V,L$ 
 
 $$
-\rho \partial_t u_i + \rho u_j \partial_j u_i = -\partial_i p + \frac{\mu}{DVL} \partial_j \partial_j u_i + \rho g_i
+\rho \pd{t} u_i + \rho u_j \pd{x_j} u_i = -\pd{x_i} p + \frac{\mu}{DVL} \pd{x_j} \pd{x_j} u_i + \rho g_i
 $$
 
 レイノルズ数 $Re:=\frac{\rho V L}{\mu}$ と外力場 $g_i$ が同じなら相似な流れになる．
+
+微分方程式の解が同じになる．
 
 ### π定理
 
@@ -104,45 +113,66 @@ $k=\mathrm{rank}\,M$
 ## 解析
 #### 二次元
 $$\begin{aligned}
-\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} &= 0 \\
-\rho \left( \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} \right) &= -\frac{\partial p}{\partial x} + \mu \left(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}\right) + \rho g_x \\
-\rho \left( \frac{\partial v}{\partial t} + u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} \right) &= -\frac{\partial p}{\partial y} + \mu \left(\frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2}\right) + \rho g_y 
+\pd[u]{x} + \pd[v]{y} &= 0 \\
+\rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
+\rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y 
 \end{aligned}
 $$
 
-#### 円筒 $(r,\theta,z)$
-$$
-\frac{1}{r}\frac{\partial}{\partial r}(ru_r) + \frac{1}{r}\frac{\partial }{\partial \theta} u_\theta + \frac{\partial}{\partial z} u_z = 0
-$$
+#### 円筒座標 $(r,\theta,z)$
 $$
 \begin{aligned}
-\rho\left( \frac{\partial u_r}{\partial t} + u_r \frac{\partial u_r}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_r}{\partial \theta} - \frac{u_\theta^2}{r} + u_z\frac{\partial u_r}{\partial z} \right) =&
- -\frac{\partial p}{\partial r} + \mu \left[ \frac{\partial}{\partial r} \left(\frac{1}{r}\frac{\partial}{\partial r}(ru_r)\right) + \frac{1}{r^2}\frac{\partial^2 u_r}{\partial \theta^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial\theta} + \frac{\partial^2 u_r}{\partial z^2} \right] + \rho g_r \\
-\rho\left( \frac{\partial u_\theta}{\partial t} + u_r \frac{\partial u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial \theta} + \frac{u_ru_\theta}{r} + u_z\frac{\partial u_\theta}{\partial z} \right) =&
- -\frac{1}{r}\frac{\partial p}{\partial\theta} + \mu \left[ \frac{\partial}{\partial r} \left(\frac{1}{r}\frac{\partial}{\partial r}(ru_\theta)\right) + \frac{1}{r^2}\frac{\partial^2 u_\theta}{\partial \theta^2} + \frac{2}{r^2}\frac{\partial u_r}{\partial\theta} + \frac{\partial^2 u_\theta}{\partial z^2} \right] + \rho g_\theta \\
-\rho\left( \frac{\partial u_z}{\partial t} + u_r \frac{\partial u_z}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_z}{\partial \theta} + u_z\frac{\partial u_z}{\partial z} \right) =&
- -\frac{\partial p}{\partial z} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial}{\partial r}u_z\right) + \frac{1}{r^2}\frac{\partial^2 u_z}{\partial \theta^2} + \frac{\partial^2 u_z}{\partial z^2} \right] + \rho g_z
+\frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{\theta} u_\theta + \pd{z} u_z &= 0 \\
+
+\rho \left( \pd[u_r]{t} + u_r \pd[u_r]{r} + \frac{u_\theta}{r} \pd[u_r]{\theta} - \frac{u_\theta^2}{r} + u_z \pd[u_r]{z} \right) 
+&= -\pd[p]{r} + \mu \left[ \pd{r} \left(\frac{1}{r}\pd{r}(ru_r)\right) + \frac{1}{r^2}\pdd[u_r]{\theta} - \frac{2}{r^2} \pd[u_\theta]{\theta} + \pdd[u_r]{z} \right] + \rho g_r \\
+
+\rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) 
+&= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
+
+\rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) 
+&= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
 $$
 
+### 円管内層流（ポアズイユ流れ）
 
-## 円管内層流
+半径 $R$ の円管
 
-軸対称 $\partial_\theta=0, u_\theta=0$, 発達流 $\partial_z=0$, 定常 $\partial_t=0$, 円管表面で $u=0$
+軸対称 $\partial_\theta=0, u_\theta=0$, 発達流 $\partial_z=0$, 定常 $\pd{t}=0$, 円管表面で $u=0$
+
+NS方程式に条件を適用して，
 
 $$
-\frac{dp}{dz} = \mu\frac{1}{r}\frac{d}{dr}\left(r\frac{du_z}{dr}\right)
+\d[p]{z} = \mu\frac{1}{r} \d{r} \left( r \d[u_z]{r} \right)
+$$
+
+これを解く
+
+$$
+\begin{aligned}
+\d{r} \left( r \d[u_z]{r} \right) &= \frac{1}{\mu} \d[p]{z} r \\
+r \d[u_z]{r} &= \frac{1}{2\mu} \d[p]{z} r^2 + C_1 \\
+\d[u_z]{r} &= \frac{1}{2\mu} \d[p]{z} r + C_1 r^{-1} \\
+u_z &= \frac{1}{4\mu} \d[p]{z} r^2 + C_1 \ln r + C_2 \\
+\end{aligned}
+$$
+
+$u_x(r)$ は有限なので $C_1=0$ ，また円管表面で $u_z(R)=0$ より
+
+$$
+u_z(r) = -\frac{1}{4\mu} \d[p]{z} (R^2-r^2)
 $$
 
 ### 平行平板
 
 
-## 境界層
+
 
 ## 非定常
 
 $$
-\partial_t u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
+\pd{t} u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
 \partial_x u + \partial_y v = 0
 $$
 
@@ -161,7 +191,7 @@ $$
 解
 
 $$
-\partial_tu=\mu\partial_y^2u
+\pd{t}u=\mu\partial_y^2u
 $$
 
 境界層
@@ -174,7 +204,7 @@ $$
 ### 運動の記述
 
 - 速度場 $u$
-- 速度勾配テンソル $d_{ij} := \partial_ju_i$
+- 速度勾配テンソル $d_{ij} := \pd{x_j}u_i$
 - 変形速度テンソル $s_{ij} := d_{(ij)}$
   - 軸変形
     - 対称テンソルなので主軸が存在する
