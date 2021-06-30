@@ -4,6 +4,7 @@
 
 $$
 \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 $$
@@ -76,11 +77,10 @@ $$
 ### ナビエストークス方程式
 
 $$
-
 \pd{t}(\rho u_i)+\pd{x_j}(\rho u_iu_j)=-\pd{x_i}\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\pd{x_j}\left(\pd{x_j}u_i+\pd{x_i}u_j\right)+\rho g_i
 $$
 
-#### 非圧縮
+#### 非圧縮非圧縮
 
 $$
 \rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
@@ -110,8 +110,7 @@ $k=\mathrm{rank}\,M$
 
 無次元数の数 $=\mathrm{null}\,M$
 
-## 厳密解
-#### 二次元
+### 二次元
 $$\begin{aligned}
 \pd[u]{x} + \pd[v]{y} &= 0 \\
 \rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
@@ -119,7 +118,7 @@ $$\begin{aligned}
 \end{aligned}
 $$
 
-#### 円筒座標 $(r,\theta,z)$
+### 円筒座標 $(r,\theta,z)$
 $$
 \begin{aligned}
 \frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{\theta} u_\theta + \pd{z} u_z &= 0 \\
@@ -129,7 +128,35 @@ $$
 \end{aligned}
 $$
 
-### 円管内層流（ポアズイユ流れ）
+
+## 渦度・流れ関数
+
+二次元非圧縮流非粘性流れの互換表現
+
+### 渦度
+
+$$
+\zeta = \mathrm{rot} u
+$$
+
+### 流れ関数
+
+$$
+u = \pd[\psi]{y} \quad v = -\pd[\psi]{x} 
+$$
+
+### 渦度（輸送）方程式
+
+$$
+\nabla^2 \psi = - \zeta
+$$
+
+$$
+\pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
+$$
+
+
+## 円管内層流（ポアズイユ流れ）
 
 半径 $R$ の円管
 
@@ -182,12 +209,77 @@ $$
 \tau = \frac{1}{2} \left(-\d[p]{z}\right) R
 $$
 
-### 例：血管の分岐（Murrayの法則）
+円管の圧力損失は
+
+$$
+\Delta p = \left(-\d[p]{z}\right) L = \frac{8 \mu L}{R^2} U
+$$
+
+### 血管の分岐（Murrayの法則）
+
+評価関数を
+
+$$
+J = Q \Delta P + K \frac{\pi d^2}{4} L
+$$
+
+### 熱伝達
 
 
+## 平行平板
 
-### 平行平板
+間隔 $H$, すべり速度 $U$
 
+発達流，定常
+
+$$
+0 = - \d[p]{x} + \mu \dd[u]{y}
+$$
+
+一般解は
+
+$$
+u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y^2 + C_1 y + C_2
+$$
+
+底板は固定 $u(0)=0$， 上板は速度 $U$ ですべっているので $u(H)=U$
+
+$$
+u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y(y-H) + \frac{U}{H} y
+$$
+
+### 穴あき平板
+
+底板平板から一定の湧き出し $V_0$ ，上板から同じ吸い込みがあるとき，
+
+$$
+\rho V_0 \d[u]{y} = - \d[p]{x} + \mu \dd[u]{y}
+$$
+
+$\alpha:=-\frac{\rho V_0}{\mu}, \beta:=-\frac{1}{\mu}\d[p]{x}$ とすると，
+
+$$
+\dd[u]{y} + \alpha \d[u]{y} + \beta = 0
+$$
+
+一般解は
+
+$$
+u(y) = C_1 \exp(-\alpha y) + C_2 - \frac{\beta}{\alpha}y
+$$
+
+境界条件 $u(0)=0$ $u(H)=U$ より
+
+$$
+u(y) = \left( U + \frac{\beta}{\alpha} H \right) \frac{\exp(-\alpha y)-1}{\exp(-\alpha H)-1} - \frac{\beta}{\alpha}y
+$$
+
+
+$$
+u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d[p]{x} y
+$$
+
+## 境界層
 
 
 
@@ -221,6 +313,8 @@ $$
 $$
 \delta(t)=\sqrt{\mu t}
 $$
+
+
 
 ## 流体の運動学
 ### 運動の記述
@@ -266,6 +360,7 @@ $$
 剛体回転する円柱
 
 
+## ポテンシャル流
 
 
 
