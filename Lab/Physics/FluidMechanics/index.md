@@ -255,6 +255,8 @@ $$
 
 ### 穴あき平板
 
+![](ParallelPlateWithHole.drawio.svg)
+
 底板平板から一定の湧き出し $V_0$ ，上板から同じ吸い込みがあるとき，
 
 $$
@@ -285,6 +287,9 @@ u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\r
 $$
 
 ## 境界層
+
+![](BoundaryLayer.drawio.svg)
+
 
 
 
