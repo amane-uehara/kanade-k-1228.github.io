@@ -253,11 +253,10 @@
 <li><a href="#ナビエストークス方程式">ナビエストークス方程式</a></li>
 <li><a href="#π定理">π定理</a></li>
 </ul></li>
-<li><a href="#解析">解析</a></li>
-<li><a href="#円管内層流">円管内層流</a><ul>
+<li><a href="#解析">解析</a><ul>
+<li><a href="#円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</a></li>
 <li><a href="#平行平板">平行平板</a></li>
 </ul></li>
-<li><a href="#境界層">境界層</a></li>
 <li><a href="#非定常">非定常</a></li>
 <li><a href="#流体の運動学">流体の運動学</a><ul>
 <li><a href="#運動の記述">運動の記述</a></li>
@@ -265,12 +264,17 @@
 <li><a href="#ランキン渦">ランキン渦</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="基礎方程式">基礎方程式</h2>
+       <p><span class="math display">\[
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\]</span></p>
+<h2 id="基礎方程式">基礎方程式</h2>
 <h3 id="流体の記述">流体の記述</h3>
 <ul>
 <li>速度 <span class="math inline">\(u_i\)</span>
 <ul>
-<li>変形速度 <span class="math inline">\(d_{ij} := \partial_j u_i\)</span> → 歪み速度 <span class="math inline">\(S_{ij}:=d_{(ij)}\)</span> + 回転速度 <span class="math inline">\(\Omega_{ij}:=d_{[ij]}\)</span></li>
+<li>変形速度 <span class="math inline">\(d_{ij} := \pd{x_j} u_i\)</span> → 歪み速度 <span class="math inline">\(S_{ij}:=d_{(ij)}\)</span> + 回転速度 <span class="math inline">\(\Omega_{ij}:=d_{[ij]}\)</span></li>
 <li>渦度 <span class="math inline">\(\omega_k := \epsilon_{ijk}d_{ij}\)</span></li>
 </ul></li>
 <li>応力 <span class="math inline">\(\sigma_{ij}\)</span></li>
@@ -296,14 +300,15 @@
 </ul>
 <h3 id="質量保存則連続の式">質量保存則（連続の式）</h3>
 <p><span class="math display">\[
-\partial_t\rho+\partial_i(\rho u_i)=0
+\pd{t}\rho+\pd{x_i}(\rho u_i)=0
 \]</span></p>
-<p>非圧縮 <span class="math display">\[
-\partial_iu_i=0
+<h4 id="非圧縮">非圧縮</h4>
+<p><span class="math display">\[
+\pd{x_i}u_i=0
 \]</span></p>
 <h3 id="運動量保存則運動方程式">運動量保存則（運動方程式）</h3>
 <p><span class="math display">\[
-\partial_t(\rho u_i)+\partial_j(\rho u_i u_j)=\partial_i\sigma_{ii}+\rho g_i
+\pd{t}(\rho u_i) + \pd{x_j}(\rho u_i u_j)=\pd{x_i}\sigma_{ii}+\rho g_i
 \]</span></p>
 <h3 id="構成則">構成則</h3>
 <p>構成方程式の一般式</p>
@@ -330,18 +335,18 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \sigma_{ij} = \left( -p + \frac{2}{3} \mu S_{kk} \right) \delta_{ij} + 2 \mu S_{ij}
 \]</span></p>
 <h3 id="ナビエストークス方程式">ナビエストークス方程式</h3>
+<p>$$</p>
+<p>(u_i)+(u_iu_j)=-(p+_ku_k)+(u_i+u_j)+g_i $$</p>
+<h4 id="非圧縮-1">非圧縮</h4>
 <p><span class="math display">\[
-\partial_t(\rho u_i)+\partial_j(\rho u_iu_j)=-\partial_i\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\partial_j(\partial_ju_i+\partial_iu_j)+\rho g_i
+\rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
 \]</span></p>
-<p>非圧縮</p>
+<h4 id="無次元化-dvl">無次元化 <span class="math inline">\(D,V,L\)</span></h4>
 <p><span class="math display">\[
-\rho ( \partial_t u_i + u_j \partial_j u_i ) = -\partial_i p + \mu \partial_j \partial_j u_i + \rho g_i
-\]</span></p>
-<p>無次元化 <span class="math inline">\(D,V,L\)</span></p>
-<p><span class="math display">\[
-\rho \partial_t u_i + \rho u_j \partial_j u_i = -\partial_i p + \frac{\mu}{DVL} \partial_j \partial_j u_i + \rho g_i
+\rho \pd{t} u_i + \rho u_j \pd{x_j} u_i = -\pd{x_i} p + \frac{\mu}{DVL} \pd{x_j} \pd{x_j} u_i + \rho g_i
 \]</span></p>
 <p>レイノルズ数 <span class="math inline">\(Re:=\frac{\rho V L}{\mu}\)</span> と外力場 <span class="math inline">\(g_i\)</span> が同じなら相似な流れになる．</p>
+<p>微分方程式の解が同じになる．</p>
 <h3 id="π定理">π定理</h3>
 <p>法則が <span class="math inline">\(n\)</span> 個の変数 <span class="math inline">\((q_1,q_2,,,q_n)\)</span> で表現されていて，変数が <span class="math inline">\(k\)</span> 個の独立な基本単位で表されるとき，</p>
 <table>
@@ -379,34 +384,40 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 <h2 id="解析">解析</h2>
 <h4 id="二次元">二次元</h4>
 <p><span class="math display">\[\begin{aligned}
-\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} &amp;= 0 \\
-\rho \left( \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} \right) &amp;= -\frac{\partial p}{\partial x} + \mu \left(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}\right) + \rho g_x \\
-\rho \left( \frac{\partial v}{\partial t} + u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} \right) &amp;= -\frac{\partial p}{\partial y} + \mu \left(\frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2}\right) + \rho g_y 
+\pd[u]{x} + \pd[v]{y} &amp;= 0 \\
+\rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &amp;= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
+\rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &amp;= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y 
 \end{aligned}
 \]</span></p>
-<h4 id="円筒-rthetaz">円筒 <span class="math inline">\((r,\theta,z)\)</span></h4>
+<h4 id="円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></h4>
+<p>$$ \begin{aligned}  (ru_r) +   u_+  u_z &amp;= 0 \</p>
+<p>(  + u_r  +   -  + u_z  ) &amp;= - +  -   +  ] + g_r \</p>
+<p>(  + u_r  +   +  + u_z  ) &amp;= - +  +   +  ] + g_\</p>
+<p>(  + u_r  +   + u_z ) &amp;= - +  +  ] + g_z \end{aligned} $$</p>
+<h3 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h3>
+<p>半径 <span class="math inline">\(R\)</span> の円管</p>
+<p>軸対称 <span class="math inline">\(\partial_\theta=0, u_\theta=0\)</span>, 発達流 <span class="math inline">\(\partial_z=0\)</span>, 定常 <span class="math inline">\(\pd{t}=0\)</span>, 円管表面で <span class="math inline">\(u=0\)</span></p>
+<p>NS方程式に条件を適用して，</p>
 <p><span class="math display">\[
-\frac{1}{r}\frac{\partial}{\partial r}(ru_r) + \frac{1}{r}\frac{\partial }{\partial \theta} u_\theta + \frac{\partial}{\partial z} u_z = 0
-\]</span> <span class="math display">\[
+\d[p]{z} = \mu\frac{1}{r} \d{r} \left( r \d[u_z]{r} \right)
+\]</span></p>
+<p>これを解く</p>
+<p><span class="math display">\[
 \begin{aligned}
-\rho\left( \frac{\partial u_r}{\partial t} + u_r \frac{\partial u_r}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_r}{\partial \theta} - \frac{u_\theta^2}{r} + u_z\frac{\partial u_r}{\partial z} \right) =&amp;
- -\frac{\partial p}{\partial r} + \mu \left[ \frac{\partial}{\partial r} \left(\frac{1}{r}\frac{\partial}{\partial r}(ru_r)\right) + \frac{1}{r^2}\frac{\partial^2 u_r}{\partial \theta^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial\theta} + \frac{\partial^2 u_r}{\partial z^2} \right] + \rho g_r \\
-\rho\left( \frac{\partial u_\theta}{\partial t} + u_r \frac{\partial u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial \theta} + \frac{u_ru_\theta}{r} + u_z\frac{\partial u_\theta}{\partial z} \right) =&amp;
- -\frac{1}{r}\frac{\partial p}{\partial\theta} + \mu \left[ \frac{\partial}{\partial r} \left(\frac{1}{r}\frac{\partial}{\partial r}(ru_\theta)\right) + \frac{1}{r^2}\frac{\partial^2 u_\theta}{\partial \theta^2} + \frac{2}{r^2}\frac{\partial u_r}{\partial\theta} + \frac{\partial^2 u_\theta}{\partial z^2} \right] + \rho g_\theta \\
-\rho\left( \frac{\partial u_z}{\partial t} + u_r \frac{\partial u_z}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_z}{\partial \theta} + u_z\frac{\partial u_z}{\partial z} \right) =&amp;
- -\frac{\partial p}{\partial z} + \mu \left[ \frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial}{\partial r}u_z\right) + \frac{1}{r^2}\frac{\partial^2 u_z}{\partial \theta^2} + \frac{\partial^2 u_z}{\partial z^2} \right] + \rho g_z
+\d{r} \left( r \d[u_z]{r} \right) &amp;= \frac{1}{\mu} \d[p]{z} r \\
+r \d[u_z]{r} &amp;= \frac{1}{2\mu} \d[p]{z} r^2 + C_1 \\
+\d[u_z]{r} &amp;= \frac{1}{2\mu} \d[p]{z} r + C_1 r^{-1} \\
+u_z &amp;= \frac{1}{4\mu} \d[p]{z} r^2 + C_1 \ln r + C_2 \\
 \end{aligned}
 \]</span></p>
-<h2 id="円管内層流">円管内層流</h2>
-<p>軸対称 <span class="math inline">\(\partial_\theta=0, u_\theta=0\)</span>, 発達流 <span class="math inline">\(\partial_z=0\)</span>, 定常 <span class="math inline">\(\partial_t=0\)</span>, 円管表面で <span class="math inline">\(u=0\)</span></p>
+<p><span class="math inline">\(u_x(r)\)</span> は有限なので <span class="math inline">\(C_1=0\)</span> ，また円管表面で <span class="math inline">\(u_z(R)=0\)</span> より</p>
 <p><span class="math display">\[
-\frac{dp}{dz} = \mu\frac{1}{r}\frac{d}{dr}\left(r\frac{du_z}{dr}\right)
+u_z(r) = -\frac{1}{4\mu} \d[p]{z} (R^2-r^2)
 \]</span></p>
 <h3 id="平行平板">平行平板</h3>
-<h2 id="境界層">境界層</h2>
 <h2 id="非定常">非定常</h2>
 <p><span class="math display">\[
-\partial_t u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
+\pd{t} u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
 \partial_x u + \partial_y v = 0
 \]</span></p>
 <p>条件</p>
@@ -421,7 +432,7 @@ u(x,\infty,t)&amp;=0\\
 \]</span></p>
 <p>解</p>
 <p><span class="math display">\[
-\partial_tu=\mu\partial_y^2u
+\pd{t}u=\mu\partial_y^2u
 \]</span></p>
 <p>境界層</p>
 <p><span class="math display">\[
@@ -431,7 +442,7 @@ u(x,\infty,t)&amp;=0\\
 <h3 id="運動の記述">運動の記述</h3>
 <ul>
 <li>速度場 <span class="math inline">\(u\)</span></li>
-<li>速度勾配テンソル <span class="math inline">\(d_{ij} := \partial_ju_i\)</span></li>
+<li>速度勾配テンソル <span class="math inline">\(d_{ij} := \pd{x_j}u_i\)</span></li>
 <li>変形速度テンソル <span class="math inline">\(s_{ij} := d_{(ij)}\)</span>
 <ul>
 <li>軸変形
