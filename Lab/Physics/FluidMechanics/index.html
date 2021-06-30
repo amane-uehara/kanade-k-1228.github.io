@@ -252,21 +252,33 @@
 <li><a href="#構成則">構成則</a></li>
 <li><a href="#ナビエストークス方程式">ナビエストークス方程式</a></li>
 <li><a href="#π定理">π定理</a></li>
+<li><a href="#二次元">二次元</a></li>
+<li><a href="#円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></a></li>
 </ul></li>
-<li><a href="#厳密解">厳密解</a><ul>
-<li><a href="#円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</a></li>
-<li><a href="#例血管の分岐murrayの法則">例：血管の分岐（Murrayの法則）</a></li>
-<li><a href="#平行平板">平行平板</a></li>
+<li><a href="#渦度流れ関数">渦度・流れ関数</a><ul>
+<li><a href="#渦度">渦度</a></li>
+<li><a href="#流れ関数">流れ関数</a></li>
+<li><a href="#渦度輸送方程式">渦度（輸送）方程式</a></li>
 </ul></li>
+<li><a href="#円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</a><ul>
+<li><a href="#血管の分岐murrayの法則">血管の分岐（Murrayの法則）</a></li>
+<li><a href="#熱伝達">熱伝達</a></li>
+</ul></li>
+<li><a href="#平行平板">平行平板</a><ul>
+<li><a href="#穴あき平板">穴あき平板</a></li>
+</ul></li>
+<li><a href="#境界層">境界層</a></li>
 <li><a href="#非定常">非定常</a></li>
 <li><a href="#流体の運動学">流体の運動学</a><ul>
 <li><a href="#運動の記述">運動の記述</a></li>
 <li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
 <li><a href="#ランキン渦">ランキン渦</a></li>
 </ul></li>
+<li><a href="#ポテンシャル流">ポテンシャル流</a></li>
 </ul></nav>
        <p><span class="math display">\[
 \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 \]</span></p>
@@ -336,9 +348,10 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \sigma_{ij} = \left( -p + \frac{2}{3} \mu S_{kk} \right) \delta_{ij} + 2 \mu S_{ij}
 \]</span></p>
 <h3 id="ナビエストークス方程式">ナビエストークス方程式</h3>
-<p>$$</p>
-<p>(u_i)+(u_iu_j)=-(p+_ku_k)+(u_i+u_j)+g_i $$</p>
-<h4 id="非圧縮-1">非圧縮</h4>
+<p><span class="math display">\[
+\pd{t}(\rho u_i)+\pd{x_j}(\rho u_iu_j)=-\pd{x_i}\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\pd{x_j}\left(\pd{x_j}u_i+\pd{x_i}u_j\right)+\rho g_i
+\]</span></p>
+<h4 id="非圧縮非圧縮">非圧縮非圧縮</h4>
 <p><span class="math display">\[
 \rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
 \]</span></p>
@@ -382,15 +395,14 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 </table>
 <p><span class="math inline">\(k=\mathrm{rank}\,M\)</span></p>
 <p>無次元数の数 <span class="math inline">\(=\mathrm{null}\,M\)</span></p>
-<h2 id="厳密解">厳密解</h2>
-<h4 id="二次元">二次元</h4>
+<h3 id="二次元">二次元</h3>
 <p><span class="math display">\[\begin{aligned}
 \pd[u]{x} + \pd[v]{y} &amp;= 0 \\
 \rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &amp;= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
 \rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &amp;= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y 
 \end{aligned}
 \]</span></p>
-<h4 id="円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></h4>
+<h3 id="円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></h3>
 <p><span class="math display">\[
 \begin{aligned}
 \frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{\theta} u_\theta + \pd{z} u_z &amp;= 0 \\
@@ -399,7 +411,24 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &amp;= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
 \]</span></p>
-<h3 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h3>
+<h2 id="渦度流れ関数">渦度・流れ関数</h2>
+<p>二次元非圧縮流非粘性流れの互換表現</p>
+<h3 id="渦度">渦度</h3>
+<p><span class="math display">\[
+\zeta = \mathrm{rot} u
+\]</span></p>
+<h3 id="流れ関数">流れ関数</h3>
+<p><span class="math display">\[
+u = \pd[\psi]{y} \quad v = -\pd[\psi]{x} 
+\]</span></p>
+<h3 id="渦度輸送方程式">渦度（輸送）方程式</h3>
+<p><span class="math display">\[
+\nabla^2 \psi = - \zeta
+\]</span></p>
+<p><span class="math display">\[
+\pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
+\]</span></p>
+<h2 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h2>
 <p>半径 <span class="math inline">\(R\)</span> の円管</p>
 <p>軸対称 <span class="math inline">\(\partial_\theta=0, u_\theta=0\)</span>, 発達流 <span class="math inline">\(\partial_z=0\)</span>, 定常 <span class="math inline">\(\pd{t}=0\)</span>, 円管表面で <span class="math inline">\(u=0\)</span></p>
 <p>NS方程式に条件を適用して，</p>
@@ -435,8 +464,51 @@ U = \frac{Q}{\pi R^2} = \frac{u_0}{2}
 <p><span class="math display">\[
 \tau = \frac{1}{2} \left(-\d[p]{z}\right) R
 \]</span></p>
-<h3 id="例血管の分岐murrayの法則">例：血管の分岐（Murrayの法則）</h3>
-<h3 id="平行平板">平行平板</h3>
+<p>円管の圧力損失は</p>
+<p><span class="math display">\[
+\Delta p = \left(-\d[p]{z}\right) L = \frac{8 \mu L}{R^2} U
+\]</span></p>
+<h3 id="血管の分岐murrayの法則">血管の分岐（Murrayの法則）</h3>
+<p>評価関数を</p>
+<p><span class="math display">\[
+J = Q \Delta P + K \frac{\pi d^2}{4} L
+\]</span></p>
+<h3 id="熱伝達">熱伝達</h3>
+<h2 id="平行平板">平行平板</h2>
+<p>間隔 <span class="math inline">\(H\)</span>, すべり速度 <span class="math inline">\(U\)</span></p>
+<p>発達流，定常</p>
+<p><span class="math display">\[
+0 = - \d[p]{x} + \mu \dd[u]{y}
+\]</span></p>
+<p>一般解は</p>
+<p><span class="math display">\[
+u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y^2 + C_1 y + C_2
+\]</span></p>
+<p>底板は固定 <span class="math inline">\(u(0)=0\)</span>， 上板は速度 <span class="math inline">\(U\)</span> ですべっているので <span class="math inline">\(u(H)=U\)</span></p>
+<p><span class="math display">\[
+u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y(y-H) + \frac{U}{H} y
+\]</span></p>
+<h3 id="穴あき平板">穴あき平板</h3>
+<p>底板平板から一定の湧き出し <span class="math inline">\(V_0\)</span> ，上板から同じ吸い込みがあるとき，</p>
+<p><span class="math display">\[
+\rho V_0 \d[u]{y} = - \d[p]{x} + \mu \dd[u]{y}
+\]</span></p>
+<p><span class="math inline">\(\alpha:=-\frac{\rho V_0}{\mu}, \beta:=-\frac{1}{\mu}\d[p]{x}\)</span> とすると，</p>
+<p><span class="math display">\[
+\dd[u]{y} + \alpha \d[u]{y} + \beta = 0
+\]</span></p>
+<p>一般解は</p>
+<p><span class="math display">\[
+u(y) = C_1 \exp(-\alpha y) + C_2 - \frac{\beta}{\alpha}y
+\]</span></p>
+<p>境界条件 <span class="math inline">\(u(0)=0\)</span> <span class="math inline">\(u(H)=U\)</span> より</p>
+<p><span class="math display">\[
+u(y) = \left( U + \frac{\beta}{\alpha} H \right) \frac{\exp(-\alpha y)-1}{\exp(-\alpha H)-1} - \frac{\beta}{\alpha}y
+\]</span></p>
+<p><span class="math display">\[
+u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d[p]{x} y
+\]</span></p>
+<h2 id="境界層">境界層</h2>
 <h2 id="非定常">非定常</h2>
 <p><span class="math display">\[
 \pd{t} u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
@@ -509,6 +581,7 @@ u(x,\infty,t)&amp;=0\\
 <p>粘性がなく，密度が圧力のみに依存し（バロトロピー流体），体積力が保存力なら，渦線を構成する粒子は常に同じで，渦線と流体は一緒に移動する．</p>
 <h3 id="ランキン渦">ランキン渦</h3>
 <p>剛体回転する円柱</p>
+<h2 id="ポテンシャル流">ポテンシャル流</h2>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
