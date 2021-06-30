@@ -269,6 +269,7 @@
 </ul></li>
 <li><a href="#境界層">境界層</a></li>
 <li><a href="#非定常">非定常</a></li>
+<li><a href="#発達">発達</a></li>
 <li><a href="#流体の運動学">流体の運動学</a><ul>
 <li><a href="#運動の記述">運動の記述</a></li>
 <li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
@@ -396,7 +397,8 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 <p><span class="math inline">\(k=\mathrm{rank}\,M\)</span></p>
 <p>無次元数の数 <span class="math inline">\(=\mathrm{null}\,M\)</span></p>
 <h3 id="二次元">二次元</h3>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 \pd[u]{x} + \pd[v]{y} &amp;= 0 \\
 \rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &amp;= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
 \rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &amp;= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y 
@@ -412,7 +414,7 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \end{aligned}
 \]</span></p>
 <h2 id="渦度流れ関数">渦度・流れ関数</h2>
-<p>二次元非圧縮流非粘性流れの互換表現</p>
+<p>二次元非圧縮流非粘性流れ（完全流体）のNS方程式の互換表現</p>
 <h3 id="渦度">渦度</h3>
 <p><span class="math display">\[
 \zeta = \mathrm{rot} u
@@ -429,6 +431,7 @@ u = \pd[\psi]{y} \quad v = -\pd[\psi]{x}
 \pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
 \]</span></p>
 <h2 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h2>
+<p><img src="CircularTube.drawio.svg" /></p>
 <p>半径 <span class="math inline">\(R\)</span> の円管</p>
 <p>軸対称 <span class="math inline">\(\partial_\theta=0, u_\theta=0\)</span>, 発達流 <span class="math inline">\(\partial_z=0\)</span>, 定常 <span class="math inline">\(\pd{t}=0\)</span>, 円管表面で <span class="math inline">\(u=0\)</span></p>
 <p>NS方程式に条件を適用して，</p>
@@ -475,6 +478,7 @@ J = Q \Delta P + K \frac{\pi d^2}{4} L
 \]</span></p>
 <h3 id="熱伝達">熱伝達</h3>
 <h2 id="平行平板">平行平板</h2>
+<p><img src="ParallelPlate.drawio.svg" /></p>
 <p>間隔 <span class="math inline">\(H\)</span>, すべり速度 <span class="math inline">\(U\)</span></p>
 <p>発達流，定常</p>
 <p><span class="math display">\[
@@ -532,6 +536,7 @@ u(x,\infty,t)&amp;=0\\
 <p><span class="math display">\[
 \delta(t)=\sqrt{\mu t}
 \]</span></p>
+<h2 id="発達">発達</h2>
 <h2 id="流体の運動学">流体の運動学</h2>
 <h3 id="運動の記述">運動の記述</h3>
 <ul>

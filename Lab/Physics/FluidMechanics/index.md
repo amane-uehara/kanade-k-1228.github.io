@@ -111,7 +111,8 @@ $k=\mathrm{rank}\,M$
 無次元数の数 $=\mathrm{null}\,M$
 
 ### 二次元
-$$\begin{aligned}
+$$
+\begin{aligned}
 \pd[u]{x} + \pd[v]{y} &= 0 \\
 \rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
 \rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y 
@@ -131,7 +132,7 @@ $$
 
 ## 渦度・流れ関数
 
-二次元非圧縮流非粘性流れの互換表現
+二次元非圧縮流非粘性流れ（完全流体）のNS方程式の互換表現
 
 ### 渦度
 
@@ -157,6 +158,8 @@ $$
 
 
 ## 円管内層流（ポアズイユ流れ）
+
+![](CircularTube.drawio.svg)
 
 半径 $R$ の円管
 
@@ -227,6 +230,8 @@ $$
 
 
 ## 平行平板
+
+![](ParallelPlate.drawio.svg)
 
 間隔 $H$, すべり速度 $U$
 
@@ -313,6 +318,10 @@ $$
 $$
 \delta(t)=\sqrt{\mu t}
 $$
+
+
+
+## 発達
 
 
 
