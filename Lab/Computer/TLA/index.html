@@ -514,11 +514,24 @@
 <h3 id="tla-の記法">TLA+ の記法</h3>
 <p>TLA+ でインクリメントプログラムを書いてみましょう．とりあえず完成品をみてください</p>
 <p><span class="math display">\[
+\mathrm{VARIABLES} : i, \mathrm{pc} \\
 \begin{alignedat}{5}
-\rm Next = &amp;\lor &amp;\land&amp; \rm pc = start  &amp;\land&amp; \rm pc&#39; = \rm middle &amp;\land&amp; \rm i&#39; = SomeInt() \\
-           &amp;\lor &amp;\land&amp; \rm pc = middle &amp;\land&amp; \rm pc&#39; = end        &amp;\land&amp; \rm i&#39; = i + 1     \\ 
+\\
+\rm Init \triangleq 
+&amp;     &amp;\land&amp; \rm pc = start \\
+&amp;     &amp;\land&amp; i = 0 \\
+\\
+\rm Next \triangleq 
+&amp;\lor &amp;\land&amp; \rm pc = start   \\
+&amp;     &amp;\land&amp; \rm pc&#39; = middle \\ 
+&amp;     &amp;\land&amp; i&#39; \in 0 \cdots 255 \\
+&amp;\lor &amp;\land&amp; \rm pc = middle \\
+&amp;     &amp;\land&amp; \rm pc&#39; = end   \\
+&amp;     &amp;\land&amp; i&#39; = i + 1      \\ 
 \end{alignedat}
 \]</span></p>
+<p>数学の命題の形で書かれています．</p>
+<p>この命題を真とする状態 <span class="math inline">\(i,\mathrm{pc}\)</span> が，実行中に現れる状態．</p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
