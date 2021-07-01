@@ -1,19 +1,11 @@
-% 最長片道切符
-%
-%
-
-
-
-``` C
-
 #include <stdio.h>
 #include <string.h>
-#define JOINTED_MAX 8 //接続する線区の最大数(仙台６)+2
-#define LINE 248 //線区数＋1
-#define ST 151 //駅数+1
-#define LINE_NAME 7 //3文字
-#define ST_NAME 7 //3文字
-#define ROUTE_MAX 250 //予想される最大値
+#define JOINTED_MAX 8//接続する線区の最大数(仙台６)+2
+#define LINE 248//線区数＋1
+#define ST 151//駅数+1
+#define LINE_NAME 7//3文字
+#define ST_NAME 7//3文字
+#define ROUTE_MAX 250//予想される最大値
 
 /*線区リスト書式
 line_list.txt
@@ -239,5 +231,3 @@ done:
 	fclose(fp);
 	return 0;
 }
-
-```
