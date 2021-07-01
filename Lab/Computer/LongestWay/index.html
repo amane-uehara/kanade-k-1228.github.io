@@ -231,7 +231,8 @@
         padding-left: 4px;
       }
       div.sourceCode {
-        background-color: #545b6d;
+        color: rgb(212, 212, 212);
+        background-color: rgb(0, 0, 0);
       }
       @media screen {
         a.sourceLine::before {
@@ -250,7 +251,7 @@
         color: #c4a000;
       } /* Attribute */
       code span.bn {
-        color: rgb(0, 0, 207);
+        color: rgb(86, 156, 214);
       } /* BaseN */
       code span.cf {
         color: rgb(197, 134, 192);
@@ -276,7 +277,7 @@
         font-style: italic;
       } /* Documentation */
       code span.dt {
-        color: #204a87;
+        color: rgb(86, 156, 214);
       } /* DataType */
       code span.dv {
         color: rgb(181, 206, 168);
@@ -302,7 +303,7 @@
         font-style: italic;
       } /* Information */
       code span.kw {
-        color: #204a87;
+        color: rgb(78, 201, 176);
         font-weight: bold;
       } /* Keyword */
       code span.op {
@@ -316,13 +317,13 @@
         color: rgb(197, 134, 192);
       } /* Preprocessor */
       code span.sc {
-        color: #000000;
+        color: rgb(215, 186, 125);
       } /* SpecialChar */
       code span.ss {
         color: #4e9a06;
       } /* SpecialString */
       code span.st {
-        color: #4e9a06;
+        color: rgb(206, 145, 120);
       } /* String */
       code span.va {
         color: #000000;
@@ -419,12 +420,12 @@
        <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="pp">#define JOINTED_MAX 8</span><span class="co">//接続する線区の最大数(仙台６)+2</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="pp">#define LINE 248</span><span class="co">//線区数＋1</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="pp">#define ST 151</span><span class="co">//駅数+1</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="pp">#define LINE_NAME 7</span><span class="co">//3文字</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="pp">#define ST_NAME 7</span><span class="co">//3文字</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="pp">#define ROUTE_MAX 250</span><span class="co">//予想される最大値</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="pp">#define JOINTED_MAX 8 </span><span class="co">//接続する線区の最大数(仙台６)+2</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="pp">#define LINE 248 </span><span class="co">//線区数＋1</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="pp">#define ST 151 </span><span class="co">//駅数+1</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="pp">#define LINE_NAME 7 </span><span class="co">//3文字</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="pp">#define ST_NAME 7 </span><span class="co">//3文字</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="pp">#define ROUTE_MAX 250 </span><span class="co">//予想される最大値</span></a>
 <a class="sourceLine" id="cb1-10" title="10"></a>
 <a class="sourceLine" id="cb1-11" title="11"><span class="co">/*線区リスト書式</span></a>
 <a class="sourceLine" id="cb1-12" title="12"><span class="co">line_list.txt</span></a>
