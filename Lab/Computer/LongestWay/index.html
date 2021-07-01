@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-114187773-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-114187773-1");
+    </script>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="author" content="@kanade_k_1228" />
+    <link
+      rel="shortcut icon"
+      href="https://avatars.githubusercontent.com/u/54773334"
+    />
+          <title>最長片道切符 | Kanade's Website</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e4f0fc;
+        font-size: 16px;
+        font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+          "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        line-height: 1.5;
+        color: #202020;
+      }
+      article {
+        display: block;
+        margin: 0 auto;
+      }
+      @media (min-width: 1220px) {
+        article {
+          width: 1200px;
+        }
+      }
+      @media (max-width: 1219px) {
+        article {
+          width: 100%;
+        }
+      }
+      h1 {
+        display: block;
+        margin: 0.5em 0 0.5em 0;
+        padding: 8px;
+        color: #d64acf;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: #ffccff;
+      }
+      h2 {
+        display: block;
+        margin: 0.5em 0 0.5em 0;
+        padding: 8px;
+        color: #2c8ecf;
+        font-size: 20px;
+        font-weight: bold;
+        background: #bbddff;
+      }
+      h3 {
+        font-weight: bold;
+        margin: 1em 0 0.5em 0.5em;
+      }
+      h4 {
+        font-weight: bold;
+        margin: 0.5em 0 0.5em 0.7em;
+      }
+      p {
+        margin: 0.5em 0 0.5em 1em;
+      }
+      small {
+        font-size: 10px;
+      }
+      table {
+        margin: 0.5em auto;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #e8ffbd;
+      }
+      td {
+        border: 1px solid;
+        padding: 0.3em;
+        text-align: center;
+        background-color: #f0f0ff;
+      }
+      ul,
+      ol {
+        margin: 0.5em 0 0.5em 1em;
+        padding: 0 0 0 1.5em;
+      }
+      ul ul,
+      ul ul ul,
+      ol ol,
+      ol ol ol {
+        margin: 0;
+      }
+      blockquote {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.5em 1em 0.5em 1em;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+      header > ul {
+        margin: 0.5em 0 0.5em 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+      }
+      header > ul > li {
+        width: 25%;
+        text-align: center;
+      }
+      header > ul > li > a {
+        display: block;
+      }
+      div#header-links {
+        height: 50px;
+        display: flex;
+        margin: 0.5em 0 0.5em 0;
+        justify-content: space-evenly;
+      }
+      div#header-links > a {
+        text-decoration: none;
+      }
+      nav {
+        border: 1px solid;
+        border-radius: 2px;
+        background-color: white;
+        margin: 0.5em 1em 0.5em 1em;
+      }
+      nav > ul {
+        margin: 0;
+      }
+      button {
+        display: block;
+        margin: 0.5em auto;
+      }
+      iframe {
+        display: block;
+        margin: 0.5em auto;
+      }
+    </style>
+    <style>
+      a.sourceLine {
+        display: inline-block;
+        line-height: 1.25;
+      }
+      a.sourceLine {
+        pointer-events: none;
+        color: inherit;
+        text-decoration: inherit;
+      }
+      a.sourceLine:empty {
+        height: 1.2em;
+      }
+      .sourceCode {
+        overflow: visible;
+        font-family: Consolas, Menlo, "Liberation Mono", Courier, monospace;
+      }
+      code.sourceCode {
+        white-space: pre;
+        position: relative;
+      }
+      div.sourceCode {
+        margin: 0.5em 1em 0.5em 1em;
+      }
+      pre.sourceCode {
+        margin: 0;
+      }
+      @media screen {
+        div.sourceCode {
+          overflow: auto;
+        }
+      }
+      @media print {
+        code.sourceCode {
+          white-space: pre-wrap;
+        }
+        a.sourceLine {
+          text-indent: -1em;
+          padding-left: 1em;
+        }
+      }
+      pre.numberSource a.sourceLine {
+        position: relative;
+        left: -4em;
+      }
+      pre.numberSource a.sourceLine::before {
+        content: attr(title);
+        position: relative;
+        left: -1em;
+        text-align: right;
+        vertical-align: baseline;
+        border: none;
+        pointer-events: all;
+        display: inline-block;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: 0 4px;
+        width: 4em;
+        color: #aaaaaa;
+      }
+      pre.numberSource {
+        margin-left: 3em;
+        border-left: 1px solid #aaaaaa;
+        padding-left: 4px;
+      }
+      div.sourceCode {
+        background-color: #f8f8f8;
+      }
+      @media screen {
+        a.sourceLine::before {
+          text-decoration: underline;
+        }
+      }
+      code span.al {
+        color: #ef2929;
+      } /* Alert */
+      code span.an {
+        color: #8f5902;
+        font-weight: bold;
+        font-style: italic;
+      } /* Annotation */
+      code span.at {
+        color: #c4a000;
+      } /* Attribute */
+      code span.bn {
+        color: #0000cf;
+      } /* BaseN */
+      code span.cf {
+        color: #204a87;
+        font-weight: bold;
+      } /* ControlFlow */
+      code span.ch {
+        color: #4e9a06;
+      } /* Char */
+      code span.cn {
+        color: #000000;
+      } /* Constant */
+      code span.co {
+        color: #8f5902;
+        font-style: italic;
+      } /* Comment */
+      code span.cv {
+        color: #8f5902;
+        font-weight: bold;
+        font-style: italic;
+      } /* CommentVar */
+      code span.do {
+        color: #8f5902;
+        font-weight: bold;
+        font-style: italic;
+      } /* Documentation */
+      code span.dt {
+        color: #204a87;
+      } /* DataType */
+      code span.dv {
+        color: #0000cf;
+      } /* DecVal */
+      code span.er {
+        color: #a40000;
+        font-weight: bold;
+      } /* Error */
+      code span.ex {
+      } /* Extension */
+      code span.fl {
+        color: #0000cf;
+      } /* Float */
+      code span.fu {
+        color: #000000;
+      } /* Function */
+      code span.im {
+      } /* Import */
+      code span.in {
+        color: #8f5902;
+        font-weight: bold;
+        font-style: italic;
+      } /* Information */
+      code span.kw {
+        color: #204a87;
+        font-weight: bold;
+      } /* Keyword */
+      code span.op {
+        color: #ce5c00;
+        font-weight: bold;
+      } /* Operator */
+      code span.ot {
+        color: #8f5902;
+      } /* Other */
+      code span.pp {
+        color: #8f5902;
+        font-style: italic;
+      } /* Preprocessor */
+      code span.sc {
+        color: #000000;
+      } /* SpecialChar */
+      code span.ss {
+        color: #4e9a06;
+      } /* SpecialString */
+      code span.st {
+        color: #4e9a06;
+      } /* String */
+      code span.va {
+        color: #000000;
+      } /* Variable */
+      code span.vs {
+        color: #4e9a06;
+      } /* VerbatimString */
+      code span.wa {
+        color: #8f5902;
+        font-weight: bold;
+        font-style: italic;
+      } /* Warning */
+    </style>
+        <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      function tweet() {
+        window.open(
+          "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
+            location.href +
+            "&text=" +
+            "最長片道切符",
+          "_blank"
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <article>
+      <header>
+        <ul>
+          <li><a href="/">ﾎｰﾑ</a></li>
+          <li><a href="/Portfolio/">ﾎﾟﾄﾌｫﾘｵ</a></li>
+          <li><a href="/Lab/">研究室</a></li>
+          <li><a href="/Essay/">雑記</a></li>
+        </ul>
+        <div id="header-links">
+          <a href="https://twitter.com/kanade_k_1228" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              viewBox="126.444 2.281 589 589"
+              style="margin: 0; padding: 0"
+            >
+              <circle cx="420.944" cy="296.781" r="294.5" fill="#2daae1" />
+              <path
+                d="M609.773 179.634c-13.891 6.164-28.811 10.331-44.498 12.204 16.01-9.587 28.275-24.779 34.066-42.86a154.78 154.78 0 0 1-49.209 18.801c-14.125-15.056-34.267-24.456-56.551-24.456-42.773 0-77.462 34.675-77.462 77.473 0 6.064.683 11.98 1.996 17.66-64.389-3.236-121.474-34.079-159.684-80.945-6.672 11.446-10.491 24.754-10.491 38.953 0 26.875 13.679 50.587 34.464 64.477a77.122 77.122 0 0 1-35.097-9.686v.979c0 37.54 26.701 68.842 62.145 75.961-6.511 1.784-13.344 2.716-20.413 2.716-4.998 0-9.847-.473-14.584-1.364 9.859 30.769 38.471 53.166 72.363 53.799-26.515 20.785-59.925 33.175-96.212 33.175-6.25 0-12.427-.373-18.491-1.104 34.291 21.988 75.006 34.824 118.759 34.824 142.496 0 220.428-118.052 220.428-220.428 0-3.361-.074-6.697-.236-10.021a157.855 157.855 0 0 0 38.707-40.158z"
+                fill="#fff"
+              />
+            </svg>
+          </a>
+          <a href="https://github.com/kanade-k-1228" target="_blank">
+            <svg
+              width="50px"
+              height="50px"
+              viewBox="0 0 1024 1024"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+                transform="scale(64)"
+                fill="#1B1F23"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCoeuc9-XQ5EpeYSCn4ESpQw"
+            target="_blank"
+          >
+            <svg
+              width="50px"
+              height="50px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 333333 333333"
+            >
+              <path
+                d="M166667 0c92048 0 166667 74619 166667 166667s-74619 166667-166667 166667S0 258715 0 166667 74619 0 166667 0zm84195 132297s-1678-11849-6843-17052c-6545-6843-13873-6887-17223-7283-24036-1751-60138-1751-60138-1751h-63s-36085 0-60135 1751c-3363 409-10681 437-17223 7283-5168 5203-6811 17052-6811 17052s-1711 13904-1711 27838v13029c0 13905 1709 27837 1709 27837s1678 11849 6811 17061c6542 6843 15139 6621 18977 7350 13761 1314 58457 1710 58457 1710s36133-64 60169-1783c3363-397 10678-438 17223-7284 5168-5202 6843-17065 6843-17065s1711-13904 1711-27837v-13028c-35-13905-1745-27837-1745-27837l-9 9-1-1zm-102010 56674v-48312l46437 24237-46437 24075z"
+                fill="red"
+              />
+            </svg>
+          </a>
+        </div>
+
+                <h1 style="margin: 0">最長片道切符</h1>
+               </header>
+       <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="pp">#define JOINTED_MAX 8</span><span class="co">//接続する線区の最大数(仙台６)+2</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="pp">#define LINE 248</span><span class="co">//線区数＋1</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="pp">#define ST 151</span><span class="co">//駅数+1</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="pp">#define LINE_NAME 7</span><span class="co">//3文字</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="pp">#define ST_NAME 7</span><span class="co">//3文字</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="pp">#define ROUTE_MAX 250</span><span class="co">//予想される最大値</span></a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">/*線区リスト書式</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">line_list.txt</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">始発駅 終着駅 営業キロ（0.1km単位)</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">線区数を#define LINE</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb1-16" title="16"></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="kw">typedef</span> <span class="kw">struct</span> {</a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="dt">char</span> c_t1[ST_NAME];</a>
+<a class="sourceLine" id="cb1-19" title="19">    <span class="dt">char</span> c_t2[ST_NAME];</a>
+<a class="sourceLine" id="cb1-20" title="20">    <span class="dt">int</span> i_t1;</a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="dt">int</span> i_t2;</a>
+<a class="sourceLine" id="cb1-22" title="22">    <span class="dt">int</span> length;<span class="co">//0.1km営業キロ</span></a>
+<a class="sourceLine" id="cb1-23" title="23">} line;</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="kw">typedef</span> <span class="kw">struct</span> {</a>
+<a class="sourceLine" id="cb1-26" title="26">    <span class="dt">char</span> name[ST_NAME];</a>
+<a class="sourceLine" id="cb1-27" title="27">    <span class="dt">int</span> line_jointed[JOINTED_MAX];</a>
+<a class="sourceLine" id="cb1-28" title="28">    <span class="dt">int</span> st_jointed[JOINTED_MAX];</a>
+<a class="sourceLine" id="cb1-29" title="29">} st;</a>
+<a class="sourceLine" id="cb1-30" title="30"></a>
+<a class="sourceLine" id="cb1-31" title="31"><span class="co">//駅名を駅番号に変換</span></a>
+<a class="sourceLine" id="cb1-32" title="32"><span class="dt">int</span> st_c2i(st *st_list, <span class="dt">char</span> *st_name) {</a>
+<a class="sourceLine" id="cb1-33" title="33">    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; ST; i++) {</a>
+<a class="sourceLine" id="cb1-34" title="34">        <span class="cf">if</span> (strcmp(st_list[i].name, st_name) == <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb1-35" title="35">            <span class="cf">return</span> i;</a>
+<a class="sourceLine" id="cb1-36" title="36">        }</a>
+<a class="sourceLine" id="cb1-37" title="37">    }</a>
+<a class="sourceLine" id="cb1-38" title="38">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-39" title="39">}</a>
+<a class="sourceLine" id="cb1-40" title="40"></a>
+<a class="sourceLine" id="cb1-41" title="41"><span class="co">//1つの駅番号と、間の線区番号から、駅番号を返す</span></a>
+<a class="sourceLine" id="cb1-42" title="42"><span class="dt">int</span> line2st(line *line_list, <span class="dt">int</span> st, <span class="dt">int</span> line) {</a>
+<a class="sourceLine" id="cb1-43" title="43">    <span class="cf">if</span> (line_list[line].i_t1 == st) { <span class="cf">return</span> line_list[line].i_t2; }</a>
+<a class="sourceLine" id="cb1-44" title="44">    <span class="cf">if</span> (line_list[line].i_t2 == st) { <span class="cf">return</span> line_list[line].i_t1; }</a>
+<a class="sourceLine" id="cb1-45" title="45">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-46" title="46">}</a>
+<a class="sourceLine" id="cb1-47" title="47"></a>
+<a class="sourceLine" id="cb1-48" title="48"><span class="co">//二つの駅の間の線区を返す</span></a>
+<a class="sourceLine" id="cb1-49" title="49"><span class="dt">int</span> st2line(line *line_list, <span class="dt">int</span> st1, <span class="dt">int</span> st2) {</a>
+<a class="sourceLine" id="cb1-50" title="50">    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; LINE; i++) {</a>
+<a class="sourceLine" id="cb1-51" title="51">        <span class="cf">if</span> ((line_list[i].i_t1 == st1 &amp;&amp; line_list[i].i_t2 == st2) || (line_list[i].i_t1 == st2 &amp;&amp; line_list[i].i_t2 == st1)) {</a>
+<a class="sourceLine" id="cb1-52" title="52">            <span class="cf">return</span> i;</a>
+<a class="sourceLine" id="cb1-53" title="53">        }</a>
+<a class="sourceLine" id="cb1-54" title="54">    }</a>
+<a class="sourceLine" id="cb1-55" title="55">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-56" title="56">}</a>
+<a class="sourceLine" id="cb1-57" title="57"></a>
+<a class="sourceLine" id="cb1-58" title="58"><span class="dt">int</span> main(<span class="dt">void</span>) {</a>
+<a class="sourceLine" id="cb1-59" title="59">    <span class="dt">int</span> i, j, k;</a>
+<a class="sourceLine" id="cb1-60" title="60">    <span class="co">//定数</span></a>
+<a class="sourceLine" id="cb1-61" title="61">    <span class="co">//txtから線区リストを生成</span></a>
+<a class="sourceLine" id="cb1-62" title="62">    line line_list[LINE] = { <span class="dv">0</span> };</a>
+<a class="sourceLine" id="cb1-63" title="63">    <span class="co">//line[0]は何も無い（jointedがおかしくなる）</span></a>
+<a class="sourceLine" id="cb1-64" title="64">    <span class="dt">FILE</span> *fp;</a>
+<a class="sourceLine" id="cb1-65" title="65">    <span class="cf">if</span> (fopen_s(&amp;fp, <span class="st">&quot;line_list.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) != <span class="dv">0</span>) { printf(<span class="st">&quot;line_list.txt disable</span><span class="sc">\n</span><span class="st">&quot;</span>); }</a>
+<a class="sourceLine" id="cb1-66" title="66">    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; LINE; i++) {</a>
+<a class="sourceLine" id="cb1-67" title="67">        fscanf_s(fp, <span class="st">&quot;%s %s %d&quot;</span>,</a>
+<a class="sourceLine" id="cb1-68" title="68">            line_list[i].c_t1, ST_NAME,</a>
+<a class="sourceLine" id="cb1-69" title="69">            line_list[i].c_t2, ST_NAME,</a>
+<a class="sourceLine" id="cb1-70" title="70">            &amp;line_list[i].length);</a>
+<a class="sourceLine" id="cb1-71" title="71">    }</a>
+<a class="sourceLine" id="cb1-72" title="72">    fclose(fp);</a>
+<a class="sourceLine" id="cb1-73" title="73">    </a>
+<a class="sourceLine" id="cb1-74" title="74">    <span class="co">//線区リストから、駅リストを作る</span></a>
+<a class="sourceLine" id="cb1-75" title="75">    st st_list[ST] = { <span class="st">&quot;&quot;</span>,{ <span class="dv">0</span> } ,{ <span class="dv">0</span> } };<span class="co">//駅リスト[駅番号].name.line_jointed[index].st_jointed[index]</span></a>
+<a class="sourceLine" id="cb1-76" title="76">    <span class="dt">int</span> s = <span class="dv">1</span>;<span class="co">//今のところの駅数（駅番号0はnull）</span></a>
+<a class="sourceLine" id="cb1-77" title="77">    <span class="dt">bool</span> t1_ok = false, t2_ok = false;<span class="co">//「t1,2が駅リストに存在する」フラグ</span></a>
+<a class="sourceLine" id="cb1-78" title="78">    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; LINE; i++) {</a>
+<a class="sourceLine" id="cb1-79" title="79">        t1_ok = false;</a>
+<a class="sourceLine" id="cb1-80" title="80">        t2_ok = false;</a>
+<a class="sourceLine" id="cb1-81" title="81">        <span class="co">//両端の駅が一致していたら、エラーを表示</span></a>
+<a class="sourceLine" id="cb1-82" title="82">        <span class="cf">if</span> (strcmp(line_list[i].c_t1, line_list[i].c_t2) == <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb1-83" title="83">            printf(<span class="st">&quot;SameTermimnal%d</span><span class="sc">\n</span><span class="st">&quot;</span>, i);</a>
+<a class="sourceLine" id="cb1-84" title="84">        }</a>
+<a class="sourceLine" id="cb1-85" title="85">        <span class="co">//t1,2を駅リストから探して、接続線区を追加</span></a>
+<a class="sourceLine" id="cb1-86" title="86">        <span class="cf">for</span> (j = <span class="dv">0</span>; j &lt; s; j++) {</a>
+<a class="sourceLine" id="cb1-87" title="87">            <span class="cf">if</span> (strcmp(st_list[j].name, line_list[i].c_t1) == <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb1-88" title="88">                st_list[j].line_jointed[<span class="dv">6</span>] = st_list[j].line_jointed[<span class="dv">5</span>];</a>
+<a class="sourceLine" id="cb1-89" title="89">                st_list[j].line_jointed[<span class="dv">5</span>] = st_list[j].line_jointed[<span class="dv">4</span>];</a>
+<a class="sourceLine" id="cb1-90" title="90">                st_list[j].line_jointed[<span class="dv">4</span>] = st_list[j].line_jointed[<span class="dv">3</span>];</a>
+<a class="sourceLine" id="cb1-91" title="91">                st_list[j].line_jointed[<span class="dv">3</span>] = st_list[j].line_jointed[<span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb1-92" title="92">                st_list[j].line_jointed[<span class="dv">2</span>] = st_list[j].line_jointed[<span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb1-93" title="93">                st_list[j].line_jointed[<span class="dv">1</span>] = i;</a>
+<a class="sourceLine" id="cb1-94" title="94">                t1_ok = true;</a>
+<a class="sourceLine" id="cb1-95" title="95">            }</a>
+<a class="sourceLine" id="cb1-96" title="96">            <span class="cf">if</span> (strcmp(st_list[j].name, line_list[i].c_t2) == <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb1-97" title="97">                st_list[j].line_jointed[<span class="dv">6</span>] = st_list[j].line_jointed[<span class="dv">5</span>];</a>
+<a class="sourceLine" id="cb1-98" title="98">                st_list[j].line_jointed[<span class="dv">5</span>] = st_list[j].line_jointed[<span class="dv">4</span>];</a>
+<a class="sourceLine" id="cb1-99" title="99">                st_list[j].line_jointed[<span class="dv">4</span>] = st_list[j].line_jointed[<span class="dv">3</span>];</a>
+<a class="sourceLine" id="cb1-100" title="100">                st_list[j].line_jointed[<span class="dv">3</span>] = st_list[j].line_jointed[<span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb1-101" title="101">                st_list[j].line_jointed[<span class="dv">2</span>] = st_list[j].line_jointed[<span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb1-102" title="102">                st_list[j].line_jointed[<span class="dv">1</span>] = i;</a>
+<a class="sourceLine" id="cb1-103" title="103">                t2_ok = true;</a>
+<a class="sourceLine" id="cb1-104" title="104">            }</a>
+<a class="sourceLine" id="cb1-105" title="105"></a>
+<a class="sourceLine" id="cb1-106" title="106">        }</a>
+<a class="sourceLine" id="cb1-107" title="107"></a>
+<a class="sourceLine" id="cb1-108" title="108">        <span class="co">//駅リストにt1,2がなかったら、追加</span></a>
+<a class="sourceLine" id="cb1-109" title="109">        <span class="cf">if</span> (!t1_ok) {</a>
+<a class="sourceLine" id="cb1-110" title="110">            s++;</a>
+<a class="sourceLine" id="cb1-111" title="111">            strcpy_s(st_list[s - <span class="dv">1</span>].name, line_list[i].c_t1);</a>
+<a class="sourceLine" id="cb1-112" title="112">            st_list[s - <span class="dv">1</span>].line_jointed[<span class="dv">1</span>] = i;</a>
+<a class="sourceLine" id="cb1-113" title="113">        }</a>
+<a class="sourceLine" id="cb1-114" title="114">        <span class="cf">if</span> (!t2_ok) {</a>
+<a class="sourceLine" id="cb1-115" title="115">            s++;</a>
+<a class="sourceLine" id="cb1-116" title="116">            strcpy_s(st_list[s - <span class="dv">1</span>].name, line_list[i].c_t2);</a>
+<a class="sourceLine" id="cb1-117" title="117">            st_list[s - <span class="dv">1</span>].line_jointed[<span class="dv">1</span>] = i;</a>
+<a class="sourceLine" id="cb1-118" title="118">        }</a>
+<a class="sourceLine" id="cb1-119" title="119">    }</a>
+<a class="sourceLine" id="cb1-120" title="120"></a>
+<a class="sourceLine" id="cb1-121" title="121">    <span class="co">//線区リストの両端駅の番号表示を追加</span></a>
+<a class="sourceLine" id="cb1-122" title="122">    <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt; LINE; i++) {</a>
+<a class="sourceLine" id="cb1-123" title="123">        line_list[i].i_t1 = st_c2i(st_list, line_list[i].c_t1);</a>
+<a class="sourceLine" id="cb1-124" title="124">        line_list[i].i_t2 = st_c2i(st_list, line_list[i].c_t2);</a>
+<a class="sourceLine" id="cb1-125" title="125">    }</a>
+<a class="sourceLine" id="cb1-126" title="126"></a>
+<a class="sourceLine" id="cb1-127" title="127">    <span class="co">//接続駅追加</span></a>
+<a class="sourceLine" id="cb1-128" title="128">    <span class="cf">for</span> (i = <span class="dv">1</span>; i &lt; s; i++) {</a>
+<a class="sourceLine" id="cb1-129" title="129">        <span class="cf">for</span> (j = <span class="dv">0</span>; j &lt; JOINTED_MAX; j++) {</a>
+<a class="sourceLine" id="cb1-130" title="130">            st_list[i].st_jointed[j] = line2st(line_list, i, st_list[i].line_jointed[j]);</a>
+<a class="sourceLine" id="cb1-131" title="131">        }</a>
+<a class="sourceLine" id="cb1-132" title="132">    }</a>
+<a class="sourceLine" id="cb1-133" title="133"></a>
+<a class="sourceLine" id="cb1-134" title="134">    printf(<span class="st">&quot;ーーー線区リストーーー</span><span class="sc">\n</span><span class="st">番号</span><span class="sc">\t</span><span class="st">端駅１</span><span class="sc">\t\t</span><span class="st">端駅２</span><span class="sc">\t\t</span><span class="st">営業㌔</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-135" title="135">    <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt; LINE; i++) {</a>
+<a class="sourceLine" id="cb1-136" title="136">        printf(<span class="st">&quot;%d</span><span class="sc">\t</span><span class="st">%s</span><span class="sc">\t</span><span class="st">%d</span><span class="sc">\t</span><span class="st">%s</span><span class="sc">\t</span><span class="st">%d</span><span class="sc">\t</span><span class="st">%d</span><span class="sc">\n</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb1-137" title="137">            i,</a>
+<a class="sourceLine" id="cb1-138" title="138">            line_list[i].c_t1,</a>
+<a class="sourceLine" id="cb1-139" title="139">            line_list[i].i_t1,</a>
+<a class="sourceLine" id="cb1-140" title="140">            line_list[i].c_t2,</a>
+<a class="sourceLine" id="cb1-141" title="141">            line_list[i].i_t2,</a>
+<a class="sourceLine" id="cb1-142" title="142">            line_list[i].length);</a>
+<a class="sourceLine" id="cb1-143" title="143">    }</a>
+<a class="sourceLine" id="cb1-144" title="144"></a>
+<a class="sourceLine" id="cb1-145" title="145">    printf(<span class="st">&quot;ーーー駅リストーーー</span><span class="sc">\n</span><span class="st">番号</span><span class="sc">\t</span><span class="st">名前</span><span class="sc">\t</span><span class="st">接続線区</span><span class="sc">\t\t\t</span><span class="st">接続駅</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-146" title="146">    <span class="cf">for</span> (k = <span class="dv">0</span>; k &lt; s; k++) {</a>
+<a class="sourceLine" id="cb1-147" title="147">        printf(<span class="st">&quot;%d</span><span class="sc">\t</span><span class="st">%s</span><span class="sc">\t</span><span class="st">&quot;</span>, k, st_list[k].name);</a>
+<a class="sourceLine" id="cb1-148" title="148">        <span class="cf">for</span> (j = <span class="dv">0</span>; j &lt; JOINTED_MAX; j++) {</a>
+<a class="sourceLine" id="cb1-149" title="149">            printf(<span class="st">&quot;%3d &quot;</span>, st_list[k].line_jointed[j]);</a>
+<a class="sourceLine" id="cb1-150" title="150">        }</a>
+<a class="sourceLine" id="cb1-151" title="151">        printf(<span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-152" title="152">        <span class="cf">for</span> (j = <span class="dv">0</span>; j &lt; JOINTED_MAX; j++) {</a>
+<a class="sourceLine" id="cb1-153" title="153">            printf(<span class="st">&quot;%3d &quot;</span>, st_list[k].st_jointed[j]);</a>
+<a class="sourceLine" id="cb1-154" title="154">        }</a>
+<a class="sourceLine" id="cb1-155" title="155">        printf(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-156" title="156">    }</a>
+<a class="sourceLine" id="cb1-157" title="157">    <span class="co">//変数</span></a>
+<a class="sourceLine" id="cb1-158" title="158">    <span class="dt">int</span> route[ROUTE_MAX] = { <span class="dv">0</span> };<span class="co">//通ってきた駅ルート</span></a>
+<a class="sourceLine" id="cb1-159" title="159">    <span class="dt">int</span> route_front = <span class="dv">0</span>;<span class="co">//ルートの最前線のルート中の位置</span></a>
+<a class="sourceLine" id="cb1-160" title="160">    <span class="dt">int</span> length = <span class="dv">0</span>;<span class="co">//今回の長さ</span></a>
+<a class="sourceLine" id="cb1-161" title="161">    <span class="dt">int</span> st_pointer[ST] = { <span class="dv">0</span> };<span class="co">//各駅での分岐</span></a>
+<a class="sourceLine" id="cb1-162" title="162">    <span class="dt">int</span> route_max[ROUTE_MAX] = { <span class="dv">0</span> };<span class="co">//最大記録</span></a>
+<a class="sourceLine" id="cb1-163" title="163">    <span class="dt">int</span> length_max = <span class="dv">0</span>;<span class="co">//最大長</span></a>
+<a class="sourceLine" id="cb1-164" title="164">    <span class="dt">int</span> st_start, st_end;<span class="co">//始点,終点</span></a>
+<a class="sourceLine" id="cb1-165" title="165"></a>
+<a class="sourceLine" id="cb1-166" title="166">    printf(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">始点：&quot;</span>);</a>
+<a class="sourceLine" id="cb1-167" title="167">    scanf_s(<span class="st">&quot;%d&quot;</span>, &amp;st_start);</a>
+<a class="sourceLine" id="cb1-168" title="168">    printf(<span class="st">&quot;終点：&quot;</span>);</a>
+<a class="sourceLine" id="cb1-169" title="169">    scanf_s(<span class="st">&quot;%d&quot;</span>, &amp;st_end);</a>
+<a class="sourceLine" id="cb1-170" title="170">    printf(<span class="st">&quot;始点：%d：%s</span><span class="sc">\n</span><span class="st">終点：%d：%s</span><span class="sc">\n</span><span class="st">&quot;</span>, st_start, st_list[st_start].name, st_end, st_list[st_end].name);</a>
+<a class="sourceLine" id="cb1-171" title="171">    <span class="cf">if</span> (fopen_s(&amp;fp, <span class="st">&quot;log.txt&quot;</span>, <span class="st">&quot;w&quot;</span>) != <span class="dv">0</span>) { printf(<span class="st">&quot;log.txt disable</span><span class="sc">\n</span><span class="st">&quot;</span>); }</a>
+<a class="sourceLine" id="cb1-172" title="172">    route[route_front] = st_start;<span class="co">//スタート地点に設定</span></a>
+<a class="sourceLine" id="cb1-173" title="173">    <span class="cf">goto</span> start;</a>
+<a class="sourceLine" id="cb1-174" title="174"></a>
+<a class="sourceLine" id="cb1-175" title="175">    <span class="co">//探索</span></a>
+<a class="sourceLine" id="cb1-176" title="176">entry:</a>
+<a class="sourceLine" id="cb1-177" title="177">    <span class="cf">if</span> (route_front &lt; <span class="dv">0</span>) { <span class="cf">goto</span> done; }</a>
+<a class="sourceLine" id="cb1-178" title="178">start:</a>
+<a class="sourceLine" id="cb1-179" title="179">    <span class="cf">if</span> (route[route_front] == st_end) {</a>
+<a class="sourceLine" id="cb1-180" title="180">        <span class="co">//到達ルートを記録</span></a>
+<a class="sourceLine" id="cb1-181" title="181">        fprintf(fp, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-182" title="182">        <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt;= route_front; i++) {</a>
+<a class="sourceLine" id="cb1-183" title="183">            fprintf(fp, <span class="st">&quot;%2d &quot;</span>, route[i]);</a>
+<a class="sourceLine" id="cb1-184" title="184">        }</a>
+<a class="sourceLine" id="cb1-185" title="185">        <span class="co">//長さを計算</span></a>
+<a class="sourceLine" id="cb1-186" title="186">        length = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-187" title="187">        <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt;= route_front; i++) {</a>
+<a class="sourceLine" id="cb1-188" title="188">            length += line_list[st2line(line_list, route[i], route[i + <span class="dv">1</span>])].length;</a>
+<a class="sourceLine" id="cb1-189" title="189">        }</a>
+<a class="sourceLine" id="cb1-190" title="190">        <span class="co">//長さを記録</span></a>
+<a class="sourceLine" id="cb1-191" title="191">        fprintf(fp, <span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">%d&quot;</span>, length);</a>
+<a class="sourceLine" id="cb1-192" title="192">        <span class="co">//長ければ記録更新</span></a>
+<a class="sourceLine" id="cb1-193" title="193">        <span class="cf">if</span> (length &gt; length_max) {</a>
+<a class="sourceLine" id="cb1-194" title="194">            fprintf(fp, <span class="st">&quot;★&quot;</span>);</a>
+<a class="sourceLine" id="cb1-195" title="195">            length_max = length;</a>
+<a class="sourceLine" id="cb1-196" title="196">            <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt;= route_front; i++) {</a>
+<a class="sourceLine" id="cb1-197" title="197">                route_max[i] = route[i];</a>
+<a class="sourceLine" id="cb1-198" title="198">            }</a>
+<a class="sourceLine" id="cb1-199" title="199">        }</a>
+<a class="sourceLine" id="cb1-200" title="200">        route_front--;</a>
+<a class="sourceLine" id="cb1-201" title="201">        <span class="cf">goto</span> entry;</a>
+<a class="sourceLine" id="cb1-202" title="202">    }</a>
+<a class="sourceLine" id="cb1-203" title="203">    <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1-204" title="204">        <span class="co">//一度通っていないか？</span></a>
+<a class="sourceLine" id="cb1-205" title="205">        <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt; route_front; i++) {</a>
+<a class="sourceLine" id="cb1-206" title="206">            <span class="cf">if</span> (route[route_front] == route[i]) {</a>
+<a class="sourceLine" id="cb1-207" title="207">                route_front--;</a>
+<a class="sourceLine" id="cb1-208" title="208">                <span class="cf">goto</span> entry;</a>
+<a class="sourceLine" id="cb1-209" title="209">            }</a>
+<a class="sourceLine" id="cb1-210" title="210">        }</a>
+<a class="sourceLine" id="cb1-211" title="211">        <span class="co">//最後まで探索したか？</span></a>
+<a class="sourceLine" id="cb1-212" title="212">        <span class="cf">if</span> (st_list[route[route_front]].st_jointed[st_pointer[route[route_front]] + <span class="dv">1</span>] == <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb1-213" title="213">            st_pointer[route[route_front]] = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-214" title="214">            route_front--;</a>
+<a class="sourceLine" id="cb1-215" title="215">            <span class="cf">goto</span> entry;</a>
+<a class="sourceLine" id="cb1-216" title="216">        }</a>
+<a class="sourceLine" id="cb1-217" title="217">        <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1-218" title="218">            st_pointer[route[route_front]]++;</a>
+<a class="sourceLine" id="cb1-219" title="219">            route[route_front + <span class="dv">1</span>] = st_list[route[route_front]].st_jointed[st_pointer[route[route_front]]];</a>
+<a class="sourceLine" id="cb1-220" title="220">            route_front++;</a>
+<a class="sourceLine" id="cb1-221" title="221">            <span class="cf">goto</span> entry;</a>
+<a class="sourceLine" id="cb1-222" title="222">        }</a>
+<a class="sourceLine" id="cb1-223" title="223">    }</a>
+<a class="sourceLine" id="cb1-224" title="224"></a>
+<a class="sourceLine" id="cb1-225" title="225">done:</a>
+<a class="sourceLine" id="cb1-226" title="226">    printf(<span class="st">&quot;探索終了</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-227" title="227">    printf(<span class="st">&quot;%d</span><span class="sc">\n</span><span class="st">&quot;</span>, length_max);</a>
+<a class="sourceLine" id="cb1-228" title="228">    <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt; ROUTE_MAX; i++) {</a>
+<a class="sourceLine" id="cb1-229" title="229">        printf(<span class="st">&quot;%s &quot;</span>, st_list[route_max[i]].name);</a>
+<a class="sourceLine" id="cb1-230" title="230">    }</a>
+<a class="sourceLine" id="cb1-231" title="231"></a>
+<a class="sourceLine" id="cb1-232" title="232">    fclose(fp);</a>
+<a class="sourceLine" id="cb1-233" title="233">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-234" title="234">}</a></code></pre></div>
+      <button class="comment-button" onclick="tweet();">コメント</button>
+    </article>
+  </body>
+</html>
