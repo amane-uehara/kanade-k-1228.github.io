@@ -12,6 +12,8 @@
 
 [演算回路](./Computer/ArithmeticCircuit/)
 
+[論理回路](./Computer/LogicCircuit/)
+
 ### リレーコンピュータ
 
 [リレーコンピュータ](./Computer/RelayComputer/)
