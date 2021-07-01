@@ -430,16 +430,20 @@
 <h3 id="clang-format-の拡張機能をインストールして">clang-format の拡張機能をインストールして</h3>
 <p>[https://marketplace.visualstudio.com/items?itemName=xaver.clang-format:embed:cite]</p>
 <h3 id="settings.json">settings.json</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="er">&quot;clang-format.executable&quot;:</span> <span class="er">&quot;/mnt/c/Program</span> <span class="er">Files/LLVM/bin/clang-format.exe&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="dt">&quot;clang-format.executable&quot;</span><span class="fu">:</span> <span class="st">&quot;/mnt/c/Program Files/LLVM/bin/clang-format.exe&quot;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="fu">}</span></a></code></pre></div>
 <p>（VSCodeにclang-formatの場所を教える）</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="er">&quot;</span><span class="ot">[</span><span class="er">c</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></a>
 <a class="sourceLine" id="cb3-2" title="2">    <span class="dt">&quot;editor.defaultFormatter&quot;</span><span class="fu">:</span> <span class="st">&quot;xaver.clang-format&quot;</span></a>
-<a class="sourceLine" id="cb3-3" title="3">  <span class="fu">}</span><span class="er">,</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-3" title="3"><span class="fu">}</span></a></code></pre></div>
 <p>（言語ごとのフォーマッタの設定）</p>
 <p>を追加すればおｋ</p>
 <p>ついでに</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" title="1">  <span class="er">&quot;editor.formatOnType&quot;:</span> <span class="er">true,</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="er">&quot;editor.formatOnSave&quot;:</span> <span class="er">true,</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">&quot;editor.formatOnType&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">&quot;editor.formatOnSave&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="fu">}</span></a></code></pre></div>
 <p>を設定しとくと編集時・保存時にフォーマットしてくれるよ</p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

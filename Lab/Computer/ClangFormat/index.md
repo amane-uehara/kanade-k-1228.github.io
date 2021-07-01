@@ -20,7 +20,9 @@ export PATH=$PATH:/mnt/c/'Program Files'/LLVM/bin
 ### settings.json
 
 ```json
-"clang-format.executable": "/mnt/c/Program Files/LLVM/bin/clang-format.exe"
+{
+  "clang-format.executable": "/mnt/c/Program Files/LLVM/bin/clang-format.exe"
+}
 ```
 
 （VSCodeにclang-formatの場所を教える）
@@ -28,7 +30,7 @@ export PATH=$PATH:/mnt/c/'Program Files'/LLVM/bin
 ```json 
 "[c]": {
     "editor.defaultFormatter": "xaver.clang-format"
-  },
+}
 ```
 
 （言語ごとのフォーマッタの設定）
@@ -37,9 +39,11 @@ export PATH=$PATH:/mnt/c/'Program Files'/LLVM/bin
 
 ついでに
 
-```json 
+```json
+{
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
+}
 ```
 
 を設定しとくと編集時・保存時にフォーマットしてくれるよ
