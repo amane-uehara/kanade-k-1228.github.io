@@ -16,7 +16,7 @@
 
 > For concurrent and distributed systems
 
-- 並行・分散システムのための
+- 並列・分散システムのための
 
 > Abstraction is the most important part of engineering.
 > It lets us understand complex systems.
@@ -101,9 +101,11 @@ function transition([pc: ProgramCounter, i: State]){
 TLA+ でインクリメントプログラムを書いてみましょう．とりあえず完成品をみてください
 
 $$
-\mathrm{VARIABLES} : i, \mathrm{pc} \\
+\mathrm{VARIABLES} : i, \mathrm{pc}
+$$
+
+$$
 \begin{alignedat}{5}
-\\
 \rm Init \triangleq 
 &     &\land& \rm pc = start \\
 &     &\land& i = 0 \\
@@ -120,4 +122,8 @@ $$
 
 数学の命題の形で書かれています．
 
-この命題を真とする状態 $i,\mathrm{pc}$ が，実行中に現れる状態．
+この命題を真とする状態 $i,\mathrm{pc}, i', \mathrm{pc}'$ が，実行中に現れる状態．
+
+
+## 並列・分散システムの
+
