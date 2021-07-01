@@ -12,9 +12,9 @@
 
 [演算回路](./Computer/ArithmeticCircuit/)
 
-[論理回路](./Computer/LogicCircuit/)
-
 ### リレーコンピュータ
+
+[CPU入門](./Computer/CPUIntroduction/)
 
 [リレーコンピュータ](./Computer/RelayComputer/)
 
