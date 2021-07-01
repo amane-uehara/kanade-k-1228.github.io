@@ -101,8 +101,8 @@ function transition([pc: ProgramCounter, i: State]){
 TLA+ でインクリメントプログラムを書いてみましょう．とりあえず完成品をみてください
 
 $$
-\begin{alignedat}
-\mathrm{Next} = &\lor &\land& pc = "start"  &\land& pc' = "middle" &\land& i' = SomeInt() \\
-                &\lor &\land& pc = "middle" &\land& pc' = "end"    &\land& i' = i + 1     \\ 
+\begin{alignedat}{5}
+\rm Next = &\lor &\land& \rm pc = start  &\land& \rm pc' = \rm middle &\land& \rm i' = SomeInt() \\
+           &\lor &\land& \rm pc = middle &\land& \rm pc' = end        &\land& \rm i' = i + 1     \\ 
 \end{alignedat}
 $$
