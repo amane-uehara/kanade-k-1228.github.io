@@ -9,17 +9,16 @@ type State = any;
 type Transition = (s: State) => State;
 
 let state: State;
-let transition: Transition;
+const transition: Transition;
 
-while (true) {
+while(true) {
   state = transition(state);
 }
 ```
 
 ![](fig01.drawio.svg)
 
-### 入力を受け付けるステートマシン
-
+### 外部入力に応じて状態が変化するステートマシン
 
 ``` typescript
 type State = any;
@@ -27,16 +26,15 @@ type Transition = (s: State) => State;
 type Input = () => (s: State) => State;
 
 let state: State;
-let transition: Transition;
-let input : Input;
+const transition: Transition;
+const input : Input;
 
-while (true) {
+while(true) {
   state = transition(state);
   state = input()(state);
 }
 ```
-
-### スイッチをONするとOFFするロボット
+### 例：スイッチをONするとOFFするロボット
 
 ![](https://m.media-amazon.com/images/I/41o0i4rIKNL._SL500_.jpg)
 
@@ -48,10 +46,10 @@ type Transition = (s: State) => State;
 type Input = () => (s: State) => State;
 
 let state: State = "off";
-let transition: Transition = (s: State) => "off";
-let input : Input;
+const transition: Transition = (s: State) => "off";
+const input : Input;
 
-while (true) {
+while(true) {
   state = transition(state);
   state = input()(state);
 }
@@ -59,19 +57,17 @@ while (true) {
 
 ## プログラマブルステートマシン
 
-プログラムカウンタを明示的に分離する
+状態からプログラムカウンタを明示的に分離する
 
 ``` typescript
 type State = any;
 type Transition = (s: State) => State;
 
 let state: State;
-let program: Transition[];
-let counter: number = 0;
+const program: Transition[];
 
-while (true) {
+for(let counter = 0; ; counter++) {
   state = program[counter](state);
-  counter++;
 }
 ```
 
@@ -82,11 +78,15 @@ type State = any;
 type Transition = (s: State) => [State, number];
 
 let state: State;
-let program: Transition[];
-let counter: number = 0;
+const program: Transition[];
+let counter= 0;
 
-while (true) {
+while(true) {
   [state, counter] = program[counter](state);
 }
 ```
+
+### 論理回路による実装
+
+
 
