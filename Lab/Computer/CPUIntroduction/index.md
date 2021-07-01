@@ -8,17 +8,33 @@
 type State = any;
 type Transition = (s: State) => State;
 
-let s: State;
-let f: Transition;
+let state: State;
+let transition: Transition;
 
 while (true) {
-  s = f(s);
+  state = transition(state);
 }
 ```
 
 ![](fig01.drawio.svg)
 
 ### 入力を受け付けるステートマシン
+
+
+``` typescript
+type State = any;
+type Transition = (s: State) => State;
+type Input = () => (s: State) => State;
+
+let state: State;
+let transition: Transition;
+let input : Input;
+
+while (true) {
+  state = transition(state);
+  state = input()(state);
+}
+```
 
 ### スイッチをONするとOFFするロボット
 
@@ -29,47 +45,48 @@ while (true) {
 ``` typescript
 type State = "on" | "off";
 type Transition = (s: State) => State;
+type Input = () => (s: State) => State;
 
-let s: State = "off";
-let f: Transition = (s: State) => "off";
-let readInput: () => State;
+let state: State = "off";
+let transition: Transition = (s: State) => "off";
+let input : Input;
 
 while (true) {
-  s = f(s);
-  s = readInput();
+  state = transition(state);
+  state = input()(state);
 }
 ```
 
 ## プログラマブルステートマシン
 
+プログラムカウンタを明示的に分離する
+
 ``` typescript
 type State = any;
 type Transition = (s: State) => State;
 
-let s: State;
-let F: Transition[];
-let i: number = 0;
+let state: State;
+let program: Transition[];
+let counter: number = 0;
 
 while (true) {
-  s = F[i](s);
-  i++;
+  state = program[counter](state);
+  counter++;
 }
 ```
 
-
-### 条件分岐
+### プログラムの分岐がある場合
 
 ``` typescript
 type State = any;
 type Transition = (s: State) => [State, number];
 
-let s: State;
-let F: Transition[];
-let i: number = 0;
+let state: State;
+let program: Transition[];
+let counter: number = 0;
 
 while (true) {
-  [s,i] = F[i](s);
+  [state, counter] = program[counter](state);
 }
 ```
-
 
