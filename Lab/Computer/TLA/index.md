@@ -101,8 +101,23 @@ function transition([pc: ProgramCounter, i: State]){
 TLA+ でインクリメントプログラムを書いてみましょう．とりあえず完成品をみてください
 
 $$
+\mathrm{VARIABLES} : i, \mathrm{pc} \\
 \begin{alignedat}{5}
-\rm Next = &\lor &\land& \rm pc = start  &\land& \rm pc' = \rm middle &\land& \rm i' = SomeInt() \\
-           &\lor &\land& \rm pc = middle &\land& \rm pc' = end        &\land& \rm i' = i + 1     \\ 
+\\
+\rm Init \triangleq 
+&     &\land& \rm pc = start \\
+&     &\land& i = 0 \\
+\\
+\rm Next \triangleq 
+&\lor &\land& \rm pc = start   \\
+&     &\land& \rm pc' = middle \\ 
+&     &\land& i' \in 0 \cdots 255 \\
+&\lor &\land& \rm pc = middle \\
+&     &\land& \rm pc' = end   \\
+&     &\land& i' = i + 1      \\ 
 \end{alignedat}
 $$
+
+数学の命題の形で書かれています．
+
+この命題を真とする状態 $i,\mathrm{pc}$ が，実行中に現れる状態．
