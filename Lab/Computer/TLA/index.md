@@ -1,0 +1,108 @@
+% TLA+ 入門
+%
+%
+
+[本家のウェブサイト](http://lamport.azurewebsites.net/tla/tla.html){:target="_blank"}
+
+## TLA+ の思想
+
+> A language for high-level modeling of digital systems
+
+- デジタルシステムの
+  - アルゴリズム・プログラム・コンピュータマシンからなるシステム
+- 高レイヤの
+  - コードの前の設計段階における
+- モデル記述言語
+
+> For concurrent and distributed systems
+
+- 並行・分散システムのための
+
+> Abstraction is the most important part of engineering.
+> It lets us understand complex systems.
+
+- 複雑なシステムは抽象化するとわかりやすくなる
+
+## TLA+ のメリット
+
+- 複雑なシステムを厳密に・統一的に記述できる
+  - システムの実装によらない
+- モデルの検証のためのツールがある
+  - TLA Model Checker
+  - TLAPS
+  - TLA Toolbox (IDE)
+- 設計への出戻りリスクを減らせる
+
+> TLA+を学ぶと，複雑なシステムを明快に扱えるようになる
+
+## 実績
+
+- AWSとか複雑なシステムに使われてるよ
+- 詳細はドキュメント
+- RTOS にも
+
+## デジタルシステムの抽象化
+
+- 離散的なイベントの連続
+
+
+
+## 簡単なコード
+
+整数をランダムに取得してインクリメントする処理を考えます．
+
+```typescript
+{
+    let i: number = 0; // "start"
+    i = SomeInt();     // "middle"
+    i = i + 1;         // "end"
+}
+```
+
+※ `SomeInt()` は 0~255 を返すとします
+
+この処理を以下のように書き換えます．
+
+```typescript
+type State = number;
+type ProgramCounter = "start" | "middle" | "end";
+
+function transition([pc: ProgramCounter, i: State]){
+    if     (pc==="start")  return ["middle", SomeInt()];
+    else if(pc==="middle") return ["end"   , i + 1    ];
+}
+
+{
+    let pc: ProgramCounter = "start";
+    let i: State = 0;
+    [pc,i] = transition([pc,i]); // pc = "middle" , i = a
+    [pc,i] = transition([pc,i]); // pc = "end"    , i = a + 1
+}
+```
+
+非常にまどろっこしい書き方ですが，i に関して上のコードと同じ処理をしていることを確認してください．
+
+この書き換えをすることで，処理が同じ形 `[pc,i] = transition([pc,i]);` の繰り返しになっていることが重要です．
+
+### プログラムの検証
+
+この簡単なプログラムの検証をしてみましょう．検証とは，プログラムがある性質を満たすことを確認することです．（例えば，変数がオーバーフローしない，無限ループに入らない，デッドロックしない，，，など）
+
+例えばここでは，i の範囲を調べてみましょう．
+
+（ここかく）
+
+※　プログラムが単純なので少々強引になってしまいましたが………
+
+実際の巨大なプログラムではこの検証が非常に大変になります．TLAを使うとこの検証がやりやすくなります．
+
+### TLA+ の記法
+
+TLA+ でインクリメントプログラムを書いてみましょう．とりあえず完成品をみてください
+
+$$
+\begin{alignedat}
+\mathrm{Next} = &\lor &\land& pc = "start"  &\land& pc' = "middle" &\land& i' = SomeInt() \\
+                &\lor &\land& pc = "middle" &\land& pc' = "end"    &\land& i' = i + 1     \\ 
+\end{alignedat}
+$$
