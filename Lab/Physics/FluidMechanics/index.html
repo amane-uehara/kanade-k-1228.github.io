@@ -418,7 +418,6 @@
             <nav><ul>
 <li><a href="#基礎方程式">基礎方程式</a><ul>
 <li><a href="#流体の記述">流体の記述</a></li>
-<li><a href="#さまざまな条件">さまざまな条件</a></li>
 <li><a href="#質量保存則連続の式">質量保存則（連続の式）</a></li>
 <li><a href="#運動量保存則運動方程式">運動量保存則（運動方程式）</a></li>
 <li><a href="#構成則">構成則</a></li>
@@ -427,6 +426,7 @@
 <li><a href="#二次元">二次元</a></li>
 <li><a href="#円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></a></li>
 </ul></li>
+<li><a href="#完全流体">完全流体</a></li>
 <li><a href="#渦度流れ関数">渦度・流れ関数</a><ul>
 <li><a href="#渦度">渦度</a></li>
 <li><a href="#流れ関数">流れ関数</a></li>
@@ -468,29 +468,9 @@
 <li>圧力 <span class="math inline">\(p\)</span></li>
 <li>外力 <span class="math inline">\(g_i\)</span></li>
 </ul>
-<h3 id="さまざまな条件">さまざまな条件</h3>
-<ul>
-<li>非圧縮
-<ul>
-<li>マッハ数が小さい</li>
-<li>だいたいこれ</li>
-</ul></li>
-<li>非粘性
-<ul>
-<li>粘性項が消える</li>
-</ul></li>
-<li>非回転
-<ul>
-<li>速度場の回転がない場合</li>
-</ul></li>
-</ul>
 <h3 id="質量保存則連続の式">質量保存則（連続の式）</h3>
 <p><span class="math display">\[
 \pd{t}\rho+\pd{x_i}(\rho u_i)=0
-\]</span></p>
-<h4 id="非圧縮">非圧縮</h4>
-<p><span class="math display">\[
-\pd{x_i}u_i=0
 \]</span></p>
 <h3 id="運動量保存則運動方程式">運動量保存則（運動方程式）</h3>
 <p><span class="math display">\[
@@ -585,6 +565,19 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &amp;= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
 \]</span></p>
+<h2 id="完全流体">完全流体</h2>
+<p>非粘性の流体（<span class="math inline">\(\mathrm{Re}\rightarrow\infty\)</span>）</p>
+<ul>
+<li><p>連続の式 <span class="math display">\[
+\pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
+\]</span></p></li>
+<li><p>オイラー方程式（粘性項を無視したナビエストークス方程式） <span class="math display">\[
+\pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
+\]</span></p></li>
+<li><p>断熱方程式 <span class="math display">\[
+\pd[s]{t} + u_j \pd[s]{x_j} = 0
+\]</span></p></li>
+</ul>
 <h2 id="渦度流れ関数">渦度・流れ関数</h2>
 <p>二次元非圧縮流非粘性流れ（完全流体）のNS方程式の互換表現</p>
 <h3 id="渦度">渦度</h3>

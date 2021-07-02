@@ -416,13 +416,17 @@
                 <h1 style="margin: 0">移動現象論</h1>
                </header>
             <nav><ul>
-<li><a href="#輸送の一般式">輸送の一般式</a><ul>
-<li><a href="#相反定理">相反定理</a></li>
+<li><a href="#輸送の一般式">輸送の一般式</a></li>
+<li><a href="#拡散">拡散</a><ul>
+<li><a href="#フィクスの第１法則">フィクスの第１法則</a></li>
+<li><a href="#拡散方程式フィクスの第２法則">拡散方程式（フィクスの第２法則）</a></li>
+<li><a href="#拡散係数の導出">拡散係数の導出</a></li>
 </ul></li>
-<li><a href="#流束">流束</a></li>
-<li><a href="#輸送方程式">輸送方程式</a><ul>
-<li><a href="#連続の式">連続の式</a></li>
+<li><a href="#熱伝導">熱伝導</a><ul>
+<li><a href="#フーリエの法則">フーリエの法則</a></li>
+<li><a href="#熱伝導方程式">熱伝導方程式</a></li>
 </ul></li>
+<li><a href="#粘性">粘性</a></li>
 <li><a href="#分子の移動">分子の移動</a><ul>
 <li><a href="#マクスウェルの速度分布則">マクスウェルの速度分布則</a></li>
 <li><a href="#クヌッセン数">クヌッセン数</a></li>
@@ -431,84 +435,108 @@
 </ul></li>
 <li><a href="#液体">液体</a></li>
 </ul></nav>
-       <h2 id="輸送の一般式">輸送の一般式</h2>
-<p><span class="math display">\[
-\begin{aligned}
-J_i &amp;=&amp; &amp;L_{ik} &amp;&amp; X_k \\
-流束 &amp;=&amp; &amp;輸送係数 &amp;&amp; 駆動力 \\
-\end{aligned}
+       <p><span class="math display">\[
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 \]</span></p>
-<p>駆動力があまり大きくないときに成り立つ現象論的な線形近似</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>流束</th>
-<th>駆動力</th>
-<th>輸送係数</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>粒子拡散</td>
-<td>粒子</td>
-<td>濃度勾配</td>
-<td>拡散係数</td>
-</tr>
-<tr class="even">
-<td>熱伝導</td>
-<td>熱</td>
-<td>温度勾配</td>
-<td>熱伝導率</td>
-</tr>
-<tr class="odd">
-<td>粘性</td>
-<td>運動量</td>
-<td>速度勾配</td>
-<td>粘性係数</td>
-</tr>
-</tbody>
-</table>
-<h3 id="相反定理">相反定理</h3>
+<p>非定常系</p>
+<h2 id="輸送の一般式">輸送の一般式</h2>
 <p><span class="math display">\[
-L_{ik}=L_{ki}
+\begin{alignedat}{10}
+J    &amp;=&amp;       &amp;-k&amp; &amp;\nabla F \\
+流束 &amp;\propto&amp; &amp;  &amp; &amp; 駆動力 
+\end{alignedat}
 \]</span></p>
-<h2 id="流束">流束</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
-<td style="text-align: center;">スカラー</td>
-<td>物理量</td>
-<td><span class="math inline">\([M]\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\rho\)</span></td>
-<td style="text-align: center;">スカラー場</td>
-<td><span class="math inline">\(p\)</span> の密度場</td>
-<td><span class="math inline">\([M/L^3]\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(v\)</span></td>
-<td style="text-align: center;">ベクトル場</td>
-<td>媒体の速度場</td>
-<td><span class="math inline">\([L/T]\)</span></td>
-</tr>
-</tbody>
-</table>
+<p>※　駆動力があまり大きくないときに成り立つ現象論的な線形近似</p>
+<ul>
+<li>運動量交換（ニュートンの粘性法則）</li>
+</ul>
 <p><span class="math display">\[
-J^i = \rho v^i \quad [M/L^2T]
+\tau_{xy} = -\mu \pd[v_x]{y}
 \]</span></p>
-<p>単位時間単位面積当たりに通過する量</p>
-<h2 id="輸送方程式">輸送方程式</h2>
+<ul>
+<li>熱伝導（フーリエの法則）</li>
+</ul>
 <p><span class="math display">\[
-\partial_t \rho + \partial_i J^i = \sigma
+q = - \lambda \nabla T
 \]</span></p>
-<p>湧き出し密度 : <span class="math inline">\(\sigma\)</span></p>
-<h3 id="連続の式">連続の式</h3>
+<ul>
+<li>拡散（フィックの第１法則）</li>
+</ul>
 <p><span class="math display">\[
-\partial_t \rho + \partial_i J^i = 0
+j = - D \nabla C
 \]</span></p>
+<ul>
+<li>電流</li>
+</ul>
+<p><span class="math display">\[
+j = - \sigma \nabla V
+\]</span></p>
+<h2 id="拡散">拡散</h2>
+<h3 id="フィクスの第１法則">フィクスの第１法則</h3>
+<p>混合流体中のある成分の濃度場を <span class="math inline">\(C(x)\)</span> とする．全ての分子はランダムに等方的に拡散する．ある微小面の両側に濃度勾配がある場合，等方的な拡散の結果として，濃度を均一にする方向に分子が動いたようにみえる．</p>
+<p>濃度場 <span class="math inline">\(C\)</span> と拡散流束 <span class="math inline">\(q\)</span> とに</p>
+<blockquote>
+<p><span class="math display">\[
+q = -D \nabla C
+\]</span> <span class="math inline">\(D\)</span> : 拡散係数</p>
+</blockquote>
+<p>の関係（フィクスの第１法則）が見られる．</p>
+<h3 id="拡散方程式フィクスの第２法則">拡散方程式（フィクスの第２法則）</h3>
+<blockquote>
+<p><span class="math display">\[
+\pd[C]{t} = \kappa_C \nabla^2 C
+\]</span> <span class="math inline">\(\kappa_C:=\frac{k_C}{\rho}\)</span> : 質量拡散係数</p>
+</blockquote>
+<p>静止した混合流体中に閉曲面 <span class="math inline">\(A\)</span> と <span class="math inline">\(A\)</span> に囲まれた閉領域 <span class="math inline">\(V\)</span> をとる．</p>
+<p>質量保存則より，<span class="math inline">\(V\)</span> 内質量の増加量は <span class="math inline">\(A\)</span> の表面からの流入量と等しいので，（<span class="math inline">\(n_A\)</span> は外向きを正とする．最後の変形にガウスの発散定理を用いる．）</p>
+<p><span class="math display">\[
+\pd{t} \int_V \rho C dV = - \int_A q \cdot n_A dA = \int_A (k_C \nabla C) \cdot n_A dA = \int_V \nabla (k_C \nabla C) dV
+\]</span></p>
+<p><span class="math inline">\(V\)</span> は任意なので，</p>
+<p><span class="math display">\[
+\rho \pd[C]{t} = k_C \nabla^2 C
+\]</span></p>
+<h3 id="拡散係数の導出">拡散係数の導出</h3>
+<p>フィクスの第１法則はブラウン運動のモデル（ランダムに分子が運動するモデル）で説明できて，</p>
+<p><span class="math display">\[
+D = \mu k_B T
+\]</span> <span class="math inline">\(\mu\)</span> : 移動度</p>
+<p>低レイノルズ数の液体を媒体とした球形粒子の拡散の場合，</p>
+<p><span class="math display">\[
+D = \frac{k_BT}{6\pi \nu r}
+\]</span> <span class="math inline">\(\nu\)</span> : 動粘性係数</p>
+<h2 id="熱伝導">熱伝導</h2>
+<h3 id="フーリエの法則">フーリエの法則</h3>
+<p>温度場 <span class="math inline">\(T\)</span> と熱流束 <span class="math inline">\(q\)</span> とに</p>
+<blockquote>
+<p><span class="math display">\[
+q = - k \nabla T
+\]</span> 熱伝導係数 <span class="math inline">\(k\)</span></p>
+</blockquote>
+<p>の関係（フーリエの法則）が見られる．</p>
+<h3 id="熱伝導方程式">熱伝導方程式</h3>
+<blockquote>
+<p><span class="math display">\[
+\pd[T]{t} = \kappa_T \nabla^2 T
+\]</span> 温度拡散係数 <span class="math inline">\(\kappa_T:=\frac{k}{\rho C_p}\)</span></p>
+</blockquote>
+<p>静止流体中に閉曲面 <span class="math inline">\(A\)</span> と <span class="math inline">\(A\)</span> に囲まれた閉領域 <span class="math inline">\(V\)</span> をとる．</p>
+<p><span class="math inline">\(V\)</span> 内の熱エネルギーの時間変化は</p>
+<p><span class="math display">\[
+\pd[Q]{t} = \int \rho C_P \pd[T]{t} dV
+\]</span></p>
+<p>エネルギー保存則より，<span class="math inline">\(V\)</span> 内エネルギーの増加量は <span class="math inline">\(A\)</span> の表面からの流入量＋内部発熱 <span class="math inline">\(qV\)</span> に等しい．内部発熱がない場合，</p>
+<p><span class="math display">\[
+\int \rho C_P \pd[T]{t} dV = - \int_A q \cdot n_A dA = \int_A (k \nabla T) dA = \int_V \nabla (k \nabla T) dV
+\]</span></p>
+<p><span class="math inline">\(V\)</span> は任意なので，</p>
+<p><span class="math display">\[
+\rho C_P \pd[T]{t} = k \nabla^2 T
+\]</span></p>
+<h2 id="粘性">粘性</h2>
 <h2 id="分子の移動">分子の移動</h2>
 <h3 id="マクスウェルの速度分布則">マクスウェルの速度分布則</h3>
 <h3 id="クヌッセン数">クヌッセン数</h3>
