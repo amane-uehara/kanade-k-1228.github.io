@@ -19,23 +19,9 @@ $$
 - 圧力 $p$
 - 外力 $g_i$
 
-### さまざまな条件
-- 非圧縮
-  - マッハ数が小さい
-  - だいたいこれ
-- 非粘性
-  - 粘性項が消える
-- 非回転
-  - 速度場の回転がない場合
-
 ### 質量保存則（連続の式）
 $$
 \pd{t}\rho+\pd{x_i}(\rho u_i)=0
-$$
-
-#### 非圧縮
-$$
-\pd{x_i}u_i=0
 $$
 
 ### 運動量保存則（運動方程式）
@@ -127,6 +113,25 @@ $$
 \rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) &= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
 \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
+$$
+
+## 完全流体
+
+非粘性の流体（$\mathrm{Re}\rightarrow\infty$）
+
+- 連続の式
+$$
+\pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
+$$
+
+- オイラー方程式（粘性項を無視したナビエストークス方程式）
+$$
+\pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
+$$
+
+- 断熱方程式
+$$
+\pd[s]{t} + u_j \pd[s]{x_j} = 0
 $$
 
 
