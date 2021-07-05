@@ -3,11 +3,19 @@
 %
 
 $$
+\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
 \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
 \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
 $$
+
+
+## 流体
+
+
+
 
 ## 基礎方程式
 ### 流体の記述
@@ -113,52 +121,6 @@ $$
 \rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) &= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
 \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
-$$
-
-## 完全流体
-
-非粘性の流体（$\mathrm{Re}\rightarrow\infty$）
-
-- 連続の式
-$$
-\pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
-$$
-
-- オイラー方程式（粘性項を無視したナビエストークス方程式）
-$$
-\pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
-$$
-
-- 断熱方程式
-$$
-\pd[s]{t} + u_j \pd[s]{x_j} = 0
-$$
-
-
-## 渦度・流れ関数
-
-二次元非圧縮流非粘性流れ（完全流体）のNS方程式の互換表現
-
-### 渦度
-
-$$
-\zeta = \mathrm{rot} u
-$$
-
-### 流れ関数
-
-$$
-u = \pd[\psi]{y} \quad v = -\pd[\psi]{x} 
-$$
-
-### 渦度（輸送）方程式
-
-$$
-\nabla^2 \psi = - \zeta
-$$
-
-$$
-\pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
 $$
 
 
@@ -333,6 +295,61 @@ $$
 
 ## 発達
 
+## 完全流体の運動
+
+非粘性の流体（$\mathrm{Re}\rightarrow\infty$）
+
+- 連続の式
+$$
+\pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
+$$
+
+- オイラー方程式（完全流体の運動方程式）
+$$
+\pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
+$$
+
+- 断熱方程式
+$$
+\pd[s]{t} + u_j \pd[s]{x_j} = 0
+$$
+
+### ベールヌイの定理
+
+### ケルヴィンの循環定理
+
+### 渦
+
+### ポテンシャル流
+
+## 二次元非圧縮ポテンシャル流
+
+正則関数を用いて良い感じに表現できる
+
+## 
+
+### 渦度
+
+$$
+\zeta = \mathrm{rot} u
+$$
+
+### 流れ関数
+
+$$
+u = \pd[\psi]{y} \quad v = -\pd[\psi]{x} 
+$$
+
+### 渦度（輸送）方程式
+
+$$
+\nabla^2 \psi = - \zeta
+$$
+
+$$
+\pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
+$$
+
 
 
 ## 流体の運動学
@@ -381,5 +398,119 @@ $$
 
 ## ポテンシャル流
 
+
+## 水波
+
+[本](https://www.nagare.or.jp/download/noauth.html?d=31-4rensai.pdf&dir=113)
+
+水をポテンシャル流と仮定して扱う
+
+深さ $h$ 重力場 $-g\boldsymbol{k}$
+
+$$
+\nabla^2\phi=0
+$$
+
+$$
+\pd[\phi]{t}+\frac{1}{2}(\nabla \phi)^2 +\frac{P}{\rho}+gz=0
+$$
+
+このときに表面の形を表す方程式
+
+$$
+z=\zeta(x,t),\quad F(x,t)=0
+$$
+
+を求めたい．
+
+### 表面条件
+
+表面を構成する粒子は表面を漂うと仮定する．つまり，表面の物質微分
+
+$$
+\D[F]{t} = \pd{t}F + u \cdot \nabla F = 0 \\
+\pd[\zeta]{t}+\nabla\phi\cdot\nabla\zeta=\pd[\phi]{z}
+$$
+
+また，表面の圧力は大気圧なので，圧力をゲージ圧として，
+
+$$
+P(x,t)=0\,(F(x,t)=0)
+$$
+
+表面張力がある場合，圧力が高くなる．表面張力は表面形状に依存する成分と表面張力係数 $T$ の積になる．
+
+### 微小変位
+
+表面の形状に依存した複雑な境界条件になるので，波の変位が微小だと仮定して線形化する
+
+$z$ を微小変位 $\zeta$ として，
+
+$$
+\phi(x,y,z) \simeq \phi(x,y,0) + \zeta \pd{z}\phi(x,y,\zeta)
+$$
+
+表面形状の条件は
+
+$$
+\pd[\zeta]{t}=\pd[\phi]{z}
+$$
+
+表面圧力の条件は（表面張力を含む）
+
+$$
+\pd[\phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
+$$
+
+
+### 2次元の解
+
+$y$ 方向を均一として解く
+
+$$
+\phi=-a\frac{\omega \cosh k(z+h)}{k \sinh kh}\cos (kx-\omega t)
+$$
+
+#### 浅水波 $kh<<1$ の場合
+
+$$
+\phi = -\frac{a\omega}{k^2h}\cos (kx-\omega t)
+$$
+
+速度場
+
+$$
+u=\frac{a\omega}{kh}\sin(kx-\omega t)
+$$
+
+#### 深水波 $kh>>1$ の場合
+
+$$
+\phi = -a\frac{\omega}{k}e^{kz}\cos(kx-\omega t)
+$$
+
+位相速度
+
+$$
+c_p=\sqrt{\frac{g}{k}}
+$$
+
+群速度
+
+$$
+c_g=\frac{1}{2}\sqrt{\frac{g}{k}}
+$$
+
+## KdV方程式
+
+$$
+\pd[u]{t} + \alpha u \pd[u]{x} + \beta \pddd[u]{x} = 0
+$$
+
+### ソリトン解
+
+$$
+u=\frac{c}{2}\sech^2\frac{\sqrt{c}}{2}(x-ct+\delta)
+$$
 
 

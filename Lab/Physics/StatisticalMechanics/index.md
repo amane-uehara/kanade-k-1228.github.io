@@ -1,6 +1,17 @@
 % 統計力学
 %
 %
+
+$$
+\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+$$
+
+
 ## 位相空間
 
 ### $\Gamma$空間
@@ -275,4 +286,91 @@ $$
 | Ar  |       | 1.55R | 1.5R  | 1.51R |
 | N2  | 2.58R | 2.5R  | 2.93R | 3.29R |
 
-## 固体
+
+## 分子の運動学
+
+### マクスウェルの速度分布則
+
+### クヌッセン数
+
+代表長さ $L$ に対する，平均自由行程 $l$ の比
+
+$$
+\mathrm{Kn}:=\frac{l}{L}
+$$
+
+|                |            |        |                      |                                      |
+| :------------: | ---------- | :----: | -------------------- | ------------------------------------ |
+|   Kn < 0.01    | 連続流     |  平衡  | マクスウェル分布     | 分子間がいっぱい衝突して平衡に近づく |
+| 0.01 < Kn < 10 | 中間流     |   ↓    |                      |                                      |
+|    10 < Kn     | 自由分子流 | 非平衡 | ボルツマン輸送方程式 | 不均一がなかなか消えない             |
+
+
+### ボルツマンの輸送方程式
+
+非平衡（高クヌッセン数）の支配方程式
+
+分布関数 $f(x,v,t)$ （時刻 $t$ に状態 $x,v$ にある粒子数）について，
+
+$$
+\pd[f]{t} + v\pd[f]{r} + \frac{F}{m}\pd[f]{v} = \int\int (f'_1f'_2 - f_1f_2)|v_1-v_2|d\Omega dv_1
+$$
+
+### 分子衝突のない場合
+
+位相空間上で粒子の動きを追尾する
+
+$$
+f(x,v,t) = f(x + v\Delta t, v, t + \Delta t)
+$$
+
+$t$ に $(x,v)$ の状態にいたとき，$t+\Delta t$ では $(x+v\Delta t,v)$ にいることを意味している．
+
+$$
+\begin{aligned}
+f(x + v\Delta t, v, t + \Delta t) - f(x,v,t)
+    &= f(x + v\Delta t, v, t + \Delta t) - f(x,v,t) \\
+    &= f(x + v\Delta t, v, t + \Delta t) - f(x + v\Delta t, v, t) + f(x + v\Delta t, v, t) - f(x,v,t) \\
+    &= \pd[f]{t}\Delta t + v \cdot \nabla f \Delta t \\
+\end{aligned}
+$$
+
+$$
+\pd[f]{t} + v \cdot \nabla f = 0
+$$
+
+### 分子衝突がある場合
+
+時刻 $t_0$ に空間上の点 $x_0$ に流入する運動量の合計は
+
+$$
+\int_{-\infty}^{\infty} mvf(x_0,v,t_0) dv
+$$
+
+実際には $f(x,v,t)$ 
+
+$$
+\pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}}
+$$
+
+### 緩和時間近似
+
+平衡状態 $f_0$ からそれほど離れていない場合は，平衡状態への緩和時間を $\tau$ として，
+
+$$
+\pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}} \simeq -\frac{f-f_0}{\tau}
+$$
+
+の近似ができる．
+
+### 境界条件
+
+自由分子流の場合はこれだけで流れが決まる（分子間の衝突がないので）
+
+#### 鏡面反射
+
+#### 拡散反射
+
+
+
+

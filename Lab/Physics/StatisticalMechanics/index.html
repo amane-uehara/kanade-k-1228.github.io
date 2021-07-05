@@ -433,9 +433,25 @@
 <li><a href="#速さの分布">速さの分布</a></li>
 <li><a href="#実際の分子">実際の分子</a></li>
 </ul></li>
-<li><a href="#固体">固体</a></li>
+<li><a href="#分子の運動学">分子の運動学</a><ul>
+<li><a href="#マクスウェルの速度分布則">マクスウェルの速度分布則</a></li>
+<li><a href="#クヌッセン数">クヌッセン数</a></li>
+<li><a href="#ボルツマンの輸送方程式">ボルツマンの輸送方程式</a></li>
+<li><a href="#分子衝突のない場合">分子衝突のない場合</a></li>
+<li><a href="#分子衝突がある場合">分子衝突がある場合</a></li>
+<li><a href="#緩和時間近似">緩和時間近似</a></li>
+<li><a href="#境界条件">境界条件</a></li>
+</ul></li>
 </ul></nav>
-       <h2 id="位相空間">位相空間</h2>
+       <p><span class="math display">\[
+\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+\]</span></p>
+<h2 id="位相空間">位相空間</h2>
 <h3 id="gamma空間"><span class="math inline">\(\Gamma\)</span>空間</h3>
 <p><span class="math inline">\(N\)</span> 質点系の状態 → <span class="math inline">\(6N\)</span> 次元空間の一点（代表点）</p>
 <p>系の時間変化は <span class="math inline">\(\Gamma\)</span> 空間上を代表点が運動することと同じとみなせる</p>
@@ -642,7 +658,80 @@ C_v = \frac{7}{2}
 </tr>
 </tbody>
 </table>
-<h2 id="固体">固体</h2>
+<h2 id="分子の運動学">分子の運動学</h2>
+<h3 id="マクスウェルの速度分布則">マクスウェルの速度分布則</h3>
+<h3 id="クヌッセン数">クヌッセン数</h3>
+<p>代表長さ <span class="math inline">\(L\)</span> に対する，平均自由行程 <span class="math inline">\(l\)</span> の比</p>
+<p><span class="math display">\[
+\mathrm{Kn}:=\frac{l}{L}
+\]</span></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Kn &lt; 0.01</td>
+<td>連続流</td>
+<td style="text-align: center;">平衡</td>
+<td>マクスウェル分布</td>
+<td>分子間がいっぱい衝突して平衡に近づく</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.01 &lt; Kn &lt; 10</td>
+<td>中間流</td>
+<td style="text-align: center;">↓</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10 &lt; Kn</td>
+<td>自由分子流</td>
+<td style="text-align: center;">非平衡</td>
+<td>ボルツマン輸送方程式</td>
+<td>不均一がなかなか消えない</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ボルツマンの輸送方程式">ボルツマンの輸送方程式</h3>
+<p>非平衡（高クヌッセン数）の支配方程式</p>
+<p>分布関数 <span class="math inline">\(f(x,v,t)\)</span> （時刻 <span class="math inline">\(t\)</span> に状態 <span class="math inline">\(x,v\)</span> にある粒子数）について，</p>
+<p><span class="math display">\[
+\pd[f]{t} + v\pd[f]{r} + \frac{F}{m}\pd[f]{v} = \int\int (f&#39;_1f&#39;_2 - f_1f_2)|v_1-v_2|d\Omega dv_1
+\]</span></p>
+<h3 id="分子衝突のない場合">分子衝突のない場合</h3>
+<p>位相空間上で粒子の動きを追尾する</p>
+<p><span class="math display">\[
+f(x,v,t) = f(x + v\Delta t, v, t + \Delta t)
+\]</span></p>
+<p><span class="math inline">\(t\)</span> に <span class="math inline">\((x,v)\)</span> の状態にいたとき，<span class="math inline">\(t+\Delta t\)</span> では <span class="math inline">\((x+v\Delta t,v)\)</span> にいることを意味している．</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(x + v\Delta t, v, t + \Delta t) - f(x,v,t)
+    &amp;= f(x + v\Delta t, v, t + \Delta t) - f(x,v,t) \\
+    &amp;= f(x + v\Delta t, v, t + \Delta t) - f(x + v\Delta t, v, t) + f(x + v\Delta t, v, t) - f(x,v,t) \\
+    &amp;= \pd[f]{t}\Delta t + v \cdot \nabla f \Delta t \\
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\pd[f]{t} + v \cdot \nabla f = 0
+\]</span></p>
+<h3 id="分子衝突がある場合">分子衝突がある場合</h3>
+<p>時刻 <span class="math inline">\(t_0\)</span> に空間上の点 <span class="math inline">\(x_0\)</span> に流入する運動量の合計は</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} mvf(x_0,v,t_0) dv
+\]</span></p>
+<p>実際には <span class="math inline">\(f(x,v,t)\)</span></p>
+<p><span class="math display">\[
+\pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}}
+\]</span></p>
+<h3 id="緩和時間近似">緩和時間近似</h3>
+<p>平衡状態 <span class="math inline">\(f_0\)</span> からそれほど離れていない場合は，平衡状態への緩和時間を <span class="math inline">\(\tau\)</span> として，</p>
+<p><span class="math display">\[
+\pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}} \simeq -\frac{f-f_0}{\tau}
+\]</span></p>
+<p>の近似ができる．</p>
+<h3 id="境界条件">境界条件</h3>
+<p>自由分子流の場合はこれだけで流れが決まる（分子間の衝突がないので）</p>
+<h4 id="鏡面反射">鏡面反射</h4>
+<h4 id="拡散反射">拡散反射</h4>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

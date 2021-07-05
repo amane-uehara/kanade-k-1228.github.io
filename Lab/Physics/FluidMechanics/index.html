@@ -416,6 +416,7 @@
                 <h1 style="margin: 0">流体力学</h1>
                </header>
             <nav><ul>
+<li><a href="#流体">流体</a></li>
 <li><a href="#基礎方程式">基礎方程式</a><ul>
 <li><a href="#流体の記述">流体の記述</a></li>
 <li><a href="#質量保存則連続の式">質量保存則（連続の式）</a></li>
@@ -425,12 +426,6 @@
 <li><a href="#π定理">π定理</a></li>
 <li><a href="#二次元">二次元</a></li>
 <li><a href="#円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></a></li>
-</ul></li>
-<li><a href="#完全流体">完全流体</a></li>
-<li><a href="#渦度流れ関数">渦度・流れ関数</a><ul>
-<li><a href="#渦度">渦度</a></li>
-<li><a href="#流れ関数">流れ関数</a></li>
-<li><a href="#渦度輸送方程式">渦度（輸送）方程式</a></li>
 </ul></li>
 <li><a href="#円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</a><ul>
 <li><a href="#血管の分岐murrayの法則">血管の分岐（Murrayの法則）</a></li>
@@ -442,19 +437,42 @@
 <li><a href="#境界層">境界層</a></li>
 <li><a href="#非定常">非定常</a></li>
 <li><a href="#発達">発達</a></li>
+<li><a href="#完全流体の運動">完全流体の運動</a><ul>
+<li><a href="#ベールヌイの定理">ベールヌイの定理</a></li>
+<li><a href="#ケルヴィンの循環定理">ケルヴィンの循環定理</a></li>
+<li><a href="#渦">渦</a></li>
+<li><a href="#ポテンシャル流">ポテンシャル流</a></li>
+</ul></li>
+<li><a href="#二次元非圧縮ポテンシャル流">二次元非圧縮ポテンシャル流</a></li>
+<li><a href="#section"></a><ul>
+<li><a href="#渦度">渦度</a></li>
+<li><a href="#流れ関数">流れ関数</a></li>
+<li><a href="#渦度輸送方程式">渦度（輸送）方程式</a></li>
+</ul></li>
 <li><a href="#流体の運動学">流体の運動学</a><ul>
 <li><a href="#運動の記述">運動の記述</a></li>
 <li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
 <li><a href="#ランキン渦">ランキン渦</a></li>
 </ul></li>
-<li><a href="#ポテンシャル流">ポテンシャル流</a></li>
+<li><a href="#ポテンシャル流-1">ポテンシャル流</a></li>
+<li><a href="#水波">水波</a><ul>
+<li><a href="#表面条件">表面条件</a></li>
+<li><a href="#微小変位">微小変位</a></li>
+<li><a href="#次元の解">2次元の解</a></li>
+</ul></li>
+<li><a href="#kdv方程式">KdV方程式</a><ul>
+<li><a href="#ソリトン解">ソリトン解</a></li>
+</ul></li>
 </ul></nav>
        <p><span class="math display">\[
+\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
 \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
 \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
 \]</span></p>
+<h2 id="流体">流体</h2>
 <h2 id="基礎方程式">基礎方程式</h2>
 <h3 id="流体の記述">流体の記述</h3>
 <ul>
@@ -565,36 +583,6 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &amp;= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
 \]</span></p>
-<h2 id="完全流体">完全流体</h2>
-<p>非粘性の流体（<span class="math inline">\(\mathrm{Re}\rightarrow\infty\)</span>）</p>
-<ul>
-<li><p>連続の式 <span class="math display">\[
-\pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
-\]</span></p></li>
-<li><p>オイラー方程式（粘性項を無視したナビエストークス方程式） <span class="math display">\[
-\pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
-\]</span></p></li>
-<li><p>断熱方程式 <span class="math display">\[
-\pd[s]{t} + u_j \pd[s]{x_j} = 0
-\]</span></p></li>
-</ul>
-<h2 id="渦度流れ関数">渦度・流れ関数</h2>
-<p>二次元非圧縮流非粘性流れ（完全流体）のNS方程式の互換表現</p>
-<h3 id="渦度">渦度</h3>
-<p><span class="math display">\[
-\zeta = \mathrm{rot} u
-\]</span></p>
-<h3 id="流れ関数">流れ関数</h3>
-<p><span class="math display">\[
-u = \pd[\psi]{y} \quad v = -\pd[\psi]{x} 
-\]</span></p>
-<h3 id="渦度輸送方程式">渦度（輸送）方程式</h3>
-<p><span class="math display">\[
-\nabla^2 \psi = - \zeta
-\]</span></p>
-<p><span class="math display">\[
-\pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
-\]</span></p>
 <h2 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h2>
 <p><img src="CircularTube.drawio.svg" /></p>
 <p>半径 <span class="math inline">\(R\)</span> の円管</p>
@@ -704,6 +692,41 @@ u(x,\infty,t)&amp;=0\\
 \delta(t)=\sqrt{\mu t}
 \]</span></p>
 <h2 id="発達">発達</h2>
+<h2 id="完全流体の運動">完全流体の運動</h2>
+<p>非粘性の流体（<span class="math inline">\(\mathrm{Re}\rightarrow\infty\)</span>）</p>
+<ul>
+<li><p>連続の式 <span class="math display">\[
+\pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
+\]</span></p></li>
+<li><p>オイラー方程式（完全流体の運動方程式） <span class="math display">\[
+\pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
+\]</span></p></li>
+<li><p>断熱方程式 <span class="math display">\[
+\pd[s]{t} + u_j \pd[s]{x_j} = 0
+\]</span></p></li>
+</ul>
+<h3 id="ベールヌイの定理">ベールヌイの定理</h3>
+<h3 id="ケルヴィンの循環定理">ケルヴィンの循環定理</h3>
+<h3 id="渦">渦</h3>
+<h3 id="ポテンシャル流">ポテンシャル流</h3>
+<h2 id="二次元非圧縮ポテンシャル流">二次元非圧縮ポテンシャル流</h2>
+<p>正則関数を用いて良い感じに表現できる</p>
+<h2 id="section"></h2>
+<h3 id="渦度">渦度</h3>
+<p><span class="math display">\[
+\zeta = \mathrm{rot} u
+\]</span></p>
+<h3 id="流れ関数">流れ関数</h3>
+<p><span class="math display">\[
+u = \pd[\psi]{y} \quad v = -\pd[\psi]{x} 
+\]</span></p>
+<h3 id="渦度輸送方程式">渦度（輸送）方程式</h3>
+<p><span class="math display">\[
+\nabla^2 \psi = - \zeta
+\]</span></p>
+<p><span class="math display">\[
+\pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
+\]</span></p>
 <h2 id="流体の運動学">流体の運動学</h2>
 <h3 id="運動の記述">運動の記述</h3>
 <ul>
@@ -753,7 +776,80 @@ u(x,\infty,t)&amp;=0\\
 <p>粘性がなく，密度が圧力のみに依存し（バロトロピー流体），体積力が保存力なら，渦線を構成する粒子は常に同じで，渦線と流体は一緒に移動する．</p>
 <h3 id="ランキン渦">ランキン渦</h3>
 <p>剛体回転する円柱</p>
-<h2 id="ポテンシャル流">ポテンシャル流</h2>
+<h2 id="ポテンシャル流-1">ポテンシャル流</h2>
+<h2 id="水波">水波</h2>
+<p><a href="https://www.nagare.or.jp/download/noauth.html?d=31-4rensai.pdf&amp;dir=113">本</a></p>
+<p>水をポテンシャル流と仮定して扱う</p>
+<p>深さ <span class="math inline">\(h\)</span> 重力場 <span class="math inline">\(-g\boldsymbol{k}\)</span></p>
+<p><span class="math display">\[
+\nabla^2\phi=0
+\]</span></p>
+<p><span class="math display">\[
+\pd[\phi]{t}+\frac{1}{2}(\nabla \phi)^2 +\frac{P}{\rho}+gz=0
+\]</span></p>
+<p>このときに表面の形を表す方程式</p>
+<p><span class="math display">\[
+z=\zeta(x,t),\quad F(x,t)=0
+\]</span></p>
+<p>を求めたい．</p>
+<h3 id="表面条件">表面条件</h3>
+<p>表面を構成する粒子は表面を漂うと仮定する．つまり，表面の物質微分</p>
+<p><span class="math display">\[
+\D[F]{t} = \pd{t}F + u \cdot \nabla F = 0 \\
+\pd[\zeta]{t}+\nabla\phi\cdot\nabla\zeta=\pd[\phi]{z}
+\]</span></p>
+<p>また，表面の圧力は大気圧なので，圧力をゲージ圧として，</p>
+<p><span class="math display">\[
+P(x,t)=0\,(F(x,t)=0)
+\]</span></p>
+<p>表面張力がある場合，圧力が高くなる．表面張力は表面形状に依存する成分と表面張力係数 <span class="math inline">\(T\)</span> の積になる．</p>
+<h3 id="微小変位">微小変位</h3>
+<p>表面の形状に依存した複雑な境界条件になるので，波の変位が微小だと仮定して線形化する</p>
+<p><span class="math inline">\(z\)</span> を微小変位 <span class="math inline">\(\zeta\)</span> として，</p>
+<p><span class="math display">\[
+\phi(x,y,z) \simeq \phi(x,y,0) + \zeta \pd{z}\phi(x,y,\zeta)
+\]</span></p>
+<p>表面形状の条件は</p>
+<p><span class="math display">\[
+\pd[\zeta]{t}=\pd[\phi]{z}
+\]</span></p>
+<p>表面圧力の条件は（表面張力を含む）</p>
+<p><span class="math display">\[
+\pd[\phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
+\]</span></p>
+<h3 id="次元の解">2次元の解</h3>
+<p><span class="math inline">\(y\)</span> 方向を均一として解く</p>
+<p><span class="math display">\[
+\phi=-a\frac{\omega \cosh k(z+h)}{k \sinh kh}\cos (kx-\omega t)
+\]</span></p>
+<h4 id="浅水波-kh1-の場合">浅水波 <span class="math inline">\(kh&lt;&lt;1\)</span> の場合</h4>
+<p><span class="math display">\[
+\phi = -\frac{a\omega}{k^2h}\cos (kx-\omega t)
+\]</span></p>
+<p>速度場</p>
+<p><span class="math display">\[
+u=\frac{a\omega}{kh}\sin(kx-\omega t)
+\]</span></p>
+<h4 id="深水波-kh1-の場合">深水波 <span class="math inline">\(kh&gt;&gt;1\)</span> の場合</h4>
+<p><span class="math display">\[
+\phi = -a\frac{\omega}{k}e^{kz}\cos(kx-\omega t)
+\]</span></p>
+<p>位相速度</p>
+<p><span class="math display">\[
+c_p=\sqrt{\frac{g}{k}}
+\]</span></p>
+<p>群速度</p>
+<p><span class="math display">\[
+c_g=\frac{1}{2}\sqrt{\frac{g}{k}}
+\]</span></p>
+<h2 id="kdv方程式">KdV方程式</h2>
+<p><span class="math display">\[
+\pd[u]{t} + \alpha u \pd[u]{x} + \beta \pddd[u]{x} = 0
+\]</span></p>
+<h3 id="ソリトン解">ソリトン解</h3>
+<p><span class="math display">\[
+u=\frac{c}{2}\sech^2\frac{\sqrt{c}}{2}(x-ct+\delta)
+\]</span></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
