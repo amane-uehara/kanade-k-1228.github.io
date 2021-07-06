@@ -14,9 +14,6 @@ $$
 
 ## 流体
 
-
-
-
 ## 基礎方程式
 ### 流体の記述
 - 速度 $u_i$
@@ -326,23 +323,23 @@ $$
 ### ポテンシャル流
 
 $$
-\nabla\times(\nabla\phi)=0
+\nabla\times(\nabla\Phi)=0
 $$
 
-渦無し流れにはポテンシャル $\phi$ が定義できて $u=\nabla\phi$ となる．
+渦無し流れにはポテンシャル $\Phi$ が定義できて $u=\nabla\Phi$ となる．
 
 連続の式より，
 
 $$
-\nabla\cdot u = \nabla\cdot(\nabla\phi) = \nabla^2 \phi = 0
+\nabla\cdot u = \nabla\cdot(\nabla\Phi) = \nabla^2 \Phi = 0
 $$
 
-速度ポテンシャルはラプラス方程式の解になる！
+速度ポテンシャルはラプラス方程式の解
 
 ### 圧力方程式（ベルヌイの定理）
 
 $$
-\frac{p}{\rho} + \frac{1}{2} u^2 + \pd[\phi]{t} = F(t)
+\frac{p}{\rho} + \frac{1}{2} u^2 + \pd[\Phi]{t} = F(t)
 $$
 
 ## 二次元ポテンシャル流
@@ -350,7 +347,7 @@ $$
 ### 流れ関数
 
 $$
-u=\pd[\psi]{y} \quad v=-\pd[\psi]{x}
+u=\pd[\Psi]{y} \quad v=-\pd[\Psi]{x}
 $$
 
 流れ関数もラプラス方程式の解
@@ -358,7 +355,7 @@ $$
 ### 複素ポテンシャル
 
 $$
-f=\phi+i\psi
+f=\Phi+i\Psi
 $$
 
 複素速度
@@ -367,26 +364,138 @@ w = \d[f]{z} = u - iv
 $$
 
 $$
-u=\Re\d[f]{z} \quad v=\Im\d[f]{z}
+u=\mathrm{Re}\d[f]{z} \quad v=-\mathrm{Im}\d[f]{z}
 $$
 
 ### ポテンシャルの例
 
 #### 直角
 
+$$
+\Psi (x,y) = axy
+$$
+
+$$
+u =  \pd[\Psi]{y} =  ax \quad
+v = -\pd[\Psi]{x} = -ay
+$$
+
+$$
+q = \sqrt{u^2+v^2} = a \sqrt{x^2+y^2}
+$$
+
+$$
+w = \pd[v]{x} - \pd[u]{y} = 0
+$$
+
+$$
+\Phi = \frac{a}{2} (x^2-y^2) + C
+$$
+
 #### 強制渦
+
+$$
+\Psi (x,y) = -a(x^2+y^2)
+$$
+
+$$
+u =  \pd[\Psi]{y} = -2ay \quad
+v = -\pd[\Psi]{x} =  2ax
+$$
+
+$$
+q = \sqrt{u^2+v^2} = 2a \sqrt{x^2+y^2}
+$$
+
+$$
+w = \pd[v]{x} - \pd[u]{y} = 4a
+$$
+
+$$
+\Phi = a \ln \sqrt{x^2+y^2}
+$$
 
 #### 一様流
 
+$$
+f = U e^{-i\alpha} z
+$$
+
+$$
+\d[f]{z} = U e^{-i\alpha}
+$$
+
 #### 湧き出し・吸い込み
+
+$$
+f = m \ln z = m \ln (re^{i\theta}) = m \ln r + im\theta \quad
+\Phi = m \ln r \quad
+\Psi = m \theta
+$$
+
+$$
+u_r      = \frac{m}{r} \quad
+u_\theta = 0
+$$
 
 #### 渦糸
 
+$$
+f = -i \kappa \ln z
+$$
+
 #### 角
+
+$$
+f = C z^n
+$$
+
+$\pi/n$ のコーナーを回る流れ
 
 #### 二重湧き出し
 
+$$
+f = m \ln(z-a) - m \ln(z+a) = m \ln\frac{z-a}{z+a}
+$$
+
+二点 $a,-a$ を近づける（$a \rightarrow 0$）（$2ma \rightarrow \mu$）
+
+$$
+f = - \frac{\mu}{z} \quad 
+\Phi = -\frac{\mu}{r}\cos\theta \quad
+\Psi =  \frac{\mu}{r}\sin\theta
+$$
+
 #### 円筒まわり
+
+$$
+f = U \left( z + \frac{R^2}{z} \right) \quad
+\Phi = U \left( r + \frac{R^2}{r} \right) \cos\theta \quad
+\Psi = U \left( r - \frac{R^2}{r} \right) \sin\theta 
+$$
+
+$$
+u_r      =            \pd[\Phi]{r}      =  U \left( 1 - \frac{R^2}{r^2} \right) \cos\theta \quad
+u_\theta = \frac{1}{r}\pd[\Phi]{\theta} = -U \left( 1 + \frac{R^2}{r^2} \right) \sin\theta
+$$
+
+円筒表面 $r=R$ では
+
+$$
+\Phi = 2U\cos\theta \quad \Psi = 0 \quad u_r = 0 \quad u_\theta = -2U\sin\theta
+$$
+
+半径方向の流速がない
+
+遠方 $r = \infty$ では
+
+$$
+u_r = U\cos\theta \quad u_\theta = -U\sin\theta
+$$
+
+$$
+u_x = -u_\theta \sin\theta + u_r \cos\theta =  = U
+$$
 
 ### 一般の複素ポテンシャル
 
@@ -439,11 +548,11 @@ $$
 深さ $h$ 重力場 $-g\boldsymbol{k}$
 
 $$
-\nabla^2\phi=0
+\nabla^2\Phi=0
 $$
 
 $$
-\pd[\phi]{t}+\frac{1}{2}(\nabla \phi)^2 +\frac{P}{\rho}+gz=0
+\pd[\Phi]{t}+\frac{1}{2}(\nabla \Phi)^2 +\frac{P}{\rho}+gz=0
 $$
 
 このときに表面の形を表す方程式
@@ -460,7 +569,7 @@ $$
 
 $$
 \D[F]{t} = \pd{t}F + u \cdot \nabla F = 0 \\
-\pd[\zeta]{t}+\nabla\phi\cdot\nabla\zeta=\pd[\phi]{z}
+\pd[\zeta]{t}+\nabla\Phi\cdot\nabla\zeta=\pd[\Phi]{z}
 $$
 
 また，表面の圧力は大気圧なので，圧力をゲージ圧として，
@@ -478,19 +587,19 @@ $$
 $z$ を微小変位 $\zeta$ として，
 
 $$
-\phi(x,y,z) \simeq \phi(x,y,0) + \zeta \pd{z}\phi(x,y,\zeta)
+\Phi(x,y,z) \simeq \Phi(x,y,0) + \zeta \pd{z}\Phi(x,y,\zeta)
 $$
 
 表面形状の条件は
 
 $$
-\pd[\zeta]{t}=\pd[\phi]{z}
+\pd[\zeta]{t}=\pd[\Phi]{z}
 $$
 
 表面圧力の条件は（表面張力を含む）
 
 $$
-\pd[\phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
+\pd[\Phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
 $$
 
 
@@ -499,13 +608,13 @@ $$
 $y$ 方向を均一として解く
 
 $$
-\phi=-a\frac{\omega \cosh k(z+h)}{k \sinh kh}\cos (kx-\omega t)
+\Phi=-a\frac{\omega \cosh k(z+h)}{k \sinh kh}\cos (kx-\omega t)
 $$
 
 #### 浅水波 $kh<<1$ の場合
 
 $$
-\phi = -\frac{a\omega}{k^2h}\cos (kx-\omega t)
+\Phi = -\frac{a\omega}{k^2h}\cos (kx-\omega t)
 $$
 
 速度場
@@ -517,7 +626,7 @@ $$
 #### 深水波 $kh>>1$ の場合
 
 $$
-\phi = -a\frac{\omega}{k}e^{kz}\cos(kx-\omega t)
+\Phi = -a\frac{\omega}{k}e^{kz}\cos(kx-\omega t)
 $$
 
 位相速度
