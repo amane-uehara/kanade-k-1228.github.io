@@ -437,24 +437,22 @@
 <li><a href="#境界層">境界層</a></li>
 <li><a href="#非定常">非定常</a></li>
 <li><a href="#発達">発達</a></li>
-<li><a href="#完全流体の運動">完全流体の運動</a><ul>
-<li><a href="#ベールヌイの定理">ベールヌイの定理</a></li>
-<li><a href="#ケルヴィンの循環定理">ケルヴィンの循環定理</a></li>
-<li><a href="#渦">渦</a></li>
-<li><a href="#ポテンシャル流">ポテンシャル流</a></li>
-</ul></li>
-<li><a href="#二次元非圧縮ポテンシャル流">二次元非圧縮ポテンシャル流</a></li>
-<li><a href="#section"></a><ul>
-<li><a href="#渦度">渦度</a></li>
-<li><a href="#流れ関数">流れ関数</a></li>
-<li><a href="#渦度輸送方程式">渦度（輸送）方程式</a></li>
-</ul></li>
 <li><a href="#流体の運動学">流体の運動学</a><ul>
-<li><a href="#運動の記述">運動の記述</a></li>
-<li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
-<li><a href="#ランキン渦">ランキン渦</a></li>
+<li><a href="#完全流体の支配方程式">完全流体の支配方程式</a></li>
+<li><a href="#渦度方程式">渦度方程式</a></li>
+<li><a href="#ラグランジュの渦定理">ラグランジュの渦定理</a></li>
+<li><a href="#ポテンシャル流">ポテンシャル流</a></li>
+<li><a href="#圧力方程式ベルヌイの定理">圧力方程式（ベルヌイの定理）</a></li>
 </ul></li>
-<li><a href="#ポテンシャル流-1">ポテンシャル流</a></li>
+<li><a href="#二次元ポテンシャル流">二次元ポテンシャル流</a><ul>
+<li><a href="#流れ関数">流れ関数</a></li>
+<li><a href="#複素ポテンシャル">複素ポテンシャル</a></li>
+<li><a href="#ポテンシャルの例">ポテンシャルの例</a></li>
+<li><a href="#一般の複素ポテンシャル">一般の複素ポテンシャル</a></li>
+</ul></li>
+<li><a href="#渦の運動">渦の運動</a><ul>
+<li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
+</ul></li>
 <li><a href="#水波">水波</a><ul>
 <li><a href="#表面条件">表面条件</a></li>
 <li><a href="#微小変位">微小変位</a></li>
@@ -692,7 +690,8 @@ u(x,\infty,t)&amp;=0\\
 \delta(t)=\sqrt{\mu t}
 \]</span></p>
 <h2 id="発達">発達</h2>
-<h2 id="完全流体の運動">完全流体の運動</h2>
+<h2 id="流体の運動学">流体の運動学</h2>
+<h3 id="完全流体の支配方程式">完全流体の支配方程式</h3>
 <p>非粘性の流体（<span class="math inline">\(\mathrm{Re}\rightarrow\infty\)</span>）</p>
 <ul>
 <li><p>連続の式 <span class="math display">\[
@@ -705,30 +704,52 @@ u(x,\infty,t)&amp;=0\\
 \pd[s]{t} + u_j \pd[s]{x_j} = 0
 \]</span></p></li>
 </ul>
-<h3 id="ベールヌイの定理">ベールヌイの定理</h3>
-<h3 id="ケルヴィンの循環定理">ケルヴィンの循環定理</h3>
-<h3 id="渦">渦</h3>
-<h3 id="ポテンシャル流">ポテンシャル流</h3>
-<h2 id="二次元非圧縮ポテンシャル流">二次元非圧縮ポテンシャル流</h2>
-<p>正則関数を用いて良い感じに表現できる</p>
-<h2 id="section"></h2>
-<h3 id="渦度">渦度</h3>
+<h3 id="渦度方程式">渦度方程式</h3>
 <p><span class="math display">\[
-\zeta = \mathrm{rot} u
+\D[\omega]{t} = \pd[\omega_i]{t} + u_j\pd[\omega_i]{x_j} = \omega_j \pd[u_i]{x_j} + \nu \pdd[\omega_i]{x_j}
 \]</span></p>
+<h3 id="ラグランジュの渦定理">ラグランジュの渦定理</h3>
+<h3 id="ポテンシャル流">ポテンシャル流</h3>
+<p><span class="math display">\[
+\nabla\times(\nabla\phi)=0
+\]</span></p>
+<p>渦無し流れにはポテンシャル <span class="math inline">\(\phi\)</span> が定義できて <span class="math inline">\(u=\nabla\phi\)</span> となる．</p>
+<p>連続の式より，</p>
+<p><span class="math display">\[
+\nabla\cdot u = \nabla\cdot(\nabla\phi) = \nabla^2 \phi = 0
+\]</span></p>
+<p>速度ポテンシャルはラプラス方程式の解になる！</p>
+<h3 id="圧力方程式ベルヌイの定理">圧力方程式（ベルヌイの定理）</h3>
+<p><span class="math display">\[
+\frac{p}{\rho} + \frac{1}{2} u^2 + \pd[\phi]{t} = F(t)
+\]</span></p>
+<h2 id="二次元ポテンシャル流">二次元ポテンシャル流</h2>
 <h3 id="流れ関数">流れ関数</h3>
 <p><span class="math display">\[
-u = \pd[\psi]{y} \quad v = -\pd[\psi]{x} 
+u=\pd[\psi]{y} \quad v=-\pd[\psi]{x}
 \]</span></p>
-<h3 id="渦度輸送方程式">渦度（輸送）方程式</h3>
+<p>流れ関数もラプラス方程式の解</p>
+<h3 id="複素ポテンシャル">複素ポテンシャル</h3>
 <p><span class="math display">\[
-\nabla^2 \psi = - \zeta
+f=\phi+i\psi
+\]</span></p>
+<p>複素速度 <span class="math display">\[
+w = \d[f]{z} = u - iv
 \]</span></p>
 <p><span class="math display">\[
-\pd[\zeta]{t} + \pd[\psi]{y} \pd[\zeta]{x} - \pd[\psi]{x} \pd[\zeta]{y} = \nu \nabla^2 \zeta
+u=\Re\d[f]{z} \quad v=\Im\d[f]{z}
 \]</span></p>
-<h2 id="流体の運動学">流体の運動学</h2>
-<h3 id="運動の記述">運動の記述</h3>
+<h3 id="ポテンシャルの例">ポテンシャルの例</h3>
+<h4 id="直角">直角</h4>
+<h4 id="強制渦">強制渦</h4>
+<h4 id="一様流">一様流</h4>
+<h4 id="湧き出し吸い込み">湧き出し・吸い込み</h4>
+<h4 id="渦糸">渦糸</h4>
+<h4 id="角">角</h4>
+<h4 id="二重湧き出し">二重湧き出し</h4>
+<h4 id="円筒まわり">円筒まわり</h4>
+<h3 id="一般の複素ポテンシャル">一般の複素ポテンシャル</h3>
+<h2 id="渦の運動">渦の運動</h2>
 <ul>
 <li>速度場 <span class="math inline">\(u\)</span></li>
 <li>速度勾配テンソル <span class="math inline">\(d_{ij} := \pd{x_j}u_i\)</span></li>
@@ -774,9 +795,6 @@ u = \pd[\psi]{y} \quad v = -\pd[\psi]{x}
 <h4 id="第二法則">第二法則</h4>
 <p>「渦度は流体粒子に凍結している」</p>
 <p>粘性がなく，密度が圧力のみに依存し（バロトロピー流体），体積力が保存力なら，渦線を構成する粒子は常に同じで，渦線と流体は一緒に移動する．</p>
-<h3 id="ランキン渦">ランキン渦</h3>
-<p>剛体回転する円柱</p>
-<h2 id="ポテンシャル流-1">ポテンシャル流</h2>
 <h2 id="水波">水波</h2>
 <p><a href="https://www.nagare.or.jp/download/noauth.html?d=31-4rensai.pdf&amp;dir=113">本</a></p>
 <p>水をポテンシャル流と仮定して扱う</p>
