@@ -711,43 +711,127 @@ u(x,\infty,t)&amp;=0\\
 <h3 id="ラグランジュの渦定理">ラグランジュの渦定理</h3>
 <h3 id="ポテンシャル流">ポテンシャル流</h3>
 <p><span class="math display">\[
-\nabla\times(\nabla\phi)=0
+\nabla\times(\nabla\Phi)=0
 \]</span></p>
-<p>渦無し流れにはポテンシャル <span class="math inline">\(\phi\)</span> が定義できて <span class="math inline">\(u=\nabla\phi\)</span> となる．</p>
+<p>渦無し流れにはポテンシャル <span class="math inline">\(\Phi\)</span> が定義できて <span class="math inline">\(u=\nabla\Phi\)</span> となる．</p>
 <p>連続の式より，</p>
 <p><span class="math display">\[
-\nabla\cdot u = \nabla\cdot(\nabla\phi) = \nabla^2 \phi = 0
+\nabla\cdot u = \nabla\cdot(\nabla\Phi) = \nabla^2 \Phi = 0
 \]</span></p>
-<p>速度ポテンシャルはラプラス方程式の解になる！</p>
+<p>速度ポテンシャルはラプラス方程式の解</p>
 <h3 id="圧力方程式ベルヌイの定理">圧力方程式（ベルヌイの定理）</h3>
 <p><span class="math display">\[
-\frac{p}{\rho} + \frac{1}{2} u^2 + \pd[\phi]{t} = F(t)
+\frac{p}{\rho} + \frac{1}{2} u^2 + \pd[\Phi]{t} = F(t)
 \]</span></p>
 <h2 id="二次元ポテンシャル流">二次元ポテンシャル流</h2>
 <h3 id="流れ関数">流れ関数</h3>
 <p><span class="math display">\[
-u=\pd[\psi]{y} \quad v=-\pd[\psi]{x}
+u=\pd[\Psi]{y} \quad v=-\pd[\Psi]{x}
 \]</span></p>
 <p>流れ関数もラプラス方程式の解</p>
 <h3 id="複素ポテンシャル">複素ポテンシャル</h3>
 <p><span class="math display">\[
-f=\phi+i\psi
+f=\Phi+i\Psi
 \]</span></p>
 <p>複素速度 <span class="math display">\[
 w = \d[f]{z} = u - iv
 \]</span></p>
 <p><span class="math display">\[
-u=\Re\d[f]{z} \quad v=\Im\d[f]{z}
+u=\mathrm{Re}\d[f]{z} \quad v=-\mathrm{Im}\d[f]{z}
 \]</span></p>
 <h3 id="ポテンシャルの例">ポテンシャルの例</h3>
 <h4 id="直角">直角</h4>
+<p><span class="math display">\[
+\Psi (x,y) = axy
+\]</span></p>
+<p><span class="math display">\[
+u =  \pd[\Psi]{y} =  ax \quad
+v = -\pd[\Psi]{x} = -ay
+\]</span></p>
+<p><span class="math display">\[
+q = \sqrt{u^2+v^2} = a \sqrt{x^2+y^2}
+\]</span></p>
+<p><span class="math display">\[
+w = \pd[v]{x} - \pd[u]{y} = 0
+\]</span></p>
+<p><span class="math display">\[
+\Phi = \frac{a}{2} (x^2-y^2) + C
+\]</span></p>
 <h4 id="強制渦">強制渦</h4>
+<p><span class="math display">\[
+\Psi (x,y) = -a(x^2+y^2)
+\]</span></p>
+<p><span class="math display">\[
+u =  \pd[\Psi]{y} = -2ay \quad
+v = -\pd[\Psi]{x} =  2ax
+\]</span></p>
+<p><span class="math display">\[
+q = \sqrt{u^2+v^2} = 2a \sqrt{x^2+y^2}
+\]</span></p>
+<p><span class="math display">\[
+w = \pd[v]{x} - \pd[u]{y} = 4a
+\]</span></p>
+<p><span class="math display">\[
+\Phi = a \ln \sqrt{x^2+y^2}
+\]</span></p>
 <h4 id="一様流">一様流</h4>
+<p><span class="math display">\[
+f = U e^{-i\alpha} z
+\]</span></p>
+<p><span class="math display">\[
+\d[f]{z} = U e^{-i\alpha}
+\]</span></p>
 <h4 id="湧き出し吸い込み">湧き出し・吸い込み</h4>
+<p><span class="math display">\[
+f = m \ln z = m \ln (re^{i\theta}) = m \ln r + im\theta \quad
+\Phi = m \ln r \quad
+\Psi = m \theta
+\]</span></p>
+<p><span class="math display">\[
+u_r      = \frac{m}{r} \quad
+u_\theta = 0
+\]</span></p>
 <h4 id="渦糸">渦糸</h4>
+<p><span class="math display">\[
+f = -i \kappa \ln z
+\]</span></p>
 <h4 id="角">角</h4>
+<p><span class="math display">\[
+f = C z^n
+\]</span></p>
+<p><span class="math inline">\(\pi/n\)</span> のコーナーを回る流れ</p>
 <h4 id="二重湧き出し">二重湧き出し</h4>
+<p><span class="math display">\[
+f = m \ln(z-a) - m \ln(z+a) = m \ln\frac{z-a}{z+a}
+\]</span></p>
+<p>二点 <span class="math inline">\(a,-a\)</span> を近づける（<span class="math inline">\(a \rightarrow 0\)</span>）（<span class="math inline">\(2ma \rightarrow \mu\)</span>）</p>
+<p><span class="math display">\[
+f = - \frac{\mu}{z} \quad 
+\Phi = -\frac{\mu}{r}\cos\theta \quad
+\Psi =  \frac{\mu}{r}\sin\theta
+\]</span></p>
 <h4 id="円筒まわり">円筒まわり</h4>
+<p><span class="math display">\[
+f = U \left( z + \frac{R^2}{z} \right) \quad
+\Phi = U \left( r + \frac{R^2}{r} \right) \cos\theta \quad
+\Psi = U \left( r - \frac{R^2}{r} \right) \sin\theta 
+\]</span></p>
+<p><span class="math display">\[
+u_r      =            \pd[\Phi]{r}      =  U \left( 1 - \frac{R^2}{r^2} \right) \cos\theta \quad
+u_\theta = \frac{1}{r}\pd[\Phi]{\theta} = -U \left( 1 + \frac{R^2}{r^2} \right) \sin\theta
+\]</span></p>
+<p>円筒表面 <span class="math inline">\(r=R\)</span> では</p>
+<p><span class="math display">\[
+\Phi = 2U\cos\theta \quad \Psi = 0 \quad u_r = 0 \quad u_\theta = -2U\sin\theta
+\]</span></p>
+<p>半径方向の流速がない</p>
+<p>遠方 <span class="math inline">\(r = \infty\)</span> では</p>
+<p><span class="math display">\[
+u_r = U\cos\theta \quad u_\theta = -U\sin\theta
+\]</span></p>
+<p><span class="math display">\[
+u_x = -u_\theta \sin\theta + u_r \cos\theta =  = U
+\]</span></p>
 <h3 id="一般の複素ポテンシャル">一般の複素ポテンシャル</h3>
 <h2 id="渦の運動">渦の運動</h2>
 <ul>
@@ -800,10 +884,10 @@ u=\Re\d[f]{z} \quad v=\Im\d[f]{z}
 <p>水をポテンシャル流と仮定して扱う</p>
 <p>深さ <span class="math inline">\(h\)</span> 重力場 <span class="math inline">\(-g\boldsymbol{k}\)</span></p>
 <p><span class="math display">\[
-\nabla^2\phi=0
+\nabla^2\Phi=0
 \]</span></p>
 <p><span class="math display">\[
-\pd[\phi]{t}+\frac{1}{2}(\nabla \phi)^2 +\frac{P}{\rho}+gz=0
+\pd[\Phi]{t}+\frac{1}{2}(\nabla \Phi)^2 +\frac{P}{\rho}+gz=0
 \]</span></p>
 <p>このときに表面の形を表す方程式</p>
 <p><span class="math display">\[
@@ -814,7 +898,7 @@ z=\zeta(x,t),\quad F(x,t)=0
 <p>表面を構成する粒子は表面を漂うと仮定する．つまり，表面の物質微分</p>
 <p><span class="math display">\[
 \D[F]{t} = \pd{t}F + u \cdot \nabla F = 0 \\
-\pd[\zeta]{t}+\nabla\phi\cdot\nabla\zeta=\pd[\phi]{z}
+\pd[\zeta]{t}+\nabla\Phi\cdot\nabla\zeta=\pd[\Phi]{z}
 \]</span></p>
 <p>また，表面の圧力は大気圧なので，圧力をゲージ圧として，</p>
 <p><span class="math display">\[
@@ -825,24 +909,24 @@ P(x,t)=0\,(F(x,t)=0)
 <p>表面の形状に依存した複雑な境界条件になるので，波の変位が微小だと仮定して線形化する</p>
 <p><span class="math inline">\(z\)</span> を微小変位 <span class="math inline">\(\zeta\)</span> として，</p>
 <p><span class="math display">\[
-\phi(x,y,z) \simeq \phi(x,y,0) + \zeta \pd{z}\phi(x,y,\zeta)
+\Phi(x,y,z) \simeq \Phi(x,y,0) + \zeta \pd{z}\Phi(x,y,\zeta)
 \]</span></p>
 <p>表面形状の条件は</p>
 <p><span class="math display">\[
-\pd[\zeta]{t}=\pd[\phi]{z}
+\pd[\zeta]{t}=\pd[\Phi]{z}
 \]</span></p>
 <p>表面圧力の条件は（表面張力を含む）</p>
 <p><span class="math display">\[
-\pd[\phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
+\pd[\Phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
 \]</span></p>
 <h3 id="次元の解">2次元の解</h3>
 <p><span class="math inline">\(y\)</span> 方向を均一として解く</p>
 <p><span class="math display">\[
-\phi=-a\frac{\omega \cosh k(z+h)}{k \sinh kh}\cos (kx-\omega t)
+\Phi=-a\frac{\omega \cosh k(z+h)}{k \sinh kh}\cos (kx-\omega t)
 \]</span></p>
 <h4 id="浅水波-kh1-の場合">浅水波 <span class="math inline">\(kh&lt;&lt;1\)</span> の場合</h4>
 <p><span class="math display">\[
-\phi = -\frac{a\omega}{k^2h}\cos (kx-\omega t)
+\Phi = -\frac{a\omega}{k^2h}\cos (kx-\omega t)
 \]</span></p>
 <p>速度場</p>
 <p><span class="math display">\[
@@ -850,7 +934,7 @@ u=\frac{a\omega}{kh}\sin(kx-\omega t)
 \]</span></p>
 <h4 id="深水波-kh1-の場合">深水波 <span class="math inline">\(kh&gt;&gt;1\)</span> の場合</h4>
 <p><span class="math display">\[
-\phi = -a\frac{\omega}{k}e^{kz}\cos(kx-\omega t)
+\Phi = -a\frac{\omega}{k}e^{kz}\cos(kx-\omega t)
 \]</span></p>
 <p>位相速度</p>
 <p><span class="math display">\[
