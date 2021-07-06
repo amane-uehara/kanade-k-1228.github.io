@@ -103,26 +103,20 @@ $\eta$ : 動粘性係数
 
 #### ボルツマン輸送方程式から
 
-Chapman & Cowling (1939)
+Chapman & Cowling (1939) を読むと良いらしい
 
 位相空間上の分布関数 $f(x,v,t)$ 
 
-状態が平衡状態 $f_0$ に近いとき，緩和時間近似により
+状態が平衡状態 $f_0$ に近いとき，緩和時間近似により，
 
 $$
 \pd[f]{t} + v \cdot \nabla f = -\frac{f-f_0}{\tau}
 $$
 
-$\pd[f_0]{t}=0$ より
+$F=f-f_0$ として，
 
 $$
-\pd[f-f_0]{t} + \frac{f-f_0}{\tau} + v \cdot \nabla f = 0
-$$
-
-$F=f-f_0$ とする．
-
-$$
-\pd[F]{t} + \frac{F}{\tau} + v \cdot \nabla f = 0
+\pd[F]{t} + \frac{F}{\tau} + v \cdot \nabla F = 0
 $$
 
 濃度場は
