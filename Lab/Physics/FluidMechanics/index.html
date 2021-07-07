@@ -426,6 +426,7 @@
 <li><a href="#π定理">π定理</a></li>
 <li><a href="#二次元">二次元</a></li>
 <li><a href="#円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></a></li>
+<li><a href="#圧力ポアソン方程式">圧力ポアソン方程式</a></li>
 </ul></li>
 <li><a href="#円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</a><ul>
 <li><a href="#血管の分岐murrayの法則">血管の分岐（Murrayの法則）</a></li>
@@ -434,6 +435,7 @@
 <li><a href="#平行平板">平行平板</a><ul>
 <li><a href="#穴あき平板">穴あき平板</a></li>
 </ul></li>
+<li><a href="#同軸二重円筒">同軸二重円筒</a></li>
 <li><a href="#境界層">境界層</a></li>
 <li><a href="#非定常">非定常</a></li>
 <li><a href="#発達">発達</a></li>
@@ -520,7 +522,7 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 <p><span class="math display">\[
 \pd{t}(\rho u_i)+\pd{x_j}(\rho u_iu_j)=-\pd{x_i}\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\pd{x_j}\left(\pd{x_j}u_i+\pd{x_i}u_j\right)+\rho g_i
 \]</span></p>
-<h4 id="非圧縮非圧縮">非圧縮非圧縮</h4>
+<h4 id="非圧縮">非圧縮</h4>
 <p><span class="math display">\[
 \rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
 \]</span></p>
@@ -580,6 +582,15 @@ C_{ijkl} = \lambda\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \nu\lambd
 \rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) &amp;= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
 \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &amp;= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
+\]</span></p>
+<h3 id="圧力ポアソン方程式">圧力ポアソン方程式</h3>
+<p>非圧縮で外力のないナビエストークス方程式</p>
+<p><span class="math display">\[
+\rho\left(\pd{t}u_i + u_j\pd{x_j}u_i\right) = -\pd[p]{x_i} + \mu \pd{x_j}\pd{x_j}u_i
+\]</span></p>
+<p>の両辺に <span class="math inline">\(\pd{x_i}\)</span> をかけて，連続の式 <span class="math inline">\(\pd[u_i]{x_i}=0\)</span> を用いると</p>
+<p><span class="math display">\[
+\rho \pd[u_j]{x_i}\pd[u_i]{x_j} = -\pd{x_i}\pd{x_i}p
 \]</span></p>
 <h2 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h2>
 <p><img src="CircularTube.drawio.svg" /></p>
@@ -664,6 +675,7 @@ u(y) = \left( U + \frac{\beta}{\alpha} H \right) \frac{\exp(-\alpha y)-1}{\exp(-
 <p><span class="math display">\[
 u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d[p]{x} y
 \]</span></p>
+<h2 id="同軸二重円筒">同軸二重円筒</h2>
 <h2 id="境界層">境界層</h2>
 <p><img src="BoundaryLayer.drawio.svg" /></p>
 <h2 id="非定常">非定常</h2>
