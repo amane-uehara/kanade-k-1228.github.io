@@ -102,7 +102,7 @@
 
 [解析学](./Mathmatics/Analysis/)
 
-[共変・反変](./Mathmatics/CovarianceContravariance/)
+[多様体](./Mathmatics/Manifold/)
 
 [四元数]()
 

@@ -71,7 +71,7 @@ $$
 \pd{t}(\rho u_i)+\pd{x_j}(\rho u_iu_j)=-\pd{x_i}\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\pd{x_j}\left(\pd{x_j}u_i+\pd{x_i}u_j\right)+\rho g_i
 $$
 
-#### 非圧縮非圧縮
+#### 非圧縮
 
 $$
 \rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
@@ -118,6 +118,20 @@ $$
 \rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) &= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
 \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
 \end{aligned}
+$$
+
+### 圧力ポアソン方程式
+
+非圧縮で外力のないナビエストークス方程式
+
+$$
+\rho\left(\pd{t}u_i + u_j\pd{x_j}u_i\right) = -\pd[p]{x_i} + \mu \pd{x_j}\pd{x_j}u_i
+$$
+
+の両辺に $\pd{x_i}$ をかけて，連続の式 $\pd[u_i]{x_i}=0$ を用いると
+
+$$
+\rho \pd[u_j]{x_i}\pd[u_i]{x_j} = -\pd{x_i}\pd{x_i}p
 $$
 
 
@@ -249,6 +263,10 @@ $$
 $$
 u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d[p]{x} y
 $$
+
+## 同軸二重円筒
+
+
 
 ## 境界層
 
