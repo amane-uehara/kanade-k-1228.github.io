@@ -438,7 +438,6 @@
 <li><a href="#同軸二重円筒">同軸二重円筒</a></li>
 <li><a href="#境界層">境界層</a></li>
 <li><a href="#非定常">非定常</a></li>
-<li><a href="#発達">発達</a></li>
 <li><a href="#流体の運動学">流体の運動学</a><ul>
 <li><a href="#完全流体の支配方程式">完全流体の支配方程式</a></li>
 <li><a href="#渦度方程式">渦度方程式</a></li>
@@ -452,6 +451,7 @@
 <li><a href="#ポテンシャルの例">ポテンシャルの例</a></li>
 <li><a href="#一般の複素ポテンシャル">一般の複素ポテンシャル</a></li>
 </ul></li>
+<li><a href="#次元ポテンシャル流">3次元ポテンシャル流</a></li>
 <li><a href="#渦の運動">渦の運動</a><ul>
 <li><a href="#helmholtzの法則">Helmholtzの法則</a></li>
 </ul></li>
@@ -679,6 +679,8 @@ u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\r
 <h2 id="境界層">境界層</h2>
 <p><img src="BoundaryLayer.drawio.svg" /></p>
 <h2 id="非定常">非定常</h2>
+<p>滑らかな入り口では一様な速度分布になる．</p>
+<p>粘性の影響で徐々に壁面から運動量が伝わる．（←発達）</p>
 <p><span class="math display">\[
 \pd{t} u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
 \partial_x u + \partial_y v = 0
@@ -701,7 +703,6 @@ u(x,\infty,t)&amp;=0\\
 <p><span class="math display">\[
 \delta(t)=\sqrt{\mu t}
 \]</span></p>
-<h2 id="発達">発達</h2>
 <h2 id="流体の運動学">流体の運動学</h2>
 <h3 id="完全流体の支配方程式">完全流体の支配方程式</h3>
 <p>非粘性の流体（<span class="math inline">\(\mathrm{Re}\rightarrow\infty\)</span>）</p>
@@ -845,6 +846,13 @@ u_r = U\cos\theta \quad u_\theta = -U\sin\theta
 u_x = -u_\theta \sin\theta + u_r \cos\theta =  = U
 \]</span></p>
 <h3 id="一般の複素ポテンシャル">一般の複素ポテンシャル</h3>
+<h2 id="次元ポテンシャル流">3次元ポテンシャル流</h2>
+<p>上の議論を四元数に拡張する．</p>
+<p><span class="math display">\[
+\begin{alignedat}
+  u &amp; = &amp; \pd[f_0]{x} 
+\end{alignedat}
+\]</span></p>
 <h2 id="渦の運動">渦の運動</h2>
 <ul>
 <li>速度場 <span class="math inline">\(u\)</span></li>
