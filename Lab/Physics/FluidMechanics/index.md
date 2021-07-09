@@ -277,6 +277,12 @@ $$
 
 ## 非定常
 
+滑らかな入り口では一様な速度分布になる．
+
+粘性の影響で徐々に壁面から運動量が伝わる．（←発達）
+
+
+
 $$
 \pd{t} u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
 \partial_x u + \partial_y v = 0
@@ -308,7 +314,6 @@ $$
 
 
 
-## 発達
 
 ## 流体の運動学
 
@@ -516,6 +521,17 @@ u_x = -u_\theta \sin\theta + u_r \cos\theta =  = U
 $$
 
 ### 一般の複素ポテンシャル
+
+
+## 3次元ポテンシャル流
+
+上の議論を四元数に拡張する．
+
+$$
+\begin{alignedat}
+  u & = & \pd[f_0]{x} 
+\end{alignedat}
+$$
 
 ## 渦の運動
 

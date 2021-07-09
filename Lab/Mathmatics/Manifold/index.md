@@ -5,6 +5,10 @@
 $$
 \newcommand{\O}{\mathcal{O}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 $$
 
 ## 位相空間
@@ -23,7 +27,7 @@ $$
 \forall p,q \in X \, (p \neq q) \quad \exists U,V \in \O \, ( p \in U, q \in V ) \quad U \cap V = \emptyset
 $$
 
-を満たすような位相空間をハウスドルフ空間という．
+を満たすような位相空間 $(X,\O)$ をハウスドルフ空間という．
 
 ### 連続写像
 
@@ -119,11 +123,22 @@ $$
 \varphi_M : U \in \O_M \rightarrow U' \in \O_{\R^m}
 $$
 
+
+
 ### 多様体上の関数（スカラー場）
 
 $$
 f : M \rightarrow \R
 $$
+
+#### 接空間
+
+$f$ を曲線を点 $p \in M$ の接空間 $(x_1,,,x_m)$ 上の関数にする
+
+$$
+U_p \xrightarrow{\varphi_p} \R^m \rightarrow \R
+$$
+
 
 ### 多様体上の曲線
 
@@ -131,16 +146,29 @@ $$
 c : \R \rightarrow M
 $$
 
+#### 局所座標上
+
+曲線を点 $p \in M$ での局所座標 $(x_1,,,x_m)$ で表すと $(c_1(t),,,c_m(t))$
+
 ### スカラー場の微分
 
+$$
+\R \xrightarrow{c} M \xrightarrow{f} \R
+$$
 
+スカラー場を曲線に沿って微分する．
 
+$$
+\d{t}f(c(t))
+$$
 
+点 $p \in M$ での微分は
+
+$$
+\d{t}f(c(t))
+$$
 
 ### 接空間
 
 
-
 ## ベクトル場
-
-
