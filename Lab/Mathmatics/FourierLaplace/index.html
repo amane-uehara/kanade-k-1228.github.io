@@ -424,15 +424,27 @@
 <li><a href="#フーリエ変換">フーリエ変換</a><ul>
 <li><a href="#熱伝達方程式の解法-1">熱伝達方程式の解法</a></li>
 </ul></li>
-<li><a href="#ラプラス変換">ラプラス変換</a></li>
+<li><a href="#ラプラス変換">ラプラス変換</a><ul>
+<li><a href="#振動">振動</a></li>
+</ul></li>
 </ul></nav>
-       <p>正規直交系をなす関数集合 <span class="math inline">\(\{f_n\}\)</span></p>
+       <p><span class="math display">\[
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\L}{\mathcal{L}}
+\]</span></p>
+<p>正規直交系をなす関数集合 <span class="math inline">\(\{f_n\}\)</span></p>
 <p><span class="math display">\[
 \int f_i f_j dx = \delta_{ij}
 \]</span></p>
 <p>を基底として</p>
 <p><span class="math display">\[
-f = \Sum_n c_n f_n
+f = \sum_n c_n f_n
 \]</span></p>
 <p>と関数を表す．</p>
 <h2 id="フーリエ級数展開">フーリエ級数展開</h2>
@@ -442,6 +454,31 @@ f = \Sum_n c_n f_n
 <h2 id="フーリエ変換">フーリエ変換</h2>
 <h3 id="熱伝達方程式の解法-1">熱伝達方程式の解法</h3>
 <h2 id="ラプラス変換">ラプラス変換</h2>
+<h3 id="振動">振動</h3>
+<p><span class="math display">\[
+f&#39;&#39;(t) + 2 \zeta \omega f&#39;(t) + \omega^2 f(t) = g(t)
+\]</span></p>
+<p><span class="math display">\[
+(s^2F(s) - sf(0) - f&#39;(0)) + 2 \zeta \omega (sF(s)-f(0)) + \omega^2 F(s) = G(s)
+\]</span></p>
+<p><span class="math display">\[
+(s^2 + 2 \zeta \omega s + \omega^2) F(s) = G(s) + sf(0) + f&#39;(0) + 2\zeta\omega f(0)
+\]</span></p>
+<h4 id="減衰なし-zeta0">減衰なし <span class="math inline">\(\zeta=0\)</span></h4>
+<p><span class="math display">\[
+(s^2 + \omega^2) F(s) = G(s) + sf(0) + f&#39;(0)
+\]</span></p>
+<p><span class="math display">\[
+F(s) = \frac{G(s)}{s^2 + \omega^2} + \frac{sf(0)}{s^2 + \omega^2} + \frac{f&#39;(0)}{s^2 + \omega^2}
+\]</span></p>
+<p>積の逆ラプラス変換はコンボリューションとなり</p>
+<p><span class="math display">\[
+\L^{-1} \left[\frac{G(s)}{s^2 + \omega^2}\right] = \frac{1}{\omega}\sin(\omega t) * g(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t)) * g(\tau) d\tau
+\]</span></p>
+<p>よって</p>
+<p><span class="math display">\[
+f(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t))g(\tau) d\tau + f(0) \cos\omega t + f&#39;(0) \frac{1}{\omega} \sin\omega t
+\]</span></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
