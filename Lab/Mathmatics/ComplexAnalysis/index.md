@@ -58,6 +58,32 @@ $\C\cup\{\infty\}$ と 球面 $\S^2$ には同相写像が作れる
 
 ### 級数
 
+級数 $\sum u_n$ の収束判定法
+
+- Cauchy
+
+$$
+\lim\sup \sqrt[n]{u_n} < 1
+$$
+
+- D'Alembert
+
+$$
+\lim_{n\rightarrow\infty} \frac{u_{n+1}}{u_n} < 1
+$$
+
+- Raabe
+
+$$
+\lim_{n\rightarrow\infty} n \left(\frac{u_n}{u_{n+1}}-1\right) > 1
+$$
+
+べき級数 $\sum c_n z^n$ の収束半径は
+
+$$
+R = \lim_{n\rightarrow\infty}\left|\frac{c_n}{c_{n+1}}\right|
+$$
+
 ### 代数的構造
 
 - $\R^n$ に積を定義する
