@@ -426,6 +426,7 @@
 </ul></li>
 <li><a href="#ラプラス変換">ラプラス変換</a><ul>
 <li><a href="#振動">振動</a></li>
+<li><a href="#二階線形微分方程式">二階線形微分方程式</a></li>
 </ul></li>
 </ul></nav>
        <p><span class="math display">\[
@@ -471,13 +472,52 @@ f&#39;&#39;(t) + 2 \zeta \omega f&#39;(t) + \omega^2 f(t) = g(t)
 <p><span class="math display">\[
 F(s) = \frac{G(s)}{s^2 + \omega^2} + \frac{sf(0)}{s^2 + \omega^2} + \frac{f&#39;(0)}{s^2 + \omega^2}
 \]</span></p>
-<p>積の逆ラプラス変換はコンボリューションとなり</p>
+<p>積の逆ラプラス変換は畳み込み</p>
 <p><span class="math display">\[
 \L^{-1} \left[\frac{G(s)}{s^2 + \omega^2}\right] = \frac{1}{\omega}\sin(\omega t) * g(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t)) * g(\tau) d\tau
 \]</span></p>
-<p>よって</p>
 <p><span class="math display">\[
 f(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t))g(\tau) d\tau + f(0) \cos\omega t + f&#39;(0) \frac{1}{\omega} \sin\omega t
+\]</span></p>
+<h3 id="二階線形微分方程式">二階線形微分方程式</h3>
+<p><span class="math display">\[
+f&#39;&#39;(t) + P(t) f&#39;(t) + Q(t) f(t) + R(t) = 0
+\]</span></p>
+<h4 id="固有関数">固有関数</h4>
+<p><span class="math display">\[
+\dd[u]{x} = -\lambda u \quad (0 &lt; x &lt; 1 , \lambda \geq 0,)
+\]</span></p>
+<p>自由端（<span class="math inline">\(u&#39;(0)=u&#39;(1)=0\)</span>）</p>
+<ul>
+<li><span class="math inline">\(\lambda = 0\)</span> の場合 <span class="math inline">\(u(x)=0\)</span></li>
+<li><span class="math inline">\(\lambda \neq 0\)</span> の場合</li>
+</ul>
+<p><span class="math display">\[
+(s^2 U(s) - su(0) - u&#39;(0)) + \lambda U(s) = 0
+\]</span></p>
+<p><span class="math display">\[
+U(s) = \frac{s}{s^2+\lambda} u(0) + \frac{1}{s^2+\lambda} u&#39;(0)
+\]</span></p>
+<p><span class="math display">\[
+u(x) = u(0) \cos(\sqrt{\lambda}t) + \frac{u&#39;(0)}{\sqrt{\lambda}} \sin(\sqrt{\lambda}t)
+\]</span></p>
+<p>境界条件から</p>
+<p><span class="math display">\[
+u(x) = u(0) \cos(\sqrt{\lambda}x)
+\]</span></p>
+<p><span class="math display">\[
+u&#39;(1) = - u(0) \sqrt{\lambda} \sin(\sqrt{\lambda}) = 0
+\]</span></p>
+<ul>
+<li><span class="math inline">\(u(0)=0\)</span> の場合 <span class="math inline">\(u(x)=0\)</span></li>
+<li><span class="math inline">\(\sin(\sqrt{\lambda})=0\)</span> の場合 <span class="math inline">\(\sqrt{\lambda} = n\pi\)</span></li>
+</ul>
+<p><span class="math display">\[
+u(x) = u(0) \cos(n\pi x)
+\]</span></p>
+<h4 id="例１">例１</h4>
+<p><span class="math display">\[
+f&#39;&#39;(t) + P(t) f&#39;(t) + Q(t) f(t) + R(t) = 0
 \]</span></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
