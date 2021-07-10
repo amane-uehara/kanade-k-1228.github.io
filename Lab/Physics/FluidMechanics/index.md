@@ -11,11 +11,12 @@ $$
 \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
 $$
 
-
 ## 流体
 
 ## 基礎方程式
+
 ### 流体の記述
+
 - 速度 $u_i$
   - 変形速度 $d_{ij} := \pd{x_j} u_i$ → 歪み速度 $S_{ij}:=d_{(ij)}$ + 回転速度 $\Omega_{ij}:=d_{[ij]}$
   - 渦度 $\omega_k := \epsilon_{ijk}d_{ij}$
@@ -25,6 +26,7 @@ $$
 - 外力 $g_i$
 
 ### 質量保存則（連続の式）
+
 $$
 \pd{t}\rho+\pd{x_i}(\rho u_i)=0
 $$
@@ -77,7 +79,7 @@ $$
 \rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
 $$
 
-#### 無次元化 $D,V,L$ 
+#### 無次元化 $D,V,L$
 
 $$
 \rho \pd{t} u_i + \rho u_j \pd{x_j} u_i = -\pd{x_i} p + \frac{\mu}{DVL} \pd{x_j} \pd{x_j} u_i + \rho g_i
@@ -87,7 +89,7 @@ $$
 
 微分方程式の解が同じになる．
 
-### π定理
+### π 定理
 
 法則が $n$ 個の変数 $(q_1,q_2,,,q_n)$ で表現されていて，変数が $k$ 個の独立な基本単位で表されるとき，
 
@@ -102,15 +104,17 @@ $k=\mathrm{rank}\,M$
 無次元数の数 $=\mathrm{null}\,M$
 
 ### 二次元
+
 $$
 \begin{aligned}
 \pd[u]{x} + \pd[v]{y} &= 0 \\
 \rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
-\rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y 
+\rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y
 \end{aligned}
 $$
 
 ### 円筒座標 $(r,\theta,z)$
+
 $$
 \begin{aligned}
 \frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{\theta} u_\theta + \pd{z} u_z &= 0 \\
@@ -134,7 +138,6 @@ $$
 \rho \pd[u_j]{x_i}\pd[u_i]{x_j} = -\pd{x_i}\pd{x_i}p
 $$
 
-
 ## 円管内層流（ポアズイユ流れ）
 
 ![](CircularTube.drawio.svg)
@@ -143,7 +146,7 @@ $$
 
 軸対称 $\partial_\theta=0, u_\theta=0$, 発達流 $\partial_z=0$, 定常 $\pd{t}=0$, 円管表面で $u=0$
 
-NS方程式に条件を適用して，
+NS 方程式に条件を適用して，
 
 $$
 \d[p]{z} = \mu\frac{1}{r} \d{r} \left( r \d[u_z]{r} \right)
@@ -196,7 +199,7 @@ $$
 \Delta p = \left(-\d[p]{z}\right) L = \frac{8 \mu L}{R^2} U
 $$
 
-### 血管の分岐（Murrayの法則）
+### 血管の分岐（Murray の法則）
 
 評価関数を
 
@@ -205,7 +208,6 @@ J = Q \Delta P + K \frac{\pi d^2}{4} L
 $$
 
 ### 熱伝達
-
 
 ## 平行平板
 
@@ -259,29 +261,21 @@ $$
 u(y) = \left( U + \frac{\beta}{\alpha} H \right) \frac{\exp(-\alpha y)-1}{\exp(-\alpha H)-1} - \frac{\beta}{\alpha}y
 $$
 
-
 $$
 u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d[p]{x} y
 $$
 
 ## 同軸二重円筒
 
-
-
 ## 境界層
 
 ![](BoundaryLayer.drawio.svg)
-
-
-
 
 ## 非定常
 
 滑らかな入り口では一様な速度分布になる．
 
-粘性の影響で徐々に壁面から運動量が伝わる．（←発達）
-
-
+粘性の影響で徐々に壁面から運動量が伝わる．（← 発達）
 
 $$
 \pd{t} u + u \partial_x u + v \partial_y u = - \frac{1}{\rho} \partial_x p + \mu ( \partial_x^2u + \partial_y^2u )\\
@@ -312,9 +306,6 @@ $$
 \delta(t)=\sqrt{\mu t}
 $$
 
-
-
-
 ## 流体の運動学
 
 ### 完全流体の支配方程式
@@ -322,19 +313,21 @@ $$
 非粘性の流体（$\mathrm{Re}\rightarrow\infty$）
 
 - 連続の式
-$$
-\pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
-$$
+
+  $$
+  \pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
+  $$
 
 - オイラー方程式（完全流体の運動方程式）
-$$
-\pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
-$$
+
+  $$
+  \pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
+  $$
 
 - 断熱方程式
-$$
-\pd[s]{t} + u_j \pd[s]{x_j} = 0
-$$
+  $$
+  \pd[s]{t} + u_j \pd[s]{x_j} = 0
+  $$
 
 ### 渦度方程式
 
@@ -343,6 +336,7 @@ $$
 $$
 
 ### ラグランジュの渦定理
+
 ### ポテンシャル流
 
 $$
@@ -382,6 +376,7 @@ f=\Phi+i\Psi
 $$
 
 複素速度
+
 $$
 w = \d[f]{z} = u - iv
 $$
@@ -484,7 +479,7 @@ $$
 二点 $a,-a$ を近づける（$a \rightarrow 0$）（$2ma \rightarrow \mu$）
 
 $$
-f = - \frac{\mu}{z} \quad 
+f = - \frac{\mu}{z} \quad
 \Phi = -\frac{\mu}{r}\cos\theta \quad
 \Psi =  \frac{\mu}{r}\sin\theta
 $$
@@ -494,7 +489,7 @@ $$
 $$
 f = U \left( z + \frac{R^2}{z} \right) \quad
 \Phi = U \left( r + \frac{R^2}{r} \right) \cos\theta \quad
-\Psi = U \left( r - \frac{R^2}{r} \right) \sin\theta 
+\Psi = U \left( r - \frac{R^2}{r} \right) \sin\theta
 $$
 
 $$
@@ -522,16 +517,83 @@ $$
 
 ### 一般の複素ポテンシャル
 
-
-## 3次元ポテンシャル流
+## 3 次元ポテンシャル流
 
 上の議論を四元数に拡張する．
 
 $$
-\begin{alignedat}
-  u & = & \pd[f_0]{x} 
+\begin{alignedat}{5}
+  u_1 & = & \pd[f_0]{x} \\
+  u_2 & = & \pd[f_0]{y} \\
+  u_3 & = & \pd[f_0]{z}
 \end{alignedat}
 $$
+
+となるような関数 $f_0(x,y,z)$ が四元数上で正則となるように虚部 $f_1,f_2,f_3$ を定めると，
+
+$$
+\begin{alignedat}{5}
+  u_1 & = & \pd[f_0]{x} & = & -\pd[f_1]{w} & = &  \pd[f_2]{z} & = & -\pd[f_3]{y} \\
+  u_2 & = & \pd[f_0]{y} & = & -\pd[f_1]{z} & = & -\pd[f_2]{w} & = &  \pd[f_3]{x} \\
+  u_3 & = & \pd[f_0]{z} & = &  \pd[f_1]{y} & = & -\pd[f_2]{x} & = & -\pd[f_3]{w}
+\end{alignedat}
+$$
+
+$$
+\nabla = \pd{x}i + \pd{y}j + \pd{z}k
+$$
+
+とすると四元流速 $u = u_1i+u_2j+u_3k$ は
+
+$$
+u = \pd{w}f_0
+$$
+
+$$
+(\nabla f_i) \cdot (\nabla f_j) = \delta_{ij}
+$$
+
+#### 一様流
+
+$$
+f = Az
+$$
+
+$$
+u = \d[f]{z} = A
+$$
+
+#### ?
+
+$$
+f = Az^{-1}
+$$
+
+$$
+u = \d[f]{z} = -Az^{-2}
+$$
+
+#### 湧き出し・吸い込み
+
+$$
+f = A \ln z
+$$
+
+$$
+u = \d[f]{z} = A z^{-1}
+$$
+
+#### 球まわり
+
+$$
+f = U ( z + R^2 z^{-1} )
+$$
+
+$$
+u = \pd[f]{z} = U ( 1 - R^2 z^{-2} )
+$$
+
+円球面 $|z|=R$ 上では
 
 ## 渦の運動
 
@@ -541,8 +603,8 @@ $$
   - 軸変形
     - 対称テンソルなので主軸が存在する
     - 体積変化は $(1+\lambda_1)(1+\lambda_2)(1+\lambda_3) \sim 1 + \lambda_1+\lambda_2+\lambda_3 = 1 + \Lambda$
-    - 非圧縮の場合，トレース $\Lambda=0$ 
-  - ずり変形 
+    - 非圧縮の場合，トレース $\Lambda=0$
+  - ずり変形
     - 非対格成分はひし形状の変形を表す
     - 体積は保存
 - 渦度 $\omega_k := \epsilon_{ijk}d_{ij}$
@@ -558,20 +620,17 @@ $$
 - 渦糸
   - 断面積が微小な渦菅
   - 渦菅は曲線とみなせる
-  - 渦菅内の渦度は一定（Helmholtzの第三法則）
-  
-### Helmholtzの法則
+  - 渦菅内の渦度は一定（Helmholtz の第三法則）
+
+### Helmholtz の法則
 
 #### 第一法則（渦度方程式）
-
 
 #### 第二法則
 
 「渦度は流体粒子に凍結している」
 
 粘性がなく，密度が圧力のみに依存し（バロトロピー流体），体積力が保存力なら，渦線を構成する粒子は常に同じで，渦線と流体は一緒に移動する．
-
-
 
 ## 水波
 
@@ -636,8 +695,7 @@ $$
 \pd[\Phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
 $$
 
-
-### 2次元の解
+### 2 次元の解
 
 $y$ 方向を均一として解く
 
@@ -675,7 +733,7 @@ $$
 c_g=\frac{1}{2}\sqrt{\frac{g}{k}}
 $$
 
-## KdV方程式
+## KdV 方程式
 
 $$
 \pd[u]{t} + \alpha u \pd[u]{x} + \beta \pddd[u]{x} = 0
@@ -686,5 +744,3 @@ $$
 $$
 u=\frac{c}{2}\sech^2\frac{\sqrt{c}}{2}(x-ct+\delta)
 $$
-
-
