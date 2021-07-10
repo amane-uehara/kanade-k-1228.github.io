@@ -14,7 +14,7 @@
 
 ### リレーコンピュータ
 
-[CPU入門](./Computer/CPUIntroduction/)
+[CPU 入門](./Computer/CPUIntroduction/)
 
 [リレーコンピュータ](./Computer/RelayComputer/)
 
@@ -24,9 +24,9 @@
 
 [簡単なブログサイトの作り方](./Computer/Website/)
 
-[Dockerはじめました](./Computer/Docker/)
+[Docker はじめました](./Computer/Docker/)
 
-[WSLに接続したVSCodeにclang-formatを追加する](./Computer/ClangFormat/)
+[WSL に接続した VSCode に clang-format を追加する](./Computer/ClangFormat/)
 
 ## 電子
 
@@ -34,12 +34,11 @@
 
 [プリント基板](./Electronics/PCBMaking/)
 
-[Azoteq IQS127D （静電容量タッチセンサIC）の使い方](./Electronics/IQS127D/)
+[Azoteq IQS127D （静電容量タッチセンサ IC）の使い方](./Electronics/IQS127D/)
 
 ## 制御・ロボット
 
 [現代制御論](./Control/ModernControlTheory/)
-
 
 ## 機械
 
@@ -97,12 +96,15 @@
 
 [相対論的量子論](./Physics/RelativisticQuantumMechanics/)
 
-
 ## 数学
+
+お気持ち数学です
 
 [解析学](./Mathmatics/Analysis/)
 
 [多様体](./Mathmatics/Manifold/)
+
+[複素解析](./Mathmatics/ComplexAnalysis/)
 
 [四元数]()
 
@@ -110,14 +112,13 @@
 
 [クリフォート代数]()
 
-
 ## リンク集
 
 [特殊関数 グラフィックスライブラリー](http://math-functions-1.watson.jp/index.html)
 
 [bakamoto.sakura.ne.jp](http://bakamoto.sakura.ne.jp/buturi/ronbun.html)
 
-[EMANの物理学](https://eman-physics.net/)
+[EMAN の物理学](https://eman-physics.net/)
 
 [物理のかぎしっぽ](http://hooktail.org/wiki/)
 
