@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>多様体 | Kanade's Website</title>
+          <title>複素解析 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "多様体",
+            "複素解析",
           "_blank"
         );
       }
@@ -413,161 +413,127 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">多様体</h1>
+                <h1 style="margin: 0">複素解析</h1>
                </header>
             <nav><ul>
-<li><a href="#位相空間">位相空間</a><ul>
-<li><a href="#ハウスドルフの分離公理">ハウスドルフの分離公理</a></li>
-<li><a href="#連続写像">連続写像</a></li>
-<li><a href="#同相">同相</a></li>
-<li><a href="#位相の継承">位相の継承</a></li>
+<li><a href="#複素数体">複素数体</a><ul>
+<li><a href="#位相">位相</a></li>
+<li><a href="#級数">級数</a></li>
+<li><a href="#代数的構造">代数的構造</a></li>
 </ul></li>
-<li><a href="#ユークリッド空間">ユークリッド空間</a><ul>
+<li><a href="#解析関数">解析関数</a><ul>
+<li><a href="#正則関数">正則関数</a></li>
+<li><a href="#コーシーリーマンの条件">コーシー・リーマンの条件</a></li>
+<li><a href="#解析関数-1">解析関数</a></li>
+<li><a href="#冪級数で定義される関数">冪級数で定義される関数</a></li>
+<li><a href="#解析接続">解析接続</a></li>
+<li><a href="#零点">零点</a></li>
+<li><a href="#有理型">有理型</a></li>
+</ul></li>
+<li><a href="#等角写像">等角写像</a><ul>
+<li><a href="#正則関数列">正則関数列</a></li>
+<li><a href="#広義一様収束">広義一様収束</a></li>
 <li><a href="#距離">距離</a></li>
-<li><a href="#近傍">近傍</a></li>
-<li><a href="#開集合">開集合</a></li>
-<li><a href="#収束">収束</a></li>
-<li><a href="#開集合-1">開集合</a></li>
-<li><a href="#連続性">連続性</a></li>
 </ul></li>
-<li><a href="#多様体">多様体</a><ul>
-<li><a href="#局所座標系">局所座標系</a></li>
-<li><a href="#多様体上の関数スカラー場">多様体上の関数（スカラー場）</a></li>
-<li><a href="#多様体上の曲線">多様体上の曲線</a></li>
-<li><a href="#スカラー場の微分">スカラー場の微分</a></li>
-<li><a href="#接空間-1">接空間</a></li>
+<li><a href="#写像としての正則関数">写像としての正則関数</a><ul>
+<li><a href="#ある点近傍">ある点近傍</a></li>
 </ul></li>
-<li><a href="#ベクトル場">ベクトル場</a></li>
-<li><a href="#接続">接続</a></li>
-<li><a href="#リーマン多様体">リーマン多様体</a><ul>
-<li><a href="#リーマン計量">リーマン計量</a></li>
-<li><a href="#レビ-チルダ接続">レビ-チルダ接続</a></li>
+<li><a href="#楕円関数">楕円関数</a><ul>
+<li><a href="#リウビルの基本定理">リウビルの基本定理</a></li>
 </ul></li>
 </ul></nav>
        <p><span class="math display">\[
 \newcommand{\O}{\mathcal{O}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\S}{\mathbb{S}}
 \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
 \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 \]</span></p>
+<p>高橋礼司「複素解析」（東京大学出版会）のノート．</p>
+<h2 id="複素数体">複素数体</h2>
+<h3 id="位相">位相</h3>
+<p>ユークリッド空間と同じように位相を入れる</p>
 <ul>
-<li>多様体の基礎（松本幸夫）</li>
-<li>微分幾何入門（落合卓四郎）</li>
+<li>絶対値から距離が作れる</li>
+<li>距離を用いて <span class="math inline">\(\varepsilon\)</span> 近傍 <span class="math inline">\(N_\varepsilon(z)\)</span> が定義できる</li>
+<li>開集合が定義できる</li>
 </ul>
-<h2 id="位相空間">位相空間</h2>
-<p>集合 <span class="math inline">\(X\)</span> に対して，部分集合族 <span class="math inline">\(\O \subseteq 2^X\)</span> が以下の性質を満たすとき <span class="math inline">\((X,\O)\)</span> を位相空間という．</p>
+<h4 id="粗">粗</h4>
+<p><span class="math inline">\(\C\)</span> の部分集合 <span class="math inline">\(\D\)</span> が粗であるとは， <span class="math inline">\(\D\)</span> の任意の異なる元 <span class="math inline">\(z_1,z_2\)</span> をと d ったときに十分小さな <span class="math inline">\(\varepsilon\)</span> をとれば</p>
+<p><span class="math display">\[
+N_\varepsilon(z_1) \cap N_\varepsilon(z_2) = \emptyset
+\]</span></p>
+<p>となること．</p>
+<h4 id="コンパクト集合">コンパクト集合</h4>
+<p><span class="math inline">\(\C\)</span> の部分集合 <span class="math inline">\(K\)</span> が以下の（同値な）性質を満たすとき，<span class="math inline">\(K\)</span>はコンパクトであるという．</p>
 <ul>
-<li><span class="math inline">\(\emptyset, X \in \O\)</span></li>
-<li>有限回の <span class="math inline">\(\cap\)</span> に閉じている</li>
-<li>無限回の <span class="math inline">\(\cup\)</span> に閉じている</li>
+<li><span class="math inline">\(K\)</span> の任意の点列は収束する部分列を含む</li>
+<li><span class="math inline">\(K\)</span> は有界な閉集合</li>
+<li>有限個の開集合で覆われている</li>
+<li>有限個の閉集合の積が<span class="math inline">\(\emptyset\)</span>になる</li>
 </ul>
-<p><span class="math inline">\(\O\)</span> を位相といい，<span class="math inline">\(\O\)</span> の元を閉集合という</p>
-<h3 id="ハウスドルフの分離公理">ハウスドルフの分離公理</h3>
-<p><span class="math display">\[
-\forall p,q \in X \, (p \neq q) \quad \exists U,V \in \O \, ( p \in U, q \in V ) \quad U \cap V = \emptyset
-\]</span></p>
-<p>を満たすような位相空間 <span class="math inline">\((X,\O)\)</span> をハウスドルフ空間という．</p>
-<h3 id="連続写像">連続写像</h3>
-<p>位相空間 <span class="math inline">\((X,\O_X)\)</span> <span class="math inline">\((Y,\O_Y)\)</span> の写像 <span class="math inline">\(f : X \rightarrow Y\)</span> が連続であるとは</p>
-<p><span class="math display">\[
-V\in\O_Y \Rightarrow f^{-1}(V) \in \O_X
-\]</span></p>
-<h3 id="同相">同相</h3>
-<p><span class="math inline">\(f\)</span> が全単射かつ連続なとき同相 <span class="math inline">\(X \approx Y\)</span></p>
-<h3 id="位相の継承">位相の継承</h3>
-<p>位相空間の部分集合・直積・射影に位相を入れる方法．</p>
-<h2 id="ユークリッド空間">ユークリッド空間</h2>
+<h4 id="最大値の存在">最大値の存在</h4>
+<p>コンパクト集合上で定義された実数値連続関数はある点で有限な最大値をとる</p>
+<h4 id="一点コンパクト化">一点コンパクト化</h4>
+<p><span class="math inline">\(\C\)</span> はコンパクトでない（有界でないので）が，</p>
+<p><span class="math display">\[ \C\cup\{\infty\} \]</span></p>
+<p>はコンパクト</p>
+<h4 id="リーマン球面">リーマン球面</h4>
+<p><span class="math inline">\(\C\cup\{\infty\}\)</span> と 球面 <span class="math inline">\(\S^2\)</span> には同相写像が作れる</p>
+<h3 id="級数">級数</h3>
+<h3 id="代数的構造">代数的構造</h3>
+<ul>
+<li><span class="math inline">\(R^n\)</span> に積を定義する</li>
+<li><span class="math inline">\(C : R^2\)</span>：可換・結合・分配・零因子なし</li>
+<li><span class="math inline">\(H : R^4\)</span>：結合・分配・零因子なし</li>
+<li><span class="math inline">\(O : R^8\)</span>：分配・零因子なし</li>
+</ul>
+<h4 id="frobenius-の定理">Frobenius の定理</h4>
+<p>F は C または H に同形</p>
+<h4 id="bott-milnor-の定理">Bott-Milnor の定理</h4>
+<p><span class="math inline">\(R^n\)</span>に積（分配・零因子なし）が存在するのは <span class="math inline">\(n=1,2,3,8\)</span> のみ</p>
+<h2 id="解析関数">解析関数</h2>
+<p>解析学の対象となる関数</p>
+<ul>
+<li>微分可能性・正則性</li>
+<li>冪級数展開可能性</li>
+</ul>
+<p>の２通りの定義が同値となる</p>
+<p>この強い条件がきれいな理論のベースになってる</p>
+<h3 id="正則関数">正則関数</h3>
+<h3 id="コーシーリーマンの条件">コーシー・リーマンの条件</h3>
+<h3 id="解析関数-1">解析関数</h3>
+<h3 id="冪級数で定義される関数">冪級数で定義される関数</h3>
+<p><span class="math display">\[ f(z)=a_0+a_1z+a_2z^2... \]</span></p>
+<p>収束半径 $ $ の円板上で連続，さらに正則である．この関数を形式的に微分した級数</p>
+<p><span class="math display">\[ f&#39;(z)=a_1+a_2z+a_3z^2... \]</span></p>
+<p>も同じ収束半径で正則であるので，再帰的に，何回でも微分可能であることがわかる．</p>
+<h3 id="解析接続">解析接続</h3>
+<p>ある２つの解析関数がある点の近傍で等しければ領域全体で等しい</p>
+<h3 id="零点">零点</h3>
+<ul>
+<li><span class="math inline">\(f(z)=0\)</span> なる点</li>
+<li>零関数以外の正則関数の零点集合は粗</li>
+<li>零点の位数 k : <span class="math display">\[ f(z)=(z-z_0)^kg(z) \quad ( g(z_0) \neq 0 ) \]</span></li>
+<li>微分すると位数は-1</li>
+</ul>
+<h3 id="有理型">有理型</h3>
+<p><span class="math inline">\(f(z)/g(z)\)</span> は分母の零点（極）を除いた領域で解析的となる</p>
+<h2 id="等角写像">等角写像</h2>
+<h3 id="正則関数列">正則関数列</h3>
+<ul>
+<li>H(D)：D 上の正則関数全体の集合</li>
+<li>H は C 上の無限線形空間 → 多元環</li>
+</ul>
+<h3 id="広義一様収束">広義一様収束</h3>
 <h3 id="距離">距離</h3>
-<p><span class="math display">\[
-d : \R^m \times \R^m \rightarrow \R
-\]</span></p>
-<ul>
-<li><span class="math inline">\(d(x,y) \geq 0\)</span></li>
-<li><span class="math inline">\(d(x,y) = d(y,x)\)</span></li>
-<li><span class="math inline">\(d(x,y) + d(y,z) \geq d(x,z)\)</span></li>
-</ul>
-<h3 id="近傍">近傍</h3>
-<p><span class="math inline">\(a\in \R^m\)</span> の <span class="math inline">\(\varepsilon &gt; 0\)</span> 近傍</p>
-<p><span class="math display">\[
-N_\varepsilon(a;\R^m) = \left\{ x\in \R^m \middle| d(x,a) &lt; \varepsilon \right\}
-\]</span></p>
-<h3 id="開集合">開集合</h3>
-<p><span class="math inline">\(U \subseteq \R^m\)</span> が開集合であるとは，</p>
-<p><span class="math display">\[
-\forall a \in U \quad \exists \varepsilon &gt; 0 \quad N_\varepsilon(a) \subset U
-\]</span></p>
-<h4 id="性質">性質</h4>
-<ul>
-<li><span class="math inline">\(\emptyset,\R^m \in U\)</span></li>
-<li>有限回の <span class="math inline">\(\cap\)</span> に閉じている</li>
-<li>無限回の <span class="math inline">\(\cup\)</span> に閉じている</li>
-</ul>
-<h3 id="収束">収束</h3>
-<p><span class="math inline">\(\{x_n\}_{n=1}^\infty \in \R^m\)</span> が収束するとは，</p>
-<p><span class="math display">\[
-\exists a \in \R^m \quad \forall \varepsilon &gt; 0 \quad \exists n_0 &gt; 0 \quad n &gt; n_0 \Rightarrow x_n \in N_\varepsilon(a)
-\]</span></p>
-<h3 id="開集合-1">開集合</h3>
-<p><span class="math inline">\(C \subseteq \R^m\)</span> が閉集合であるとは，</p>
-<p><span class="math inline">\(C\)</span> 内の収束点列が <span class="math inline">\(C\)</span> 内に収束すること．</p>
-<h4 id="性質-1">性質</h4>
-<ul>
-<li><span class="math inline">\(\emptyset,\R^m \in C\)</span></li>
-<li>有限回の <span class="math inline">\(\cup\)</span> に閉じている</li>
-<li>無限回の <span class="math inline">\(\cap\)</span> に閉じている</li>
-</ul>
-<h3 id="連続性">連続性</h3>
-<p>写像 <span class="math inline">\(f\)</span> が <span class="math inline">\(a\)</span> で連続であるとは，</p>
-<p><span class="math display">\[
-\forall \varepsilon &gt; 0 \quad \exists \delta &gt; 0 \quad f(N_\delta(a)) \subset  N_\varepsilon(f(a))
-\]</span></p>
-<p>すなわち，</p>
-<p><span class="math display">\[
-f^{-1}(N_\varepsilon(f(a))) \supset N_\delta(a)
-\]</span></p>
-<h2 id="多様体">多様体</h2>
-<p>局所的にユークリッド空間 <span class="math inline">\(\R^m\)</span> と同相なハウスドルフ空間を <span class="math inline">\(m\)</span>次多様体という．</p>
-<h3 id="局所座標系">局所座標系</h3>
-<p><span class="math display">\[
-\varphi_M : U \in \O_M \rightarrow U&#39; \in \O_{\R^m}
-\]</span></p>
-<h3 id="多様体上の関数スカラー場">多様体上の関数（スカラー場）</h3>
-<p><span class="math display">\[
-f : M \rightarrow \R
-\]</span></p>
-<h4 id="接空間">接空間</h4>
-<p><span class="math inline">\(f\)</span> を曲線を点 <span class="math inline">\(p \in M\)</span> の接空間 <span class="math inline">\((x_1,,,x_m)\)</span> 上の関数にする</p>
-<p><span class="math display">\[
-U_p \xrightarrow{\varphi_p} \R^m \rightarrow \R
-\]</span></p>
-<h3 id="多様体上の曲線">多様体上の曲線</h3>
-<p><span class="math display">\[
-c : \R \rightarrow M
-\]</span></p>
-<h4 id="局所座標上">局所座標上</h4>
-<p>曲線を点 <span class="math inline">\(p \in M\)</span> での局所座標 <span class="math inline">\((x_1,,,x_m)\)</span> で表すと <span class="math inline">\((c_1(t),,,c_m(t))\)</span></p>
-<h3 id="スカラー場の微分">スカラー場の微分</h3>
-<p><span class="math display">\[
-\R \xrightarrow{c} M \xrightarrow{f} \R
-\]</span></p>
-<p>スカラー場を曲線に沿って微分する．</p>
-<p><span class="math display">\[
-\d{t}f(c(t))
-\]</span></p>
-<p>点 <span class="math inline">\(p \in M\)</span> での微分は</p>
-<p><span class="math display">\[
-\d{t}f(c(t))
-\]</span></p>
-<h3 id="接空間-1">接空間</h3>
-<h2 id="ベクトル場">ベクトル場</h2>
-<h2 id="接続">接続</h2>
-<h2 id="リーマン多様体">リーマン多様体</h2>
-<p>リーマン計量を入れた多様体</p>
-<h3 id="リーマン計量">リーマン計量</h3>
-<h3 id="レビ-チルダ接続">レビ-チルダ接続</h3>
-<p>捩率が 0 となる接続</p>
+<h2 id="写像としての正則関数">写像としての正則関数</h2>
+<h3 id="ある点近傍">ある点近傍</h3>
+<h2 id="楕円関数">楕円関数</h2>
+<h3 id="リウビルの基本定理">リウビルの基本定理</h3>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
