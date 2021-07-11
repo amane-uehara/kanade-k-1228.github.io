@@ -9,6 +9,8 @@ $$
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+\newcommand{\Re}{\mathrm{Re}}
+\newcommand{\Im}{\mathrm{Im}}
 $$
 
 ## 流体
@@ -523,13 +525,13 @@ $$
 
 $$
 \begin{alignedat}{5}
-  u_1 & = & \pd[f_0]{x} \\
-  u_2 & = & \pd[f_0]{y} \\
-  u_3 & = & \pd[f_0]{z}
+  u_1 & = & \Im_i \pd[f_0]{x} \\
+  u_2 & = & \Im_j \pd[f_0]{y} \\
+  u_3 & = & \Im_k \pd[f_0]{z}
 \end{alignedat}
 $$
 
-となるような関数 $f_0(x,y,z)$ が四元数上で正則となるように虚部 $f_1,f_2,f_3$ を定めると，
+となるような関数 $f_0(w+xi+yj+zk)$ が四元数上で正則となるように虚部 $f_1,f_2,f_3$ を定める
 
 $$
 \begin{alignedat}{5}
@@ -537,10 +539,6 @@ $$
   u_2 & = & \pd[f_0]{y} & = & -\pd[f_1]{z} & = & -\pd[f_2]{w} & = &  \pd[f_3]{x} \\
   u_3 & = & \pd[f_0]{z} & = &  \pd[f_1]{y} & = & -\pd[f_2]{x} & = & -\pd[f_3]{w}
 \end{alignedat}
-$$
-
-$$
-\nabla = \pd{xi} + \pd{yj} + \pd{zk}
 $$
 
 とすると四元流速 $u = u_1i+u_2j+u_3k$ は

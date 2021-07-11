@@ -471,6 +471,8 @@
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+\newcommand{\Re}{\mathrm{Re}}
+\newcommand{\Im}{\mathrm{Im}}
 \]</span></p>
 <h2 id="流体">流体</h2>
 <h2 id="基礎方程式">基礎方程式</h2>
@@ -853,21 +855,18 @@ u_x = -u_\theta \sin\theta + u_r \cos\theta =  = U
 <p>四元数に拡張する</p>
 <p><span class="math display">\[
 \begin{alignedat}{5}
-  u_1 &amp; = &amp; \pd[f_0]{x} \\
-  u_2 &amp; = &amp; \pd[f_0]{y} \\
-  u_3 &amp; = &amp; \pd[f_0]{z}
+  u_1 &amp; = &amp; \Im_i \pd[f_0]{x} \\
+  u_2 &amp; = &amp; \Im_j \pd[f_0]{y} \\
+  u_3 &amp; = &amp; \Im_k \pd[f_0]{z}
 \end{alignedat}
 \]</span></p>
-<p>となるような関数 <span class="math inline">\(f_0(x,y,z)\)</span> が四元数上で正則となるように虚部 <span class="math inline">\(f_1,f_2,f_3\)</span> を定めると，</p>
+<p>となるような関数 <span class="math inline">\(f_0(w+xi+yj+zk)\)</span> が四元数上で正則となるように虚部 <span class="math inline">\(f_1,f_2,f_3\)</span> を定める</p>
 <p><span class="math display">\[
 \begin{alignedat}{5}
   u_1 &amp; = &amp; \pd[f_0]{x} &amp; = &amp; -\pd[f_1]{w} &amp; = &amp;  \pd[f_2]{z} &amp; = &amp; -\pd[f_3]{y} \\
   u_2 &amp; = &amp; \pd[f_0]{y} &amp; = &amp; -\pd[f_1]{z} &amp; = &amp; -\pd[f_2]{w} &amp; = &amp;  \pd[f_3]{x} \\
   u_3 &amp; = &amp; \pd[f_0]{z} &amp; = &amp;  \pd[f_1]{y} &amp; = &amp; -\pd[f_2]{x} &amp; = &amp; -\pd[f_3]{w}
 \end{alignedat}
-\]</span></p>
-<p><span class="math display">\[
-\nabla = \pd{xi} + \pd{yj} + \pd{zk}
 \]</span></p>
 <p>とすると四元流速 <span class="math inline">\(u = u_1i+u_2j+u_3k\)</span> は</p>
 <p><span class="math display">\[

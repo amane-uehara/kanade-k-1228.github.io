@@ -2,6 +2,6 @@
 %
 %
 
-# Robotics and Computer Engineering
+Robotics and Computing
 
 ![](index.drawio.svg)
