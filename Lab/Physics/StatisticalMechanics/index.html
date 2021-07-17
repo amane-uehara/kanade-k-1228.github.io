@@ -434,7 +434,7 @@
 <li><a href="#実際の分子">実際の分子</a></li>
 </ul></li>
 <li><a href="#分子の運動学">分子の運動学</a><ul>
-<li><a href="#マクスウェルの速度分布則">マクスウェルの速度分布則</a></li>
+<li><a href="#平均自由行程">平均自由行程</a></li>
 <li><a href="#クヌッセン数">クヌッセン数</a></li>
 <li><a href="#ボルツマンの輸送方程式">ボルツマンの輸送方程式</a></li>
 <li><a href="#分子衝突のない場合">分子衝突のない場合</a></li>
@@ -468,7 +468,7 @@ H(q,p)=\mathrm{Const}
 <p><span class="math display">\[
 \dot{q}=\frac{\partial H}{\partial p},\, \dot{p}=-\frac{\partial H}{\partial q}
 \]</span></p>
-<p>軌跡は交わらない（交点に2通りの速度が存在することになるので）</p>
+<p>軌跡は交わらない（交点に 2 通りの速度が存在することになるので）</p>
 <h3 id="熱平衡と統計的物理量の存在">熱平衡と統計的物理量の存在</h3>
 <p>ある系の物理量 <span class="math inline">\(Q(q,p)\)</span> を観測したとき，観測値は観測時間平均</p>
 <p><span class="math display">\[
@@ -484,7 +484,8 @@ H(q,p)=\mathrm{Const}
 \bar{Q}=\int Q(q,p)\rho(q,p) dqdp
 \]</span></p>
 <blockquote>
-<p>系の軌道がエルゴード的であるとき， <span class="math display">\[
+<p>系の軌道がエルゴード的であるとき，</p>
+<p><span class="math display">\[
 \langle Q \rangle=\bar{Q}
 \]</span></p>
 </blockquote>
@@ -514,7 +515,7 @@ W(N_0,N_1,,,)=\frac{N!}{N_1!N_2!...}
 N_i = C\exp\left(-\frac{E_i}{k_BT}\right)
 \]</span></p>
 <p>これをボルツマン分布という．</p>
-<p>Nが十分大きいとき，粒子系はボルツマン分布になっている．</p>
+<p>N が十分大きいとき，粒子系はボルツマン分布になっている．</p>
 <h4 id="導出">導出</h4>
 <p><span class="math display">\[
 \begin{aligned}
@@ -531,7 +532,8 @@ F(N_1,N_2,,,\alpha,\beta) := \log W(N_1,N_2,,,) - \alpha \left(\sum_i N_i-N\righ
 <p><span class="math display">\[
 \frac{\partial F}{\partial N_i} = 0
 \]</span></p>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 \partial F &amp;= \partial \left( -\sum_i N_i \log N_i - \alpha \sum_i N_i - \beta \sum_i E_iN_i \right) \\
            &amp;= \sum_i (-\log N_i -\alpha -\beta E_i) \partial N_i \\
 \frac{\partial F}{\partial N_i} &amp;= -\log N_i - \alpha - \beta E_i \\
@@ -557,16 +559,19 @@ S = k_B (N\ln N - \sum_i N_i \ln N_i) = k_B N\ln N - k_B N \ln C + \frac{E}{T}
 \]</span></p>
 <h3 id="配置エントロピー">配置エントロピー</h3>
 <p><span class="math inline">\(N\)</span> マスの空間（１マスの体積 <span class="math inline">\(v\)</span> ）に <span class="math inline">\(n\)</span> 個の分子を排他的に配置する．</p>
-<p>微視的状態数 <span class="math display">\[
+<p>微視的状態数</p>
+<p><span class="math display">\[
 W=\frac{N^n}{n!}
 \]</span></p>
-<p>配置エントロピー <span class="math display">\[
+<p>配置エントロピー</p>
+<p><span class="math display">\[
 S=k_b\ln(\frac{N^n}{n!})
 \]</span></p>
 <p><span class="math display">\[
 \frac{d S}{d V} = \frac{k_B}{v}\frac{d}{dN}\{n\ln N-\ln(n!)\} = \frac{k_B n}{V}
 \]</span></p>
-<p>一方，熱力学から <span class="math display">\[
+<p>一方，熱力学から</p>
+<p><span class="math display">\[
 \left(\frac{\partial S}{\partial V}\right)_U=\frac{P}{T}
 \]</span></p>
 <p>状態方程式</p>
@@ -574,7 +579,7 @@ S=k_b\ln(\frac{N^n}{n!})
 PV=nk_BT
 \]</span></p>
 <h2 id="カノニカル分布カノニカルアンサンブル正準分布">カノニカル分布（カノニカルアンサンブル）（正準分布）</h2>
-<p>熱浴Bとそれに接する系A</p>
+<p>熱浴 B とそれに接する系 A</p>
 <p><span class="math display">\[
 N_A+N_B=N\\
 E_A+E_B=E\\
@@ -627,7 +632,7 @@ E = N \frac{3}{2} k_B T = \frac{3}{2} RT
 <p><span class="math display">\[
 C_v = \frac{3}{2} R
 \]</span></p>
-<p>二原子分子は 並進運動 (xyz) + 回転運動 (2軸) + 伸縮振動 の自由度</p>
+<p>二原子分子は 並進運動 (xyz) + 回転運動 (2 軸) + 伸縮振動 の自由度</p>
 <p><span class="math display">\[
 C_v = \frac{7}{2}
 \]</span></p>
@@ -659,7 +664,12 @@ C_v = \frac{7}{2}
 </tbody>
 </table>
 <h2 id="分子の運動学">分子の運動学</h2>
-<h3 id="マクスウェルの速度分布則">マクスウェルの速度分布則</h3>
+<h3 id="平均自由行程">平均自由行程</h3>
+<p>他の分子と衝突するまでに分子が移動する距離の平均</p>
+<p><span class="math display">\[
+l = \tau \times v
+\]</span></p>
+<p>ロシュミット数（標準状態の気体 1L に含まれる分子数）<span class="math inline">\(n_0=N_A/V_{mol}\)</span></p>
 <h3 id="クヌッセン数">クヌッセン数</h3>
 <p>代表長さ <span class="math inline">\(L\)</span> に対する，平均自由行程 <span class="math inline">\(l\)</span> の比</p>
 <p><span class="math display">\[

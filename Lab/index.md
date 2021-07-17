@@ -108,11 +108,13 @@
 
 [フーリエ変換・ラプラス変換](./Mathmatics/FourierLaplace/)
 
-[四元数]()
+四元数
 
-[外積代数]()
+クリフォート代数
 
-[クリフォート代数]()
+## いろいろ
+
+[金融工学](./Other/FinancialEngineering/)
 
 ## リンク集
 
