@@ -40,6 +40,8 @@
 
 [現代制御論](./Control/ModernControlTheory/)
 
+[2 次元上の倒立振子](./Control/2dimInvertedPendulum/)
+
 ## 機械
 
 [材料](./Mech/Material/)
