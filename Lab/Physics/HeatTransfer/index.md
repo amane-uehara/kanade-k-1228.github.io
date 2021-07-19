@@ -548,8 +548,8 @@ $$
 G_i = \varepsilon_i \sigma T_i^4 + (1-\varepsilon_i)\sum_k G_kF_{ik}
 $$
 
-#### 例：囲われた物体
+$F'_{ij}=(1-\varepsilon_i)F_{ij}$ とすると
 
-射出率 $\varepsilon_C$ のパイプに囲われた 射出率 $\varepsilon_M$ の物体
-
-#### 例：平行平板と遮蔽版
+$$
+G_i = (\delta_{ij}-F'_{ij})^{-1}\varepsilon_i \sigma T_i^4
+$$
