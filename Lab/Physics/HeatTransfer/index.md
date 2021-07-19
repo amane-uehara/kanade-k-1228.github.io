@@ -553,3 +553,13 @@ $F'_{ij}=(1-\varepsilon_i)F_{ij}$ とすると
 $$
 G_i = (\delta_{ij}-F'_{ij})^{-1}\varepsilon_i \sigma T_i^4
 $$
+
+2 次元の場合
+
+$$
+(\delta_{ij}-F'_{ij})^{-1} = \frac{1}{(1-F'_{11})(1-F'_{22})-F'_{12}F'_{21}}
+\begin{bmatrix}
+1-F'_{22} & F'_{21} \\
+F'_{12} & 1-F'_{11}
+\end{bmatrix}
+$$
