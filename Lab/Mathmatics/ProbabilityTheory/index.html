@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>測度論 | Kanade's Website</title>
+          <title>確率論 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "測度論",
+            "確率論",
           "_blank"
         );
       }
@@ -413,27 +413,11 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">測度論</h1>
+                <h1 style="margin: 0">確率論</h1>
                </header>
             <nav><ul>
-<li><a href="#測度論のお気持ち">測度論のお気持ち</a></li>
-<li><a href="#可測空間">可測空間</a><ul>
-<li><a href="#性質">性質</a></li>
-<li><a href="#加法族の入れ方の例">加法族の入れ方の例</a></li>
-</ul></li>
-<li><a href="#borel-集合族">Borel 集合族</a></li>
-<li><a href="#可測関数">可測関数</a><ul>
-<li><a href="#実数への写像">実数への写像</a></li>
-<li><a href="#性質-1">性質</a></li>
-</ul></li>
-<li><a href="#測度空間">測度空間</a><ul>
-<li><a href="#ルベーグ測度">ルベーグ測度</a></li>
-</ul></li>
-<li><a href="#積分">積分</a><ul>
-<li><a href="#ルベーグ積分">ルベーグ積分</a></li>
-<li><a href="#単調収束定理">単調収束定理</a></li>
-<li><a href="#ファトゥの定理">ファトゥの定理</a></li>
-<li><a href="#ルベーグの優収束定理">ルベーグの優収束定理</a></li>
+<li><a href="#確率空間">確率空間</a><ul>
+<li><a href="#確率変数">確率変数</a></li>
 </ul></li>
 </ul></nav>
        <p><span class="math display">\[
@@ -441,100 +425,17 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\F}{\mathcal{F}}
 \]</span></p>
-<h2 id="測度論のお気持ち">測度論のお気持ち</h2>
-<ul>
-<li>ルベーグ積分
-<ul>
-<li>リーマン積分を集合論から考える</li>
-<li>「無限」を集合論を通じて明確にしたい</li>
-<li>その中で「測度」という概念が生まれた</li>
-<li>現代的な（集合論的な）解析学の基礎となっている</li>
-</ul></li>
-<li>何がうれしいか
-<ul>
-<li>無限がきちんと定義される
-<ul>
-<li>積分と極限を簡単に入れ替えられる</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="可測空間">可測空間</h2>
-<p>集合 <span class="math inline">\(S\)</span> とその部分集合族 <span class="math inline">\(\Sigma\)</span> の組 <span class="math inline">\((S,\Sigma)\)</span> が可測空間であるとは，</p>
-<ol type="1">
-<li>空集合を含む <span class="math inline">\(\emptyset \in \Sigma\)</span></li>
-<li>余集合について閉じている <span class="math inline">\(A\in\Sigma\Rightarrow A^C(=S\bs A) \in \Sigma\)</span></li>
-<li>和集合について閉じている <span class="math inline">\(A_i\subset\Sigma \Rightarrow \cup_i^\infty A_i\in\Sigma\)</span></li>
-</ol>
-<p><span class="math inline">\(\Sigma\)</span> を σ 加法族という．</p>
-<h3 id="性質">性質</h3>
-<ul>
-<li>全集合と空集合を含む</li>
-<li>和集合・差集合・余集合・積集合について閉じている</li>
-</ul>
-<p>基本的な集合演算について閉じた集合族になっている（逆にこれだけしか要請しないというのはすごい）</p>
-<h3 id="加法族の入れ方の例">加法族の入れ方の例</h3>
-<ul>
-<li>最小の加法族
-<ul>
-<li><span class="math inline">\(\Sigma=\{S,\emptyset\}\)</span></li>
-</ul></li>
-<li>１点 <span class="math inline">\(A \subset S\)</span>
-<ul>
-<li><span class="math inline">\(\Sigma=\{S,A,A^C,\emptyset\}\)</span></li>
-</ul></li>
-</ul>
-<h2 id="borel-集合族">Borel 集合族</h2>
-<p><span class="math inline">\(\R \cup \{\infty,-\infty\}\)</span>が生成する加法族を <span class="math inline">\(\mathcal{B}(\R)\)</span>　という</p>
-<h2 id="可測関数">可測関数</h2>
-<p><span class="math inline">\((S_1,\Sigma_1),(S_2,\Sigma_2)\)</span> を可測空間とする．</p>
-<p>写像 <span class="math inline">\(f : S_1\rightarrow S_2\)</span> が <span class="math inline">\(\Sigma_1/\Sigma_2\)</span> 可測であるとは，</p>
+<h2 id="確率空間">確率空間</h2>
+<p>測度空間 <span class="math inline">\((\Omega,\F,P)\)</span> が <span class="math inline">\(P(\Omega)=1\)</span> を満たすとき，<span class="math inline">\(P\)</span> を確率，<span class="math inline">\((\Omega,\F,P)\)</span> を確率空間とよぶ．</p>
+<h3 id="確率変数">確率変数</h3>
+<p><span class="math inline">\(X:\Omega\rightarrow\R\)</span> が確率変数であるとは， <span class="math inline">\(X\)</span> が <span class="math inline">\(\F\)</span> -可測 であること</p>
+<p>確率変数の<span class="math inline">\(P\)</span>に関する積分を</p>
 <p><span class="math display">\[
-\forall A\in\Sigma_2 \quad f^{-1}(A) \in \Sigma_1
+E[X] = \int X(\omega) dP(\omega)
 \]</span></p>
-<p>加法族の引き戻しが加法族であること</p>
-<p>※ これは位相空間で開集合を用いて連続を定義したのと同じ</p>
-<h3 id="実数への写像">実数への写像</h3>
-<h3 id="性質-1">性質</h3>
-<h2 id="測度空間">測度空間</h2>
-<p>可測空間 <span class="math inline">\((S,\Sigma)\)</span> と写像 <span class="math inline">\(\mu: \Sigma \rightarrow [0,\infty]\)</span> の組 <span class="math inline">\((S,\Sigma,\mu)\)</span> が可測空間であるとは，</p>
-<ol type="1">
-<li><span class="math inline">\(\mu(\emptyset)=0\)</span></li>
-<li>互いに素な集合 <span class="math inline">\(A_i \subset \Sigma\)</span> について <span class="math inline">\(\mu(\cup_i^\infty A_i) = \sum_i^\infty \mu(A_i)\)</span> （加算加法性）</li>
-</ol>
-<p><span class="math inline">\(\mu\)</span> を測度という</p>
-<h3 id="ルベーグ測度">ルベーグ測度</h3>
-<p><span class="math inline">\((\R,\mathcal{B}(\R))\)</span> 上の測度 <span class="math inline">\(\mu\)</span> で</p>
+<p><span class="math inline">\(A\in\F\)</span> について</p>
 <p><span class="math display">\[
-\mu([a,b))=b-a
-\]</span></p>
-<p>なる測度が唯一存在し，ルベーグ測度という</p>
-<h2 id="積分">積分</h2>
-<p><span class="math inline">\(\Sigma\)</span> -可測関数 <span class="math inline">\(f:S\rightarrow\R\)</span> に対して積分は</p>
-<p><span class="math display">\[
-\int f d\mu = \int f^+ d\mu - \int f^- d\mu
-\]</span></p>
-<p><span class="math inline">\(\int f d\mu \in \R\)</span> のとき <span class="math inline">\(f\)</span> を可積分という</p>
-<h3 id="ルベーグ積分">ルベーグ積分</h3>
-<p><span class="math inline">\(f:\R\rightarrow\R\)</span> を <span class="math inline">\(\mathcal{B}(\R)\)</span>-可測関数（ボレル可測関数）とする</p>
-<p><span class="math display">\[
-\int_a^b f(x) dx = \int f1_{[a,b]} dx
-\]</span></p>
-<h3 id="単調収束定理">単調収束定理</h3>
-<p><span class="math inline">\(\Sigma\)</span>-可測な関数列 <span class="math inline">\(f_n\)</span> が単調増加（<span class="math inline">\(\forall x \in S 0 \leq f_n(x) \leq f_{n+1}(x)\)</span>）のとき</p>
-<p><span class="math display">\[
-\int f(x) d\mu(x) = \lim_{n\rightarrow \infty} \int f_n(x)d\mu(x)
-\]</span></p>
-<p>なる <span class="math inline">\(\Sigma\)</span>-可測関数 <span class="math inline">\(f(x)\)</span> が存在する</p>
-<p>※ 収束先が <span class="math inline">\(\Sigma\)</span> -可測関数上にある</p>
-<h3 id="ファトゥの定理">ファトゥの定理</h3>
-<p><span class="math display">\[
-\int \liminf_{n\rightarrow\infty} f_n(x) d\mu(x) \leq \liminf_{n\rightarrow\infty} \int f_n(x) d\mu(x)
-\]</span></p>
-<h3 id="ルベーグの優収束定理">ルベーグの優収束定理</h3>
-<p><span class="math inline">\(\forall x\in S \exist f(x)=\lim f_n(x)\)</span></p>
-<p>ある可積分関数 <span class="math inline">\(g\)</span> に対し <span class="math inline">\(|f_n(x)|\leq g(x)\)</span></p>
-<p><span class="math display">\[
-\int f(x)d\mu(x) = \lim_{n\rightarrow\infty} \int f_n(x) d\mu(x)
+E[X,A] = E[X1_A]
 \]</span></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
