@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>2 次元上の倒立振子 | Kanade's Website</title>
+          <title>測度論 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "2 次元上の倒立振子",
+            "測度論",
           "_blank"
         );
       }
@@ -413,81 +413,86 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">2 次元上の倒立振子</h1>
+                <h1 style="margin: 0">測度論</h1>
                </header>
             <nav><ul>
-<li><a href="#運動方程式">運動方程式</a></li>
-<li><a href="#状態方程式">状態方程式</a></li>
+<li><a href="#測度論のお気持ち">測度論のお気持ち</a></li>
+<li><a href="#可測空間">可測空間</a><ul>
+<li><a href="#性質">性質</a></li>
+<li><a href="#加法族の入れ方の例">加法族の入れ方の例</a></li>
+</ul></li>
+<li><a href="#borel-集合族">Borel 集合族</a></li>
+<li><a href="#可測関数">可測関数</a><ul>
+<li><a href="#実数への写像">実数への写像</a></li>
+<li><a href="#性質-1">性質</a></li>
+</ul></li>
+<li><a href="#測度空間">測度空間</a></li>
+<li><a href="#は">は</a></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
-\newcommand{\Re}{\mathrm{Re}}
-\newcommand{\Im}{\mathrm{Im}}
-\]</span></p>
-<h2 id="運動方程式">運動方程式</h2>
-<p>速度ベクトルは</p>
+       <p>$$  </p>
+<p>$$</p>
+<h2 id="測度論のお気持ち">測度論のお気持ち</h2>
+<ul>
+<li>ルベーグ積分
+<ul>
+<li>リーマン積分を集合論から考える</li>
+<li>「無限」を集合論を通じて明確にしたい</li>
+<li>その中で「測度」という概念が生まれた</li>
+<li>現代的な（集合論的な）解析学の基礎となっている</li>
+</ul></li>
+<li>何がうれしいか
+<ul>
+<li>無限がきちんと定義される
+<ul>
+<li>積分と極限を簡単に入れ替えられる</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="可測空間">可測空間</h2>
+<p>集合 <span class="math inline">\(S\)</span> とその部分集合族 <span class="math inline">\(\Sigma\)</span> の組 <span class="math inline">\((S,\Sigma)\)</span> が可測空間であるとは，</p>
+<ol type="1">
+<li>空集合を含む <span class="math inline">\(\emptyset \in \Sigma\)</span></li>
+<li>余集合について閉じている <span class="math inline">\(A\in\Sigma\Rightarrow A^C(=S\backslash A) \in \Sigma\)</span></li>
+<li>和集合について閉じている <span class="math inline">\(A_i\subset\Sigma \Rightarrow \cup_i^\infty A_i\in\Sigma\)</span></li>
+</ol>
+<p><span class="math inline">\(\Sigma\)</span> を σ 加法族という．</p>
+<h3 id="性質">性質</h3>
+<ul>
+<li>全集合と空集合を含む</li>
+<li>和集合・差集合・余集合・積集合について閉じている</li>
+</ul>
+<p>基本的な集合演算について閉じた集合族になっている（逆にこれだけしか要請しないというのはすごい）</p>
+<h3 id="加法族の入れ方の例">加法族の入れ方の例</h3>
+<ul>
+<li>最小の加法族
+<ul>
+<li><span class="math inline">\(\Sigma=\{S,\emptyset\}\)</span></li>
+</ul></li>
+<li>１点 <span class="math inline">\(A \subset S\)</span>
+<ul>
+<li><span class="math inline">\(\Sigma=\{S,A,A^C,\emptyset\}\)</span></li>
+</ul></li>
+</ul>
+<h2 id="borel-集合族">Borel 集合族</h2>
+<p><span class="math inline">\(\mathbb{R}\cup \{\infty,-\infty\}\)</span>が生成する加法族を <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span>　という</p>
+<h2 id="可測関数">可測関数</h2>
+<p><span class="math inline">\((S_1,\Sigma_1),(S_2,\Sigma_2)\)</span> を可測空間とする．</p>
+<p>写像 <span class="math inline">\(f : S_1\rightarrow S_2\)</span> が <span class="math inline">\(\Sigma_1/\Sigma_2\)</span> 可測であるとは，</p>
 <p><span class="math display">\[
-v=\begin{pmatrix}
-    \dot{x} \\ \dot{y} \\ 0
-\end{pmatrix} +
-l\dot{\theta}
-\begin{pmatrix}
-    -\sin\theta \\ \cos\theta \\ 0
-\end{pmatrix} +
-l\dot{\phi}
-\begin{pmatrix}
-    \cos\theta\cos\phi \\ \sin\theta\cos\phi \\ -\sin\phi
-\end{pmatrix}
+\forall A\in\Sigma_2 \quad f^{-1}(A) \in \Sigma_1
 \]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-v^2 &amp;= (\dot{x}-l\dot{\theta}\sin\theta+l\dot{\phi}\cos\theta\cos\phi)^2 + (\dot{y}+l\dot{\theta}\cos\theta+l\dot{\phi}\sin\theta\cos\phi)^2 + (-l\dot{\phi}\sin\phi)^2 \\
-&amp;=\dot{x}^2 + l^2\dot{\theta}^2\sin^2\theta + l^2\dot{\phi}^2\cos^2\theta\cos^2\phi - 2\dot{x}l\dot{\theta}\sin\theta - 2l^2\dot{\theta}\dot{\phi}\sin\theta\cos\theta\cos\phi + 2l\dot{x}\dot{\phi}\cos\theta\cos\phi\\
-&amp;+ \dot{y}^2+l^2\dot{\theta}^2\cos^2\theta+l^2\dot{\phi}^2\sin^2\theta\cos^2\phi + 2\dot{y}l\dot{\theta}\cos\theta + 2l^2\dot{\theta}\dot{\phi}\cos\theta\sin\theta\cos\phi + 2l\dot{y}\dot{\phi}\sin\theta\cos\phi\\
-&amp;+ l^2\dot{\phi}^2\sin^2\phi \\
-&amp;= \dot{x}^2 + \dot{y}^2 + l^2\dot{\theta}^2 + l^2\dot{\phi}^2 + 2l\dot{\theta}(-\dot{x}\sin\theta + \dot{y}\cos\theta) + 2l\dot{\phi}\cos\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)
-\end{aligned}
-\]</span></p>
-<p>ラグランジアンは</p>
-<p><span class="math display">\[
-L=\frac{1}{2} m[\dot{x}^2 + \dot{y}^2 + l^2\dot{\theta}^2 + l^2\dot{\phi}^2 + 2l\dot{\theta}(-\dot{x}\sin\theta + \dot{y}\cos\theta) + 2l\dot{\phi}\cos\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)]-mgl\cos\phi
-\]</span></p>
-<p>以下<span class="math inline">\(m\)</span> は省略する</p>
-<p><span class="math display">\[
-\begin{aligned}
-\pd[L]{x} &amp;=0 \\
-\pd[L]{\dot{x}} &amp;= \dot{x} - l\dot{\theta}\sin\theta + l\dot{\phi}\cos\phi\cos\theta \\
-\d{t}\pd[L]{\dot{x}} &amp;= \ddot{x} - l\ddot{\theta}\sin\theta - l\dot{\theta}^2\cos\theta + l\ddot{\phi}\cos\phi\cos\theta - l\dot{\phi}^2\sin\phi\cos\theta - l\dot{\phi}\dot{\theta}\cos\phi\sin\theta \\
-\pd[L]{y} &amp;=0 \\
-\pd[L]{\dot{y}} &amp;= \dot{y} + l\dot{\theta}\cos\theta + l\dot{\phi}\cos\phi\sin\theta \\
-\d{t}\pd[L]{\dot{y}} &amp;= \ddot{y} + l\ddot{\theta}\cos\theta - l\dot{\theta}^2\sin\theta + l\ddot{\phi}\cos\phi\sin\theta - l\dot{\phi}^2\sin\phi\sin\theta + l\dot{\phi}\dot{\theta}\cos\phi\cos\theta \\
-\pd[L]{\theta} &amp;= l\dot{\theta}(-\dot{x}\cos\theta - \dot{y}\sin\theta) + l\dot{\phi}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta) \\
-\pd[L]{\dot{\theta}} &amp;= l^2\dot{\theta} + l(-\dot{x}\sin\theta + \dot{y}\cos\theta) \\
-\d{t}\pd[L]{\dot{\theta}} &amp;= l^2\ddot{\theta} + l(-\ddot{x}\sin\theta -\dot{x}\dot{\theta}\cos\theta + \ddot{y}\cos\theta - \dot{y}\dot{\theta}\sin\theta) \\
-\pd[L]{\phi} &amp;= -l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)+gl\sin\phi\\
-\pd[L]{\dot{\phi}} &amp;= l^2\dot{\phi} + l\cos\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)\\
-\d{t}\pd[L]{\dot{\phi}} &amp;= l^2\ddot{\phi} - l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta) + l\cos\phi(\ddot{x}\cos\theta + \ddot{y}\sin\theta) + + l\dot{\theta}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta)
-\end{aligned}
-\]</span></p>
-<p>オイラー・ラグランジュの運動方程式</p>
-<p><span class="math display">\[
-\pd[L]{x_i}-\d{t}\pd[L]{\dot{x_i}}=0
-\]</span></p>
-<p>より，</p>
-<p><span class="math display">\[
-\begin{aligned}
-0  &amp;= \ddot{x} - l\ddot{\theta}\sin\theta - l\dot{\theta}^2\cos\theta + l\ddot{\phi}\cos\phi\cos\theta - l\dot{\phi}^2\sin\phi\cos\theta - l\dot{\phi}\dot{\theta}\cos\phi\sin\theta \\
-0 &amp;= \ddot{y} + l\ddot{\theta}\cos\theta - l\dot{\theta}^2\sin\theta + l\ddot{\phi}\cos\phi\sin\theta - l\dot{\phi}^2\sin\phi\sin\theta + l\dot{\phi}\dot{\theta}\cos\phi\cos\theta \\
-l\dot{\theta}(-\dot{x}\cos\theta - \dot{y}\sin\theta) + l\dot{\phi}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta)  &amp;= l^2\ddot{\theta} + l(-\ddot{x}\sin\theta -\dot{x}\dot{\theta}\cos\theta + \ddot{y}\cos\theta - \dot{y}\dot{\theta}\sin\theta) \\
--l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)+gl\sin\phi &amp;= l^2\ddot{\phi} - l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta) + l\cos\phi(\ddot{x}\cos\theta + \ddot{y}\sin\theta) + l\dot{\theta}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta)
-\end{aligned}
-\]</span></p>
-<h2 id="状態方程式">状態方程式</h2>
+<p>加法族の引き戻しが加法族であること</p>
+<p>※ これは位相空間で開集合を用いて連続を定義したのと同じ</p>
+<h3 id="実数への写像">実数への写像</h3>
+<h3 id="性質-1">性質</h3>
+<h2 id="測度空間">測度空間</h2>
+<p>可測空間 <span class="math inline">\((S,\Sigma)\)</span> と写像 <span class="math inline">\(\mu: \Sigma \rightarrow [0,\infty]\)</span> の組 <span class="math inline">\((S,\Sigma,\mu)\)</span> が可測空間であるとは，</p>
+<ol type="1">
+<li><span class="math inline">\(\mu(\emptyset)=0\)</span></li>
+<li>加算加法性 <span class="math inline">\(A_i \subset \Sigma \quad (j\neq k \Rightarrow A_j\cap A_k=\emptyset) \Rightarrow \mu(\cup_i^\infty A_i) = \sum_i^\infty \mu(A_i)\)</span></li>
+</ol>
+<p><span class="math inline">\(\mu\)</span> を測度という</p>
+<h2 id="は">は</h2>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

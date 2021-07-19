@@ -433,7 +433,7 @@
 <li><a href="#境界条件">境界条件</a></li>
 <li><a href="#無次元化">無次元化</a></li>
 </ul></li>
-<li><a href="#次元定常熱伝導">1次元定常熱伝導</a><ul>
+<li><a href="#次元定常熱伝導">1 次元定常熱伝導</a><ul>
 <li><a href="#平板">平板</a></li>
 </ul></li>
 <li><a href="#熱伝達">熱伝達</a><ul>
@@ -449,9 +449,25 @@
 <li><a href="#熱伝達率">熱伝達率</a></li>
 </ul></li>
 <li><a href="#自然対流熱伝導">自然対流熱伝導</a></li>
-<li><a href="#熱放射">熱放射</a></li>
+<li><a href="#熱放射">熱放射</a><ul>
+<li><a href="#黒体放射">黒体放射</a></li>
+<li><a href="#プランクの式">プランクの式</a></li>
+<li><a href="#ステファンボルツマンの式">ステファン・ボルツマンの式</a></li>
+<li><a href="#実際の熱放射">実際の熱放射</a></li>
+<li><a href="#吸収反射透過">吸収・反射・透過</a></li>
+<li><a href="#キルヒホッフの法則射出と吸収の関係">キルヒホッフの法則（射出と吸収の関係）</a></li>
+<li><a href="#気体の熱放射">気体の熱放射</a></li>
+<li><a href="#ビアの法則">ビアの法則</a></li>
+<li><a href="#灰色面">灰色面</a></li>
+</ul></li>
+<li><a href="#放射伝熱">放射伝熱</a><ul>
+<li><a href="#形態係数">形態係数</a></li>
+<li><a href="#灰色面系">灰色面系</a></li>
+</ul></li>
 </ul></nav>
-       <h2 id="伝熱の形態">伝熱の形態</h2>
+       <p>庄司正弘「伝熱工学」</p>
+<p>めっちゃわかりやすい</p>
+<h2 id="伝熱の形態">伝熱の形態</h2>
 <h3 id="熱伝導">熱伝導</h3>
 <ul>
 <li>フーリエの法則 <span class="math display">\[
@@ -464,8 +480,8 @@
 <h3 id="熱伝達-convective-heat-transfer">熱伝達 (Convective Heat Transfer)</h3>
 <ul>
 <li>分子の集団が移動しながら熱エネルギーを伝える</li>
-<li>ニュートンの冷却法則 <span class="math display">\[ 
-q = h(T_w-T_\infty) 
+<li>ニュートンの冷却法則 <span class="math display">\[
+q = h(T_w-T_\infty)
 \]</span></li>
 <li>強制対流（ファン）</li>
 <li>自然対流</li>
@@ -492,11 +508,34 @@ q_b = \sigma T^4
 </ul>
 <h2 id="熱伝導率温度伝導率">熱伝導率・温度伝導率</h2>
 <h3 id="気体">気体</h3>
-<p><span class="math display">\[ \alpha = \frac{\lambda}{\rho c}=\frac{1}{3}vl \]</span> - 理想気体</p>
+<p><span class="math display">\[ \alpha = \frac{\lambda}{\rho c}=\frac{1}{3}vl \]</span></p>
+<ul>
+<li>理想気体</li>
+</ul>
 <h3 id="液体">液体</h3>
-<p><span class="math display">\[ \alpha = a l_0 \]</span> - <span class="math inline">\(a\)</span> : 音速 - <span class="math inline">\(l_0^3\)</span> : 分子が占める体積</p>
+<p><span class="math display">\[ \alpha = a l_0 \]</span></p>
+<ul>
+<li><span class="math inline">\(a\)</span> : 音速</li>
+<li><span class="math inline">\(l_0^3\)</span> : 分子が占める体積</li>
+</ul>
 <h3 id="固体">固体</h3>
-<p><span class="math display">\[ \lambda = \lambda_p + \lambda_e \]</span> - <span class="math inline">\(\lambda_p\)</span> : フォノン（格子振動） - <span class="math inline">\(\lambda_e=\frac{1}{3}\rho c\)</span>? : 自由電子 - 金属 - 常温の金属では <span class="math inline">\(\lambda_e&gt;&gt;\lambda_p\)</span> - 格子振動による散乱 - 界面・欠陥などによる散乱 - <span class="math display">\[ \lambda_e = \frac{1}{aT^2 + b/T}\]</span> - Wiedemann-Franz-Lorenz式（熱伝導率と電気伝導率の関係） <span class="math display">\[ \frac{\lambda_e}{\sigma T} = \frac{\pi^2}{3}\left(\frac{k}{e}\right)^2 = 2.45\times10^{-8}\left[\frac{V^2}{K^2}\right] \]</span> - 格子振動 <span class="math display">\[ \lambda_p=\frac{1}{3}\rho c v_p l_p \]</span> - <span class="math inline">\(c\)</span> : フォノンの比熱 - <span class="math inline">\(\rho\)</span> : - <span class="math inline">\(c\)</span> :</p>
+<p><span class="math display">\[ \lambda = \lambda_p + \lambda_e \]</span></p>
+<ul>
+<li><span class="math inline">\(\lambda_p\)</span> : フォノン（格子振動）</li>
+<li><span class="math inline">\(\lambda_e=\frac{1}{3}\rho c\)</span>? : 自由電子</li>
+<li>金属</li>
+<li>常温の金属では <span class="math inline">\(\lambda_e&gt;&gt;\lambda_p\)</span></li>
+<li>格子振動による散乱
+<ul>
+<li>界面・欠陥などによる散乱</li>
+<li><span class="math display">\[ \lambda_e = \frac{1}{aT^2 + b/T}\]</span></li>
+</ul></li>
+<li>Wiedemann-Franz-Lorenz 式（熱伝導率と電気伝導率の関係） <span class="math display">\[ \frac{\lambda_e}{\sigma T} = \frac{\pi^2}{3}\left(\frac{k}{e}\right)^2 = 2.45\times10^{-8}\left[\frac{V^2}{K^2}\right] \]</span></li>
+<li>格子振動 <span class="math display">\[ \lambda_p=\frac{1}{3}\rho c v_p l_p \]</span></li>
+<li><span class="math inline">\(c\)</span> : フォノンの比熱</li>
+<li><span class="math inline">\(\rho\)</span> :</li>
+<li><span class="math inline">\(c\)</span> :</li>
+</ul>
 <h2 id="熱伝導-1">熱伝導</h2>
 <h3 id="熱伝導方程式">熱伝導方程式</h3>
 <p><span class="math display">\[
@@ -514,41 +553,45 @@ q_b = \sigma T^4
 <h4 id="定常">定常</h4>
 <p><span class="math display">\[
  \partial_i\partial^i T +  \frac{w}{\lambda}=0
-\]</span> ポアソン型の偏微分方程式</p>
+\]</span></p>
+<p>ポアソン型の偏微分方程式</p>
 <h4 id="内部発熱なし">内部発熱なし</h4>
 <p><span class="math display">\[
  \partial_i\partial^i T =0
-\]</span> ラプラス方程式</p>
+\]</span></p>
+<p>ラプラス方程式</p>
 <h3 id="初期条件">初期条件</h3>
 <p><span class="math display">\[
 T(t=0)=T(x,y,z)
 \]</span></p>
 <h3 id="境界条件">境界条件</h3>
-<p>表面のある微小面<span class="math inline">\(s\)</span>でのエネルギーバランスを考える．微小面の法線方向の軸<span class="math inline">\(n\)</span>，加熱量<span class="math inline">\(q_s\)</span>，外界の無限遠点までの熱伝達率<span class="math inline">\(h\)</span>とすると， <span class="math display">\[
+<p>表面のある微小面<span class="math inline">\(s\)</span>でのエネルギーバランスを考える．微小面の法線方向の軸<span class="math inline">\(n\)</span>，加熱量<span class="math inline">\(q_s\)</span>，外界の無限遠点までの熱伝達率<span class="math inline">\(h\)</span>とすると，</p>
+<p><span class="math display">\[
 -\lambda\frac{\partial T}{\partial n} - h (T_s - T_\infty) + q_s=0
 \]</span></p>
-<h4 id="第1種-温度-hrightarrow-infty">第1種 : 温度 : <span class="math inline">\(h\rightarrow \infty\)</span></h4>
+<h4 id="第-1-種-温度-hrightarrow-infty">第 1 種 : 温度 : <span class="math inline">\(h\rightarrow \infty\)</span></h4>
 <p><span class="math display">\[
 T_s=T_\infty
 \]</span></p>
-<h4 id="第2種-熱流束-hrightarrow-0">第2種 : 熱流束 : <span class="math inline">\(h\rightarrow 0\)</span></h4>
+<h4 id="第-2-種-熱流束-hrightarrow-0">第 2 種 : 熱流束 : <span class="math inline">\(h\rightarrow 0\)</span></h4>
 <p><span class="math display">\[
 \lambda\partial_n T = q_s
 \]</span></p>
-<h4 id="第3種-熱伝達-q_s-0">第3種 : 熱伝達 : <span class="math inline">\(q_s = 0\)</span></h4>
+<h4 id="第-3-種-熱伝達-q_s-0">第 3 種 : 熱伝達 : <span class="math inline">\(q_s = 0\)</span></h4>
 <p><span class="math display">\[
 -\lambda\partial_n T = h (T_s-T_\infty)
 \]</span></p>
 <h3 id="無次元化">無次元化</h3>
-<h2 id="次元定常熱伝導">1次元定常熱伝導</h2>
-<p>対称な空間（平板，円柱，球殻）の熱伝導 <span class="math display">\[
+<h2 id="次元定常熱伝導">1 次元定常熱伝導</h2>
+<p>対称な空間（平板，円柱，球殻）の熱伝導</p>
+<p><span class="math display">\[
 \frac{1}{r^\sigma}\partial_r(\lambda r^\sigma\partial_r T) + w = 0
 \]</span></p>
 <h3 id="平板">平板</h3>
 <p><span class="math display">\[
 \partial_x (\lambda \partial_x T) + w = 0
 \]</span></p>
-<p>xで積分して，</p>
+<p>x で積分して，</p>
 <p><span class="math display">\[
 \lambda\partial_x T + \int_0^x w dx = c_1
 \]</span></p>
@@ -556,7 +599,7 @@ T_s=T_\infty
 <p><span class="math display">\[
 \lambda\partial_x T + w x = c_1
 \]</span></p>
-<p>xで積分して，</p>
+<p>x で積分して，</p>
 <p><span class="math display">\[
 T = -\frac{w}{2\lambda}x^2 + c_1 x + c_2
 \]</span></p>
@@ -600,7 +643,7 @@ Nu=\frac{hL}{\lambda}=\frac{h(T_S-T_\infty)}{\lambda \frac{T_S-T_\infty}{L}}
 <li>運動方程式 <span class="math display">\[
 \begin{aligned}
 u \partial_x u + v \partial_y u = \frac{1}{\rho} \partial_x p + \nu (\partial_x^2 u + \partial_y^2 u) + \frac{F_x}{\rho} \\
-u \partial_x v + v \partial_y v = \frac{1}{\rho} \partial_y p + \nu (\partial_x^2 v + \partial_y^2 v) + \frac{F_y}{\rho}   
+u \partial_x v + v \partial_y v = \frac{1}{\rho} \partial_y p + \nu (\partial_x^2 v + \partial_y^2 v) + \frac{F_y}{\rho}
 \end{aligned}
 \]</span></li>
 <li>エネルギー保存則 <span class="math display">\[
@@ -610,7 +653,8 @@ u \partial_x T + v \partial_y T = \alpha (\partial_x^2 T + \partial_y^2 T)
 <p>温度伝導率 <span class="math inline">\(\alpha:=\frac{\lambda}{\rho c_P}\)</span></p>
 <h3 id="境界層近似">境界層近似</h3>
 <blockquote>
-<p>速度境界層 <span class="math inline">\(\delta\)</span> は十分薄い <span class="math display">\[
+<p>速度境界層 <span class="math inline">\(\delta\)</span> は十分薄い</p>
+<p><span class="math display">\[
 \delta(x) \ll x
 \]</span></p>
 </blockquote>
@@ -652,12 +696,12 @@ Pr=\frac{Pe}{Re}=\frac{\nu}{\alpha}=\frac{\delta}{\delta_t}
 <p>$$</p>
 <h3 id="乱流">乱流</h3>
 <p>レイノルズ数 <span class="math inline">\(Re=ux/\nu\)</span> が流れの様子を代表する．レイノルズ数が小さい領域では層流であるが，限界レイノルズ数 <span class="math inline">\(Re_C\)</span> を超えるあたりで乱流に遷移する．乱流は熱や運動量の輸送が大きい．</p>
-<p>乱流では速度が不規則に変動するので，速度の時間平均値についてのNS方程式を考える．</p>
+<p>乱流では速度が不規則に変動するので，速度の時間平均値についての NS 方程式を考える．</p>
 <h2 id="強制対流熱伝導">強制対流熱伝導</h2>
 <p>平板上を流れる流体</p>
 <h3 id="速度分布プラジウスの解">速度分布：プラジウスの解</h3>
 <h3 id="温度分布ポールハウゼンの解">温度分布：ポールハウゼンの解</h3>
-<p>yを無次元化して</p>
+<p>y を無次元化して</p>
 <p><span class="math display">\[
 \nu = \frac{y}{\delta}
 \]</span></p>
@@ -671,7 +715,7 @@ Pr=\frac{Pe}{Re}=\frac{\nu}{\alpha}=\frac{\delta}{\delta_t}
 \]</span></p>
 <p>これを境界条件 <span class="math inline">\(\theta(\nu=0)=T_S,\theta(\nu=\infty)=T_\infty\)</span> で解くと，</p>
 <p><span class="math display">\[
-\theta = 
+\theta =
 \]</span></p>
 <h3 id="熱伝達率">熱伝達率</h3>
 <p><span class="math display">\[
@@ -755,6 +799,94 @@ function calcNu(){
 </table>
 <h2 id="自然対流熱伝導">自然対流熱伝導</h2>
 <h2 id="熱放射">熱放射</h2>
+<p>熱運動をする電子が電磁波を発生させる．</p>
+<p>微小面 <span class="math inline">\(dA\)</span> から天頂角 <span class="math inline">\(\phi\)</span> の方向の立体角 <span class="math inline">\(d\omega=dA&#39;/r^2\)</span> の領域にどれだけのエネルギーが放射するか</p>
+<p><span class="math display">\[
+dQ = i dA \cos\phi d\omega
+\]</span></p>
+<p><span class="math inline">\(i\)</span> を放射強度といい，単位面積から単位立体角に放射するエネルギーを表す．それぞれの波長ごとの放射強度（単色放射強度）を <span class="math inline">\(i_\lambda\)</span> として</p>
+<p><span class="math display">\[
+i=\int i_\lambda d\lambda
+\]</span></p>
+<p><span class="math inline">\(dQ\)</span> を半球面の全方位にわたり積分すると</p>
+<p><span class="math display">\[
+Q=dA\int_0^\infty\int_0^{2\pi}\int_0^{\pi/2} i(\lambda,\theta,\psi)\sin\phi\cos\phi d\theta d\phi d\lambda
+\]</span></p>
+<p><span class="math inline">\(i\)</span> が定数のとき</p>
+<p><span class="math display">\[
+\frac{Q}{dA} = \pi i
+\]</span></p>
+<h3 id="黒体放射">黒体放射</h3>
+<p>黒体とは</p>
+<ul>
+<li>到来する全ての熱放射を吸収</li>
+<li>ある温度で最大の熱放射をする</li>
+<li>放射強度は角度によらない</li>
+</ul>
+<p>なる性質を持つ物体．</p>
+<h3 id="プランクの式">プランクの式</h3>
+<p>単位体積中に定在する電磁波の振動モード（単位長が波長の整数倍）のうち，振動数が <span class="math inline">\(\nu～\nu+\Delta\nu\)</span> なる数は</p>
+<p><span class="math display">\[
+dN(\nu)=\frac{8\pi\nu^2}{c^3}d\nu
+\]</span></p>
+<p>一方，ボルツマン分布</p>
+<p><span class="math display">\[
+n_i = c\exp\left(-\frac{\varepsilon_i}{kT}\right)
+\]</span></p>
+<p>エネルギーは <span class="math inline">\(h\nu\)</span> の整数倍の値となるので</p>
+<p><span class="math display">\[
+n_i = c\exp\left(-\frac{ih\nu}{kT}\right)
+\]</span></p>
+<p>エネルギーの平均は</p>
+<p><span class="math display">\[
+\bar{\varepsilon} = \frac{h\nu}{e^{h\nu/kT}-1}
+\]</span></p>
+<p>それぞれの振動モードについて</p>
+<p>いろいろあって</p>
+<p><span class="math display">\[
+i_\lambda=\frac{2hc^2}{\lambda^5(e^{hc/k\lambda T}-1)}
+\]</span></p>
+<h3 id="ステファンボルツマンの式">ステファン・ボルツマンの式</h3>
+<p><span class="math display">\[
+E=\sigma T^4
+\]</span></p>
+<p><span class="math display">\[
+\sigma = \frac{\pi^4C_1}{15C_2^4} = 5.667 \times 10^{-8} \,[W/m^2K^4]
+\]</span></p>
+<h3 id="実際の熱放射">実際の熱放射</h3>
+<p>黒体は理論的に最大の熱放射をする．実際の物体の放射強度は黒体より少なく，また波長・角度・温度依存性がある．黒体における値との比をとって評価する．</p>
+<h3 id="吸収反射透過">吸収・反射・透過</h3>
+<p>入射するエネルギーに対して，吸収・反射・透過するエネルギーの比を吸収率 <span class="math inline">\(\alpha\)</span> ・反射率 <span class="math inline">\(r\)</span> ・透過率 <span class="math inline">\(t\)</span> という．入射放射線が単色 <span class="math inline">\(\lambda\)</span> の場合については，単色吸収率 <span class="math inline">\(\alpha_\lambda\)</span> ・単色反射率 <span class="math inline">\(r_\lambda\)</span> ・単色透過率 <span class="math inline">\(t_\lambda\)</span> という．</p>
+<p>同じ <span class="math inline">\(\alpha_\lambda,r_\lambda,t_\lambda\)</span> の物体であっても，入射放射線のスペクトルに応じて <span class="math inline">\(\alpha,r,t\)</span> は変化する</p>
+<p>※　反射率・透過率は見え方を表している．たとえば水は可視光において透過率が高いが赤外線では透過率が低くなっている．</p>
+<h3 id="キルヒホッフの法則射出と吸収の関係">キルヒホッフの法則（射出と吸収の関係）</h3>
+<p>黒体に囲まれた物体を考える．この系が温度 <span class="math inline">\(T_S\)</span> の平衡状態にある場合，物体に吸収されるエネルギは</p>
+<p>射出されるエネルギは</p>
+<p>熱平衡にあるので吸収と射出がつり合う</p>
+<p><span class="math display">\[
+\alpha_\lambda(T)=\varepsilon_\lambda(T)
+\]</span></p>
+<h3 id="気体の熱放射">気体の熱放射</h3>
+<h3 id="ビアの法則">ビアの法則</h3>
+<p>熱放射線が気体層を通過すると指数関数的に減衰する</p>
+<h3 id="灰色面">灰色面</h3>
+<h2 id="放射伝熱">放射伝熱</h2>
+<p>微小面の熱放射を面に沿って積分する．</p>
+<h3 id="形態係数">形態係数</h3>
+<p>面<span class="math inline">\(i\)</span>から出たエネルギーのうち面<span class="math inline">\(j\)</span>に入射する割合を形態係数<span class="math inline">\(F_{ij}\)</span>という．</p>
+<p>相互関係 <span class="math inline">\(A_iF_{ij}=A_jF_{ji}\)</span></p>
+<p>総和関係 <span class="math inline">\(\sum_j F_{ij}=1\)</span></p>
+<h3 id="灰色面系">灰色面系</h3>
+<p>灰色面が放射するエネルギーは自身の放射によるものと反射によるものがある．これらをまとめて射度 <span class="math inline">\(G\)</span> という値で表す．</p>
+<p><span class="math display">\[
+A_iG_i = A_i\varepsilon_i \sigma T_i^4 + (1-\alpha_i)\sum_k A_kG_kF_{ki}
+\]</span></p>
+<p><span class="math display">\[
+G_i = \varepsilon_i \sigma T_i^4 + (1-\varepsilon_i)\sum_k G_kF_{ik}
+\]</span></p>
+<h4 id="例囲われた物体">例：囲われた物体</h4>
+<p>射出率 <span class="math inline">\(\varepsilon_C\)</span> のパイプに囲われた 射出率 <span class="math inline">\(\varepsilon_M\)</span> の物体</p>
+<h4 id="例平行平板と遮蔽版">例：平行平板と遮蔽版</h4>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
