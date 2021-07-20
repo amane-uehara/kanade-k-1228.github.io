@@ -418,25 +418,71 @@
             <nav><ul>
 <li><a href="#確率空間">確率空間</a><ul>
 <li><a href="#確率変数">確率変数</a></li>
+<li><a href="#確率変数の加法族">確率変数の加法族</a></li>
+<li><a href="#独立">独立</a></li>
+</ul></li>
+<li><a href="#マルチンゲール理論">マルチンゲール理論</a><ul>
+<li><a href="#条件付期待値">条件付期待値</a></li>
+<li><a href="#フィルトレーション">フィルトレーション</a></li>
 </ul></li>
 </ul></nav>
        <p><span class="math display">\[
 \newcommand{\bs}{\backslash}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\O}{\Omega}
 \newcommand{\F}{\mathcal{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\G}{\mathcal{G}}
 \]</span></p>
 <h2 id="確率空間">確率空間</h2>
-<p>測度空間 <span class="math inline">\((\Omega,\F,P)\)</span> が <span class="math inline">\(P(\Omega)=1\)</span> を満たすとき，<span class="math inline">\(P\)</span> を確率，<span class="math inline">\((\Omega,\F,P)\)</span> を確率空間とよぶ．</p>
+<p>測度空間 <span class="math inline">\((\O,\F,P)\)</span> が <span class="math inline">\(P(\O)=1\)</span> を満たすとき，確率空間という．</p>
 <h3 id="確率変数">確率変数</h3>
-<p><span class="math inline">\(X:\Omega\rightarrow\R\)</span> が確率変数であるとは， <span class="math inline">\(X\)</span> が <span class="math inline">\(\F\)</span> -可測 であること</p>
-<p>確率変数の<span class="math inline">\(P\)</span>に関する積分を</p>
+<p><span class="math inline">\(X:\O\rightarrow\R\)</span> が確率変数であるとは， <span class="math inline">\(X\)</span> が <span class="math inline">\(\F\)</span> -可測 であること</p>
+<p>確率変数の<span class="math inline">\(P\)</span>に関する積分を期待値</p>
 <p><span class="math display">\[
 E[X] = \int X(\omega) dP(\omega)
 \]</span></p>
-<p><span class="math inline">\(A\in\F\)</span> について</p>
+<p>また <span class="math inline">\(A\in\F\)</span> について</p>
 <p><span class="math display">\[
 E[X,A] = E[X1_A]
 \]</span></p>
+<h3 id="確率変数の加法族">確率変数の加法族</h3>
+<p><span class="math inline">\(\O\)</span> 上の σ 加法族 <span class="math inline">\(\A\)</span> が <span class="math inline">\(\A \subset \F\)</span> となるとき部分 σ 加法族という</p>
+<p>確率変数 <span class="math inline">\(X\)</span> が <span class="math inline">\(\A\)</span> -可測 とは，任意の <span class="math inline">\(A\in\B(\R)\)</span> に対して <span class="math inline">\(X^{-1}(A) \in \A\)</span></p>
+<p>確率変数に対して</p>
+<p><span class="math display">\[
+\sigma(X) = \{X^{-1}(A)|A\in\B(\R)\}
+\]</span></p>
+<h3 id="独立">独立</h3>
+<p>部分 σ 加法族の列 <span class="math inline">\(\A_n\)</span> が独立であるとは</p>
+<p><span class="math display">\[
+\forall n \quad \forall A_k\in\A_k \quad P(A_1 \cap \cdots A_n) =  P(A_1)\cdots P(A_n)
+\]</span></p>
+<p>確立変数 <span class="math inline">\(X_n\)</span> が独立であるとは， <span class="math inline">\(\sigma(X_n)\)</span> が独立であること</p>
+<h2 id="マルチンゲール理論">マルチンゲール理論</h2>
+<h3 id="条件付期待値">条件付期待値</h3>
+<p><span class="math inline">\(\G\)</span> を部分 σ 加法族とすると</p>
+<ol type="1">
+<li><span class="math inline">\(\G\)</span> 可測</li>
+<li><span class="math inline">\(\forall \A\in\G \quad E[X,A]=E[Y,A]\)</span></li>
+</ol>
+<p><span class="math inline">\(Y\)</span> を <span class="math inline">\(X\)</span> の <span class="math inline">\(\G\)</span> の元での条件付き期待値といい， <span class="math inline">\(E[X|\G]\)</span> と書く．</p>
+<p>また同様に <span class="math inline">\(Y&#39;\)</span> も上の条件を満たすとき，<span class="math inline">\(Y=Y&#39; a.s.\)</span></p>
+<h3 id="フィルトレーション">フィルトレーション</h3>
+<p>部分 σ 加法族の列 <span class="math inline">\(\mathbb{F}=(\F_n)_{n\in\N}\)</span> がフィルトレーションであるとは，</p>
+<p><span class="math display">\[
+\forall n \quad \F_n\subset\F_{n+1}
+\]</span></p>
+<p>確率変数の列を確率過程と呼ぶ．</p>
+<p>フィルトレーション <span class="math inline">\(\bF\)</span> に対して，確率過程 <span class="math inline">\(X\)</span> が <span class="math inline">\(\bF\)</span> -マルチンゲールであるとは</p>
+<ol type="1">
+<li><span class="math inline">\(X_n\in L^1\)</span></li>
+<li><span class="math inline">\(X_n\)</span> は <span class="math inline">\(\F_n\)</span>-可測</li>
+<li><span class="math inline">\(E[X_{n+1}|\F_n] = X_n a.s.\)</span></li>
+</ol>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
