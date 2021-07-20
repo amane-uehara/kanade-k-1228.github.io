@@ -129,3 +129,7 @@ $\forall x\in S \exist f(x)=\lim f_n(x)$
 $$
 \int f(x)d\mu(x) = \lim_{n\rightarrow\infty} \int f_n(x) d\mu(x)
 $$
+
+### ディリクレ関数の積分
+
+#### 有理数の測度
