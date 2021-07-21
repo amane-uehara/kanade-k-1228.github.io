@@ -108,6 +108,8 @@
 
 [測度論](./Mathmatics/MeasureTheory/)
 
+[確率論](./Mathmatics/ProbabilityTheory/)
+
 [複素解析](./Mathmatics/ComplexAnalysis/)
 
 [フーリエ変換・ラプラス変換](./Mathmatics/FourierLaplace/)
