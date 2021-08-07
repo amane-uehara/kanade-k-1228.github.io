@@ -76,6 +76,8 @@
 
 [伝熱工学](./Physics/HeatTransfer/)
 
+[清水熱力学](./Physics/ShimizuThermoDynamics/)
+
 ### 統計力学
 
 [統計力学](./Physics/StatisticalMechanics/)

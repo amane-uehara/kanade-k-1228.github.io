@@ -192,12 +192,96 @@ $$
 
 - $T(0)=T_1\quad -\lambda\partial_x T = h(T_2-T_\infty)$
 
+## いろいろな熱伝導
+
+### 熱抵抗
+
+$$
+Q=\frac{\Delta T}{R}
+$$
+
+直列接続は和
+
+- 多層平板
+
+$$
+\frac{1}{A}\left(\frac{1}{h_a} + \frac{d_i}{\lambda_i} + \frac{1}{h_b} \right)
+$$
+
+- 多層円管
+
+$$
+\frac{1}{2 \pi L}\left(\frac{1}{r_ah_a} + \frac{1}{\lambda_i}\ln\frac{r_i}{r_{i-1}} + \frac{1}{r_bh_b} \right)
+$$
+
+接触面がきちんと熱的に接続されていないと接触抵抗が生じる
+
+界面が汚れていると抵抗が生じる
+
+### フィン
+
+面積 $A$のヒートシンクを考える
+
+フィンがない場合の熱抵抗は
+
+$$
+\frac{1}{A}\left(\frac{1}{h_L}+\frac{d}{\lambda}+\frac{1}{h_G}\right)
+$$
+
+気体側にフィンがある場合は $h_G$ の面積が増加し
+
+$$
+\frac{1}{A}\left(\frac{1}{h_L}+\frac{d}{\lambda}+\frac{A}{A_o+A_f}\frac{1}{h_G}\right)
+$$
+
+しかし実際にはフィンの先端にいくほど伝熱量が減るので
+
+$$
+\frac{1}{A}\left(\frac{1}{h_L}+\frac{d}{\lambda}+\frac{A}{A_o+\eta A_f}\frac{1}{h_G}\right)
+$$
+
+$\eta$ をフィン効率という
+
+### フィンの解析
+
+$$
+\d{x}\left(A\lambda\d[T]{x}\right)-hL(x)(T-T_\infty)=0
+$$
+
+断面が一定の矩形の場合
+
+$$
+\dd[T]{x} -m^2(T-T_\infty) =0
+$$
+
+フィンの先端を考えない（断熱）とき，境界条件 $T(0)=T_0$ $\d[T]{x}(L)=0$
+
+$$
+T-T_\infty = (T_0-T_\infty) \frac{\cosh (mL-mx)}{\cosh (mL)}
+$$
+
+全表面からの放熱量は
+
+$$
+Q=\int_0^L hP(T-T_\infty) dx = \sqrt{hP\lambda A}(T_0-T_\infty)\tanh(mL)
+$$
+
+フィン効率は
+
+$$
+\eta = \frac{\tanh (mL)}{mL}
+$$
+
+### ステファン問題
+
+氷が解けて固相と液相の境界が移動する場合など
+
 ## 熱伝達
 
 物体表面 $T_S$から雰囲気 $T_\infty$ への熱流束を単純に表すと
 
 $$
-q=h(T_S-T_\infty)
+q=h(T*S-T*\infty)
 $$
 
 熱伝達率 $h$ は複雑な条件を代表した値
@@ -205,19 +289,22 @@ $$
 物体表面で流速が 0 であれば，フーリエの法則から
 
 $$
-q=-\lambda\left(\frac{\partial T}{\partial n}\right)_{n=0}
+q=-\lambda\left(\frac{\partial T}{\partial n}\right)\_{n=0}
 $$
 
 よって熱伝達率は境界面の温度勾配によって定まる
 
 $$
-h=-\frac{\lambda}{T_S-T_\infty}\left(\frac{\partial T}{\partial n}\right)_{n=0}
+h=-\frac{\lambda}{T*S-T*\infty}\left(\frac{\partial T}{\partial n}\right)\_{n=0}
 $$
 
 #### ヌッセント数
 
 $$
-Nu=\frac{hL}{\lambda}=\frac{h(T_S-T_\infty)}{\lambda \frac{T_S-T_\infty}{L}}
+
+Nu=\frac{hL}{\lambda}=\frac{h(T*S-T*\infty)}{\lambda \frac{T*S-T*\infty}{L}}
+
+
 $$
 
 表面から流体へ流れ出る熱のうち，熱伝達と熱伝導の比を表す
@@ -231,30 +318,35 @@ $$
   - 内部発熱なし
   - 圧力仕事・粘性散逸を無視
 - 連続の式
-  $$
-  \partial_x u + \partial_y v = 0
-  $$
+
+$$
+\partial_x u + \partial_y v = 0
+$$
+
 - 運動方程式
-  $$
-  \begin{aligned}
-  u \partial_x u + v \partial_y u = \frac{1}{\rho} \partial_x p + \nu (\partial_x^2 u + \partial_y^2 u) + \frac{F_x}{\rho} \\
-  u \partial_x v + v \partial_y v = \frac{1}{\rho} \partial_y p + \nu (\partial_x^2 v + \partial_y^2 v) + \frac{F_y}{\rho}
-  \end{aligned}
-  $$
+
+$$
+\begin{aligned}
+u \partial_x u + v \partial_y u = \frac{1}{\rho} \partial_x p + \nu (\partial_x^2 u + \partial_y^2 u) + \frac{F_x}{\rho} \\
+u \partial_x v + v \partial_y v = \frac{1}{\rho} \partial_y p + \nu (\partial_x^2 v + \partial_y^2 v) + \frac{F_y}{\rho}
+\end{aligned}
+$$
+
 - エネルギー保存則
-  $$
-  u \partial_x T + v \partial_y T = \alpha (\partial_x^2 T + \partial_y^2 T)
-  $$
+
+$$
+u \partial_x T + v \partial_y T = \alpha (\partial_x^2 T + \partial_y^2 T)
+$$
 
 温度伝導率 $\alpha:=\frac{\lambda}{\rho c_P}$
 
 ### 境界層近似
 
 > 速度境界層 $\delta$ は十分薄い
->
-> $$
-> \delta(x) \ll x
-> $$
+
+$$
+\delta(x) \ll x
+$$
 
 - 連続の式
   $$
@@ -407,6 +499,8 @@ function calcNu(){
 | -------- | -------------------------- | --------------------------- |
 | $N\!u_L$ | $0.332 Pr^{1/3}Re_x^{1/2}$ | <span id="nu-nu">aaa</span> |
 | $h_L$    | $\frac{\lambda}{L}N\!u_L$  | <span id="nu-h">aaa</span>  |
+
+### 近似解法
 
 ## 自然対流熱伝導
 
