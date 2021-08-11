@@ -120,9 +120,11 @@
 
 クリフォート代数
 
-## いろいろ
+## 応用数学
 
-[金融工学](./Other/FinancialEngineering/)
+[金融工学](./PracticalMath/FinancialEngineering/)
+
+[データサイエンス](./)
 
 ## リンク集
 
