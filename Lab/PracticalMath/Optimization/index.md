@@ -28,7 +28,7 @@ $$
 KKT 条件
 
 $$
-\pd[L]{x_i}=0, \pd[L]{\mu_k}=0\\
+\pd[L]{x_i}=0, \pd[L]{\mu_k}=0 \\
  g_j(x_i) \leq 0 , \lambda_j \geq 0, \lambda_jg_j(x_i)=0
 $$
 
