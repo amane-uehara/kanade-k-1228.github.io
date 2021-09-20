@@ -102,11 +102,15 @@
 
 ## 数学
 
-お気持ち数学です
+[線形代数](./Mathmatics/LinearAlgebra/)
 
-[解析学](./Mathmatics/Analysis/)
+[外積代数](./Mathmatics/ExteriorAlgebra/)
+
+[微分幾何](./Mathmatics/DifferentialGeometry/)
 
 [多様体](./Mathmatics/Manifold/)
+
+[解析学](./Mathmatics/Analysis/)
 
 [測度論](./Mathmatics/MeasureTheory/)
 
@@ -115,10 +119,6 @@
 [複素解析](./Mathmatics/ComplexAnalysis/)
 
 [フーリエ変換・ラプラス変換](./Mathmatics/FourierLaplace/)
-
-四元数
-
-クリフォート代数
 
 ## 応用数学
 
