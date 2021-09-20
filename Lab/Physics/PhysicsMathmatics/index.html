@@ -417,29 +417,27 @@
                </header>
             <nav><ul>
 <li><a href="#線形代数">線形代数</a><ul>
-<li><a href="#だいじな概念">だいじな概念</a></li>
+<li><a href="#重要な概念">重要な概念</a></li>
 </ul></li>
 <li><a href="#ベクトル解析-for-電磁気学">ベクトル解析 for 電磁気学</a><ul>
 <li><a href="#場の微分">場の微分</a></li>
 <li><a href="#場の積分">場の積分</a></li>
 </ul></li>
 <li><a href="#テンソル解析">テンソル解析</a></li>
-<li><a href="#元ベクトル">4元ベクトル</a></li>
+<li><a href="#元ベクトル">4 元ベクトル</a></li>
 <li><a href="#ミンコフスキー空間-for-特殊相対論">ミンコフスキー空間 for 特殊相対論</a></li>
 <li><a href="#テンソル解析-for-電磁気学-連続体力学">テンソル解析 for 電磁気学 連続体力学</a></li>
 <li><a href="#テンソル-for-連続体力学">テンソル for 連続体力学</a></li>
 <li><a href="#リーマン幾何学-for-一般相対論">リーマン幾何学 for 一般相対論</a></li>
 </ul></nav>
-       <p>物理で使う数学をできるだけ早く使えるようなるためにまとめるよ</p>
+       <p>物理で使う数学をできるだけ早く使えるようなるためにまとめてあります．</p>
 <h2 id="線形代数">線形代数</h2>
 <p>だいたいのものは微小にしたら線形</p>
-<h3 id="だいじな概念">だいじな概念</h3>
-<p>物理やってたら地獄の果てまで追いかけてくる概念たち</p>
+<h3 id="重要な概念">重要な概念</h3>
 <ul>
 <li>空間・基底・座標系・基底変換</li>
 <li>固有値・固有空間</li>
 </ul>
-<p>（工事中）</p>
 <h2 id="ベクトル解析-for-電磁気学">ベクトル解析 for 電磁気学</h2>
 <h3 id="場の微分">場の微分</h3>
 <h4 id="ナブラ">ナブラ</h4>
@@ -450,7 +448,7 @@
           \frac{d}{dz} \\
         \end{array}\right)
 \]</span></p>
-<h4 id="勾配スカラー場ベクトル場">勾配：スカラー場→ベクトル場</h4>
+<h4 id="勾配スカラー場-ベクトル場">勾配：スカラー場 → ベクトル場</h4>
 <p><span class="math display">\[
 \mathrm{grad} h
       = \nabla h
@@ -460,17 +458,17 @@
         \frac{d}{dz}h \\
       \end{array}\right)
 \]</span></p>
-<h4 id="発散ベクトル場スカラー場">発散：ベクトル場→スカラー場</h4>
+<h4 id="発散ベクトル場-スカラー場">発散：ベクトル場 → スカラー場</h4>
 <p><span class="math display">\[
 \mathrm{div}\boldsymbol{h}
       = \nabla \cdot\boldsymbol{h}
       = \frac{d}{dx}h_x + \frac{d}{dy}h_y + \frac{d}{dz}h_z
 \]</span></p>
-<h4 id="回転ベクトル場ベクトル場">回転：ベクトル場→ベクトル場</h4>
+<h4 id="回転ベクトル場-ベクトル場">回転：ベクトル場 → ベクトル場</h4>
 <p><span class="math display">\[
- \mathrm{rot}\boldsymbol{h}
-      = \nabla\times\boldsymbol{h}
-      = \left(
+\mathrm{rot}\boldsymbol{h}
+     = \nabla\times\boldsymbol{h}
+     = \left(
                     \begin{array}{c}
                     \frac{d}{dy}h_z - \frac{d}{dz}h_y \\
                     \frac{d}{dz}h_x - \frac{d}{dx}h_z \\
@@ -502,20 +500,23 @@
 \]</span></p>
 <h3 id="場の積分">場の積分</h3>
 <p>この積分を実際に解くときは，変数変換を行って実数上の積分に変換して解く．</p>
-#### 線積分：ベクトル場→スカラー
+#### 線積分：ベクトル場 → スカラー
 </h3>
-<p>ベクトル場の中の曲線 <span class="math inline">\(C\)</span> に沿ってベクトル場の値を積分する． 経路 <span class="math inline">\(C\)</span> の微小区間 <span class="math inline">\(C\)</span> と，その点でのベクトル場の値の内積を <span class="math inline">\(C\)</span> に渡って足し合わせる． <span class="math display">\[
+<p>ベクトル場の中の曲線 <span class="math inline">\(C\)</span> に沿ってベクトル場の値を積分する． 経路 <span class="math inline">\(C\)</span> の微小区間 <span class="math inline">\(C\)</span> と，その点でのベクトル場の値の内積を <span class="math inline">\(C\)</span> に渡って足し合わせる．</p>
+<p><span class="math display">\[
 \int_C \boldsymbol{h} \cdot d \boldsymbol{r}
 \]</span></p>
 <ol type="1">
-<li><p><span class="math inline">\(C\)</span> を <span class="math inline">\(t\)</span> をパラメタとして表す． <span class="math display">\[
+<li><p><span class="math inline">\(C\)</span> を <span class="math inline">\(t\)</span> をパラメタとして表す．</p>
+<p><span class="math display">\[
 C : \boldsymbol{r}(t) = \left(\begin{array}{c} r_x(t) \\ r_y(t) \\ r_z(t) \end{array} \right) (t_A \leq t \leq t_B)
 \]</span></p></li>
-<li><p>経路の線素 <span class="math inline">\(d\boldsymbol{r}(t)\)</span> を求める．（経路の線素とは，経路上の非常に近い二点間のベクトルです．） <span class="math display">\[
+<li><p>経路の線素 <span class="math inline">\(d\boldsymbol{r}(t)\)</span> を求める．（経路の線素とは，経路上の非常に近い二点間のベクトルです．）</p>
+<p><span class="math display">\[
 \frac{d\boldsymbol{r}(t)}{dt}
- = \lim_{\Delta t \rightarrow 0}\frac{\boldsymbol{r}(t+\Delta t)-\boldsymbol{r}(t)}{\Delta t}
- = \left(\begin{array}{c} \frac{r_x(t)}{dt} \\ \frac{r_y(t)}{dt} \\ \frac{r_z(t)}{dt} \end{array} \right)
- = \nabla \boldsymbol{r}(t)
+    = \lim_{\Delta t \rightarrow 0}\frac{\boldsymbol{r}(t+\Delta t)-\boldsymbol{r}(t)}{\Delta t}
+    = \left(\begin{array}{c} \frac{r_x(t)}{dt} \\ \frac{r_y(t)}{dt} \\ \frac{r_z(t)}{dt} \end{array} \right)
+    = \nabla \boldsymbol{r}(t)
 \]</span></p></li>
 <li><p>これをベクトル場と内積します．このときに，経路上のある点でのベクトル場と，その点での線素ベクトルを内積することに注意して， <span class="math display">\[
 \boldsymbol{h}(\boldsymbol{r}(t))\cdot d\boldsymbol{r}(t)
@@ -525,50 +526,54 @@ C : \boldsymbol{r}(t) = \left(\begin{array}{c} r_x(t) \\ r_y(t) \\ r_z(t) \end{a
 <ol start="4" type="1">
 <li><span class="math inline">\(t\)</span> で積分します． <span class="math display">\[
 \int\boldsymbol{h}\cdot d\boldsymbol{r}
- = \int_{t_A}^{t_B} \boldsymbol{h}(\boldsymbol{r}(t))\cdot d\boldsymbol{r}(t) dt
+    = \int_{t_A}^{t_B} \boldsymbol{h}(\boldsymbol{r}(t))\cdot d\boldsymbol{r}(t) dt
 \]</span></li>
 </ol>
 <h4 id="勾配の線積分">勾配の線積分</h4>
 <p>スカラー場の勾配の線積分は経路によらず，元のスカラー場の始点と終点の差になる．もともとは各点に対し１つだった情報を３つに増やしていることに起因している．</p>
 <p>逆に，線積分が経路によらないベクトル場に対して，あるスカラー場が存在して，ベクトル場をスカラー場の勾配として表すことができる．</p>
-<h4 id="面積分ベクトル場スカラー">面積分：ベクトル場→スカラー</h4>
-<p>ベクトル場中の面 <span class="math inline">\(S\)</span> 上のベクトル場の値を積分する．面を微小な平面 <span class="math inline">\(dS\)</span> に分割し， 微小面 <span class="math inline">\(dS\)</span> に垂直で，大きさが微小面の面積となるベクトル <span class="math inline">\(d\boldsymbol{s}\)</span> と，その点でのベクトル場の値の内積を面 <span class="math inline">\(S\)</span> に渡って足し合わせる． <span class="math display">\[
+<h4 id="面積分ベクトル場-スカラー">面積分：ベクトル場 → スカラー</h4>
+<p>ベクトル場中の面 <span class="math inline">\(S\)</span> 上のベクトル場の値を積分する．面を微小な平面 <span class="math inline">\(dS\)</span> に分割し， 微小面 <span class="math inline">\(dS\)</span> に垂直で，大きさが微小面の面積となるベクトル <span class="math inline">\(d\boldsymbol{s}\)</span> と，その点でのベクトル場の値の内積を面 <span class="math inline">\(S\)</span> に渡って足し合わせる．</p>
+<p><span class="math display">\[
 \int_S \boldsymbol{h} \cdot d \boldsymbol{s}
 \]</span></p>
 <ol type="1">
-<li><p><span class="math inline">\(S\)</span> をパラメタ <span class="math inline">\(s,t\)</span> を用いて表す． <span class="math display">\[
-\boldsymbol{S}(s,t) = \left(\begin{array}{c} S_x(s,t)\\ S_y(s,t)\\ S_z(s,t) \end{array}\right)
+<li><p><span class="math inline">\(S\)</span> をパラメタ <span class="math inline">\(s,t\)</span> を用いて表す．</p>
+<p><span class="math display">\[
+\boldsymbol{S}(s,t) = \left(\begin{array}{c} S_x(s,t)\\  S_y(s,t)\\ S_z(s,t) \end{array}\right)
 \]</span></p></li>
-<li><p>微小面のベクトルを求める． <span class="math display">\[
+<li><p>微小面のベクトルを求める．</p>
+<p><span class="math display">\[
 \{(\boldsymbol{S}(s+\Delta s,t)-\boldsymbol{S}(s,t))\times (\boldsymbol{S}(s,t+\Delta t)-\boldsymbol{S}(s,t))\}\\
- \rightarrow \frac{\partial \boldsymbol{S}}{\partial s}ds \times \frac{\partial \boldsymbol{S}}{\partial t}dt
- =d\boldsymbol{s}
+    \rightarrow \frac{\partial \boldsymbol{S}}{\partial s}ds \times \frac{\partial \boldsymbol{S}}{\partial t}dt
+    =d\boldsymbol{s}
 \]</span></p></li>
 <li><p>これをベクトル場と内積し積分する． <span class="math display">\[
-\int \int \boldsymbol{h(\boldsymbol{S}(s,t))}\cdot 
- \left(\frac{\partial \boldsymbol{S}}{\partial s} \times \frac{\partial \boldsymbol{S}}{\partial t}\right) dsdt
+\int \int \boldsymbol{h(\boldsymbol{S}(s,t))}\cdot
+    \left(\frac{\partial \boldsymbol{S}}{\partial s} \times \frac{\partial \boldsymbol{S}}{\partial t}\right) dsdt
 \]</span></p></li>
 </ol>
-<h4 id="体積分スカラー場スカラー">体積分：スカラー場→スカラー</h4>
-<p>スカラー場をある領域 <span class="math inline">\(V\)</span> 内で足し合わせる． <span class="math display">\[
+<h4 id="体積分スカラー場-スカラー">体積分：スカラー場 → スカラー</h4>
+<p>スカラー場をある領域 <span class="math inline">\(V\)</span> 内で足し合わせる．</p>
+<p><span class="math display">\[
 \int_V h(\boldsymbol{r}) d\boldsymbol{r}
 \]</span></p>
 <p><span class="math display">\[
 \int \int \int h(x,y,z) dxdydz
 \]</span></p>
-<h4 id="線積分回転の面積分ストークスの定理">線積分↔回転の面積分(ストークスの定理)</h4>
+<h4 id="線積分-回転の面積分ストークスの定理">線積分 ↔ 回転の面積分(ストークスの定理)</h4>
 <p><span class="math display">\[
 \oint_C \boldsymbol{h}\cdot d\boldsymbol{r}
     = \int_S(\nabla\times\boldsymbol{h})\cdot d\boldsymbol{S}
 \]</span></p>
-<h4 id="面積分発散の体積分ガウスの定理">面積分↔発散の体積分(ガウスの定理)</h4>
+<h4 id="面積分-発散の体積分ガウスの定理">面積分 ↔ 発散の体積分(ガウスの定理)</h4>
 <p><span class="math display">\[
 \int_S\boldsymbol{h}\cdot d\boldsymbol{S}
     = \oint_V\nabla\cdot\boldsymbol{h}dV
 \]</span></p>
 <p>閉曲面の面積分は外向きを正とする．</p>
 <h2 id="テンソル解析">テンソル解析</h2>
-<h2 id="元ベクトル">4元ベクトル</h2>
+<h2 id="元ベクトル">4 元ベクトル</h2>
 <p>電場と磁場，電荷と電流は密接な関係があって，それをうまくまとめてやると，マクスウェル方程式は</p>
 <p><span class="math display">\[
 \Box A = J
