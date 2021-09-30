@@ -102,13 +102,15 @@
 
 ## 数学
 
-[線形代数](./Mathmatics/LinearAlgebra/)
+### 微分幾何
 
-[外積代数](./Mathmatics/ExteriorAlgebra/)
+[微分幾何のお話](./Mathmatics/DifferentialGeometryTale/)
 
-[微分幾何](./Mathmatics/DifferentialGeometry/)
+[速習多様体](./Mathmatics/ManifoldQuick/)
 
 [多様体](./Mathmatics/Manifold/)
+
+### 解析
 
 [解析学](./Mathmatics/Analysis/)
 
