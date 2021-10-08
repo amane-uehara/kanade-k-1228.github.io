@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>雑記 | Kanade's Website</title>
+          <title>半導体 | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "雑記",
+            "半導体",
           "_blank"
         );
       }
@@ -413,13 +413,41 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">雑記</h1>
+                <h1 style="margin: 0">半導体</h1>
                </header>
-       <!-- [日記](./Diary/) -->
-<!-- [雑記](./Misc/) -->
-<p><a href="./Travel">旅行記</a></p>
-<p><a href="./Programing/">プログラミング勉強したいんだけど何したらいいのと言われたときに見せるページ</a></p>
-<p><a href="./Music/MusicTheory/">音楽理論について</a></p>
+            <nav><ul>
+<li><a href="#vlsi-設計">VLSI 設計</a><ul>
+<li><a href="#mos-の特性">MOS の特性</a></li>
+<li><a href="#cmos">CMOS</a></li>
+</ul></li>
+</ul></nav>
+       <h2 id="vlsi-設計">VLSI 設計</h2>
+<h3 id="mos-の特性">MOS の特性</h3>
+<ul>
+<li>OFF 時
+<ul>
+<li>弱反転のリーク電流</li>
+</ul></li>
+<li>ON 時
+<ul>
+<li>基盤バイアス効果
+<ul>
+<li>閾値電圧が上がり電流が減り充放電時間がかかり速度が下がる</li>
+</ul></li>
+</ul></li>
+<li>たとえば，対称に見える NAND の二つの MOS の特性は全然違ってくる</li>
+<li>MOS の特性をいちいち考えると大変なので，モデル化する</li>
+</ul>
+<h3 id="cmos">CMOS</h3>
+<ul>
+<li>反転論理</li>
+<li>非反転論理
+<ul>
+<li>NMOS が ON のとき 1 が下がり，PMOS が ON のとき 0 が上がる．</li>
+<li>振幅が小さくなる</li>
+<li>非反転のインバータを繋げてくと，途中で飽和領域じゃなくなる</li>
+</ul></li>
+</ul>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
