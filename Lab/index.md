@@ -6,6 +6,8 @@
 
 ## コンピュータ
 
+[半導体](./Computer/Semiconductor/)
+
 [RISC-V](./Computer/RISC-V/)
 
 [スパコン並列計算プログラミング](./Computer/SuperComputer/)
@@ -82,6 +84,10 @@
 
 [統計力学](./Physics/StatisticalMechanics/)
 
+### 物性
+
+[物性](./)
+
 ### 電磁気学
 
 [電磁気学](./Physics/Electromagnetism/)
@@ -127,6 +133,10 @@
 [金融工学](./PracticalMath/FinancialEngineering/)
 
 [データサイエンス](./)
+
+## 生物
+
+[機械としての生物](./Biology/Mech/)
 
 ## リンク集
 
