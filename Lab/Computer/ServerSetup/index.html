@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>機械としての生物 | Kanade's Website</title>
+          <title>サーバーセットアップ | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "機械としての生物",
+            "サーバーセットアップ",
           "_blank"
         );
       }
@@ -413,94 +413,101 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">機械としての生物</h1>
+                <h1 style="margin: 0">サーバーセットアップ</h1>
                </header>
             <nav><ul>
-<li><a href="#材料">材料</a></li>
-<li><a href="#神経情報処理">神経情報処理</a><ul>
-<li><a href="#電子回路としての神経細胞">電子回路としての神経細胞</a></li>
-<li><a href="#フーリエ変換器としての耳">フーリエ変換器としての耳</a></li>
-<li><a href="#目">目</a></li>
-<li><a href="#脳">脳</a></li>
-</ul></li>
-<li><a href="#血管">血管</a><ul>
-<li><a href="#機能">機能</a></li>
+<li><a href="#セキュリティ">セキュリティ</a><ul>
+<li><a href="#ユーザの追加">ユーザの追加</a></li>
+<li><a href="#ssh-を公開鍵認証にする">SSH を公開鍵認証にする</a></li>
+<li><a href="#ssh-の設定">SSH の設定</a></li>
+<li><a href="#ポート番号変更">ポート番号変更</a></li>
+<li><a href="#接続ショートカットを作成">接続ショートカットを作成</a></li>
+<li><a href="#firewall-の設定">Firewall の設定</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="材料">材料</h2>
-<p>アミノ酸</p>
-<p>タンパク質のフォールディングによって構造が決まる．</p>
-<h2 id="神経情報処理">神経情報処理</h2>
-<h3 id="電子回路としての神経細胞">電子回路としての神経細胞</h3>
+       <p><code>export TERM=vt100</code></p>
+<h2 id="セキュリティ">セキュリティ</h2>
+<p>セキュリティに関するログは <code>/var/log/secure</code> にあって，<code>grep -m 10 invalid /var/log/secure</code> とでもしてみると，不正アクセスしようとしてる様子が見れるよ．</p>
+<p>ユーサ名 admin とかの有名</p>
+<h3 id="ユーザの追加">ユーザの追加</h3>
 <ul>
-<li>細胞膜はリン脂質の脂質二重層になっている．これはコンデンサとなっていて，静止膜電位（細胞外を基準として，-65mV）がかかっている．この電位は細胞内外のイオン濃度差から求められる（ネルンストの式，ゴールドマンの方程式）．</li>
-<li>細胞膜には，Na と K のイオンチャネルがあり，細胞内のイオン濃度が変化することで，膜電位が変化する．</li>
-<li>イオンポンプで静止膜電位を作っていて，ATP を消費している．死ぬとこれが止まって動かなくなり，膜電位が 0 になり，神経回路は停止する．</li>
-<li>ノイズ耐性は無い（チャネルを開くには zJ オーダーで足りる）．ノイズを前提としたシステムになっているっぽい．</li>
-<li>入力は樹状突起</li>
-<li>出力は軸索</li>
-<li>タンパク質のフォールディングによる電子回路のキャリアとしてイオンはちょうどいいスケール
+<li>ユーザの追加
 <ul>
-<li>AlphaFold のような技術が進み，タンパク質構造の逆問題が手軽に解けるようになったら，体内に回路を構築できないか．回路を含む遺伝子をつくれないか．</li>
+<li><code>useradd -G wheel [user]</code></li>
+<li><code>wheel</code> グループのユーザは sudo できる</li>
+</ul></li>
+<li>パスワードを設定
+<ul>
+<li><code>passwd [user]</code></li>
+</ul></li>
+<li>ユーザ移動
+<ul>
+<li><code>su [user]</code></li>
 </ul></li>
 </ul>
-<h3 id="フーリエ変換器としての耳">フーリエ変換器としての耳</h3>
+<h3 id="ssh-を公開鍵認証にする">SSH を公開鍵認証にする</h3>
 <ul>
-<li>蝸牛はまさにカタツムリの形をしていて，その中にセンサがある</li>
-<li>人工内耳
+<li>鍵生成
 <ul>
-<li>蝸牛に電極を差し込み刺激する</li>
-<li>音声を FFT して</li>
+<li>TeraTerm の設定 → SSH 鍵生成</li>
 </ul></li>
-<li>音声処理システム
+<li>公開鍵を置く
 <ul>
-<li>蝸牛 → 延髄 → 中脳 → 視床 → 聴覚野</li>
-<li>人工内耳の成功は，聴覚野を直接刺激するのではなく，蝸牛を刺激することで脳の機能を活用できたのが大きいのでは</li>
+<li><code>mkdir /home/[user]/.ssh</code></li>
+<li>公開鍵を <code>/home/[user]/.ssh/authorized_keys</code>に置く</li>
+<li><code>chmod 600 /home/[user]/.ssh/authorized_keys</code></li>
 </ul></li>
-<li>ノイズ補正
+<li>SSH 再起動
 <ul>
-<li>連続聴効果
-<ul>
-<li>ホワイトノイズが挿入されても補完される</li>
-<li>無音が挿入されると切れて聞こえる</li>
-<li>原始的な生活の中では，ノイズが加算される場合が多い</li>
-<li>電話で初めて「切れる」会話が日常的になった</li>
+<li><code>service sshd restart</code></li>
 </ul></li>
-<li>音声の冗長性と復元
+<li>接続を確認</li>
+</ul>
+<h3 id="ssh-の設定">SSH の設定</h3>
 <ul>
-<li>周波数がカットされていても言語を聞き取れる</li>
-<li>事前分布があると音が聞こえるようになる</li>
+<li><code>/etc/ssh/sshd_config</code>を編集
+<ul>
+<li>root ログイン禁止
+<ul>
+<li><code>PermitRootLogin no</code></li>
+</ul></li>
+<li>パスワードログイン禁止
+<ul>
+<li><code>PasswordAuthentication no</code></li>
+</ul></li>
+<li>IP アドレス制限
+<ul>
+<li><code>AllowUsers *@[yourIp]</code></li>
 </ul></li>
 </ul></li>
 </ul>
-<h3 id="目">目</h3>
+<h3 id="ポート番号変更">ポート番号変更</h3>
 <ul>
-<li>視細胞
+<li><code>/etc/ssh/sshd_config</code>
 <ul>
-<li>光が入るとイオンチャネルが閉まる</li>
-<li>色に反応する Cone と暗さに反応する Rod からなる
-<ul>
-<li>Cone より Rod のほうが多い</li>
+<li><code>Port [port]</code></li>
 </ul></li>
-</ul></li>
-<li>網膜 → 視床 → 一次視覚野 → 高次視覚野
+<li>SELinux
 <ul>
-<li>高次から低次に向かう神経細胞のほうが多い</li>
-<li>外部情報の割合は非常に少ない</li>
-<li>既知のパターンに照合している</li>
-<li>Anton 症候群</li>
+<li><code>getenforce</code> で動いてるか確認</li>
+</ul></li>
+<li>firewalld
+<ul>
+<li><code>firewall-cmd --list-services</code></li>
+<li><code>cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/ssh.xml</code></li>
+<li><code>/etc/firewalld/services/ssh.xml</code> のポート番号を変更</li>
+<li><code>firewall-cmd --reload</code></li>
 </ul></li>
 </ul>
-<h3 id="脳">脳</h3>
+<h3 id="接続ショートカットを作成">接続ショートカットを作成</h3>
 <ul>
-<li>3 次元的にネットワークが動的に変化する</li>
-</ul>
-<h2 id="血管">血管</h2>
-<h3 id="機能">機能</h3>
+<li>TeraTerm
 <ul>
-<li>輸送</li>
-<li>通信</li>
+<li><code>"C:\Program Files (x86)\teraterm\ttermpro.exe" [ip]:[port] /auth=publickey /user=[user] /keyfile="C:\Users\[user]\.ssh\[key]"</code></li>
+</ul></li>
+<li>WinSCP</li>
 </ul>
+<h3 id="firewall-の設定">Firewall の設定</h3>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

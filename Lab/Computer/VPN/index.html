@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>機械としての生物 | Kanade's Website</title>
+          <title>SoftEther VPN + Conoha VPS で共用ルーターを突破する | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "機械としての生物",
+            "SoftEther VPN + Conoha VPS で共用ルーターを突破する",
           "_blank"
         );
       }
@@ -413,94 +413,55 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">機械としての生物</h1>
+                <h1 style="margin: 0">SoftEther VPN + Conoha VPS で共用ルーターを突破する</h1>
                </header>
             <nav><ul>
-<li><a href="#材料">材料</a></li>
-<li><a href="#神経情報処理">神経情報処理</a><ul>
-<li><a href="#電子回路としての神経細胞">電子回路としての神経細胞</a></li>
-<li><a href="#フーリエ変換器としての耳">フーリエ変換器としての耳</a></li>
-<li><a href="#目">目</a></li>
-<li><a href="#脳">脳</a></li>
+<li><a href="#conoha-vps-の登録">1. Conoha VPS の登録</a></li>
+<li><a href="#vps-サーバーの設定">2. VPS サーバーの設定</a><ul>
+<li><a href="#firewalld-の設定">firewalld の設定</a></li>
+<li><a href="#ssh-の">SSH の</a></li>
 </ul></li>
-<li><a href="#血管">血管</a><ul>
-<li><a href="#機能">機能</a></li>
-</ul></li>
+<li><a href="#softether-vpn-サーバーを設定">3. SoftEther VPN サーバーを設定</a></li>
+<li><a href="#vpn-に接続">3. VPN に接続</a></li>
+<li><a href="#softether-bridge-をインストール">3. SoftEther Bridge をインストール</a></li>
 </ul></nav>
-       <h2 id="材料">材料</h2>
-<p>アミノ酸</p>
-<p>タンパク質のフォールディングによって構造が決まる．</p>
-<h2 id="神経情報処理">神経情報処理</h2>
-<h3 id="電子回路としての神経細胞">電子回路としての神経細胞</h3>
-<ul>
-<li>細胞膜はリン脂質の脂質二重層になっている．これはコンデンサとなっていて，静止膜電位（細胞外を基準として，-65mV）がかかっている．この電位は細胞内外のイオン濃度差から求められる（ネルンストの式，ゴールドマンの方程式）．</li>
-<li>細胞膜には，Na と K のイオンチャネルがあり，細胞内のイオン濃度が変化することで，膜電位が変化する．</li>
-<li>イオンポンプで静止膜電位を作っていて，ATP を消費している．死ぬとこれが止まって動かなくなり，膜電位が 0 になり，神経回路は停止する．</li>
-<li>ノイズ耐性は無い（チャネルを開くには zJ オーダーで足りる）．ノイズを前提としたシステムになっているっぽい．</li>
-<li>入力は樹状突起</li>
-<li>出力は軸索</li>
-<li>タンパク質のフォールディングによる電子回路のキャリアとしてイオンはちょうどいいスケール
-<ul>
-<li>AlphaFold のような技術が進み，タンパク質構造の逆問題が手軽に解けるようになったら，体内に回路を構築できないか．回路を含む遺伝子をつくれないか．</li>
-</ul></li>
-</ul>
-<h3 id="フーリエ変換器としての耳">フーリエ変換器としての耳</h3>
-<ul>
-<li>蝸牛はまさにカタツムリの形をしていて，その中にセンサがある</li>
-<li>人工内耳
-<ul>
-<li>蝸牛に電極を差し込み刺激する</li>
-<li>音声を FFT して</li>
-</ul></li>
-<li>音声処理システム
-<ul>
-<li>蝸牛 → 延髄 → 中脳 → 視床 → 聴覚野</li>
-<li>人工内耳の成功は，聴覚野を直接刺激するのではなく，蝸牛を刺激することで脳の機能を活用できたのが大きいのでは</li>
-</ul></li>
-<li>ノイズ補正
-<ul>
-<li>連続聴効果
-<ul>
-<li>ホワイトノイズが挿入されても補完される</li>
-<li>無音が挿入されると切れて聞こえる</li>
-<li>原始的な生活の中では，ノイズが加算される場合が多い</li>
-<li>電話で初めて「切れる」会話が日常的になった</li>
-</ul></li>
-<li>音声の冗長性と復元
-<ul>
-<li>周波数がカットされていても言語を聞き取れる</li>
-<li>事前分布があると音が聞こえるようになる</li>
-</ul></li>
-</ul></li>
-</ul>
-<h3 id="目">目</h3>
-<ul>
-<li>視細胞
-<ul>
-<li>光が入るとイオンチャネルが閉まる</li>
-<li>色に反応する Cone と暗さに反応する Rod からなる
-<ul>
-<li>Cone より Rod のほうが多い</li>
-</ul></li>
-</ul></li>
-<li>網膜 → 視床 → 一次視覚野 → 高次視覚野
-<ul>
-<li>高次から低次に向かう神経細胞のほうが多い</li>
-<li>外部情報の割合は非常に少ない</li>
-<li>既知のパターンに照合している</li>
-<li>Anton 症候群</li>
-</ul></li>
-</ul>
-<h3 id="脳">脳</h3>
-<ul>
-<li>3 次元的にネットワークが動的に変化する</li>
-</ul>
-<h2 id="血管">血管</h2>
-<h3 id="機能">機能</h3>
-<ul>
-<li>輸送</li>
-<li>通信</li>
-</ul>
+       <p><img src="./img/network.drawio.svg" /></p>
+<p>共用ルーターは外部からのトラフィックを通さない設定になっているので，自宅からサーバーを公開できません．</p>
+<h2 id="conoha-vps-の登録">1. Conoha VPS の登録</h2>
+<p><a href="https://www.conoha.jp/">Conoha</a></p>
+<p>まず会員登録と支払い方法の設定を行う．</p>
+<h2 id="vps-サーバーの設定">2. VPS サーバーの設定</h2>
+<p>支払いの確認が済んだらサーバーを追加する</p>
+<p>CentOS を選択し追加</p>
+<p>サーバーの ip アドレスを確認</p>
+<p>TeraTerm で接続</p>
+<p>Backspace が効かない → <code>export TERM=vt100</code></p>
+<h3 id="firewalld-の設定">firewalld の設定</h3>
+<h3 id="ssh-の">SSH の</h3>
+<h2 id="softether-vpn-サーバーを設定">3. SoftEther VPN サーバーを設定</h2>
+<p>あとは公式のドキュメント（<a href="https://ja.softether.org/4-docs/1-manual/7/7.3">7.3 Linux へのインストールと初期設定</a>）に従って設定していく</p>
+<p>サーバーのソートをダウンロードして</p>
+<p>WinSCP で転送</p>
+<p>解凍</p>
+<p>make がないようなのでインストール</p>
+<p>make</p>
+<p>/usr/local 以下に移動</p>
+<p>パーミッションを変更</p>
+<p>チェックをかける</p>
+<p>スタートアップスクリプトに追加</p>
+<p>サービス開始</p>
+<p>bad interpreter: No such file or directory</p>
+<p>改行コードが LF でなかった…</p>
+<p>vpncmd 1 IP アドレス入力 エンター VPN Server&gt; ServerPasswordSet を実行してパスワードを設定</p>
+<p>管理者のパスワードを設定</p>
+<p>無事 VPN サーバーが立ちました</p>
+<p><a href="https://www.linuxmania.jp/softether-vpn.html">参考</a></p>
+<h2 id="vpn-に接続">3. VPN に接続</h2>
+<p>クライアントとして使いたい PC に，「SoftEther VPN Client」をインストール．（<a href="https://ja.softether.org/5-download">SoftEther VPN</a>）</p>
+<p>仮想 LAN カードの作成</p>
+<p>新しい接続</p>
+<h2 id="softether-bridge-をインストール">3. SoftEther Bridge をインストール</h2>
+<p><a href="https://ja.softether.org/4-docs/1-manual/A/10.B"></a></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
