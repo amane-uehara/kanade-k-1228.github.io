@@ -2,7 +2,8 @@
 %
 %
 
-`export TERM=vt100`
+- 文字がおかしい
+  - `export TERM=vt100`
 
 ## セキュリティ
 

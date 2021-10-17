@@ -30,6 +30,8 @@
 
 ### 環境構築
 
+[サーバーセットアップ](./Computer/ServerSetup/)
+
 [WSL に接続した VSCode に clang-format を追加する](./Computer/ClangFormat/)
 
 ## 電子
