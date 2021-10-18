@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>雑記 | Kanade's Website</title>
+          <title>Linux デバイスドライバ | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "雑記",
+            "Linux デバイスドライバ",
           "_blank"
         );
       }
@@ -413,14 +413,57 @@
           </a>
         </div>
 
-                <h1 style="margin: 0">雑記</h1>
+                <h1 style="margin: 0">Linux デバイスドライバ</h1>
                </header>
-       <!-- [日記](./Diary/) -->
-<!-- [雑記](./Misc/) -->
-<p><a href="./Travel">旅行記</a></p>
-<p><a href="./Programing/">プログラミング勉強したいんだけど何したらいいのと言われたときに見せるページ</a></p>
-<p><a href="./Music/MusicTheory/">音楽理論について</a></p>
-<p><a href="./Essay/Idea/">アイディアの出し方</a></p>
+            <nav><ul>
+<li><a href="#関数">関数</a></li>
+<li><a href="#構造体">構造体</a></li>
+<li><a href="#実行">実行</a></li>
+</ul></nav>
+       <p><a href="https://qiita.com/iwatake2222/items/1fdd2e0faaaa868a2db2">参考</a></p>
+<p>[本]</p>
+<h2 id="関数">関数</h2>
+<ul>
+<li><code>static int init(void)</code>
+<ul>
+<li><code>register_chrdev(DRIVER_MAJOR, DRIVER_NAME, file_operations)</code>
+<ul>
+<li>カーネルに登録</li>
+<li>Major 番号を決め打ちしていて古い方法</li>
+</ul></li>
+<li><code>alloc_chrev_region()</code>
+<ul>
+<li>空いてる番号を取得</li>
+</ul></li>
+<li><code>cdev_init()</code>
+<ul>
+<li>cdev を初期化する</li>
+</ul></li>
+</ul></li>
+<li><code>static void exit(void)</code>
+<ul>
+<li><code>unregister_chrdev(DRIVER)MAJOR, DRIVER_NAME)</code></li>
+<li>カーネルから削除</li>
+</ul></li>
+<li><code>static int open(struct inode *inode, struct file *file)</code></li>
+<li><code>static int close(struct inode*inode, struct file *file)</code></li>
+<li><code>static ssize_t read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)</code></li>
+<li><code>static ssize_t write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)</code></li>
+</ul>
+<h2 id="構造体">構造体</h2>
+<ul>
+<li><code>file_operations</code>
+<ul>
+<li>ハンドラテーブル</li>
+</ul></li>
+<li><code>inode</code></li>
+<li><code>file</code></li>
+</ul>
+<h2 id="実行">実行</h2>
+<pre><code>make
+sudo insmod [module].ko
+sudo rmmod [module].ko
+dmesg</code></pre>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
