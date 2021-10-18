@@ -416,51 +416,64 @@
                 <h1 style="margin: 0">SoftEther VPN + Conoha VPS で共用ルーターを突破する</h1>
                </header>
             <nav><ul>
-<li><a href="#conoha-vps-の登録">1. Conoha VPS の登録</a></li>
-<li><a href="#vps-サーバーの設定">2. VPS サーバーの設定</a><ul>
-<li><a href="#firewalld-の設定">firewalld の設定</a></li>
-<li><a href="#ssh-の">SSH の</a></li>
-</ul></li>
-<li><a href="#softether-vpn-サーバーを設定">3. SoftEther VPN サーバーを設定</a></li>
-<li><a href="#vpn-に接続">3. VPN に接続</a></li>
-<li><a href="#softether-bridge-をインストール">3. SoftEther Bridge をインストール</a></li>
+<li><a href="#softether-vpn-server-を設定">SoftEther VPN Server を設定</a></li>
+<li><a href="#vpn-に接続">VPN に接続</a></li>
+<li><a href="#softether-vpn-bridge">SoftEther VPN Bridge</a></li>
 </ul></nav>
        <p><img src="./img/network.drawio.svg" /></p>
-<p>共用ルーターは外部からのトラフィックを通さない設定になっているので，自宅からサーバーを公開できません．</p>
-<h2 id="conoha-vps-の登録">1. Conoha VPS の登録</h2>
-<p><a href="https://www.conoha.jp/">Conoha</a></p>
-<p>まず会員登録と支払い方法の設定を行う．</p>
-<h2 id="vps-サーバーの設定">2. VPS サーバーの設定</h2>
-<p>支払いの確認が済んだらサーバーを追加する</p>
-<p>CentOS を選択し追加</p>
-<p>サーバーの ip アドレスを確認</p>
-<p>TeraTerm で接続</p>
-<p>Backspace が効かない → <code>export TERM=vt100</code></p>
-<h3 id="firewalld-の設定">firewalld の設定</h3>
-<h3 id="ssh-の">SSH の</h3>
-<h2 id="softether-vpn-サーバーを設定">3. SoftEther VPN サーバーを設定</h2>
-<p>あとは公式のドキュメント（<a href="https://ja.softether.org/4-docs/1-manual/7/7.3">7.3 Linux へのインストールと初期設定</a>）に従って設定していく</p>
-<p>サーバーのソートをダウンロードして</p>
-<p>WinSCP で転送</p>
-<p>解凍</p>
-<p>make がないようなのでインストール</p>
-<p>make</p>
-<p>/usr/local 以下に移動</p>
-<p>パーミッションを変更</p>
-<p>チェックをかける</p>
-<p>スタートアップスクリプトに追加</p>
-<p>サービス開始</p>
-<p>bad interpreter: No such file or directory</p>
-<p>改行コードが LF でなかった…</p>
-<p>vpncmd 1 IP アドレス入力 エンター VPN Server&gt; ServerPasswordSet を実行してパスワードを設定</p>
-<p>管理者のパスワードを設定</p>
-<p>無事 VPN サーバーが立ちました</p>
+<p>共用ルーターは外部からのトラフィックを通さない設定になっているので，自宅からサーバーを公開できません．外部のサーバーを介して自宅の LAN に接続する VPN を作ります．</p>
+<h2 id="softether-vpn-server-を設定">SoftEther VPN Server を設定</h2>
+<p>レンタルサーバーに VPN サーバーをインストールする．公式のドキュメント（<a href="https://ja.softether.org/4-docs/1-manual/7/7.3">7.3 Linux へのインストールと初期設定</a>）に従って設定していく．</p>
+<ul>
+<li>ビルド
+<ul>
+<li>サーバーのソースをダウンロードして</li>
+<li>WinSCP で転送</li>
+<li>解凍</li>
+<li>make がないようなのでインストール</li>
+<li>make</li>
+<li>/usr/local 以下に移動</li>
+<li>パーミッションを変更</li>
+<li>チェックをかける</li>
+<li>スタートアップスクリプトに追加</li>
+</ul></li>
+<li>サービス開始
+<ul>
+<li>bad interpreter: No such file or directory</li>
+<li>改行コードが LF でなかった…</li>
+</ul></li>
+<li>管理者パスワードを設定
+<ul>
+<li>vpncmd</li>
+<li>1</li>
+<li>このサーバーの IP アドレス入力</li>
+<li>VPN Server &gt; ServerPasswordSet を実行してパスワードを設定</li>
+<li>サーバー管理ツールからアクセスできます</li>
+</ul></li>
+</ul>
 <p><a href="https://www.linuxmania.jp/softether-vpn.html">参考</a></p>
-<h2 id="vpn-に接続">3. VPN に接続</h2>
-<p>クライアントとして使いたい PC に，「SoftEther VPN Client」をインストール．（<a href="https://ja.softether.org/5-download">SoftEther VPN</a>）</p>
-<p>仮想 LAN カードの作成</p>
-<p>新しい接続</p>
-<h2 id="softether-bridge-をインストール">3. SoftEther Bridge をインストール</h2>
+<h2 id="vpn-に接続">VPN に接続</h2>
+<ul>
+<li>PC から
+<ul>
+<li>クライアントとして使いたい PC に，「SoftEther VPN Client」をインストール．（<a href="https://ja.softether.org/5-download">SoftEther VPN</a>）</li>
+<li>仮想 LAN カードの作成</li>
+<li>新しい接続</li>
+</ul></li>
+<li>iPhone から
+<ul>
+<li><a href="https://ja.softether.org/4-docs/2-howto/L2TP_IPsec_Setup_Guide/1">ここ</a></li>
+<li><a href="https://ja.softether.org/4-docs/2-howto/L2TP_IPsec_Setup_Guide/2">ここ</a></li>
+<li>サーバーのポートを開ける</li>
+<li><code>firewall-cmd --permanent --zone=public --add-service=ipsec</code></li>
+<li><code>firewall-cmd --permanent --zone=public --add-port=1701/udp</code></li>
+<li><code>firewall-cmd --permanent --zone=public --add-port=4500/udp</code></li>
+<li><code>firewall-cmd --reload</code></li>
+<li>SecureNAT を有効化</li>
+</ul></li>
+</ul>
+<h2 id="softether-vpn-bridge">SoftEther VPN Bridge</h2>
+<p>自宅のサーバーに SoftEther VPN Bridge をインストールする．</p>
 <p><a href="https://ja.softether.org/4-docs/1-manual/A/10.B"></a></p>
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
