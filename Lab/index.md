@@ -22,6 +22,10 @@
 
 [2048 on リレーコンピュータ](./Computer/2048/)
 
+### OS
+
+[Linux デバイスドライバ](./Computer/LinuxDeviceDriver/)
+
 ### Tips
 
 [簡単なブログサイトの作り方](./Computer/Website/)
