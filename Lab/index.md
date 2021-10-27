@@ -32,6 +32,8 @@
 
 [Docker はじめました](./Computer/Docker/)
 
+[Windows11 に移行しました](./Computer/Win11Setup/)
+
 ### 環境構築
 
 [サーバーセットアップ](./Computer/ServerSetup/)
