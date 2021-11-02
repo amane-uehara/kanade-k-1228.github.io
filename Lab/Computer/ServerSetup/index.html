@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">サーバーセットアップ</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#セキュリティ">セキュリティ</a><ul>
 <li><a href="#ユーザの追加">ユーザの追加</a></li>
@@ -425,94 +449,96 @@
 <li><a href="#firewall-の設定">Firewall の設定</a></li>
 </ul></li>
 </ul></nav>
-       <ul>
-<li>文字がおかしい
-<ul>
-<li><code>export TERM=vt100</code></li>
-</ul></li>
-</ul>
-<h2 id="セキュリティ">セキュリティ</h2>
-<p>セキュリティに関するログは <code>/var/log/secure</code> にあって，<code>grep -m 10 invalid /var/log/secure</code> とでもしてみると，不正アクセスしようとしてる様子が見れるよ．</p>
-<p>ユーサ名 admin とかの有名</p>
-<h3 id="ユーザの追加">ユーザの追加</h3>
-<ul>
-<li>ユーザの追加
-<ul>
-<li><code>useradd -G wheel [user]</code></li>
-<li><code>wheel</code> グループのユーザは sudo できる</li>
-</ul></li>
-<li>パスワードを設定
-<ul>
-<li><code>passwd [user]</code></li>
-</ul></li>
-<li>ユーザ移動
-<ul>
-<li><code>su [user]</code></li>
-</ul></li>
-</ul>
-<h3 id="ssh-を公開鍵認証にする">SSH を公開鍵認証にする</h3>
-<ul>
-<li>鍵生成
-<ul>
-<li>TeraTerm の設定 → SSH 鍵生成</li>
-</ul></li>
-<li>公開鍵を置く
-<ul>
-<li><code>mkdir /home/[user]/.ssh</code></li>
-<li>公開鍵を <code>/home/[user]/.ssh/authorized_keys</code>に置く</li>
-<li><code>chmod 600 /home/[user]/.ssh/authorized_keys</code></li>
-</ul></li>
-<li>SSH 再起動
-<ul>
-<li><code>service sshd restart</code></li>
-</ul></li>
-<li>接続を確認</li>
-</ul>
-<h3 id="ssh-の設定">SSH の設定</h3>
-<ul>
-<li><code>/etc/ssh/sshd_config</code>を編集
-<ul>
-<li>root ログイン禁止
-<ul>
-<li><code>PermitRootLogin no</code></li>
-</ul></li>
-<li>パスワードログイン禁止
-<ul>
-<li><code>PasswordAuthentication no</code></li>
-</ul></li>
-<li>IP アドレス制限
-<ul>
-<li><code>AllowUsers *@[yourIp]</code></li>
-</ul></li>
-</ul></li>
-</ul>
-<h3 id="ポート番号変更">ポート番号変更</h3>
-<ul>
-<li><code>/etc/ssh/sshd_config</code>
-<ul>
-<li><code>Port [port]</code></li>
-</ul></li>
-<li>SELinux
-<ul>
-<li><code>getenforce</code> で動いてるか確認</li>
-</ul></li>
-<li>firewalld
-<ul>
-<li><code>firewall-cmd --list-services</code></li>
-<li><code>cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/ssh.xml</code></li>
-<li><code>/etc/firewalld/services/ssh.xml</code> のポート番号を変更</li>
-<li><code>firewall-cmd --reload</code></li>
-</ul></li>
-</ul>
-<h3 id="接続ショートカットを作成">接続ショートカットを作成</h3>
-<ul>
-<li>TeraTerm
-<ul>
-<li><code>"C:\Program Files (x86)\teraterm\ttermpro.exe" [ip]:[port] /auth=publickey /user=[user] /keyfile="C:\Users\[user]\.ssh\[key]"</code></li>
-</ul></li>
-<li>WinSCP</li>
-</ul>
-<h3 id="firewall-の設定">Firewall の設定</h3>
+      
+      <ul>
+      <li>文字がおかしい
+      <ul>
+      <li><code>export TERM=vt100</code></li>
+      </ul></li>
+      </ul>
+      <h2 id="セキュリティ">セキュリティ</h2>
+      <p>セキュリティに関するログは <code>/var/log/secure</code> にあって，<code>grep -m 10 invalid /var/log/secure</code> とでもしてみると，不正アクセスしようとしてる様子が見れるよ．</p>
+      <p>ユーサ名 admin とかの有名</p>
+      <h3 id="ユーザの追加">ユーザの追加</h3>
+      <ul>
+      <li>ユーザの追加
+      <ul>
+      <li><code>useradd -G wheel [user]</code></li>
+      <li><code>wheel</code> グループのユーザは sudo できる</li>
+      </ul></li>
+      <li>パスワードを設定
+      <ul>
+      <li><code>passwd [user]</code></li>
+      </ul></li>
+      <li>ユーザ移動
+      <ul>
+      <li><code>su [user]</code></li>
+      </ul></li>
+      </ul>
+      <h3 id="ssh-を公開鍵認証にする">SSH を公開鍵認証にする</h3>
+      <ul>
+      <li>鍵生成
+      <ul>
+      <li>TeraTerm の設定 → SSH 鍵生成</li>
+      </ul></li>
+      <li>公開鍵を置く
+      <ul>
+      <li><code>mkdir /home/[user]/.ssh</code></li>
+      <li>公開鍵を <code>/home/[user]/.ssh/authorized_keys</code>に置く</li>
+      <li><code>chmod 600 /home/[user]/.ssh/authorized_keys</code></li>
+      </ul></li>
+      <li>SSH 再起動
+      <ul>
+      <li><code>service sshd restart</code></li>
+      </ul></li>
+      <li>接続を確認</li>
+      </ul>
+      <h3 id="ssh-の設定">SSH の設定</h3>
+      <ul>
+      <li><code>/etc/ssh/sshd_config</code>を編集
+      <ul>
+      <li>root ログイン禁止
+      <ul>
+      <li><code>PermitRootLogin no</code></li>
+      </ul></li>
+      <li>パスワードログイン禁止
+      <ul>
+      <li><code>PasswordAuthentication no</code></li>
+      </ul></li>
+      <li>IP アドレス制限
+      <ul>
+      <li><code>AllowUsers *@[yourIp]</code></li>
+      </ul></li>
+      </ul></li>
+      </ul>
+      <h3 id="ポート番号変更">ポート番号変更</h3>
+      <ul>
+      <li><code>/etc/ssh/sshd_config</code>
+      <ul>
+      <li><code>Port [port]</code></li>
+      </ul></li>
+      <li>SELinux
+      <ul>
+      <li><code>getenforce</code> で動いてるか確認</li>
+      </ul></li>
+      <li>firewalld
+      <ul>
+      <li><code>firewall-cmd --list-services</code></li>
+      <li><code>cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/ssh.xml</code></li>
+      <li><code>/etc/firewalld/services/ssh.xml</code> のポート番号を変更</li>
+      <li><code>firewall-cmd --reload</code></li>
+      </ul></li>
+      </ul>
+      <h3 id="接続ショートカットを作成">接続ショートカットを作成</h3>
+      <ul>
+      <li>TeraTerm
+      <ul>
+      <li><code>"C:\Program Files (x86)\teraterm\ttermpro.exe" [ip]:[port] /auth=publickey /user=[user] /keyfile="C:\Users\[user]\.ssh\[key]"</code></li>
+      </ul></li>
+      <li>WinSCP</li>
+      </ul>
+      <h3 id="firewall-の設定">Firewall の設定</h3>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

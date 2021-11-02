@@ -411,43 +411,69 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">#remind_for_mech21</h1>
-               </header>
-       <div id="maintable">
+                
+        <!-- Date -->
+        
+      </header>
 
-</div>
-<script>
-fetch("https://kanade-k-1228.github.io/remind-for-mech21/data.json")
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        const table = timetable(data);
-        document.getElementById("maintable").appendChild(table);
-    });
-function timetable(json) {
-    var table = document.createElement("table");
-    var tr = document.createElement("tr");
-    const keys = ["date", "time", "tweet"];
-    keys.forEach((key) => {
-        var th = document.createElement("th");
-        th.textContent = key;
-        tr.appendChild(th);
-    });
-    table.appendChild(tr);
-    json.forEach((item) => {
-        var tr = document.createElement("tr");
-        keys.forEach((key) => {
-            var td = document.createElement("td");
-            td.textContent = item[key];
-            tr.appendChild(td);
-        });
-        table.appendChild(tr);
-    });
-    return table;
-}
-</script>
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
+      
+      <div id="maintable">
+      
+      </div>
+      <script>
+      fetch("https://kanade-k-1228.github.io/remind-for-mech21/data.json")
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data);
+              const table = timetable(data);
+              document.getElementById("maintable").appendChild(table);
+          });
+      function timetable(json) {
+          var table = document.createElement("table");
+          var tr = document.createElement("tr");
+          const keys = ["date", "time", "tweet"];
+          keys.forEach((key) => {
+              var th = document.createElement("th");
+              th.textContent = key;
+              tr.appendChild(th);
+          });
+          table.appendChild(tr);
+          json.forEach((item) => {
+              var tr = document.createElement("tr");
+              keys.forEach((key) => {
+                  var td = document.createElement("td");
+                  td.textContent = item[key];
+                  tr.appendChild(td);
+              });
+              table.appendChild(tr);
+          });
+          return table;
+      }
+      </script>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

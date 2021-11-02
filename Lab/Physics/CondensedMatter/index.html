@@ -411,45 +411,49 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">物性物理</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#結晶構造">結晶構造</a></li>
 <li><a href="#自由電子モデル古典">自由電子モデル（古典）</a></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\]</span></p>
-<h2 id="結晶構造">結晶構造</h2>
-<ul>
-<li>格子ベクトル</li>
-<li>基本単位胞（基本構造）
-<ul>
-<li>格子ベクトルが張る平行六面体</li>
-<li>慣用単位胞</li>
-</ul></li>
-<li>ミラー指数
-<ul>
-<li>方向指数</li>
-<li>面指数</li>
-</ul></li>
-</ul>
-<p>例：Au</p>
-<ul>
-<li>数密度</li>
-<li>密度</li>
-</ul>
-<h2 id="自由電子モデル古典">自由電子モデル（古典）</h2>
-<p>電子は金属中をランダムに運動しているというモデル（Drude モデル）</p>
-<p>電場がかかった金属中の電子が従う運動方程式は</p>
-<p><span class="math display">\[
-m\d[v]{t} + \frac{m}{\tau}v = -eE
-\]</span></p>
+      
+      <h2 id="結晶構造">結晶構造</h2>
+      <p>基本単位胞：格子ベクトルが張る平行六面体</p>
+      <p>ミラー指数：周期的な格子中の方向や面を表す記法</p>
+      <h2 id="自由電子モデル古典">自由電子モデル（古典）</h2>
+      <p>電子は金属中をランダムに運動しているというモデル（Drude モデル）</p>
+      <p>電場がかかった金属中の電子が従う運動方程式は</p>
+      <p><span class="math display">\[
+      m\d[v]{t} + \frac{m}{\tau}v = -eE
+      \]</span></p>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

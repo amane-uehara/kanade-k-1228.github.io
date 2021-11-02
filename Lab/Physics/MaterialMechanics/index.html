@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">材料力学</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#引張圧縮">引張・圧縮</a><ul>
 <li><a href="#ポアソン比">ポアソン比</a></li>
@@ -437,154 +461,156 @@
 <li><a href="#固定-固定">固定-固定</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="引張圧縮">引張・圧縮</h2>
-<h3 id="ポアソン比">ポアソン比</h3>
-<h2 id="せん断">せん断</h2>
-<h2 id="曲げ">曲げ</h2>
-<h3 id="オイラーベルヌーイの仮定">オイラーベルヌーイの仮定</h3>
-<h2 id="ねじり">ねじり</h2>
-<h2 id="たわみ">たわみ</h2>
-<h3 id="幾何条件">幾何条件</h3>
-<p><img src="./tawami.drawio.svg" /></p>
-<p><span class="math display">\[
-ds = \rho ( -d \theta )
-\]</span></p>
-<p><span class="math display">\[
-dx = \cos \theta ds
-\]</span></p>
-<p><span class="math display">\[
-\theta = \tan^{-1} \frac{dv}{dx}
-\]</span></p>
-<p><span class="math display">\[
-\frac{d\theta}{dx} = \frac{1}{1+\left(\frac{dx}{dv}\right)^2}
-\]</span></p>
-<p><span class="math inline">\(\theta&lt;&lt;1\)</span> のとき</p>
-<p><span class="math display">\[
-\frac{1}{\rho}=-\frac{d^2v}{dx^2}
-\]</span></p>
-<h3 id="曲げ応力">曲げ応力</h3>
-<p><span class="math display">\[
-\frac{1}{\rho}=\frac{M}{EI}
-\]</span></p>
-<h3 id="たわみの基礎式">たわみの基礎式</h3>
-<p><span class="math display">\[
-\begin{aligned}
-    \frac{d^2v}{dx^2} &amp;= -\frac{M}{EI} \\
-    \theta &amp;= \frac{dv}{dx} = -\int\frac{M}{EI}dx+C \\
-    v &amp;= -\int\int\frac{M}{EI}dxdx+C_1x+C_2
-\end{aligned}
-\]</span></p>
-<h2 id="座屈">座屈</h2>
-<ul>
-<li>圧縮荷重 <span class="math inline">\(P\)</span></li>
-<li>せん断力荷重 <span class="math inline">\(F_A,F_B\)</span></li>
-<li>モーメント <span class="math inline">\(M_A,M_B\)</span></li>
-</ul>
-<p>曲げモーメント</p>
-<p><span class="math display">\[
-M(x)=M_A+Pv(x)+F_Ax
-\]</span></p>
-<p>たわみの式</p>
-<p><span class="math display">\[
-\frac{d^2v}{dx^2}=-\frac{M}{EI}=-\frac{1}{EI}(M_A+Pv+F_Ax)
-\]</span></p>
-<p><span class="math inline">\(\alpha=\sqrt{P/EI}\)</span> とすると，解は</p>
-<p><span class="math display">\[
-\begin{aligned}
-v(x) &amp;= c_1 \sin\alpha x + c_2 \cos\alpha x - \frac{M_A}{P} - \frac{F_A}{P}x \\
-\dot{v}(x) &amp;= \alpha c_1 \cos \alpha x - \alpha c_2 \sin \alpha x - \frac{F_A}{P} \\
-\ddot{v}(x) &amp;= -\alpha^2( c_1 \sin \alpha x + c_2 \cos \alpha x)
-\end{aligned}
-\]</span></p>
-<h3 id="境界条件">境界条件</h3>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">回転</th>
-<th style="text-align: center;">横</th>
-<th><span class="math inline">\(v\)</span></th>
-<th><span class="math inline">\(\dot{v}\)</span></th>
-<th><span class="math inline">\(\ddot{v}=M\)</span></th>
-<th><span class="math inline">\(F\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">自由端</td>
-<td style="text-align: center;">○</td>
-<td style="text-align: center;">○</td>
-<td><span class="math inline">\(\neq 0\)</span></td>
-<td><span class="math inline">\(\neq 0\)</span></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">回転端</td>
-<td style="text-align: center;">○</td>
-<td style="text-align: center;">×</td>
-<td><span class="math inline">\(= 0\)</span></td>
-<td><span class="math inline">\(\neq 0\)</span></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">×</td>
-<td style="text-align: center;">○</td>
-<td><span class="math inline">\(\neq 0\)</span></td>
-<td><span class="math inline">\(= 0\)</span></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">固定端</td>
-<td style="text-align: center;">×</td>
-<td style="text-align: center;">×</td>
-<td><span class="math inline">\(= 0\)</span></td>
-<td><span class="math inline">\(= 0\)</span></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="回転-回転">回転-回転</h3>
-<p>A回転端 <span class="math inline">\(v(0)=0,F_A=M_A=0\)</span></p>
-<p>B回転端 <span class="math inline">\(v(L)=0,F_B=M_B=0\)</span></p>
-<p><span class="math inline">\(n\)</span> をパラメタとして，</p>
-<p><span class="math display">\[
-v=c_1\sin\frac{n\pi}{L}x
-\]</span></p>
-<p>荷重は</p>
-<p><span class="math display">\[
-P=\alpha^2 EI=\frac{n^2\pi^2}{L^2}EI
-\]</span></p>
-<p><span class="math inline">\(n=1\)</span> のときの <span class="math inline">\(P\)</span> が限界荷重</p>
-<p><span class="math display">\[
-\begin{aligned}
-P_{CR} &amp;= \frac{\pi^2}{L^2}EI \\
-v_{CR} &amp;= c_1\sin\frac{\pi}{L}
-\end{aligned}
-\]</span></p>
-<p><span class="math inline">\(c_1\)</span> が残るので限界時の変位はわからん ← 見た目ではわからん</p>
-<h3 id="固定-自由">固定-自由</h3>
-<p>A固定端 <span class="math inline">\(v(0)=\dot{v}(0)=0,F_A=0\)</span></p>
-<p>B自由端 <span class="math inline">\(v(L)=\delta,F_B=M_B=0\)</span></p>
-<p>モーメントの釣り合いから <span class="math inline">\(M_A=-\delta P\)</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-v &amp;= -\delta \cos \alpha x + \delta \\
-\dot{v} &amp;= \delta \alpha \sin \alpha x \\
-\ddot{v} &amp;= \delta\alpha^2\cos\alpha x
-\end{aligned}
-\]</span></p>
-<p><span class="math inline">\(\cos\alpha L=0\)</span> より <span class="math inline">\(\alpha L = \pi/2 \quad \mathrm{mod}\,\pi\)</span></p>
-<p><span class="math display">\[
-P_{CR}=\frac{\pi^2}{4L^2}EI
-\]</span></p>
-<p>自由回転より弱い</p>
-<h3 id="固定-回転">固定-回転</h3>
-<h3 id="固定-固定">固定-固定</h3>
+      
+      <h2 id="引張圧縮">引張・圧縮</h2>
+      <h3 id="ポアソン比">ポアソン比</h3>
+      <h2 id="せん断">せん断</h2>
+      <h2 id="曲げ">曲げ</h2>
+      <h3 id="オイラーベルヌーイの仮定">オイラーベルヌーイの仮定</h3>
+      <h2 id="ねじり">ねじり</h2>
+      <h2 id="たわみ">たわみ</h2>
+      <h3 id="幾何条件">幾何条件</h3>
+      <p><img src="./tawami.drawio.svg" /></p>
+      <p><span class="math display">\[
+      ds = \rho ( -d \theta )
+      \]</span></p>
+      <p><span class="math display">\[
+      dx = \cos \theta ds
+      \]</span></p>
+      <p><span class="math display">\[
+      \theta = \tan^{-1} \frac{dv}{dx}
+      \]</span></p>
+      <p><span class="math display">\[
+      \frac{d\theta}{dx} = \frac{1}{1+\left(\frac{dx}{dv}\right)^2}
+      \]</span></p>
+      <p><span class="math inline">\(\theta&lt;&lt;1\)</span> のとき</p>
+      <p><span class="math display">\[
+      \frac{1}{\rho}=-\frac{d^2v}{dx^2}
+      \]</span></p>
+      <h3 id="曲げ応力">曲げ応力</h3>
+      <p><span class="math display">\[
+      \frac{1}{\rho}=\frac{M}{EI}
+      \]</span></p>
+      <h3 id="たわみの基礎式">たわみの基礎式</h3>
+      <p><span class="math display">\[
+      \begin{aligned}
+          \frac{d^2v}{dx^2} &amp;= -\frac{M}{EI} \\
+          \theta &amp;= \frac{dv}{dx} = -\int\frac{M}{EI}dx+C \\
+          v &amp;= -\int\int\frac{M}{EI}dxdx+C_1x+C_2
+      \end{aligned}
+      \]</span></p>
+      <h2 id="座屈">座屈</h2>
+      <ul>
+      <li>圧縮荷重 <span class="math inline">\(P\)</span></li>
+      <li>せん断力荷重 <span class="math inline">\(F_A,F_B\)</span></li>
+      <li>モーメント <span class="math inline">\(M_A,M_B\)</span></li>
+      </ul>
+      <p>曲げモーメント</p>
+      <p><span class="math display">\[
+      M(x)=M_A+Pv(x)+F_Ax
+      \]</span></p>
+      <p>たわみの式</p>
+      <p><span class="math display">\[
+      \frac{d^2v}{dx^2}=-\frac{M}{EI}=-\frac{1}{EI}(M_A+Pv+F_Ax)
+      \]</span></p>
+      <p><span class="math inline">\(\alpha=\sqrt{P/EI}\)</span> とすると，解は</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      v(x) &amp;= c_1 \sin\alpha x + c_2 \cos\alpha x - \frac{M_A}{P} - \frac{F_A}{P}x \\
+      \dot{v}(x) &amp;= \alpha c_1 \cos \alpha x - \alpha c_2 \sin \alpha x - \frac{F_A}{P} \\
+      \ddot{v}(x) &amp;= -\alpha^2( c_1 \sin \alpha x + c_2 \cos \alpha x)
+      \end{aligned}
+      \]</span></p>
+      <h3 id="境界条件">境界条件</h3>
+      <table>
+      <thead>
+      <tr class="header">
+      <th style="text-align: center;"></th>
+      <th style="text-align: center;">回転</th>
+      <th style="text-align: center;">横</th>
+      <th><span class="math inline">\(v\)</span></th>
+      <th><span class="math inline">\(\dot{v}\)</span></th>
+      <th><span class="math inline">\(\ddot{v}=M\)</span></th>
+      <th><span class="math inline">\(F\)</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td style="text-align: center;">自由端</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td><span class="math inline">\(\neq 0\)</span></td>
+      <td><span class="math inline">\(\neq 0\)</span></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">回転端</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td><span class="math inline">\(= 0\)</span></td>
+      <td><span class="math inline">\(\neq 0\)</span></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">-</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td><span class="math inline">\(\neq 0\)</span></td>
+      <td><span class="math inline">\(= 0\)</span></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">固定端</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td><span class="math inline">\(= 0\)</span></td>
+      <td><span class="math inline">\(= 0\)</span></td>
+      <td></td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+      <h3 id="回転-回転">回転-回転</h3>
+      <p>A回転端 <span class="math inline">\(v(0)=0,F_A=M_A=0\)</span></p>
+      <p>B回転端 <span class="math inline">\(v(L)=0,F_B=M_B=0\)</span></p>
+      <p><span class="math inline">\(n\)</span> をパラメタとして，</p>
+      <p><span class="math display">\[
+      v=c_1\sin\frac{n\pi}{L}x
+      \]</span></p>
+      <p>荷重は</p>
+      <p><span class="math display">\[
+      P=\alpha^2 EI=\frac{n^2\pi^2}{L^2}EI
+      \]</span></p>
+      <p><span class="math inline">\(n=1\)</span> のときの <span class="math inline">\(P\)</span> が限界荷重</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      P_{CR} &amp;= \frac{\pi^2}{L^2}EI \\
+      v_{CR} &amp;= c_1\sin\frac{\pi}{L}
+      \end{aligned}
+      \]</span></p>
+      <p><span class="math inline">\(c_1\)</span> が残るので限界時の変位はわからん ← 見た目ではわからん</p>
+      <h3 id="固定-自由">固定-自由</h3>
+      <p>A固定端 <span class="math inline">\(v(0)=\dot{v}(0)=0,F_A=0\)</span></p>
+      <p>B自由端 <span class="math inline">\(v(L)=\delta,F_B=M_B=0\)</span></p>
+      <p>モーメントの釣り合いから <span class="math inline">\(M_A=-\delta P\)</span></p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      v &amp;= -\delta \cos \alpha x + \delta \\
+      \dot{v} &amp;= \delta \alpha \sin \alpha x \\
+      \ddot{v} &amp;= \delta\alpha^2\cos\alpha x
+      \end{aligned}
+      \]</span></p>
+      <p><span class="math inline">\(\cos\alpha L=0\)</span> より <span class="math inline">\(\alpha L = \pi/2 \quad \mathrm{mod}\,\pi\)</span></p>
+      <p><span class="math display">\[
+      P_{CR}=\frac{\pi^2}{4L^2}EI
+      \]</span></p>
+      <p>自由回転より弱い</p>
+      <h3 id="固定-回転">固定-回転</h3>
+      <h3 id="固定-固定">固定-固定</h3>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

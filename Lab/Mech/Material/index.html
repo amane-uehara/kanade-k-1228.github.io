@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">材料</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#鉄系材料">鉄系材料</a><ul>
 <li><a href="#状態">状態</a></li>
@@ -422,287 +446,289 @@
 </ul></li>
 <li><a href="#jis規格">JIS規格</a></li>
 </ul></nav>
-       <h2 id="鉄系材料">鉄系材料</h2>
-<p>鉄は地球上に大量に存在（O:47%,Si:28%,Al:8.1%,Fe:5.0%）しており，還元するためのエネルギーが少ない（金属は基本的に酸化物として存在している）ため古くから使われている．また鉄は炭素と合金をなし性質を調整しやすい．</p>
-<h3 id="状態">状態</h3>
-<ul>
-<li>α:アルファ鉄
-<ul>
-<li>体心立方格子(body-centered cubic, BCC)．FCCより疎．</li>
-</ul></li>
-<li>γ:ガンマ鉄，オーステナイト
-<ul>
-<li>面心立方格子(face-centered cubic, FCC)．BCCより密．</li>
-</ul></li>
-<li>Fe3C:セメンタイト</li>
-<li>P:パーライト
-<ul>
-<li>アルファ鉄とセメンタイトが層状になったもの．周期が0.1umオーダなので光が回折しキラキラして見える．</li>
-</ul></li>
-<li>M:マルテンサイト
-<ul>
-<li>オーステナイトを急冷すると，炭素分子がつかえて歪んだBCCの構造になる．硬いが脆い．</li>
-</ul></li>
-<li>G:グラファイト
-<ul>
-<li>これが含まれると非常に脆くなる．</li>
-</ul></li>
-</ul>
-<h3 id="状態図">状態図</h3>
-<h2 id="jis規格">JIS規格</h2>
-<table>
-<thead>
-<tr class="header">
-<th>JIS名</th>
-<th>名前</th>
-<th>組成</th>
-<th>切削</th>
-<th>焼入</th>
-<th>切削</th>
-<th>溶接</th>
-<th>伸び</th>
-<th>用途</th>
-<th>円/kg</th>
-<th>備考</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>SS400</td>
-<td>構造用鋼</td>
-<td>C0.2</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>構造</td>
-<td>80</td>
-<td>構造用鋼</td>
-</tr>
-<tr class="even">
-<td>S20C</td>
-<td>炭素0.2%</td>
-<td>C0.2</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td>SS400と同じ</td>
-</tr>
-<tr class="odd">
-<td>S45C</td>
-<td>炭素0.45%</td>
-<td>C0.45</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td>耐摩耗性</td>
-</tr>
-<tr class="even">
-<td>SK5</td>
-<td>工具鋼5種</td>
-<td>C0.8</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>工具</td>
-<td>90</td>
-<td>パーライトのみ．熱処理で硬くなる．</td>
-</tr>
-<tr class="odd">
-<td>SPCC</td>
-<td>冷間圧延鋼板</td>
-<td></td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>95</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>SCM435</td>
-<td>クロムモリブデン鋼</td>
-<td>C0.35Cr1Mo0.3</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>110</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>SKD61</td>
-<td>熱間金型工具鋼</td>
-<td></td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>750</td>
-<td>耐熱(500°)</td>
-</tr>
-<tr class="even">
-<td>SUS304</td>
-<td>ステンレス</td>
-<td>C0.35</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>FC250</td>
-<td>ねずみ鋳造，ズク</td>
-<td>C2.5~4.0</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>鋳造</td>
-<td>250</td>
-<td>湯流れがよいので複雑な鋳造．要焼鈍し．</td>
-</tr>
-<tr class="even">
-<td>FCD400</td>
-<td>球状黒鉛鋳鉄，ダクタイル</td>
-<td></td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td>注湯前にMg:0.05%添加→グラファイトが丸くなる</td>
-</tr>
-<tr class="odd">
-<td>A1050</td>
-<td>純アルミ</td>
-<td></td>
-<td></td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>A2017</td>
-<td>ジュラルミン</td>
-<td>Mg</td>
-<td></td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>A5052</td>
-<td></td>
-<td>Mg固溶</td>
-<td></td>
-<td></td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>A6063</td>
-<td></td>
-<td>Mg-Si</td>
-<td></td>
-<td></td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>A7075</td>
-<td>超々ジュラルミン</td>
-<td>Zn-Mg</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>ADC12</td>
-<td></td>
-<td>Si12</td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>C1100</td>
-<td>電気銅</td>
-<td></td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>C3604</td>
-<td>黄銅，真鍮</td>
-<td></td>
-<td>○</td>
-<td>焼入</td>
-<td>切削</td>
-<td>溶接</td>
-<td>伸び</td>
-<td>用途</td>
-<td>90</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+      
+      <h2 id="鉄系材料">鉄系材料</h2>
+      <p>鉄は地球上に大量に存在（O:47%,Si:28%,Al:8.1%,Fe:5.0%）しており，還元するためのエネルギーが少ない（金属は基本的に酸化物として存在している）ため古くから使われている．また鉄は炭素と合金をなし性質を調整しやすい．</p>
+      <h3 id="状態">状態</h3>
+      <ul>
+      <li>α:アルファ鉄
+      <ul>
+      <li>体心立方格子(body-centered cubic, BCC)．FCCより疎．</li>
+      </ul></li>
+      <li>γ:ガンマ鉄，オーステナイト
+      <ul>
+      <li>面心立方格子(face-centered cubic, FCC)．BCCより密．</li>
+      </ul></li>
+      <li>Fe3C:セメンタイト</li>
+      <li>P:パーライト
+      <ul>
+      <li>アルファ鉄とセメンタイトが層状になったもの．周期が0.1umオーダなので光が回折しキラキラして見える．</li>
+      </ul></li>
+      <li>M:マルテンサイト
+      <ul>
+      <li>オーステナイトを急冷すると，炭素分子がつかえて歪んだBCCの構造になる．硬いが脆い．</li>
+      </ul></li>
+      <li>G:グラファイト
+      <ul>
+      <li>これが含まれると非常に脆くなる．</li>
+      </ul></li>
+      </ul>
+      <h3 id="状態図">状態図</h3>
+      <h2 id="jis規格">JIS規格</h2>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>JIS名</th>
+      <th>名前</th>
+      <th>組成</th>
+      <th>切削</th>
+      <th>焼入</th>
+      <th>切削</th>
+      <th>溶接</th>
+      <th>伸び</th>
+      <th>用途</th>
+      <th>円/kg</th>
+      <th>備考</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>SS400</td>
+      <td>構造用鋼</td>
+      <td>C0.2</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>構造</td>
+      <td>80</td>
+      <td>構造用鋼</td>
+      </tr>
+      <tr class="even">
+      <td>S20C</td>
+      <td>炭素0.2%</td>
+      <td>C0.2</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td>SS400と同じ</td>
+      </tr>
+      <tr class="odd">
+      <td>S45C</td>
+      <td>炭素0.45%</td>
+      <td>C0.45</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td>耐摩耗性</td>
+      </tr>
+      <tr class="even">
+      <td>SK5</td>
+      <td>工具鋼5種</td>
+      <td>C0.8</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>工具</td>
+      <td>90</td>
+      <td>パーライトのみ．熱処理で硬くなる．</td>
+      </tr>
+      <tr class="odd">
+      <td>SPCC</td>
+      <td>冷間圧延鋼板</td>
+      <td></td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>95</td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>SCM435</td>
+      <td>クロムモリブデン鋼</td>
+      <td>C0.35Cr1Mo0.3</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>110</td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>SKD61</td>
+      <td>熱間金型工具鋼</td>
+      <td></td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>750</td>
+      <td>耐熱(500°)</td>
+      </tr>
+      <tr class="even">
+      <td>SUS304</td>
+      <td>ステンレス</td>
+      <td>C0.35</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>100</td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>FC250</td>
+      <td>ねずみ鋳造，ズク</td>
+      <td>C2.5~4.0</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>鋳造</td>
+      <td>250</td>
+      <td>湯流れがよいので複雑な鋳造．要焼鈍し．</td>
+      </tr>
+      <tr class="even">
+      <td>FCD400</td>
+      <td>球状黒鉛鋳鉄，ダクタイル</td>
+      <td></td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td>注湯前にMg:0.05%添加→グラファイトが丸くなる</td>
+      </tr>
+      <tr class="odd">
+      <td>A1050</td>
+      <td>純アルミ</td>
+      <td></td>
+      <td></td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>A2017</td>
+      <td>ジュラルミン</td>
+      <td>Mg</td>
+      <td></td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>A5052</td>
+      <td></td>
+      <td>Mg固溶</td>
+      <td></td>
+      <td></td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>A6063</td>
+      <td></td>
+      <td>Mg-Si</td>
+      <td></td>
+      <td></td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>A7075</td>
+      <td>超々ジュラルミン</td>
+      <td>Zn-Mg</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>ADC12</td>
+      <td></td>
+      <td>Si12</td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>C1100</td>
+      <td>電気銅</td>
+      <td></td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>C3604</td>
+      <td>黄銅，真鍮</td>
+      <td></td>
+      <td>○</td>
+      <td>焼入</td>
+      <td>切削</td>
+      <td>溶接</td>
+      <td>伸び</td>
+      <td>用途</td>
+      <td>90</td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">統計力学</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#位相空間">位相空間</a><ul>
 <li><a href="#gamma空間"><span class="math inline">\(\Gamma\)</span>空間</a></li>
@@ -443,305 +467,307 @@
 <li><a href="#境界条件">境界条件</a></li>
 </ul></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
-\]</span></p>
-<h2 id="位相空間">位相空間</h2>
-<h3 id="gamma空間"><span class="math inline">\(\Gamma\)</span>空間</h3>
-<p><span class="math inline">\(N\)</span> 質点系の状態 → <span class="math inline">\(6N\)</span> 次元空間の一点（代表点）</p>
-<p>系の時間変化は <span class="math inline">\(\Gamma\)</span> 空間上を代表点が運動することと同じとみなせる</p>
-<h4 id="ハミルトニアン">ハミルトニアン</h4>
-<p><span class="math display">\[
-H(q,p)=\sum\frac{p^2}{2m}+\Phi(q)
-\]</span></p>
-<h4 id="エルゴード面">エルゴード面</h4>
-<p><span class="math display">\[
-H(q,p)=\mathrm{Const}
-\]</span></p>
-<p>孤立系はエネルギーを保存するのでエルゴード面上を運動する</p>
-<h3 id="ハミルトンの運動方程式">ハミルトンの運動方程式</h3>
-<p><span class="math display">\[
-\dot{q}=\frac{\partial H}{\partial p},\, \dot{p}=-\frac{\partial H}{\partial q}
-\]</span></p>
-<p>軌跡は交わらない（交点に 2 通りの速度が存在することになるので）</p>
-<h3 id="熱平衡と統計的物理量の存在">熱平衡と統計的物理量の存在</h3>
-<p>ある系の物理量 <span class="math inline">\(Q(q,p)\)</span> を観測したとき，観測値は観測時間平均</p>
-<p><span class="math display">\[
-\langle Q \rangle = \int_0^\tau Q(q(t)),p(t)) dt
-\]</span></p>
-<p>熱平衡状態の場合，（微小時間のゆらぎが無視できる程度の）十分な測定時間をとれば一定の観測値になっていてほしい．</p>
-<blockquote>
-<p>軌道がエルゴード面上のすべての点を等確率で通過する</p>
-</blockquote>
-<p><span class="math inline">\(\Gamma\)</span>空間中の微小体積を軌道が通過する確率を <span class="math inline">\(\rho(q,p)dqdp\)</span> とする</p>
-<p>統計平均</p>
-<p><span class="math display">\[
-\bar{Q}=\int Q(q,p)\rho(q,p) dqdp
-\]</span></p>
-<blockquote>
-<p>系の軌道がエルゴード的であるとき，</p>
-<p><span class="math display">\[
-\langle Q \rangle=\bar{Q}
-\]</span></p>
-</blockquote>
-<h3 id="リウビルの定理">リウビルの定理</h3>
-<p><span class="math inline">\(\Gamma\)</span>空間のある閉曲面内の代表点の集合を考える．これらの点が運動してもその点が存在する領域の面積は保存される．</p>
-<h3 id="ミクロカノニカル分布">ミクロカノニカル分布</h3>
-<p>エルゴード面上の一様な分布</p>
-<p>微小な等エネルギー領域 <span class="math inline">\(E \leq H(q,p)\leq E+dE\)</span> で <span class="math inline">\(\rho(q,p)=\mathrm{Const}\)</span></p>
-<h3 id="等確率の原理">等確率の原理</h3>
-<blockquote>
-<p>同じエネルギーを持つ微視的状態の出現確率は等しい</p>
-</blockquote>
-<p>ミクロカノニカル分布はこう言い換えられる</p>
-<h2 id="ミクロカノニカルアンサンブル">ミクロカノニカルアンサンブル</h2>
-<p><span class="math inline">\(N\)</span> 個の粒子があり，全エネルギーが <span class="math inline">\(E\)</span> の系について，エネルギーが <span class="math inline">\(E_i\)</span> である状態 <span class="math inline">\(i\)</span> に存在している粒子の数 <span class="math inline">\(N_i\)</span> を知りたい．</p>
-<p><span class="math display">\[
-\sum_i N_i  = N, \quad
-\sum_i E_i N_i  = E
-\]</span></p>
-<p>粒子ひとつひとつを区別した微視的状態は等確率に出現するが， 粒子を区別せずに巨視的状態として見たときは，分布に偏りが生ずる．</p>
-<p>ある巨視的状態に含まれる微視的状態の数は</p>
-<p><span class="math display">\[
-W(N_0,N_1,,,)=\frac{N!}{N_1!N_2!...}
-\]</span></p>
-<p>最もよく出現する巨視的状態 <span class="math inline">\((N_1,N_2,,,)\)</span> は <span class="math inline">\(W\)</span> が最大となる状態で，</p>
-<p><span class="math display">\[
-N_i = C\exp\left(-\frac{E_i}{k_BT}\right)
-\]</span></p>
-<p>これをボルツマン分布という．</p>
-<p>N が十分大きいとき，粒子系はボルツマン分布になっている．</p>
-<h4 id="導出">導出</h4>
-<p><span class="math display">\[
-\begin{aligned}
-\log W &amp;= \log N! - \sum_i \log N_i! \\
-&amp;= N\log N - N - \sum_i (N_i\log N_i - N_i) \\
-&amp;= N\log N - \sum_i (N_i\log N_i) \\
-\end{aligned}
-\]</span></p>
-<p>これを最大とする <span class="math inline">\((N_1,N_2,,,)\)</span> を求めたい．</p>
-<p><span class="math display">\[
-F(N_1,N_2,,,\alpha,\beta) := \log W(N_1,N_2,,,) - \alpha \left(\sum_i N_i-N\right) - \beta \left(\sum_i E_iN_i - E \right)
-\]</span></p>
-<p>とおくと，ラグランジュの未定乗数法により</p>
-<p><span class="math display">\[
-\frac{\partial F}{\partial N_i} = 0
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-\partial F &amp;= \partial \left( -\sum_i N_i \log N_i - \alpha \sum_i N_i - \beta \sum_i E_iN_i \right) \\
-           &amp;= \sum_i (-\log N_i -\alpha -\beta E_i) \partial N_i \\
-\frac{\partial F}{\partial N_i} &amp;= -\log N_i - \alpha - \beta E_i \\
-                                &amp;= 0
-\end{aligned}
-\]</span></p>
-<p><span class="math display">\[
-N_i = A_i \exp(\beta E_i)
-\]</span></p>
-<h2 id="エントロピー">エントロピー</h2>
-<p>ある微視的状態 <span class="math inline">\(i\)</span> が出現する確率 <span class="math inline">\(P_i\)</span></p>
-<p><span class="math display">\[
-S=-k_B\sum_i P_i\ln P_i
-\]</span></p>
-<p>ミクロカノニカルの場合 <span class="math inline">\(P_i=1/W\)</span> なので，ボルツマンの関係式</p>
-<p><span class="math display">\[
-S=k_B\ln W
-\]</span></p>
-<p>エントロピー：熱力学 と 微視的状態数：統計力学 を結びつける式になっている．</p>
-<p>ボルツマン分布の場合</p>
-<p><span class="math display">\[
-S = k_B (N\ln N - \sum_i N_i \ln N_i) = k_B N\ln N - k_B N \ln C + \frac{E}{T}
-\]</span></p>
-<h3 id="配置エントロピー">配置エントロピー</h3>
-<p><span class="math inline">\(N\)</span> マスの空間（１マスの体積 <span class="math inline">\(v\)</span> ）に <span class="math inline">\(n\)</span> 個の分子を排他的に配置する．</p>
-<p>微視的状態数</p>
-<p><span class="math display">\[
-W=\frac{N^n}{n!}
-\]</span></p>
-<p>配置エントロピー</p>
-<p><span class="math display">\[
-S=k_b\ln(\frac{N^n}{n!})
-\]</span></p>
-<p><span class="math display">\[
-\frac{d S}{d V} = \frac{k_B}{v}\frac{d}{dN}\{n\ln N-\ln(n!)\} = \frac{k_B n}{V}
-\]</span></p>
-<p>一方，熱力学から</p>
-<p><span class="math display">\[
-\left(\frac{\partial S}{\partial V}\right)_U=\frac{P}{T}
-\]</span></p>
-<p>状態方程式</p>
-<p><span class="math display">\[
-PV=nk_BT
-\]</span></p>
-<h2 id="カノニカル分布カノニカルアンサンブル正準分布">カノニカル分布（カノニカルアンサンブル）（正準分布）</h2>
-<p>熱浴 B とそれに接する系 A</p>
-<p><span class="math display">\[
-N_A+N_B=N\\
-E_A+E_B=E\\
-W(E_A,E_B)=W_A(E_A)W_B(E-E_A)
-\]</span></p>
-<p><span class="math display">\[
-W(E)=\sum_{E_A+E_B=E}W(E_A,E_B)=\sum_{E_A}W_A(E_A)W_B(E-E_A)=W_A*W_B
-\]</span></p>
-<h2 id="マクスウェルボルツマンの速度分布">マクスウェル・ボルツマンの速度分布</h2>
-<p>理想気体の速度分布をミクロカノニカルアンサンブルで考える．</p>
-<p>速度 <span class="math inline">\(v=(v_x,v_y,v_z)\)</span> の分子のエネルギーは</p>
-<p><span class="math display">\[
-\varepsilon=\frac{1}{2}m(v_x^2+v_x^2+v_x^2)
-\]</span></p>
-<p>なので，分布は</p>
-<p><span class="math display">\[
-f(v_x,v_y,v_z) \propto \exp\left(-\frac{\varepsilon}{k_BT}\right)=\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
-\]</span></p>
-<p>正規化</p>
-<p><span class="math display">\[
-\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty} dv_x dv_y dv_z \exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\} = 1
-\]</span></p>
-<p>より係数が決まり，</p>
-<p><span class="math display">\[
-f(v_x,v_y,v_z) = \left(\frac{m}{2\pi k_B T}\right)^{3/2}\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
-\]</span></p>
-<h3 id="速さの分布">速さの分布</h3>
-<p><span class="math display">\[
-f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\left(-\frac{mv^2}{2k_BT}\right)
-\]</span></p>
-<p><span class="math display">\[
-v_{max} = \sqrt{\frac{2k_BT}{m}}
-\]</span></p>
-<p><span class="math display">\[
-\langle v \rangle = \int vf(v) dv = \sqrt{\frac{8k_BT}{\pi m}}
-\]</span></p>
-<p><span class="math display">\[
-\langle v^2 \rangle = \int v^2 f(v) dv = \frac{3}{2} \left( \frac{2k_BT}{m} \right)
-\]</span></p>
-<p>平均エネルギー</p>
-<p><span class="math display">\[
-\langle \varepsilon \rangle = \frac{1}{2} m \langle v^2 \rangle = 3 \left(\frac{1}{2}k_BT\right)
-\]</span></p>
-<h3 id="実際の分子">実際の分子</h3>
-<p>単元子分子の比熱 (J/mol)</p>
-<p><span class="math display">\[
-E = N \frac{3}{2} k_B T = \frac{3}{2} RT
-\]</span></p>
-<p><span class="math display">\[
-C_v = \frac{3}{2} R
-\]</span></p>
-<p>二原子分子は 並進運動 (xyz) + 回転運動 (2 軸) + 伸縮振動 の自由度</p>
-<p><span class="math display">\[
-C_v = \frac{7}{2}
-\]</span></p>
-<table>
-<thead>
-<tr class="header">
-<th>Cv</th>
-<th>80K</th>
-<th>100K</th>
-<th>273K</th>
-<th>2000K</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ar</td>
-<td></td>
-<td>1.55R</td>
-<td>1.5R</td>
-<td>1.51R</td>
-</tr>
-<tr class="even">
-<td>N2</td>
-<td>2.58R</td>
-<td>2.5R</td>
-<td>2.93R</td>
-<td>3.29R</td>
-</tr>
-</tbody>
-</table>
-<h2 id="分子の運動学">分子の運動学</h2>
-<h3 id="平均自由行程">平均自由行程</h3>
-<p>他の分子と衝突するまでに分子が移動する距離の平均</p>
-<p><span class="math display">\[
-l = \tau \times v
-\]</span></p>
-<p>ロシュミット数（標準状態の気体 1L に含まれる分子数）<span class="math inline">\(n_0=N_A/V_{mol}\)</span></p>
-<h3 id="クヌッセン数">クヌッセン数</h3>
-<p>代表長さ <span class="math inline">\(L\)</span> に対する，平均自由行程 <span class="math inline">\(l\)</span> の比</p>
-<p><span class="math display">\[
-\mathrm{Kn}:=\frac{l}{L}
-\]</span></p>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Kn &lt; 0.01</td>
-<td>連続流</td>
-<td style="text-align: center;">平衡</td>
-<td>マクスウェル分布</td>
-<td>分子間がいっぱい衝突して平衡に近づく</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.01 &lt; Kn &lt; 10</td>
-<td>中間流</td>
-<td style="text-align: center;">↓</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">10 &lt; Kn</td>
-<td>自由分子流</td>
-<td style="text-align: center;">非平衡</td>
-<td>ボルツマン輸送方程式</td>
-<td>不均一がなかなか消えない</td>
-</tr>
-</tbody>
-</table>
-<h3 id="ボルツマンの輸送方程式">ボルツマンの輸送方程式</h3>
-<p>非平衡（高クヌッセン数）の支配方程式</p>
-<p>分布関数 <span class="math inline">\(f(x,v,t)\)</span> （時刻 <span class="math inline">\(t\)</span> に状態 <span class="math inline">\(x,v\)</span> にある粒子数）について，</p>
-<p><span class="math display">\[
-\pd[f]{t} + v\pd[f]{r} + \frac{F}{m}\pd[f]{v} = \int\int (f&#39;_1f&#39;_2 - f_1f_2)|v_1-v_2|d\Omega dv_1
-\]</span></p>
-<h3 id="分子衝突のない場合">分子衝突のない場合</h3>
-<p>位相空間上で粒子の動きを追尾する</p>
-<p><span class="math display">\[
-f(x,v,t) = f(x + v\Delta t, v, t + \Delta t)
-\]</span></p>
-<p><span class="math inline">\(t\)</span> に <span class="math inline">\((x,v)\)</span> の状態にいたとき，<span class="math inline">\(t+\Delta t\)</span> では <span class="math inline">\((x+v\Delta t,v)\)</span> にいることを意味している．</p>
-<p><span class="math display">\[
-\begin{aligned}
-f(x + v\Delta t, v, t + \Delta t) - f(x,v,t)
-    &amp;= f(x + v\Delta t, v, t + \Delta t) - f(x,v,t) \\
-    &amp;= f(x + v\Delta t, v, t + \Delta t) - f(x + v\Delta t, v, t) + f(x + v\Delta t, v, t) - f(x,v,t) \\
-    &amp;= \pd[f]{t}\Delta t + v \cdot \nabla f \Delta t \\
-\end{aligned}
-\]</span></p>
-<p><span class="math display">\[
-\pd[f]{t} + v \cdot \nabla f = 0
-\]</span></p>
-<h3 id="分子衝突がある場合">分子衝突がある場合</h3>
-<p>時刻 <span class="math inline">\(t_0\)</span> に空間上の点 <span class="math inline">\(x_0\)</span> に流入する運動量の合計は</p>
-<p><span class="math display">\[
-\int_{-\infty}^{\infty} mvf(x_0,v,t_0) dv
-\]</span></p>
-<p>実際には <span class="math inline">\(f(x,v,t)\)</span></p>
-<p><span class="math display">\[
-\pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}}
-\]</span></p>
-<h3 id="緩和時間近似">緩和時間近似</h3>
-<p>平衡状態 <span class="math inline">\(f_0\)</span> からそれほど離れていない場合は，平衡状態への緩和時間を <span class="math inline">\(\tau\)</span> として，</p>
-<p><span class="math display">\[
-\pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}} \simeq -\frac{f-f_0}{\tau}
-\]</span></p>
-<p>の近似ができる．</p>
-<h3 id="境界条件">境界条件</h3>
-<p>自由分子流の場合はこれだけで流れが決まる（分子間の衝突がないので）</p>
-<h4 id="鏡面反射">鏡面反射</h4>
-<h4 id="拡散反射">拡散反射</h4>
+      
+      <p><span class="math display">\[
+      \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+      \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+      \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+      \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+      \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+      \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+      \]</span></p>
+      <h2 id="位相空間">位相空間</h2>
+      <h3 id="gamma空間"><span class="math inline">\(\Gamma\)</span>空間</h3>
+      <p><span class="math inline">\(N\)</span> 質点系の状態 → <span class="math inline">\(6N\)</span> 次元空間の一点（代表点）</p>
+      <p>系の時間変化は <span class="math inline">\(\Gamma\)</span> 空間上を代表点が運動することと同じとみなせる</p>
+      <h4 id="ハミルトニアン">ハミルトニアン</h4>
+      <p><span class="math display">\[
+      H(q,p)=\sum\frac{p^2}{2m}+\Phi(q)
+      \]</span></p>
+      <h4 id="エルゴード面">エルゴード面</h4>
+      <p><span class="math display">\[
+      H(q,p)=\mathrm{Const}
+      \]</span></p>
+      <p>孤立系はエネルギーを保存するのでエルゴード面上を運動する</p>
+      <h3 id="ハミルトンの運動方程式">ハミルトンの運動方程式</h3>
+      <p><span class="math display">\[
+      \dot{q}=\frac{\partial H}{\partial p},\, \dot{p}=-\frac{\partial H}{\partial q}
+      \]</span></p>
+      <p>軌跡は交わらない（交点に 2 通りの速度が存在することになるので）</p>
+      <h3 id="熱平衡と統計的物理量の存在">熱平衡と統計的物理量の存在</h3>
+      <p>ある系の物理量 <span class="math inline">\(Q(q,p)\)</span> を観測したとき，観測値は観測時間平均</p>
+      <p><span class="math display">\[
+      \langle Q \rangle = \int_0^\tau Q(q(t)),p(t)) dt
+      \]</span></p>
+      <p>熱平衡状態の場合，（微小時間のゆらぎが無視できる程度の）十分な測定時間をとれば一定の観測値になっていてほしい．</p>
+      <blockquote>
+      <p>軌道がエルゴード面上のすべての点を等確率で通過する</p>
+      </blockquote>
+      <p><span class="math inline">\(\Gamma\)</span>空間中の微小体積を軌道が通過する確率を <span class="math inline">\(\rho(q,p)dqdp\)</span> とする</p>
+      <p>統計平均</p>
+      <p><span class="math display">\[
+      \bar{Q}=\int Q(q,p)\rho(q,p) dqdp
+      \]</span></p>
+      <blockquote>
+      <p>系の軌道がエルゴード的であるとき，</p>
+      <p><span class="math display">\[
+      \langle Q \rangle=\bar{Q}
+      \]</span></p>
+      </blockquote>
+      <h3 id="リウビルの定理">リウビルの定理</h3>
+      <p><span class="math inline">\(\Gamma\)</span>空間のある閉曲面内の代表点の集合を考える．これらの点が運動してもその点が存在する領域の面積は保存される．</p>
+      <h3 id="ミクロカノニカル分布">ミクロカノニカル分布</h3>
+      <p>エルゴード面上の一様な分布</p>
+      <p>微小な等エネルギー領域 <span class="math inline">\(E \leq H(q,p)\leq E+dE\)</span> で <span class="math inline">\(\rho(q,p)=\mathrm{Const}\)</span></p>
+      <h3 id="等確率の原理">等確率の原理</h3>
+      <blockquote>
+      <p>同じエネルギーを持つ微視的状態の出現確率は等しい</p>
+      </blockquote>
+      <p>ミクロカノニカル分布はこう言い換えられる</p>
+      <h2 id="ミクロカノニカルアンサンブル">ミクロカノニカルアンサンブル</h2>
+      <p><span class="math inline">\(N\)</span> 個の粒子があり，全エネルギーが <span class="math inline">\(E\)</span> の系について，エネルギーが <span class="math inline">\(E_i\)</span> である状態 <span class="math inline">\(i\)</span> に存在している粒子の数 <span class="math inline">\(N_i\)</span> を知りたい．</p>
+      <p><span class="math display">\[
+      \sum_i N_i  = N, \quad
+      \sum_i E_i N_i  = E
+      \]</span></p>
+      <p>粒子ひとつひとつを区別した微視的状態は等確率に出現するが， 粒子を区別せずに巨視的状態として見たときは，分布に偏りが生ずる．</p>
+      <p>ある巨視的状態に含まれる微視的状態の数は</p>
+      <p><span class="math display">\[
+      W(N_0,N_1,,,)=\frac{N!}{N_1!N_2!...}
+      \]</span></p>
+      <p>最もよく出現する巨視的状態 <span class="math inline">\((N_1,N_2,,,)\)</span> は <span class="math inline">\(W\)</span> が最大となる状態で，</p>
+      <p><span class="math display">\[
+      N_i = C\exp\left(-\frac{E_i}{k_BT}\right)
+      \]</span></p>
+      <p>これをボルツマン分布という．</p>
+      <p>N が十分大きいとき，粒子系はボルツマン分布になっている．</p>
+      <h4 id="導出">導出</h4>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \log W &amp;= \log N! - \sum_i \log N_i! \\
+      &amp;= N\log N - N - \sum_i (N_i\log N_i - N_i) \\
+      &amp;= N\log N - \sum_i (N_i\log N_i) \\
+      \end{aligned}
+      \]</span></p>
+      <p>これを最大とする <span class="math inline">\((N_1,N_2,,,)\)</span> を求めたい．</p>
+      <p><span class="math display">\[
+      F(N_1,N_2,,,\alpha,\beta) := \log W(N_1,N_2,,,) - \alpha \left(\sum_i N_i-N\right) - \beta \left(\sum_i E_iN_i - E \right)
+      \]</span></p>
+      <p>とおくと，ラグランジュの未定乗数法により</p>
+      <p><span class="math display">\[
+      \frac{\partial F}{\partial N_i} = 0
+      \]</span></p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \partial F &amp;= \partial \left( -\sum_i N_i \log N_i - \alpha \sum_i N_i - \beta \sum_i E_iN_i \right) \\
+                 &amp;= \sum_i (-\log N_i -\alpha -\beta E_i) \partial N_i \\
+      \frac{\partial F}{\partial N_i} &amp;= -\log N_i - \alpha - \beta E_i \\
+                                      &amp;= 0
+      \end{aligned}
+      \]</span></p>
+      <p><span class="math display">\[
+      N_i = A_i \exp(\beta E_i)
+      \]</span></p>
+      <h2 id="エントロピー">エントロピー</h2>
+      <p>ある微視的状態 <span class="math inline">\(i\)</span> が出現する確率 <span class="math inline">\(P_i\)</span></p>
+      <p><span class="math display">\[
+      S=-k_B\sum_i P_i\ln P_i
+      \]</span></p>
+      <p>ミクロカノニカルの場合 <span class="math inline">\(P_i=1/W\)</span> なので，ボルツマンの関係式</p>
+      <p><span class="math display">\[
+      S=k_B\ln W
+      \]</span></p>
+      <p>エントロピー：熱力学 と 微視的状態数：統計力学 を結びつける式になっている．</p>
+      <p>ボルツマン分布の場合</p>
+      <p><span class="math display">\[
+      S = k_B (N\ln N - \sum_i N_i \ln N_i) = k_B N\ln N - k_B N \ln C + \frac{E}{T}
+      \]</span></p>
+      <h3 id="配置エントロピー">配置エントロピー</h3>
+      <p><span class="math inline">\(N\)</span> マスの空間（１マスの体積 <span class="math inline">\(v\)</span> ）に <span class="math inline">\(n\)</span> 個の分子を排他的に配置する．</p>
+      <p>微視的状態数</p>
+      <p><span class="math display">\[
+      W=\frac{N^n}{n!}
+      \]</span></p>
+      <p>配置エントロピー</p>
+      <p><span class="math display">\[
+      S=k_b\ln(\frac{N^n}{n!})
+      \]</span></p>
+      <p><span class="math display">\[
+      \frac{d S}{d V} = \frac{k_B}{v}\frac{d}{dN}\{n\ln N-\ln(n!)\} = \frac{k_B n}{V}
+      \]</span></p>
+      <p>一方，熱力学から</p>
+      <p><span class="math display">\[
+      \left(\frac{\partial S}{\partial V}\right)_U=\frac{P}{T}
+      \]</span></p>
+      <p>状態方程式</p>
+      <p><span class="math display">\[
+      PV=nk_BT
+      \]</span></p>
+      <h2 id="カノニカル分布カノニカルアンサンブル正準分布">カノニカル分布（カノニカルアンサンブル）（正準分布）</h2>
+      <p>熱浴 B とそれに接する系 A</p>
+      <p><span class="math display">\[
+      N_A+N_B=N\\
+      E_A+E_B=E\\
+      W(E_A,E_B)=W_A(E_A)W_B(E-E_A)
+      \]</span></p>
+      <p><span class="math display">\[
+      W(E)=\sum_{E_A+E_B=E}W(E_A,E_B)=\sum_{E_A}W_A(E_A)W_B(E-E_A)=W_A*W_B
+      \]</span></p>
+      <h2 id="マクスウェルボルツマンの速度分布">マクスウェル・ボルツマンの速度分布</h2>
+      <p>理想気体の速度分布をミクロカノニカルアンサンブルで考える．</p>
+      <p>速度 <span class="math inline">\(v=(v_x,v_y,v_z)\)</span> の分子のエネルギーは</p>
+      <p><span class="math display">\[
+      \varepsilon=\frac{1}{2}m(v_x^2+v_x^2+v_x^2)
+      \]</span></p>
+      <p>なので，分布は</p>
+      <p><span class="math display">\[
+      f(v_x,v_y,v_z) \propto \exp\left(-\frac{\varepsilon}{k_BT}\right)=\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
+      \]</span></p>
+      <p>正規化</p>
+      <p><span class="math display">\[
+      \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+      \int_{-\infty}^{\infty} dv_x dv_y dv_z \exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\} = 1
+      \]</span></p>
+      <p>より係数が決まり，</p>
+      <p><span class="math display">\[
+      f(v_x,v_y,v_z) = \left(\frac{m}{2\pi k_B T}\right)^{3/2}\exp\left\{-\frac{m}{2k_BT}(v_x^2+v_x^2+v_x^2)\right\}
+      \]</span></p>
+      <h3 id="速さの分布">速さの分布</h3>
+      <p><span class="math display">\[
+      f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\left(-\frac{mv^2}{2k_BT}\right)
+      \]</span></p>
+      <p><span class="math display">\[
+      v_{max} = \sqrt{\frac{2k_BT}{m}}
+      \]</span></p>
+      <p><span class="math display">\[
+      \langle v \rangle = \int vf(v) dv = \sqrt{\frac{8k_BT}{\pi m}}
+      \]</span></p>
+      <p><span class="math display">\[
+      \langle v^2 \rangle = \int v^2 f(v) dv = \frac{3}{2} \left( \frac{2k_BT}{m} \right)
+      \]</span></p>
+      <p>平均エネルギー</p>
+      <p><span class="math display">\[
+      \langle \varepsilon \rangle = \frac{1}{2} m \langle v^2 \rangle = 3 \left(\frac{1}{2}k_BT\right)
+      \]</span></p>
+      <h3 id="実際の分子">実際の分子</h3>
+      <p>単元子分子の比熱 (J/mol)</p>
+      <p><span class="math display">\[
+      E = N \frac{3}{2} k_B T = \frac{3}{2} RT
+      \]</span></p>
+      <p><span class="math display">\[
+      C_v = \frac{3}{2} R
+      \]</span></p>
+      <p>二原子分子は 並進運動 (xyz) + 回転運動 (2 軸) + 伸縮振動 の自由度</p>
+      <p><span class="math display">\[
+      C_v = \frac{7}{2}
+      \]</span></p>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>Cv</th>
+      <th>80K</th>
+      <th>100K</th>
+      <th>273K</th>
+      <th>2000K</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Ar</td>
+      <td></td>
+      <td>1.55R</td>
+      <td>1.5R</td>
+      <td>1.51R</td>
+      </tr>
+      <tr class="even">
+      <td>N2</td>
+      <td>2.58R</td>
+      <td>2.5R</td>
+      <td>2.93R</td>
+      <td>3.29R</td>
+      </tr>
+      </tbody>
+      </table>
+      <h2 id="分子の運動学">分子の運動学</h2>
+      <h3 id="平均自由行程">平均自由行程</h3>
+      <p>他の分子と衝突するまでに分子が移動する距離の平均</p>
+      <p><span class="math display">\[
+      l = \tau \times v
+      \]</span></p>
+      <p>ロシュミット数（標準状態の気体 1L に含まれる分子数）<span class="math inline">\(n_0=N_A/V_{mol}\)</span></p>
+      <h3 id="クヌッセン数">クヌッセン数</h3>
+      <p>代表長さ <span class="math inline">\(L\)</span> に対する，平均自由行程 <span class="math inline">\(l\)</span> の比</p>
+      <p><span class="math display">\[
+      \mathrm{Kn}:=\frac{l}{L}
+      \]</span></p>
+      <table>
+      <tbody>
+      <tr class="odd">
+      <td style="text-align: center;">Kn &lt; 0.01</td>
+      <td>連続流</td>
+      <td style="text-align: center;">平衡</td>
+      <td>マクスウェル分布</td>
+      <td>分子間がいっぱい衝突して平衡に近づく</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">0.01 &lt; Kn &lt; 10</td>
+      <td>中間流</td>
+      <td style="text-align: center;">↓</td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">10 &lt; Kn</td>
+      <td>自由分子流</td>
+      <td style="text-align: center;">非平衡</td>
+      <td>ボルツマン輸送方程式</td>
+      <td>不均一がなかなか消えない</td>
+      </tr>
+      </tbody>
+      </table>
+      <h3 id="ボルツマンの輸送方程式">ボルツマンの輸送方程式</h3>
+      <p>非平衡（高クヌッセン数）の支配方程式</p>
+      <p>分布関数 <span class="math inline">\(f(x,v,t)\)</span> （時刻 <span class="math inline">\(t\)</span> に状態 <span class="math inline">\(x,v\)</span> にある粒子数）について，</p>
+      <p><span class="math display">\[
+      \pd[f]{t} + v\pd[f]{r} + \frac{F}{m}\pd[f]{v} = \int\int (f&#39;_1f&#39;_2 - f_1f_2)|v_1-v_2|d\Omega dv_1
+      \]</span></p>
+      <h3 id="分子衝突のない場合">分子衝突のない場合</h3>
+      <p>位相空間上で粒子の動きを追尾する</p>
+      <p><span class="math display">\[
+      f(x,v,t) = f(x + v\Delta t, v, t + \Delta t)
+      \]</span></p>
+      <p><span class="math inline">\(t\)</span> に <span class="math inline">\((x,v)\)</span> の状態にいたとき，<span class="math inline">\(t+\Delta t\)</span> では <span class="math inline">\((x+v\Delta t,v)\)</span> にいることを意味している．</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      f(x + v\Delta t, v, t + \Delta t) - f(x,v,t)
+          &amp;= f(x + v\Delta t, v, t + \Delta t) - f(x,v,t) \\
+          &amp;= f(x + v\Delta t, v, t + \Delta t) - f(x + v\Delta t, v, t) + f(x + v\Delta t, v, t) - f(x,v,t) \\
+          &amp;= \pd[f]{t}\Delta t + v \cdot \nabla f \Delta t \\
+      \end{aligned}
+      \]</span></p>
+      <p><span class="math display">\[
+      \pd[f]{t} + v \cdot \nabla f = 0
+      \]</span></p>
+      <h3 id="分子衝突がある場合">分子衝突がある場合</h3>
+      <p>時刻 <span class="math inline">\(t_0\)</span> に空間上の点 <span class="math inline">\(x_0\)</span> に流入する運動量の合計は</p>
+      <p><span class="math display">\[
+      \int_{-\infty}^{\infty} mvf(x_0,v,t_0) dv
+      \]</span></p>
+      <p>実際には <span class="math inline">\(f(x,v,t)\)</span></p>
+      <p><span class="math display">\[
+      \pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}}
+      \]</span></p>
+      <h3 id="緩和時間近似">緩和時間近似</h3>
+      <p>平衡状態 <span class="math inline">\(f_0\)</span> からそれほど離れていない場合は，平衡状態への緩和時間を <span class="math inline">\(\tau\)</span> として，</p>
+      <p><span class="math display">\[
+      \pd[f]{t} + v \cdot \nabla f = \left(\pd[f]{t}\right)_{\mathrm{Coll}} \simeq -\frac{f-f_0}{\tau}
+      \]</span></p>
+      <p>の近似ができる．</p>
+      <h3 id="境界条件">境界条件</h3>
+      <p>自由分子流の場合はこれだけで流れが決まる（分子間の衝突がないので）</p>
+      <h4 id="鏡面反射">鏡面反射</h4>
+      <h4 id="拡散反射">拡散反射</h4>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

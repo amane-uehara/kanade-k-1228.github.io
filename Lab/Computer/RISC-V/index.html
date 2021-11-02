@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">RISC-V</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#rv32iのアーキテクチャ">RV32Iのアーキテクチャ</a><ul>
 <li><a href="#レジスタ一覧">レジスタ一覧</a></li>
@@ -424,94 +448,96 @@
 <li><a href="#分岐ジャンプ">分岐・ジャンプ</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="rv32iのアーキテクチャ">RV32Iのアーキテクチャ</h2>
-<h3 id="レジスタ一覧">レジスタ一覧</h3>
-<table>
-<thead>
-<tr class="header">
-<th>id</th>
-<th>name</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>x0</td>
-<td>zero</td>
-<td>値はゼロで固定</td>
-</tr>
-<tr class="even">
-<td>x1</td>
-<td>ra</td>
-<td>戻りアドレス</td>
-</tr>
-<tr class="odd">
-<td>x2</td>
-<td>sp</td>
-<td>スタックポインタ</td>
-</tr>
-<tr class="even">
-<td>x3</td>
-<td>gp</td>
-<td>グローバルポインタ</td>
-</tr>
-<tr class="odd">
-<td>x4</td>
-<td>tp</td>
-<td>スレッドポインタ</td>
-</tr>
-<tr class="even">
-<td>x5~x7</td>
-<td>t0~t3</td>
-<td>一時レジスタ（関数呼び出し前後で保持されない）</td>
-</tr>
-<tr class="odd">
-<td>x8</td>
-<td>fp</td>
-<td>フレームポインタ</td>
-</tr>
-<tr class="even">
-<td>x8~x9</td>
-<td>s0~s1</td>
-<td>保存レジスタ（関数呼び出し前後で保持される）</td>
-</tr>
-<tr class="odd">
-<td>x10~x11</td>
-<td>a0~a1</td>
-<td>関数の引数/返値</td>
-</tr>
-<tr class="even">
-<td>x12~x17</td>
-<td>a2~a7</td>
-<td>関数の引数</td>
-</tr>
-<tr class="odd">
-<td>x18~x27</td>
-<td>s2~s11</td>
-<td>保存レジスタ</td>
-</tr>
-<tr class="even">
-<td>x28~x31</td>
-<td>t3~t6</td>
-<td>一時レジスタ</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>pc</td>
-<td>プログラムカウンタはレジスタとしてアクセスできない</td>
-</tr>
-</tbody>
-</table>
-<h3 id="命令フォーマット">命令フォーマット</h3>
-<p><img src="RV32I.jpg" /></p>
-<h3 id="ロード">ロード</h3>
-<p><code>x[rd] = sext?( M[x[rs1] + sext(imm)] [7?15?31? : 0] )</code></p>
-<p>b(byte)/h(halfword)/w(word)で，メモリから読み出す長さを決めます．</p>
-<p>()signed/(u)unsignedで，メモリから持ってきた値を符号拡張するかを決めます．</p>
-<h3 id="ストア">ストア</h3>
-<p><code>M[ x[rs1] + sext(imm) ] = x[rs2] [7?15?31?:0]</code></p>
-<p>b(byte)/h(halfword)/w(word)で，メモリに書き込む長さを決めます．</p>
-<h3 id="分岐ジャンプ">分岐・ジャンプ</h3>
+      
+      <h2 id="rv32iのアーキテクチャ">RV32Iのアーキテクチャ</h2>
+      <h3 id="レジスタ一覧">レジスタ一覧</h3>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>id</th>
+      <th>name</th>
+      <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>x0</td>
+      <td>zero</td>
+      <td>値はゼロで固定</td>
+      </tr>
+      <tr class="even">
+      <td>x1</td>
+      <td>ra</td>
+      <td>戻りアドレス</td>
+      </tr>
+      <tr class="odd">
+      <td>x2</td>
+      <td>sp</td>
+      <td>スタックポインタ</td>
+      </tr>
+      <tr class="even">
+      <td>x3</td>
+      <td>gp</td>
+      <td>グローバルポインタ</td>
+      </tr>
+      <tr class="odd">
+      <td>x4</td>
+      <td>tp</td>
+      <td>スレッドポインタ</td>
+      </tr>
+      <tr class="even">
+      <td>x5~x7</td>
+      <td>t0~t3</td>
+      <td>一時レジスタ（関数呼び出し前後で保持されない）</td>
+      </tr>
+      <tr class="odd">
+      <td>x8</td>
+      <td>fp</td>
+      <td>フレームポインタ</td>
+      </tr>
+      <tr class="even">
+      <td>x8~x9</td>
+      <td>s0~s1</td>
+      <td>保存レジスタ（関数呼び出し前後で保持される）</td>
+      </tr>
+      <tr class="odd">
+      <td>x10~x11</td>
+      <td>a0~a1</td>
+      <td>関数の引数/返値</td>
+      </tr>
+      <tr class="even">
+      <td>x12~x17</td>
+      <td>a2~a7</td>
+      <td>関数の引数</td>
+      </tr>
+      <tr class="odd">
+      <td>x18~x27</td>
+      <td>s2~s11</td>
+      <td>保存レジスタ</td>
+      </tr>
+      <tr class="even">
+      <td>x28~x31</td>
+      <td>t3~t6</td>
+      <td>一時レジスタ</td>
+      </tr>
+      <tr class="odd">
+      <td></td>
+      <td>pc</td>
+      <td>プログラムカウンタはレジスタとしてアクセスできない</td>
+      </tr>
+      </tbody>
+      </table>
+      <h3 id="命令フォーマット">命令フォーマット</h3>
+      <p><img src="RV32I.jpg" /></p>
+      <h3 id="ロード">ロード</h3>
+      <p><code>x[rd] = sext?( M[x[rs1] + sext(imm)] [7?15?31? : 0] )</code></p>
+      <p>b(byte)/h(halfword)/w(word)で，メモリから読み出す長さを決めます．</p>
+      <p>()signed/(u)unsignedで，メモリから持ってきた値を符号拡張するかを決めます．</p>
+      <h3 id="ストア">ストア</h3>
+      <p><code>M[ x[rs1] + sext(imm) ] = x[rs2] [7?15?31?:0]</code></p>
+      <p>b(byte)/h(halfword)/w(word)で，メモリに書き込む長さを決めます．</p>
+      <h3 id="分岐ジャンプ">分岐・ジャンプ</h3>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

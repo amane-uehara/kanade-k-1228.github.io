@@ -412,74 +412,100 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">リレー</h1>
-                 <p align="right">2021-09-04</p>
-              </header>
+                
+        <!-- Date -->
+                <p align="right">2021-09-04</p>
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#リレーコイルの過渡応答">リレーコイルの過渡応答</a><ul>
 <li><a href="#on-時">ON 時</a></li>
 <li><a href="#off-時">OFF 時</a></li>
 </ul></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\d}[2][ ]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\pd}[2][ ]{\frac{\partial #1}{\partial #2}}
-\newcommand{\L}[1][] {\mathcal{L} \left[ #1 \right]}
-\newcommand{\Linv}[1][] {\mathcal{L}^{-1} \left[ #1 \right]}
-\]</span></p>
-<h2 id="リレーコイルの過渡応答">リレーコイルの過渡応答</h2>
-<p>回路方程式は</p>
-<p><span class="math display">\[
-v(t) = L \d{t} i(t) + ri(t) \\
-v(t) = R \d{t} q(t) + \frac{1}{C}q(t)
-\]</span></p>
-<p>同じ形なので <span class="math inline">\((A,B)=(L,r),(R,1/C)\)</span> として，以下の式を解く．</p>
-<p><span class="math display">\[
-y(t) = A \d{t} x(t) + Bx(t) \\
-Y(s) = A(sX(s)-x(0)) + BX(s) \\
-X(s) = \frac{Y(s)+Ax(0)}{As+B} \\
-x(t) = \Linv[\frac{Y(s)}{As+B}] + x(0) e^{-\frac{B}{A}t}
-\]</span></p>
-<p>初期値の影響は指数で減衰している</p>
-<p><span class="math display">\[
-I(s) = \frac{V(s)+Li(0)}{Ls+r} \\
-Q(s) = \frac{V(s)+Rq(0)}{Rs+\frac{1}{C}}
-\]</span></p>
-<p><span class="math display">\[
-i(t) = \Linv[\frac{V(s)}{Ls+r}] + i(0) e^{-\frac{r}{L}t} \\
-q(t) = \Linv[\frac{V(s)}{Rs+\frac{1}{C}}] + q(0) e^{-\frac{1}{RC}t}
-\]</span></p>
-<h3 id="on-時">ON 時</h3>
-<p>ステップ関数</p>
-<p><span class="math display">\[
-v(t) = Vu(t) \\
-V(s) = \frac{V}{s}
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-i(t) &amp;= \Linv[\frac{V}{s(Ls+r)}] + i(0) e^{-\frac{r}{L}t} \\
-     &amp;= \Linv[\frac{V}{r}\left( \frac{1}{s} - \frac{1}{s+\frac{r}{L}} \right)] \\
-     &amp;= \frac{V}{r}\left(1-e^{-\frac{r}{L}t}\right) + i(0) e^{-\frac{r}{L}t} \\
-q(t) &amp;= \Linv[\frac{V}{s(Rs+\frac{1}{C})}] + q(0) e^{-\frac{1}{RC}t} \\
-     &amp;= VC \left(1-e^{-\frac{1}{RC}t}\right) + q(0) e^{-\frac{1}{RC}t}
-\end{aligned}
-\]</span></p>
-<h3 id="off-時">OFF 時</h3>
-<p>電流条件</p>
-<p><span class="math display">\[
--\d{t} q(t) = i(t) \\
-sQ(s) - q(0) + I(s) = 0 \\
-s\frac{V(s)+Rq(0)}{Rs+\frac{1}{C}} - q(0) + \frac{V(s)+Li(0)}{Ls+r} = 0 \\
-\left( \frac{s}{Rs+\frac{1}{C}} + \frac{1}{Ls+r} \right) V(s) + \left( -\frac{\frac{1}{C}}{Rs+\frac{1}{C}}q(0) + \frac{L}{Ls+r}i(0) \right) = 0 \\
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-V(s) &amp;= \frac{ \frac{\frac{1}{C}}{Rs+\frac{1}{C}}q(0) - \frac{L}{Ls+r}i(0) }{ \frac{s}{Rs+\frac{1}{C}} + \frac{1}{Ls+r} } \\
- &amp;= \frac{\left( \frac{L}{C}q(0) - LRi(0) \right)s + \left(\frac{r}{C}q(0)-\frac{L}{C}i(0)\right)}{Ls^2+(R+r)s+\frac{1}{C}}
-\end{aligned}
-\]</span></p>
+      
+      <p><span class="math display">\[
+      \newcommand{\d}[2][ ]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+      \newcommand{\pd}[2][ ]{\frac{\partial #1}{\partial #2}}
+      \newcommand{\L}[1][] {\mathcal{L} \left[ #1 \right]}
+      \newcommand{\Linv}[1][] {\mathcal{L}^{-1} \left[ #1 \right]}
+      \]</span></p>
+      <h2 id="リレーコイルの過渡応答">リレーコイルの過渡応答</h2>
+      <p>回路方程式は</p>
+      <p><span class="math display">\[
+      v(t) = L \d{t} i(t) + ri(t) \\
+      v(t) = R \d{t} q(t) + \frac{1}{C}q(t)
+      \]</span></p>
+      <p>同じ形なので <span class="math inline">\((A,B)=(L,r),(R,1/C)\)</span> として，以下の式を解く．</p>
+      <p><span class="math display">\[
+      y(t) = A \d{t} x(t) + Bx(t) \\
+      Y(s) = A(sX(s)-x(0)) + BX(s) \\
+      X(s) = \frac{Y(s)+Ax(0)}{As+B} \\
+      x(t) = \Linv[\frac{Y(s)}{As+B}] + x(0) e^{-\frac{B}{A}t}
+      \]</span></p>
+      <p>初期値の影響は指数で減衰している</p>
+      <p><span class="math display">\[
+      I(s) = \frac{V(s)+Li(0)}{Ls+r} \\
+      Q(s) = \frac{V(s)+Rq(0)}{Rs+\frac{1}{C}}
+      \]</span></p>
+      <p><span class="math display">\[
+      i(t) = \Linv[\frac{V(s)}{Ls+r}] + i(0) e^{-\frac{r}{L}t} \\
+      q(t) = \Linv[\frac{V(s)}{Rs+\frac{1}{C}}] + q(0) e^{-\frac{1}{RC}t}
+      \]</span></p>
+      <h3 id="on-時">ON 時</h3>
+      <p>ステップ関数</p>
+      <p><span class="math display">\[
+      v(t) = Vu(t) \\
+      V(s) = \frac{V}{s}
+      \]</span></p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      i(t) &amp;= \Linv[\frac{V}{s(Ls+r)}] + i(0) e^{-\frac{r}{L}t} \\
+           &amp;= \Linv[\frac{V}{r}\left( \frac{1}{s} - \frac{1}{s+\frac{r}{L}} \right)] \\
+           &amp;= \frac{V}{r}\left(1-e^{-\frac{r}{L}t}\right) + i(0) e^{-\frac{r}{L}t} \\
+      q(t) &amp;= \Linv[\frac{V}{s(Rs+\frac{1}{C})}] + q(0) e^{-\frac{1}{RC}t} \\
+           &amp;= VC \left(1-e^{-\frac{1}{RC}t}\right) + q(0) e^{-\frac{1}{RC}t}
+      \end{aligned}
+      \]</span></p>
+      <h3 id="off-時">OFF 時</h3>
+      <p>電流条件</p>
+      <p><span class="math display">\[
+      -\d{t} q(t) = i(t) \\
+      sQ(s) - q(0) + I(s) = 0 \\
+      s\frac{V(s)+Rq(0)}{Rs+\frac{1}{C}} - q(0) + \frac{V(s)+Li(0)}{Ls+r} = 0 \\
+      \left( \frac{s}{Rs+\frac{1}{C}} + \frac{1}{Ls+r} \right) V(s) + \left( -\frac{\frac{1}{C}}{Rs+\frac{1}{C}}q(0) + \frac{L}{Ls+r}i(0) \right) = 0 \\
+      \]</span></p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      V(s) &amp;= \frac{ \frac{\frac{1}{C}}{Rs+\frac{1}{C}}q(0) - \frac{L}{Ls+r}i(0) }{ \frac{s}{Rs+\frac{1}{C}} + \frac{1}{Ls+r} } \\
+       &amp;= \frac{\left( \frac{L}{C}q(0) - LRi(0) \right)s + \left(\frac{r}{C}q(0)-\frac{L}{C}i(0)\right)}{Ls^2+(R+r)s+\frac{1}{C}}
+      \end{aligned}
+      \]</span></p>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

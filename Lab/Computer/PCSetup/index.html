@@ -25,7 +25,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>音楽理論について | Kanade's Website</title>
+          <title>環境構築まとめ | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -347,7 +347,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "音楽理論について",
+            "環境構築まとめ",
           "_blank"
         );
       }
@@ -414,7 +414,7 @@
         </div> <!-- End Top Nav -->
 
         <!-- Title -->
-                <h1 style="margin: 0">音楽理論について</h1>
+                <h1 style="margin: 0">環境構築まとめ</h1>
                 
         <!-- Date -->
         
@@ -440,45 +440,38 @@
  
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#現象論的音楽理論">現象論的音楽理論</a></li>
-<li><a href="#前衛的な作曲">前衛的な作曲</a></li>
-<li><a href="#可能性">可能性</a></li>
-<li><a href="#するめな曲">するめな曲</a></li>
+<li><a href="#os">OS</a><ul>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#ubuntu">Ubuntu</a></li>
+</ul></li>
+<li><a href="#utils">Utils</a><ul>
+<li><a href="#capslock-キーバインドの設定">CapsLock キーバインドの設定</a></li>
+<li><a href="#section"></a></li>
+</ul></li>
 </ul></nav>
       
-      <h2 id="現象論的音楽理論">現象論的音楽理論</h2>
-      <ul>
-      <li>音楽理論は現象の分類である．</li>
-      <li>将来を音楽を予測することはできない．</li>
-      <li>音楽の統一的理論はありえないと感じる</li>
-      </ul>
-      <h2 id="前衛的な作曲">前衛的な作曲</h2>
-      <ul>
-      <li>前衛的な作曲は思考でなく試行である．そして試行の中から原石を発掘し磨く作業である．</li>
-      <li>理論通りの作曲は，分析され理論に組み込まれた作品たちの切り絵である．</li>
-      <li>一方で完全な試行は難しい．
-      <ul>
-      <li>手グセは今までの経験が内化したもので，受け入れ易いフレーズになりがちである．</li>
-      <li>真の試行は自分にとっても受け入れにくいフレーズの繰り返しである．</li>
-      <li>それを何度も繰り返して気持ち悪さの先で感じた心地よさの核心を抽出することで，それが新たな音楽になっているかもしれない．</li>
-      </ul></li>
-      <li>音楽理論は，音楽を制約するものではない．いま奏でられた音が音楽である．音楽はあらゆる音を受け入れる．</li>
-      <li>音に意味を見出すのは聞く人である．心地の良い音楽に一定の傾向があるかもしれない．聞き慣れない音楽が気持ち悪いかもしれない．その中で感じた心地よさを強調する音を探すことが，発掘である．一聴すると違和感があっても，慣れるとその違和感が魅力に変わるスルメのような曲．</li>
-      </ul>
-      <p>現代のポップスをバッハが聞いたらどう思うんだろ？</p>
-      <h2 id="可能性">可能性</h2>
-      <ul>
-      <li>音楽は感覚から、歌詞は思考から聴者に作用する</li>
-      <li>オクターブの概念は支配的だけど，オクターブ感がない曲ってどんなんだろ
-      <ul>
-      <li>雅楽</li>
-      <li>基底と倍音の世界</li>
-      </ul></li>
-      </ul>
-      <h2 id="するめな曲">するめな曲</h2>
-      <h4 id="ショスタコーヴィチ">ショスタコーヴィチ</h4>
-      <p>今なお「違和感」と「心地良さ」のバランスが絶妙に感じられる</p>
-      <h4 id="section"></h4>
+      <h2 id="os">OS</h2>
+      <h3 id="windows">Windows</h3>
+      <p>インストールとセットアップ</p>
+      <ol type="1">
+      <li>インストールメディア作成ツールでブート USB をを作る。</li>
+      <li>BIOS で TPM を有効化。セキュリティのとこにある。</li>
+      <li>BIOS で起動ディスクの優先順位を変更。USB が出てなければ DVD とか iso が読めるやつを選択。</li>
+      <li>USB を挿して電源 ON !</li>
+      <li>プロダクトキーを入力。Microsoft アカウントとの連携を求めてくるが、ネットに接続しなければローカルアカウントを作れる。LAN ケーブルを抜いて。</li>
+      <li>勧めてくる変な機能を OFF にする。</li>
+      </ol>
+      <p>初期アプリの消去</p>
+      <h3 id="ubuntu">Ubuntu</h3>
+      <h2 id="utils">Utils</h2>
+      <h3 id="capslock-キーバインドの設定">CapsLock キーバインドの設定</h3>
+      <p><a href="https://github.com/kanade-k-1228/FcCapsLock">Github/kanae-k-1228/FcCapsLock</a></p>
+      <ol type="1">
+      <li>レジストリの書き換えスクリプトを実行</li>
+      <li>Win + R → shell:startup</li>
+      <li>F13.exe をスタートアップに追加</li>
+      </ol>
+      <h3 id="section"></h3>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

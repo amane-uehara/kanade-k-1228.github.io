@@ -411,55 +411,81 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">熱力学</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#基本法則">基本法則</a></li>
 <li><a href="#マクスウェルの関係式">マクスウェルの関係式</a></li>
 <li><a href="#一般の熱力学的状態方程式">一般の熱力学的状態方程式</a></li>
 </ul></nav>
-       <h2 id="基本法則">基本法則</h2>
-<p>第一法則 <span class="math display">\[ dU = δQ + δW \]</span> 第二法則 <span class="math display">\[ \oint δQ/T \leq 0 \]</span></p>
-<ul>
-<li>準静的 <span class="math display">\[ δW = -pdV \]</span></li>
-<li>可逆 <span class="math display">\[ dS = δQ/T = 0 \]</span></li>
-<li>準静的・可逆 <span class="math display">\[ dU = TdS - pdV \]</span></li>
-<li>物質の増減 <span class="math display">\[ dU = TdS - pdV + \mu dN \]</span></li>
-</ul>
-<h2 id="マクスウェルの関係式">マクスウェルの関係式</h2>
-<ol type="1">
-<li><p>エネルギー <span class="math inline">\(U(S,V)\)</span> <span class="math display">\[ dU = TdS - pdV \]</span></p>
-<p><span class="math display">\[
-dU = \left(\frac{\partial U}{\partial V}\right)dV + \left(\frac{\partial U}{\partial S}\right)dS
-\]</span></p>
-<p>を比較すると，</p>
-<p><span class="math display">\[ -p = \left(\frac{\partial U}{\partial V}\right) \]</span> <span class="math display">\[ T = \left(\frac{\partial U}{\partial S}\right) \]</span></p>
-<p>U が C^2 以上なら二階微分は可換で</p>
-<p><span class="math display">\[
-\left(\frac{\partial p}{\partial S}\right)_V = -\left(\frac{\partial T}{\partial V}\right)_S
-\]</span></p></li>
-<li>ヘルムホルツエネルギー <span class="math inline">\(F(T,V) = U - TS\)</span></li>
-<li><p>ギブスエネルギー <span class="math inline">\(G = U - TS + pV\)</span></p></li>
-</ol>
-<h2 id="一般の熱力学的状態方程式">一般の熱力学的状態方程式</h2>
-<p>エネルギー保存</p>
-<p><span class="math display">\[
-dU=Tds-PdV
-\]</span></p>
-<p><span class="math display">\[
-\left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial S}{\partial V}\right)_T-P
-\]</span></p>
-<p>マクスウェルの関係式</p>
-<p><span class="math display">\[
-\left(\frac{\partial S}{\partial V}\right)_T=\left(\frac{\partial P}{\partial T}\right)_V
-\]</span></p>
-<p>より，</p>
-<p><span class="math display">\[
-\left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial P}{\partial T}\right)_V-P
-\]</span></p>
-<p>※ <span class="math inline">\(U,p,V,T\)</span> の関係式</p>
+      
+      <h2 id="基本法則">基本法則</h2>
+      <p>第一法則 <span class="math display">\[ dU = δQ + δW \]</span> 第二法則 <span class="math display">\[ \oint δQ/T \leq 0 \]</span></p>
+      <ul>
+      <li>準静的 <span class="math display">\[ δW = -pdV \]</span></li>
+      <li>可逆 <span class="math display">\[ dS = δQ/T = 0 \]</span></li>
+      <li>準静的・可逆 <span class="math display">\[ dU = TdS - pdV \]</span></li>
+      <li>物質の増減 <span class="math display">\[ dU = TdS - pdV + \mu dN \]</span></li>
+      </ul>
+      <h2 id="マクスウェルの関係式">マクスウェルの関係式</h2>
+      <ol type="1">
+      <li><p>エネルギー <span class="math inline">\(U(S,V)\)</span> <span class="math display">\[ dU = TdS - pdV \]</span></p>
+      <p><span class="math display">\[
+      dU = \left(\frac{\partial U}{\partial V}\right)dV + \left(\frac{\partial U}{\partial S}\right)dS
+      \]</span></p>
+      <p>を比較すると，</p>
+      <p><span class="math display">\[ -p = \left(\frac{\partial U}{\partial V}\right) \]</span> <span class="math display">\[ T = \left(\frac{\partial U}{\partial S}\right) \]</span></p>
+      <p>U が C^2 以上なら二階微分は可換で</p>
+      <p><span class="math display">\[
+      \left(\frac{\partial p}{\partial S}\right)_V = -\left(\frac{\partial T}{\partial V}\right)_S
+      \]</span></p></li>
+      <li>ヘルムホルツエネルギー <span class="math inline">\(F(T,V) = U - TS\)</span></li>
+      <li><p>ギブスエネルギー <span class="math inline">\(G = U - TS + pV\)</span></p></li>
+      </ol>
+      <h2 id="一般の熱力学的状態方程式">一般の熱力学的状態方程式</h2>
+      <p>エネルギー保存</p>
+      <p><span class="math display">\[
+      dU=Tds-PdV
+      \]</span></p>
+      <p><span class="math display">\[
+      \left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial S}{\partial V}\right)_T-P
+      \]</span></p>
+      <p>マクスウェルの関係式</p>
+      <p><span class="math display">\[
+      \left(\frac{\partial S}{\partial V}\right)_T=\left(\frac{\partial P}{\partial T}\right)_V
+      \]</span></p>
+      <p>より，</p>
+      <p><span class="math display">\[
+      \left(\frac{\partial U}{\partial V}\right)_T=T\left(\frac{\partial P}{\partial T}\right)_V-P
+      \]</span></p>
+      <p>※ <span class="math inline">\(U,p,V,T\)</span> の関係式</p>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">複素解析</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#複素数体">複素数体</a><ul>
 <li><a href="#位相">位相</a></li>
@@ -449,172 +473,174 @@
 <li><a href="#リウビルの基本定理">リウビルの基本定理</a></li>
 </ul></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\O}{\mathcal{O}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\S}{\mathbb{S}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\]</span></p>
-<ul>
-<li>高橋礼司「複素解析」（東京大学出版会）</li>
-</ul>
-<h2 id="複素数体">複素数体</h2>
-<h3 id="位相">位相</h3>
-<p>ユークリッド空間と同じように位相を入れる</p>
-<ul>
-<li>絶対値から距離が作れる</li>
-<li>距離を用いて <span class="math inline">\(\varepsilon\)</span> 近傍 <span class="math inline">\(N_\varepsilon(z)\)</span> が定義できる</li>
-<li>開集合が定義できる</li>
-</ul>
-<h4 id="粗">粗</h4>
-<p><span class="math inline">\(\C\)</span> の部分集合 <span class="math inline">\(D\)</span> が粗であるとは， <span class="math inline">\(D\)</span> の任意の異なる元 <span class="math inline">\(z_1,z_2\)</span> をとったときに十分小さな <span class="math inline">\(\varepsilon\)</span> をとれば</p>
-<p><span class="math display">\[
-N_\varepsilon(z_1) \cap N_\varepsilon(z_2) = \emptyset
-\]</span></p>
-<p>となること．</p>
-<h4 id="コンパクト集合">コンパクト集合</h4>
-<p><span class="math inline">\(\C\)</span> の部分集合 <span class="math inline">\(K\)</span> が以下の（同値な）性質を満たすとき，<span class="math inline">\(K\)</span>はコンパクトであるという．</p>
-<ul>
-<li><span class="math inline">\(K\)</span> の任意の点列は収束する部分列を含む</li>
-<li><span class="math inline">\(K\)</span> は有界な閉集合</li>
-<li>有限個の開集合で覆われている</li>
-<li>有限個の閉集合との積が<span class="math inline">\(\emptyset\)</span>になる</li>
-</ul>
-<h4 id="最大値の存在">最大値の存在</h4>
-<p>コンパクト集合上で定義された実数値連続関数はある点で有限な最大値をとる</p>
-<h4 id="一点コンパクト化">一点コンパクト化</h4>
-<p><span class="math inline">\(\C\)</span> はコンパクトでないが <span class="math inline">\(\C\cup\{\infty\}\)</span> はコンパクト</p>
-<h4 id="リーマン球面">リーマン球面</h4>
-<p><span class="math inline">\(\C\cup\{\infty\}\)</span> と 球面 <span class="math inline">\(\S^2\)</span> には同相写像が作れる</p>
-<h3 id="級数">級数</h3>
-<p>級数 <span class="math inline">\(\sum u_n\)</span> の収束判定法</p>
-<ul>
-<li>Cauchy</li>
-</ul>
-<p><span class="math display">\[
-\lim\sup \sqrt[n]{u_n} &lt; 1
-\]</span></p>
-<ul>
-<li>D’Alembert</li>
-</ul>
-<p><span class="math display">\[
-\lim_{n\rightarrow\infty} \frac{u_{n+1}}{u_n} &lt; 1
-\]</span></p>
-<ul>
-<li>Raabe</li>
-</ul>
-<p><span class="math display">\[
-\lim_{n\rightarrow\infty} n \left(\frac{u_n}{u_{n+1}}-1\right) &gt; 1
-\]</span></p>
-<p>べき級数 <span class="math inline">\(\sum c_n z^n\)</span> の収束半径は</p>
-<p><span class="math display">\[
-R = \lim_{n\rightarrow\infty}\left|\frac{c_n}{c_{n+1}}\right|
-\]</span></p>
-<h3 id="代数的構造">代数的構造</h3>
-<ul>
-<li><span class="math inline">\(\R^n\)</span> に積を定義する</li>
-<li><span class="math inline">\(\C \sim \R^2\)</span>：可換・結合・分配・零因子なし</li>
-<li><span class="math inline">\(H \sim \R^4\)</span>：結合・分配・零因子なし</li>
-<li><span class="math inline">\(O \sim \R^8\)</span>：分配・零因子なし</li>
-</ul>
-<h4 id="frobenius-の定理">Frobenius の定理</h4>
-<p>F は C または H に同形</p>
-<h4 id="bott-milnor-の定理">Bott-Milnor の定理</h4>
-<p><span class="math inline">\(\R^n\)</span>に積（分配・零因子なし）が存在するのは <span class="math inline">\(n=1,2,3,8\)</span> のみ</p>
-<h2 id="解析関数">解析関数</h2>
-<p>解析学で扱う素性が良い関数</p>
-<ul>
-<li>微分可能性・正則性</li>
-<li>冪級数展開可能性</li>
-</ul>
-<p>この強い条件がきれいな理論のベースになってる</p>
-<h3 id="正則関数">正則関数</h3>
-<p>複素関数 <span class="math inline">\(f(z)=X(x,y)+iY(x,y)\)</span> が微分可能である条件</p>
-<p><span class="math display">\[
-\pd[X]{x} = \pd[Y]{y} \quad \pd[X]{y} = -\pd[Y]{x}
-\]</span></p>
-<p>（コーシー・リーマンの関係式）</p>
-<h3 id="正則関数の特徴">正則関数の特徴</h3>
-<ul>
-<li>正則関数 <span class="math inline">\(f(z)\)</span> を微分すると</li>
-</ul>
-<p><span class="math display">\[
-f&#39;(z) = \pd[X]{x} + i \pd[Y]{x} = \pd[Y]{y} - i \pd[X]{y}
-\]</span></p>
-<ul>
-<li>正則関数は <span class="math inline">\(\bar{z}\)</span> に依らない</li>
-</ul>
-<p><span class="math display">\[
-\pd[f]{\bar{z}} = \pd[f]{x} \pd[x]{\bar{z}} + \pd[f]{y} \pd[y]{\bar{z}} = 0
-\]</span></p>
-<ul>
-<li>等角写像</li>
-</ul>
-<h3 id="初等関数の拡張">初等関数の拡張</h3>
-<h4 id="指数関数">指数関数</h4>
-<p><span class="math display">\[
-e^z = e^{x+iy}
-\]</span></p>
-<h4 id="対数関数">対数関数</h4>
-<p><span class="math display">\[
-e^{\log z} = z
-\]</span></p>
-<p><span class="math display">\[
-\log z = \log |z| + i \arg z = \log r + i (\theta + 2n\pi)
-\]</span></p>
-<p>多価関数だが，<span class="math inline">\(\arg\)</span> の範囲を制限して主値をとる．</p>
-<h4 id="三角関数">三角関数</h4>
-<p><span class="math display">\[
-\cos z = \frac{e^{iz}+e^{-iz}}{2} \quad
-\sin z = \frac{e^{iz}-e^{-iz}}{2i}
-\]</span></p>
-<p><span class="math display">\[
-\cos&#39; z = -\sin z \quad
-\sin&#39; z =  \cos z
-\]</span></p>
-<p><span class="math display">\[
-\cos z = \cos x \cosh y - i \sin x \sinh y \quad
-\sin z = \sin x \cosh y + i \cos x \sinh y
-\]</span></p>
-<h2 id="複素積分">複素積分</h2>
-<p>経路 <span class="math inline">\(C(t)\)</span> で積分する</p>
-<h3 id="コーシーの積分定理">コーシーの積分定理</h3>
-<h2 id="級数展開">級数展開</h2>
-<h2 id="フーリエ変換">フーリエ変換</h2>
-<hr />
-<h3 id="解析関数-1">解析関数</h3>
-<h3 id="冪級数で定義される関数">冪級数で定義される関数</h3>
-<p><span class="math display">\[ f(z)=a_0+a_1z+a_2z^2... \]</span></p>
-<p>収束半径 $ $ の円板上で連続，さらに正則である．この関数を形式的に微分した級数</p>
-<p><span class="math display">\[ f&#39;(z)=a_1+a_2z+a_3z^2... \]</span></p>
-<p>も同じ収束半径で正則であるので，再帰的に，何回でも微分可能であることがわかる．</p>
-<h3 id="解析接続">解析接続</h3>
-<p>ある２つの解析関数がある点の近傍で等しければ領域全体で等しい</p>
-<h3 id="零点">零点</h3>
-<ul>
-<li><span class="math inline">\(f(z)=0\)</span> なる点</li>
-<li>零関数以外の正則関数の零点集合は粗</li>
-<li>零点の位数 k : <span class="math display">\[ f(z)=(z-z_0)^kg(z) \quad ( g(z_0) \neq 0 ) \]</span></li>
-<li>微分すると位数は-1</li>
-</ul>
-<h3 id="有理型">有理型</h3>
-<p><span class="math inline">\(f(z)/g(z)\)</span> は分母の零点（極）を除いた領域で解析的となる</p>
-<h2 id="等角写像">等角写像</h2>
-<h3 id="正則関数列">正則関数列</h3>
-<ul>
-<li>H(D)：D 上の正則関数全体の集合</li>
-<li>H は C 上の無限線形空間 → 多元環</li>
-</ul>
-<h3 id="広義一様収束">広義一様収束</h3>
-<h3 id="距離">距離</h3>
-<h2 id="写像としての正則関数">写像としての正則関数</h2>
-<h3 id="ある点近傍">ある点近傍</h3>
-<h2 id="楕円関数">楕円関数</h2>
-<h3 id="リウビルの基本定理">リウビルの基本定理</h3>
+      
+      <p><span class="math display">\[
+      \newcommand{\O}{\mathcal{O}}
+      \newcommand{\R}{\mathbb{R}}
+      \newcommand{\C}{\mathbb{C}}
+      \newcommand{\S}{\mathbb{S}}
+      \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+      \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+      \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+      \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+      \]</span></p>
+      <ul>
+      <li>高橋礼司「複素解析」（東京大学出版会）</li>
+      </ul>
+      <h2 id="複素数体">複素数体</h2>
+      <h3 id="位相">位相</h3>
+      <p>ユークリッド空間と同じように位相を入れる</p>
+      <ul>
+      <li>絶対値から距離が作れる</li>
+      <li>距離を用いて <span class="math inline">\(\varepsilon\)</span> 近傍 <span class="math inline">\(N_\varepsilon(z)\)</span> が定義できる</li>
+      <li>開集合が定義できる</li>
+      </ul>
+      <h4 id="粗">粗</h4>
+      <p><span class="math inline">\(\C\)</span> の部分集合 <span class="math inline">\(D\)</span> が粗であるとは， <span class="math inline">\(D\)</span> の任意の異なる元 <span class="math inline">\(z_1,z_2\)</span> をとったときに十分小さな <span class="math inline">\(\varepsilon\)</span> をとれば</p>
+      <p><span class="math display">\[
+      N_\varepsilon(z_1) \cap N_\varepsilon(z_2) = \emptyset
+      \]</span></p>
+      <p>となること．</p>
+      <h4 id="コンパクト集合">コンパクト集合</h4>
+      <p><span class="math inline">\(\C\)</span> の部分集合 <span class="math inline">\(K\)</span> が以下の（同値な）性質を満たすとき，<span class="math inline">\(K\)</span>はコンパクトであるという．</p>
+      <ul>
+      <li><span class="math inline">\(K\)</span> の任意の点列は収束する部分列を含む</li>
+      <li><span class="math inline">\(K\)</span> は有界な閉集合</li>
+      <li>有限個の開集合で覆われている</li>
+      <li>有限個の閉集合との積が<span class="math inline">\(\emptyset\)</span>になる</li>
+      </ul>
+      <h4 id="最大値の存在">最大値の存在</h4>
+      <p>コンパクト集合上で定義された実数値連続関数はある点で有限な最大値をとる</p>
+      <h4 id="一点コンパクト化">一点コンパクト化</h4>
+      <p><span class="math inline">\(\C\)</span> はコンパクトでないが <span class="math inline">\(\C\cup\{\infty\}\)</span> はコンパクト</p>
+      <h4 id="リーマン球面">リーマン球面</h4>
+      <p><span class="math inline">\(\C\cup\{\infty\}\)</span> と 球面 <span class="math inline">\(\S^2\)</span> には同相写像が作れる</p>
+      <h3 id="級数">級数</h3>
+      <p>級数 <span class="math inline">\(\sum u_n\)</span> の収束判定法</p>
+      <ul>
+      <li>Cauchy</li>
+      </ul>
+      <p><span class="math display">\[
+      \lim\sup \sqrt[n]{u_n} &lt; 1
+      \]</span></p>
+      <ul>
+      <li>D’Alembert</li>
+      </ul>
+      <p><span class="math display">\[
+      \lim_{n\rightarrow\infty} \frac{u_{n+1}}{u_n} &lt; 1
+      \]</span></p>
+      <ul>
+      <li>Raabe</li>
+      </ul>
+      <p><span class="math display">\[
+      \lim_{n\rightarrow\infty} n \left(\frac{u_n}{u_{n+1}}-1\right) &gt; 1
+      \]</span></p>
+      <p>べき級数 <span class="math inline">\(\sum c_n z^n\)</span> の収束半径は</p>
+      <p><span class="math display">\[
+      R = \lim_{n\rightarrow\infty}\left|\frac{c_n}{c_{n+1}}\right|
+      \]</span></p>
+      <h3 id="代数的構造">代数的構造</h3>
+      <ul>
+      <li><span class="math inline">\(\R^n\)</span> に積を定義する</li>
+      <li><span class="math inline">\(\C \sim \R^2\)</span>：可換・結合・分配・零因子なし</li>
+      <li><span class="math inline">\(H \sim \R^4\)</span>：結合・分配・零因子なし</li>
+      <li><span class="math inline">\(O \sim \R^8\)</span>：分配・零因子なし</li>
+      </ul>
+      <h4 id="frobenius-の定理">Frobenius の定理</h4>
+      <p>F は C または H に同形</p>
+      <h4 id="bott-milnor-の定理">Bott-Milnor の定理</h4>
+      <p><span class="math inline">\(\R^n\)</span>に積（分配・零因子なし）が存在するのは <span class="math inline">\(n=1,2,3,8\)</span> のみ</p>
+      <h2 id="解析関数">解析関数</h2>
+      <p>解析学で扱う素性が良い関数</p>
+      <ul>
+      <li>微分可能性・正則性</li>
+      <li>冪級数展開可能性</li>
+      </ul>
+      <p>この強い条件がきれいな理論のベースになってる</p>
+      <h3 id="正則関数">正則関数</h3>
+      <p>複素関数 <span class="math inline">\(f(z)=X(x,y)+iY(x,y)\)</span> が微分可能である条件</p>
+      <p><span class="math display">\[
+      \pd[X]{x} = \pd[Y]{y} \quad \pd[X]{y} = -\pd[Y]{x}
+      \]</span></p>
+      <p>（コーシー・リーマンの関係式）</p>
+      <h3 id="正則関数の特徴">正則関数の特徴</h3>
+      <ul>
+      <li>正則関数 <span class="math inline">\(f(z)\)</span> を微分すると</li>
+      </ul>
+      <p><span class="math display">\[
+      f&#39;(z) = \pd[X]{x} + i \pd[Y]{x} = \pd[Y]{y} - i \pd[X]{y}
+      \]</span></p>
+      <ul>
+      <li>正則関数は <span class="math inline">\(\bar{z}\)</span> に依らない</li>
+      </ul>
+      <p><span class="math display">\[
+      \pd[f]{\bar{z}} = \pd[f]{x} \pd[x]{\bar{z}} + \pd[f]{y} \pd[y]{\bar{z}} = 0
+      \]</span></p>
+      <ul>
+      <li>等角写像</li>
+      </ul>
+      <h3 id="初等関数の拡張">初等関数の拡張</h3>
+      <h4 id="指数関数">指数関数</h4>
+      <p><span class="math display">\[
+      e^z = e^{x+iy}
+      \]</span></p>
+      <h4 id="対数関数">対数関数</h4>
+      <p><span class="math display">\[
+      e^{\log z} = z
+      \]</span></p>
+      <p><span class="math display">\[
+      \log z = \log |z| + i \arg z = \log r + i (\theta + 2n\pi)
+      \]</span></p>
+      <p>多価関数だが，<span class="math inline">\(\arg\)</span> の範囲を制限して主値をとる．</p>
+      <h4 id="三角関数">三角関数</h4>
+      <p><span class="math display">\[
+      \cos z = \frac{e^{iz}+e^{-iz}}{2} \quad
+      \sin z = \frac{e^{iz}-e^{-iz}}{2i}
+      \]</span></p>
+      <p><span class="math display">\[
+      \cos&#39; z = -\sin z \quad
+      \sin&#39; z =  \cos z
+      \]</span></p>
+      <p><span class="math display">\[
+      \cos z = \cos x \cosh y - i \sin x \sinh y \quad
+      \sin z = \sin x \cosh y + i \cos x \sinh y
+      \]</span></p>
+      <h2 id="複素積分">複素積分</h2>
+      <p>経路 <span class="math inline">\(C(t)\)</span> で積分する</p>
+      <h3 id="コーシーの積分定理">コーシーの積分定理</h3>
+      <h2 id="級数展開">級数展開</h2>
+      <h2 id="フーリエ変換">フーリエ変換</h2>
+      <hr />
+      <h3 id="解析関数-1">解析関数</h3>
+      <h3 id="冪級数で定義される関数">冪級数で定義される関数</h3>
+      <p><span class="math display">\[ f(z)=a_0+a_1z+a_2z^2... \]</span></p>
+      <p>収束半径 $ $ の円板上で連続，さらに正則である．この関数を形式的に微分した級数</p>
+      <p><span class="math display">\[ f&#39;(z)=a_1+a_2z+a_3z^2... \]</span></p>
+      <p>も同じ収束半径で正則であるので，再帰的に，何回でも微分可能であることがわかる．</p>
+      <h3 id="解析接続">解析接続</h3>
+      <p>ある２つの解析関数がある点の近傍で等しければ領域全体で等しい</p>
+      <h3 id="零点">零点</h3>
+      <ul>
+      <li><span class="math inline">\(f(z)=0\)</span> なる点</li>
+      <li>零関数以外の正則関数の零点集合は粗</li>
+      <li>零点の位数 k : <span class="math display">\[ f(z)=(z-z_0)^kg(z) \quad ( g(z_0) \neq 0 ) \]</span></li>
+      <li>微分すると位数は-1</li>
+      </ul>
+      <h3 id="有理型">有理型</h3>
+      <p><span class="math inline">\(f(z)/g(z)\)</span> は分母の零点（極）を除いた領域で解析的となる</p>
+      <h2 id="等角写像">等角写像</h2>
+      <h3 id="正則関数列">正則関数列</h3>
+      <ul>
+      <li>H(D)：D 上の正則関数全体の集合</li>
+      <li>H は C 上の無限線形空間 → 多元環</li>
+      </ul>
+      <h3 id="広義一様収束">広義一様収束</h3>
+      <h3 id="距離">距離</h3>
+      <h2 id="写像としての正則関数">写像としての正則関数</h2>
+      <h3 id="ある点近傍">ある点近傍</h3>
+      <h2 id="楕円関数">楕円関数</h2>
+      <h3 id="リウビルの基本定理">リウビルの基本定理</h3>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

@@ -26,7 +26,7 @@
       href="https://avatars.githubusercontent.com/u/54773334"
     />
         <meta name="dcterms.date" content="2021/10/28" />
-          <title>Windows 11 に移行しました | Kanade's Website</title>
+          <title>Windows 11 に移行した | Kanade's Website</title>
     <style>
       body {
         margin: 0;
@@ -348,7 +348,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "Windows 11 に移行しました",
+            "Windows 11 に移行した",
           "_blank"
         );
       }
@@ -412,11 +412,35 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
-                <h1 style="margin: 0">Windows 11 に移行しました</h1>
-                 <p align="right">2021/10/28</p>
-              </header>
+        <!-- Title -->
+                <h1 style="margin: 0">Windows 11 に移行した</h1>
+                
+        <!-- Date -->
+                <p align="right">2021/10/28</p>
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#windows-11">Windows 11 !!!</a></li>
 <li><a href="#os-のインストール">OS のインストール</a></li>
@@ -424,71 +448,73 @@
 <li><a href="#アプリインストール">アプリインストール</a></li>
 <li><a href="#開発環境の構築">開発環境の構築</a></li>
 </ul></nav>
-       <h2 id="windows-11">Windows 11 !!!</h2>
-<ul>
-<li>WSL の GUI ! xeyes !</li>
-<li>Windows Terminal がデフォで入ってるやんいいね</li>
-</ul>
-<h2 id="os-のインストール">OS のインストール</h2>
-<ol type="1">
-<li>マシンを用意します</li>
-</ol>
-<table>
-<tbody>
-<tr class="odd">
-<td>CPU</td>
-<td>Intel Core i5 10th gen 10400</td>
-</tr>
-<tr class="even">
-<td>Memory</td>
-<td>16G</td>
-</tr>
-<tr class="odd">
-<td>MotherBoard</td>
-<td>MSI</td>
-</tr>
-<tr class="even">
-<td>SSD</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li><p>別の Windows マシンで Microsoft のツールを使ってインストール用の USB を作成します</p></li>
-<li><p>BIOS を開いて TPM を有効化します．セキュリティのところにあるよ</p></li>
-<li><p>起動ディスクの優先順位を変更．DVD のアイコンを先頭に持ってくる</p></li>
-<li><p>USB を挿して電源 ON ! … ようこそ</p></li>
-</ol>
-<h2 id="禊">禊</h2>
-<ol type="1">
-<li><p>転がってるパソコンからプロダクトキーを剥ぎ取って入力 …</p></li>
-<li><p>変な機能は全部 OFF</p></li>
-<li><p>じゃけんデフォルトアプリを消しましょうね～</p></li>
-</ol>
-<pre><code>Get-AppxPackage [アプリ名] | Remove-AppxPackage</code></pre>
-<p>「はじめに」がどれかわからん……</p>
-<h2 id="アプリインストール">アプリインストール</h2>
-<p>これすき（）</p>
-<p><img src="./firefox.png" /></p>
-<ul>
-<li>Microsoft Store から
-<ul>
-<li>VSCode</li>
-<li>Discord</li>
-<li>Slack</li>
-<li>Line</li>
-<li>Ubuntu 20.04</li>
-</ul></li>
-<li>Chrome</li>
-<li>Firefox</li>
-<li>WSL
-<ul>
-<li>ｷﾀｷﾀｷﾀｷﾀ</li>
-<li><code>wsl --install</code></li>
-</ul></li>
-<li>Steam</li>
-</ul>
-<h2 id="開発環境の構築">開発環境の構築</h2>
+      
+      <h2 id="windows-11">Windows 11 !!!</h2>
+      <ul>
+      <li>WSL の GUI ! xeyes !</li>
+      <li>Windows Terminal がデフォで入ってるやんいいね</li>
+      </ul>
+      <h2 id="os-のインストール">OS のインストール</h2>
+      <ol type="1">
+      <li>マシンを用意します</li>
+      </ol>
+      <table>
+      <tbody>
+      <tr class="odd">
+      <td>CPU</td>
+      <td>Intel Core i5 10th gen 10400</td>
+      </tr>
+      <tr class="even">
+      <td>Memory</td>
+      <td>16G</td>
+      </tr>
+      <tr class="odd">
+      <td>MotherBoard</td>
+      <td>MSI</td>
+      </tr>
+      <tr class="even">
+      <td>SSD</td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+      <ol start="2" type="1">
+      <li><p>別の Windows マシンで Microsoft のツールを使ってインストール用の USB を作成します</p></li>
+      <li><p>BIOS を開いて TPM を有効化します．セキュリティのところにあるよ</p></li>
+      <li><p>起動ディスクの優先順位を変更．DVD のアイコンを先頭に持ってくる</p></li>
+      <li><p>USB を挿して電源 ON ! … ようこそ</p></li>
+      </ol>
+      <h2 id="禊">禊</h2>
+      <ol type="1">
+      <li><p>転がってるパソコンからプロダクトキーを剥ぎ取って入力 …</p></li>
+      <li><p>変な機能は全部 OFF</p></li>
+      <li><p>じゃけんデフォルトアプリを消しましょうね～</p></li>
+      </ol>
+      <pre><code>Get-AppxPackage [アプリ名] | Remove-AppxPackage</code></pre>
+      <p>「はじめに」がどれかわからん……</p>
+      <h2 id="アプリインストール">アプリインストール</h2>
+      <p>これすき（）</p>
+      <p><img src="./firefox.png" /></p>
+      <ul>
+      <li>Microsoft Store から
+      <ul>
+      <li>VSCode</li>
+      <li>Discord</li>
+      <li>Slack</li>
+      <li>Line</li>
+      <li>Ubuntu 20.04</li>
+      </ul></li>
+      <li>Chrome</li>
+      <li>Firefox</li>
+      <li>WSL
+      <ul>
+      <li>ｷﾀｷﾀｷﾀｷﾀ</li>
+      <li><code>wsl --install</code></li>
+      </ul></li>
+      <li>Steam</li>
+      </ul>
+      <h2 id="開発環境の構築">開発環境の構築</h2>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

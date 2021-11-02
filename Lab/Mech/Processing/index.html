@@ -411,122 +411,148 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">加工</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#切削">切削</a></li>
 <li><a href="#熱変形">熱変形</a></li>
 <li><a href="#nc">NC</a></li>
 </ul></nav>
-       <h2 id="切削">切削</h2>
-<h2 id="熱変形">熱変形</h2>
-<p>加工機から出る熱で加工機が曲がって精度が落ちる</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th></th>
-<th>鋳鉄</th>
-<th>鋼</th>
-<th>インバー</th>
-<th>グラファイト</th>
-<th>エポキシ，レジンコンクリート</th>
-<th>アルミナセラミック</th>
-<th></th>
-<th>ゼロデュール</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ヤング率</td>
-<td></td>
-<td>100</td>
-<td>210</td>
-<td>140</td>
-<td>40</td>
-<td>33</td>
-<td>240</td>
-<td>91</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>密度</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>比剛性</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>対数減衰率</td>
-<td>振動応答</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>線膨張係数</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>熱伝導率</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>温度伝導率</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="nc">NC</h2>
-<p>Gコードで加工機を動かす</p>
+      
+      <h2 id="切削">切削</h2>
+      <h2 id="熱変形">熱変形</h2>
+      <p>加工機から出る熱で加工機が曲がって精度が落ちる</p>
+      <table>
+      <thead>
+      <tr class="header">
+      <th></th>
+      <th></th>
+      <th>鋳鉄</th>
+      <th>鋼</th>
+      <th>インバー</th>
+      <th>グラファイト</th>
+      <th>エポキシ，レジンコンクリート</th>
+      <th>アルミナセラミック</th>
+      <th></th>
+      <th>ゼロデュール</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>ヤング率</td>
+      <td></td>
+      <td>100</td>
+      <td>210</td>
+      <td>140</td>
+      <td>40</td>
+      <td>33</td>
+      <td>240</td>
+      <td>91</td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>密度</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>比剛性</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>対数減衰率</td>
+      <td>振動応答</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>線膨張係数</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="even">
+      <td>熱伝導率</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr class="odd">
+      <td>温度伝導率</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+      <h2 id="nc">NC</h2>
+      <p>Gコードで加工機を動かす</p>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

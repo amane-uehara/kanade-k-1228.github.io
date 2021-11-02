@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">コンセプトスケッチ</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#描き方">描き方</a></li>
 <li><a href="#パース">パース</a></li>
@@ -423,37 +447,39 @@
 <li><a href="#部屋の中">部屋の中</a></li>
 </ul></li>
 </ul></nav>
-       <ul>
-<li>人が見た時の印象を表現する
-<ul>
-<li>CAD と実物が違うやつ</li>
-</ul></li>
-<li>記号化された表現</li>
-</ul>
-<h2 id="描き方">描き方</h2>
-<ul>
-<li>指の関節群 → 手首 → 肘 → 肩 のリンク機構でペンを動かす</li>
-<li>格子を描いてゲインを調整する</li>
-<li>コピック
-<ul>
-<li>飽和して均一の色になるすごいマーカーペン</li>
-</ul></li>
-</ul>
-<h2 id="パース">パース</h2>
-<ul>
-<li>パースのつけかたで，視点・サイズ感が変わる</li>
-</ul>
-<h2 id="陰影">陰影</h2>
-<ul>
-<li>環境光がテクスチャに反射して陰影として見える</li>
-<li>環境によって陰影は変わる</li>
-<li>いろんな環境での陰影を観察する</li>
-</ul>
-<h3 id="砂漠の中">砂漠の中</h3>
-<p>外にあるものは ↓ みたいな環境を前提として描く</p>
-<p><img src="./unity.png" /></p>
-<p>凸面と凹面</p>
-<h3 id="部屋の中">部屋の中</h3>
+      
+      <ul>
+      <li>人が見た時の印象を表現する
+      <ul>
+      <li>CAD と実物が違うやつ</li>
+      </ul></li>
+      <li>記号化された表現</li>
+      </ul>
+      <h2 id="描き方">描き方</h2>
+      <ul>
+      <li>指の関節群 → 手首 → 肘 → 肩 のリンク機構でペンを動かす</li>
+      <li>格子を描いてゲインを調整する</li>
+      <li>コピック
+      <ul>
+      <li>飽和して均一の色になるすごいマーカーペン</li>
+      </ul></li>
+      </ul>
+      <h2 id="パース">パース</h2>
+      <ul>
+      <li>パースのつけかたで，視点・サイズ感が変わる</li>
+      </ul>
+      <h2 id="陰影">陰影</h2>
+      <ul>
+      <li>環境光がテクスチャに反射して陰影として見える</li>
+      <li>環境によって陰影は変わる</li>
+      <li>いろんな環境での陰影を観察する</li>
+      </ul>
+      <h3 id="砂漠の中">砂漠の中</h3>
+      <p>外にあるものは ↓ みたいな環境を前提として描く</p>
+      <p><img src="./unity.png" /></p>
+      <p>凸面と凹面</p>
+      <h3 id="部屋の中">部屋の中</h3>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

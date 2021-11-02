@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">相対論的量子力学</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#ディラック方程式">ディラック方程式</a><ul>
 <li><a href="#シュレディンガー方程式との対応">シュレディンガー方程式との対応</a></li>
@@ -435,142 +459,144 @@
 <li><a href="#ガンマ行列">ガンマ行列</a></li>
 </ul></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\bra}[1]{\left\langle #1 \right|}
-\newcommand{\ket}[1]{\left|#1 \right\rangle}
-\newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-\]</span></p>
-<ul>
-<li>特殊相対性原理に従う</li>
-<li><span class="math inline">\(c\rightarrow\inf\)</span> の極限で</li>
-</ul>
-<h2 id="ディラック方程式">ディラック方程式</h2>
-<p><span class="math display">\[
-\left[i\hbar \gamma^\mu \pd{x^\mu}-mc\right] \psi(x) = 0 \tag{1}
-\]</span></p>
-<h3 id="シュレディンガー方程式との対応">シュレディンガー方程式との対応</h3>
-<p><span class="math display">\[
-i \hbar \pd{t} \psi = H \psi \tag{2}
-\]</span></p>
-<p><span class="math display">\[
-H = \gamma^0 mc^2 + \gamma^0\gamma^i (-i\hbar \nabla)_i c \tag{3}
-\]</span></p>
-<h3 id="エネルギー">エネルギー</h3>
-<p>ハミルトニアンの固有関数を求めたい</p>
-<p><span class="math display">\[
-H\tilde{\psi}(x,E) = E\tilde{\psi}(x,E) \tag{4}
-\]</span></p>
-<ol type="1">
-<li>エネルギー固有状態の時間発展は (2) より</li>
-</ol>
-<p><span class="math display">\[
-\psi(x,t) = \tilde{\psi}(x,E)e^{-iEt/\hbar} \tag{5}
-\]</span></p>
-<ol start="2" type="1">
-<li>運動量演算子 <span class="math inline">\(p=-i\hbar \nabla\)</span> はハミルトニアンと可換なので同時固有関数が存在する</li>
-</ol>
-<p><span class="math display">\[
-\psi(x,t) = \omega(p,E) e^{i(p\cdot x-Et)/\hbar} \tag{6}
-\]</span></p>
-<ol start="2" type="1">
-<li>に (6) を代入して両辺 <span class="math inline">\(E+\gamma mc^2+mc^2\gamma\gamma^i\)</span> をかけて</li>
-</ol>
-<p><span class="math display">\[
-(E^2-m^2c^4-p^2c^2)\omega(p,E)=0
-\]</span></p>
-<blockquote>
-<p><span class="math display">\[
-E^2 = m^2c^4 + p^2c^2
-\]</span></p>
-</blockquote>
-<ul>
-<li>エネルギー固有値は無限スペクトル</li>
-<li>エネルギー固有値に対して運動量は自由度が残る
-<ul>
-<li>向きの 2 自由度が残る</li>
-</ul></li>
-</ul>
-<h4 id="p0-静止"><span class="math inline">\(p=0\)</span> （静止）</h4>
-<p><span class="math display">\[
-(E-mc^2\gamma^0)\omega(0,E)=0
-\]</span></p>
-<p><span class="math display">\[
-\begin{pmatrix} E-mc^2 &amp; \\ &amp; E+mc^2 \end{pmatrix} 
-\begin{pmatrix} \varphi \\ \zeta \end{pmatrix} = 0
-\]</span></p>
-<p><span class="math display">\[
-\psi(x,t) = \begin{cases}
-\begin{pmatrix} \chi \\ 0  \end{pmatrix} e^{-imc^2t/\hbar} &amp; (E=mc^2) \\
-\begin{pmatrix} 0 \\ \chi  \end{pmatrix} e^{imc^2t/\hbar} &amp; (E=-mc^2) \\ 
-\end{cases} \\
-\chi = \begin{pmatrix} \chi_+ \\ \chi_- \\ \end{pmatrix}
-\]</span></p>
-<ul>
-<li>正エネルギー解と負エネルギー解がある</li>
-<li><span class="math inline">\(\chi_+,\chi_-\)</span> が残るがこの自由度がスピン</li>
-</ul>
-<h4 id="pneq-0"><span class="math inline">\(p\neq 0\)</span></h4>
-<p><span class="math display">\[
-\begin{pmatrix} E-mc^2 &amp; -\sigma \cdot p c \\ -\sigma \cdot p c &amp; E+mc^2 \end{pmatrix} 
-\begin{pmatrix} \varphi \\ \zeta \end{pmatrix} = 0
-\]</span></p>
-<p><span class="math display">\[
-\psi(x,t) = \begin{cases}
-\begin{pmatrix} \chi \\ \frac{\sigma\cdot p c}{E+mc^2} \chi \end{pmatrix} e^{i(p\cdot x-Et)/\hbar} &amp; (E&gt;mc^2) \\
-\begin{pmatrix} \frac{\sigma\cdot p c}{E-mc^2} \chi \\ \chi \end{pmatrix} e^{i(p\cdot x-Et)/\hbar} &amp; (E&lt;-mc^2) \\ 
-\end{cases} \\
-\chi = \begin{pmatrix} \chi_+ \\ \chi_- \\ \end{pmatrix}
-\]</span></p>
-<ul>
-<li>動くと反対の成分が付随して生じる</li>
-</ul>
-<h3 id="ローレンツ変換不変性">ローレンツ変換不変性</h3>
-<p><span class="math inline">\(\psi(x)\rightarrow\psi&#39;(x&#39;)\)</span> に対してディラック方程式がどうなるか</p>
-<h4 id="連続変換">連続変換</h4>
-<h4 id="反転変換">反転変換</h4>
-<h3 id="エネルギー-1">エネルギー</h3>
-<p>相対論のエネルギー式</p>
-<p><span class="math display">\[
-E^2 = m^2c^4 + p^2c^2
-\]</span></p>
-<h2 id="反粒子">反粒子</h2>
-<h3 id="負エネルギー解">負エネルギー解</h3>
-<h4 id="時間逆行する粒子">時間逆行する粒子</h4>
-<h2 id="スピン">スピン</h2>
-<h2 id="量子場">量子場</h2>
-<p>1粒子系の波動関数は状態 <span class="math inline">\(\alpha\)</span> に対して</p>
-<p><span class="math display">\[
-\psi_\alpha(x)=\braket{x}{\alpha}
-\]</span></p>
-<p>量子場とは演算子 <span class="math inline">\(\hat{\psi}(x)\)</span></p>
-<p><span class="math display">\[
-\psi_\alpha(x)=\braket{x}{\alpha}
-\]</span></p>
-<h2 id="ディラック場">ディラック場</h2>
-<h2 id="生成消滅演算子">生成消滅演算子</h2>
-<h2 id="cpt定理">CPT定理</h2>
-<h2 id="スピノルの数学">スピノルの数学</h2>
-<h3 id="パウリ行列">パウリ行列</h3>
-<h3 id="ガンマ行列">ガンマ行列</h3>
-<p><span class="math display">\[
-\gamma^0 = \begin{pmatrix}
-1 &amp; 0 \\ 0 &amp; -1
-\end{pmatrix}
-\gamma^i = \begin{pmatrix}
-0 &amp; \sigma_i \\ -\sigma_i &amp; 0
-\end{pmatrix}
-\]</span></p>
-<h4 id="性質">性質</h4>
-<p><span class="math display">\[
-\begin{aligned}
-\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu &amp;= g^{\mu\nu} \\
-(\gamma^\mu)^\dagger &amp;= g_\mu^\mu\gamma^\mu \\
-(\gamma^\mu)^2 &amp;= g_\mu^\mu \\
-\gamma^\mu\gamma^\nu &amp;= -\gamma^\nu\gamma^\mu  
-\end{aligned}
-\]</span></p>
+      
+      <p><span class="math display">\[
+      \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+      \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+      \newcommand{\bra}[1]{\left\langle #1 \right|}
+      \newcommand{\ket}[1]{\left|#1 \right\rangle}
+      \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+      \]</span></p>
+      <ul>
+      <li>特殊相対性原理に従う</li>
+      <li><span class="math inline">\(c\rightarrow\inf\)</span> の極限で</li>
+      </ul>
+      <h2 id="ディラック方程式">ディラック方程式</h2>
+      <p><span class="math display">\[
+      \left[i\hbar \gamma^\mu \pd{x^\mu}-mc\right] \psi(x) = 0 \tag{1}
+      \]</span></p>
+      <h3 id="シュレディンガー方程式との対応">シュレディンガー方程式との対応</h3>
+      <p><span class="math display">\[
+      i \hbar \pd{t} \psi = H \psi \tag{2}
+      \]</span></p>
+      <p><span class="math display">\[
+      H = \gamma^0 mc^2 + \gamma^0\gamma^i (-i\hbar \nabla)_i c \tag{3}
+      \]</span></p>
+      <h3 id="エネルギー">エネルギー</h3>
+      <p>ハミルトニアンの固有関数を求めたい</p>
+      <p><span class="math display">\[
+      H\tilde{\psi}(x,E) = E\tilde{\psi}(x,E) \tag{4}
+      \]</span></p>
+      <ol type="1">
+      <li>エネルギー固有状態の時間発展は (2) より</li>
+      </ol>
+      <p><span class="math display">\[
+      \psi(x,t) = \tilde{\psi}(x,E)e^{-iEt/\hbar} \tag{5}
+      \]</span></p>
+      <ol start="2" type="1">
+      <li>運動量演算子 <span class="math inline">\(p=-i\hbar \nabla\)</span> はハミルトニアンと可換なので同時固有関数が存在する</li>
+      </ol>
+      <p><span class="math display">\[
+      \psi(x,t) = \omega(p,E) e^{i(p\cdot x-Et)/\hbar} \tag{6}
+      \]</span></p>
+      <ol start="2" type="1">
+      <li>に (6) を代入して両辺 <span class="math inline">\(E+\gamma mc^2+mc^2\gamma\gamma^i\)</span> をかけて</li>
+      </ol>
+      <p><span class="math display">\[
+      (E^2-m^2c^4-p^2c^2)\omega(p,E)=0
+      \]</span></p>
+      <blockquote>
+      <p><span class="math display">\[
+      E^2 = m^2c^4 + p^2c^2
+      \]</span></p>
+      </blockquote>
+      <ul>
+      <li>エネルギー固有値は無限スペクトル</li>
+      <li>エネルギー固有値に対して運動量は自由度が残る
+      <ul>
+      <li>向きの 2 自由度が残る</li>
+      </ul></li>
+      </ul>
+      <h4 id="p0-静止"><span class="math inline">\(p=0\)</span> （静止）</h4>
+      <p><span class="math display">\[
+      (E-mc^2\gamma^0)\omega(0,E)=0
+      \]</span></p>
+      <p><span class="math display">\[
+      \begin{pmatrix} E-mc^2 &amp; \\ &amp; E+mc^2 \end{pmatrix} 
+      \begin{pmatrix} \varphi \\ \zeta \end{pmatrix} = 0
+      \]</span></p>
+      <p><span class="math display">\[
+      \psi(x,t) = \begin{cases}
+      \begin{pmatrix} \chi \\ 0  \end{pmatrix} e^{-imc^2t/\hbar} &amp; (E=mc^2) \\
+      \begin{pmatrix} 0 \\ \chi  \end{pmatrix} e^{imc^2t/\hbar} &amp; (E=-mc^2) \\ 
+      \end{cases} \\
+      \chi = \begin{pmatrix} \chi_+ \\ \chi_- \\ \end{pmatrix}
+      \]</span></p>
+      <ul>
+      <li>正エネルギー解と負エネルギー解がある</li>
+      <li><span class="math inline">\(\chi_+,\chi_-\)</span> が残るがこの自由度がスピン</li>
+      </ul>
+      <h4 id="pneq-0"><span class="math inline">\(p\neq 0\)</span></h4>
+      <p><span class="math display">\[
+      \begin{pmatrix} E-mc^2 &amp; -\sigma \cdot p c \\ -\sigma \cdot p c &amp; E+mc^2 \end{pmatrix} 
+      \begin{pmatrix} \varphi \\ \zeta \end{pmatrix} = 0
+      \]</span></p>
+      <p><span class="math display">\[
+      \psi(x,t) = \begin{cases}
+      \begin{pmatrix} \chi \\ \frac{\sigma\cdot p c}{E+mc^2} \chi \end{pmatrix} e^{i(p\cdot x-Et)/\hbar} &amp; (E&gt;mc^2) \\
+      \begin{pmatrix} \frac{\sigma\cdot p c}{E-mc^2} \chi \\ \chi \end{pmatrix} e^{i(p\cdot x-Et)/\hbar} &amp; (E&lt;-mc^2) \\ 
+      \end{cases} \\
+      \chi = \begin{pmatrix} \chi_+ \\ \chi_- \\ \end{pmatrix}
+      \]</span></p>
+      <ul>
+      <li>動くと反対の成分が付随して生じる</li>
+      </ul>
+      <h3 id="ローレンツ変換不変性">ローレンツ変換不変性</h3>
+      <p><span class="math inline">\(\psi(x)\rightarrow\psi&#39;(x&#39;)\)</span> に対してディラック方程式がどうなるか</p>
+      <h4 id="連続変換">連続変換</h4>
+      <h4 id="反転変換">反転変換</h4>
+      <h3 id="エネルギー-1">エネルギー</h3>
+      <p>相対論のエネルギー式</p>
+      <p><span class="math display">\[
+      E^2 = m^2c^4 + p^2c^2
+      \]</span></p>
+      <h2 id="反粒子">反粒子</h2>
+      <h3 id="負エネルギー解">負エネルギー解</h3>
+      <h4 id="時間逆行する粒子">時間逆行する粒子</h4>
+      <h2 id="スピン">スピン</h2>
+      <h2 id="量子場">量子場</h2>
+      <p>1粒子系の波動関数は状態 <span class="math inline">\(\alpha\)</span> に対して</p>
+      <p><span class="math display">\[
+      \psi_\alpha(x)=\braket{x}{\alpha}
+      \]</span></p>
+      <p>量子場とは演算子 <span class="math inline">\(\hat{\psi}(x)\)</span></p>
+      <p><span class="math display">\[
+      \psi_\alpha(x)=\braket{x}{\alpha}
+      \]</span></p>
+      <h2 id="ディラック場">ディラック場</h2>
+      <h2 id="生成消滅演算子">生成消滅演算子</h2>
+      <h2 id="cpt定理">CPT定理</h2>
+      <h2 id="スピノルの数学">スピノルの数学</h2>
+      <h3 id="パウリ行列">パウリ行列</h3>
+      <h3 id="ガンマ行列">ガンマ行列</h3>
+      <p><span class="math display">\[
+      \gamma^0 = \begin{pmatrix}
+      1 &amp; 0 \\ 0 &amp; -1
+      \end{pmatrix}
+      \gamma^i = \begin{pmatrix}
+      0 &amp; \sigma_i \\ -\sigma_i &amp; 0
+      \end{pmatrix}
+      \]</span></p>
+      <h4 id="性質">性質</h4>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu &amp;= g^{\mu\nu} \\
+      (\gamma^\mu)^\dagger &amp;= g_\mu^\mu\gamma^\mu \\
+      (\gamma^\mu)^2 &amp;= g_\mu^\mu \\
+      \gamma^\mu\gamma^\nu &amp;= -\gamma^\nu\gamma^\mu  
+      \end{aligned}
+      \]</span></p>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

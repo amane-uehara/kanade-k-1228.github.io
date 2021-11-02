@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">解析力学</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#ラグランジュの力学">ラグランジュの力学</a><ul>
 <li><a href="#ラグランジュの運動方程式">ラグランジュの運動方程式</a></li>
@@ -427,30 +451,32 @@
 <li><a href="#電磁気の正準方程式">電磁気の正準方程式</a></li>
 <li><a href="#量子化">量子化</a></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\d}[2][ ]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\pd}[2][ ]{\frac{\partial #1}{\partial #2}}
-\]</span></p>
-<h2 id="ラグランジュの力学">ラグランジュの力学</h2>
-<h3 id="ラグランジュの運動方程式">ラグランジュの運動方程式</h3>
-<p><span class="math display">\[
-\d{t}\left\{\pd[L]{\dot{q}_i}\right\}-\pd[L]{q_i}=f_i
-\]</span></p>
-<h2 id="ハミルトンの力学">ハミルトンの力学</h2>
-<h3 id="一般化運動量">一般化運動量</h3>
-<p><span class="math display">\[
-p_i := \pd[L]{\dot{q}_i}
-\]</span></p>
-<h3 id="ハミルトニアン">ハミルトニアン</h3>
-<p><span class="math display">\[
-H(q_i,p_i,t) := p_iq_i - L
-\]</span></p>
-<h3 id="ハミルトンの運動方程式">ハミルトンの運動方程式</h3>
-<p><span class="math display">\[
-\dot{q_i}=\frac{\partial H}{\partial p_i}, \quad \dot{p_i} = -\frac{\partial H}{\partial q_i}
-\]</span></p>
-<h2 id="電磁気の正準方程式">電磁気の正準方程式</h2>
-<h2 id="量子化">量子化</h2>
+      
+      <p><span class="math display">\[
+      \newcommand{\d}[2][ ]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+      \newcommand{\pd}[2][ ]{\frac{\partial #1}{\partial #2}}
+      \]</span></p>
+      <h2 id="ラグランジュの力学">ラグランジュの力学</h2>
+      <h3 id="ラグランジュの運動方程式">ラグランジュの運動方程式</h3>
+      <p><span class="math display">\[
+      \d{t}\left\{\pd[L]{\dot{q}_i}\right\}-\pd[L]{q_i}=f_i
+      \]</span></p>
+      <h2 id="ハミルトンの力学">ハミルトンの力学</h2>
+      <h3 id="一般化運動量">一般化運動量</h3>
+      <p><span class="math display">\[
+      p_i := \pd[L]{\dot{q}_i}
+      \]</span></p>
+      <h3 id="ハミルトニアン">ハミルトニアン</h3>
+      <p><span class="math display">\[
+      H(q_i,p_i,t) := p_iq_i - L
+      \]</span></p>
+      <h3 id="ハミルトンの運動方程式">ハミルトンの運動方程式</h3>
+      <p><span class="math display">\[
+      \dot{q_i}=\frac{\partial H}{\partial p_i}, \quad \dot{p_i} = -\frac{\partial H}{\partial q_i}
+      \]</span></p>
+      <h2 id="電磁気の正準方程式">電磁気の正準方程式</h2>
+      <h2 id="量子化">量子化</h2>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

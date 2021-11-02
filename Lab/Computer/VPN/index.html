@@ -411,70 +411,96 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">SoftEther VPN + Conoha VPS で共用ルーターを突破する</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#softether-vpn-server-を設定">SoftEther VPN Server を設定</a></li>
 <li><a href="#vpn-に接続">VPN に接続</a></li>
 <li><a href="#softether-vpn-bridge">SoftEther VPN Bridge</a></li>
 </ul></nav>
-       <p><img src="./img/network.drawio.svg" /></p>
-<p>共用ルーターは外部からのトラフィックを通さない設定になっているので，自宅からサーバーを公開できません．外部のサーバーを介して自宅の LAN に接続する VPN を作ります．</p>
-<h2 id="softether-vpn-server-を設定">SoftEther VPN Server を設定</h2>
-<p>レンタルサーバーに VPN サーバーをインストールする．公式のドキュメント（<a href="https://ja.softether.org/4-docs/1-manual/7/7.3">7.3 Linux へのインストールと初期設定</a>）に従って設定していく．</p>
-<ul>
-<li>ビルド
-<ul>
-<li>サーバーのソースをダウンロードして</li>
-<li>WinSCP で転送</li>
-<li>解凍</li>
-<li>make がないようなのでインストール</li>
-<li>make</li>
-<li>/usr/local 以下に移動</li>
-<li>パーミッションを変更</li>
-<li>チェックをかける</li>
-<li>スタートアップスクリプトに追加</li>
-</ul></li>
-<li>サービス開始
-<ul>
-<li>bad interpreter: No such file or directory</li>
-<li>改行コードが LF でなかった…</li>
-</ul></li>
-<li>管理者パスワードを設定
-<ul>
-<li>vpncmd</li>
-<li>1</li>
-<li>このサーバーの IP アドレス入力</li>
-<li>VPN Server &gt; ServerPasswordSet を実行してパスワードを設定</li>
-<li>サーバー管理ツールからアクセスできます</li>
-</ul></li>
-</ul>
-<p><a href="https://www.linuxmania.jp/softether-vpn.html">参考</a></p>
-<h2 id="vpn-に接続">VPN に接続</h2>
-<ul>
-<li>PC から
-<ul>
-<li>クライアントとして使いたい PC に，「SoftEther VPN Client」をインストール．（<a href="https://ja.softether.org/5-download">SoftEther VPN</a>）</li>
-<li>仮想 LAN カードの作成</li>
-<li>新しい接続</li>
-</ul></li>
-<li>iPhone から
-<ul>
-<li><a href="https://ja.softether.org/4-docs/2-howto/L2TP_IPsec_Setup_Guide/1">ここ</a></li>
-<li><a href="https://ja.softether.org/4-docs/2-howto/L2TP_IPsec_Setup_Guide/2">ここ</a></li>
-<li>サーバーのポートを開ける</li>
-<li><code>firewall-cmd --permanent --zone=public --add-service=ipsec</code></li>
-<li><code>firewall-cmd --permanent --zone=public --add-port=1701/udp</code></li>
-<li><code>firewall-cmd --permanent --zone=public --add-port=4500/udp</code></li>
-<li><code>firewall-cmd --reload</code></li>
-<li>SecureNAT を有効化</li>
-</ul></li>
-</ul>
-<h2 id="softether-vpn-bridge">SoftEther VPN Bridge</h2>
-<p>自宅のサーバーに SoftEther VPN Bridge をインストールする．</p>
-<p><a href="https://ja.softether.org/4-docs/1-manual/A/10.B"></a></p>
+      
+      <p><img src="./img/network.drawio.svg" /></p>
+      <p>共用ルーターは外部からのトラフィックを通さない設定になっているので，自宅からサーバーを公開できません．外部のサーバーを介して自宅の LAN に接続する VPN を作ります．</p>
+      <h2 id="softether-vpn-server-を設定">SoftEther VPN Server を設定</h2>
+      <p>レンタルサーバーに VPN サーバーをインストールする．公式のドキュメント（<a href="https://ja.softether.org/4-docs/1-manual/7/7.3">7.3 Linux へのインストールと初期設定</a>）に従って設定していく．</p>
+      <ul>
+      <li>ビルド
+      <ul>
+      <li>サーバーのソースをダウンロードして</li>
+      <li>WinSCP で転送</li>
+      <li>解凍</li>
+      <li>make がないようなのでインストール</li>
+      <li>make</li>
+      <li>/usr/local 以下に移動</li>
+      <li>パーミッションを変更</li>
+      <li>チェックをかける</li>
+      <li>スタートアップスクリプトに追加</li>
+      </ul></li>
+      <li>サービス開始
+      <ul>
+      <li>bad interpreter: No such file or directory</li>
+      <li>改行コードが LF でなかった…</li>
+      </ul></li>
+      <li>管理者パスワードを設定
+      <ul>
+      <li>vpncmd</li>
+      <li>1</li>
+      <li>このサーバーの IP アドレス入力</li>
+      <li>VPN Server &gt; ServerPasswordSet を実行してパスワードを設定</li>
+      <li>サーバー管理ツールからアクセスできます</li>
+      </ul></li>
+      </ul>
+      <p><a href="https://www.linuxmania.jp/softether-vpn.html">参考</a></p>
+      <h2 id="vpn-に接続">VPN に接続</h2>
+      <ul>
+      <li>PC から
+      <ul>
+      <li>クライアントとして使いたい PC に，「SoftEther VPN Client」をインストール．（<a href="https://ja.softether.org/5-download">SoftEther VPN</a>）</li>
+      <li>仮想 LAN カードの作成</li>
+      <li>新しい接続</li>
+      </ul></li>
+      <li>iPhone から
+      <ul>
+      <li><a href="https://ja.softether.org/4-docs/2-howto/L2TP_IPsec_Setup_Guide/1">ここ</a></li>
+      <li><a href="https://ja.softether.org/4-docs/2-howto/L2TP_IPsec_Setup_Guide/2">ここ</a></li>
+      <li>サーバーのポートを開ける</li>
+      <li><code>firewall-cmd --permanent --zone=public --add-service=ipsec</code></li>
+      <li><code>firewall-cmd --permanent --zone=public --add-port=1701/udp</code></li>
+      <li><code>firewall-cmd --permanent --zone=public --add-port=4500/udp</code></li>
+      <li><code>firewall-cmd --reload</code></li>
+      <li>SecureNAT を有効化</li>
+      </ul></li>
+      </ul>
+      <h2 id="softether-vpn-bridge">SoftEther VPN Bridge</h2>
+      <p>自宅のサーバーに SoftEther VPN Bridge をインストールする．</p>
+      <p><a href="https://ja.softether.org/4-docs/1-manual/A/10.B"></a></p>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

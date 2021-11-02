@@ -411,10 +411,34 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">金融工学</h1>
-               </header>
+                
+        <!-- Date -->
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#債券とは">債券とは</a></li>
 <li><a href="#キャッシュフロー">キャッシュフロー</a><ul>
@@ -435,155 +459,157 @@
 <li><a href="#現代ポートフォリオ理論">現代ポートフォリオ理論</a></li>
 <li><a href="#デリバティブ">デリバティブ</a></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\unit}[1]{[\mathrm{#1}]}
-\]</span></p>
-<h2 id="債券とは">債券とは</h2>
-<p>素朴な意味での債券とは，お金を貸したときに返済を約束する証書．</p>
-<p>しかし，現代の金融市場においては，それ以上の意味がある．</p>
-<ul>
-<li>債券を発効してお金を生み出す
-<ul>
-<li>債券の発行者は，自分の信用をもとにお金を得ることができる</li>
-</ul></li>
-<li>キャッシュフローを受ける権利
-<ul>
-<li>債券を買った人は債券に書かれている返済計画にのっとって，返済金を受け取ることができる</li>
-<li>買う側はこのキャッシュフロー（いついくら貰えるか）を額面と比較して判断する</li>
-</ul></li>
-</ul>
-<p>キャッシュフローをどう評価すればいいか？</p>
-<h2 id="キャッシュフロー">キャッシュフロー</h2>
-<ul>
-<li>額面 <span class="math inline">\(F\)</span></li>
-<li>利払い日 <span class="math inline">\(t_i\unit{year}\)</span>
-<ul>
-<li><span class="math inline">\(t_0=0\)</span></li>
-<li>満期 <span class="math inline">\(t_m\)</span></li>
-</ul></li>
-<li>クーポンレート <span class="math inline">\(K\unit{\%/year}\)</span>
-<ul>
-<li>クーポンレートが変動するものもある</li>
-<li><span class="math inline">\(L_{i-1}\)</span> （前回の利払い日の金利を参照する）</li>
-<li>長年，金利の基準であった LIBOR は 2021 年 に廃止されるよ</li>
-</ul></li>
-<li>クーポン <span class="math inline">\(C_i=KF(t_i-t_{i-1})\)</span></li>
-</ul>
-<h3 id="複利">複利</h3>
-<p>最終的な価値 <span class="math inline">\(\sum C_i + F\)</span> ではない</p>
-<ul>
-<li>利息で買い増すことができる</li>
-<li>ターン数（利払い日の数）だけ，売る or 買う の選択ができる．みんなが同じ評価方法を持っているとすれば，売り買いしても意味がない（自分の評価値と他人の評価値が同じなので差額が無い）．</li>
-</ul>
-<p>毎回利息で買い増すと，<span class="math inline">\(\sum C_i + F\)</span> 以上の返済が得られる．利払い日の間隔によって最終的な価値が変わってくる！</p>
-<ul>
-<li>クーポンレートだけで単純に比較できない</li>
-<li>利払い日が多い方が転化回数（ターン数）が多い＝自由度が高い</li>
-</ul>
-<p>年 <span class="math inline">\(m\)</span> 回再投資可能で利回り（年率）<span class="math inline">\(R\)</span> な債券に投資すると一年で</p>
-<p><span class="math display">\[
-\left(1+\frac{R}{m}\right)^m
-\]</span></p>
-<p>倍になる．</p>
-<p>連続的に取引できる場合（数学科に笑われそう）</p>
-<p><span class="math display">\[
-\lim_{m\rightarrow\infty}\left(1+\frac{R}{m}\right)^m=e^R
-\]</span></p>
-<p>倍になる．</p>
-<p>つまり，今の 1 円は 1 年後に<span class="math inline">\(e^R\)</span>円になるし，1 年後の 1 円は今の<span class="math inline">\(e^{-R}\)</span> 円．</p>
-<p>いつの時点での金額を言っているのか気にしてね．</p>
-<p>購入時点での証券の価値は</p>
-<p><span class="math display">\[
-\sum C_i \left(1+\frac{R}{m}\right)^{-i} + F \left(1+\frac{R}{m}\right)^{-n}
-\]</span></p>
-<p>※ 将来もらえる金額を，今の金額に変換して足し合わせてる</p>
-<h3 id="npv正味現在価値法">NPV（正味現在価値）法</h3>
-<p><span class="math display">\[
-NPV = \sum_{i=1}^N \frac{CF(i)}{(1+R)^i} + CF(0) = \sum_{i=0}^N \frac{CF(i)}{(1+R)^i}
-\]</span></p>
-<p>※ <span class="math inline">\(CF(0)=-F\)</span> に注意</p>
-<p><span class="math inline">\(NPV&gt;0\)</span> となる投資は利益をもたらす</p>
-<p>R （<span class="math inline">\(CF(0)\)</span>を払うための資金調達コスト）をどう設定するか</p>
-<ul>
-<li>加重平均資本コスト（WACC）</li>
-<li>バランスシート</li>
-</ul>
-<h3 id="irr内部収益率法">IRR（内部収益率）法</h3>
-<p><span class="math inline">\(NPV=0\)</span> となる <span class="math inline">\(R\)</span> を Internal Rate of Return という．<span class="math inline">\(R\)</span> が資金調達コストより高ければ投資する．</p>
-<h2 id="金利の期間構造term-structure-of-interest-rates">金利の期間構造（Term Structure of Interest Rates）</h2>
-<p>残存期間と利回りの関係</p>
-<h3 id="イールドカーブ">イールドカーブ</h3>
-<h3 id="ゼロレート">ゼロレート</h3>
-<h3 id="フォワードレート">フォワードレート</h3>
-<h2 id="リスクリターン">リスク・リターン</h2>
-<h3 id="投資収益率">投資収益率</h3>
-<p>価格 <span class="math inline">\(P_t\)</span> 配当 <span class="math inline">\(D_t\)</span> に対して，ある期間の算術収益率は</p>
-<p><span class="math display">\[
-R_{t+1} = \frac{P_{t+1}-P_t+D_{t+1}}{P_t}
-\]</span></p>
-<p>対数収益率は</p>
-<p><span class="math display">\[
-R^{log}_{t+1}=\log (P_{t+1}+D_{t+1}) - \log P_t \simeq R_{t+1} (R_{t+1} &lt;&lt; 1)
-\]</span></p>
-<p>収益率は確率変数っぽい</p>
-<p>収益率の期待値 → リターン 収益率の標準偏差 → リスク</p>
-<h3 id="期待効用原理">期待効用原理</h3>
-<ul>
-<li>富 <span class="math inline">\(W\)</span></li>
-<li>効用 <span class="math inline">\(u\)</span>
-<ul>
-<li>得られる満足度</li>
-<li>富の関数 <span class="math inline">\(u(W)\)</span></li>
-<li>富が多いほど効用は高い <span class="math inline">\(u&#39;(W)&gt;0\)</span></li>
-</ul></li>
-</ul>
-<p><span class="math inline">\(E[u(W)]\)</span> を最大化するように行動するだろう</p>
-<p>効用関数の形状がリスクへの態度を表す</p>
-<h3 id="section"></h3>
-<h2 id="現代ポートフォリオ理論">現代ポートフォリオ理論</h2>
-<h2 id="デリバティブ">デリバティブ</h2>
-<p>金融商品から「派生」した金融商品（ある金融商品をもとにキャッシュフローが決まる）（現物取引 → 先物取引みたいな）</p>
-<ul>
-<li>先渡契約
-<ul>
-<li>「（原資産）を（満期）に（先渡価格）で売買する」契約</li>
-<li>買う側をロング・ポジション，売る側をショート・ポジションという</li>
-<li>契約時にキャッシュが発生しない → 契約は現時点ではゼロとなるように先渡価格を設定する</li>
-</ul></li>
-<li>先物契約
-<ul>
-<li>満期で現物の受け渡しをしない</li>
-<li>差金決済（決済時点の購入価格と売却価格の差額をやりとり）</li>
-<li>毎日，値洗いし，差金決済を行う</li>
-</ul></li>
-<li>スワップ
-<ul>
-<li>将来のキャッシュフロー列を交換する</li>
-<li>リスクを減らす</li>
-</ul></li>
-<li>金利スワップ
-<ul>
-<li>A は B から固定金利で借り， B は A から変動金利で借りる．</li>
-<li>A は B に固定金利で利息を払い，B は A に変動金利で利息を払う．</li>
-<li>A が C から変動金利で借りていた場合，B を介して固定金利に変換している．</li>
-<li>元本の交換をしないが，利息の計算に必要なので，想定元本という．</li>
-<li>固定金利のほうがリスクと銀行は思ってる</li>
-</ul></li>
-<li>通貨スワップ
-<ul>
-<li>円 LIBOR とドル固定金利の交換</li>
-<li>元本を交換する</li>
-<li>しない場合はクーポン・スワップという</li>
-</ul></li>
-<li>ベーシス・スワップ
-<ul>
-<li>LIBOR と TIBOR の変換</li>
-<li>円 LIBOR とドル LIBOR の変換
-<ul>
-<li>通貨が異なると元本を交換することが多い</li>
-</ul></li>
-</ul></li>
-</ul>
+      
+      <p><span class="math display">\[
+      \newcommand{\unit}[1]{[\mathrm{#1}]}
+      \]</span></p>
+      <h2 id="債券とは">債券とは</h2>
+      <p>素朴な意味での債券とは，お金を貸したときに返済を約束する証書．</p>
+      <p>しかし，現代の金融市場においては，それ以上の意味がある．</p>
+      <ul>
+      <li>債券を発効してお金を生み出す
+      <ul>
+      <li>債券の発行者は，自分の信用をもとにお金を得ることができる</li>
+      </ul></li>
+      <li>キャッシュフローを受ける権利
+      <ul>
+      <li>債券を買った人は債券に書かれている返済計画にのっとって，返済金を受け取ることができる</li>
+      <li>買う側はこのキャッシュフロー（いついくら貰えるか）を額面と比較して判断する</li>
+      </ul></li>
+      </ul>
+      <p>キャッシュフローをどう評価すればいいか？</p>
+      <h2 id="キャッシュフロー">キャッシュフロー</h2>
+      <ul>
+      <li>額面 <span class="math inline">\(F\)</span></li>
+      <li>利払い日 <span class="math inline">\(t_i\unit{year}\)</span>
+      <ul>
+      <li><span class="math inline">\(t_0=0\)</span></li>
+      <li>満期 <span class="math inline">\(t_m\)</span></li>
+      </ul></li>
+      <li>クーポンレート <span class="math inline">\(K\unit{\%/year}\)</span>
+      <ul>
+      <li>クーポンレートが変動するものもある</li>
+      <li><span class="math inline">\(L_{i-1}\)</span> （前回の利払い日の金利を参照する）</li>
+      <li>長年，金利の基準であった LIBOR は 2021 年 に廃止されるよ</li>
+      </ul></li>
+      <li>クーポン <span class="math inline">\(C_i=KF(t_i-t_{i-1})\)</span></li>
+      </ul>
+      <h3 id="複利">複利</h3>
+      <p>最終的な価値 <span class="math inline">\(\sum C_i + F\)</span> ではない</p>
+      <ul>
+      <li>利息で買い増すことができる</li>
+      <li>ターン数（利払い日の数）だけ，売る or 買う の選択ができる．みんなが同じ評価方法を持っているとすれば，売り買いしても意味がない（自分の評価値と他人の評価値が同じなので差額が無い）．</li>
+      </ul>
+      <p>毎回利息で買い増すと，<span class="math inline">\(\sum C_i + F\)</span> 以上の返済が得られる．利払い日の間隔によって最終的な価値が変わってくる！</p>
+      <ul>
+      <li>クーポンレートだけで単純に比較できない</li>
+      <li>利払い日が多い方が転化回数（ターン数）が多い＝自由度が高い</li>
+      </ul>
+      <p>年 <span class="math inline">\(m\)</span> 回再投資可能で利回り（年率）<span class="math inline">\(R\)</span> な債券に投資すると一年で</p>
+      <p><span class="math display">\[
+      \left(1+\frac{R}{m}\right)^m
+      \]</span></p>
+      <p>倍になる．</p>
+      <p>連続的に取引できる場合（数学科に笑われそう）</p>
+      <p><span class="math display">\[
+      \lim_{m\rightarrow\infty}\left(1+\frac{R}{m}\right)^m=e^R
+      \]</span></p>
+      <p>倍になる．</p>
+      <p>つまり，今の 1 円は 1 年後に<span class="math inline">\(e^R\)</span>円になるし，1 年後の 1 円は今の<span class="math inline">\(e^{-R}\)</span> 円．</p>
+      <p>いつの時点での金額を言っているのか気にしてね．</p>
+      <p>購入時点での証券の価値は</p>
+      <p><span class="math display">\[
+      \sum C_i \left(1+\frac{R}{m}\right)^{-i} + F \left(1+\frac{R}{m}\right)^{-n}
+      \]</span></p>
+      <p>※ 将来もらえる金額を，今の金額に変換して足し合わせてる</p>
+      <h3 id="npv正味現在価値法">NPV（正味現在価値）法</h3>
+      <p><span class="math display">\[
+      NPV = \sum_{i=1}^N \frac{CF(i)}{(1+R)^i} + CF(0) = \sum_{i=0}^N \frac{CF(i)}{(1+R)^i}
+      \]</span></p>
+      <p>※ <span class="math inline">\(CF(0)=-F\)</span> に注意</p>
+      <p><span class="math inline">\(NPV&gt;0\)</span> となる投資は利益をもたらす</p>
+      <p>R （<span class="math inline">\(CF(0)\)</span>を払うための資金調達コスト）をどう設定するか</p>
+      <ul>
+      <li>加重平均資本コスト（WACC）</li>
+      <li>バランスシート</li>
+      </ul>
+      <h3 id="irr内部収益率法">IRR（内部収益率）法</h3>
+      <p><span class="math inline">\(NPV=0\)</span> となる <span class="math inline">\(R\)</span> を Internal Rate of Return という．<span class="math inline">\(R\)</span> が資金調達コストより高ければ投資する．</p>
+      <h2 id="金利の期間構造term-structure-of-interest-rates">金利の期間構造（Term Structure of Interest Rates）</h2>
+      <p>残存期間と利回りの関係</p>
+      <h3 id="イールドカーブ">イールドカーブ</h3>
+      <h3 id="ゼロレート">ゼロレート</h3>
+      <h3 id="フォワードレート">フォワードレート</h3>
+      <h2 id="リスクリターン">リスク・リターン</h2>
+      <h3 id="投資収益率">投資収益率</h3>
+      <p>価格 <span class="math inline">\(P_t\)</span> 配当 <span class="math inline">\(D_t\)</span> に対して，ある期間の算術収益率は</p>
+      <p><span class="math display">\[
+      R_{t+1} = \frac{P_{t+1}-P_t+D_{t+1}}{P_t}
+      \]</span></p>
+      <p>対数収益率は</p>
+      <p><span class="math display">\[
+      R^{log}_{t+1}=\log (P_{t+1}+D_{t+1}) - \log P_t \simeq R_{t+1} (R_{t+1} &lt;&lt; 1)
+      \]</span></p>
+      <p>収益率は確率変数っぽい</p>
+      <p>収益率の期待値 → リターン 収益率の標準偏差 → リスク</p>
+      <h3 id="期待効用原理">期待効用原理</h3>
+      <ul>
+      <li>富 <span class="math inline">\(W\)</span></li>
+      <li>効用 <span class="math inline">\(u\)</span>
+      <ul>
+      <li>得られる満足度</li>
+      <li>富の関数 <span class="math inline">\(u(W)\)</span></li>
+      <li>富が多いほど効用は高い <span class="math inline">\(u&#39;(W)&gt;0\)</span></li>
+      </ul></li>
+      </ul>
+      <p><span class="math inline">\(E[u(W)]\)</span> を最大化するように行動するだろう</p>
+      <p>効用関数の形状がリスクへの態度を表す</p>
+      <h3 id="section"></h3>
+      <h2 id="現代ポートフォリオ理論">現代ポートフォリオ理論</h2>
+      <h2 id="デリバティブ">デリバティブ</h2>
+      <p>金融商品から「派生」した金融商品（ある金融商品をもとにキャッシュフローが決まる）（現物取引 → 先物取引みたいな）</p>
+      <ul>
+      <li>先渡契約
+      <ul>
+      <li>「（原資産）を（満期）に（先渡価格）で売買する」契約</li>
+      <li>買う側をロング・ポジション，売る側をショート・ポジションという</li>
+      <li>契約時にキャッシュが発生しない → 契約は現時点ではゼロとなるように先渡価格を設定する</li>
+      </ul></li>
+      <li>先物契約
+      <ul>
+      <li>満期で現物の受け渡しをしない</li>
+      <li>差金決済（決済時点の購入価格と売却価格の差額をやりとり）</li>
+      <li>毎日，値洗いし，差金決済を行う</li>
+      </ul></li>
+      <li>スワップ
+      <ul>
+      <li>将来のキャッシュフロー列を交換する</li>
+      <li>リスクを減らす</li>
+      </ul></li>
+      <li>金利スワップ
+      <ul>
+      <li>A は B から固定金利で借り， B は A から変動金利で借りる．</li>
+      <li>A は B に固定金利で利息を払い，B は A に変動金利で利息を払う．</li>
+      <li>A が C から変動金利で借りていた場合，B を介して固定金利に変換している．</li>
+      <li>元本の交換をしないが，利息の計算に必要なので，想定元本という．</li>
+      <li>固定金利のほうがリスクと銀行は思ってる</li>
+      </ul></li>
+      <li>通貨スワップ
+      <ul>
+      <li>円 LIBOR とドル固定金利の交換</li>
+      <li>元本を交換する</li>
+      <li>しない場合はクーポン・スワップという</li>
+      </ul></li>
+      <li>ベーシス・スワップ
+      <ul>
+      <li>LIBOR と TIBOR の変換</li>
+      <li>円 LIBOR とドル LIBOR の変換
+      <ul>
+      <li>通貨が異なると元本を交換することが多い</li>
+      </ul></li>
+      </ul></li>
+      </ul>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>

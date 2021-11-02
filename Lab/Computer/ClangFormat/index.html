@@ -412,39 +412,65 @@
               />
             </svg>
           </a>
-        </div>
+        </div> <!-- End Top Nav -->
 
+        <!-- Title -->
                 <h1 style="margin: 0">WSLに接続したVSCodeにclang-formatを追加する</h1>
-                 <p align="right">2021-01-06</p>
-              </header>
+                
+        <!-- Date -->
+                <p align="right">2021-01-06</p>
+        
+      </header>
+
+      <!-- TeX Macros -->
+      <p> 
+        \[
+          \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+          \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+          \newcommand{\ddd}[2][]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+          \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
+          \newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+          \newcommand{\Re}{\mathrm{Re}}
+          \newcommand{\Im}{\mathrm{Im}}
+          \newcommand{\bra}[1]{\left\langle #1 \right|}
+          \newcommand{\ket}[1]{\left|#1 \right\rangle}
+          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \]
+      </p>
+ 
+      <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#llvmをインストール">LLVMをインストール</a></li>
 <li><a href="#wsl側からllvmへのパスを通して">WSL側からLLVMへのパスを通して</a></li>
 <li><a href="#clang-format-の拡張機能をインストールして">clang-format の拡張機能をインストールして</a></li>
 <li><a href="#settings.json">settings.json</a></li>
 </ul></nav>
-       <h3 id="llvmをインストール">LLVMをインストール</h3>
-<p><a href="https://releases.llvm.org/download.html">LLVM</a> のclang-format.exeを使う</p>
-<h3 id="wsl側からllvmへのパスを通して">WSL側からLLVMへのパスを通して</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">export</span> <span class="va">PATH=$PATH</span>:/mnt/c/<span class="st">&#39;Program Files&#39;</span>/LLVM/bin</a></code></pre></div>
-<h3 id="clang-format-の拡張機能をインストールして">clang-format の拡張機能をインストールして</h3>
-<p>[https://marketplace.visualstudio.com/items?itemName=xaver.clang-format:embed:cite]</p>
-<h3 id="settings.json">settings.json</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="dt">&quot;clang-format.executable&quot;</span><span class="fu">:</span> <span class="st">&quot;/mnt/c/Program Files/LLVM/bin/clang-format.exe&quot;</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="fu">}</span></a></code></pre></div>
-<p>（VSCodeにclang-formatの場所を教える）</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="er">&quot;</span><span class="ot">[</span><span class="er">c</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb3-2" title="2">    <span class="dt">&quot;editor.defaultFormatter&quot;</span><span class="fu">:</span> <span class="st">&quot;xaver.clang-format&quot;</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="fu">}</span></a></code></pre></div>
-<p>（言語ごとのフォーマッタの設定）</p>
-<p>を追加すればおｋ</p>
-<p>ついでに</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">&quot;editor.formatOnType&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">&quot;editor.formatOnSave&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="fu">}</span></a></code></pre></div>
-<p>を設定しとくと編集時・保存時にフォーマットしてくれるよ</p>
+      
+      <h3 id="llvmをインストール">LLVMをインストール</h3>
+      <p><a href="https://releases.llvm.org/download.html">LLVM</a> のclang-format.exeを使う</p>
+      <h3 id="wsl側からllvmへのパスを通して">WSL側からLLVMへのパスを通して</h3>
+      <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">export</span> <span class="va">PATH=$PATH</span>:/mnt/c/<span class="st">&#39;Program Files&#39;</span>/LLVM/bin</a></code></pre></div>
+      <h3 id="clang-format-の拡張機能をインストールして">clang-format の拡張機能をインストールして</h3>
+      <p>[https://marketplace.visualstudio.com/items?itemName=xaver.clang-format:embed:cite]</p>
+      <h3 id="settings.json">settings.json</h3>
+      <div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">{</span></a>
+      <a class="sourceLine" id="cb2-2" title="2">  <span class="dt">&quot;clang-format.executable&quot;</span><span class="fu">:</span> <span class="st">&quot;/mnt/c/Program Files/LLVM/bin/clang-format.exe&quot;</span></a>
+      <a class="sourceLine" id="cb2-3" title="3"><span class="fu">}</span></a></code></pre></div>
+      <p>（VSCodeにclang-formatの場所を教える）</p>
+      <div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="er">&quot;</span><span class="ot">[</span><span class="er">c</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></a>
+      <a class="sourceLine" id="cb3-2" title="2">    <span class="dt">&quot;editor.defaultFormatter&quot;</span><span class="fu">:</span> <span class="st">&quot;xaver.clang-format&quot;</span></a>
+      <a class="sourceLine" id="cb3-3" title="3"><span class="fu">}</span></a></code></pre></div>
+      <p>（言語ごとのフォーマッタの設定）</p>
+      <p>を追加すればおｋ</p>
+      <p>ついでに</p>
+      <div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">{</span></a>
+      <a class="sourceLine" id="cb4-2" title="2">  <span class="dt">&quot;editor.formatOnType&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
+      <a class="sourceLine" id="cb4-3" title="3">  <span class="dt">&quot;editor.formatOnSave&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
+      <a class="sourceLine" id="cb4-4" title="4"><span class="fu">}</span></a></code></pre></div>
+      <p>を設定しとくと編集時・保存時にフォーマットしてくれるよ</p>
+
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
   </body>
