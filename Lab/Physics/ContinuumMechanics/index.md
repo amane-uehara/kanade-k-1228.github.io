@@ -21,8 +21,6 @@ $$
 aa
 
 $$
-\d{a}
-
 \frac{d}{dt}F=\left(\frac{\partial}{\partial t}+\frac{dx_i}{d t}\frac{\partial}{\partial x_i}\right)f
 $$
 

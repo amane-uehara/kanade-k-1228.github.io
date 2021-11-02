@@ -12,10 +12,25 @@
 2. we
 3. ek
 
-$
-\exp i\theta
-$
-
-hoge $a$
-
 ## dd
+
+$Naya$ aaaas $nya$ a $ya$
+
+$$
+\pdd{}{b}
+\pdd{a}{b}
+
+$$
+
+$$
+\pdd{a}{b}
+
+\begin{aligned}
+    aa
+\end{aligned}
+$$
+
+## a
+
+- a
+- a

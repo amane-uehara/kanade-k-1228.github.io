@@ -1,0 +1,21 @@
+
+{
+    "markdown.math.enabled": false,
+    "markdown.extension.math.enabled": false,
+    "markdown.extension.katex.macros":{
+        "\\d":"{\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}}",
+        "\\dd":"{\\frac{\\mathrm{d}^2 #1}{\\mathrm{d} {#2}^2}}",
+        "\\ddd":"{\\frac{\\mathrm{d}^3 #1}{\\mathrm{d} {#2}^3}}",
+        "\\pd":"{\\frac{\\partial #1}{\\partial #2}}",
+        "\\pdd":"{\\frac{\\partial^2 #1}{\\partial {#2}^2}}",
+        "\\pddd":"{\\frac{\\partial^3 #1}{\\partial {#2}^3}}"
+    },
+    "mdmath.macros": {
+        "\\d":"{\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}}",
+        "\\dd":"{\\frac{\\mathrm{d}^2 #1}{\\mathrm{d} {#2}^2}}",
+        "\\ddd":"{\\frac{\\mathrm{d}^3 #1}{\\mathrm{d} {#2}^3}}",
+        "\\pd":"{\\frac{\\partial #1}{\\partial #2}}",
+        "\\pdd":"{\\frac{\\partial^2 #1}{\\partial {#2}^2}}",
+        "\\pddd":"{\\frac{\\partial^3 #1}{\\partial {#2}^3}}"
+    },
+}
