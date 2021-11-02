@@ -12,4 +12,4 @@
 
 [音楽理論について](./Music/MusicTheory/)
 
-[アイディアの出し方](./Essay/Idea/)
+<!-- [アイディアの出し方](./Essay/Idea/) -->
