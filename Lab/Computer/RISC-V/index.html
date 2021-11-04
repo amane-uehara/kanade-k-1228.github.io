@@ -440,7 +440,7 @@
  
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#rv32iのアーキテクチャ">RV32Iのアーキテクチャ</a><ul>
+<li><a href="#rv32i-のアーキテクチャ">RV32I のアーキテクチャ</a><ul>
 <li><a href="#レジスタ一覧">レジスタ一覧</a></li>
 <li><a href="#命令フォーマット">命令フォーマット</a></li>
 <li><a href="#ロード">ロード</a></li>
@@ -449,7 +449,7 @@
 </ul></li>
 </ul></nav>
       
-      <h2 id="rv32iのアーキテクチャ">RV32Iのアーキテクチャ</h2>
+      <h2 id="rv32i-のアーキテクチャ">RV32I のアーキテクチャ</h2>
       <h3 id="レジスタ一覧">レジスタ一覧</h3>
       <table>
       <thead>
@@ -528,11 +528,11 @@
       </tbody>
       </table>
       <h3 id="命令フォーマット">命令フォーマット</h3>
-      <p><img src="RV32I.jpg" /></p>
+      <p><img src="./img/RV32I.jpg" /></p>
       <h3 id="ロード">ロード</h3>
       <p><code>x[rd] = sext?( M[x[rs1] + sext(imm)] [7?15?31? : 0] )</code></p>
       <p>b(byte)/h(halfword)/w(word)で，メモリから読み出す長さを決めます．</p>
-      <p>()signed/(u)unsignedで，メモリから持ってきた値を符号拡張するかを決めます．</p>
+      <p>()signed/(u)unsigned で，メモリから持ってきた値を符号拡張するかを決めます．</p>
       <h3 id="ストア">ストア</h3>
       <p><code>M[ x[rs1] + sext(imm) ] = x[rs2] [7?15?31?:0]</code></p>
       <p>b(byte)/h(halfword)/w(word)で，メモリに書き込む長さを決めます．</p>

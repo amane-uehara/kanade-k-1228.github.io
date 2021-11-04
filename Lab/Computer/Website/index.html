@@ -451,11 +451,11 @@
 <li><a href="#課題">課題</a></li>
 </ul></nav>
       
-      <p>自由度が高く保守性も高いブログシステムができたのでメモしておきます</p>
+      <p>自由度が高く保守性も高いブログシステムがタダで作れます</p>
       <h2 id="システムの使い方">システムの使い方</h2>
       <ol type="1">
       <li>記事を Markdown で書く</li>
-      <li>Git に Push すると HTML に変換＆デプロイ</li>
+      <li>Git に Push すると HTML に変換 &amp; デプロイ</li>
       <li>で　ぎ　だ　！（アル中カラカラ</li>
       </ol>
       <h2 id="pandoc">Pandoc</h2>
@@ -466,20 +466,23 @@
       </ul>
       <h3 id="テンプレート.html">テンプレート.HTML</h3>
       <h2 id="github-pages">GitHub Pages</h2>
-      <p>GitHub で静的サイトを作れる．サーバーいらないので楽やで．</p>
+      <p>GitHub で静的サイトを作れる。サーバーいらないので楽やで。</p>
       <ol type="1">
-      <li>(User Name).github.io という名前のリポジトリを作る．</li>
-      <li>リポジトリの Settings &gt; Pages &gt; Source を None から Main に変更．Main ブランチ以下が https://(UserName).github.io/ にデプロイされたよ．</li>
+      <li>[User Name].github.io という名前のリポジトリを作る。</li>
+      <li>リポジトリの Settings &gt; Pages &gt; Source を None から Main に変更。Main ブランチ以下が https://[UserName].github.io/ にデプロイされたよ。</li>
       </ol>
       <h2 id="github-actions">GitHub Actions</h2>
-      <ul>
-      <li><a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/blob/main/.github/workflows/main.yml">ソースコード（これ見たらだいたいわかるはず）</a></li>
-      <li>Push されるとディレクトリ内を全部探索して Markdown を HTML に変換</li>
+      <p><a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/blob/main/.github/workflows/main.yml">ソースコード</a></p>
+      <p>Push されると</p>
+      <ol type="1">
+      <li>Ubuntu を立ち上げて Pandoc をインストール</li>
+      <li>ディレクトリ内の index.md を探して index.html に変換</li>
       <li>gh-pages にデプロイ</li>
-      </ul>
+      </ol>
+      <p>これをリポジトリの <code>/.github/workflows/</code> 以下に置くと、勝手に実行してくれます。</p>
       <h2 id="課題">課題</h2>
       <ul>
-      <li>diff から変更があったファイルだけ調べて変換をすると早くなるよね</li>
+      <li>git にある差分から変更があったファイルだけ調べて変換をすると早くなるよね</li>
       </ul>
 
       <button class="comment-button" onclick="tweet();">コメント</button>

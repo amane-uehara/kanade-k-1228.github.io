@@ -2,15 +2,9 @@
 %
 %
 
-ノートが置いてあります．
-
 ## コンピュータ
 
-[半導体](./Computer/Semiconductor/)
-
 [RISC-V](./Computer/RISC-V/)
-
-[スパコン並列計算プログラミング](./Computer/SuperComputer/)
 
 [演算回路](./Computer/ArithmeticCircuit/)
 
@@ -32,13 +26,11 @@
 
 [Docker はじめました](./Computer/Docker/)
 
-[Windows11 に移行しました](./Computer/Win11Setup/)
-
 ### 環境構築
 
 [サーバーセットアップ](./Computer/ServerSetup/)
 
-[WSL に接続した VSCode に clang-format を追加する](./Computer/ClangFormat/)
+[環境構築まとめ](./Computer/PCSetup/)
 
 ## 電子
 
