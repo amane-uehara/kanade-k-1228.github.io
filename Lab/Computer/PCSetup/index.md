@@ -104,6 +104,10 @@
 4. 拡張機能のアイコンから mathjax を有効化
 5. Allowed Origins に `file:///` を追加
 
+### drawio
+
+[Draw.io Integration](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio)
+
 ## C/Cpp
 
 VSCode 拡張 [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)

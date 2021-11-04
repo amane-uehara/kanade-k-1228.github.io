@@ -435,24 +435,142 @@
           \newcommand{\bra}[1]{\left\langle #1 \right|}
           \newcommand{\ket}[1]{\left|#1 \right\rangle}
           \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+          \newcommand{\l}{\left}
+          \newcommand{\m}{\middle}
+          \newcommand{\r}{\right}
+          \newcommand{\f}[2]{\frac{#1}{#2}}
+          \newcommand{\eps}{\varepsilon}
         \]
       </p>
  
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#結晶構造">結晶構造</a></li>
-<li><a href="#自由電子モデル古典">自由電子モデル（古典）</a></li>
+<li><a href="#結晶">1. 結晶</a></li>
+<li><a href="#drude-モデル">2. Drude モデル</a><ul>
+<li><a href="#直流電場応答">2.1. 直流電場応答</a></li>
+<li><a href="#交流電場応答">2.2. 交流電場応答</a></li>
+</ul></li>
+<li><a href="#ゾンマーフェルトモデル">3. ゾンマーフェルトモデル</a><ul>
+<li><a href="#シュレディンガー方程式">3.1. シュレディンガー方程式</a></li>
+<li><a href="#逆格子空間">3.2. 逆格子空間</a></li>
+<li><a href="#状態密度">3.3. 状態密度</a></li>
+<li><a href="#電子比熱">3.4. 電子比熱</a></li>
+</ul></li>
+<li><a href="#半導体">4. 半導体</a></li>
 </ul></nav>
       
-      <h2 id="結晶構造">結晶構造</h2>
+      <h2 id="結晶">1. 結晶</h2>
       <p>基本単位胞：格子ベクトルが張る平行六面体</p>
       <p>ミラー指数：周期的な格子中の方向や面を表す記法</p>
-      <h2 id="自由電子モデル古典">自由電子モデル（古典）</h2>
-      <p>電子は金属中をランダムに運動しているというモデル（Drude モデル）</p>
-      <p>電場がかかった金属中の電子が従う運動方程式は</p>
+      <h2 id="drude-モデル">2. Drude モデル</h2>
+      <p>電子は金属中の原子核と衝突しながらランダムに運動しているという古典的なモデル。</p>
+      <h3 id="直流電場応答">2.1. 直流電場応答</h3>
+      <p><img src="./img/drude.drawio.svg" /></p>
+      <p>電場がかかった金属中の電子が従う運動方程式は、緩和時間を <span class="math inline">\(\tau\)</span> として、</p>
       <p><span class="math display">\[
-      m\d[v]{t} + \frac{m}{\tau}v = -eE
+      m\d{v}{t} + \f{m}{\tau}v = -eE \tag{2.1.1}
       \]</span></p>
+      <p>定常状態 (<span class="math inline">\(\d{v}{t}=0\)</span>) に達したときの速度（ドリフト速度）は、</p>
+      <p><span class="math display">\[
+      v_d=-\f{e\tau}{m}E \tag{2.1.2}
+      \]</span></p>
+      <p>運動量は <span class="math inline">\(p(t)=mv(t)\)</span> だが、次の瞬間の運動量（の期待値）は、衝突する確率 <span class="math inline">\(\f{dt}{\tau}\)</span> 、外力 <span class="math inline">\(f=-eE\)</span> を用いて、</p>
+      <p><span class="math display">\[
+      p(t+dt) = \l(1-\f{dt}{\tau}\r)p(t) + fdt \tag{2.1.3}
+      \]</span></p>
+      <p>☆ 衝突するとランダムな方向に飛んでいくので、運動量の期待値は <span class="math inline">\(0\)</span> になる</p>
+      <p><span class="math inline">\(\d{p}{t}=(p(t+dt)-p(t))/dt\)</span> を用いて式変形すると</p>
+      <p><span class="math display">\[
+      m\d{v}{t}=-\f{m}{\tau}v-eE \tag{2.1.4}
+      \]</span></p>
+      <p>オームの法則と対照して定数を比べる。</p>
+      <ul>
+      <li>微視的な数
+      <ul>
+      <li>電荷素量 <span class="math inline">\(e\)</span></li>
+      <li>緩和時間 <span class="math inline">\(\tau\)</span></li>
+      <li>電子密度 <span class="math inline">\(n\)</span></li>
+      <li>電子のドリフト速度 <span class="math inline">\(v_d\)</span></li>
+      </ul></li>
+      <li>巨視的な数
+      <ul>
+      <li>スケールに依存する量
+      <ul>
+      <li>電流 <span class="math inline">\(J\)</span></li>
+      <li>電位差 <span class="math inline">\(V\)</span></li>
+      <li>抵抗 <span class="math inline">\(R\)</span></li>
+      </ul></li>
+      <li>スケールに依存しない量
+      <ul>
+      <li>電流密度 <span class="math inline">\(j=J/S\)</span></li>
+      <li>電場 <span class="math inline">\(E=V/L\)</span></li>
+      <li>電気抵抗率 <span class="math inline">\(\rho=RS/L\)</span></li>
+      <li>電気伝導率 <span class="math inline">\(\sigma=1/\rho\)</span></li>
+      </ul></li>
+      </ul></li>
+      </ul>
+      <p>オームの法則 <span class="math inline">\(V=JR\)</span> をスケールに依存しない量で書き直すと</p>
+      <p><span class="math display">\[
+      E=j\rho \tag{2.1.5}
+      \]</span></p>
+      <p>ドリフト速度の式</p>
+      <p><span class="math display">\[
+      v_d=-\f{e\tau}{m}E \tag{2.1.2}
+      \]</span></p>
+      <p>電流密度の式</p>
+      <p><span class="math display">\[
+      j=-nev_d \tag{2.1.6}
+      \]</span></p>
+      <p>以上の式から</p>
+      <p><span class="math display">\[
+      \sigma = 1/\rho = \f{ne^2\tau}{m} \tag{2.1.7}
+      \]</span></p>
+      <h3 id="交流電場応答">2.2. 交流電場応答</h3>
+      <p>運動方程式は</p>
+      <p><span class="math display">\[
+      m\dd{v}{t} + \f{m}{\tau}\d{v}{t} = -eE(t) \tag{2.2.1}
+      \]</span></p>
+      <p>周波数 <span class="math inline">\(\omega\)</span> の交流電場 <span class="math inline">\(E(t)=E_0\exp(-i\omega t)\)</span> 速度 <span class="math inline">\(v(t)=v_0\exp(-i\omega t)\)</span> を代入すると、</p>
+      <p><span class="math display">\[
+      \l(-m\omega^2-i\f{m\omega}{\tau}\r)u_0\exp(-i\omega t) = -eE_0\exp(-i\omega t) \tag{2.2.2}
+      \]</span></p>
+      <p><span class="math display">\[
+      u_0=\f{eE_0}{m\omega (\omega + i/\tau)} \tag{2.2.3}
+      \]</span></p>
+      <p>☆ 電流の振幅は周波数の関数になっている</p>
+      <p>電束密度</p>
+      <p><span class="math display">\[
+      D=\eps E = \eps_0 \eps_r E= \eps_0 E + P \tag{2.2.4}
+      \]</span></p>
+      <p>分極率 <span class="math inline">\(P=-neu\)</span></p>
+      <p><span class="math display">\[
+      P = -\f{ne^2}{m}\f{1}{\omega(\omega + i/\tau)}E \tag{2.2.5}
+      \]</span></p>
+      <p>プラズマ周波数</p>
+      <p><span class="math display">\[
+      \omega_P = \sqrt{\f{ne^2}{m\eps_0}} \tag{2.2.6}
+      \]</span></p>
+      <p>以上より、</p>
+      <p><span class="math display">\[
+      \eps_r = 1-\f{\omega_P^2}{\omega(\omega + i/\tau)} \tag{2.2.7}
+      \]</span></p>
+      <h2 id="ゾンマーフェルトモデル">3. ゾンマーフェルトモデル</h2>
+      <h3 id="シュレディンガー方程式">3.1. シュレディンガー方程式</h3>
+      <p>周期境界条件を課したシュレディンガー方程式</p>
+      <p><span class="math display">\[
+      E\psi(r)=\hat{H}\psi(r)
+      \]</span></p>
+      <p><span class="math display">\[
+      \hat{H}=\f{1}{2m}\hat{p}^2+V(r)=-\f{\hbar^2}{2m}\nabla^2 + V(r)
+      \]</span></p>
+      <p><span class="math inline">\(V(r)=0\)</span> として解くと、</p>
+      <p><span class="math display">\[
+      \psi(r)=\f{1}{L^{3/2}}\exp(ih\cdot r)
+      \]</span></p>
+      <h3 id="逆格子空間">3.2. 逆格子空間</h3>
+      <h3 id="状態密度">3.3. 状態密度</h3>
+      <h3 id="電子比熱">3.4. 電子比熱</h3>
+      <h2 id="半導体">4. 半導体</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
