@@ -61,13 +61,13 @@ $$
 ### ナビエストークス方程式
 
 $$
-\pd{t}(\rho u_i)+\pd{x_j}(\rho u_iu_j)=-\pd{x_i}\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\pd{x_j}\left(\pd{x_j}u_i+\pd{x_i}u_j\right)+\rho g_i
+\pd{}{t}(\rho u_i)+\pd{}{x_j}(\rho u_iu_j)=-\pd{}{x_i}\left(p+\frac{2}{3}\mu\partial_ku_k\right)+\mu\pd{}{x_j}\left(\pd{}{x_j}u_i+\pd{}{x_i}u_j\right)+\rho g_i
 $$
 
 #### 非圧縮
 
 $$
-\rho \left( \pd{t} u_i + u_j \pd{x_j} u_i \right) = -\pd{x_i} p + \mu \pd{x_j} \pd{x_j} u_i + \rho g_i
+\rho \left( \pd{}{t} u_i + u_j \pd{}{x_j} u_i \right) = -\pd{}{x_i} p + \mu \pd{}{x_j} \pd{}{x_j} u_i + \rho g_i
 $$
 
 #### 無次元化 $D,V,L$
