@@ -8,7 +8,18 @@
         "\\ddd":"{\\frac{\\mathrm{d}^3 #1}{\\mathrm{d} {#2}^3}}",
         "\\pd":"{\\frac{\\partial #1}{\\partial #2}}",
         "\\pdd":"{\\frac{\\partial^2 #1}{\\partial {#2}^2}}",
-        "\\pddd":"{\\frac{\\partial^3 #1}{\\partial {#2}^3}}"
+        "\\pddd":"{\\frac{\\partial^3 #1}{\\partial {#2}^3}}",
+        "\\D":"{\\frac{\\mathrm{D} #1}{\\mathrm{D} #2}}",
+        "\\Re":"\\mathrm{Re}",
+        "\\Im":"\\mathrm{Im}",
+        "\\bra":"{\\left\\langle #1 \\right|}",
+        "\\ket":"{\\left| #1 \\right\\rangle}",
+        "\\braket":"{\\left\\langle #1 \\middle|#2 \\right\\rangle}",
+        "\\l":"\\left",
+        "\\m":"\\middle",
+        "\\r":"\\right",
+        "\\f":"{\\frac{#1}{#2}}",
+        "\\eps":"\\varepsilon"
     },
     "mdmath.macros": {
         "\\d":"{\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}}",
@@ -16,6 +27,17 @@
         "\\ddd":"{\\frac{\\mathrm{d}^3 #1}{\\mathrm{d} {#2}^3}}",
         "\\pd":"{\\frac{\\partial #1}{\\partial #2}}",
         "\\pdd":"{\\frac{\\partial^2 #1}{\\partial {#2}^2}}",
-        "\\pddd":"{\\frac{\\partial^3 #1}{\\partial {#2}^3}}"
+        "\\pddd":"{\\frac{\\partial^3 #1}{\\partial {#2}^3}}",
+        "\\D":"{\\frac{\\mathrm{D} #1}{\\mathrm{D} #2}}",
+        "\\Re":"\\mathrm{Re}",
+        "\\Im":"\\mathrm{Im}",
+        "\\bra":"{\\left\\langle #1 \\right|}",
+        "\\ket":"{\\left| #1 \\right\\rangle}",
+        "\\braket":"{\\left\\langle #1 \\middle|#2 \\right\\rangle}",
+        "\\l":"\\left",
+        "\\m":"\\middle",
+        "\\r":"\\right",
+        "\\f":"{\\frac{#1}{#2}}",
+        "\\eps":"\\varepsilon"
     },
 }

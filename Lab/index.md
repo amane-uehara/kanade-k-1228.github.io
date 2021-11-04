@@ -88,7 +88,7 @@
 
 ### 物性
 
-[物性](./)
+[物性](./Physics/CondensedMatter/)
 
 ### 電磁気学
 
