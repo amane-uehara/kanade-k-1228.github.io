@@ -6,19 +6,9 @@
 
 [RISC-V](./Computer/RISC-V/)
 
-[演算回路](./Computer/ArithmeticCircuit/)
-
 ### リレーコンピュータ
 
 [CPU 入門](./Computer/CPUIntroduction/)
-
-[リレーコンピュータ](./Computer/RelayComputer/)
-
-[2048 on リレーコンピュータ](./Computer/2048/)
-
-### OS
-
-[Linux デバイスドライバ](./Computer/LinuxDeviceDriver/)
 
 ### Tips
 
@@ -26,37 +16,23 @@
 
 [Docker はじめました](./Computer/Docker/)
 
-### 環境構築
-
 [サーバーセットアップ](./Computer/ServerSetup/)
 
 [環境構築まとめ](./Computer/PCSetup/)
 
-## 電子
-
-[オペアンプ](./Electronics/OpAmp/)
-
-[プリント基板](./Electronics/PCBMaking/)
+## 電子回路
 
 [Azoteq IQS127D （静電容量タッチセンサ IC）の使い方](./Electronics/IQS127D/)
 
+[オペアンプ](./Electronics/OpAmp/)
+
 ## 制御・ロボット
-
-[現代制御論](./Control/ModernControlTheory/)
-
-[2 次元上の倒立振子](./Control/2dimInvertedPendulum/)
 
 ## 機械
 
-[材料](./Mech/Material/)
-
-[加工](./Mech/Processing/)
+[生産技術](./Mech/Manufacturing/)
 
 ## 物理
-
-[物理学](./Physics/PhysicsTheory/)
-
-[物理数学](./Physics/PhysicsMathmatics/)
 
 ### 力学
 
