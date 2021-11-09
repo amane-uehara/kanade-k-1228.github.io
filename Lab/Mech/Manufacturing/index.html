@@ -440,6 +440,7 @@
           \newcommand{\r}{\right}
           \newcommand{\f}[2]{\frac{#1}{#2}}
           \newcommand{\eps}{\varepsilon}
+          \newcommand{\ra}{\rightarrow}
         \]
       </p>
  
@@ -458,7 +459,9 @@
 <li><a href="#燃料電池">燃料電池</a></li>
 <li><a href="#コンデンサ">コンデンサ</a></li>
 </ul></li>
-<li><a href="#半導体プロセス">半導体プロセス</a></li>
+<li><a href="#半導体プロセス">半導体プロセス</a><ul>
+<li><a href="#トランジスタのプロセス">トランジスタのプロセス</a></li>
+</ul></li>
 <li><a href="#hdd">HDD</a></li>
 <li><a href="#ssd">SSD</a></li>
 <li><a href="#レーザープリンタ">レーザープリンタ</a></li>
@@ -888,8 +891,83 @@
       </ul>
       <h2 id="半導体プロセス">半導体プロセス</h2>
       <p>石英 (SiO2) → 金属シリコン (Si 98%) → 単結晶シリコン → シリコンウェーハ</p>
-      <p>レジスト塗布 → パターンの転写 → さまざまな操作</p>
-      <p>(As,P,B)Al Cu</p>
+      <p><img src="./img/semicon.dio.svg" /></p>
+      <ol type="1">
+      <li>成膜
+      <ul>
+      <li>スパッタリング
+      <ul>
+      <li>Ar が Al に衝突して Al 原子が飛び出し、基板上にくっつく</li>
+      <li>Al が酸化しないように真空引き</li>
+      <li>エネルギ大</li>
+      <li>高融点な材料を成膜できる</li>
+      </ul></li>
+      <li>蒸着
+      <ul>
+      <li>W フィラメントで Al を蒸発させる</li>
+      </ul></li>
+      <li>CVD
+      <ul>
+      <li><span class="math inline">\(\rm{}SiH_4 + O_2 \rightarrow SiO_2 + 2\,H_2\)</span></li>
+      <li>等方的</li>
+      <li>材料に制限</li>
+      </ul></li>
+      </ul></li>
+      <li>リソグラフィ
+      <ul>
+      <li>フォトリソグラフィ
+      <ul>
+      <li>大量生産向け</li>
+      <li>マスクが高い
+      <ul>
+      <li>EB で作ってるので</li>
+      </ul></li>
+      </ul></li>
+      <li>EB リソグラフィ
+      <ul>
+      <li>EB（電子ビーム）で直接描く</li>
+      <li>一筆書きなのでサイクルタイムが長い</li>
+      <li>細かいパターニングが可能</li>
+      <li>一品もの、研究用途</li>
+      </ul></li>
+      <li>ナノインプリント
+      <ul>
+      <li>回折限界がない</li>
+      <li>片あたりの問題</li>
+      </ul></li>
+      </ul></li>
+      <li>エッチング
+      <ul>
+      <li>ウェットエッチング
+      <ul>
+      <li>等方的</li>
+      <li>サイドエッチング（まわりこみ）に注意</li>
+      <li><span class="math inline">\(\rm{} Cu + 2\,FeCl_3 \ra CuCl_2 + 2\,FeCl_2\)</span></li>
+      <li><span class="math inline">\(\rm{} Si + KOH \ra K_2SiO_3 + H_2\)</span></li>
+      </ul></li>
+      <li>リフトオフ</li>
+      <li>ドライエッチング
+      <ul>
+      <li>RIE(Reactive Ion Etching)</li>
+      <li>材料と反応性ガスの組み合わせ</li>
+      <li>スパッタリングのターゲット側に基板があるイメージ</li>
+      <li><span class="math inline">\(\rm{} Al + 3\,Cl \ra AlCl_3\)</span></li>
+      </ul></li>
+      </ul></li>
+      <li>洗浄
+      <ul>
+      <li>有機溶媒でレジストを溶かす</li>
+      <li><span class="math inline">\(\rm{}O_2\)</span> プラズマで焼き切る</li>
+      </ul></li>
+      <li>熱酸化、ドーピング
+      <ul>
+      <li>900°C の水蒸気酸化で <span class="math inline">\(\rm{} Si \ra SiO_2\)</span></li>
+      <li>As,P,B をドープ</li>
+      </ul></li>
+      <li>CMP (Chemical Mechanical Pollshing)</li>
+      </ol>
+      <h3 id="トランジスタのプロセス">トランジスタのプロセス</h3>
+      <p><img src="img/transistor.dio.svg" /></p>
       <h2 id="hdd">HDD</h2>
       <h2 id="ssd">SSD</h2>
       <h2 id="レーザープリンタ">レーザープリンタ</h2>
