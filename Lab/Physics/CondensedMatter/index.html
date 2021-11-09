@@ -453,14 +453,17 @@
 <li><a href="#直流電場応答">2.1. 直流電場応答</a></li>
 <li><a href="#交流電場応答">2.2. 交流電場応答</a></li>
 </ul></li>
-<li><a href="#ゾンマーフェルトモデル">3. ゾンマーフェルトモデル</a><ul>
+<li><a href="#金属中の電子状態">3. 金属中の電子状態</a><ul>
 <li><a href="#シュレディンガー方程式">3.1. シュレディンガー方程式</a></li>
-<li><a href="#bmk空間-逆格子空間">3.2. <span class="math inline">\(\bm{k}\)</span>空間 逆格子空間</a></li>
-<li><a href="#フェルミ準位">3.3. フェルミ準位</a></li>
-<li><a href="#金属の電子状態密度">3.4. 金属の電子状態密度</a></li>
-<li><a href="#電子比熱">3.4. 電子比熱</a></li>
+<li><a href="#k-空間-逆格子空間">3.2. k 空間 逆格子空間</a></li>
+<li><a href="#状態密度">3.3. 状態密度</a></li>
+<li><a href="#フェルミ準位">3.4. フェルミ準位</a></li>
+<li><a href="#金属の電子比熱">3.5. 金属の電子比熱</a></li>
+<li><a href="#まとめ">まとめ</a></li>
 </ul></li>
-<li><a href="#半導体">4. 半導体</a></li>
+<li><a href="#半導体">4. 半導体</a><ul>
+<li><a href="#半導体のバンド構造">4.1. 半導体のバンド構造</a></li>
+</ul></li>
 </ul></nav>
       
       <h2 id="結晶">1. 結晶</h2>
@@ -558,8 +561,16 @@
       <p><span class="math display">\[
       \eps_r = 1-\f{\omega_P^2}{\omega(\omega + i/\tau)} \tag{2.2.7}
       \]</span></p>
-      <h2 id="ゾンマーフェルトモデル">3. ゾンマーフェルトモデル</h2>
-      <p>無限に広がった結晶（バルク結晶）の電子状態を考える。</p>
+      <p>誘電率を実部と虚部に分解して、</p>
+      <p><span class="math display">\[
+      \eps_r = \eps&#39;_r + i \eps&#39;&#39;_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r)
+      \]</span></p>
+      <p>金属の反射率 <span class="math inline">\(R\)</span> は、</p>
+      <p><span class="math display">\[
+      R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2
+      \]</span></p>
+      <h2 id="金属中の電子状態">3. 金属中の電子状態</h2>
+      <p>無限に広がった結晶（バルク結晶）の電子状態を考える。周期境界条件を課したシュレディンガー方程式で波動関数を求める。（ゾンマーフェルトモデル）</p>
       <h3 id="シュレディンガー方程式">3.1. シュレディンガー方程式</h3>
       <p>シュレディンガー方程式</p>
       <p><span class="math display">\[
@@ -603,18 +614,32 @@
       \bra{\psi}\hat{p}\ket{\psi} = \hbar k_x
       \]</span></p>
       <p>☆ 位置が <span class="math inline">\(\bm{0}\)</span> で運動量 <span class="math inline">\(\bm{k}\)</span> の平面波</p>
-      <h3 id="bmk空間-逆格子空間">3.2. <span class="math inline">\(\bm{k}\)</span>空間 逆格子空間</h3>
+      <h3 id="k-空間-逆格子空間">3.2. k 空間 逆格子空間</h3>
       <p><span class="math inline">\(k_x,k_y,k_z\)</span> 軸からなる 3 次元空間で、<span class="math inline">\(\f{2\pi}{L}\)</span> 間隔の格子を張ったとき、各格子点は電子状態に対応する。ただし、電子はスピンの自由度もあるので、格子点と電子状態は 1 対 2 に対応する。</p>
       <p>k 空間上で、エネルギーは、原点からの距離の二乗に比例する。</p>
       <p><span class="math display">\[
       E(\bm{k})=\frac{\hbar^2}{2m}|\bm{k}|^2
       \]</span></p>
-      <p>1 個の電子が占める体積は、単位格子の体積の半分（スピンの自由度）。</p>
+      <p>1 個の電子が平均的に占める体積は、単位格子の体積の半分（スピンの自由度）で、</p>
       <p><span class="math display">\[
       \f{1}{2} \l(\f{2\pi}{L}\r)^3
       \]</span></p>
-      <h3 id="フェルミ準位">3.3. フェルミ準位</h3>
-      <p>実空間で <span class="math inline">\(L^3\)</span> の単位格子中にある <span class="math inline">\(N\)</span> 個の電子が安定状態にある状況を考える。また <span class="math inline">\(N\)</span> は十分大きいとする。</p>
+      <h3 id="状態密度">3.3. 状態密度</h3>
+      <p>波数 <span class="math inline">\(k\)</span> 以下の電子の数 <span class="math inline">\(N(k)\)</span> は</p>
+      <p><span class="math display">\[
+      N(k) = \f{\f{4}{3}\pi k^3}{\f{1}{2} \l(\f{2\pi}{L}\r)^3}
+      \]</span></p>
+      <p>エネルギー <span class="math inline">\(E\)</span> 以下の電子の数 <span class="math inline">\(N(E)\)</span> は</p>
+      <p><span class="math display">\[
+      N(E) = \f{L^3}{3\pi^2}\l(\f{2mE}{\hbar^2}\r)^{\f{3}{2}}
+      \]</span></p>
+      <p>エネルギー <span class="math inline">\(E\)</span> にある電子の数密度を、状態密度 <span class="math inline">\(D(E)\)</span> とすると、</p>
+      <p><span class="math display">\[
+      D(E) = \d{}{E}\f{N(E)}{L^3} = \f{1}{2\pi^2}\l(\f{2m}{\hbar^2}\r)^{\f{3}{2}}E^{\f{1}{2}}
+      \]</span></p>
+      <h3 id="フェルミ準位">3.4. フェルミ準位</h3>
+      <p>最外殻電子は、共有結合を作ったり、金属の自由電子となったり、その原子の特性に大きく影響する。ところで、最外殻電子は原子の中で最も高いエネルギー状態にある電子なので、k 空間上でも「最外殻」に位置している。</p>
+      <p>実格子空間で <span class="math inline">\(L^3\)</span> の単位格子中にある <span class="math inline">\(N\)</span> 個の電子が安定状態にある状況を考える。また <span class="math inline">\(N\)</span> は十分大きいとする。</p>
       <p>原点の近くから順に球状に埋まっていくので、その球の半径を <span class="math inline">\(k_F\)</span> とすると、</p>
       <p><span class="math display">\[
       \f{4}{3}\pi k_F^3 = \f{1}{2} N \l(\f{2\pi}{L}\r)^3
@@ -636,17 +661,31 @@
       <p><span class="math display">\[
       v_F = \sqrt{\f{2E_F}{m}}
       \]</span></p>
-      <p>全電子のエネルギー</p>
+      <p>また、この格子中に含まれる全電子のエネルギーの和は</p>
       <p><span class="math display">\[
       E = 2 \sum_{E&lt;E_P} \f{\hbar^2|\bm{k}|^2}{2m} \sim \f{V}{\pi^2}\f{\hbar^2 k_F^5}{10m}
       \]</span></p>
-      <h3 id="金属の電子状態密度">3.4. 金属の電子状態密度</h3>
-      <p>波数 <span class="math inline">\(k\)</span> 以下の電子の数</p>
+      <h3 id="金属の電子比熱">3.5. 金属の電子比熱</h3>
+      <p>温度 0 のとき、フェルミ準位を超えた電子はいないが、温度が上がると少しずつフェルミ準位を飛び出した電子がみられるようになる。</p>
+      <p>どの程度、フェルミ準位を超えて飛び出すかを表したのがフェルミ分布関数</p>
       <p><span class="math display">\[
-      N(k) = N(E(k))
+      f(E,T) = \f{1}{\exp\l(\f{E-\mu}{k_BT}\r)+1}
       \]</span></p>
-      <h3 id="電子比熱">3.4. 電子比熱</h3>
+      <p><span class="math inline">\(\mu\)</span> は化学ポテンシャル <span class="math inline">\(\sim E_F\)</span></p>
+      <p>ある温度の電子の状態分布は、状態密度 × フェルミ分布関数 で求まる。</p>
+      <p>$$</p>
+      <p>$$</p>
+      <h3 id="まとめ">まとめ</h3>
+      <ol type="1">
+      <li>ゾンマーフェルトモデルのシュレディンガー方程式から、電子状態の配置、電子を入れる箱の配置を求めた。</li>
+      <li>電子状態を格子点に対応させて、わかりやすく表す k 空間を導入した。</li>
+      <li>あるエネルギーにある電子状態の数を調べた。</li>
+      <li>電子状態に実際に電子を配置して、フェルミ半径を求めた。</li>
+      <li>フェルミ分布関数を使って実際の金属電子の状態を求めた。</li>
+      </ol>
+      <p>ここではフェルミ分布関数の使い方が最短でわかるようにしか書いてないので、ちゃんと導出もしようね（）</p>
       <h2 id="半導体">4. 半導体</h2>
+      <h3 id="半導体のバンド構造">4.1. 半導体のバンド構造</h3>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
