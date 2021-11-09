@@ -452,8 +452,9 @@
 </ul></li>
 <li><a href="#ゾンマーフェルトモデル">3. ゾンマーフェルトモデル</a><ul>
 <li><a href="#シュレディンガー方程式">3.1. シュレディンガー方程式</a></li>
-<li><a href="#逆格子空間">3.2. 逆格子空間</a></li>
-<li><a href="#状態密度">3.3. 状態密度</a></li>
+<li><a href="#bmk空間-逆格子空間">3.2. <span class="math inline">\(\bm{k}\)</span>空間 逆格子空間</a></li>
+<li><a href="#フェルミ準位">3.3. フェルミ準位</a></li>
+<li><a href="#金属の電子状態密度">3.4. 金属の電子状態密度</a></li>
 <li><a href="#電子比熱">3.4. 電子比熱</a></li>
 </ul></li>
 <li><a href="#半導体">4. 半導体</a></li>
@@ -555,20 +556,92 @@
       \eps_r = 1-\f{\omega_P^2}{\omega(\omega + i/\tau)} \tag{2.2.7}
       \]</span></p>
       <h2 id="ゾンマーフェルトモデル">3. ゾンマーフェルトモデル</h2>
+      <p>無限に広がった結晶（バルク結晶）の電子状態を考える。</p>
       <h3 id="シュレディンガー方程式">3.1. シュレディンガー方程式</h3>
-      <p>周期境界条件を課したシュレディンガー方程式</p>
+      <p>シュレディンガー方程式</p>
       <p><span class="math display">\[
-      E\psi(r)=\hat{H}\psi(r)
+      E\psi(\bm{r})=\hat{H}\psi(\bm{r})
       \]</span></p>
       <p><span class="math display">\[
-      \hat{H}=\f{1}{2m}\hat{p}^2+V(r)=-\f{\hbar^2}{2m}\nabla^2 + V(r)
+      \hat{H}=\f{1}{2m}\hat{p}^2+V(\bm{r})=-\f{\hbar^2}{2m}\nabla^2 + V(\bm{r})
       \]</span></p>
-      <p><span class="math inline">\(V(r)=0\)</span> として解くと、</p>
+      <p>を、 <span class="math inline">\(V(\bm{r})=0\)</span> として解くと、</p>
       <p><span class="math display">\[
-      \psi(r)=\f{1}{L^{3/2}}\exp(ih\cdot r)
+      \psi_{\bm{k}}(r)=A\exp(i\bm{k}\cdot \bm{r})
       \]</span></p>
-      <h3 id="逆格子空間">3.2. 逆格子空間</h3>
-      <h3 id="状態密度">3.3. 状態密度</h3>
+      <p>振幅 <span class="math inline">\(A\)</span> は、波動関数の規格化条件より、</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \braket{\psi}{\psi}
+      &amp;= \iiint_{-L/2}^{L/2} \psi^*(\bm{r})\psi(\bm{r}) d\bm{r} \\
+      &amp;= \iiint_{-L/2}^{L/2} A^2 d\bm{r} \\
+      &amp;= A^2 L^3 \\
+      &amp;= 1
+      \end{aligned}
+      \]</span></p>
+      <p><span class="math display">\[
+      A=L^{-3/2}
+      \]</span></p>
+      <p>定数 <span class="math inline">\(\bm{k}\)</span> は、周期境界条件 <span class="math inline">\(\psi(x,y,z)=\psi(x+L,y,z)\)</span> より、</p>
+      <p><span class="math display">\[
+      k_x = \frac{2\pi}{L}n_x \quad n_x = 0, \pm 1, \pm 2 ,,,
+      \]</span></p>
+      <p>☆ <span class="math inline">\(y,z\)</span> 成分も同様</p>
+      <p>エネルギーは、</p>
+      <p><span class="math display">\[
+      E(\bm{k}) = \f{\hbar^2}{2m}|\bm{k}|^2
+      \]</span></p>
+      <p>位置は、</p>
+      <p><span class="math display">\[
+      \bra{\psi}x\ket{\psi} = \iiint_{-L/2}^{L/2} \psi^*(\bm{r}) x \psi(\bm{r}) d\bm{r} = \int_{-L/2}^{L/2} x dx = 0
+      \]</span></p>
+      <p>運動量は、</p>
+      <p><span class="math display">\[
+      \bra{\psi}\hat{p}\ket{\psi} = \hbar k_x
+      \]</span></p>
+      <p>☆ 位置が <span class="math inline">\(\bm{0}\)</span> で運動量 <span class="math inline">\(\bm{k}\)</span> の平面波</p>
+      <h3 id="bmk空間-逆格子空間">3.2. <span class="math inline">\(\bm{k}\)</span>空間 逆格子空間</h3>
+      <p><span class="math inline">\(k_x,k_y,k_z\)</span> 軸からなる 3 次元空間で、<span class="math inline">\(\f{2\pi}{L}\)</span> 間隔の格子を張ったとき、各格子点は電子状態に対応する。ただし、電子はスピンの自由度もあるので、格子点と電子状態は 1 対 2 に対応する。</p>
+      <p>k 空間上で、エネルギーは、原点からの距離の二乗に比例する。</p>
+      <p><span class="math display">\[
+      E(\bm{k})=\frac{\hbar^2}{2m}|\bm{k}|^2
+      \]</span></p>
+      <p>1 個の電子が占める体積は、単位格子の体積の半分（スピンの自由度）。</p>
+      <p><span class="math display">\[
+      \f{1}{2} \l(\f{2\pi}{L}\r)^3
+      \]</span></p>
+      <h3 id="フェルミ準位">3.3. フェルミ準位</h3>
+      <p>実空間で <span class="math inline">\(L^3\)</span> の単位格子中にある <span class="math inline">\(N\)</span> 個の電子が安定状態にある状況を考える。また <span class="math inline">\(N\)</span> は十分大きいとする。</p>
+      <p>原点の近くから順に球状に埋まっていくので、その球の半径を <span class="math inline">\(k_F\)</span> とすると、</p>
+      <p><span class="math display">\[
+      \f{4}{3}\pi k_F^3 = \f{1}{2} N \l(\f{2\pi}{L}\r)^3
+      \]</span></p>
+      <p>電子密度 <span class="math inline">\(n\)</span> を用いて、</p>
+      <p><span class="math display">\[
+      k_F = \sqrt[3]{3\pi^2\f{N}{L^3}} = \sqrt[3]{3\pi^2n}
+      \]</span></p>
+      <p>これをフェルミ半径という。</p>
+      <p>フェルミエネルギー</p>
+      <p><span class="math display">\[
+      E_F = E(\bm{k}_F) = \f{\hbar^2}{2m}(3\pi^2n)^{\f{2}{3}}
+      \]</span></p>
+      <p>フェルミ温度</p>
+      <p><span class="math display">\[
+      T_F = \f{E_F}{k_B}
+      \]</span></p>
+      <p>フェルミ速度</p>
+      <p><span class="math display">\[
+      v_F = \sqrt{\f{2E_F}{m}}
+      \]</span></p>
+      <p>全電子のエネルギー</p>
+      <p><span class="math display">\[
+      E = 2 \sum_{E&lt;E_P} \f{\hbar^2|\bm{k}|^2}{2m} \sim \f{V}{\pi^2}\f{\hbar^2 k_F^5}{10m}
+      \]</span></p>
+      <h3 id="金属の電子状態密度">3.4. 金属の電子状態密度</h3>
+      <p>波数 <span class="math inline">\(k\)</span> 以下の電子の数</p>
+      <p><span class="math display">\[
+      N(k) = N(E(k))
+      \]</span></p>
       <h3 id="電子比熱">3.4. 電子比熱</h3>
       <h2 id="半導体">4. 半導体</h2>
 
