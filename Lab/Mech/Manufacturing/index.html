@@ -468,6 +468,13 @@
 <li><a href="#ssd">SSD</a></li>
 <li><a href="#レーザープリンタ">レーザープリンタ</a></li>
 <li><a href="#テレビモニタ">テレビ・モニタ</a></li>
+<li><a href="#レーザー">レーザー</a><ul>
+<li><a href="#レーザー発振の原理">レーザー発振の原理</a></li>
+<li><a href="#半導体レーザー">半導体レーザー</a></li>
+<li><a href="#co2-レーザー">CO2 レーザー</a></li>
+<li><a href="#レーザーポインタ">レーザーポインタ</a></li>
+</ul></li>
+<li><a href="#レーザー加工">レーザー加工</a></li>
 </ul></nav>
       
       <h2 id="金属材料">金属材料</h2>
@@ -1098,6 +1105,80 @@
       <li>静電容量式</li>
       </ul></li>
       </ul>
+      <h2 id="レーザー">レーザー</h2>
+      <p>レーザーの特徴</p>
+      <ul>
+      <li>単色性
+      <ul>
+      <li>スペクトル幅が狭い</li>
+      <li>屈折率は波長に依存する（色収差など）</li>
+      <li>単色光は光学系で扱いやすい</li>
+      </ul></li>
+      <li>指向性
+      <ul>
+      <li>ガウシアン</li>
+      </ul></li>
+      <li>コヒーレンス（可干渉性）
+      <ul>
+      <li>時間的コヒーレンス
+      <ul>
+      <li>光源から違う時間に出た光が干渉する</li>
+      </ul></li>
+      <li>空間的コヒーレンス
+      <ul>
+      <li>光源の違う場所から出た光が干渉する</li>
+      <li>ビームの垂直方向で位相がそろっている</li>
+      </ul></li>
+      <li>干渉はすごい
+      <ul>
+      <li>微小な長さの情報を拡大できる</li>
+      </ul></li>
+      </ul></li>
+      </ul>
+      <h3 id="レーザー発振の原理">レーザー発振の原理</h3>
+      <h4 id="励起">1. 励起</h4>
+      <p>媒質にエネルギーを当てて励起させる。反転分布（基底状態より励起状態のほうが多い分布）になるまで励起させる。</p>
+      <p>励起方法</p>
+      <ul>
+      <li>気体媒質に放電</li>
+      <li>励起用レーザー
+      <ul>
+      <li>別のレーザーを励起に使う</li>
+      </ul></li>
+      <li>フラッシュランプ
+      <ul>
+      <li>楕円ミラーの焦点にランプと媒質を配置する</li>
+      <li>ランプから出たすべての光が媒質に到達する</li>
+      </ul></li>
+      </ul>
+      <h4 id="誘導放出">2. 誘導放出</h4>
+      <p>励起された電子はある時間（蛍光寿命）経つと、基底状態にもどり、このときに光を放出する（自然放出）。光の波長は <span class="math inline">\(\Delta E = h\f{c}{\lambda}\)</span> 。自然放出された光が、同じ励起状態にある電子にあたると、まったく同じ状態の（周波数はもちろん、位相、偏光も同じ）光を放出する（誘導放出）。</p>
+      <h4 id="増幅">3. 増幅</h4>
+      <p>光量子束密度</p>
+      <p><span class="math display">\[
+      \phi(z) = \f{I(z)}{h\nu}
+      \]</span></p>
+      <p>光子と原子が衝突する頻度</p>
+      <p><span class="math display">\[
+      W = \phi\sigma
+      \]</span></p>
+      <p><span class="math inline">\(\sigma\)</span> : 原子の（吸収）断面積</p>
+      <p><span class="math inline">\(z\)</span> ~ <span class="math inline">\(z+dz\)</span> の領域で、誘導放出と吸光する光子数の関係は、</p>
+      <p><span class="math display">\[
+      \phi(z+dz) = \phi(z) + N_2Wdz - N_1Wdz
+      \]</span></p>
+      <p><span class="math display">\[
+      \d{\phi}{z} = (N_2-N_1) \sigma \phi
+      \]</span></p>
+      <p><span class="math display">\[
+      \phi(z) = \phi(0)\exp\{(N_2-N_1)\sigma z\}
+      \]</span></p>
+      <p>☆ <span class="math inline">\(N_2&gt;N_1\)</span>（反転分布） のとき増幅される！</p>
+      <h3 id="半導体レーザー">半導体レーザー</h3>
+      <p>np</p>
+      <h3 id="co2-レーザー">CO2 レーザー</h3>
+      <h3 id="レーザーポインタ">レーザーポインタ</h3>
+      <h2 id="レーザー加工">レーザー加工</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
