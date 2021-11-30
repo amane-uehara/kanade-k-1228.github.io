@@ -2,6 +2,4 @@
 %
 %
 
-Robotics and Computing
-
-![](index.drawio.svg)
+<a class="twitter-timeline" href="https://twitter.com/kanade_k_1228?ref_src=twsrc%5Etfw">Tweets by kanade_k_1228</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
