@@ -2,13 +2,11 @@
 %
 %
 
-## 数学
-
 ## 物理学
 
 ### 物性
 
-半導体
+[物性物理](./Physics/CondensedMatter/)
 
 ## 機械工学
 
@@ -44,6 +42,8 @@ VLSI の設計
 
 ### リレーコンピュータ
 
-[小学生からはじめる自作 CPU](./Lab/)
+[Day1 リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
 
-### いろいろ
+Day2 リレーで計算をしてみる
+
+Day3

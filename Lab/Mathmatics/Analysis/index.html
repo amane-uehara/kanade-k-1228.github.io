@@ -452,10 +452,16 @@
 <li><a href="#連続">連続</a><ul>
 <li><a href="#二変数の中間値の定理">二変数の中間値の定理</a></li>
 </ul></li>
-<li><a href="#一般の写像">一般の写像</a><ul>
 <li><a href="#偏微分">偏微分</a></li>
+<li><a href="#全微分">全微分</a></li>
+<li><a href="#連鎖律">連鎖律</a><ul>
+<li><a href="#連鎖律１">連鎖律１</a></li>
+<li><a href="#連鎖律２">連鎖律２</a></li>
+</ul></li>
+<li><a href="#一般の写像">一般の写像</a><ul>
+<li><a href="#偏微分-1">偏微分</a></li>
 <li><a href="#合成写像">合成写像</a></li>
-<li><a href="#連鎖律">連鎖律</a></li>
+<li><a href="#連鎖律-1">連鎖律</a></li>
 </ul></li>
 <li><a href="#高次偏導関数">高次偏導関数</a></li>
 <li><a href="#テイラーの定理">テイラーの定理</a></li>
@@ -480,7 +486,8 @@
 </ul></nav>
       
       <h2 id="極限">極限</h2>
-      <p>平面上のあらゆる方向から近づける． <span class="math display">\[
+      <p>平面上のあらゆる方向から近づける．</p>
+      <p><span class="math display">\[
       \forall \varepsilon \gt 0 , \exists \delta \gt 0 \\
       0 \lt |\boldsymbol{x}-\boldsymbol{a}|\lt\delta \\
       \Rightarrow |f(\boldsymbol{x})-c|\lt\varepsilon
@@ -501,10 +508,20 @@
       <p><span class="math display">\[
       \exists \boldsymbol{C}\in(\boldsymbol{A}と\boldsymbol{B}をつなぐ曲線)\\
       f(\boldsymbol{A})\lt f(\boldsymbol{C})\lt f(\boldsymbol{A})
-      \]</span> ## 偏微分 ## 全微分 ## 連鎖律 ### 連鎖律１ <span class="math inline">\(f(\boldsymbol{x})\)は\(U\subset \mathbb{R}^2\)</span> 上の関数で，<span class="math inline">\(\boldsymbol{x}=\boldsymbol{a}\)</span> で全微分可能． <span class="math inline">\(x(t),y(t)\)</span> は <span class="math inline">\(I\subset \mathbb{R}\)</span> 上の関数で，<span class="math inline">\((x(t),y(t))\in U(\forall t\in I)\)</span>，<span class="math inline">\(t=c\)</span> で微分可能． このとき(z(t)=f(x(t),y(t)))は(t=c)で微分可能で，[z’(c)=f_x()x’(c)+f_y()y’(c)] (f())は(U)上で(C<sup>2)級． (x(t),y(t),z(t))は(I)上で(C</sup>1)級． [=+] #### 証明 ### 連鎖律２ (x(s,t),y(s,t))は(V<sup>2)上の関数で，((x(s,t),y(s,t))U((s,t)V))，((s,t)=)で全微分可能． (=(x(),y())． このとき，(V)上の関数(z=f(x(s,t),y(s,t)))は((s,t)=)で微分可能で， <span class="math display">\[
+      \]</span></p>
+      <h2 id="偏微分">偏微分</h2>
+      <h2 id="全微分">全微分</h2>
+      <h2 id="連鎖律">連鎖律</h2>
+      <h3 id="連鎖律１">連鎖律１</h3>
+      <p><span class="math inline">\(f(\boldsymbol{x})\)は\(U\subset \mathbb{R}^2\)</span> 上の関数で，<span class="math inline">\(\boldsymbol{x}=\boldsymbol{a}\)</span> で全微分可能． <span class="math inline">\(x(t),y(t)\)</span> は <span class="math inline">\(I\subset \mathbb{R}\)</span> 上の関数で，<span class="math inline">\((x(t),y(t))\in U(\forall t\in I)\)</span>，<span class="math inline">\(t=c\)</span> で微分可能． このとき(z(t)=f(x(t),y(t)))は(t=c)で微分可能で，[z’(c)=f_x()x’(c)+f_y()y’(c)] (f())は(U)上で(C<sup>2)級． (x(t),y(t),z(t))は(I)上で(C</sup>1)級． [=+]</p>
+      <h4 id="証明">証明</h4>
+      <h3 id="連鎖律２">連鎖律２</h3>
+      <p>(x(s,t),y(s,t))は(V^2)上の関数で，((x(s,t),y(s,t))U((s,t)V))，((s,t)=)で全微分可能． (=(x(),y())． このとき，(V)上の関数(z=f(x(s,t),y(s,t)))は((s,t)=)で微分可能で，</p>
+      <p><span class="math display">\[
       z_s(\boldsymbol{c})=f_x(\boldsymbol{a})x_s(\boldsymbol{c})+f_y(\boldsymbol{a})y_s(\boldsymbol{c}) \\
       z_t(\boldsymbol{c})=f_x(\boldsymbol{a})x_t(\boldsymbol{c})+f_y(\boldsymbol{a})y_t(\boldsymbol{c})
-      \]</span> (f(),x(s,t),y(s,t))が(C</sup>1)級ならば，(z(s,t))も(C^1)級． [=+\ =+]</p>
+      \]</span></p>
+      <p>(f(),x(s,t),y(s,t))が(C<sup>1)級ならば，(z(s,t))も(C</sup>1)級． [=+\ =+]</p>
       ヤコビ行列(J)を用いて， [J=
       <span class="math display">\[\begin{pmatrix}
       \frac{\partial x}{\partial s} &amp; \frac{\partial x}{\partial t} \\
@@ -515,27 +532,32 @@
       <p>座標変換で面積がヤコビアン倍される．</p>
       <h2 id="一般の写像">一般の写像</h2>
       <p>(={x_1,x_2,,,x_n},={a_1,a_2,,,a_n}^n)</p>
-      <p>(U<sup>n)を定義域とし，(</sup>m)に値を持つ写像(F:U^m)は，(F=(f_1,f_2,,,f_n))と書ける．ただし，(f_i:U)はn変数関数．[Fが連続関数f_1,f_2,,,f_nが連続関数]</p>
-      <h3 id="偏微分">偏微分</h3>
+      <p>(U<sup>n)を定義域とし，(</sup>m)に値を持つ写像(F:U^m)は，(F=(f_1,f_2,,,f_n))と書ける．ただし，(f_i:U)は n 変数関数．[F が連続関数f_1,f_2,,,f_n が連続関数]</p>
+      <h3 id="偏微分-1">偏微分</h3>
       <p>[=(,,,,)]</p>
       <h3 id="合成写像">合成写像</h3>
       <p>[VU^m]</p>
-      <h3 id="連鎖律">連鎖律</h3>
+      <h3 id="連鎖律-1">連鎖律</h3>
       <p>[=+,,,+]</p>
       <h2 id="高次偏導関数">高次偏導関数</h2>
-      <p>2変数関数(f()=f(x,y))の(x)に関する偏導関数(f_x())が存在し，</p>
+      <p>2 変数関数(f()=f(x,y))の(x)に関する偏導関数(f_x())が存在し，</p>
       <h2 id="テイラーの定理">テイラーの定理</h2>
-      <p>[f(x,y)=<em>{}a</em>{m,n}x<sup>my</sup>n \ f(x,y)=<em>{}a</em>{m,n}m(m-1)…(m-i+1)n(n-1)…(n-j+1)x<sup>{m-i}y</sup>{n-j} \ a_{i,j}=f(0,0) ] [f(x,y)=<em>{}a</em>{m,n}(x-a)<sup>m(y-b)</sup>n \ a_{i,j}=f(a,b) ]</p>
+      <p>[f(x,y)=a<em>{m,n}x<sup>my</sup>n \ f(x,y)=a</em>{m,n}m(m-1)…(m-i+1)n(n-1)…(n-j+1)x<sup>{m-i}y</sup>{n-j} \ a<em>{i,j}=f(0,0) ] [f(x,y)=a</em>{m,n}(x-a)<sup>m(y-b)</sup>n \ a*{i,j}=f(a,b) ]</p>
       <h2 id="極大極小">極大・極小</h2>
       <p>(f())が(=)で極大・極小とは，[0,0|-|\ f()f()]</p>
       <p>以下，(f())は()の近くで定義された(C^2)関数，(=(a,b))は(f)の停留点((f_x()=f_y()=0))とする．</p>
-      <p>もし，(f)が()で極小ならば，任意の方向で2階微分が正でなくてはいけない．</p>
-      <p>(x=a+mt,y=b+nt)として，[(0)=(m+n)<sup>2f()=m</sup>2f_{xx}()+2mnf_{xy}()+n^2f_{yy}()0]が全ての((m,n)=(0,0))で成り立つ．</p>
-      <p>その必要十分条件は，[f_{xx}()0,f_{yy}()0\ {f_{xy}()}^2-f_{xx}()f_{yy}()0]</p>
-      <p>逆に，({f_{xy}()}^2-f_{xx}()f_{yy}()0)のとき，方向二階微分は正にも負にもなりうる．このとき()は(f())の峠点・鞍点という．</p>
+      <p>もし，(f)が()で極小ならば，任意の方向で 2 階微分が正でなくてはいけない．</p>
+      <p>(x=a+mt,y=b+nt)として，[(0)=(m+n)<sup>2f()=m</sup>2f<em>{xx}()+2mnf</em>{xy}()+n^2f_{yy}()0]が全ての((m,n)=(0,0))で成り立つ．</p>
+      <p>その必要十分条件は，[f<em>{xx}()0,f</em>{yy}()0\ {f<em>{xy}()}^2-f</em>{xx}()f_{yy}()0]</p>
+      <p>逆に，({f<em>{xy}()}^2-f</em>{xx}()f_{yy}()0)のとき，方向二階微分は正にも負にもなりうる．このとき()は(f())の峠点・鞍点という．</p>
       <h3 id="ヘッシアン">ヘッシアン</h3>
       <p>(C^2)関数(f())のヘッシアン</p>
-      <p>[H():=det\begin{pmatrix} f_{xx} &amp; f_{xy} \ f_{yx} &amp; f_{yy} \end{pmatrix}=f_{xx}f_{yy}-{f_{xy}}^2]</p>
+      [H():=det
+      <span class="math display">\[\begin{pmatrix}
+      f*{xx} &amp; f*{xy} \\
+      f*{yx} &amp; f*{yy}
+      \end{pmatrix}\]</span>
+      <p>=f<em>{xx}f</em>{yy}-{f_{xy}}^2]</p>
       <h2 id="曲線">曲線</h2>
       <h3 id="パラメタ曲線">パラメタ曲線</h3>
       <p>(f(t),g(t)):(I)上の連続関数．</p>
@@ -557,7 +579,7 @@
       )=(
       <span class="math display">\[\begin{array}{c}f(t)\\g(t)\end{array}\]</span>
       <p>)(tI))を(C^1)級の曲線とする．(f’(a)=0(aI))ならば，(t=a)の近くで(y)は(x)の関数であり，(==)</p>
-      <h4 id="証明">証明</h4>
+      <h4 id="証明-1">証明</h4>
       <p>(f’(t)0)の場合．</p>
       <p>よって(f(x))は単調増加なので，逆関数(t=h(x))が存在する．</p>
       <p>(y=g(t)=g(h(x)))と，(x)の(C^1)関数</p>
@@ -633,19 +655,19 @@
       <h2 id="陰関数定理">陰関数定理</h2>
       (f(x,y):{(a,b)近傍で定義,f(a,b)=0,C^1}) [f_y(a,b)0! (x) {
       <span class="math display">\[\begin{array}{l}
-              \phi(a)=b \\
-              f(x,\phi(x))=0
-              \end{array}\]</span>
+      \phi(a)=b \\
+      f(x,\phi(x))=0
+      \end{array}\]</span>
       <p>.]</p>
       <p>[’(x)=-]</p>
       <p>(y=(x))を(f(x,y))の陰関数という．</p>
-      <h4 id="証明-1">証明</h4>
+      <h4 id="証明-2">証明</h4>
       (C)の((a,b))における接線 [f_x(a,b)(x-a)+f_y(a,b)(y-b)=0]
       </p>
       <h4 id="例">例</h4>
       <h2 id="特異点">特異点</h2>
       <p>(f(x,y):C^1)が定める曲線(C:f(x,y)=0)上の点((a,b))が特異点であるとは，[f_x(a,b)=f_y(a,b)=0]</p>
-      <p>陰関数定理：非特異点の近くでは，Cはグラフ</p>
+      <p>陰関数定理：非特異点の近くでは，C はグラフ</p>
       <h4 id="例-1">例</h4>
       <h2 id="条件付き極値">条件付き極値</h2>
       <p>(U:)開集合，(f(x,y),g(x,y):C^1)，曲線(C:g(x,y)=0)</p>
@@ -653,11 +675,11 @@
       <p>(C:(x,y)=(x(t),y(t)))とパラメタ表示されるとき，(f(x(t),y(t)))の極値を考える．</p>
       <p>とくに(y=(x))のグラフのとき，(f(x,(x)))の極値を考えること．</p>
       <h3 id="ラグランジュの未定乗数法">ラグランジュの未定乗数法</h3>
-      <p>(f(x,y),g(x,y):U上,C^1)</p>
+      <p>(f(x,y),g(x,y):U 上,C^1)</p>
       <p>(g(x,y)=0)のとき(f(a,b))で極値をとるとする．</p>
       <p>(F(x,y,):=f(x,y)-g(x,y))</p>
       <p>((a,b))が曲線(C)の特異点でない[F_x(x,y,)=F_y(x,y,)=0]</p>
-      <h4 id="証明-2">証明</h4>
+      <h4 id="証明-3">証明</h4>
       <p>(g_y(a,b)0)の場合を考える．</p>
       <p>((a,b))の近くでは，(C)は(y=(x))</p>
       <p>[<span class="math display">\[\begin{eqnarray}\frac{d}{dx}f(x,\phi(x))&amp;=&amp;f_x(x,y)+f_y(x,y)\phi&#39;(x)\\&amp;=&amp;f_x(x,y)+f_y(x,y)\left(-\frac{g_x(x,y)}{g_y(x,y)}\right)\end{eqnarray}\]</span>]</p>

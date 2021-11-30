@@ -5,6 +5,7 @@
 ## 極限
 
 平面上のあらゆる方向から近づける．
+
 $$
 \forall \varepsilon \gt 0 , \exists \delta \gt 0 \\
 0 \lt |\boldsymbol{x}-\boldsymbol{a}|\lt\delta \\
@@ -23,34 +24,46 @@ $$
 $\theta$に依存するため極限値は存在しない．
 
 ## 連続
+
 $$
 f(\boldsymbol{x})\rightarrow f(\boldsymbol{a})\\(\boldsymbol{x}\rightarrow\boldsymbol{a})
 $$
 
 ### 二変数の中間値の定理
+
 $$
 \exists \boldsymbol{C}\in(\boldsymbol{A}と\boldsymbol{B}をつなぐ曲線)\\
 f(\boldsymbol{A})\lt f(\boldsymbol{C})\lt f(\boldsymbol{A})
 $$
+
 ## 偏微分
+
 ## 全微分
+
 ## 連鎖律
+
 ### 連鎖律１
+
 $f(\boldsymbol{x})\)は\(U\subset \mathbb{R}^2$ 上の関数で，$\boldsymbol{x}=\boldsymbol{a}$ で全微分可能．
 $x(t),y(t)$ は $I\subset \mathbb{R}$ 上の関数で，$(x(t),y(t))\in U(\forall t\in I)$，$t=c$ で微分可能．
 このとき\(z(t)=f(x(t),y(t))\)は\(t=c\)で微分可能で，\[z'(c)=f_x(\boldsymbol{a})x'(c)+f_y(\boldsymbol{a})y'(c)\]
 \(f(\boldsymbol{x})\)は\(U\)上で\(C^2\)級．
 \(x(t),y(t),z(t)\)は\(I\)上で\(C^1\)級．
 \[\frac{dz}{dt}=\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt}\]
+
 #### 証明
+
 ### 連鎖律２
+
 \(x(s,t),y(s,t)\)は\(V\subset \mathbb{R}^2\)上の関数で，\((x(s,t),y(s,t))\in U(\forall (s,t)\in V)\)，\((s,t)=\boldsymbol{c}\)で全微分可能．
 \(\boldsymbol{a}=(x(\boldsymbol{c}),y(\boldsymbol{c})\)．
 このとき，\(V\)上の関数\(z=f(x(s,t),y(s,t))\)は\((s,t)=\boldsymbol{c}\)で微分可能で，
+
 $$
 z_s(\boldsymbol{c})=f_x(\boldsymbol{a})x_s(\boldsymbol{c})+f_y(\boldsymbol{a})y_s(\boldsymbol{c}) \\
 z_t(\boldsymbol{c})=f_x(\boldsymbol{a})x_t(\boldsymbol{c})+f_y(\boldsymbol{a})y_t(\boldsymbol{c})
 $$
+
 \(f(\boldsymbol{x}),x(s,t),y(s,t)\)が\(C^1\)級ならば，\(z(s,t)\)も\(C^1\)級．
 \[\frac{\partial z}{\partial s}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial s}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial s}\\
 \frac{\partial z}{\partial t}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial t}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial t}\]
@@ -60,7 +73,7 @@ $$
 \frac{\partial x}{\partial s} & \frac{\partial x}{\partial t} \\
 \frac{\partial y}{\partial s} & \frac{\partial y}{\partial t}
 \end{pmatrix}\]
-\[\left(\frac{\partial z}{\partial s},\frac{\partial z}{\partial t}\right)=				\left(\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}\right)J\]
+\[\left(\frac{\partial z}{\partial s},\frac{\partial z}{\partial t}\right)= \left(\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}\right)J\]
 
 ヤコビ行列の行列式をヤコビアンという．
 \[\frac{\partial (x,y)}{\partial (s,t)}=\det J=\frac{\partial x}{\partial s}\frac{\partial y}{\partial t}-\frac{\partial x}{\partial t}\frac{\partial y}{\partial s}\]
@@ -71,7 +84,7 @@ $$
 
 \(\boldsymbol{x}=\{x_1,x_2,,,x_n\},\boldsymbol{a}=\{a_1,a_2,,,a_n\}\in\mathbb{R}^n\)
 
-\(U\subset\mathbb{R}^n\)を定義域とし，\(\mathbb{R}^m\)に値を持つ写像\(F:U\rightarrow\mathbb{R}^m\)は，\(F=(f_1,f_2,,,f_n)\)と書ける．ただし，\(f_i:U\rightarrow\mathbb{R}\)はn変数関数．\[Fが連続関数\Longleftrightarrow f_1,f_2,,,f_nが連続関数\]
+\(U\subset\mathbb{R}^n\)を定義域とし，\(\mathbb{R}^m\)に値を持つ写像\(F:U\rightarrow\mathbb{R}^m\)は，\(F=(f_1,f_2,,,f_n)\)と書ける．ただし，\(f_i:U\rightarrow\mathbb{R}\)は n 変数関数．\[F が連続関数\Longleftrightarrow f_1,f_2,,,f_n が連続関数\]
 
 ### 偏微分
 
@@ -87,15 +100,15 @@ $$
 
 ## 高次偏導関数
 
-2変数関数\(f(\boldsymbol{x})=f(x,y)\)の\(x\)に関する偏導関数\(f_x(\boldsymbol{x})\)が存在し，
+2 変数関数\(f(\boldsymbol{x})=f(x,y)\)の\(x\)に関する偏導関数\(f_x(\boldsymbol{x})\)が存在し，
 
 ## テイラーの定理
 
-\[f(x,y)=\sum_{\substack{0 \geq m \geq M\\0 \geq n \geq N}}a_{m,n}x^my^n \\ 
-			\frac{\partial ^{i+j}}{\partial x^i \partial y^j}f(x,y)=\sum_{\substack{0 \geq m \geq M\\0 \geq n \geq N}}a_{m,n}m(m-1)...(m-i+1)n(n-1)...(n-j+1)x^{m-i}y^{n-j} \\ 
-				a_{i,j}=\frac{1}{i!j!}\frac{\partial ^{i+j}}{\partial x^i \partial y^j}f(0,0) \]
-\[f(x,y)=\sum_{\substack{0 \geq m \geq M\\0 \geq n \geq N}}a_{m,n}(x-a)^m(y-b)^n \\
-				a_{i,j}=\frac{1}{i!j!}\frac{\partial ^{i+j}}{\partial x^i \partial y^j}f(a,b)	\]
+\[f(x,y)=\sum*{\substack{0 \geq m \geq M\\0 \geq n \geq N}}a*{m,n}x^my^n \\
+\frac{\partial ^{i+j}}{\partial x^i \partial y^j}f(x,y)=\sum*{\substack{0 \geq m \geq M\\0 \geq n \geq N}}a*{m,n}m(m-1)...(m-i+1)n(n-1)...(n-j+1)x^{m-i}y^{n-j} \\
+a*{i,j}=\frac{1}{i!j!}\frac{\partial ^{i+j}}{\partial x^i \partial y^j}f(0,0) \]
+\[f(x,y)=\sum*{\substack{0 \geq m \geq M\\0 \geq n \geq N}}a*{m,n}(x-a)^m(y-b)^n \\
+a*{i,j}=\frac{1}{i!j!}\frac{\partial ^{i+j}}{\partial x^i \partial y^j}f(a,b) \]
 
 ## 極大・極小
 
@@ -104,23 +117,23 @@ $$
 
 以下，\(f(\boldsymbol{x})\)は\(\boldsymbol{a}\)の近くで定義された\(C^2\)関数，\(\boldsymbol{a}=(a,b)\)は\(f\)の停留点(\(f_x(\boldsymbol{x})=f_y(\boldsymbol{a})=0\))とする．
 
-もし，\(f\)が\(\boldsymbol{a}\)で極小ならば，任意の方向で2階微分が正でなくてはいけない．
+もし，\(f\)が\(\boldsymbol{a}\)で極小ならば，任意の方向で 2 階微分が正でなくてはいけない．
 
-\(x=a+mt,y=b+nt\)として，\[\frac{d^2f}{dt}(0)=\left(m\frac{\partial}{\partial x}+n\frac{\partial}{\partial y}\right)^2f(\boldsymbol{a})=m^2f_{xx}(\boldsymbol{a})+2mnf_{xy}(\boldsymbol{a})+n^2f_{yy}(\boldsymbol{a})\gt 0\]が全ての\((m,n)\not =(0,0)\)で成り立つ．
+\(x=a+mt,y=b+nt\)として，\[\frac{d^2f}{dt}(0)=\left(m\frac{\partial}{\partial x}+n\frac{\partial}{\partial y}\right)^2f(\boldsymbol{a})=m^2f*{xx}(\boldsymbol{a})+2mnf*{xy}(\boldsymbol{a})+n^2f\_{yy}(\boldsymbol{a})\gt 0\]が全ての\((m,n)\not =(0,0)\)で成り立つ．
 
-その必要十分条件は，\[f_{xx}(\boldsymbol{a})\gt 0,f_{yy}(\boldsymbol{a})\gt 0\\
-				\{f_{xy}(\boldsymbol{a})\}^2-f_{xx}(\boldsymbol{a})f_{yy}(\boldsymbol{a})\lt 0\]
+その必要十分条件は，\[f*{xx}(\boldsymbol{a})\gt 0,f*{yy}(\boldsymbol{a})\gt 0\\
+\{f*{xy}(\boldsymbol{a})\}^2-f*{xx}(\boldsymbol{a})f\_{yy}(\boldsymbol{a})\lt 0\]
 
-逆に，\(\{f_{xy}(\boldsymbol{a})\}^2-f_{xx}(\boldsymbol{a})f_{yy}(\boldsymbol{a})\lt 0\)のとき，方向二階微分は正にも負にもなりうる．このとき\(\boldsymbol{a}\)は\(f(\boldsymbol{x})\)の峠点・鞍点という．
+逆に，\(\{f*{xy}(\boldsymbol{a})\}^2-f*{xx}(\boldsymbol{a})f\_{yy}(\boldsymbol{a})\lt 0\)のとき，方向二階微分は正にも負にもなりうる．このとき\(\boldsymbol{a}\)は\(f(\boldsymbol{x})\)の峠点・鞍点という．
 
 ### ヘッシアン
 
 \(C^2\)関数\(f(\boldsymbol{x})\)のヘッシアン
 
 \[H(\boldsymbol{x}):=det\begin{pmatrix}
-					f_{xx} & f_{xy} \\
-					f_{yx} & f_{yy}
-\end{pmatrix}=f_{xx}f_{yy}-\{f_{xy}\}^2\]
+f*{xx} & f*{xy} \\
+f*{yx} & f*{yy}
+\end{pmatrix}=f*{xx}f*{yy}-\{f\_{xy}\}^2\]
 
 ## 曲線
 
@@ -194,11 +207,11 @@ $$
 
 \(f(x,y):\{(a,b)近傍で定義,f(a,b)=0,C^1\}\)
 \[f_y(a,b)\neq 0\Rightarrow \exists! \phi(x)
-		\left\{
-		\begin{array}{l}
-		\phi(a)=b \\
-		f(x,\phi(x))=0
-		\end{array}
+\left\{
+\begin{array}{l}
+\phi(a)=b \\
+f(x,\phi(x))=0
+\end{array}
 \right.\]
 
 \[\phi '(x)=-\frac{f_y(x,y)}{f_x(x,y)}\]
@@ -208,7 +221,7 @@ $$
 #### 証明
 
 \(C\)の\((a,b)\)における接線
-				\[f_x(a,b)(x-a)+f_y(a,b)(y-b)=0\]</p>
+\[f_x(a,b)(x-a)+f_y(a,b)(y-b)=0\]</p>
 
 #### 例
 
@@ -216,7 +229,7 @@ $$
 
 \(f(x,y):C^1\)が定める曲線\(C:f(x,y)=0\)上の点\((a,b)\)が特異点であるとは，\[f_x(a,b)=f_y(a,b)=0\]
 
-陰関数定理：非特異点の近くでは，Cはグラフ
+陰関数定理：非特異点の近くでは，C はグラフ
 
 #### 例
 
@@ -232,7 +245,7 @@ $$
 
 ### ラグランジュの未定乗数法
 
-\(f(x,y),g(x,y):U上,C^1\)
+\(f(x,y),g(x,y):U 上,C^1\)
 
 \(g(x,y)=0\)のとき\(f(a,b)\)で極値をとるとする．
 
@@ -241,7 +254,7 @@ $$
 \((a,b)\)が曲線\(C\)の特異点でない\[\Rightarrow \exists \lambda F_x(x,y,\lambda)=F_y(x,y,\lambda)=0\]
 
 #### 証明
-			
+
 \(g_y(a,b)\neq 0\)の場合を考える．
 
 \((a,b)\)の近くでは，\(C\)は\(y=\phi(x)\)
