@@ -67,7 +67,7 @@
         color: #2c8ecf;
         font-size: 20px;
         font-weight: bold;
-        background: #ddeeff;
+        background: #bbddff;
       }
       h3 {
         font-weight: bold;
@@ -448,12 +448,10 @@
  
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#演算回路">演算回路</a><ul>
-<li><a href="#演算の定義">演算の定義</a></li>
+<li><a href="#演算回路の理論">演算回路の理論</a><ul>
+<li><a href="#演算">演算</a></li>
 <li><a href="#基本演算">基本演算</a></li>
-<li><a href="#構成定理">構成定理</a></li>
-<li><a href="#基本演算集合">基本演算集合</a></li>
-<li><a href="#最小基本演算集合">最小基本演算集合</a></li>
+<li><a href="#演算の構成">演算の構成</a></li>
 <li><a href="#回路サイズ">回路サイズ</a></li>
 <li><a href="#演算時間">演算時間</a></li>
 </ul></li>
@@ -465,31 +463,44 @@
 </ul></li>
 </ul></nav>
       
-      <h2 id="演算回路">演算回路</h2>
-      <h3 id="演算の定義">演算の定義</h3>
+      <h2 id="演算回路の理論">演算回路の理論</h2>
+      <h3 id="演算">演算</h3>
       <blockquote>
-      <p>入力空間 <span class="math inline">\(2^N\)</span> から 出力空間 <span class="math inline">\(2^M\)</span> への写像 <span class="math display">\[
-      f : 2^N \rightarrow 2^M 
+      <p>入力空間 <span class="math inline">\(2^N\)</span> から 出力空間 <span class="math inline">\(2^M\)</span> への写像</p>
+      <p><span class="math display">\[
+      f : 2^N \rightarrow 2^M
       \]</span></p>
       </blockquote>
       <h3 id="基本演算">基本演算</h3>
       <blockquote>
       <p><span class="math display">\[
-      f_e : 2 \rightarrow 2
+      f_e : 2^n \rightarrow 2^m
       \]</span></p>
       </blockquote>
-      <h3 id="構成定理">構成定理</h3>
-      <p>任意の演算がある基本演算集合の元の合成として構成できる．</p>
-      <h3 id="基本演算集合">基本演算集合</h3>
-      <p>基本演算集合として</p>
-      <h3 id="最小基本演算集合">最小基本演算集合</h3>
+      <h3 id="演算の構成">演算の構成</h3>
+      <p>基本演算 <span class="math inline">\(F_e = \{f_{e1},f_{e2}\dots\}\)</span> を組み合わせて、ある演算 <span class="math inline">\(f\)</span> を構成する。</p>
+      <blockquote>
+      <p><span class="math display">\[
+      f/F_e : F_e \rightarrow f
+      \]</span></p>
+      </blockquote>
+      <p>ある演算の集合 <span class="math inline">\(F=\{f_1,f_2\dots\}\)</span> をすべてを構成可能な、基本演算集合 <span class="math inline">\(F_e\)</span> を、（<span class="math inline">\(F\)</span>に対する）汎用基本演算集合という。</p>
+      <p>演算回路を作るということは、目的とする演算 <span class="math inline">\(f\)</span> を、</p>
+      <ol type="1">
+      <li>演算としてふるまう系を探す</li>
+      <li>それらを組み合わせて</li>
+      <li>あ</li>
+      </ol>
+      <p>このような特性を持つ現象を見つけたら、</p>
+      <p>ある種の「演算」を行っている</p>
+      <p>さらに、その系の入力を操作できる場合、「演算回路」を作ることができます。</p>
       <h3 id="回路サイズ">回路サイズ</h3>
-      <p>演算 <span class="math inline">\(f\)</span> に必要な基本演算数を評価したい．</p>
+      <p>演算 <span class="math inline">\(f\)</span> に必要な基本演算数を評価したい。</p>
       <h3 id="演算時間">演算時間</h3>
-      <p>演算 <span class="math inline">\(f\)</span> に必要な時間を評価したい．</p>
-      <p>一般に演算時間は入力によって変化するので，入力 <span class="math inline">\(a\)</span> に対する演算時間を <span class="math inline">\(T(f,a)\)</span> とする．</p>
-      <p>入力の確率分布を <span class="math inline">\(P(a)\)</span> としたとき，演算時間の期待値を <span class="math inline">\(T(f,P)=\sum P(a)T(f,a)\)</span> とする．</p>
-      <p>特に，一様分布に対する演算時間の期待値を <span class="math inline">\(\bar{T}(f)\)</span> とする．</p>
+      <p>演算 <span class="math inline">\(f\)</span> に必要な時間を評価したい。</p>
+      <p>一般に演算時間は入力によって変化するので、入力 <span class="math inline">\(a\)</span> に対する演算時間を <span class="math inline">\(T(f,a)\)</span> とする。</p>
+      <p>入力の確率分布を <span class="math inline">\(P(a)\)</span> としたとき、演算時間の期待値を <span class="math inline">\(T(f,P)=\sum P(a)T(f,a)\)</span> とする。</p>
+      <p>特に、一様分布に対する演算時間の期待値を <span class="math inline">\(\bar{T}(f)\)</span> とする。</p>
       <h2 id="群演算器">群演算器</h2>
       <p>群 <span class="math inline">\((2^N,\circ)\)</span></p>
       <h3 id="prefix-sum">Prefix Sum</h3>
@@ -497,8 +508,8 @@
       <p><span class="math display">\[
       s_i = a_0 \circ a_1 \circ a_2 \cdots \circ a_i
       \]</span></p>
-      <p>なる演算器を構成する．</p>
-      <p><span class="math inline">\(s_i\)</span> を逐次に求めると <span class="math inline">\(n\)</span> 段必要だが，PrefixSumを使うと <span class="math inline">\(\lceil \log n \rceil\)</span> 段で済ませることができる．</p>
+      <p>を返す演算器を構成する。</p>
+      <p><span class="math inline">\(s_i\)</span> を逐次に求めると <span class="math inline">\(n\)</span> 段必要だが、PrefixSum を使うと <span class="math inline">\(\lceil \log n \rceil\)</span> 段で済ませることができる。</p>
       <h2 id="加算器">加算器</h2>
       <h3 id="並列加算器">並列加算器</h3>
       <p><span class="math display">\[

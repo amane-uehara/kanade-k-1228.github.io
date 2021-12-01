@@ -42,8 +42,6 @@ VLSI の設計
 
 ### リレーコンピュータ
 
-[Day1 リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
+[リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
 
-Day2 リレーで計算をしてみる
-
-Day3
+リレーで計算をしてみる
