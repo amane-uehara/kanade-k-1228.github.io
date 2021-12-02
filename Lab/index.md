@@ -44,6 +44,16 @@ VLSI の設計
 
 [リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
 
-[スイッチで作る組合回路](./Computer/RelayComputer/Day2_SwitchLogic/i)
+[スイッチで作る組合回路](./Computer/RelayComputer/Day2_SwitchLogic/)
 
 リレーで作る組合回路
+
+早押しボタンを作ってみる
+
+計算する回路：組合回路
+
+記憶する回路：順序回路
+
+カウンタを作ってみる
+
+論理回路まとめ
