@@ -44,6 +44,6 @@ VLSI の設計
 
 [リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
 
-なぜ
+[スイッチで作る組合回路](./Computer/RelayComputer/Day2_SwitchLogic/i)
 
-リレーで計算をしてみる
+リレーで作る組合回路
