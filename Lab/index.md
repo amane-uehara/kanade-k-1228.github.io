@@ -44,4 +44,6 @@ VLSI の設計
 
 [リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
 
+なぜ
+
 リレーで計算をしてみる
