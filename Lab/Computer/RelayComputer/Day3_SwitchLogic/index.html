@@ -14,6 +14,7 @@
       gtag("js", new Date());
       gtag("config", "UA-114187773-1");
     </script>
+    <!-- End Google Analytics -->
     <meta charset="utf-8" />
     <meta name="generator" content="pandoc" />
     <meta
@@ -25,7 +26,10 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>演算回路 | Kanade's Website</title>
+                <title>スイッチで作る論理回路 | Kanade's Website</title>
+    <!-- <meta property="og:title" content="スイッチで作る論理回路"/>
+    <meta property="og:type" content=""/> -->
+    
     <style>
       body {
         margin: 0;
@@ -347,7 +351,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "演算回路",
+            "スイッチで作る論理回路",
           "_blank"
         );
       }
@@ -414,7 +418,7 @@
         </div> <!-- End Top Nav -->
 
         <!-- Title -->
-                <h1 style="margin: 0">演算回路</h1>
+                <h1 style="margin: 0">スイッチで作る論理回路</h1>
                 
         <!-- Date -->
         
@@ -448,227 +452,14 @@
  
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#演算回路の理論">演算回路の理論</a><ul>
-<li><a href="#演算">演算</a></li>
-<li><a href="#基本演算">基本演算</a></li>
-<li><a href="#演算の構成">演算の構成</a></li>
-<li><a href="#回路サイズ">回路サイズ</a></li>
-<li><a href="#演算時間">演算時間</a></li>
-</ul></li>
-<li><a href="#群演算器">群演算器</a><ul>
-<li><a href="#prefix-sum">Prefix Sum</a></li>
-</ul></li>
-<li><a href="#加算器">加算器</a><ul>
-<li><a href="#並列加算器">並列加算器</a></li>
-</ul></li>
+<li><a href="#論理ってなんやねん">論理ってなんやねん</a></li>
+<li><a href="#スイッチで論理回路">スイッチで論理回路</a></li>
+<li><a href="#多数決ボタンを作る">多数決ボタンを作る</a></li>
 </ul></nav>
       
-      <h2 id="演算回路の理論">演算回路の理論</h2>
-      <h3 id="演算">演算</h3>
-      <blockquote>
-      <p>入力空間 <span class="math inline">\(2^N\)</span> から 出力空間 <span class="math inline">\(2^M\)</span> への写像</p>
-      <p><span class="math display">\[
-      f : 2^N \rightarrow 2^M
-      \]</span></p>
-      </blockquote>
-      <h3 id="基本演算">基本演算</h3>
-      <blockquote>
-      <p><span class="math display">\[
-      f_e : 2^n \rightarrow 2^m
-      \]</span></p>
-      </blockquote>
-      <h3 id="演算の構成">演算の構成</h3>
-      <p>基本演算 <span class="math inline">\(F_e = \{f_{e1},f_{e2}\dots\}\)</span> を組み合わせて、ある演算 <span class="math inline">\(f\)</span> を構成する。</p>
-      <blockquote>
-      <p><span class="math display">\[
-      f/F_e : F_e \rightarrow f
-      \]</span></p>
-      </blockquote>
-      <p>ある演算の集合 <span class="math inline">\(F=\{f_1,f_2\dots\}\)</span> をすべてを構成可能な、基本演算集合 <span class="math inline">\(F_e\)</span> を、（<span class="math inline">\(F\)</span>に対する）汎用基本演算集合という。</p>
-      <p>演算回路を作るということは、目的とする演算 <span class="math inline">\(f\)</span> を、</p>
-      <ol type="1">
-      <li>演算としてふるまう系を探す</li>
-      <li>それらを組み合わせて</li>
-      <li>あ</li>
-      </ol>
-      <p>このような特性を持つ現象を見つけたら、</p>
-      <p>ある種の「演算」を行っている</p>
-      <p>さらに、その系の入力を操作できる場合、「演算回路」を作ることができます。</p>
-      <h3 id="回路サイズ">回路サイズ</h3>
-      <p>演算 <span class="math inline">\(f\)</span> に必要な基本演算数を評価したい。</p>
-      <h3 id="演算時間">演算時間</h3>
-      <p>演算 <span class="math inline">\(f\)</span> に必要な時間を評価したい。</p>
-      <p>一般に演算時間は入力によって変化するので、入力 <span class="math inline">\(a\)</span> に対する演算時間を <span class="math inline">\(T(f,a)\)</span> とする。</p>
-      <p>入力の確率分布を <span class="math inline">\(P(a)\)</span> としたとき、演算時間の期待値を <span class="math inline">\(T(f,P)=\sum P(a)T(f,a)\)</span> とする。</p>
-      <p>特に、一様分布に対する演算時間の期待値を <span class="math inline">\(\bar{T}(f)\)</span> とする。</p>
-      <h2 id="群演算器">群演算器</h2>
-      <p>群 <span class="math inline">\((2^N,\circ)\)</span></p>
-      <h3 id="prefix-sum">Prefix Sum</h3>
-      <p>入力列 <span class="math inline">\(a_0,a_1\cdots a_{n-1}\)</span> に対して出力列</p>
-      <p><span class="math display">\[
-      s_i = a_0 \circ a_1 \circ a_2 \cdots \circ a_i
-      \]</span></p>
-      <p>を返す演算器を構成する。</p>
-      <p><span class="math inline">\(s_i\)</span> を逐次に求めると <span class="math inline">\(n\)</span> 段必要だが、PrefixSum を使うと <span class="math inline">\(\lceil \log n \rceil\)</span> 段で済ませることができる。</p>
-      <h2 id="加算器">加算器</h2>
-      <h3 id="並列加算器">並列加算器</h3>
-      <p><span class="math display">\[
-      (g,p)\circ(g&#39;,p&#39;) = (g + p \cdot g&#39;, p \cdot p&#39;)
-      \]</span></p>
-      <table>
-      <tbody>
-      <tr class="odd">
-      <td>(g’,p’)</td>
-      <td>(0,0)</td>
-      <td>(0,1)</td>
-      <td>(1,0)</td>
-      <td>(1,1)</td>
-      </tr>
-      <tr class="even">
-      <td>(g,p)</td>
-      <td>(g,0)</td>
-      <td>(g,p)</td>
-      <td>(g+p,0)</td>
-      <td>(g+p,p)</td>
-      </tr>
-      <tr class="odd">
-      <td>(0,0)</td>
-      <td>(0,0)</td>
-      <td>(0,0)</td>
-      <td>(0,0)</td>
-      <td>(0,0)</td>
-      </tr>
-      <tr class="even">
-      <td>(0,1)</td>
-      <td>(0,0)</td>
-      <td>(0,1)</td>
-      <td>(1,0)</td>
-      <td>(1,1)</td>
-      </tr>
-      <tr class="odd">
-      <td>(1,0)</td>
-      <td>(1,0)</td>
-      <td>(1,0)</td>
-      <td>(1,0)</td>
-      <td>(1,0)</td>
-      </tr>
-      <tr class="even">
-      <td>(1,1)</td>
-      <td>(1,0)</td>
-      <td>(1,1)</td>
-      <td>(1,0)</td>
-      <td>(1,1)</td>
-      </tr>
-      </tbody>
-      </table>
-      <p><span class="math display">\[
-      \begin{aligned}
-      (G,P)_0&amp;=(g,p)_0\\
-      (G,P)_i&amp;=(g,p)_i\circ(G,P)_{i-1}\\
-      \end{aligned}
-      \]</span></p>
-      <table>
-      <thead>
-      <tr class="header">
-      <th></th>
-      <th></th>
-      <th>7</th>
-      <th>6</th>
-      <th>5</th>
-      <th>4</th>
-      <th>3</th>
-      <th>2</th>
-      <th>1</th>
-      <th>0</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td><span class="math inline">\(a\)</span></td>
-      <td></td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      </tr>
-      <tr class="even">
-      <td><span class="math inline">\(b\)</span></td>
-      <td></td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      </tr>
-      <tr class="odd">
-      <td><span class="math inline">\(g = a \cdot b\)</span></td>
-      <td></td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      </tr>
-      <tr class="even">
-      <td><span class="math inline">\(p = a \oplus b\)</span></td>
-      <td></td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      </tr>
-      <tr class="odd">
-      <td><span class="math inline">\(G\)</span></td>
-      <td></td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      </tr>
-      <tr class="even">
-      <td><span class="math inline">\(P\)</span></td>
-      <td></td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      </tr>
-      <tr class="odd">
-      <td><span class="math inline">\(s\)</span></td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      </tr>
-      </tbody>
-      </table>
+      <h2 id="論理ってなんやねん">論理ってなんやねん</h2>
+      <h2 id="スイッチで論理回路">スイッチで論理回路</h2>
+      <h2 id="多数決ボタンを作る">多数決ボタンを作る</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

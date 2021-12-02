@@ -40,3 +40,7 @@ Push されると
 ## 課題
 
 - git にある差分から変更があったファイルだけ調べて変換をすると早くなるよね
+- OGP を設定する
+  - [参考](https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai)
+- モバイル・デスクトップ両方にいい感じのスタイルを探す
+- コメント欄を作る
