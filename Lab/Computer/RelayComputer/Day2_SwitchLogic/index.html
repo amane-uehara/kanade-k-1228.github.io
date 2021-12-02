@@ -26,8 +26,9 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>スイッチで作る論理回路 | Kanade's Website</title>
-    <!-- <meta property="og:title" content="スイッチで作る論理回路"/>
+        <meta name="dcterms.date" content="2021-12-02" />
+                <title>スイッチで作る組合回路 | Kanade's Website</title>
+    <!-- <meta property="og:title" content="スイッチで作る組合回路"/>
     <meta property="og:type" content=""/> -->
     
     <style>
@@ -353,7 +354,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "スイッチで作る論理回路",
+            "スイッチで作る組合回路",
           "_blank"
         );
       }
@@ -420,9 +421,10 @@
         </div> <!-- End Top Nav -->
 
         <!-- Title -->
-                <h1 style="margin: 0">スイッチで作る論理回路</h1>
+                <h1 style="margin: 0">スイッチで作る組合回路</h1>
                 
         <!-- Date -->
+                <p align="right">2021-12-02</p>
         
       </header>
 
@@ -455,15 +457,17 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#多数決スイッチを作る">多数決スイッチを作る</a></li>
-<li><a href="#組合回路完全に理解した">組合回路完全に理解した</a></li>
-<li><a href="#余談論理ってなんやねん">余談：論理ってなんやねん</a></li>
+<li><a href="#マルチプレクサ">マルチプレクサ</a></li>
+<li><a href="#全会一致">全会一致</a></li>
+<li><a href="#真理値表">真理値表</a></li>
+<li><a href="#組合回路完全に理解した">組合回路完全に理解した！</a></li>
 </ul></nav>
       
       <h2 id="多数決スイッチを作る">多数決スイッチを作る</h2>
       <p>ABC の 3 人で ○ × の多数決をする回路を作ってみましょう。</p>
-      <p><img src="./img/system.JPG" /></p>
+      <p><img src="./img/System.JPG" /></p>
       <p>ABC はそれぞれ手持ちのスイッチで ○ × を投票します。多い方のランプが点灯します。</p>
-      <p>とりあえず愚直に全パターン書き出してみると、</p>
+      <p>（「多いほうが点灯する」という要求機能は、そのまま回路に実装するには抽象的すぎるので、）愚直に全パターン書き出してみると、</p>
       <table>
       <thead>
       <tr class="header">
@@ -524,18 +528,154 @@
       </tr>
       </tbody>
       </table>
-      <p>これを、スイッチで作ってみましょう。</p>
-      <p><img src="./img/circuit.dio.png" /></p>
-      <p>8 通りの</p>
-      <h2 id="組合回路完全に理解した">組合回路完全に理解した</h2>
-      <p>おめでとうございます！ ”原理的に” 全ての組合回路を作れるようになりました！</p>
+      <p>これを、スイッチで実装すると、こういう回路になります。</p>
+      <p><img src="./img/Circuit1.dio.png" /></p>
+      <p>※　点線で繋がっているスイッチは連動しています。</p>
+      <h2 id="マルチプレクサ">マルチプレクサ</h2>
+      <p><img src="./img/MUX.dio.png" /></p>
+      <p>この部分をマルチプレクサといいます。</p>
+      <p>ABC 8 通りの組み合わせに対応した端子が導通するようになっています。</p>
+      <p>スイッチの分岐をたどって、動作を確認してみてください！</p>
+      <h2 id="全会一致">全会一致</h2>
+      <p>多数決回路をちょっと改造すると、全会一致か判断する回路も作れます。</p>
+      <table>
+      <thead>
+      <tr class="header">
+      <th style="text-align: center;">A</th>
+      <th style="text-align: center;">B</th>
+      <th style="text-align: center;">C</th>
+      <th style="text-align: center;">多数決</th>
+      <th style="text-align: center;">全会一致</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><img src="./img/Circuit2.dio.png" /></p>
+      <h2 id="真理値表">真理値表</h2>
+      <p>入力と出力の一覧表を「真理値表」といいます。</p>
+      <table>
+      <thead>
+      <tr class="header">
+      <th style="text-align: center;">A</th>
+      <th style="text-align: center;">B</th>
+      <th style="text-align: center;">C</th>
+      <th style="text-align: center;">出力</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">×</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">○</td>
+      <td style="text-align: center;">?</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>? に ○ × を当てはめる方法は <span class="math inline">\(2^8=64\)</span> パターンあります。つまり、（3 入力の）真理値表は全部で 64 パターンあります。</p>
+      <p>マルチプレクサを使うことで、この 64 パターン全部を簡単に作ることができます。</p>
+      <h2 id="組合回路完全に理解した">組合回路完全に理解した！</h2>
+      <p>マルチプレクサを使うことで、”原理的に” 全ての組合回路を作れるようになります。</p>
       <p>ひとつ問題があるとすれば、人間が手でスイッチを操作しないといけないというところです。</p>
       <p>なので次回は、人間の手でなく電気で切り替えられるスイッチ、「リレー」を使って、組合回路を作ります。</p>
-      <h2 id="余談論理ってなんやねん">余談：論理ってなんやねん</h2>
-      <p>「論理」というと、日常的には「論理的」とか「永田町の論理」とか、理屈という意味で使われることが多いですが、論理回路の論理は数学用語です。</p>
-      <p>数学における論理は、日常的な感覚とは少し違っている部分があります。</p>
-      <p>たとえば、</p>
-      <p>A かつ B ならば C</p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
