@@ -36,8 +36,6 @@
 
 ### 半導体
 
-VLSI の設計
-
 ## 情報工学
 
 ### リレーコンピュータ
@@ -46,7 +44,7 @@ VLSI の設計
 
 [スイッチで作る組合回路](./Computer/RelayComputer/Day2_SwitchLogic/)
 
-リレーで作る組合回路
+[リレーで作る組合回路](./Computer/RelayComputer/Day3_RelayLogic/)
 
 早押しボタンを作ってみる
 
