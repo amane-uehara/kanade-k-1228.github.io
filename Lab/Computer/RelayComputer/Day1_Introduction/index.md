@@ -21,3 +21,5 @@
 2 週目：CPU の動作と構成
 
 3 週目：リレーコンピュータの製作
+
+> [>>> 次](https://kanade-k-1228.github.io/Lab/Computer/RelayComputer/Day2_SwitchLogic/)

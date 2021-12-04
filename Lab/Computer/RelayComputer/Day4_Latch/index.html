@@ -26,9 +26,8 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-        <meta name="dcterms.date" content="2021-12-02" />
-                <title>スイッチで作る組合回路 | Kanade's Website</title>
-    <!-- <meta property="og:title" content="スイッチで作る組合回路"/>
+                <title>記憶する | Kanade's Website</title>
+    <!-- <meta property="og:title" content="記憶する"/>
     <meta property="og:type" content=""/> -->
     
     <style>
@@ -354,7 +353,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "スイッチで作る組合回路",
+            "記憶する",
           "_blank"
         );
       }
@@ -421,10 +420,9 @@
         </div> <!-- End Top Nav -->
 
         <!-- Title -->
-                <h1 style="margin: 0">スイッチで作る組合回路</h1>
+                <h1 style="margin: 0">記憶する</h1>
                 
         <!-- Date -->
-                <p align="right">2021-12-02</p>
         
       </header>
 
@@ -455,162 +453,8 @@
       </p>
  
       <!-- Table of Contents -->
-            <nav><ul>
-<li><a href="#多数決スイッチを作る">多数決スイッチを作る</a></li>
-<li><a href="#マルチプレクサ">マルチプレクサ</a></li>
-<li><a href="#真理値表">真理値表</a></li>
-<li><a href="#組合回路">組合回路</a></li>
-<li><a href="#次回予告">次回予告</a></li>
-</ul></nav>
       
-      <p>これは <a href="https://adventar.org/calendars/7052">リレーから始める CPU 自作 Advent Calendar 2021</a> 2 日目の記事です。</p>
-      <h2 id="多数決スイッチを作る">多数決スイッチを作る</h2>
-      <p>ABC の 3 人で ○ × の多数決をする回路を作ってみましょう。</p>
-      <p><img src="./img/System.JPG" /></p>
-      <p>ABC はそれぞれ手持ちのスイッチで ○ × を投票します。多い方のランプが点灯します。</p>
-      <p>（「多いほうが点灯する」という要求機能は、そのまま回路に実装するには抽象的すぎるので、）愚直に全パターン書き出してみると、</p>
-      <table>
-      <thead>
-      <tr class="header">
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>結果</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td>×</td>
-      <td>×</td>
-      <td>×</td>
-      <td>×</td>
-      </tr>
-      <tr class="even">
-      <td>×</td>
-      <td>×</td>
-      <td>○</td>
-      <td>×</td>
-      </tr>
-      <tr class="odd">
-      <td>×</td>
-      <td>○</td>
-      <td>×</td>
-      <td>×</td>
-      </tr>
-      <tr class="even">
-      <td>×</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      </tr>
-      <tr class="odd">
-      <td>○</td>
-      <td>×</td>
-      <td>×</td>
-      <td>×</td>
-      </tr>
-      <tr class="even">
-      <td>○</td>
-      <td>×</td>
-      <td>○</td>
-      <td>○</td>
-      </tr>
-      <tr class="odd">
-      <td>○</td>
-      <td>○</td>
-      <td>×</td>
-      <td>○</td>
-      </tr>
-      <tr class="even">
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      </tr>
-      </tbody>
-      </table>
-      <p>これを、スイッチで実装すると、こういう回路になります。</p>
-      <p><img src="./img/Circuit1.dio.png" /></p>
-      <p>※　点線で繋がっているスイッチは連動しています。</p>
-      <h2 id="マルチプレクサ">マルチプレクサ</h2>
-      <p><img src="./img/MUX.dio.png" /></p>
-      <p>この部分をマルチプレクサといいます。</p>
-      <p>ABC 8 通りの組み合わせに対応した端子が導通するようになっています。</p>
-      <p>スイッチの分岐をたどって、動作を確認してみてください！</p>
-      <h2 id="真理値表">真理値表</h2>
-      <p>入力と出力の一覧表を「真理値表」といいます。</p>
-      <table>
-      <thead>
-      <tr class="header">
-      <th style="text-align: center;">A</th>
-      <th style="text-align: center;">B</th>
-      <th style="text-align: center;">C</th>
-      <th style="text-align: center;">出力</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      <tr class="even">
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      <tr class="odd">
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      <tr class="even">
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      <tr class="odd">
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      <tr class="even">
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      <tr class="odd">
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">×</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      <tr class="even">
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">○</td>
-      <td style="text-align: center;">?</td>
-      </tr>
-      </tbody>
-      </table>
-      <p>? に ○ × を当てはめる方法は <span class="math inline">\(2^8=64\)</span> パターンあります。つまり、（3 入力の）真理値表は全部で 64 パターンあります。マルチプレクサを使うことで、この 64 パターン全部を簡単に作ることができます。</p>
-      <h2 id="組合回路">組合回路</h2>
-      <p>同じ入力に対して同じ出力となる回路を組合回路といいます。（これに対して、時と場合によって出力が異なる回路を順序回路といいます。）</p>
-      <p>組合回路の動作は、全パターンの入力に対する出力の一覧表、真理値表として書き表すことができます。逆に、ある真理値表を満たす回路をマルチプレクサを使うことで必ず作ることができます。</p>
-      <p>マルチプレクサを使うことで、”原理的に” 全ての組合回路を作れるようになります。</p>
-      <p>現実的には、マルチプレクサで組合回路を作ることは非効率です。マルチプレクサは、入力の数の増加に対して指数オーダーで回路が大きくなります。回路が大きくなればなるほど、信号の遅延やコストが増大するという問題が生じます。回路を簡単にする方法として「カルノー図」というものがあったりします。</p>
-      <h2 id="次回予告">次回予告</h2>
-      <p>本章ではスイッチを入力とした組合回路を作りましたが、人間が手でスイッチを操作しないといけないという問題があります。</p>
-      <p>なので次章では、人間の手でなく電気で切り替えられるスイッチ、「リレー」を使って、組合回路を作ります。</p>
-      <blockquote>
-      <p><a href="https://kanade-k-1228.github.io/Lab/Computer/RelayComputer/Day3_RelayLogic/">&gt;&gt;&gt; 次</a></p>
-      </blockquote>
+      
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
