@@ -2,6 +2,8 @@
 %
 %
 
+これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 4 日目の記事です。
+
 ## フリップフロップ
 
 ![](./img/Latch.dio.svg)
