@@ -46,7 +46,7 @@
 
 [リレーで作る組合回路](./Computer/RelayComputer/Day3_RelayLogic/)
 
-早押しボタンを作ってみる
+[早押しボタンを作ってみる](./Computer/RelayComputer/Day4_Latch/)
 
 計算する回路：組合回路
 
