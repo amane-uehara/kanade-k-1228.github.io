@@ -2,7 +2,7 @@
 %
 %
 
-これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 1 日目の記事です。
+これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 1 日目の記事です。[>>> 2 日目](../Day2_SwitchLogic/)
 
 ## 自己紹介
 
@@ -22,4 +22,4 @@
 
 3 週目：リレーコンピュータの製作
 
-> [>>> 次](../Day2_SwitchLogic/)
+[>>> 2 日目](../Day2_SwitchLogic/)
