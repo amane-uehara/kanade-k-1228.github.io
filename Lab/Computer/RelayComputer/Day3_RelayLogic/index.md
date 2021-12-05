@@ -2,7 +2,7 @@
 %
 % 2021-12-03
 
-これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 3 日目の記事です。
+これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 3 日目の記事です。[>>> 4 日目](../Day4_Latch/)
 
 ## リレーとは
 
@@ -41,3 +41,5 @@ $$
 | 1   | 1   | 1   | 0   |
 
 ![](./img/HA.dio.svg)
+
+[>>> 4 日目](../Day4_Latch/)
