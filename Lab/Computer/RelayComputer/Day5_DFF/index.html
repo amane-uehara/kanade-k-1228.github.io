@@ -26,8 +26,8 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title> | Kanade's Website</title>
-    <!-- <meta property="og:title" content=""/>
+                <title>D フリップフロップ | Kanade's Website</title>
+    <!-- <meta property="og:title" content="D フリップフロップ"/>
     <meta property="og:type" content=""/> -->
     
     <style>
@@ -353,7 +353,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "",
+            "D フリップフロップ",
           "_blank"
         );
       }
@@ -420,6 +420,7 @@
         </div> <!-- End Top Nav -->
 
         <!-- Title -->
+                <h1 style="margin: 0">D フリップフロップ</h1>
                 
         <!-- Date -->
         
@@ -452,8 +453,40 @@
       </p>
  
       <!-- Table of Contents -->
+            <nav><ul>
+<li><a href="#d-フリップフロップの仕事">D フリップフロップの仕事</a></li>
+<li><a href="#回路図と動作">回路図と動作</a><ul>
+<li><a href="#d1">D=1</a></li>
+<li><a href="#d0">D=0</a></li>
+</ul></li>
+</ul></nav>
       
-      
+      <p>これは <a href="https://adventar.org/calendars/7052">リレーから始める CPU 自作 Advent Calendar 2021</a> 5 日目の記事です。</p>
+      <p>この記事では、論理回路の中でも一番の山場、D フリップフロップ回路の目的と動作を解説します。</p>
+      <h2 id="d-フリップフロップの仕事">D フリップフロップの仕事</h2>
+      <p>D フリップフロップ（DFF）は信号を記憶する素子です。</p>
+      <p><img src="./img/DFF.dio.svg" /></p>
+      <p>CLK が立ち上がったタイミングの D の状態が記憶されて、Q に出力されます。</p>
+      <p><img src="./img/DFFTimingChart.dio.svg" /></p>
+      <h2 id="回路図と動作">回路図と動作</h2>
+      <p><img src="./img/DFFCircuit.dio.svg" /></p>
+      <p>複雑な回路ですが、ひとつずつ追っていけばわかる、はずです…！</p>
+      <h3 id="d1">D=1</h3>
+      <p><img src="./img/Case1.dio.svg" /></p>
+      <ol type="1">
+      <li>D が ON になると、 X が ON になる。</li>
+      <li>CLK が立ち上がると、① の経路は切れるが、② の経路は導通しているので、 X は ON を維持する。このとき、CLK が立ち上がってる間に、D が OFF になったとしても、X は ON を維持する。</li>
+      <li>X と CLK が ON なので、Q が ON になる。</li>
+      <li>CLK が立ち下がると、③ の経路は切れるが、④ の経路は導通しているので、Q は ON を維持する。</li>
+      </ol>
+      <h3 id="d0">D=0</h3>
+      <p><img src="./img/Case0.dio.svg" /></p>
+      <ol type="1">
+      <li>D が OFF になると、X が OFF になる。</li>
+      <li>CLK が立ち上がると、Q が ON であったとしても、Q が OFF になる。このとき、CLK が立ち上がってる間に、D が ON になったとしても、X は OFF を維持する。</li>
+      <li>X と CLK が ON なので、Q が OFF になる。</li>
+      <li>CLK が立ち下がっても、Q は OFF を維持する。</li>
+      </ol>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

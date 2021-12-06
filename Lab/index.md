@@ -48,10 +48,8 @@
 
 [早押しボタンを作ってみる](./Computer/RelayComputer/Day4_Latch/)
 
-計算する回路 組合回路
+[D フリップフロップ](./Computer/RelayComputer/Day5_DFF/)
 
-記憶する回路 順序回路
-
-カウンタを作ってみる
+[カウンタを作ってみる]()
 
 論理回路まとめ
