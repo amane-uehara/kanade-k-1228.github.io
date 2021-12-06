@@ -2,13 +2,13 @@
 %
 %
 
-これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 5 日目の記事です。 [>>> 6 日目](../Day6_Counter/)
+これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 5 日目の記事です。 [<<< 4 日目](../Day4_Latch/)
 
-この記事では、論理回路の中でも一番の山場、D フリップフロップ回路の目的と動作を解説します。
+この記事では、論理回路の中でも一番の山場、D フリップフロップ回路（DFF）を解説します。
 
-## D フリップフロップの仕事
+## DFF の仕事
 
-D フリップフロップ（DFF）は信号を記憶する素子です。
+DFF は信号を記憶する素子です。
 
 ![](./img/DFF.dio.svg)
 
