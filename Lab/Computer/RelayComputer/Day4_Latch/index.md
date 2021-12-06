@@ -2,7 +2,7 @@
 %
 %
 
-これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 4 日目の記事です。
+これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 4 日目の記事です。[>>> 5 日目](../Day5_DFF/)
 
 ## フリップフロップ
 
@@ -37,3 +37,5 @@
 ③ E が ON になると、BC のボタンを押してもリレーが ON にならなくなる（入力を受け付けなくなる）
 
 ④ リセットボタンを押すと、リレー A の ON 状態が解除され OFF 状態になる
+
+[>>> 5 日目](../Day5_DFF/)

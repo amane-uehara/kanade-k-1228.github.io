@@ -50,6 +50,6 @@
 
 [D フリップフロップ](./Computer/RelayComputer/Day5_DFF/)
 
-[カウンタを作ってみる]()
+[カウンタを作ってみる](./Computer/RelayComputer/Day6_Counter/)
 
 論理回路まとめ
