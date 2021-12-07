@@ -432,23 +432,19 @@ $\omega$ が $k$ に比例する。（音響モード）
 ポテンシャルは
 
 $$
-\phi = \phi_0 + \f{K}{2}\sum_i\{u_1(na)-u_2(na+d)\}^2 + \f{G}{2}\sum_i\{u_2(na+d)-u_1(na+a)\}^2
+\phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia+d)\}^2 + \f{G}{2}\sum_i\{u(ia+d)-u(ia+a)\}^2
 $$
 
 $a \gg d$ の近似を用いて
 
 $$
-\phi = \phi_0 + \f{K}{2}\sum_i\{u_1(na)-u_2(na)\}^2 + \f{G}{2}\sum_i\{u_2(na)-u_1(na+a)\}^2
+\phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia)\}^2 + \f{G}{2}\sum_i\{u(ia)-u(ia+a)\}^2
 $$
 
 運動方程式は
 
 $$
-m\dd{u_1(x)}{t} = -\pd{\phi}{u_1(x)}
-$$
-
-$$
-m\dd{u_2(x)}{t} = -\pd{\phi}{u_2(x)}
+m\dd{u(x)}{t} = -\pd{\phi}{u(x)}
 $$
 
 ### 分岐
