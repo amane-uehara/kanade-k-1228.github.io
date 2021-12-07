@@ -398,7 +398,7 @@ $$
 解を求める
 
 $$
-u(x,t)=u_0\exp\{\tau(kx-\omega t)\}
+u(x,t)=u_0\exp\{i(kx-\omega t)\}
 $$
 
 を代入して
@@ -432,23 +432,91 @@ $\omega$ が $k$ に比例する。（音響モード）
 ポテンシャルは
 
 $$
-\phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia+d)\}^2 + \f{G}{2}\sum_i\{u(ia+d)-u(ia+a)\}^2
+\phi = \phi_0 + \f{G}{2}\sum_i\{u_B(ia-a+d)-u_A(ia)\}^2 + \f{K}{2}\sum_i\{u_A(ia)-u_B(ia+d)\}^2
+$$
+
+$d\ll a$ の近似をして
+
+$$
+\phi = \phi_0 + \f{G}{2}\sum_i\{u_B(ia-a)-u_A(ia)\}^2 + \f{K}{2}\sum_i\{u_A(ia)-u_B(ia)\}^2
 $$
 
 運動方程式は
 
 $$
-m\dd{u(ia)}{t} = -\pd{\phi}{u(ia)} = G u(ia-a+d) - (K+G) u(ia) + K u(ia+d)
+m\dd{u_A(ia)}{t} = -\pd{\phi}{u_A(ia)} =  G \{u_B(ia-a)-u_A(ia)\} - K \{u_A(ia) - u_B(ia)\}
 $$
 
 $$
-m\dd{u(ia+d)}{t} = -\pd{\phi}{u(ia+d)} = K u(ia) - (K+G) u(ia+d) + G u(ia+a)
+m\dd{u_B(ia)}{t} = -\pd{\phi}{u_B(ia)} = - G \{u_B(ia)-u_A(ia+a)\} + K \{u_A(ia) - u_B(ia)\}
 $$
 
 $$
-u(x,t)=u_0\exp\{\tau(kx-\omega t)\}
+u_A(x,t)=u_{A0}\exp\{i(kx-\omega t)\}
 $$
 
-を代入して
+$$
+u_B(x,t)=u_{B0}\exp\{i(kx-\omega t)\}
+$$
+
+を代入すると
+
+$$
+\{m\omega^2 - (K+G)\}u_{A0} + (K+Ge^{-ika})u_{B0} = 0
+$$
+
+$$
+(K+Ge^{ika})u_{A0} + \{m\omega^2 - (K+G)\}u_{B0} = 0
+$$
+
+$u_{A0},u_{B0}$ を消去すると
+
+$$
+\omega^2 = \f{K+G}{m} \pm \f{1}{m}\sqrt{K^2+G^2+2KG\cos(ka)}
+$$
+
+よって分散関係は
+
+$$
+\omega(k) = \sqrt{\f{K+G\pm\sqrt{K^2+G^2+2KG\cos(ka)}}{m}}
+$$
+
+$$
+\omega(0)= \sqrt{\f{2(K+G)}{m}}, 0
+$$
+
+$$
+\omega\l(\pm \f{\pi}{a}\r) = \sqrt{\f{2K}{m}},\sqrt{\f{2G}{m}}
+$$
+
+![](./img/Band.dio.svg)
+
+群速度（振動の伝播速度）$v_g = \omega'(k)$ を求める。
+
+波長が長い領域について考える。
+
+$k\rightarrow 0$ と近似して、
+
+$$
+\begin{aligned}
+\omega^2(k)
+&= \f{1}{m}\l\{K+G\pm\sqrt{K^2+G^2+2KG\cos(ka)}\r\} \\
+&\simeq \f{1}{m}\l\{K+G\pm\sqrt{K^2+G^2+2KG\l(1-\f{(ka)^2}{2}\r)}\r\} \\
+&= \f{1}{m}\l\{K+G\pm\sqrt{(K+G)^2-KG(ka)^2}\r\} \\
+&= \f{K+G}{m}\l\{1\pm\sqrt{1-\f{KG(ka)^2}{(K+G)^2}}\r\} \\
+&\simeq \f{K+G}{m}\l\{1 \pm 1 \pm \f{KG(ka)^2}{2(K+G)^2}\r\} \\
+&= \f{KG(ka)^2}{2m(K+G)} , \f{2(K+G)}{m}
+\end{aligned}
+$$
+
+$$
+\omega(k) = ka\sqrt{\f{KG}{2m(K+G)}}
+$$
+
+$$
+v_g = \omega'(k) = a\sqrt{\f{KG}{2m(K+G)}}
+$$
+
+$K=100\rm{eV/nm^2}=10\rm{N/m}$、$M=10\rm{g/mol}=10^{-25}\rm{kg}$、$a=1 \dot{A}=10^{-10}\rm{m}$ を代入してオーダーを推定すると、$v_g=1000\rm{m/s}$
 
 ### 分岐
