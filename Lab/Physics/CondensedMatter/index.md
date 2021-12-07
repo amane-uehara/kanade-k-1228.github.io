@@ -390,7 +390,7 @@ $$
 を使って書くと
 
 $$
-m\dd{u_i}{t} = ka^2\pd{u_i}{x_i}
+m\dd{u_i}{t} = ka^2\pdd{u_i}{x_i}
 $$
 
 ☆ 波動方程式
@@ -435,16 +435,20 @@ $$
 \phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia+d)\}^2 + \f{G}{2}\sum_i\{u(ia+d)-u(ia+a)\}^2
 $$
 
-$a \gg d$ の近似を用いて
-
-$$
-\phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia)\}^2 + \f{G}{2}\sum_i\{u(ia)-u(ia+a)\}^2
-$$
-
 運動方程式は
 
 $$
-m\dd{u(x)}{t} = -\pd{\phi}{u(x)}
+m\dd{u(ia)}{t} = -\pd{\phi}{u(ia)} = G u(ia-a+d) - (K+G) u(ia) + K u(ia+d)
 $$
+
+$$
+m\dd{u(ia+d)}{t} = -\pd{\phi}{u(ia+d)} = K u(ia) - (K+G) u(ia+d) + G u(ia+a)
+$$
+
+$$
+u(x,t)=u_0\exp\{\tau(kx-\omega t)\}
+$$
+
+を代入して
 
 ### 分岐
