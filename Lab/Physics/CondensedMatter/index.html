@@ -744,7 +744,7 @@
       \]</span></p>
       <p>を使って書くと</p>
       <p><span class="math display">\[
-      m\dd{u_i}{t} = ka^2\pd{u_i}{x_i}
+      m\dd{u_i}{t} = ka^2\pdd{u_i}{x_i}
       \]</span></p>
       <p>☆ 波動方程式</p>
       <p>解を求める</p>
@@ -772,14 +772,17 @@
       <p><span class="math display">\[
       \phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia+d)\}^2 + \f{G}{2}\sum_i\{u(ia+d)-u(ia+a)\}^2
       \]</span></p>
-      <p><span class="math inline">\(a \gg d\)</span> の近似を用いて</p>
-      <p><span class="math display">\[
-      \phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia)\}^2 + \f{G}{2}\sum_i\{u(ia)-u(ia+a)\}^2
-      \]</span></p>
       <p>運動方程式は</p>
       <p><span class="math display">\[
-      m\dd{u(x)}{t} = -\pd{\phi}{u(x)}
+      m\dd{u(ia)}{t} = -\pd{\phi}{u(ia)} = G u(ia-a+d) - (K+G) u(ia) + K u(ia+d)
       \]</span></p>
+      <p><span class="math display">\[
+      m\dd{u(ia+d)}{t} = -\pd{\phi}{u(ia+d)} = K u(ia) - (K+G) u(ia+d) + G u(ia+a)
+      \]</span></p>
+      <p><span class="math display">\[
+      u(x,t)=u_0\exp\{\tau(kx-\omega t)\}
+      \]</span></p>
+      <p>を代入して</p>
       <h3 id="分岐">分岐</h3>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
