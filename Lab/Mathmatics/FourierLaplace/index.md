@@ -2,17 +2,6 @@
 %
 %
 
-$$
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\newcommand{\F}{\mathcal{F}}
-\newcommand{\L}{\mathcal{L}}
-$$
-
 正規直交系をなす関数集合 $\{f_n\}$
 
 $$
@@ -36,6 +25,46 @@ $$
 ### 熱伝達方程式の解法
 
 ## フーリエ変換
+
+### ガウス関数
+
+$$
+\begin{aligned}
+\F[\exp(-\alpha t^2)]
+&= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp(-at^2) \exp(-i\omega t) dt \\
+&= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp\l\{-a\l(t+\f{i\omega}{2\alpha}\r)^2-\f{\omega^2}{4\alpha}\r\} dt \\
+&= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \int_{-\infty}^{\infty} \exp(-a\tau^2) d\tau \\
+&= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \sqrt{\f{\pi}{\alpha}} \\
+&= \f{1}{\sqrt{2\alpha}} \exp\l(-\f{\omega^2}{4\alpha}\r)
+\end{aligned}
+$$
+
+途中でガウス積分の公式
+
+$$
+\int_{-\infty}^{\infty} \exp(-ax^2) dx = \sqrt{\f{\pi}{a}}
+$$
+
+を用いた。
+
+求めたい積分を $I=\int_{-\infty}^{\infty} \exp(-ax^2) dx$ とする。
+
+$$
+\begin{aligned}
+I^2
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(-ax^2) \exp(-ay^2) dx dy \\
+&= \int_0^{\infty} \int_{-\pi}^{\pi} \exp(-ar^2) r d\theta dr \\
+&= 2\pi \int_0^{\infty} r\exp(-ar^2) dr\\
+&= 2\pi \l[-\f{1}{2a} \exp(-ar^2)\r]_0^{\infty} \\
+&= \f{\pi}{a}
+\end{aligned}
+$$
+
+よって
+
+$$
+I=\sqrt{\f{\pi}{a}}
+$$
 
 ### 熱伝達方程式の解法
 

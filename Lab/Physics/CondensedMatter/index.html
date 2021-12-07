@@ -447,6 +447,8 @@
           \newcommand{\f}[2]{\frac{#1}{#2}}
           \newcommand{\eps}{\varepsilon}
           \newcommand{\ra}{\rightarrow}
+          \newcommand{\F}{\mathcal{F}}
+          \newcommand{\L}{\mathcal{L}}
 
           \newcommand{\bm}[1]{\boldsymbol{#1}}
         \]
@@ -749,7 +751,7 @@
       <p>☆ 波動方程式</p>
       <p>解を求める</p>
       <p><span class="math display">\[
-      u(x,t)=u_0\exp\{\tau(kx-\omega t)\}
+      u(x,t)=u_0\exp\{i(kx-\omega t)\}
       \]</span></p>
       <p>を代入して</p>
       <p><span class="math display">\[
@@ -770,19 +772,68 @@
       <p><img src="./img/1DHarmonic2.dio.svg" /></p>
       <p>ポテンシャルは</p>
       <p><span class="math display">\[
-      \phi = \phi_0 + \f{K}{2}\sum_i\{u(ia)-u(ia+d)\}^2 + \f{G}{2}\sum_i\{u(ia+d)-u(ia+a)\}^2
+      \phi = \phi_0 + \f{G}{2}\sum_i\{u_B(ia-a+d)-u_A(ia)\}^2 + \f{K}{2}\sum_i\{u_A(ia)-u_B(ia+d)\}^2
+      \]</span></p>
+      <p><span class="math inline">\(d\ll a\)</span> の近似をして</p>
+      <p><span class="math display">\[
+      \phi = \phi_0 + \f{G}{2}\sum_i\{u_B(ia-a)-u_A(ia)\}^2 + \f{K}{2}\sum_i\{u_A(ia)-u_B(ia)\}^2
       \]</span></p>
       <p>運動方程式は</p>
       <p><span class="math display">\[
-      m\dd{u(ia)}{t} = -\pd{\phi}{u(ia)} = G u(ia-a+d) - (K+G) u(ia) + K u(ia+d)
+      m\dd{u_A(ia)}{t} = -\pd{\phi}{u_A(ia)} =  G \{u_B(ia-a)-u_A(ia)\} - K \{u_A(ia) - u_B(ia)\}
       \]</span></p>
       <p><span class="math display">\[
-      m\dd{u(ia+d)}{t} = -\pd{\phi}{u(ia+d)} = K u(ia) - (K+G) u(ia+d) + G u(ia+a)
+      m\dd{u_B(ia)}{t} = -\pd{\phi}{u_B(ia)} = - G \{u_B(ia)-u_A(ia+a)\} + K \{u_A(ia) - u_B(ia)\}
       \]</span></p>
       <p><span class="math display">\[
-      u(x,t)=u_0\exp\{\tau(kx-\omega t)\}
+      u_A(x,t)=u_{A0}\exp\{i(kx-\omega t)\}
       \]</span></p>
-      <p>を代入して</p>
+      <p><span class="math display">\[
+      u_B(x,t)=u_{B0}\exp\{i(kx-\omega t)\}
+      \]</span></p>
+      <p>を代入すると</p>
+      <p><span class="math display">\[
+      \{m\omega^2 - (K+G)\}u_{A0} + (K+Ge^{-ika})u_{B0} = 0
+      \]</span></p>
+      <p><span class="math display">\[
+      (K+Ge^{ika})u_{A0} + \{m\omega^2 - (K+G)\}u_{B0} = 0
+      \]</span></p>
+      <p><span class="math inline">\(u_{A0},u_{B0}\)</span> を消去すると</p>
+      <p><span class="math display">\[
+      \omega^2 = \f{K+G}{m} \pm \f{1}{m}\sqrt{K^2+G^2+2KG\cos(ka)}
+      \]</span></p>
+      <p>よって分散関係は</p>
+      <p><span class="math display">\[
+      \omega(k) = \sqrt{\f{K+G\pm\sqrt{K^2+G^2+2KG\cos(ka)}}{m}}
+      \]</span></p>
+      <p><span class="math display">\[
+      \omega(0)= \sqrt{\f{2(K+G)}{m}}, 0
+      \]</span></p>
+      <p><span class="math display">\[
+      \omega\l(\pm \f{\pi}{a}\r) = \sqrt{\f{2K}{m}},\sqrt{\f{2G}{m}}
+      \]</span></p>
+      <p><img src="./img/Band.dio.svg" /></p>
+      <p>群速度（振動の伝播速度）<span class="math inline">\(v_g = \omega&#39;(k)\)</span> を求める。</p>
+      <p>波長が長い領域について考える。</p>
+      <p><span class="math inline">\(k\rightarrow 0\)</span> と近似して、</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \omega^2(k)
+      &amp;= \f{1}{m}\l\{K+G\pm\sqrt{K^2+G^2+2KG\cos(ka)}\r\} \\
+      &amp;\simeq \f{1}{m}\l\{K+G\pm\sqrt{K^2+G^2+2KG\l(1-\f{(ka)^2}{2}\r)}\r\} \\
+      &amp;= \f{1}{m}\l\{K+G\pm\sqrt{(K+G)^2-KG(ka)^2}\r\} \\
+      &amp;= \f{K+G}{m}\l\{1\pm\sqrt{1-\f{KG(ka)^2}{(K+G)^2}}\r\} \\
+      &amp;\simeq \f{K+G}{m}\l\{1 \pm 1 \pm \f{KG(ka)^2}{2(K+G)^2}\r\} \\
+      &amp;= \f{KG(ka)^2}{2m(K+G)} , \f{2(K+G)}{m}
+      \end{aligned}
+      \]</span></p>
+      <p><span class="math display">\[
+      \omega(k) = ka\sqrt{\f{KG}{2m(K+G)}}
+      \]</span></p>
+      <p><span class="math display">\[
+      v_g = \omega&#39;(k) = a\sqrt{\f{KG}{2m(K+G)}}
+      \]</span></p>
+      <p><span class="math inline">\(K=100\rm{eV/nm^2}=10\rm{N/m}\)</span>、<span class="math inline">\(M=10\rm{g/mol}=10^{-25}\rm{kg}\)</span>、<span class="math inline">\(a=1 \dot{A}=10^{-10}\rm{m}\)</span> を代入してオーダーを推定すると、<span class="math inline">\(v_g=1000\rm{m/s}\)</span></p>
       <h3 id="分岐">分岐</h3>
 
       <button class="comment-button" onclick="tweet();">コメント</button>

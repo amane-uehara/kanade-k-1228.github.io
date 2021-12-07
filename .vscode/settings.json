@@ -20,7 +20,9 @@
         "\\r":"\\right",
         "\\f":"{\\frac{#1}{#2}}",
         "\\eps":"\\varepsilon",
-        "\\ra":"\\rightarrow"
+        "\\ra":"\\rightarrow",
+        "\\F":"\\mathcal{F}",
+        "\\L":"\\mathcal{L}"
     },
     "mdmath.macros": {
         "\\d":"{\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}}",
@@ -40,6 +42,8 @@
         "\\r":"\\right",
         "\\f":"{\\frac{#1}{#2}}",
         "\\eps":"\\varepsilon",
-        "\\ra":"\\rightarrow"
-    },
+        "\\ra":"\\rightarrow",
+        "\\F":"\\mathcal{F}",
+        "\\L":"\\mathcal{L}"
+    }
 }

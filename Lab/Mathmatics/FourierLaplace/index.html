@@ -447,6 +447,8 @@
           \newcommand{\f}[2]{\frac{#1}{#2}}
           \newcommand{\eps}{\varepsilon}
           \newcommand{\ra}{\rightarrow}
+          \newcommand{\F}{\mathcal{F}}
+          \newcommand{\L}{\mathcal{L}}
 
           \newcommand{\bm}[1]{\boldsymbol{#1}}
         \]
@@ -460,6 +462,7 @@
 <li><a href="#熱伝達方程式の解法">熱伝達方程式の解法</a></li>
 </ul></li>
 <li><a href="#フーリエ変換">フーリエ変換</a><ul>
+<li><a href="#ガウス関数">ガウス関数</a></li>
 <li><a href="#熱伝達方程式の解法-1">熱伝達方程式の解法</a></li>
 </ul></li>
 <li><a href="#ラプラス変換">ラプラス変換</a></li>
@@ -469,16 +472,6 @@
 </ul></li>
 </ul></nav>
       
-      <p><span class="math display">\[
-      \newcommand{\R}{\mathbb{R}}
-      \newcommand{\C}{\mathbb{C}}
-      \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-      \newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-      \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-      \newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-      \newcommand{\F}{\mathcal{F}}
-      \newcommand{\L}{\mathcal{L}}
-      \]</span></p>
       <p>正規直交系をなす関数集合 <span class="math inline">\(\{f_n\}\)</span></p>
       <p><span class="math display">\[
       \int f_i f_j dx = \delta_{ij}
@@ -493,6 +486,37 @@
       <h3 id="波動方程式の解法">波動方程式の解法</h3>
       <h3 id="熱伝達方程式の解法">熱伝達方程式の解法</h3>
       <h2 id="フーリエ変換">フーリエ変換</h2>
+      <h3 id="ガウス関数">ガウス関数</h3>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \F[\exp(-\alpha t^2)]
+      &amp;= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp(-at^2) \exp(-i\omega t) dt \\
+      &amp;= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp\l\{-a\l(t+\f{i\omega}{2\alpha}\r)^2-\f{\omega^2}{4\alpha}\r\} dt \\
+      &amp;= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \int_{-\infty}^{\infty} \exp(-a\tau^2) d\tau \\
+      &amp;= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \sqrt{\f{\pi}{\alpha}} \\
+      &amp;= \f{1}{\sqrt{2\alpha}} \exp\l(-\f{\omega^2}{4\alpha}\r)
+      \end{aligned}
+      \]</span></p>
+      <p>途中でガウス積分の公式</p>
+      <p><span class="math display">\[
+      \int_{-\infty}^{\infty} \exp(-ax^2) dx = \sqrt{\f{\pi}{a}}
+      \]</span></p>
+      <p>を用いた。</p>
+      <p>求めたい積分を <span class="math inline">\(I=\int_{-\infty}^{\infty} \exp(-ax^2) dx\)</span> とする。</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      I^2
+      &amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(-ax^2) \exp(-ay^2) dx dy \\
+      &amp;= \int_0^{\infty} \int_{-\pi}^{\pi} \exp(-ar^2) r d\theta dr \\
+      &amp;= 2\pi \int_0^{\infty} r\exp(-ar^2) dr\\
+      &amp;= 2\pi \l[-\f{1}{2a} \exp(-ar^2)\r]_0^{\infty} \\
+      &amp;= \f{\pi}{a}
+      \end{aligned}
+      \]</span></p>
+      <p>よって</p>
+      <p><span class="math display">\[
+      I=\sqrt{\f{\pi}{a}}
+      \]</span></p>
       <h3 id="熱伝達方程式の解法-1">熱伝達方程式の解法</h3>
       <h2 id="ラプラス変換">ラプラス変換</h2>
       <h2 id="ラプラス変換による微分方程式の解法">ラプラス変換による微分方程式の解法</h2>
