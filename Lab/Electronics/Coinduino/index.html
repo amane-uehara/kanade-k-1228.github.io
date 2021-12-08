@@ -457,21 +457,79 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#回路構成">回路構成</a></li>
-<li><a href="#pcb-設計">PCB 設計</a></li>
+<li><a href="#部品選定">部品選定</a><ul>
+<li><a href="#充電-ic">充電 IC</a></li>
+<li><a href="#バッテリー">バッテリー</a></li>
+<li><a href="#レギュレータ">レギュレータ</a></li>
+</ul></li>
+<li><a href="#pcb-設計">PCB 設計</a><ul>
+<li><a href="#部品を揃える">部品を揃える</a></li>
+<li><a href="#回路図を引く">回路図を引く</a></li>
+<li><a href="#ボード図を引く">ボード図を引く</a></li>
+</ul></li>
 <li><a href="#発注実装">発注＆実装</a></li>
 </ul></nav>
       
       <ul>
       <li>超小型 (3cm x 3 cm)</li>
       <li>リチウムバッテリー搭載</li>
-      <li>ワイヤレス給電可能</li>
-      <li>ATMEGA 32U4 搭載</li>
+      <li>ワイヤレス給電可能
+      <ul>
+      <li>水密</li>
+      </ul></li>
+      <li>ATMEGA 32U4 搭載
+      <ul>
       <li>Arduino Leonald 互換</li>
-      <li>USB キーボードなどが作れる</li>
+      </ul></li>
       </ul>
       <h2 id="回路構成">回路構成</h2>
       <p><img src="./img/about.dio.svg" /></p>
+      <h2 id="部品選定">部品選定</h2>
+      <h3 id="充電-ic">充電 IC</h3>
+      <ul>
+      <li>ワイヤレス給電・USB 給電の両方を制御できる</li>
+      <li>リチウム電池を充電できる</li>
+      <li><p>できればレギュレータも内臓しててほしい</p></li>
+      <li>Renesas</li>
+      <li>AD
+      <ul>
+      <li><a href="https://www.analog.com/en/products/LTC4124.html">LTC4124</a></li>
+      <li><a href="https://www.analog.com/en/products/ltc4126.html">LTC4126</a>
+      <ul>
+      <li>出力 1.2 V なので ✕</li>
+      </ul></li>
+      </ul></li>
+      <li>TI
+      <ul>
+      <li><a href="https://www.tij.co.jp/product/jp/BQ51050B">BQ5105xB</a>
+      <ul>
+      <li>充電電圧ごと型番の x が違う</li>
+      </ul></li>
+      </ul></li>
+      <li>ST
+      <ul>
+      <li><a href="https://www.st.com/ja/power-management/stwlc68.html">STWLC68</a></li>
+      </ul></li>
+      <li>SEMTECH
+      <ul>
+      <li><a href="https://www.semtech.com/products/wireless-charging/linkcharge-ics/ts51224">TS51224</a></li>
+      </ul></li>
+      </ul>
+      <p>AnalogDevices の LTC4123 ！君に決めた！</p>
+      <p>単価 851 円ってマ？壊れるなぁ… <a href="https://www.digikey.jp/ja/products/detail/analog-devices-inc/LTC4124EV-TRMPBF/9990337">Digikey</a></p>
+      <p><a href="https://forum.digikey.com/t/trmpbf-suffix-vs-trpbf-suffix-in-linear-technology-parts/218">TRMPBF suffix vs. TRPBF suffix in Linear Technology parts</a></p>
+      <h3 id="バッテリー">バッテリー</h3>
+      <p>リチウムのボタン電池</p>
+      <p>ホルダー</p>
+      <p>リチウムポリマーのボタン電池はあんまりないみたいだね…</p>
+      <h3 id="レギュレータ">レギュレータ</h3>
+      <p>まず回路全体の消費電力を推定する</p>
       <h2 id="pcb-設計">PCB 設計</h2>
+      <h3 id="部品を揃える">部品を揃える</h3>
+      <h3 id="回路図を引く">回路図を引く</h3>
+      <h3 id="ボード図を引く">ボード図を引く</h3>
+      <p>PCB 業者のデザインルールを確認</p>
+      <p>サーマルパッドをはんだ付けするために、via を打ち、レジストを塗らない</p>
       <h2 id="発注実装">発注＆実装</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
