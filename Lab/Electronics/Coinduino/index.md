@@ -38,20 +38,25 @@ AnalogDevices の LTC4123 ！君に決めた！
 
 単価 851 円ってマ？壊れるなぁ…
 [Digikey](https://www.digikey.jp/ja/products/detail/analog-devices-inc/LTC4124EV-TRMPBF/9990337)
+[MOUSER](https://www.mouser.jp/ProductDetail/Analog-Devices/LTC4124EVTRMPBF?qs=l4Gc20tDgJL6kEUp5cxquQ%3D%3D)
 
 [TRMPBF suffix vs. TRPBF suffix in Linear Technology parts](https://forum.digikey.com/t/trmpbf-suffix-vs-trpbf-suffix-in-linear-technology-parts/218)
 
+### コイル
+
+[Ｒｘコイルユニット（受信用ワイヤレス給電コイル） ＷＲ２０２０１０－１８Ｍ８－ＩＤ](https://akizukidenshi.com/catalog/g/gP-15174/)
+
 ### バッテリー
 
-リチウムのボタン電池
-
-ホルダー
-
-リチウムポリマーのボタン電池はあんまりないみたいだね…
+- LIR2032 : 二酸化マンガンリチウムイオン電池
+- リチウムポリマーのボタン電池はあんまりないみたいだね…
+- [ホルダー](https://akizukidenshi.com/catalog/g/gP-06925/)
+- [カバー付き](https://akizukidenshi.com/catalog/g/gP-12908/)
+- [引き出し付き](https://akizukidenshi.com/catalog/g/gP-12893/)
 
 ### レギュレータ
 
-まず回路全体の消費電力を推定する
+回路全体の消費電力を推定すると、？
 
 ## PCB 設計
 
