@@ -33,7 +33,9 @@
     <style>
       body {
         margin: 0;
-        background-color: #fcfeff;
+        /* background-color: #fcfeff; */
+        /* background-color: #e4f0fc; */
+        background-color: #f0f8ff;
         font-size: 16px;
         font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
           "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
@@ -435,6 +437,7 @@
           \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
           \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
           \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+          \newcommand{\p}{\partial}
           \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
           \newcommand{\Re}{\mathrm{Re}}
           \newcommand{\Im}{\mathrm{Im}}
@@ -465,7 +468,6 @@
 </ul></li>
 </ul></nav>
       
-      <p>おことわり</p>
       <p>光速 <span class="math inline">\(c=1\)</span> とする単位系を使用します．</p>
       <h2 id="登場人物">登場人物</h2>
       <ul>
@@ -483,19 +485,16 @@
       <li><span class="math inline">\(B\)</span> 磁場</li>
       </ul>
       <h3 id="電磁ポテンシャル">電磁ポテンシャル</h3>
-      <ul>
-      <li>四元ベクトル</li>
-      <li>成分が <span class="math display">\[
+      <p><span class="math display">\[
       A=\begin{pmatrix}
-        \phi \\ -\boldsymbol{A}
-      \end{pmatrix}
-      \]</span></li>
+          \phi \\ -\boldsymbol{A}
+        \end{pmatrix}
+      \]</span></p>
+      <ul>
       <li>ゲージ変換
       <ul>
       <li>電磁場を不変とする変換</li>
-      <li>電磁ポテンシャルには冗長な自由度がある <span class="math display">\[
-      A
-      \]</span></li>
+      <li>電磁ポテンシャルには冗長な自由度がある</li>
       </ul></li>
       </ul>
       <h3 id="section"></h3>
