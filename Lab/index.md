@@ -6,6 +6,8 @@
 
 ### 力学
 
+[連続体力学](./Physics/ContinuumMechanics/)
+
 [流体力学](./Physics/FluidMechanics/)
 
 ### 物性
