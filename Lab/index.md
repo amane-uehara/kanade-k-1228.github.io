@@ -4,6 +4,10 @@
 
 ## 物理学
 
+### 力学
+
+[流体力学](./Physics/FluidMechanics/)
+
 ### 物性
 
 [物性物理](./Physics/CondensedMatter/)

@@ -458,7 +458,7 @@
             <nav><ul>
 <li><a href="#流体">流体</a></li>
 <li><a href="#基礎方程式">基礎方程式</a><ul>
-<li><a href="#流体の記述">流体の記述</a></li>
+<li><a href="#登場人物">登場人物</a></li>
 <li><a href="#質量保存則連続の式">質量保存則（連続の式）</a></li>
 <li><a href="#運動量保存則運動方程式">運動量保存則（運動方程式）</a></li>
 <li><a href="#構成則">構成則</a></li>
@@ -507,7 +507,7 @@
       
       <h2 id="流体">流体</h2>
       <h2 id="基礎方程式">基礎方程式</h2>
-      <h3 id="流体の記述">流体の記述</h3>
+      <h3 id="登場人物">登場人物</h3>
       <ul>
       <li>速度 <span class="math inline">\(u_i\)</span>
       <ul>
@@ -521,11 +521,11 @@
       </ul>
       <h3 id="質量保存則連続の式">質量保存則（連続の式）</h3>
       <p><span class="math display">\[
-      \pd{t}\rho+\pd{x_i}(\rho u_i)=0
+      \pd{}{t}\rho+\pd{}{x_i}(\rho u_i)=0
       \]</span></p>
       <h3 id="運動量保存則運動方程式">運動量保存則（運動方程式）</h3>
       <p><span class="math display">\[
-      \pd{t}(\rho u_i) + \pd{x_j}(\rho u_i u_j)=\pd{x_i}\sigma_{ii}+\rho g_i
+      \pd{}{t}(\rho u_i) + \pd{}{x_j}(\rho u_i u_j)=\pd{}{x_i}\sigma_{ii}+\rho g_i
       \]</span></p>
       <h3 id="構成則">構成則</h3>
       <p>構成方程式の一般式</p>
@@ -561,12 +561,11 @@
       \]</span></p>
       <h4 id="無次元化-dvl">無次元化 <span class="math inline">\(D,V,L\)</span></h4>
       <p><span class="math display">\[
-      \rho \pd{t} u_i + \rho u_j \pd{x_j} u_i = -\pd{x_i} p + \frac{\mu}{DVL} \pd{x_j} \pd{x_j} u_i + \rho g_i
+      \rho \pd{}{t} u_i + \rho u_j \pd{}{x_j} u_i = -\pd{}{x_i} p + \frac{\mu}{DVL} \pd{}{x_j} \pd{}{x_j} u_i + \rho g_i
       \]</span></p>
-      <p>レイノルズ数 <span class="math inline">\(Re:=\frac{\rho V L}{\mu}\)</span> と外力場 <span class="math inline">\(g_i\)</span> が同じなら相似な流れになる．</p>
-      <p>微分方程式の解が同じになる．</p>
+      <p>レイノルズ数<span class="math inline">\(Re:=\frac{\rho V L}{\mu}\)</span>と外力場<span class="math inline">\(g_i\)</span>が同じなら、等価な微分方程式となり、相似な流れになる．</p>
       <h3 id="π-定理">π 定理</h3>
-      <p>法則が <span class="math inline">\(n\)</span> 個の変数 <span class="math inline">\((q_1,q_2,,,q_n)\)</span> で表現されていて，変数が <span class="math inline">\(k\)</span> 個の独立な基本単位で表されるとき，</p>
+      <p>法則が<span class="math inline">\(n\)</span>個の変数<span class="math inline">\((q_1,q_2,,,q_n)\)</span>で表現されていて，変数が<span class="math inline">\(k\)</span>個の独立な基本単位で表されるとき，</p>
       <table>
       <thead>
       <tr class="header">
@@ -602,28 +601,28 @@
       <h3 id="二次元">二次元</h3>
       <p><span class="math display">\[
       \begin{aligned}
-      \pd[u]{x} + \pd[v]{y} &amp;= 0 \\
-      \rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &amp;= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
-      \rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &amp;= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y
+      \pd{u}{x} + \pd{v}{y} &amp;= 0 \\
+      \rho \left( \pd{u}{t} + u \pd{u}{x} + v \pd{u}{y} \right) &amp;= -\pd{p}{x} + \mu \left( \pdd{u}{x} + \pdd{u}{y} \right) + \rho g_x \\
+      \rho \left( \pd{v}{t} + u \pd{v}{x} + v \pd{v}{y} \right) &amp;= -\pd{p}{y} + \mu \left( \pdd{v}{x} + \pdd{v}{y} \right) + \rho g_y
       \end{aligned}
       \]</span></p>
       <h3 id="円筒座標-rthetaz">円筒座標 <span class="math inline">\((r,\theta,z)\)</span></h3>
       <p><span class="math display">\[
       \begin{aligned}
-      \frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{\theta} u_\theta + \pd{z} u_z &amp;= 0 \\
-      \rho \left( \pd[u_r]{t} + u_r \pd[u_r]{r} + \frac{u_\theta}{r} \pd[u_r]{\theta} - \frac{u_\theta^2}{r} + u_z \pd[u_r]{z} \right) &amp;= -\pd[p]{r} + \mu \left[ \pd{r} \left(\frac{1}{r}\pd{r}(ru_r)\right) + \frac{1}{r^2}\pdd[u_r]{\theta} - \frac{2}{r^2} \pd[u_\theta]{\theta} + \pdd[u_r]{z} \right] + \rho g_r \\
-      \rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) &amp;= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
-      \rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &amp;= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
+      \frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{}{\theta} u_\theta + \pd{}{z} u_z &amp;= 0 \\
+      \rho \left( \pd{u_r}{t} + u_r \pd{u_r}{r} + \frac{u_\theta}{r} \pd{u_r}{\theta} - \frac{u_\theta^2}{r} + u_z \pd{u_r}{z} \right) &amp;= -\pd{p}{r} + \mu \left[ \pd{}{r} \left(\frac{1}{r}\pd{r}(ru_r)\right) + \frac{1}{r^2}\pdd{u_r}{\theta} - \frac{2}{r^2} \pd{u_\theta}{\theta} + \pdd{u_r}{z} \right] + \rho g_r \\
+      \rho\left( \pd{u_\theta}{t} + u_r \pd{u_\theta}{r} + \frac{u_\theta}{r} \pd{u_\theta}{\theta} + \frac{u_ru_\theta}{r} + u_z \pd{u_\theta}{z} \right) &amp;= -\frac{1}{r}\pd{p}{\theta} + \mu \left[ \pd{}{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd{u_\theta}{\theta} + \frac{2}{r^2} \pd{u_r}{\theta} + \pdd{u_\theta}{z} \right] + \rho g_\theta \\
+      \rho\left( \pd{u_z}{t} + u_r \pd{u_z}{r} + \frac{u_\theta}{r} \pd{u_z}{\theta} + u_z\pd{u_z}{z} \right) &amp;= -\pd{p}{z} + \mu \left[ \frac{1}{r} \pd{}{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd{u_z}{\theta} + \pdd{u_z}{z} \right] + \rho g_z
       \end{aligned}
       \]</span></p>
       <h3 id="圧力ポアソン方程式">圧力ポアソン方程式</h3>
       <p>非圧縮で外力のないナビエストークス方程式</p>
       <p><span class="math display">\[
-      \rho\left(\pd{t}u_i + u_j\pd{x_j}u_i\right) = -\pd[p]{x_i} + \mu \pd{x_j}\pd{x_j}u_i
+      \rho\left(\pd{u_i}{t} + u_j\pd{u_i}{x_j}\right) = -\pd{p}{x_i} + \mu \pdd{u_i}{x_j}
       \]</span></p>
-      <p>の両辺に <span class="math inline">\(\pd{x_i}\)</span> をかけて，連続の式 <span class="math inline">\(\pd[u_i]{x_i}=0\)</span> を用いると</p>
+      <p>の両辺に <span class="math inline">\(\pd{}{x_i}\)</span> をかけて，連続の式 <span class="math inline">\(\pd{u_i}{x_i}=0\)</span> を用いると</p>
       <p><span class="math display">\[
-      \rho \pd[u_j]{x_i}\pd[u_i]{x_j} = -\pd{x_i}\pd{x_i}p
+      \rho \pd{u_j}{x_i}\pd{u_i}{x_j} = -\pdd{p}{x_i}
       \]</span></p>
       <h2 id="円管内層流ポアズイユ流れ">円管内層流（ポアズイユ流れ）</h2>
       <p><img src="CircularTube.drawio.svg" /></p>
@@ -631,28 +630,28 @@
       <p>軸対称 <span class="math inline">\(\partial_\theta=0, u_\theta=0\)</span>, 発達流 <span class="math inline">\(\partial_z=0\)</span>, 定常 <span class="math inline">\(\pd{t}=0\)</span>, 円管表面で <span class="math inline">\(u=0\)</span></p>
       <p>NS 方程式に条件を適用して，</p>
       <p><span class="math display">\[
-      \d[p]{z} = \mu\frac{1}{r} \d{r} \left( r \d[u_z]{r} \right)
+      \d{p}{z} = \mu\frac{1}{r} \d{}{r} \left( r \d{u_z}{r} \right)
       \]</span></p>
       <p>これを解く</p>
       <p><span class="math display">\[
       \begin{aligned}
-      \d{r} \left( r \d[u_z]{r} \right) &amp;= \frac{1}{\mu} \d[p]{z} r \\
-      r \d[u_z]{r} &amp;= \frac{1}{2\mu} \d[p]{z} r^2 + C_1 \\
-      \d[u_z]{r} &amp;= \frac{1}{2\mu} \d[p]{z} r + C_1 r^{-1} \\
-      u_z &amp;= \frac{1}{4\mu} \d[p]{z} r^2 + C_1 \ln r + C_2 \\
+      \d{}{r} \left( r \d{u_z}{r} \right) &amp;= \frac{1}{\mu} \d{p}{z} r \\
+      r \d{u_z}{r} &amp;= \frac{1}{2\mu} \d{p}{z} r^2 + C_1 \\
+      \d{u_z}{r} &amp;= \frac{1}{2\mu} \d{p}{z} r + C_1 r^{-1} \\
+      u_z &amp;= \frac{1}{4\mu} \d{p}{z} r^2 + C_1 \ln r + C_2 \\
       \end{aligned}
       \]</span></p>
       <p><span class="math inline">\(u_x(r)\)</span> は有限なので <span class="math inline">\(C_1=0\)</span> ，また円管表面で <span class="math inline">\(u_z(R)=0\)</span> より</p>
       <p><span class="math display">\[
-      u_z(r) = \frac{1}{4\mu} \left(-\d[p]{z}\right) (R^2-r^2)
+      u_z(r) = \frac{1}{4\mu} \left(-\d{p}{z}\right) (R^2-r^2)
       \]</span></p>
       <p>中心流速は</p>
       <p><span class="math display">\[
-      u_0 = u(0) = \frac{1}{4\mu} \left(-\d[p]{z}\right) R^2
+      u_0 = u(0) = \frac{1}{4\mu} \left(-\d{p}{z}\right) R^2
       \]</span></p>
       <p>流量は</p>
       <p><span class="math display">\[
-      Q = \int_0^R 2 \pi r u(r) dr = \frac{\pi}{8\mu} \left(-\d[p]{z}\right) R^4
+      Q = \int_0^R 2 \pi r u(r) dr = \frac{\pi}{8\mu} \left(-\d{p}{z}\right) R^4
       \]</span></p>
       <p>平均流速は</p>
       <p><span class="math display">\[
@@ -660,11 +659,11 @@
       \]</span></p>
       <p>表面の摩擦応力は</p>
       <p><span class="math display">\[
-      \tau = \frac{1}{2} \left(-\d[p]{z}\right) R
+      \tau = \frac{1}{2} \left(-\d{p}{z}\right) R
       \]</span></p>
       <p>円管の圧力損失は</p>
       <p><span class="math display">\[
-      \Delta p = \left(-\d[p]{z}\right) L = \frac{8 \mu L}{R^2} U
+      \Delta p = \left(-\d{p}{z}\right) L = \frac{8 \mu L}{R^2} U
       \]</span></p>
       <h3 id="血管の分岐murray-の法則">血管の分岐（Murray の法則）</h3>
       <p>評価関数を</p>
@@ -677,25 +676,25 @@
       <p>間隔 <span class="math inline">\(H\)</span>, すべり速度 <span class="math inline">\(U\)</span></p>
       <p>発達流，定常</p>
       <p><span class="math display">\[
-      0 = - \d[p]{x} + \mu \dd[u]{y}
+      0 = - \d{p}{x} + \mu \dd{u}{y}
       \]</span></p>
       <p>一般解は</p>
       <p><span class="math display">\[
-      u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y^2 + C_1 y + C_2
+      u(y) = - \frac{1}{2\mu} \left(-\d{p}{x}\right) y^2 + C_1 y + C_2
       \]</span></p>
       <p>底板は固定 <span class="math inline">\(u(0)=0\)</span>， 上板は速度 <span class="math inline">\(U\)</span> ですべっているので <span class="math inline">\(u(H)=U\)</span></p>
       <p><span class="math display">\[
-      u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y(y-H) + \frac{U}{H} y
+      u(y) = - \frac{1}{2\mu} \left(-\d{p}{x}\right) y(y-H) + \frac{U}{H} y
       \]</span></p>
       <h3 id="穴あき平板">穴あき平板</h3>
-      <p><img src="ParallelPlateWithHole.drawio.svg" /></p>
+      <p><img src="./img/ParallelPlateWithHole.dio.svg" /></p>
       <p>底板平板から一定の湧き出し <span class="math inline">\(V_0\)</span> ，上板から同じ吸い込みがあるとき，</p>
       <p><span class="math display">\[
-      \rho V_0 \d[u]{y} = - \d[p]{x} + \mu \dd[u]{y}
+      \rho V_0 \d{u}{y} = - \d{p}{x} + \mu \dd{u}{y}
       \]</span></p>
-      <p><span class="math inline">\(\alpha:=-\frac{\rho V_0}{\mu}, \beta:=-\frac{1}{\mu}\d[p]{x}\)</span> とすると，</p>
+      <p><span class="math inline">\(\alpha:=-\frac{\rho V_0}{\mu}, \beta:=-\frac{1}{\mu}\d{p}{x}\)</span> とすると，</p>
       <p><span class="math display">\[
-      \dd[u]{y} + \alpha \d[u]{y} + \beta = 0
+      \dd{u}{y} + \alpha \d{u}{y} + \beta = 0
       \]</span></p>
       <p>一般解は</p>
       <p><span class="math display">\[
@@ -706,11 +705,11 @@
       u(y) = \left( U + \frac{\beta}{\alpha} H \right) \frac{\exp(-\alpha y)-1}{\exp(-\alpha H)-1} - \frac{\beta}{\alpha}y
       \]</span></p>
       <p><span class="math display">\[
-      u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d[p]{x} y
+      u(y) = \left( U + \frac{1}{\rho V_0} \d{p}{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d{p}{x} y
       \]</span></p>
       <h2 id="同軸二重円筒">同軸二重円筒</h2>
       <h2 id="境界層">境界層</h2>
-      <p><img src="BoundaryLayer.drawio.svg" /></p>
+      <p><img src="./img/BoundaryLayer.dio.svg" /></p>
       <h2 id="非定常">非定常</h2>
       <p>滑らかな入り口では一様な速度分布になる．</p>
       <p>粘性の影響で徐々に壁面から運動量が伝わる．（← 発達）</p>
@@ -742,19 +741,19 @@
       <ul>
       <li><p>連続の式</p>
       <p><span class="math display">\[
-      \pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
+      \pd{\rho}{t} + \pd{x_i}(\rho u_i) = 0
       \]</span></p></li>
       <li><p>オイラー方程式（完全流体の運動方程式）</p>
       <p><span class="math display">\[
-      \pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
+      \pd{u_i}{t} + u_j \pd{u_i}{x_j} = -\frac{1}{\rho} \pd{p_i}{x_i} + g
       \]</span></p></li>
       <li><p>断熱方程式 <span class="math display">\[
-      \pd[s]{t} + u_j \pd[s]{x_j} = 0
+      \pd{s}{t} + u_j \pd{s}{x_j} = 0
       \]</span></p></li>
       </ul>
       <h3 id="渦度方程式">渦度方程式</h3>
       <p><span class="math display">\[
-      \D[\omega]{t} = \pd[\omega_i]{t} + u_j\pd[\omega_i]{x_j} = \omega_j \pd[u_i]{x_j} + \nu \pdd[\omega_i]{x_j}
+      \d{\omega}{t} = \pd{\omega_i}{t} + u_j\pd{\omega_i}{x_j} = \omega_j \pd{u_i}{x_j} + \nu \pdd{\omega_i}{x_j}
       \]</span></p>
       <h3 id="ラグランジュの渦定理">ラグランジュの渦定理</h3>
       <h3 id="ポテンシャル流">ポテンシャル流</h3>
@@ -769,12 +768,12 @@
       <p>速度ポテンシャルはラプラス方程式の解</p>
       <h3 id="圧力方程式ベルヌイの定理">圧力方程式（ベルヌイの定理）</h3>
       <p><span class="math display">\[
-      \frac{p}{\rho} + \frac{1}{2} u^2 + \pd[\Phi]{t} = F(t)
+      \frac{p}{\rho} + \frac{1}{2} u^2 + \pd{\Phi}{t} = F(t)
       \]</span></p>
       <h2 id="二次元ポテンシャル流">二次元ポテンシャル流</h2>
       <h3 id="流れ関数">流れ関数</h3>
       <p><span class="math display">\[
-      u=\pd[\Psi]{y} \quad v=-\pd[\Psi]{x}
+      u=\pd{\Psi}{y} \quad v=-\pd{\Psi}{x}
       \]</span></p>
       <p>流れ関数もラプラス方程式の解</p>
       <h3 id="複素ポテンシャル">複素ポテンシャル</h3>
@@ -783,10 +782,10 @@
       \]</span></p>
       <p>複素速度</p>
       <p><span class="math display">\[
-      w = \d[f]{z} = u - iv
+      w = \d{f}{z} = u - iv
       \]</span></p>
       <p><span class="math display">\[
-      u=\mathrm{Re}\d[f]{z} \quad v=-\mathrm{Im}\d[f]{z}
+      u=\mathrm{Re}\d{f}{z} \quad v=-\mathrm{Im}\d{f}{z}
       \]</span></p>
       <h3 id="ポテンシャルの例">ポテンシャルの例</h3>
       <h4 id="直角">直角</h4>
@@ -794,14 +793,14 @@
       \Psi (x,y) = axy
       \]</span></p>
       <p><span class="math display">\[
-      u =  \pd[\Psi]{y} =  ax \quad
-      v = -\pd[\Psi]{x} = -ay
+      u =  \pd{\Psi}{y} =  ax \quad
+      v = -\pd{\Psi}{x} = -ay
       \]</span></p>
       <p><span class="math display">\[
       q = \sqrt{u^2+v^2} = a \sqrt{x^2+y^2}
       \]</span></p>
       <p><span class="math display">\[
-      w = \pd[v]{x} - \pd[u]{y} = 0
+      w = \pd{v}{x} - \pd{u}{y} = 0
       \]</span></p>
       <p><span class="math display">\[
       \Phi = \frac{a}{2} (x^2-y^2) + C
@@ -811,14 +810,14 @@
       \Psi (x,y) = -a(x^2+y^2)
       \]</span></p>
       <p><span class="math display">\[
-      u =  \pd[\Psi]{y} = -2ay \quad
-      v = -\pd[\Psi]{x} =  2ax
+      u =  \pd{\Psi}{y} = -2ay \quad
+      v = -\pd{\Psi}{x} =  2ax
       \]</span></p>
       <p><span class="math display">\[
       q = \sqrt{u^2+v^2} = 2a \sqrt{x^2+y^2}
       \]</span></p>
       <p><span class="math display">\[
-      w = \pd[v]{x} - \pd[u]{y} = 4a
+      w = \pd{v}{x} - \pd{u}{y} = 4a
       \]</span></p>
       <p><span class="math display">\[
       \Phi = a \ln \sqrt{x^2+y^2}
@@ -828,7 +827,7 @@
       f = U e^{-i\alpha} z
       \]</span></p>
       <p><span class="math display">\[
-      \d[f]{z} = U e^{-i\alpha}
+      \d{f}{z} = U e^{-i\alpha}
       \]</span></p>
       <h4 id="湧き出し吸い込み">湧き出し・吸い込み</h4>
       <p><span class="math display">\[
@@ -866,8 +865,8 @@
       \Psi = U \left( r - \frac{R^2}{r} \right) \sin\theta
       \]</span></p>
       <p><span class="math display">\[
-      u_r      =            \pd[\Phi]{r}      =  U \left( 1 - \frac{R^2}{r^2} \right) \cos\theta \quad
-      u_\theta = \frac{1}{r}\pd[\Phi]{\theta} = -U \left( 1 + \frac{R^2}{r^2} \right) \sin\theta
+      u_r      =            \pd{\Phi}{r}      =  U \left( 1 - \frac{R^2}{r^2} \right) \cos\theta \quad
+      u_\theta = \frac{1}{r}\pd{\Phi}{\theta} = -U \left( 1 + \frac{R^2}{r^2} \right) \sin\theta
       \]</span></p>
       <p>円筒表面 <span class="math inline">\(r=R\)</span> では</p>
       <p><span class="math display">\[
@@ -886,17 +885,17 @@
       <p>四元数に拡張する</p>
       <p><span class="math display">\[
       \begin{alignedat}{5}
-        u_1 &amp; = &amp; \Im_i \pd[f_0]{x} \\
-        u_2 &amp; = &amp; \Im_j \pd[f_0]{y} \\
-        u_3 &amp; = &amp; \Im_k \pd[f_0]{z}
+        u_1 &amp; = &amp; \Im_i \pd{f_0}{x} \\
+        u_2 &amp; = &amp; \Im_j \pd{f_0}{y} \\
+        u_3 &amp; = &amp; \Im_k \pd{f_0}{z}
       \end{alignedat}
       \]</span></p>
       <p>となるような関数 <span class="math inline">\(f_0(w+xi+yj+zk)\)</span> が四元数上で正則となるように虚部 <span class="math inline">\(f_1,f_2,f_3\)</span> を定める</p>
       <p><span class="math display">\[
       \begin{alignedat}{5}
-        u_1 &amp; = &amp; \pd[f_0]{x} &amp; = &amp; -\pd[f_1]{w} &amp; = &amp;  \pd[f_2]{z} &amp; = &amp; -\pd[f_3]{y} \\
-        u_2 &amp; = &amp; \pd[f_0]{y} &amp; = &amp; -\pd[f_1]{z} &amp; = &amp; -\pd[f_2]{w} &amp; = &amp;  \pd[f_3]{x} \\
-        u_3 &amp; = &amp; \pd[f_0]{z} &amp; = &amp;  \pd[f_1]{y} &amp; = &amp; -\pd[f_2]{x} &amp; = &amp; -\pd[f_3]{w}
+        u_1 &amp; = &amp; \pd{f_0}{x} &amp; = &amp; -\pd{f_1}{w} &amp; = &amp;  \pd{f_2}{z} &amp; = &amp; -\pd{f_3}{y} \\
+        u_2 &amp; = &amp; \pd{f_0}{y} &amp; = &amp; -\pd{f_1}{z} &amp; = &amp; -\pd{f_2}{w} &amp; = &amp;  \pd{f_3}{x} \\
+        u_3 &amp; = &amp; \pd{f_0}{z} &amp; = &amp;  \pd{f_1}{y} &amp; = &amp; -\pd{f_2}{x} &amp; = &amp; -\pd{f_3}{w}
       \end{alignedat}
       \]</span></p>
       <p>とすると四元流速 <span class="math inline">\(u = u_1i+u_2j+u_3k\)</span> は</p>
@@ -911,28 +910,28 @@
       f = Az
       \]</span></p>
       <p><span class="math display">\[
-      u = \d[f]{z} = A
+      u = \d{f}{z} = A
       \]</span></p>
       <h4 id="section">?</h4>
       <p><span class="math display">\[
       f = Az^{-1}
       \]</span></p>
       <p><span class="math display">\[
-      u = \d[f]{z} = -Az^{-2}
+      u = \d{f}{z} = -Az^{-2}
       \]</span></p>
       <h4 id="湧き出し吸い込み-1">湧き出し・吸い込み</h4>
       <p><span class="math display">\[
       f = A \ln z
       \]</span></p>
       <p><span class="math display">\[
-      u = \d[f]{z} = A z^{-1}
+      u = \d{f}{z} = A z^{-1}
       \]</span></p>
       <h4 id="球まわり">球まわり</h4>
       <p><span class="math display">\[
       f = U ( z + R^2 z^{-1} )
       \]</span></p>
       <p><span class="math display">\[
-      u = \pd[f]{z} = U ( 1 - R^2 z^{-2} )
+      u = \pd{f}{z} = U ( 1 - R^2 z^{-2} )
       \]</span></p>
       <p><span class="math display">\[
       uz = U ( z - R^2 z^{-1} )
@@ -996,7 +995,7 @@
       \nabla^2\Phi=0
       \]</span></p>
       <p><span class="math display">\[
-      \pd[\Phi]{t}+\frac{1}{2}(\nabla \Phi)^2 +\frac{P}{\rho}+gz=0
+      \pd{\Phi}{t}+\frac{1}{2}(\nabla \Phi)^2 +\frac{P}{\rho}+gz=0
       \]</span></p>
       <p>このときに表面の形を表す方程式</p>
       <p><span class="math display">\[
@@ -1006,8 +1005,8 @@
       <h3 id="表面条件">表面条件</h3>
       <p>表面を構成する粒子は表面を漂うと仮定する．つまり，表面の物質微分</p>
       <p><span class="math display">\[
-      \D[F]{t} = \pd{t}F + u \cdot \nabla F = 0 \\
-      \pd[\zeta]{t}+\nabla\Phi\cdot\nabla\zeta=\pd[\Phi]{z}
+      \d{F}{t} = \pd{t}F + u \cdot \nabla F = 0 \\
+      \pd{\zeta}{t}+\nabla\Phi\cdot\nabla\zeta=\pd{\Phi}{z}
       \]</span></p>
       <p>また，表面の圧力は大気圧なので，圧力をゲージ圧として，</p>
       <p><span class="math display">\[
@@ -1022,11 +1021,11 @@
       \]</span></p>
       <p>表面形状の条件は</p>
       <p><span class="math display">\[
-      \pd[\zeta]{t}=\pd[\Phi]{z}
+      \pd{\zeta}{t}=\pd{\Phi}{z}
       \]</span></p>
       <p>表面圧力の条件は（表面張力を含む）</p>
       <p><span class="math display">\[
-      \pd[\Phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
+      \pd{\Phi}{t}+g\zeta=\frac{T}{\rho}\left(\pdd{\zeta}{x}+\pdd{\zeta}{y}\right)
       \]</span></p>
       <h3 id="次元の解">2 次元の解</h3>
       <p><span class="math inline">\(y\)</span> 方向を均一として解く</p>
@@ -1055,7 +1054,7 @@
       \]</span></p>
       <h2 id="kdv-方程式">KdV 方程式</h2>
       <p><span class="math display">\[
-      \pd[u]{t} + \alpha u \pd[u]{x} + \beta \pddd[u]{x} = 0
+      \pd{u}{t} + \alpha u \pd{u}{x} + \beta \pddd{u}{x} = 0
       \]</span></p>
       <h3 id="ソリトン解">ソリトン解</h3>
       <p><span class="math display">\[

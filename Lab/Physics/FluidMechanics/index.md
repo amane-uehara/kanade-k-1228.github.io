@@ -6,7 +6,7 @@
 
 ## 基礎方程式
 
-### 流体の記述
+### 登場人物
 
 - 速度 $u_i$
   - 変形速度 $d_{ij} := \pd{x_j} u_i$ → 歪み速度 $S_{ij}:=d_{(ij)}$ + 回転速度 $\Omega_{ij}:=d_{[ij]}$
@@ -19,13 +19,13 @@
 ### 質量保存則（連続の式）
 
 $$
-\pd{t}\rho+\pd{x_i}(\rho u_i)=0
+\pd{}{t}\rho+\pd{}{x_i}(\rho u_i)=0
 $$
 
 ### 運動量保存則（運動方程式）
 
 $$
-\pd{t}(\rho u_i) + \pd{x_j}(\rho u_i u_j)=\pd{x_i}\sigma_{ii}+\rho g_i
+\pd{}{t}(\rho u_i) + \pd{}{x_j}(\rho u_i u_j)=\pd{}{x_i}\sigma_{ii}+\rho g_i
 $$
 
 ### 構成則
@@ -73,16 +73,14 @@ $$
 #### 無次元化 $D,V,L$
 
 $$
-\rho \pd{t} u_i + \rho u_j \pd{x_j} u_i = -\pd{x_i} p + \frac{\mu}{DVL} \pd{x_j} \pd{x_j} u_i + \rho g_i
+\rho \pd{}{t} u_i + \rho u_j \pd{}{x_j} u_i = -\pd{}{x_i} p + \frac{\mu}{DVL} \pd{}{x_j} \pd{}{x_j} u_i + \rho g_i
 $$
 
-レイノルズ数 $Re:=\frac{\rho V L}{\mu}$ と外力場 $g_i$ が同じなら相似な流れになる．
-
-微分方程式の解が同じになる．
+レイノルズ数$Re:=\frac{\rho V L}{\mu}$と外力場$g_i$が同じなら、等価な微分方程式となり、相似な流れになる．
 
 ### π 定理
 
-法則が $n$ 個の変数 $(q_1,q_2,,,q_n)$ で表現されていて，変数が $k$ 個の独立な基本単位で表されるとき，
+法則が$n$個の変数$(q_1,q_2,,,q_n)$で表現されていて，変数が$k$個の独立な基本単位で表されるとき，
 
 |       | $e_1$ | ... | $e_k$ |
 | :---: | ----- | --- | ----- |
@@ -98,9 +96,9 @@ $k=\mathrm{rank}\,M$
 
 $$
 \begin{aligned}
-\pd[u]{x} + \pd[v]{y} &= 0 \\
-\rho \left( \pd[u]{t} + u \pd[u]{x} + v \pd[u]{y} \right) &= -\pd[p]{x} + \mu \left( \pdd[u]{x} + \pdd[u]{y} \right) + \rho g_x \\
-\rho \left( \pd[v]{t} + u \pd[v]{x} + v \pd[v]{y} \right) &= -\pd[p]{y} + \mu \left( \pdd[v]{x} + \pdd[v]{y} \right) + \rho g_y
+\pd{u}{x} + \pd{v}{y} &= 0 \\
+\rho \left( \pd{u}{t} + u \pd{u}{x} + v \pd{u}{y} \right) &= -\pd{p}{x} + \mu \left( \pdd{u}{x} + \pdd{u}{y} \right) + \rho g_x \\
+\rho \left( \pd{v}{t} + u \pd{v}{x} + v \pd{v}{y} \right) &= -\pd{p}{y} + \mu \left( \pdd{v}{x} + \pdd{v}{y} \right) + \rho g_y
 \end{aligned}
 $$
 
@@ -108,10 +106,10 @@ $$
 
 $$
 \begin{aligned}
-\frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{\theta} u_\theta + \pd{z} u_z &= 0 \\
-\rho \left( \pd[u_r]{t} + u_r \pd[u_r]{r} + \frac{u_\theta}{r} \pd[u_r]{\theta} - \frac{u_\theta^2}{r} + u_z \pd[u_r]{z} \right) &= -\pd[p]{r} + \mu \left[ \pd{r} \left(\frac{1}{r}\pd{r}(ru_r)\right) + \frac{1}{r^2}\pdd[u_r]{\theta} - \frac{2}{r^2} \pd[u_\theta]{\theta} + \pdd[u_r]{z} \right] + \rho g_r \\
-\rho\left( \pd[u_\theta]{t} + u_r \pd[u_\theta]{r} + \frac{u_\theta}{r} \pd[u_\theta]{\theta} + \frac{u_ru_\theta}{r} + u_z \pd[u_\theta]{z} \right) &= -\frac{1}{r}\pd[p]{\theta} + \mu \left[ \pd{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd[u_\theta]{\theta} + \frac{2}{r^2} \pd[u_r]{\theta} + \pdd[u_\theta]{z} \right] + \rho g_\theta \\
-\rho\left( \pd[u_z]{t} + u_r \pd[u_z]{r} + \frac{u_\theta}{r} \pd[u_z]{\theta} + u_z\pd[u_z]{z} \right) &= -\pd[p]{z} + \mu \left[ \frac{1}{r} \pd{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd[u_z]{\theta} + \pdd[u_z]{z} \right] + \rho g_z
+\frac{1}{r} \pd{r}(ru_r) + \frac{1}{r} \pd{}{\theta} u_\theta + \pd{}{z} u_z &= 0 \\
+\rho \left( \pd{u_r}{t} + u_r \pd{u_r}{r} + \frac{u_\theta}{r} \pd{u_r}{\theta} - \frac{u_\theta^2}{r} + u_z \pd{u_r}{z} \right) &= -\pd{p}{r} + \mu \left[ \pd{}{r} \left(\frac{1}{r}\pd{r}(ru_r)\right) + \frac{1}{r^2}\pdd{u_r}{\theta} - \frac{2}{r^2} \pd{u_\theta}{\theta} + \pdd{u_r}{z} \right] + \rho g_r \\
+\rho\left( \pd{u_\theta}{t} + u_r \pd{u_\theta}{r} + \frac{u_\theta}{r} \pd{u_\theta}{\theta} + \frac{u_ru_\theta}{r} + u_z \pd{u_\theta}{z} \right) &= -\frac{1}{r}\pd{p}{\theta} + \mu \left[ \pd{}{r} \left( \frac{1}{r} \pd{r}(ru_\theta)\right) + \frac{1}{r^2} \pdd{u_\theta}{\theta} + \frac{2}{r^2} \pd{u_r}{\theta} + \pdd{u_\theta}{z} \right] + \rho g_\theta \\
+\rho\left( \pd{u_z}{t} + u_r \pd{u_z}{r} + \frac{u_\theta}{r} \pd{u_z}{\theta} + u_z\pd{u_z}{z} \right) &= -\pd{p}{z} + \mu \left[ \frac{1}{r} \pd{}{r} \left(r\pd{r}u_z\right) + \frac{1}{r^2} \pdd{u_z}{\theta} + \pdd{u_z}{z} \right] + \rho g_z
 \end{aligned}
 $$
 
@@ -120,13 +118,13 @@ $$
 非圧縮で外力のないナビエストークス方程式
 
 $$
-\rho\left(\pd{t}u_i + u_j\pd{x_j}u_i\right) = -\pd[p]{x_i} + \mu \pd{x_j}\pd{x_j}u_i
+\rho\left(\pd{u_i}{t} + u_j\pd{u_i}{x_j}\right) = -\pd{p}{x_i} + \mu \pdd{u_i}{x_j}
 $$
 
-の両辺に $\pd{x_i}$ をかけて，連続の式 $\pd[u_i]{x_i}=0$ を用いると
+の両辺に $\pd{}{x_i}$ をかけて，連続の式 $\pd{u_i}{x_i}=0$ を用いると
 
 $$
-\rho \pd[u_j]{x_i}\pd[u_i]{x_j} = -\pd{x_i}\pd{x_i}p
+\rho \pd{u_j}{x_i}\pd{u_i}{x_j} = -\pdd{p}{x_i}
 $$
 
 ## 円管内層流（ポアズイユ流れ）
@@ -140,36 +138,36 @@ $$
 NS 方程式に条件を適用して，
 
 $$
-\d[p]{z} = \mu\frac{1}{r} \d{r} \left( r \d[u_z]{r} \right)
+\d{p}{z} = \mu\frac{1}{r} \d{}{r} \left( r \d{u_z}{r} \right)
 $$
 
 これを解く
 
 $$
 \begin{aligned}
-\d{r} \left( r \d[u_z]{r} \right) &= \frac{1}{\mu} \d[p]{z} r \\
-r \d[u_z]{r} &= \frac{1}{2\mu} \d[p]{z} r^2 + C_1 \\
-\d[u_z]{r} &= \frac{1}{2\mu} \d[p]{z} r + C_1 r^{-1} \\
-u_z &= \frac{1}{4\mu} \d[p]{z} r^2 + C_1 \ln r + C_2 \\
+\d{}{r} \left( r \d{u_z}{r} \right) &= \frac{1}{\mu} \d{p}{z} r \\
+r \d{u_z}{r} &= \frac{1}{2\mu} \d{p}{z} r^2 + C_1 \\
+\d{u_z}{r} &= \frac{1}{2\mu} \d{p}{z} r + C_1 r^{-1} \\
+u_z &= \frac{1}{4\mu} \d{p}{z} r^2 + C_1 \ln r + C_2 \\
 \end{aligned}
 $$
 
 $u_x(r)$ は有限なので $C_1=0$ ，また円管表面で $u_z(R)=0$ より
 
 $$
-u_z(r) = \frac{1}{4\mu} \left(-\d[p]{z}\right) (R^2-r^2)
+u_z(r) = \frac{1}{4\mu} \left(-\d{p}{z}\right) (R^2-r^2)
 $$
 
 中心流速は
 
 $$
-u_0 = u(0) = \frac{1}{4\mu} \left(-\d[p]{z}\right) R^2
+u_0 = u(0) = \frac{1}{4\mu} \left(-\d{p}{z}\right) R^2
 $$
 
 流量は
 
 $$
-Q = \int_0^R 2 \pi r u(r) dr = \frac{\pi}{8\mu} \left(-\d[p]{z}\right) R^4
+Q = \int_0^R 2 \pi r u(r) dr = \frac{\pi}{8\mu} \left(-\d{p}{z}\right) R^4
 $$
 
 平均流速は
@@ -181,13 +179,13 @@ $$
 表面の摩擦応力は
 
 $$
-\tau = \frac{1}{2} \left(-\d[p]{z}\right) R
+\tau = \frac{1}{2} \left(-\d{p}{z}\right) R
 $$
 
 円管の圧力損失は
 
 $$
-\Delta p = \left(-\d[p]{z}\right) L = \frac{8 \mu L}{R^2} U
+\Delta p = \left(-\d{p}{z}\right) L = \frac{8 \mu L}{R^2} U
 $$
 
 ### 血管の分岐（Murray の法則）
@@ -209,35 +207,35 @@ $$
 発達流，定常
 
 $$
-0 = - \d[p]{x} + \mu \dd[u]{y}
+0 = - \d{p}{x} + \mu \dd{u}{y}
 $$
 
 一般解は
 
 $$
-u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y^2 + C_1 y + C_2
+u(y) = - \frac{1}{2\mu} \left(-\d{p}{x}\right) y^2 + C_1 y + C_2
 $$
 
 底板は固定 $u(0)=0$， 上板は速度 $U$ ですべっているので $u(H)=U$
 
 $$
-u(y) = - \frac{1}{2\mu} \left(-\d[p]{x}\right) y(y-H) + \frac{U}{H} y
+u(y) = - \frac{1}{2\mu} \left(-\d{p}{x}\right) y(y-H) + \frac{U}{H} y
 $$
 
 ### 穴あき平板
 
-![](ParallelPlateWithHole.drawio.svg)
+![](./img/ParallelPlateWithHole.dio.svg)
 
 底板平板から一定の湧き出し $V_0$ ，上板から同じ吸い込みがあるとき，
 
 $$
-\rho V_0 \d[u]{y} = - \d[p]{x} + \mu \dd[u]{y}
+\rho V_0 \d{u}{y} = - \d{p}{x} + \mu \dd{u}{y}
 $$
 
-$\alpha:=-\frac{\rho V_0}{\mu}, \beta:=-\frac{1}{\mu}\d[p]{x}$ とすると，
+$\alpha:=-\frac{\rho V_0}{\mu}, \beta:=-\frac{1}{\mu}\d{p}{x}$ とすると，
 
 $$
-\dd[u]{y} + \alpha \d[u]{y} + \beta = 0
+\dd{u}{y} + \alpha \d{u}{y} + \beta = 0
 $$
 
 一般解は
@@ -253,14 +251,14 @@ u(y) = \left( U + \frac{\beta}{\alpha} H \right) \frac{\exp(-\alpha y)-1}{\exp(-
 $$
 
 $$
-u(y) = \left( U + \frac{1}{\rho V_0} \d[p]{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d[p]{x} y
+u(y) = \left( U + \frac{1}{\rho V_0} \d{p}{x} H \right) \frac{\exp\left(\frac{\rho V_0}{\mu} y\right)-1}{\exp\left(\frac{\rho V_0}{\mu} H\right)-1} - \frac{1}{\rho V_0} \d{p}{x} y
 $$
 
 ## 同軸二重円筒
 
 ## 境界層
 
-![](BoundaryLayer.drawio.svg)
+![](./img/BoundaryLayer.dio.svg)
 
 ## 非定常
 
@@ -306,24 +304,24 @@ $$
 - 連続の式
 
   $$
-  \pd[\rho]{t} + \pd{x_i}(\rho u_i) = 0
+  \pd{\rho}{t} + \pd{x_i}(\rho u_i) = 0
   $$
 
 - オイラー方程式（完全流体の運動方程式）
 
   $$
-  \pd[u_i]{t} + u_j \pd[u_i]{x_j} = -\frac{1}{\rho} \pd[p_i]{x_i} + g
+  \pd{u_i}{t} + u_j \pd{u_i}{x_j} = -\frac{1}{\rho} \pd{p_i}{x_i} + g
   $$
 
 - 断熱方程式
   $$
-  \pd[s]{t} + u_j \pd[s]{x_j} = 0
+  \pd{s}{t} + u_j \pd{s}{x_j} = 0
   $$
 
 ### 渦度方程式
 
 $$
-\D[\omega]{t} = \pd[\omega_i]{t} + u_j\pd[\omega_i]{x_j} = \omega_j \pd[u_i]{x_j} + \nu \pdd[\omega_i]{x_j}
+\d{\omega}{t} = \pd{\omega_i}{t} + u_j\pd{\omega_i}{x_j} = \omega_j \pd{u_i}{x_j} + \nu \pdd{\omega_i}{x_j}
 $$
 
 ### ラグランジュの渦定理
@@ -347,7 +345,7 @@ $$
 ### 圧力方程式（ベルヌイの定理）
 
 $$
-\frac{p}{\rho} + \frac{1}{2} u^2 + \pd[\Phi]{t} = F(t)
+\frac{p}{\rho} + \frac{1}{2} u^2 + \pd{\Phi}{t} = F(t)
 $$
 
 ## 二次元ポテンシャル流
@@ -355,7 +353,7 @@ $$
 ### 流れ関数
 
 $$
-u=\pd[\Psi]{y} \quad v=-\pd[\Psi]{x}
+u=\pd{\Psi}{y} \quad v=-\pd{\Psi}{x}
 $$
 
 流れ関数もラプラス方程式の解
@@ -369,11 +367,11 @@ $$
 複素速度
 
 $$
-w = \d[f]{z} = u - iv
+w = \d{f}{z} = u - iv
 $$
 
 $$
-u=\mathrm{Re}\d[f]{z} \quad v=-\mathrm{Im}\d[f]{z}
+u=\mathrm{Re}\d{f}{z} \quad v=-\mathrm{Im}\d{f}{z}
 $$
 
 ### ポテンシャルの例
@@ -385,8 +383,8 @@ $$
 $$
 
 $$
-u =  \pd[\Psi]{y} =  ax \quad
-v = -\pd[\Psi]{x} = -ay
+u =  \pd{\Psi}{y} =  ax \quad
+v = -\pd{\Psi}{x} = -ay
 $$
 
 $$
@@ -394,7 +392,7 @@ q = \sqrt{u^2+v^2} = a \sqrt{x^2+y^2}
 $$
 
 $$
-w = \pd[v]{x} - \pd[u]{y} = 0
+w = \pd{v}{x} - \pd{u}{y} = 0
 $$
 
 $$
@@ -408,8 +406,8 @@ $$
 $$
 
 $$
-u =  \pd[\Psi]{y} = -2ay \quad
-v = -\pd[\Psi]{x} =  2ax
+u =  \pd{\Psi}{y} = -2ay \quad
+v = -\pd{\Psi}{x} =  2ax
 $$
 
 $$
@@ -417,7 +415,7 @@ q = \sqrt{u^2+v^2} = 2a \sqrt{x^2+y^2}
 $$
 
 $$
-w = \pd[v]{x} - \pd[u]{y} = 4a
+w = \pd{v}{x} - \pd{u}{y} = 4a
 $$
 
 $$
@@ -431,7 +429,7 @@ f = U e^{-i\alpha} z
 $$
 
 $$
-\d[f]{z} = U e^{-i\alpha}
+\d{f}{z} = U e^{-i\alpha}
 $$
 
 #### 湧き出し・吸い込み
@@ -484,8 +482,8 @@ f = U \left( z + \frac{R^2}{z} \right) \quad
 $$
 
 $$
-u_r      =            \pd[\Phi]{r}      =  U \left( 1 - \frac{R^2}{r^2} \right) \cos\theta \quad
-u_\theta = \frac{1}{r}\pd[\Phi]{\theta} = -U \left( 1 + \frac{R^2}{r^2} \right) \sin\theta
+u_r      =            \pd{\Phi}{r}      =  U \left( 1 - \frac{R^2}{r^2} \right) \cos\theta \quad
+u_\theta = \frac{1}{r}\pd{\Phi}{\theta} = -U \left( 1 + \frac{R^2}{r^2} \right) \sin\theta
 $$
 
 円筒表面 $r=R$ では
@@ -514,9 +512,9 @@ $$
 
 $$
 \begin{alignedat}{5}
-  u_1 & = & \Im_i \pd[f_0]{x} \\
-  u_2 & = & \Im_j \pd[f_0]{y} \\
-  u_3 & = & \Im_k \pd[f_0]{z}
+  u_1 & = & \Im_i \pd{f_0}{x} \\
+  u_2 & = & \Im_j \pd{f_0}{y} \\
+  u_3 & = & \Im_k \pd{f_0}{z}
 \end{alignedat}
 $$
 
@@ -524,9 +522,9 @@ $$
 
 $$
 \begin{alignedat}{5}
-  u_1 & = & \pd[f_0]{x} & = & -\pd[f_1]{w} & = &  \pd[f_2]{z} & = & -\pd[f_3]{y} \\
-  u_2 & = & \pd[f_0]{y} & = & -\pd[f_1]{z} & = & -\pd[f_2]{w} & = &  \pd[f_3]{x} \\
-  u_3 & = & \pd[f_0]{z} & = &  \pd[f_1]{y} & = & -\pd[f_2]{x} & = & -\pd[f_3]{w}
+  u_1 & = & \pd{f_0}{x} & = & -\pd{f_1}{w} & = &  \pd{f_2}{z} & = & -\pd{f_3}{y} \\
+  u_2 & = & \pd{f_0}{y} & = & -\pd{f_1}{z} & = & -\pd{f_2}{w} & = &  \pd{f_3}{x} \\
+  u_3 & = & \pd{f_0}{z} & = &  \pd{f_1}{y} & = & -\pd{f_2}{x} & = & -\pd{f_3}{w}
 \end{alignedat}
 $$
 
@@ -547,7 +545,7 @@ f = Az
 $$
 
 $$
-u = \d[f]{z} = A
+u = \d{f}{z} = A
 $$
 
 #### ?
@@ -557,7 +555,7 @@ f = Az^{-1}
 $$
 
 $$
-u = \d[f]{z} = -Az^{-2}
+u = \d{f}{z} = -Az^{-2}
 $$
 
 #### 湧き出し・吸い込み
@@ -567,7 +565,7 @@ f = A \ln z
 $$
 
 $$
-u = \d[f]{z} = A z^{-1}
+u = \d{f}{z} = A z^{-1}
 $$
 
 #### 球まわり
@@ -577,7 +575,7 @@ f = U ( z + R^2 z^{-1} )
 $$
 
 $$
-u = \pd[f]{z} = U ( 1 - R^2 z^{-2} )
+u = \pd{f}{z} = U ( 1 - R^2 z^{-2} )
 $$
 
 $$
@@ -642,7 +640,7 @@ $$
 $$
 
 $$
-\pd[\Phi]{t}+\frac{1}{2}(\nabla \Phi)^2 +\frac{P}{\rho}+gz=0
+\pd{\Phi}{t}+\frac{1}{2}(\nabla \Phi)^2 +\frac{P}{\rho}+gz=0
 $$
 
 このときに表面の形を表す方程式
@@ -658,8 +656,8 @@ $$
 表面を構成する粒子は表面を漂うと仮定する．つまり，表面の物質微分
 
 $$
-\D[F]{t} = \pd{t}F + u \cdot \nabla F = 0 \\
-\pd[\zeta]{t}+\nabla\Phi\cdot\nabla\zeta=\pd[\Phi]{z}
+\d{F}{t} = \pd{t}F + u \cdot \nabla F = 0 \\
+\pd{\zeta}{t}+\nabla\Phi\cdot\nabla\zeta=\pd{\Phi}{z}
 $$
 
 また，表面の圧力は大気圧なので，圧力をゲージ圧として，
@@ -683,13 +681,13 @@ $$
 表面形状の条件は
 
 $$
-\pd[\zeta]{t}=\pd[\Phi]{z}
+\pd{\zeta}{t}=\pd{\Phi}{z}
 $$
 
 表面圧力の条件は（表面張力を含む）
 
 $$
-\pd[\Phi]{t}+g\zeta=\frac{T}{\rho}\left(\pdd[\zeta]{x}+\pdd[\zeta]{y}\right)
+\pd{\Phi}{t}+g\zeta=\frac{T}{\rho}\left(\pdd{\zeta}{x}+\pdd{\zeta}{y}\right)
 $$
 
 ### 2 次元の解
@@ -733,7 +731,7 @@ $$
 ## KdV 方程式
 
 $$
-\pd[u]{t} + \alpha u \pd[u]{x} + \beta \pddd[u]{x} = 0
+\pd{u}{t} + \alpha u \pd{u}{x} + \beta \pddd{u}{x} = 0
 $$
 
 ### ソリトン解
