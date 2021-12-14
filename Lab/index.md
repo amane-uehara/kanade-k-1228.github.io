@@ -48,8 +48,26 @@
 
 [早押しボタンを作ってみる](./Computer/RelayComputer/Day4_Latch/)
 
-[D フリップフロップ](./Computer/RelayComputer/Day5_DFF/)
+[D フリップフロップ回路](./Computer/RelayComputer/Day5_DFF/)
 
-[カウンタを作ってみる](./Computer/RelayComputer/Day6_Counter/)
+[カウンタ回路](./Computer/RelayComputer/Day6_Counter/)
 
-論理回路まとめ
+[クロック回路](./Computer/RelayComputer/Day7_Clock/)
+
+[点滅するイルミネーションを作ってみる](./Computer/RelayComputer/Day8_Illumination/)
+
+[イルミネーションをプログラマブルにする](./Computer/RelayComputer/Day9_ROM/)
+
+[回路まとめ](./Computer/RelayComputer/Day10_Components/)
+
+[CPU になりきる](./Computer/RelayComputer/Day11_CPU/)
+
+[コンピュータのしくみ](./Computer/RelayComputer/Day12_ComputerSystem/)
+
+[リレーコンピュータの仕様](./Computer/RelayComputer/Day13_RelayCPU/)
+
+[メモリマップ](./Computer/RelayComputer/Day14_MemoryMap/)
+
+[MOV 命令](./Computer/RelayComputer/Day15_MOV/)
+
+[JMPIF 命令](./Computer/RelayComputer/Day16_JMPIF/)
