@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -28,8 +28,13 @@
     />
         <meta name="dcterms.date" content="2021-06-20" />
                 <title>Pandoc と GitHub で超簡単にサイトを作る | Kanade's Website</title>
+    
+    <!-- OGP -->
     <!-- <meta property="og:title" content="Pandoc と GitHub で超簡単にサイトを作る"/>
-    <meta property="og:type" content=""/> -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="https://kanade-k-1228.github.io/"/>
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/54773334"/> -->
+    <!-- END OGP -->
     
     <style>
       body {
@@ -485,14 +490,14 @@
       </ul>
       <h3 id="テンプレート.html">テンプレート.HTML</h3>
       <h2 id="github-pages">GitHub Pages</h2>
-      <p>GitHub で静的サイトを作れる。サーバーいらないので楽やで。</p>
+      <p>GitHub で静的サイトを作れる。楽。</p>
       <ol type="1">
       <li>[User Name].github.io という名前のリポジトリを作る。</li>
       <li>リポジトリの Settings &gt; Pages &gt; Source を None から Main に変更。Main ブランチ以下が https://[UserName].github.io/ にデプロイされたよ。</li>
       </ol>
       <h2 id="github-actions">GitHub Actions</h2>
       <p><a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/blob/main/.github/workflows/main.yml">ソースコード</a></p>
-      <p>Push されると</p>
+      <p>Push されると、</p>
       <ol type="1">
       <li>Ubuntu を立ち上げて Pandoc をインストール</li>
       <li>ディレクトリ内の index.md を探して index.html に変換</li>
