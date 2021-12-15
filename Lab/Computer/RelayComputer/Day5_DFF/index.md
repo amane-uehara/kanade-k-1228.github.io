@@ -1,6 +1,7 @@
 ---
 title: D フリップフロップ回路
 date: 2021-12-05
+ogp: Lab/Computer/RelayComputer/Day5_DFF
 keyword: リレーコンピュータ, 自作CPU, 論理回路, フリップフロップ
 description: 1ビットのデータを記憶する回路をリレーで作ります。
 ---
