@@ -1,6 +1,7 @@
 ---
 title: リレーから始める CPU 自作
 date: 2021-12-01
+ogp: Lab/Computer/RelayComputer/Day1_Introduction
 ---
 
 これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 1 日目の記事です。

@@ -27,9 +27,16 @@
       href="https://avatars.githubusercontent.com/u/54773334"
     />
         <meta name="dcterms.date" content="2021-12-06" />
-                <title>カウンタ回路 | Kanade's Website</title>
+                <meta name="description" content="分周器とカウンタ回路をリレーで作ります。" />
+        <title>カウンタ回路 | Kanade's Website</title>
     
     <!-- OGP -->
+        <meta property="og:title" content="カウンタ回路"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="https://kanade-k-1228.github.io/Lab/Computer/RelayComputer/Day6_Counter"/>
+    <meta property="og:image" content="https://kanade-k-1228.github.io/Lab/Computer/RelayComputer/Day6_Counter/img/ogp.png"/>
+        <meta property="og:description" content="分周器とカウンタ回路をリレーで作ります。"/>
+        <meta property="og:site_name" content="Kanade's Website" />
         <!-- END OGP -->
     
     <style>
@@ -427,6 +434,7 @@
                 <!-- Date -->
                 <p align="right">2021-12-06</p>
                 <!-- Description -->
+                <p>分周器とカウンタ回路をリレーで作ります。</p>
               </header>
 
       <!-- TeX Macros -->
@@ -469,11 +477,16 @@
       <p>DFF を使った回路で一番シンプルなのが分周器です。</p>
       <p><img src="./img/Divider.dio.svg" /></p>
       <p>Q と D が反転するようになっています。</p>
-      <p><img src="img/DividerTimingChart.dio.svg" /></p>
+      <p><img src="img/DividerTiming.dio.svg" /></p>
       <p>クロック信号の周波数を半分にします。</p>
       <h2 id="カウンタ">カウンタ</h2>
-      <p>この分周器を複数繋げて、クロックを半分、半分、にしていくと、こういう波形になります。</p>
+      <p>分周器を複数繋げると、クロックの周波数を半分、さらに半分、、、にすることができます。</p>
+      <p><img src="img/CounterCircuit.dio.svg" /></p>
+      <p>こういう波形になります。</p>
       <p><img src="img/CounterTiming.dio.svg" /></p>
+      <p>C0,C1,C2,C3 の出力を、2 進数としてみると、数がひとつずつ増えています。</p>
+      <p><img src="img/CounterTiming2.dio.svg" /></p>
+      <p>これがカウンタ回路です。</p>
       <p><a href="../Day7_Clock/">&gt;&gt;&gt; 7 日目</a></p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
