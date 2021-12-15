@@ -1,6 +1,9 @@
-% D フリップフロップ回路
-%
-% 2021-12-05
+---
+title: D フリップフロップ回路
+date: 2021-12-05
+keyword: リレーコンピュータ, 自作CPU, 論理回路, フリップフロップ
+description: 1ビットのデータを記憶する回路をリレーで作ります。
+---
 
 これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 5 日目の記事です。 [<<< 4 日目](../Day4_Latch/)
 
