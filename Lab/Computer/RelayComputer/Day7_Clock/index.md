@@ -7,3 +7,7 @@
 ![](./img/Clock.dio.svg)
 
 車のウィンカーと同じ回路です。
+
+![](./img/ClockOFF.dio.svg)
+
+![](./img/ClockON.dio.svg)
