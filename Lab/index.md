@@ -76,4 +76,8 @@
 
 [MOV 命令](./Computer/RelayComputer/Day15_MOV/)
 
-[JMPIF 命令](./Computer/RelayComputer/Day16_JMPIF/)
+[LOAD 命令](./Computer/RelayComputer/Day16_LOAD/)
+
+[JMPIF 命令](./Computer/RelayComputer/Day17_JMPIF/)
+
+[演算回路](./Computer/RelayComputer/Day18_ALU/)
