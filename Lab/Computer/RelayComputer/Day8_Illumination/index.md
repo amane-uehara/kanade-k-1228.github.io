@@ -2,6 +2,7 @@
 title: 点滅するイルミネーションを作ってみる
 date: 2021-12-08
 ogp: Lab/Computer/RelayComputer/Day8_Illumination
+keyword: リレーコンピュータ, 自作CPU, 論理回路
 description: リレーでチカチカ光るイルミネーションを作ります。
 ---
 
@@ -16,5 +17,7 @@ description: リレーでチカチカ光るイルミネーションを作りま�
 彡 ⌒ ミ<br/>(´･ω･`)また髪の話してる
 
 ## 回路の構成
+
+## 回路の動作
 
 [>>> 9 日目](../Day9_ROM/)

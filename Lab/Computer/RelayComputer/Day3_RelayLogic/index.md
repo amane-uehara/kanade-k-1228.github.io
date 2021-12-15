@@ -3,6 +3,7 @@ title: リレーで作る組合回路
 date: 2021-12-03
 ogp: Lab/Computer/RelayComputer/Day3_RelayLogic
 keyword: リレーコンピュータ, 自作CPU, 論理回路
+description: 半導体なしで論理回路を作ります。
 ---
 
 これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 3 日目の記事です。[<<< 2 日目](../Day2_SwitchLogic/)
