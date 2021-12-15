@@ -129,7 +129,7 @@ $$
 
 ## 円管内層流（ポアズイユ流れ）
 
-![](CircularTube.drawio.svg)
+![](./img/CircularTube.dio.svg)
 
 半径 $R$ の円管
 
@@ -200,7 +200,7 @@ $$
 
 ## 平行平板
 
-![](ParallelPlate.drawio.svg)
+![](./img/ParallelPlate.dio.svg)
 
 間隔 $H$, すべり速度 $U$
 
