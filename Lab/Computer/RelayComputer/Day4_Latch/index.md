@@ -2,6 +2,8 @@
 title: 早押しボタンを作ってみる
 date: 2021-12-04
 ogp: Lab/Computer/RelayComputer/Day4_Latch
+keyword: リレーコンピュータ, 自作CPU, 論理回路, 早押しボタン, 自作
+description: リレーを使って早押しボタンを作ります。
 ---
 
 これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 4 日目の記事です。[<<< 3 日目](../Day3_RelayLogic/)
