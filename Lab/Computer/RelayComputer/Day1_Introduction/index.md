@@ -1,6 +1,7 @@
-% リレーから始める CPU 自作
-%
-% 2021-12-01
+---
+title: リレーから始める CPU 自作
+date: 2021-12-01
+---
 
 これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 1 日目の記事です。
 
