@@ -1,7 +1,7 @@
 ---
 title: 点滅するイルミネーションを作ってみる
 date: 2021-12-08
-ogp: Lab/Computer/RelayComputer/Day8_Illumination/
+ogp: Lab/Computer/RelayComputer/Day8_Illumination
 description: クリスマスといえばイルミネーションですね！ということで、イルミネーションを作ります！（自然な導入
 ---
 
