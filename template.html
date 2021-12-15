@@ -38,10 +38,12 @@
     <title>$if(title)$$title$$endif$ | Kanade's Website</title>
     
     <!-- OGP -->
-    <!-- <meta property="og:title" content="$if(title)$$title$$endif$"/>
+    $if(ogp)$
+    <meta property="og:title" content="$if(title)$$title$$endif$"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://kanade-k-1228.github.io/"/>
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/54773334"/> -->
+    <meta property="og:url" content="https://kanade-k-1228.github.io/$ogp$"/>
+    <meta property="og:image" content="https://kanade-k-1228.github.io/$ogp$/img/ogp.png"/>
+    $endif$
     <!-- END OGP -->
     
     <style>
@@ -437,17 +439,18 @@
             </svg>
           </a>
         </div> <!-- End Top Nav -->
-
         <!-- Title -->
         $if(title)$
         <h1 style="margin: 0">$title$</h1>
         $endif$
-        
         <!-- Date -->
         $if(date)$
         <p align="right">$date$</p>
         $endif$
-
+        <!-- Description -->
+        $if(description)$
+        <p>$description$</p>
+        $endif$
       </header>
 
       <!-- TeX Macros -->
