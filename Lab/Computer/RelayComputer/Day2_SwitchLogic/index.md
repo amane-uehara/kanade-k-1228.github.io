@@ -1,6 +1,8 @@
-% スイッチで作る組合回路
-%
-% 2021-12-02
+---
+title: スイッチで作る組合回路
+date: 2021-12-02
+ogp: Lab/Computer/RelayComputer/Day2_SwitchLogic
+---
 
 これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 2 日目の記事です。[<<< 1 日目](../Day1_Introduction/)
 
