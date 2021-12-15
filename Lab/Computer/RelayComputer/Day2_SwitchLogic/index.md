@@ -3,7 +3,7 @@ title: スイッチで作る組合回路
 date: 2021-12-02
 ogp: Lab/Computer/RelayComputer/Day2_SwitchLogic
 keyword: リレーコンピュータ, 自作CPU, 論理回路
-description: 半導体なしで論理回路を作る。
+description: 半導体なしで論理回路を作ります。
 ---
 
 これは [リレーから始める CPU 自作 Advent Calendar 2021](https://adventar.org/calendars/7052) 2 日目の記事です。[<<< 1 日目](../Day1_Introduction/)
