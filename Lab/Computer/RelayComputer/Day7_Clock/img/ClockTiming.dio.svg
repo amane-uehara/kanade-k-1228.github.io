@@ -1,0 +1,33 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="469px" height="109px" viewBox="-0.5 -0.5 469 109" content="&lt;mxfile&gt;&lt;diagram id=&quot;joHkzS8-zdohpdxqvCij&quot; name=&quot;ページ1&quot;&gt;zVZNc5swFPw13AHZjn2MaZrMtJ3pjA89a9ALaCL0GCEb3F9fqUgGgT+bSy8Zsaz0Vrvv4UQkq7pXRevyBzIQURqzLiJfojRdrmPz1wLHHtjEmx4oFGc9lAzAjv8GB7p9xZ4zaAKiRhSa1yGYo5SQ6wCjSmEb0t5RhFVrWsAM2OVUzNFfnOmyR9fp04C/AS9KXzlZuftV1JPdTZqSMmxHEHmJSKYQdb+qugyE9c770u/7euHtSZgCqe/ZQPoNByr27m5Olz76y4Jkz9Yz85QL2jQ8j8i21JUwQGKW7yi1i8gUI9u5BKcKWOCqE/QKWIFWR0NoBy+Xzp9yZKPHFAiq+SHMgrpIi9Nxpwo/kRslaey6zzef673EP/sTGtyrHNymsXWTc5bxjYM0VQXo2UFmMbr1AP1N5nxKy1lK2fdvs6A0dDqMptEKPyBDgcogEiXYvLgQE4gKXkibr4kMDL49gNLc9Puze1FxxmyZbVtyDbua5rZma4bbYAr3koGVGj/SDrYGdFcbwr1dTIz2n4FRvyzO9EsaX26NIIwrzq8fmg9n55XhCL3630dlMzF+9Y+jspjM3J2TYmylxxGttoTmstwkPa/3kqwpf32dnsafot9SM/swPci/IYesPkW/pWYxHdIH+aEcs+jDv/OLaR6H38yePvzjQV7+AA==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 40 100 L 453.63 100" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 458.88 100 L 451.88 103.5 L 453.63 100 L 451.88 96.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="30" width="40" height="20" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 20px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                CLK
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="20" y="46" fill="#000000" font-family="Helvetica" font-size="20px" text-anchor="middle">
+                    CLK
+                </text>
+            </switch>
+        </g>
+        <path d="M 50 80 L 80 80 L 80 0 L 160 0 L 160 80 L 240 80 L 240 0 L 320 0 L 320 80 L 400 80 L 400 0 L 440 0" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
