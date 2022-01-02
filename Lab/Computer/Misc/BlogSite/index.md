@@ -16,7 +16,27 @@
 - 今回は Markdown → HTML の変換をさせる
 - テンプレート上に流しこんでくれる
 
+### .MD
+
+ファイルの先頭に yaml 形式でメタデータを書く。
+
+```
+---
+title: たいとる
+date: 2000-00-00
+description: せつめい
+---
+```
+
 ### テンプレート.HTML
+
+テンプレートの中で、メタデータを書く場所を指定する。
+
+```
+$if(description)$
+<meta name="description" content="$description$"/>
+$endif$
+```
 
 ## GitHub Pages
 

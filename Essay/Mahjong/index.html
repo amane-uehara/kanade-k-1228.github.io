@@ -26,8 +26,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-        <meta name="dcterms.date" content="2021-06-20" />
-                <title>Pandoc と GitHub で超簡単にサイトを作る | Kanade's Website</title>
+                <title>麻雀 | Kanade's Website</title>
     
     <!-- OGP -->
         <!-- END OGP -->
@@ -357,7 +356,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "Pandoc と GitHub で超簡単にサイトを作る",
+            "麻雀",
           "_blank"
         );
       }
@@ -423,9 +422,8 @@
           </a>
         </div> <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">Pandoc と GitHub で超簡単にサイトを作る</h1>
+                <h1 style="margin: 0">麻雀</h1>
                 <!-- Date -->
-                <p align="right">2021-06-20</p>
                 <!-- Description -->
               </header>
 
@@ -460,66 +458,145 @@
  
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#システムの使い方">システムの使い方</a></li>
-<li><a href="#pandoc">Pandoc</a><ul>
-<li><a href="#md">.MD</a></li>
-<li><a href="#テンプレート.html">テンプレート.HTML</a></li>
+<li><a href="#麻雀のフローチャート">麻雀のフローチャート</a><ul>
+<li><a href="#他家の状況">他家の状況</a></li>
+<li><a href="#点数分布">点数分布</a></li>
+<li><a href="#手牌">手牌</a></li>
 </ul></li>
-<li><a href="#github-pages">GitHub Pages</a></li>
-<li><a href="#github-actions">GitHub Actions</a></li>
-<li><a href="#課題">課題</a></li>
+<li><a href="#ブロック打法">5 ブロック打法</a><ul>
+<li><a href="#ブロック打法とは">5 ブロック打法とは</a></li>
+<li><a href="#ブロックの選択">ブロックの選択</a></li>
+</ul></li>
+<li><a href="#余剰牌の持ち方">余剰牌の持ち方</a><ul>
+<li><a href="#積極的に攻撃">1. 積極的に攻撃</a></li>
+<li><a href="#積極的に守備">2. 積極的に守備</a></li>
+</ul></li>
+<li><a href="#ブロック一覧">ブロック一覧</a><ul>
+<li><a href="#ブロック">1 ブロック</a></li>
+<li><a href="#複合-2-ブロック">複合 2 ブロック</a></li>
+<li><a href="#複合-3-ブロック">複合 3 ブロック</a></li>
+</ul></li>
+<li><a href="#守備-1">守備</a></li>
+<li><a href="#初心者-中級者ロードマップ">初心者 → 中級者ロードマップ</a></li>
 </ul></nav>
       
-      <p>自由度が高く保守性も高いブログシステムがタダで作れます</p>
-      <h2 id="システムの使い方">システムの使い方</h2>
+      <h2 id="麻雀のフローチャート">麻雀のフローチャート</h2>
+      <p>これらの要素を複合し、リスクとリターンの天秤にかけて、打牌を選択します。</p>
+      <h3 id="他家の状況">他家の状況</h3>
       <ol type="1">
-      <li>記事を Markdown で書く</li>
-      <li>Git に Push すると HTML に変換 &amp; デプロイ</li>
-      <li>で　ぎ　だ　！（アル中カラカラ</li>
+      <li>リーチがいる場合</li>
       </ol>
-      <h2 id="pandoc">Pandoc</h2>
+      <p>かなり</p>
+      <ol start="2" type="1">
+      <li>鳴きがいる場合</li>
+      </ol>
       <ul>
-      <li>いろんな種類の文書を変換してくれる神</li>
-      <li>今回は Markdown → HTML の変換をさせる</li>
-      <li>テンプレート上に流しこんでくれる</li>
+      <li>リーチがいる</li>
+      <li>聴牌がいる</li>
+      <li>下家が鳴きたそう</li>
       </ul>
-      <h3 id="md">.MD</h3>
-      <p>ファイルの先頭に yaml 形式でメタデータを書く。</p>
-      <pre><code>---
-      title: たいとる
-      date: 2000-00-00
-      description: せつめい
-      ---</code></pre>
-      <h3 id="テンプレート.html">テンプレート.HTML</h3>
-      <p>テンプレートの中で、メタデータを書く場所を指定する。</p>
-      <pre><code>$if(description)$
-      &lt;meta name=&quot;description&quot; content=&quot;$description$&quot;/&gt;
-      $endif$</code></pre>
-      <h2 id="github-pages">GitHub Pages</h2>
-      <p>GitHub で静的サイトを作れる。楽。</p>
-      <ol type="1">
-      <li>[User Name].github.io という名前のリポジトリを作る。</li>
-      <li>リポジトリの Settings &gt; Pages &gt; Source を None から Main に変更。Main ブランチ以下が https://[UserName].github.io/ にデプロイされたよ。</li>
+      <ol start="3" type="1">
+      <li>ドラの所在</li>
       </ol>
-      <h2 id="github-actions">GitHub Actions</h2>
-      <p><a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/blob/main/.github/workflows/main.yml">ソースコード</a></p>
-      <p>Push されると、</p>
+      <h3 id="点数分布">点数分布</h3>
       <ol type="1">
-      <li>Ubuntu を立ち上げて Pandoc をインストール</li>
-      <li>ディレクトリ内の index.md を探して index.html に変換</li>
-      <li>gh-pages にデプロイ</li>
+      <li>めちゃ勝ってる</li>
+      <li>そこそこ勝ってる</li>
+      <li>まあ勝ってる</li>
+      <li>ちょっと浮いてる</li>
+      <li>平場</li>
+      <li>ちょっと沈んでる</li>
+      <li></li>
+      <li>-12000</li>
+      <li>だめぽ</li>
       </ol>
-      <p>これをリポジトリの <code>/.github/workflows/</code> 以下に置くと、勝手に実行してくれます。</p>
-      <h2 id="課題">課題</h2>
       <ul>
-      <li>git にある差分から変更があったファイルだけ調べて変換をすると早くなるよね</li>
-      <li>OGP を設定する
+      <li>点数・順位状況</li>
+      <li>親が誰か</li>
+      <li>親番が残ってるか</li>
+      <li>オーラスまで何局か</li>
+      </ul>
+      <p>これらを確認したら、この局の方針をざっと考えます。</p>
+      <ol type="1">
+      <li>積極的に攻撃</li>
+      <li>バランス</li>
+      <li>積極的に守備</li>
+      </ol>
+      <p>（配牌でガラリと変わりますが）</p>
+      <p>この局で他 3 者のもくろみをある程度推察します。</p>
+      <h3 id="手牌">手牌</h3>
+      <h4 id="和了までの手順">和了までの手順</h4>
+      <h4 id="手役">手役</h4>
+      <h4 id="守備">守備</h4>
       <ul>
-      <li><a href="https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai">参考</a></li>
+      <li>鳴き</li>
+      <li>打点
+      <ul>
+      <li>ドラ</li>
+      <li>ドラ受け</li>
       </ul></li>
-      <li>モバイル・デスクトップ両方にいい感じのスタイルを探す</li>
-      <li>コメント欄を作る</li>
+      <li>スピード</li>
+      <li>手役
+      <ul>
+      <li>混一色</li>
+      <li>三色同順</li>
+      <li>一気通貫</li>
+      </ul></li>
       </ul>
+      <p>これと、先ほど考えた局の状況から、目指す形を</p>
+      <h2 id="ブロック打法">5 ブロック打法</h2>
+      <p>よくある「牌効率」は、最短で（最も高い確率で）聴牌する打ち方についての理論です。この 5 ブロック打法は、牌効率の理論をベースとしつつ、場況・押し引きなどの複雑な要素のからみあう実際の対局で、適切なバランスをとりつつ攻撃するために適した打法です。</p>
+      <h3 id="ブロック打法とは">5 ブロック打法とは</h3>
+      <p>麻雀の和了形は 4 面子 1 雀頭ですが、面子と雀頭をまとめて 5 ブロックとして扱います。</p>
+      <h3 id="ブロックの選択">ブロックの選択</h3>
+      <h2 id="余剰牌の持ち方">余剰牌の持ち方</h2>
+      <p>5 ブロック打法のいいところは、向聴数と同じだけの余剰牌を持つことができるところです。この余剰牌に何を持つかによって、押し引きのバランスを調整します。</p>
+      <h3 id="積極的に攻撃">1. 積極的に攻撃</h3>
+      <p>積極的に攻撃したいときは、余剰牌に</p>
+      <ul>
+      <li>打点上昇の種</li>
+      <li>受け入れを広くする牌</li>
+      </ul>
+      <p>を持ちます。</p>
+      <p>打点上昇の種は、</p>
+      <h3 id="積極的に守備">2. 積極的に守備</h3>
+      <ul>
+      <li>安牌</li>
+      <li>字牌</li>
+      </ul>
+      <h2 id="ブロック一覧">ブロック一覧</h2>
+      <h3 id="ブロック">1 ブロック</h3>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>枚数</th>
+      <th>ブロック数</th>
+      <th>受け入れ</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>1</td>
+      <td>1</td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+      <h3 id="複合-2-ブロック">複合 2 ブロック</h3>
+      <h3 id="複合-3-ブロック">複合 3 ブロック</h3>
+      <h2 id="守備-1">守備</h2>
+      <p>麻雀は 4 人中</p>
+      <h2 id="初心者-中級者ロードマップ">初心者 → 中級者ロードマップ</h2>
+      <ol type="1">
+      <li>一向聴の形を覚える</li>
+      <li>5 ブロック打法を覚える</li>
+      <li>ブロックの比較
+      <ul>
+      <li>受け入れ枚数の比較</li>
+      <li>山読み</li>
+      </ul></li>
+      <li>押し引き判断の感覚</li>
+      </ol>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
