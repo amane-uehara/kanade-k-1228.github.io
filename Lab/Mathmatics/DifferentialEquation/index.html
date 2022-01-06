@@ -26,7 +26,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>微分方程式と特殊関数 | Kanade's Website</title>
+                <title>微分方程式 | Kanade's Website</title>
     
     <!-- OGP -->
         <!-- END OGP -->
@@ -356,7 +356,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "微分方程式と特殊関数",
+            "微分方程式",
           "_blank"
         );
       }
@@ -422,7 +422,7 @@
           </a>
         </div> <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">微分方程式と特殊関数</h1>
+                <h1 style="margin: 0">微分方程式</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -430,9 +430,11 @@
       <!-- TeX Macros -->
       <p style="display: none;"> 
         \[
+          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
           \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
           \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
           \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
           \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
           \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
           \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
@@ -458,6 +460,9 @@
  
       <!-- Table of Contents -->
             <nav><ul>
+<li><a href="#線形微分方程式">線形微分方程式</a><ul>
+<li><a href="#同次線形微分方程式">同次線形微分方程式</a></li>
+</ul></li>
 <li><a href="#ラプラス方程式">ラプラス方程式</a><ul>
 <li><a href="#直交座標">直交座標</a></li>
 <li><a href="#円筒座標">円筒座標</a></li>
@@ -475,6 +480,27 @@
 <li><a href="#グリーン関数">グリーン関数</a></li>
 </ul></nav>
       
+      <h2 id="線形微分方程式">線形微分方程式</h2>
+      <p>線形微分演算子 <span class="math inline">\(L\)</span> について、微分方程式</p>
+      <p><span class="math display">\[
+      L[y(x)]=f(x)
+      \]</span></p>
+      <p>を線形微分方程式という。特に<span class="math inline">\(f(x)=0\)</span>のとき、同次微分方程式という。</p>
+      <p>逆演算子 <span class="math inline">\(L^{-1}\)</span> が求まれば、<span class="math inline">\(y=L^{-1}[f(x)]\)</span>だが、一般に逆演算子を求めるのは難しい。</p>
+      <h4 id="演算子">演算子</h4>
+      <p><span class="math inline">\(L\)</span>は関数を引数に取り関数を返す関数（演算子）。フーリエ変換・ラプラス変換と同じタイプ。</p>
+      <p>線形演算子は、線形性</p>
+      <ol type="1">
+      <li><span class="math inline">\(L[cy(x)]=cL[y(x)]\)</span></li>
+      <li><span class="math inline">\(L[y_1(x)+y_2(x)]=L[y_1(x)]+L[y_1(x)]\)</span></li>
+      </ol>
+      <p>を満たす。</p>
+      <p>線形微分演算子は一般に</p>
+      <p><span class="math display">\[
+      L=a_n(x)\dn{}{x}{n}+a_{n-1}(x)\dn{}{x}{n-1}+...+a_1(x)\d{}{x}+a_0(x)
+      \]</span></p>
+      <p>と書ける。</p>
+      <h3 id="同次線形微分方程式">同次線形微分方程式</h3>
       <h2 id="ラプラス方程式">ラプラス方程式</h2>
       <p><span class="math display">\[
       \nabla^2 \phi = 0

@@ -430,9 +430,11 @@
       <!-- TeX Macros -->
       <p style="display: none;"> 
         \[
+          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
           \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
           \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
           \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
           \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
           \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
           \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
@@ -474,8 +476,15 @@
 <li><a href="#半導体">4. 半導体</a><ul>
 <li><a href="#半導体のバンド構造">4.1. 半導体のバンド構造</a></li>
 <li><a href="#一次元調和振動子モデル">一次元調和振動子モデル</a></li>
-<li><a href="#二原子分子の一次元調和振動子モデル">二原子分子の一次元調和振動子モデル</a></li>
+<li><a href="#位相速度">位相速度</a></li>
+<li><a href="#群速度">群速度</a></li>
 <li><a href="#分岐">分岐</a></li>
+<li><a href="#例題二原子分子の一次元調和振動子モデル">例題：二原子分子の一次元調和振動子モデル</a></li>
+</ul></li>
+<li><a href="#熱物性">熱物性</a><ul>
+<li><a href="#フォノン">フォノン</a></li>
+<li><a href="#格子比熱">格子比熱</a></li>
+<li><a href="#フォノンの拡散">フォノンの拡散</a></li>
 </ul></li>
 </ul></nav>
       
@@ -769,8 +778,20 @@
       \omega \simeq a\sqrt{\f{k}{m}}k
       \]</span></p>
       <p><span class="math inline">\(\omega\)</span> が <span class="math inline">\(k\)</span> に比例する。（音響モード）</p>
-      <p>サンプリング定理を考えるとわかるように、<span class="math inline">\(k=k_0\pm n\f{\pi}{a}\)</span> の波数の波を区別できない。</p>
-      <h3 id="二原子分子の一次元調和振動子モデル">二原子分子の一次元調和振動子モデル</h3>
+      <p>サンプリング定理を考えるとわかるように、波長が格子間隔の 2 倍分だけ違う波は区別できない。（格子の点における変位が全く同じになり区別できない。）すなわち、 <span class="math inline">\(k=k_0\pm n\f{\pi}{a}\)</span> の波数の波を区別できない。これがブリルアンゾーンにあたる。</p>
+      <h3 id="位相速度">位相速度</h3>
+      <p>単一の波の速度は</p>
+      <p><span class="math display">\[
+      v_p=\f{\omega}{k}
+      \]</span></p>
+      <h3 id="群速度">群速度</h3>
+      <p>波を重ね合わせたときのうねりの速度は</p>
+      <p><span class="math display">\[
+      v_g=\pd{\omega}{k}
+      \]</span></p>
+      <p>エネルギーの輸送速度は群速度</p>
+      <h3 id="分岐">分岐</h3>
+      <h3 id="例題二原子分子の一次元調和振動子モデル">例題：二原子分子の一次元調和振動子モデル</h3>
       <p><img src="./img/1DHarmonic2.dio.svg" /></p>
       <p>ポテンシャルは</p>
       <p><span class="math display">\[
@@ -836,7 +857,27 @@
       v_g = \omega&#39;(k) = a\sqrt{\f{KG}{2m(K+G)}}
       \]</span></p>
       <p><span class="math inline">\(K=100\rm{eV/nm^2}=10\rm{N/m}\)</span>、<span class="math inline">\(M=10\rm{g/mol}=10^{-25}\rm{kg}\)</span>、<span class="math inline">\(a=1 \dot{A}=10^{-10}\rm{m}\)</span> を代入してオーダーを推定すると、<span class="math inline">\(v_g=1000\rm{m/s}\)</span></p>
-      <h3 id="分岐">分岐</h3>
+      <h2 id="熱物性">熱物性</h2>
+      <h3 id="フォノン">フォノン</h3>
+      <ul>
+      <li>格子振動を量子化したもの</li>
+      <li>フォノンの状態は、周波数・波数・量子数</li>
+      <li>フォノンのエネルギーは <span class="math inline">\(\hbar \omega\)</span></li>
+      <li>波数ベクトル <span class="math inline">\(k_s\)</span> 分岐 <span class="math inline">\(s\)</span> のフォノンのエネルギーは、<span class="math inline">\(n_{ks}\)</span> を量子数として、</li>
+      </ul>
+      <p><span class="math display">\[
+      \l(n_{ks} + \f{1}{2}\r)\hbar \omega(k_s)
+      \]</span></p>
+      <ul>
+      <li>フォノンはボーズ粒子で、制限がない</li>
+      <li>n は温度に依存し、基底状態 <span class="math inline">\(T=0\rm{K}\)</span> で <span class="math inline">\(n=0\)</span>
+      <ul>
+      <li>ただ、ゼロ点振動によってエネルギーは 0 にはならない</li>
+      </ul></li>
+      </ul>
+      <h3 id="格子比熱">格子比熱</h3>
+      <h3 id="フォノンの拡散">フォノンの拡散</h3>
+      <p>平均自由行程内では衝突しないと近似できる</p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

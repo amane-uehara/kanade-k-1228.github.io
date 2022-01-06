@@ -430,9 +430,11 @@
       <!-- TeX Macros -->
       <p style="display: none;"> 
         \[
+          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
           \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
           \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
           \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
           \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
           \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
           \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
@@ -458,6 +460,7 @@
  
       <!-- Table of Contents -->
             <nav><ul>
+<li><a href="#数学">数学</a></li>
 <li><a href="#物理学">物理学</a><ul>
 <li><a href="#力学">力学</a></li>
 <li><a href="#物性">物性</a></li>
@@ -473,6 +476,8 @@
 </ul></li>
 </ul></nav>
       
+      <h2 id="数学">数学</h2>
+      <p><a href="./Mathmatics/DifferentialEquation/">微分方程式</a></p>
       <h2 id="物理学">物理学</h2>
       <h3 id="力学">力学</h3>
       <p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>

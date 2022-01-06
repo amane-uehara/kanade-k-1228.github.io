@@ -430,9 +430,11 @@
       <!-- TeX Macros -->
       <p style="display: none;"> 
         \[
+          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
           \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
           \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
           \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
           \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
           \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
           \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
@@ -461,16 +463,18 @@
 <li><a href="#線形代数">線形代数</a><ul>
 <li><a href="#重要な概念">重要な概念</a></li>
 </ul></li>
-<li><a href="#ベクトル解析-for-電磁気学">ベクトル解析 for 電磁気学</a><ul>
+<li><a href="#ベクトル解析">ベクトル解析</a><ul>
 <li><a href="#場の微分">場の微分</a></li>
 <li><a href="#場の積分">場の積分</a></li>
 </ul></li>
 <li><a href="#テンソル解析">テンソル解析</a></li>
 <li><a href="#元ベクトル">4 元ベクトル</a></li>
-<li><a href="#ミンコフスキー空間-for-特殊相対論">ミンコフスキー空間 for 特殊相対論</a></li>
-<li><a href="#テンソル解析-for-電磁気学-連続体力学">テンソル解析 for 電磁気学 連続体力学</a></li>
-<li><a href="#テンソル-for-連続体力学">テンソル for 連続体力学</a></li>
-<li><a href="#リーマン幾何学-for-一般相対論">リーマン幾何学 for 一般相対論</a></li>
+<li><a href="#波動方程式">波動方程式</a></li>
+<li><a href="#グリーン関数">グリーン関数</a><ul>
+<li><a href="#例一次元の波動方程式定常">例：一次元の波動方程式（定常）</a></li>
+<li><a href="#グリーン関数を求める">グリーン関数を求める</a></li>
+<li><a href="#例熱伝導方程式">例：熱伝導方程式</a></li>
+</ul></li>
 </ul></nav>
       
       <p>物理で使う数学をできるだけ早く使えるようなるためにまとめてあります．</p>
@@ -481,7 +485,7 @@
       <li>空間・基底・座標系・基底変換</li>
       <li>固有値・固有空間</li>
       </ul>
-      <h2 id="ベクトル解析-for-電磁気学">ベクトル解析 for 電磁気学</h2>
+      <h2 id="ベクトル解析">ベクトル解析</h2>
       <h3 id="場の微分">場の微分</h3>
       <h4 id="ナブラ">ナブラ</h4>
       <p><span class="math display">\[
@@ -622,10 +626,66 @@
       \Box A = J
       \]</span></p>
       <p>という単純な式になる．（こっちのほうが電磁気学のイメージアップに繋がる気がする．簡単そうじゃん．実際には混沌を綺麗にまとめてるだけといえばだけだけど．自然とは綺麗にまとめることが可能な混沌である，というのは物理学の信念な気がする．）</p>
-      <h2 id="ミンコフスキー空間-for-特殊相対論">ミンコフスキー空間 for 特殊相対論</h2>
-      <h2 id="テンソル解析-for-電磁気学-連続体力学">テンソル解析 for 電磁気学 連続体力学</h2>
-      <h2 id="テンソル-for-連続体力学">テンソル for 連続体力学</h2>
-      <h2 id="リーマン幾何学-for-一般相対論">リーマン幾何学 for 一般相対論</h2>
+      <h2 id="波動方程式">波動方程式</h2>
+      <p>時間二階微分 = 伝達速度^2 空間二階微分</p>
+      <p>一次元のバネ質点系の振動は、行列の固有値問題</p>
+      <p>この行列は</p>
+      <p><span class="math display">\[
+      A=\begin{matrix}
+      -2 &amp; 1 &amp; 0 &amp; 0 \\
+      1 &amp; -2 &amp; 1 &amp; 0 \\
+      0 &amp; 1 &amp; -2 &amp; 1 \\
+      0 &amp; 0 &amp; 1 &amp; -2
+      \end{matrix}
+      \]</span></p>
+      <p>対称行列になっている</p>
+      <p>波動方程式は微分演算子の固有値問題といえる</p>
+      <h2 id="グリーン関数">グリーン関数</h2>
+      <p>非同次方程式の解 = 同次方程式の解 + 非同次方程式の特解</p>
+      <p>特解を求めるための</p>
+      <h3 id="例一次元の波動方程式定常">例：一次元の波動方程式（定常）</h3>
+      <p><span class="math display">\[
+      \pdd{u}{t} = c^2 \pdd{u}{x} + f(x,t) \\
+      u(0,t)=0, u(L,t)=0 \\
+      \pd{u}{t}=0
+      \]</span></p>
+      <p>定常条件を使って変形すると</p>
+      <p><span class="math display">\[
+      \pdd{u}{x}=-\f{f(x)}{c^2}=-F(x)
+      \]</span></p>
+      <p>一般の <span class="math inline">\(F(x)\)</span> について、解くための方法がグリーン関数を使う方法</p>
+      <p>まず<span class="math inline">\(F(x)\)</span>を分解する。</p>
+      <p><span class="math display">\[
+      F(x) = \int_0^L F(\xi)\delta(x-\xi)
+      \]</span></p>
+      <p>それぞれの <span class="math inline">\(\delta\)</span> についての</p>
+      <p><span class="math display">\[
+      \pdd{u_G}{x}=-\delta(x-\xi)
+      \]</span></p>
+      <p>を解く。この方程式の解がグリーン関数 <span class="math inline">\(u_G\)</span> である。</p>
+      <p>グリーン関数がわかれば、</p>
+      <p><span class="math display">\[
+      u(x) = \int_0^L F(\xi)u_G(x) d\xi
+      \]</span></p>
+      <p>とすれば解が求まる。</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      F(\xi)\pdd{u_G}{x} &amp;= -F(\xi)\delta(x-\xi) \\
+      \int_0^L F(\xi)\pdd{u_G}{x} d\xi &amp;= - \int_0^L F(\xi)\delta(x-\xi) d\xi \\
+      &amp;= -F(x) \\
+      \pdd{}{x} \l\{\int_0^L F(\xi)u_G(x) d\xi \r\} &amp;= -F(x) \\
+      \pdd{}{x}u(x) &amp;= -F(x)
+      \end{aligned}
+      \]</span></p>
+      <h3 id="グリーン関数を求める">グリーン関数を求める</h3>
+      <p>グリーン関数は</p>
+      <p><span class="math display">\[
+      \pdd{u_G}{x}=-\delta(x-\xi)
+      \]</span></p>
+      <h3 id="例熱伝導方程式">例：熱伝導方程式</h3>
+      <p><span class="math display">\[
+      \pd{T}{t}=\alpha \pdd{T}{x} + q(x,t)
+      \]</span></p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
