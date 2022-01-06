@@ -2,6 +2,10 @@
 title: 研究室へようこそ
 ---
 
+## 数学
+
+[微分方程式](./Mathmatics/DifferentialEquation/)
+
 ## 物理学
 
 ### 力学
