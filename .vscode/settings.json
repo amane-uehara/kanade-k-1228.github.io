@@ -18,6 +18,7 @@
         "\\bra":"{\\left\\langle #1 \\right|}",
         "\\ket":"{\\left| #1 \\right\\rangle}",
         "\\braket":"{\\left\\langle #1 \\middle|#2 \\right\\rangle}",
+        "\\inner":"{\\left\\langle #1 ,#2 \\right\\rangle}",
         "\\l":"\\left",
         "\\m":"\\middle",
         "\\r":"\\right",
@@ -25,7 +26,8 @@
         "\\eps":"\\varepsilon",
         "\\ra":"\\rightarrow",
         "\\F":"\\mathcal{F}",
-        "\\L":"\\mathcal{L}"
+        "\\L":"\\mathcal{L}",
+        "\\t":"\\quad",
     },
     "mdmath.macros": {
         "\\dn":"{\\frac{\\mathrm{d}^{#3} #1}{\\mathrm{d} #2^{#3}}}",
@@ -43,6 +45,7 @@
         "\\bra":"{\\left\\langle #1 \\right|}",
         "\\ket":"{\\left| #1 \\right\\rangle}",
         "\\braket":"{\\left\\langle #1 \\middle|#2 \\right\\rangle}",
+        "\\inner":"{\\left\\langle #1 ,#2 \\right\\rangle}",
         "\\l":"\\left",
         "\\m":"\\middle",
         "\\r":"\\right",
@@ -50,6 +53,7 @@
         "\\eps":"\\varepsilon",
         "\\ra":"\\rightarrow",
         "\\F":"\\mathcal{F}",
-        "\\L":"\\mathcal{L}"
+        "\\L":"\\mathcal{L}",
+        "\\t":"\\quad",
     }
 }

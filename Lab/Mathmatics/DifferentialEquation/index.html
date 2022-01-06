@@ -445,6 +445,8 @@
           \newcommand{\bra}[1]{\left\langle #1 \right|}
           \newcommand{\ket}[1]{\left|#1 \right\rangle}
           \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+          \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+          
           \newcommand{\l}{\left}
           \newcommand{\m}{\middle}
           \newcommand{\r}{\right}
@@ -453,6 +455,7 @@
           \newcommand{\ra}{\rightarrow}
           \newcommand{\F}{\mathcal{F}}
           \newcommand{\L}{\mathcal{L}}
+          \newcommand{\t}{\quad}
 
           \newcommand{\bm}[1]{\boldsymbol{#1}}
         \]
@@ -461,7 +464,11 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#線形微分方程式">線形微分方程式</a><ul>
+<li><a href="#解の任意性">解の任意性</a></li>
 <li><a href="#同次線形微分方程式">同次線形微分方程式</a></li>
+<li><a href="#グリーン関数">グリーン関数</a></li>
+<li><a href="#グリーン関数の例">グリーン関数の例</a></li>
+<li><a href="#熱伝導方程式">熱伝導方程式</a></li>
 </ul></li>
 <li><a href="#ラプラス方程式">ラプラス方程式</a><ul>
 <li><a href="#直交座標">直交座標</a></li>
@@ -477,7 +484,6 @@
 <li><a href="#変形ベッセル">変形ベッセル</a></li>
 </ul></li>
 <li><a href="#球面調和関数">球面調和関数</a></li>
-<li><a href="#グリーン関数">グリーン関数</a></li>
 </ul></nav>
       
       <h2 id="線形微分方程式">線形微分方程式</h2>
@@ -491,7 +497,7 @@
       <p><span class="math inline">\(L\)</span>は関数を引数に取り関数を返す関数（演算子）。フーリエ変換・ラプラス変換と同じタイプ。</p>
       <p>線形演算子は、線形性</p>
       <ol type="1">
-      <li><span class="math inline">\(L[cy(x)]=cL[y(x)]\)</span></li>
+      <li><span class="math inline">\(L[cy(x)]=cL[y(x)] \t (c\in \R)\)</span></li>
       <li><span class="math inline">\(L[y_1(x)+y_2(x)]=L[y_1(x)]+L[y_1(x)]\)</span></li>
       </ol>
       <p>を満たす。</p>
@@ -500,7 +506,72 @@
       L=a_n(x)\dn{}{x}{n}+a_{n-1}(x)\dn{}{x}{n-1}+...+a_1(x)\d{}{x}+a_0(x)
       \]</span></p>
       <p>と書ける。</p>
+      <h4 id="関数空間">関数空間</h4>
+      <p>関数空間は線形空間になっている。</p>
+      <p>内積を</p>
+      <p><span class="math display">\[
+      \inner{f}{g}=\int_{-\infty}^{\infty}f(x)g(x)dx
+      \]</span></p>
+      <p>とする。</p>
+      <p>微分演算子は</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \inner{\d{}{x}f}{g}
+      &amp;= \int_{-\infty}^{\infty}\d{}{x}f(x)g(x)dx \\
+      &amp;= [f(x)g(x)]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}\d{}{x}f(x)g(x)dx \\
+      &amp;= -\inner{f}{\d{}{x}g}
+      \end{aligned}
+      \]</span></p>
+      <p><span class="math inline">\(f(x),g(x)\)</span> は <span class="math inline">\(\pm\infty\)</span> で <span class="math inline">\(0\)</span> になるものだけを扱う。</p>
+      <h3 id="解の任意性">解の任意性</h3>
+      <p>非同次方程式<span class="math inline">\(L[y(x)]=f(x)\)</span>の解に、同次方程式<span class="math inline">\(L[y_0(x)]=0\)</span>の解を加えても、線形性から、</p>
+      <p><span class="math display">\[
+      L[y(x)+cy_0(x)]=f(x) \t (c\in \R)
+      \]</span></p>
+      <p>を満たす。つまり、線形微分方程式の解は無数にあることになる。</p>
       <h3 id="同次線形微分方程式">同次線形微分方程式</h3>
+      <p>同次形の線形微分方程式は一般に</p>
+      <p><span class="math display">\[
+      a_n(x)\dn{y}{x}{n}+a_{n-1}(x)\dn{y}{x}{n-1}+...+a_1(x)\d{y}{x}+a_0(x)y
+      \]</span></p>
+      <h3 id="グリーン関数">グリーン関数</h3>
+      <p>非同次微分方程式</p>
+      <p><span class="math display">\[
+      L[y(x)]=f(x)
+      \]</span></p>
+      <p>を解きたい。</p>
+      <p>逆演算子 <span class="math inline">\(L^{-1}\)</span> を求めて、</p>
+      <p><span class="math display">\[
+      y(x)=L^{-1}[f(x)]
+      \]</span></p>
+      <p>としたいが、一般に逆演算子を求めるのは難しい。</p>
+      <p>そのため、 <span class="math inline">\(f(x)\)</span> をスライスする。</p>
+      <p><span class="math display">\[
+      f(x) =\int_{-\infty}^{\infty} f(\xi)\delta(x-\xi) d\xi = f(x) * \delta(x)
+      \]</span></p>
+      <p><span class="math inline">\(f(x)\)</span> のかわりに、デルタ関数 <span class="math inline">\(\delta(x-\xi)\)</span> について、</p>
+      <p><span class="math display">\[
+      G_{\xi}(x)=L^{-1}[\delta(x-\xi)]
+      \]</span></p>
+      <p>を解く。この解 <span class="math inline">\(G_{\xi}(x)\)</span> のことをグリーン関数という。</p>
+      <p>グリーン関数を<span class="math inline">\(f(x)\)</span>で加重積分してもとの<span class="math inline">\(f(x)\)</span>を戻してやると、解が得られる</p>
+      <p><span class="math display">\[
+      \begin{aligned}
+      y(x) &amp;= L^{-1}[f(x)] \\
+      &amp;= L^{-1}\l[\int_{-\infty}^{\infty} f(\xi)\delta(x-\xi) d\xi\r] \\
+      &amp;= \int_{-\infty}^{\infty} f(\xi) L^{-1}[\delta(x-\xi)] d\xi \\
+      &amp;= \int_{-\infty}^{\infty} f(\xi) G_{\xi}(x) d\xi
+      \end{aligned}
+      \]</span></p>
+      <h3 id="グリーン関数の例">グリーン関数の例</h3>
+      <h4 id="dx"><span class="math inline">\(\d{}{x}\)</span></h4>
+      <p><span class="math display">\[
+      \begin{aligned}
+      \d{}{x}G_\xi(x) &amp;= \delta(x-\xi) \\
+      G_\xi(x) &amp;= H(x-\xi) + C
+      \end{aligned}
+      \]</span></p>
+      <h3 id="熱伝導方程式">熱伝導方程式</h3>
       <h2 id="ラプラス方程式">ラプラス方程式</h2>
       <p><span class="math display">\[
       \nabla^2 \phi = 0
@@ -520,7 +591,6 @@
       <h3 id="ハンケル関数">ハンケル関数</h3>
       <h3 id="変形ベッセル">変形ベッセル</h3>
       <h2 id="球面調和関数">球面調和関数</h2>
-      <h2 id="グリーン関数">グリーン関数</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
