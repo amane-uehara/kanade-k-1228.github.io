@@ -119,23 +119,80 @@ y(x) &= L^{-1}[f(x)] \\
 \end{aligned}
 $$
 
-### グリーン関数の例
+### グリーン関数の求め方
 
-#### $\d{}{x}$
+フーリエ変換を使う。
+
+グリーン関数の逆フーリエ変換式
 
 $$
-\begin{aligned}
-\d{}{x}G_\xi(x) &= \delta(x-\xi) \\
-G_\xi(x) &= H(x-\xi) + C
-\end{aligned}
+G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk
 $$
 
-### 熱伝導方程式
+デルタ関数の逆フーリエ変換式
+
+$$
+\delta(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
+$$
+
+これをグリーン関数の式
+
+$$
+L[G(x)]=\delta(x)
+$$
+
+に代入して、
+
+$$
+L\l[\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk\r]=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
+$$
+
+$L$ は $x$ に対して作用するので、
+
+$$
+\int_{-\infty}^{\infty}G(k)L[\exp(ikx)]dk=\int_{-\infty}^{\infty}\exp(ikx)dk
+$$
+
+$L$ は $\exp(ikx)$ に作用すると、
+
+$$
+\dn{}{x}{n} \ra (ik)^n
+$$
+
+と数に変換される。
+
+$$
+L \ra L(k)
+$$
+
+とおくと、
+
+$$
+\int_{-\infty}^{\infty}G(k)L(k)\exp(ikx)dk=\int_{-\infty}^{\infty}\exp(ikx)dk
+$$
+
+両辺の被積分関数を比較して、
+
+$$
+L(k)G(k)=1
+$$
+
+$k$空間のグリーン関数$G(k)$が求まったので、$x$空間に戻すと、
+
+$$
+G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\f{1}{L(k)}\exp(ikx)dk
+$$
+
+半円形の経路で複素積分して求める。円弧の部分は $0$ になる。
 
 ## ラプラス方程式
 
 $$
 \nabla^2 \phi = 0
+$$
+
+$$
+L=\nabla^2
 $$
 
 ### 直交座標
@@ -146,22 +203,76 @@ $$
 
 ### 球座標
 
+球面調和関数
+
+## ポアソン方程式
+
+$$
+\nabla^2 \phi = f
+$$
+
+$$
+L = \nabla^2
+$$
+
+## ヘルムホルツ方程式
+
+$$
+\nabla^2 u + \alpha^2 u = 0
+$$
+
+$$
+L=\nabla^2+\alpha^2
+$$
+
+## 拡散方程式
+
+$$
+\pd{}{t} \phi = D\nabla^2 \phi
+$$
+
+$$
+L = D \nabla^2 - \pd{}{t}
+$$
+
+### グリーン関数
+
+$$
+\begin{aligned}
+G(x,t;\xi,\tau)
+&=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
+&=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
+\end{aligned}
+$$
+
+## 波動方程式
+
+$$
+\pdd{}{t}u = c^2\nabla^2 u
+$$
+
+$$
+L = c^2\nabla^2 - \pdd{}{t}
+$$
+
+### グリーン関数
+
+$$
+\begin{aligned}
+G(x,t;\xi,\tau)
+&=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
+&=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
+\end{aligned}
+$$
+
+## ラプラス方程式
+
+$$
+\nabla^2 \phi = 0
+$$
+
 ## ポアソン方程式
 
 $$
 \nabla^2 \phi = \rho
 $$
-
-## ガンマ関数
-
-## ベッセル関数
-
-### 第１種ベッセル関数
-
-### 第２種ベッセル関数
-
-### ハンケル関数
-
-### 変形ベッセル
-
-## 球面調和関数
