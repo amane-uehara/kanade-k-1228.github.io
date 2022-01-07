@@ -467,8 +467,7 @@
 <li><a href="#解の任意性">解の任意性</a></li>
 <li><a href="#同次線形微分方程式">同次線形微分方程式</a></li>
 <li><a href="#グリーン関数">グリーン関数</a></li>
-<li><a href="#グリーン関数の例">グリーン関数の例</a></li>
-<li><a href="#熱伝導方程式">熱伝導方程式</a></li>
+<li><a href="#グリーン関数の求め方">グリーン関数の求め方</a></li>
 </ul></li>
 <li><a href="#ラプラス方程式">ラプラス方程式</a><ul>
 <li><a href="#直交座標">直交座標</a></li>
@@ -476,14 +475,15 @@
 <li><a href="#球座標">球座標</a></li>
 </ul></li>
 <li><a href="#ポアソン方程式">ポアソン方程式</a></li>
-<li><a href="#ガンマ関数">ガンマ関数</a></li>
-<li><a href="#ベッセル関数">ベッセル関数</a><ul>
-<li><a href="#第１種ベッセル関数">第１種ベッセル関数</a></li>
-<li><a href="#第２種ベッセル関数">第２種ベッセル関数</a></li>
-<li><a href="#ハンケル関数">ハンケル関数</a></li>
-<li><a href="#変形ベッセル">変形ベッセル</a></li>
+<li><a href="#ヘルムホルツ方程式">ヘルムホルツ方程式</a></li>
+<li><a href="#拡散方程式">拡散方程式</a><ul>
+<li><a href="#グリーン関数-1">グリーン関数</a></li>
 </ul></li>
-<li><a href="#球面調和関数">球面調和関数</a></li>
+<li><a href="#波動方程式">波動方程式</a><ul>
+<li><a href="#グリーン関数-2">グリーン関数</a></li>
+</ul></li>
+<li><a href="#ラプラス方程式-1">ラプラス方程式</a></li>
+<li><a href="#ポアソン方程式-1">ポアソン方程式</a></li>
 </ul></nav>
       
       <h2 id="線形微分方程式">線形微分方程式</h2>
@@ -563,34 +563,113 @@
       &amp;= \int_{-\infty}^{\infty} f(\xi) G_{\xi}(x) d\xi
       \end{aligned}
       \]</span></p>
-      <h3 id="グリーン関数の例">グリーン関数の例</h3>
-      <h4 id="dx"><span class="math inline">\(\d{}{x}\)</span></h4>
+      <h3 id="グリーン関数の求め方">グリーン関数の求め方</h3>
+      <p>フーリエ変換を使う。</p>
+      <p>グリーン関数の逆フーリエ変換式</p>
       <p><span class="math display">\[
-      \begin{aligned}
-      \d{}{x}G_\xi(x) &amp;= \delta(x-\xi) \\
-      G_\xi(x) &amp;= H(x-\xi) + C
-      \end{aligned}
+      G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk
       \]</span></p>
-      <h3 id="熱伝導方程式">熱伝導方程式</h3>
+      <p>デルタ関数の逆フーリエ変換式</p>
+      <p><span class="math display">\[
+      \delta(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
+      \]</span></p>
+      <p>これをグリーン関数の式</p>
+      <p><span class="math display">\[
+      L[G(x)]=\delta(x)
+      \]</span></p>
+      <p>に代入して、</p>
+      <p><span class="math display">\[
+      L\l[\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk\r]=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
+      \]</span></p>
+      <p><span class="math inline">\(L\)</span> は <span class="math inline">\(x\)</span> に対して作用するので、</p>
+      <p><span class="math display">\[
+      \int_{-\infty}^{\infty}G(k)L[\exp(ikx)]dk=\int_{-\infty}^{\infty}\exp(ikx)dk
+      \]</span></p>
+      <p><span class="math inline">\(L\)</span> は <span class="math inline">\(\exp(ikx)\)</span> に作用すると、</p>
+      <p><span class="math display">\[
+      \dn{}{x}{n} \ra (ik)^n
+      \]</span></p>
+      <p>と数に変換される。</p>
+      <p><span class="math display">\[
+      L \ra L(k)
+      \]</span></p>
+      <p>とおくと、</p>
+      <p><span class="math display">\[
+      \int_{-\infty}^{\infty}G(k)L(k)\exp(ikx)dk=\int_{-\infty}^{\infty}\exp(ikx)dk
+      \]</span></p>
+      <p>両辺の被積分関数を比較して、</p>
+      <p><span class="math display">\[
+      L(k)G(k)=1
+      \]</span></p>
+      <p><span class="math inline">\(k\)</span>空間のグリーン関数<span class="math inline">\(G(k)\)</span>が求まったので、<span class="math inline">\(x\)</span>空間に戻すと、</p>
+      <p><span class="math display">\[
+      G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\f{1}{L(k)}\exp(ikx)dk
+      \]</span></p>
+      <p>半円形の経路で複素積分して求める。円弧の部分は <span class="math inline">\(0\)</span> になる。</p>
       <h2 id="ラプラス方程式">ラプラス方程式</h2>
       <p><span class="math display">\[
       \nabla^2 \phi = 0
+      \]</span></p>
+      <p><span class="math display">\[
+      L=\nabla^2
       \]</span></p>
       <h3 id="直交座標">直交座標</h3>
       <h3 id="円筒座標">円筒座標</h3>
       <p>ベッセル関数</p>
       <h3 id="球座標">球座標</h3>
+      <p>球面調和関数</p>
       <h2 id="ポアソン方程式">ポアソン方程式</h2>
+      <p><span class="math display">\[
+      \nabla^2 \phi = f
+      \]</span></p>
+      <p><span class="math display">\[
+      L = \nabla^2
+      \]</span></p>
+      <h2 id="ヘルムホルツ方程式">ヘルムホルツ方程式</h2>
+      <p><span class="math display">\[
+      \nabla^2 u + \alpha^2 u = 0
+      \]</span></p>
+      <p><span class="math display">\[
+      L=\nabla^2+\alpha^2
+      \]</span></p>
+      <h2 id="拡散方程式">拡散方程式</h2>
+      <p><span class="math display">\[
+      \pd{}{t} \phi = D\nabla^2 \phi
+      \]</span></p>
+      <p><span class="math display">\[
+      L = D \nabla^2 - \pd{}{t}
+      \]</span></p>
+      <h3 id="グリーン関数-1">グリーン関数</h3>
+      <p><span class="math display">\[
+      \begin{aligned}
+      G(x,t;\xi,\tau)
+      &amp;=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
+      &amp;=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
+      \end{aligned}
+      \]</span></p>
+      <h2 id="波動方程式">波動方程式</h2>
+      <p><span class="math display">\[
+      \pdd{}{t}u = c^2\nabla^2 u
+      \]</span></p>
+      <p><span class="math display">\[
+      L = c^2\nabla^2 - \pdd{}{t}
+      \]</span></p>
+      <h3 id="グリーン関数-2">グリーン関数</h3>
+      <p><span class="math display">\[
+      \begin{aligned}
+      G(x,t;\xi,\tau)
+      &amp;=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
+      &amp;=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
+      \end{aligned}
+      \]</span></p>
+      <h2 id="ラプラス方程式-1">ラプラス方程式</h2>
+      <p><span class="math display">\[
+      \nabla^2 \phi = 0
+      \]</span></p>
+      <h2 id="ポアソン方程式-1">ポアソン方程式</h2>
       <p><span class="math display">\[
       \nabla^2 \phi = \rho
       \]</span></p>
-      <h2 id="ガンマ関数">ガンマ関数</h2>
-      <h2 id="ベッセル関数">ベッセル関数</h2>
-      <h3 id="第１種ベッセル関数">第１種ベッセル関数</h3>
-      <h3 id="第２種ベッセル関数">第２種ベッセル関数</h3>
-      <h3 id="ハンケル関数">ハンケル関数</h3>
-      <h3 id="変形ベッセル">変形ベッセル</h3>
-      <h2 id="球面調和関数">球面調和関数</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
