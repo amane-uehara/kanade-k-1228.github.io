@@ -457,6 +457,8 @@
           \newcommand{\L}{\mathcal{L}}
           \newcommand{\t}{\quad}
 
+          \newcommand{\R}{\mathcal{R}}
+          \newcommand{\C}{\mathcal{C}}
           \newcommand{\bm}[1]{\boldsymbol{#1}}
         \]
       </p>
@@ -468,26 +470,30 @@
 <li><a href="#同次線形微分方程式">同次線形微分方程式</a></li>
 <li><a href="#グリーン関数">グリーン関数</a></li>
 <li><a href="#グリーン関数の求め方">グリーン関数の求め方</a></li>
+<li><a href="#多変数関数">多変数関数</a></li>
 </ul></li>
 <li><a href="#ラプラス方程式">ラプラス方程式</a><ul>
 <li><a href="#直交座標">直交座標</a></li>
 <li><a href="#円筒座標">円筒座標</a></li>
 <li><a href="#球座標">球座標</a></li>
 </ul></li>
-<li><a href="#ポアソン方程式">ポアソン方程式</a></li>
-<li><a href="#ヘルムホルツ方程式">ヘルムホルツ方程式</a><ul>
+<li><a href="#ポアソン方程式">ポアソン方程式</a><ul>
 <li><a href="#グリーン関数-1">グリーン関数</a></li>
 </ul></li>
-<li><a href="#拡散方程式">拡散方程式</a><ul>
+<li><a href="#ヘルムホルツ方程式">ヘルムホルツ方程式</a><ul>
 <li><a href="#グリーン関数-2">グリーン関数</a></li>
 </ul></li>
-<li><a href="#波動方程式">波動方程式</a><ul>
+<li><a href="#拡散方程式">拡散方程式</a><ul>
 <li><a href="#グリーン関数-3">グリーン関数</a></li>
+</ul></li>
+<li><a href="#波動方程式">波動方程式</a><ul>
+<li><a href="#グリーン関数-4">グリーン関数</a></li>
 </ul></li>
 <li><a href="#ラプラス方程式-1">ラプラス方程式</a></li>
 <li><a href="#ポアソン方程式-1">ポアソン方程式</a></li>
 </ul></nav>
       
+      <p>制御工学の裏にある数学</p>
       <h2 id="線形微分方程式">線形微分方程式</h2>
       <p>線形微分演算子 <span class="math inline">\(L\)</span> について、微分方程式</p>
       <p><span class="math display">\[
@@ -553,21 +559,20 @@
       \]</span></p>
       <p><span class="math inline">\(f(x)\)</span> のかわりに、デルタ関数 <span class="math inline">\(\delta(x-\xi)\)</span> について、</p>
       <p><span class="math display">\[
-      G_{\xi}(x)=L^{-1}[\delta(x-\xi)]
+      G(x;\xi)=L^{-1}[\delta(x-\xi)]
       \]</span></p>
-      <p>を解く。この解 <span class="math inline">\(G_{\xi}(x)\)</span> のことをグリーン関数という。</p>
+      <p>を解く。この解 <span class="math inline">\(G(x;\xi)\)</span> のことをグリーン関数という。</p>
       <p>グリーン関数を<span class="math inline">\(f(x)\)</span>で加重積分してもとの<span class="math inline">\(f(x)\)</span>を戻してやると、解が得られる</p>
       <p><span class="math display">\[
       \begin{aligned}
       y(x) &amp;= L^{-1}[f(x)] \\
       &amp;= L^{-1}\l[\int_{-\infty}^{\infty} f(\xi)\delta(x-\xi) d\xi\r] \\
       &amp;= \int_{-\infty}^{\infty} f(\xi) L^{-1}[\delta(x-\xi)] d\xi \\
-      &amp;= \int_{-\infty}^{\infty} f(\xi) G_{\xi}(x) d\xi
+      &amp;= \int_{-\infty}^{\infty} f(\xi) G(x,\xi) d\xi
       \end{aligned}
       \]</span></p>
       <h3 id="グリーン関数の求め方">グリーン関数の求め方</h3>
-      <p>フーリエ変換を使う。</p>
-      <p>グリーン関数の逆フーリエ変換式</p>
+      <p>フーリエ変換を使って求める。グリーン関数の逆フーリエ変換式</p>
       <p><span class="math display">\[
       G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk
       \]</span></p>
@@ -614,6 +619,14 @@
       <p><span class="math display">\[
       G(x) = 2 \pi i \sum_{L(k)=0}  \mathrm{Res}(k)
       \]</span></p>
+      <h3 id="多変数関数">多変数関数</h3>
+      <p><span class="math display">\[
+      L[u(\bm{r})]=f(\bm{r})
+      \]</span></p>
+      <p>のグリーン関数は、</p>
+      <p><span class="math display">\[
+      L[G(\bm{r};\bm{r&#39;})]=\delta^3(\bm{r}-\bm{r&#39;})
+      \]</span></p>
       <h2 id="ラプラス方程式">ラプラス方程式</h2>
       <p><span class="math display">\[
       \nabla^2 \phi = 0
@@ -630,14 +643,18 @@
       <p><span class="math display">\[
       \nabla^2 \phi = f
       \]</span></p>
+      <h3 id="グリーン関数-1">グリーン関数</h3>
       <p><span class="math display">\[
       L = \nabla^2
+      \]</span></p>
+      <p><span class="math display">\[
+      L[G(\bm{r})]=\delta^3(\bm{r}-\bm{r&#39;})
       \]</span></p>
       <h2 id="ヘルムホルツ方程式">ヘルムホルツ方程式</h2>
       <p><span class="math display">\[
       \nabla^2 u + \alpha^2 u = 0
       \]</span></p>
-      <h3 id="グリーン関数-1">グリーン関数</h3>
+      <h3 id="グリーン関数-2">グリーン関数</h3>
       <p><span class="math display">\[
       L = \nabla^2 + \alpha^2
       \]</span></p>
@@ -651,6 +668,12 @@
       G(x) = \f{1}{2\pi}\int_{-\infty}^{\infty} \f{1}{\alpha^2-k^2} \exp(ikx) dk
       \]</span></p>
       <p>この特異点<span class="math inline">\(k=\pm \alpha\)</span>は実軸上にあるので、積分経路上から除かないといけない。</p>
+      <p><span class="math display">\[
+      \int_{-\infty}^{\infty} \f{1}{k^2-(\alpha+i\eps)^2} \exp(ikx) dk
+      \]</span></p>
+      <p><span class="math display">\[
+      G(x)=-\f{i}{2\pi}\exp(\pm i\alpha x)
+      \]</span></p>
       <h2 id="拡散方程式">拡散方程式</h2>
       <p><span class="math display">\[
       \pd{}{t} \phi = D\nabla^2 \phi
@@ -658,7 +681,7 @@
       <p><span class="math display">\[
       L = D \nabla^2 - \pd{}{t}
       \]</span></p>
-      <h3 id="グリーン関数-2">グリーン関数</h3>
+      <h3 id="グリーン関数-3">グリーン関数</h3>
       <p><span class="math display">\[
       \begin{aligned}
       G(x,t;\xi,\tau)
@@ -673,7 +696,7 @@
       <p><span class="math display">\[
       L = c^2\nabla^2 - \pdd{}{t}
       \]</span></p>
-      <h3 id="グリーン関数-3">グリーン関数</h3>
+      <h3 id="グリーン関数-4">グリーン関数</h3>
       <p><span class="math display">\[
       \begin{aligned}
       G(x,t;\xi,\tau)
