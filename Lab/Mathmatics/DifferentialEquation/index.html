@@ -475,12 +475,14 @@
 <li><a href="#球座標">球座標</a></li>
 </ul></li>
 <li><a href="#ポアソン方程式">ポアソン方程式</a></li>
-<li><a href="#ヘルムホルツ方程式">ヘルムホルツ方程式</a></li>
-<li><a href="#拡散方程式">拡散方程式</a><ul>
+<li><a href="#ヘルムホルツ方程式">ヘルムホルツ方程式</a><ul>
 <li><a href="#グリーン関数-1">グリーン関数</a></li>
 </ul></li>
-<li><a href="#波動方程式">波動方程式</a><ul>
+<li><a href="#拡散方程式">拡散方程式</a><ul>
 <li><a href="#グリーン関数-2">グリーン関数</a></li>
+</ul></li>
+<li><a href="#波動方程式">波動方程式</a><ul>
+<li><a href="#グリーン関数-3">グリーン関数</a></li>
 </ul></li>
 <li><a href="#ラプラス方程式-1">ラプラス方程式</a></li>
 <li><a href="#ポアソン方程式-1">ポアソン方程式</a></li>
@@ -605,7 +607,13 @@
       <p><span class="math display">\[
       G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\f{1}{L(k)}\exp(ikx)dk
       \]</span></p>
-      <p>半円形の経路で複素積分して求める。円弧の部分は <span class="math inline">\(0\)</span> になる。</p>
+      <p>半円形の経路で複素積分して求める。円弧の部分は <span class="math inline">\(0\)</span> になる。<span class="math inline">\(L(k)=0\)</span> なる点 <span class="math inline">\(k_0\)</span> を探して留数定理で求める。</p>
+      <p><span class="math display">\[
+      \mathrm{Res}(k_0)=\l[(k-k_0)\f{1}{L(k)}\exp(ikx)\r]_{k=k_0}
+      \]</span></p>
+      <p><span class="math display">\[
+      G(x) = 2 \pi i \sum_{L(k)=0}  \mathrm{Res}(k)
+      \]</span></p>
       <h2 id="ラプラス方程式">ラプラス方程式</h2>
       <p><span class="math display">\[
       \nabla^2 \phi = 0
@@ -629,9 +637,20 @@
       <p><span class="math display">\[
       \nabla^2 u + \alpha^2 u = 0
       \]</span></p>
+      <h3 id="グリーン関数-1">グリーン関数</h3>
       <p><span class="math display">\[
-      L=\nabla^2+\alpha^2
+      L = \nabla^2 + \alpha^2
       \]</span></p>
+      <p><span class="math display">\[
+      L(k) = -k^2 + \alpha^2
+      \]</span></p>
+      <p><span class="math display">\[
+      G(k)=\f{1}{\alpha^2-k^2}
+      \]</span></p>
+      <p><span class="math display">\[
+      G(x) = \f{1}{2\pi}\int_{-\infty}^{\infty} \f{1}{\alpha^2-k^2} \exp(ikx) dk
+      \]</span></p>
+      <p>この特異点<span class="math inline">\(k=\pm \alpha\)</span>は実軸上にあるので、積分経路上から除かないといけない。</p>
       <h2 id="拡散方程式">拡散方程式</h2>
       <p><span class="math display">\[
       \pd{}{t} \phi = D\nabla^2 \phi
@@ -639,7 +658,7 @@
       <p><span class="math display">\[
       L = D \nabla^2 - \pd{}{t}
       \]</span></p>
-      <h3 id="グリーン関数-1">グリーン関数</h3>
+      <h3 id="グリーン関数-2">グリーン関数</h3>
       <p><span class="math display">\[
       \begin{aligned}
       G(x,t;\xi,\tau)
@@ -654,7 +673,7 @@
       <p><span class="math display">\[
       L = c^2\nabla^2 - \pdd{}{t}
       \]</span></p>
-      <h3 id="グリーン関数-2">グリーン関数</h3>
+      <h3 id="グリーン関数-3">グリーン関数</h3>
       <p><span class="math display">\[
       \begin{aligned}
       G(x,t;\xi,\tau)
