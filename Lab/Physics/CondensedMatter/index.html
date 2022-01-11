@@ -488,8 +488,10 @@
 </ul></li>
 <li><a href="#熱物性">熱物性</a><ul>
 <li><a href="#フォノン">フォノン</a></li>
+<li><a href="#エネルギー">エネルギー</a></li>
 <li><a href="#格子比熱">格子比熱</a></li>
-<li><a href="#フォノンの拡散">フォノンの拡散</a></li>
+<li><a href="#フォノン気体">フォノン気体</a></li>
+<li><a href="#熱伝導率">熱伝導率</a></li>
 <li><a href="#古典的サイズ効果">古典的サイズ効果</a></li>
 </ul></li>
 </ul></nav>
@@ -884,21 +886,97 @@
       <li>ただ、ゼロ点振動によってエネルギーは 0 にはならない</li>
       </ul></li>
       </ul>
-      <h3 id="格子比熱">格子比熱</h3>
-      <p>比熱とは、加えた熱量（エネルギー）に対する温度上昇の比</p>
+      <h3 id="エネルギー">エネルギー</h3>
+      <p>系全体のエネルギーは、分布関数<span class="math inline">\(n(k,s)\)</span>と分散関係<span class="math inline">\(\omega(k,s)\)</span>を用いて、</p>
       <p><span class="math display">\[
-      C=\f{1}{V}\pd{E}{T}
+      E=\sum_{k,s}n(k,s)\hbar\omega(k,s)
       \]</span></p>
       <p>分布関数はボーズ・アインシュタイン分布</p>
       <p><span class="math display">\[
       \f{1}{\exp\l(\f{E}{k_BT}\r)-1}
       \]</span></p>
-      <p>比熱は</p>
+      <p>に従うので、</p>
       <p><span class="math display">\[
-      C_V=\f{1}{V}\pd{}{T}\f{\hbar\omega(k)}{\exp(\hbar \omega(k)/)}
+      n(k,s)=\f{1}{\exp\l(\f{\hbar\omega(k,s)}{k_BT}\r)-1}
       \]</span></p>
-      <h3 id="フォノンの拡散">フォノンの拡散</h3>
-      <p>平均自由行程内では衝突しないと近似できる</p>
+      <p>系全体のエネルギーは、</p>
+      <p><span class="math display">\[
+      E=\sum_{k,s}\f{\hbar\omega(k,s)}{\exp\l(\f{\hbar\omega(k,s)}{k_BT}\r)-1}
+      \]</span></p>
+      <h3 id="格子比熱">格子比熱</h3>
+      <p>比熱とは、加えた熱量（エネルギー）に対する温度上昇の比のことで、</p>
+      <p><span class="math display">\[
+      C_V=\f{1}{V}\pd{E}{T}=\f{1}{V}\sum_{k,s}\pd{}{T}\f{\hbar\omega(k,s)}{\exp\l(\f{\hbar\omega(k,s)}{k_BT}\r)-1}
+      \]</span></p>
+      <p>分散関係がわかれば計算できる。</p>
+      <h4 id="低温の場合">低温の場合</h4>
+      <p><span class="math inline">\(\hbar\omega\gg k_BT\)</span></p>
+      <p>逆格子空間の単位体積は、</p>
+      <p><span class="math display">\[
+      \l(\f{2\pi}{L}\r)^3=\f{8\pi^3}{V}
+      \]</span></p>
+      <p>※逆格子空間の体積なので次元は<span class="math inline">\(L^{-3}\)</span></p>
+      <p>単位体積あたりの <span class="math inline">\(k\)</span> の数は、</p>
+      <p><span class="math display">\[
+      \f{V}{8\pi^3}
+      \]</span></p>
+      <p>ブリルアンゾーンで積分する。</p>
+      <p><span class="math display">\[
+      C_V=\f{1}{V}\pd{}{T}\sum_s \iiint \f{V}{8\pi^3}\f{\hbar\omega(k,s)}{\exp\l(\f{\hbar\omega(k,s)}{k_BT}\r)-1} d\bm{k}
+      \]</span></p>
+      <p>分布関数を見るとわかるように、低温では <span class="math inline">\(\omega\)</span> が小さい領域にのみ存在する。音響モードだけであるので、分散関係は比例 <span class="math inline">\(\omega\propto k\)</span> 、比例定数は速度 <span class="math inline">\(\nu\)</span>（位相速度=群速度）。</p>
+      <p><span class="math display">\[
+      \iiint d\bm{x} \frac{x}{e^x-1} = \int_0^1 \int_0^\pi \int_0^\pi r^2\sin\phi \, d\phi \, d\theta \frac{r}{e^r-1} = 4\pi \int \f{r^3}{e^r-1} dr=
+      \]</span></p>
+      <p><span class="math display">\[
+      C_V\simeq\pd{}{T}\f{\pi^2}{10}\f{(k_BT)^4}{(\hbar\bar{\nu})^3}\propto T^3
+      \]</span></p>
+      <p><span class="math inline">\(\bar{\nu}\)</span>は縦波と横波の平均速度</p>
+      <p><span class="math display">\[
+      \f{1}{\bar{\nu}}=\f{1}{3}\l(\f{1}{\nu_L^3}+\f{2}{\nu_T^3}\r)
+      \]</span></p>
+      <p>電磁波・光子・熱放射と似ていて、例えば、ステファン・ボルツマンの式</p>
+      <p><span class="math display">\[
+      E \propto T^4 \\
+      C_V \propto T^3
+      \]</span></p>
+      <h4 id="高温の場合">高温の場合</h4>
+      <p><span class="math inline">\(\hbar\omega\ll k_BT\)</span> の場合、<span class="math inline">\(\exp(x)=1+x+O(x^2)\)</span> の近似から、</p>
+      <p><span class="math display">\[
+      E=\sum_{k,s}k_BT
+      \]</span></p>
+      <p><span class="math inline">\(N\)</span> 粒子系のモード数（自由度）は <span class="math inline">\(3N\)</span> なので、</p>
+      <p><span class="math display">\[
+      E=3Nk_BT
+      \]</span></p>
+      <p>比熱は、数密度を<span class="math inline">\(n\)</span>として、</p>
+      <p><span class="math display">\[
+      C_V=3\f{N}{V}k_B=3nk_B
+      \]</span></p>
+      <h3 id="フォノン気体">フォノン気体</h3>
+      <p>量子化された格子振動が、格子内を行ったり来たりする様子を、フォノンが気体のように飛び交うモデルで表す。これがフォノン気体の概念で、気体運動論の考え方を適用できる。</p>
+      <p>平均自由行程内では衝突しないと近似できる。</p>
+      <h3 id="熱伝導率">熱伝導率</h3>
+      <p>エネルギー密度</p>
+      <p><span class="math display">\[
+      P=\f{E}{V}
+      \]</span></p>
+      <p>フィックの法則</p>
+      <p><span class="math display">\[
+      J=-D\pd{P}{z}
+      \]</span></p>
+      <p>拡散係数は</p>
+      <p><span class="math display">\[
+      D=\f{1}{3}vl
+      \]</span></p>
+      <p>フーリエの法則</p>
+      <p><span class="math display">\[
+      J=-\lambda\pd{T}{z}
+      \]</span></p>
+      <p>と比較すると、</p>
+      <p><span class="math display">\[
+      \lambda = D\pd{P}{T} = \f{1}{3}vl\f{1}{V}\pd{E}{T} = \f{1}{3}vlC_V
+      \]</span></p>
       <h3 id="古典的サイズ効果">古典的サイズ効果</h3>
       <p>平均自由行程<span class="math inline">\(l\)</span>に対して、系のサイズ<span class="math inline">\(L\)</span>が小さいと、粒子どうしの衝突より壁との衝突のほうが頻繫に起こるようになる。</p>
       <p><span class="math display">\[
