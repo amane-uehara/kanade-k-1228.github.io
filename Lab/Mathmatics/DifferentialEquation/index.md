@@ -241,6 +241,12 @@ $$
 L[G(\bm{r})]=\delta^3(\bm{r}-\bm{r'})
 $$
 
+逆フーリエ変換
+
+$$
+\delta^3(\bm{r}) = \f{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} \exp(i\bm{k}\cdot\bm{r})d^3\bm{k}
+$$
+
 ## ヘルムホルツ方程式
 
 $$

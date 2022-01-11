@@ -466,9 +466,9 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#演算回路の理論">演算回路の理論</a><ul>
-<li><a href="#演算">演算</a></li>
-<li><a href="#基本演算">基本演算</a></li>
-<li><a href="#演算の構成">演算の構成</a></li>
+<li><a href="#構成">構成</a></li>
+<li><a href="#完備性">完備性</a></li>
+<li><a href="#演算回路">演算回路</a></li>
 <li><a href="#回路サイズ">回路サイズ</a></li>
 <li><a href="#演算時間">演算時間</a></li>
 </ul></li>
@@ -480,28 +480,86 @@
 </ul></li>
 </ul></nav>
       
+      <p>デジタル回路・アナログ回路</p>
       <h2 id="演算回路の理論">演算回路の理論</h2>
-      <h3 id="演算">演算</h3>
-      <blockquote>
-      <p>入力空間 <span class="math inline">\(2^N\)</span> から 出力空間 <span class="math inline">\(2^M\)</span> への写像</p>
+      <p><span class="math inline">\(N\)</span> 入力 <span class="math inline">\(M\)</span> 出力の演算回路全体の集合を <span class="math inline">\((2^N\ra 2^M)\)</span> と表す。</p>
+      <h3 id="構成">構成</h3>
+      <p>演算<span class="math inline">\(F=\{f_1,f_2\dots\}\)</span>を組み合わせて、ある演算<span class="math inline">\(f\)</span>を構成可能であることを、<span class="math inline">\(\{f_1,f_2\dots\} \ra f\)</span>と表す。</p>
+      <h3 id="完備性">完備性</h3>
+      <ol type="1">
+      <li><p><span class="math inline">\(\{\rm{NOR}\}\ra\{AND,OR,NOT\}\)</span></p></li>
+      <li><p><span class="math inline">\(\{\rm{}AND,OR,NOT\}\ra\{(2\ra2)\}\)</span></p></li>
+      <li><p><span class="math inline">\(\{\rm{}AND,OR,NOT,(2^N\ra2)\}\ra\{(2^{N+1}\ra2)\}\)</span></p></li>
+      </ol>
+      <p><span class="math inline">\(F\in(2^{N+1}\ra2)\)</span> の真理値表</p>
+      <table>
+      <thead>
+      <tr class="header">
+      <th><span class="math inline">\(I_1\)</span></th>
+      <th></th>
+      <th><span class="math inline">\(I_N\)</span></th>
+      <th><span class="math inline">\(I_{N+1}\)</span></th>
+      <th><span class="math inline">\(O\)</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td><span class="math inline">\(O^1\)</span></td>
+      </tr>
+      <tr class="even">
+      <td></td>
+      <td><span class="math inline">\(I^1\)</span></td>
+      <td></td>
+      <td>0</td>
+      <td><span class="math inline">\(O^1\)</span></td>
+      </tr>
+      <tr class="odd">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td><span class="math inline">\(O^1\)</span></td>
+      </tr>
+      <tr class="even">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td><span class="math inline">\(O^2\)</span></td>
+      </tr>
+      <tr class="odd">
+      <td></td>
+      <td><span class="math inline">\(I^2\)</span></td>
+      <td></td>
+      <td>1</td>
+      <td><span class="math inline">\(O^2\)</span></td>
+      </tr>
+      <tr class="even">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td><span class="math inline">\(O^2\)</span></td>
+      </tr>
+      </tbody>
+      </table>
       <p><span class="math display">\[
-      f : 2^N \rightarrow 2^M
+      F^1(I^1_1\dots I^1_N) = O^1 \\
+      F^2(I^2_1\dots I^2_N) = O^2
       \]</span></p>
-      </blockquote>
-      <h3 id="基本演算">基本演算</h3>
-      <blockquote>
       <p><span class="math display">\[
-      f_e : 2^n \rightarrow 2^m
+      F(I_1\dots I_N , I_{N+1}) = F^1(I_1\dots I_N) \cdot \overline{I_{N+1}} + F^2(I_1\dots I_N) \cdot I_{N+1}
       \]</span></p>
-      </blockquote>
-      <h3 id="演算の構成">演算の構成</h3>
-      <p>基本演算 <span class="math inline">\(F_e = \{f_{e1},f_{e2}\dots\}\)</span> を組み合わせて、ある演算 <span class="math inline">\(f\)</span> を構成する。</p>
-      <blockquote>
+      <p>1~3 より、</p>
       <p><span class="math display">\[
-      f/F_e : F_e \rightarrow f
+      \{\rm{NOR}\}\ra\forall N\{(2^N\ra2)\}
       \]</span></p>
-      </blockquote>
-      <p>ある演算の集合 <span class="math inline">\(F=\{f_1,f_2\dots\}\)</span> をすべてを構成可能な、基本演算集合 <span class="math inline">\(F_e\)</span> を、（<span class="math inline">\(F\)</span>に対する）汎用基本演算集合という。</p>
+      <h3 id="演算回路">演算回路</h3>
+      <p>ある演算の集合 <span class="math inline">\(F=\{f_1,f_2\dots\}\)</span> をすべてを構成可能な、演算集合 <span class="math inline">\(F_e\)</span> を、（<span class="math inline">\(F\)</span>に対する）基本演算集合という。</p>
       <p>演算回路を作るということは、目的とする演算 <span class="math inline">\(f\)</span> を、</p>
       <ol type="1">
       <li>演算としてふるまう系を探す</li>

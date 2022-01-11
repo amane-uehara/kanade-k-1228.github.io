@@ -490,6 +490,7 @@
 <li><a href="#フォノン">フォノン</a></li>
 <li><a href="#格子比熱">格子比熱</a></li>
 <li><a href="#フォノンの拡散">フォノンの拡散</a></li>
+<li><a href="#古典的サイズ効果">古典的サイズ効果</a></li>
 </ul></li>
 </ul></nav>
       
@@ -874,15 +875,54 @@
       \l(n_{ks} + \f{1}{2}\r)\hbar \omega(k_s)
       \]</span></p>
       <ul>
-      <li>フォノンはボーズ粒子で、制限がない</li>
+      <li>フォノンはボーズ粒子で、状態の重複に制限がない
+      <ul>
+      <li>線形な系の振動は重ね合わせする</li>
+      </ul></li>
       <li>n は温度に依存し、基底状態 <span class="math inline">\(T=0\rm{K}\)</span> で <span class="math inline">\(n=0\)</span>
       <ul>
       <li>ただ、ゼロ点振動によってエネルギーは 0 にはならない</li>
       </ul></li>
       </ul>
       <h3 id="格子比熱">格子比熱</h3>
+      <p>比熱とは、加えた熱量（エネルギー）に対する温度上昇の比</p>
+      <p><span class="math display">\[
+      C=\f{1}{V}\pd{E}{T}
+      \]</span></p>
+      <p>分布関数はボーズ・アインシュタイン分布</p>
+      <p><span class="math display">\[
+      \f{1}{\exp\l(\f{E}{k_BT}\r)-1}
+      \]</span></p>
+      <p>比熱は</p>
+      <p><span class="math display">\[
+      C_V=\f{1}{V}\pd{}{T}\f{\hbar\omega(k)}{\exp(\hbar \omega(k)/)}
+      \]</span></p>
       <h3 id="フォノンの拡散">フォノンの拡散</h3>
       <p>平均自由行程内では衝突しないと近似できる</p>
+      <h3 id="古典的サイズ効果">古典的サイズ効果</h3>
+      <p>平均自由行程<span class="math inline">\(l\)</span>に対して、系のサイズ<span class="math inline">\(L\)</span>が小さいと、粒子どうしの衝突より壁との衝突のほうが頻繫に起こるようになる。</p>
+      <p><span class="math display">\[
+      l=v\tau=\f{v}{\gamma}
+      \]</span></p>
+      <p>緩和時間 <span class="math inline">\(\tau\)</span> に対して、散乱頻度は</p>
+      <p><span class="math display">\[
+      \gamma=\f{1}{\tau}
+      \]</span></p>
+      <p>壁との衝突を考慮すると、</p>
+      <p><span class="math display">\[
+      \gamma=\gamma_0+\f{v}{L}
+      \]</span></p>
+      <p><span class="math display">\[
+      \f{1}{l}=\f{1}{l_0}+\f{1}{L}
+      \]</span></p>
+      <p>実質の平均自由行程は、</p>
+      <p><span class="math display">\[
+      l=\f{L}{l_0+L}l_0
+      \]</span></p>
+      <p><span class="math display">\[
+      \lambda=\f{1}{3}C_Vvl\f{L}{l_0+L}
+      \]</span></p>
+      <p><span class="math inline">\(L\)</span> が小さくなると、熱伝導率 <span class="math inline">\(\lambda\)</span> も小さくなる。</p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
