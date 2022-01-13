@@ -639,7 +639,7 @@
       \]</span></p>
       <p>金属の反射率 <span class="math inline">\(R\)</span> は、</p>
       <p><span class="math display">\[
-      R = \l|\f{\sqrt{\eps*{r2}}-\sqrt{\eps*{r1}}}{\sqrt{\eps*{r2}}+\sqrt{\eps*{r1}}}\r|^2
+      R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2
       \]</span></p>
       <h2 id="金属中の電子状態">3. 金属中の電子状態</h2>
       <p>無限に広がった結晶（バルク結晶）の電子状態を考える。周期境界条件を課したシュレディンガー方程式で波動関数を求める。（ゾンマーフェルトモデル）</p>
@@ -659,8 +659,8 @@
       <p><span class="math display">\[
       \begin{aligned}
       \braket{\psi}{\psi}
-      &amp;= \iiint*{-L/2}^{L/2} \psi^\*(\bm{r})\psi(\bm{r}) d\bm{r} \\
-      &amp;= \iiint*{-L/2}^{L/2} A^2 d\bm{r} \\
+      &amp;= \iiint_{-L/2}^{L/2} \psi^\_(\bm{r})\psi(\bm{r}) d\bm{r} \\
+      &amp;= \iiint_{-L/2}^{L/2} A^2 d\bm{r} \\
       &amp;= A^2 L^3 \\
       &amp;= 1
       \end{aligned}
@@ -679,7 +679,7 @@
       \]</span></p>
       <p>位置は、</p>
       <p><span class="math display">\[
-      \bra{\psi}x\ket{\psi} = \iiint*{-L/2}^{L/2} \psi^\*(\bm{r}) x \psi(\bm{r}) d\bm{r} = \int*{-L/2}^{L/2} x dx = 0
+      \bra{\psi}x\ket{\psi} = \iiint_{-L/2}^{L/2} \psi^\_(\bm{r}) x \psi(\bm{r}) d\bm{r} = \int_{-L/2}^{L/2} x dx = 0
       \]</span></p>
       <p>運動量は、</p>
       <p><span class="math display">\[
@@ -785,7 +785,7 @@
       <p><img src="./img/1DHarmonic.dio.svg" /></p>
       <p>バネ <span class="math inline">\(i\)</span> のポテンシャルエネルギー</p>
       <p><span class="math display">\[
-      \phi*i=\frac{1}{2}k(u*{i+1}-u_i)^2+\phi(a)
+      \phi_i=\frac{1}{2}k(u_{i+1}-u_i)^2+\phi(a)
       \]</span></p>
       <p>全体のポテンシャルは</p>
       <p><span class="math display">\[
@@ -793,7 +793,7 @@
       \]</span></p>
       <p>粒子 <span class="math inline">\(i\)</span> に働く力は</p>
       <p><span class="math display">\[
-      f*i = -\pd{\phi}{u_i} = k(u*{i+1}-2u*i+u*{i-1})
+      f_i = -\pd{\phi}{u_i} = k(u_{i+1}-2u_i+u_{i-1})
       \]</span></p>
       <p><span class="math inline">\(u_i=u(x_i)\)</span> と書き直すと</p>
       <p><span class="math display">\[
@@ -857,17 +857,17 @@
       m\dd{u_B(ia)}{t} = -\pd{\phi}{u_B(ia)} = - G \{u_B(ia)-u_A(ia+a)\} + K \{u_A(ia) - u_B(ia)\}
       \]</span></p>
       <p><span class="math display">\[
-      u*A(x,t)=u*{A0}\exp\{i(kx-\omega t)\}
+      u_A(x,t)=u_{A0}\exp\{i(kx-\omega t)\}
       \]</span></p>
       <p><span class="math display">\[
-      u*B(x,t)=u*{B0}\exp\{i(kx-\omega t)\}
+      u_B(x,t)=u_{B0}\exp\{i(kx-\omega t)\}
       \]</span></p>
       <p>を代入すると</p>
       <p><span class="math display">\[
-      \{m\omega^2 - (K+G)\}u*{A0} + (K+Ge^{-ika})u*{B0} = 0
+      \{m\omega^2 - (K+G)\}u_{A0} + (K+Ge^{-ika})u_{B0} = 0
       \]</span></p>
       <p><span class="math display">\[
-      (K+Ge^{ika})u*{A0} + \{m\omega^2 - (K+G)\}u*{B0} = 0
+      (K+Ge^{ika})u_{A0} + \{m\omega^2 - (K+G)\}u_{B0} = 0
       \]</span></p>
       <p><span class="math inline">\(u_{A0},u_{B0}\)</span> を消去すると</p>
       <p><span class="math display">\[
@@ -943,7 +943,7 @@
       <h3 id="格子比熱">格子比熱</h3>
       <p>比熱とは、加えた熱量（エネルギー）に対する温度上昇の比のことで、</p>
       <p>$$</p>
-      <p>C*V={V}={V}{({k_BT}-1} $$</p>
+      <p>C_V={V}={V}_{k,s}{({k_BT}-1} $$</p>
       <p>分散関係がわかれば計算できる。</p>
       <h4 id="低温の場合">低温の場合</h4>
       <p><span class="math inline">\(\hbar\omega\gg k_BT\)</span></p>
