@@ -176,7 +176,7 @@ $$
 金属の反射率 $R$ は、
 
 $$
-R = \l|\f{\sqrt{\eps*{r2}}-\sqrt{\eps*{r1}}}{\sqrt{\eps*{r2}}+\sqrt{\eps*{r1}}}\r|^2
+R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2
 $$
 
 ## 3. 金属中の電子状態
@@ -206,8 +206,8 @@ $$
 $$
 \begin{aligned}
 \braket{\psi}{\psi}
-&= \iiint*{-L/2}^{L/2} \psi^\*(\bm{r})\psi(\bm{r}) d\bm{r} \\
-&= \iiint*{-L/2}^{L/2} A^2 d\bm{r} \\
+&= \iiint_{-L/2}^{L/2} \psi^\_(\bm{r})\psi(\bm{r}) d\bm{r} \\
+&= \iiint_{-L/2}^{L/2} A^2 d\bm{r} \\
 &= A^2 L^3 \\
 &= 1
 \end{aligned}
@@ -234,7 +234,7 @@ $$
 位置は、
 
 $$
-\bra{\psi}x\ket{\psi} = \iiint*{-L/2}^{L/2} \psi^\*(\bm{r}) x \psi(\bm{r}) d\bm{r} = \int*{-L/2}^{L/2} x dx = 0
+\bra{\psi}x\ket{\psi} = \iiint_{-L/2}^{L/2} \psi^\_(\bm{r}) x \psi(\bm{r}) d\bm{r} = \int_{-L/2}^{L/2} x dx = 0
 $$
 
 運動量は、
@@ -395,7 +395,7 @@ $$
 バネ $i$ のポテンシャルエネルギー
 
 $$
-\phi*i=\frac{1}{2}k(u*{i+1}-u_i)^2+\phi(a)
+\phi_i=\frac{1}{2}k(u_{i+1}-u_i)^2+\phi(a)
 $$
 
 全体のポテンシャルは
@@ -407,7 +407,7 @@ $$
 粒子 $i$ に働く力は
 
 $$
-f*i = -\pd{\phi}{u_i} = k(u*{i+1}-2u*i+u*{i-1})
+f_i = -\pd{\phi}{u_i} = k(u_{i+1}-2u_i+u_{i-1})
 $$
 
 $u_i=u(x_i)$ と書き直すと
@@ -507,21 +507,21 @@ m\dd{u_B(ia)}{t} = -\pd{\phi}{u_B(ia)} = - G \{u_B(ia)-u_A(ia+a)\} + K \{u_A(ia)
 $$
 
 $$
-u*A(x,t)=u*{A0}\exp\{i(kx-\omega t)\}
+u_A(x,t)=u_{A0}\exp\{i(kx-\omega t)\}
 $$
 
 $$
-u*B(x,t)=u*{B0}\exp\{i(kx-\omega t)\}
+u_B(x,t)=u_{B0}\exp\{i(kx-\omega t)\}
 $$
 
 を代入すると
 
 $$
-\{m\omega^2 - (K+G)\}u*{A0} + (K+Ge^{-ika})u*{B0} = 0
+\{m\omega^2 - (K+G)\}u_{A0} + (K+Ge^{-ika})u_{B0} = 0
 $$
 
 $$
-(K+Ge^{ika})u*{A0} + \{m\omega^2 - (K+G)\}u*{B0} = 0
+(K+Ge^{ika})u_{A0} + \{m\omega^2 - (K+G)\}u_{B0} = 0
 $$
 
 $u_{A0},u_{B0}$ を消去すると
@@ -623,7 +623,7 @@ $$
 
 $$
 
-C*V=\f{1}{V}\pd{E}{T}=\f{1}{V}\sum*{k,s}\pd{}{T}\f{\hbar\omega(k,s)}{\exp\l(\f{\hbar\omega(k,s)}{k_BT}\r)-1}
+C_V=\f{1}{V}\pd{E}{T}=\f{1}{V}\sum_{k,s}\pd{}{T}\f{\hbar\omega(k,s)}{\exp\l(\f{\hbar\omega(k,s)}{k_BT}\r)-1}
 $$
 
 分散関係がわかれば計算できる。
