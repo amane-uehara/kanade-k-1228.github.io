@@ -26,7 +26,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>微分方程式 | Kanade's Website</title>
+                <title>制御工学の背景にある数学 | Kanade's Website</title>
     
     <!-- OGP -->
         <!-- END OGP -->
@@ -356,7 +356,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "微分方程式",
+            "制御工学の背景にある数学",
           "_blank"
         );
       }
@@ -422,7 +422,7 @@
           </a>
         </div> <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">微分方程式</h1>
+                <h1 style="margin: 0">制御工学の背景にある数学</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -465,6 +465,9 @@
  
       <!-- Table of Contents -->
             <nav><ul>
+<li><a href="#離散から連続行列から演算子">離散から連続、行列から演算子</a><ul>
+<li><a href="#バネマス系">バネ・マス系</a></li>
+</ul></li>
 <li><a href="#線形微分方程式">線形微分方程式</a><ul>
 <li><a href="#解の任意性">解の任意性</a></li>
 <li><a href="#同次線形微分方程式">同次線形微分方程式</a></li>
@@ -493,14 +496,15 @@
 <li><a href="#ポアソン方程式-1">ポアソン方程式</a></li>
 </ul></nav>
       
-      <p>制御工学の裏にある数学</p>
+      <h2 id="離散から連続行列から演算子">離散から連続、行列から演算子</h2>
+      <h3 id="バネマス系">バネ・マス系</h3>
       <h2 id="線形微分方程式">線形微分方程式</h2>
       <p>線形微分演算子 <span class="math inline">\(L\)</span> について、微分方程式</p>
       <p><span class="math display">\[
       L[y(x)]=f(x)
       \]</span></p>
       <p>を線形微分方程式という。特に<span class="math inline">\(f(x)=0\)</span>のとき、同次微分方程式という。</p>
-      <p>逆演算子 <span class="math inline">\(L^{-1}\)</span> が求まれば、<span class="math inline">\(y=L^{-1}[f(x)]\)</span>だが、一般に逆演算子を求めるのは難しい。</p>
+      <p>逆演算子 <span class="math inline">\(L^{-1}\)</span> が求まれば、<span class="math inline">\(y(x)=L^{-1}[f(x)]\)</span>だが、一般に逆演算子を求めるのは難しい。</p>
       <h4 id="演算子">演算子</h4>
       <p><span class="math inline">\(L\)</span>は関数を引数に取り関数を返す関数（演算子）。フーリエ変換・ラプラス変換と同じタイプ。</p>
       <p>線形演算子は、線形性</p>
@@ -530,7 +534,7 @@
       &amp;= -\inner{f}{\d{}{x}g}
       \end{aligned}
       \]</span></p>
-      <p><span class="math inline">\(f(x),g(x)\)</span> は <span class="math inline">\(\pm\infty\)</span> で <span class="math inline">\(0\)</span> になるものだけを扱う。</p>
+      <p>ただし、 <span class="math inline">\(f(x),g(x)\)</span> は <span class="math inline">\(\pm\infty\)</span> で <span class="math inline">\(0\)</span> になるものだけを扱う。</p>
       <h3 id="解の任意性">解の任意性</h3>
       <p>非同次方程式<span class="math inline">\(L[y(x)]=f(x)\)</span>の解に、同次方程式<span class="math inline">\(L[y_0(x)]=0\)</span>の解を加えても、線形性から、</p>
       <p><span class="math display">\[
