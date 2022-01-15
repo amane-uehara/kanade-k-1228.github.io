@@ -18,6 +18,10 @@ title: 研究室へようこそ
 
 [物性物理](./Physics/CondensedMatter/)
 
+## 制御工学
+
+[バネ・マス系](./Control/SpringMassSystem/)
+
 ## 機械工学
 
 [生産技術](./Mech/Manufacturing/)
