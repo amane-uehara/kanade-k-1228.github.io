@@ -465,14 +465,14 @@
  
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#結晶">1. 結晶</a></li>
+<li><a href="#格子">1. 格子</a></li>
 <li><a href="#drude-モデル">2. Drude モデル</a><ul>
 <li><a href="#直流電場応答">2.1. 直流電場応答</a></li>
 <li><a href="#交流電場応答">2.2. 交流電場応答</a></li>
 </ul></li>
 <li><a href="#金属中の電子構造">3. 金属中の電子構造</a><ul>
 <li><a href="#シュレディンガー方程式">3.1. シュレディンガー方程式</a></li>
-<li><a href="#k-空間-逆格子空間">3.2. k 空間 逆格子空間</a></li>
+<li><a href="#逆格子空間">3.2. 逆格子空間</a></li>
 <li><a href="#状態密度">3.3. 状態密度</a></li>
 <li><a href="#フェルミ準位">3.4. フェルミ準位</a></li>
 <li><a href="#金属の電子比熱">3.5. 金属の電子比熱</a></li>
@@ -481,7 +481,7 @@
 <li><a href="#半導体中の電子構造">4. 半導体中の電子構造</a><ul>
 <li><a href="#半導体のバンド構造">4.1. 半導体のバンド構造</a></li>
 <li><a href="#導体と半導体の違い">4.2. 導体と半導体の違い</a></li>
-<li><a href="#np">4.3. NP</a></li>
+<li><a href="#バンドギャップとドーピング">4.3. バンドギャップとドーピング</a></li>
 <li><a href="#温度特性">4.4. 温度特性</a></li>
 <li><a href="#光学特性">4.5. 光学特性</a></li>
 <li><a href="#pn-接合">4.6. PN 接合</a></li>
@@ -504,7 +504,7 @@
       
       <p>機械分子工学第二のノート</p>
       <p>いい PDF → <a href="http://maya.phys.kyushu-u.ac.jp/~knomura/education/Undergraduate/Busseibutsuri-II/Condensed-Matter-II.pdf">物性物理学</a></p>
-      <h2 id="結晶">1. 結晶</h2>
+      <h2 id="格子">1. 格子</h2>
       <ul>
       <li>格子：繰り返しの様子を規定するもの（周期構造）</li>
       <li>基本構造：繰り返されるもの</li>
@@ -659,7 +659,7 @@
       \]</span></p>
       <p>を、 <span class="math inline">\(V(\bm{r})=0\)</span> として解くと、</p>
       <p><span class="math display">\[
-      \psi\_{\bm{k}}(r)=A\exp(i\bm{k}\cdot \bm{r})
+      \psi_{\bm{k}}(r)=A\exp(i\bm{k}\cdot \bm{r})
       \]</span></p>
       <p>振幅 <span class="math inline">\(A\)</span> は、波動関数の規格化条件より、</p>
       <p><span class="math display">\[
@@ -678,87 +678,90 @@
       <p><span class="math display">\[
       k_x = \frac{2\pi}{L}n_x \quad n_x = 0, \pm 1, \pm 2 ,,,
       \]</span></p>
-      <p>☆ <span class="math inline">\(y,z\)</span> 成分も同様</p>
+      <p><span class="math inline">\(y,z\)</span> 成分も同様にして、</p>
+      <p><span class="math display">\[
+      \bm{k}=\f{2\pi}{L}\bm{n} \quad \bm{n}\in \Z^3
+      \]</span></p>
       <p>エネルギーは、</p>
       <p><span class="math display">\[
       E(\bm{k}) = \f{\hbar^2}{2m}|\bm{k}|^2
       \]</span></p>
       <p>位置は、</p>
       <p><span class="math display">\[
-      \bra{\psi}x\ket{\psi} = \iiint_{-L/2}^{L/2} \psi^\_(\bm{r}) x \psi(\bm{r}) d\bm{r} = \int_{-L/2}^{L/2} x dx = 0
+      \bra{\psi}x\ket{\psi} = \iiint_{-L/2}^{L/2} \psi^*(\bm{r}) x \psi(\bm{r}) d\bm{r} = \int_{-L/2}^{L/2} x dx = 0
       \]</span></p>
       <p>運動量は、</p>
       <p><span class="math display">\[
       \bra{\psi}\hat{p}\ket{\psi} = \hbar k_x
       \]</span></p>
       <p>☆ 位置が <span class="math inline">\(\bm{0}\)</span> で運動量 <span class="math inline">\(\bm{k}\)</span> の平面波</p>
-      <h3 id="k-空間-逆格子空間">3.2. k 空間 逆格子空間</h3>
+      <h3 id="逆格子空間">3.2. 逆格子空間</h3>
       <p><span class="math inline">\(k_x,k_y,k_z\)</span> 軸からなる 3 次元空間で、<span class="math inline">\(\f{2\pi}{L}\)</span> 間隔の格子を張ったとき、各格子点は電子状態に対応する。ただし、電子はスピンの自由度もあるので、格子点と電子状態は 1 対 2 に対応する。</p>
       <p>k 空間上で、エネルギーは、原点からの距離の二乗に比例する。</p>
       <p><span class="math display">\[
-      E(\bm{k})=\frac{\hbar^2}{2m}|\bm{k}|^2
+      E(\bm{k})=\frac{\hbar^2}{2m}|\bm{k}|^2 \tag{3.2.1}
       \]</span></p>
       <p>1 個の電子が平均的に占める体積は、単位格子の体積の半分（スピンの自由度）で、</p>
       <p><span class="math display">\[
-      \f{1}{2} \l(\f{2\pi}{L}\r)^3
+      \f{1}{2} \l(\f{2\pi}{L}\r)^3 \tag{3.2.2}
       \]</span></p>
       <h3 id="状態密度">3.3. 状態密度</h3>
-      <p>波数 <span class="math inline">\(k\)</span> 以下の電子の数 <span class="math inline">\(N(k)\)</span> は</p>
+      <p>波数 <span class="math inline">\(k\)</span> 以下の電子の数 <span class="math inline">\(N(k)\)</span> を、逆格子空間の体積を用いて推定すると、</p>
       <p><span class="math display">\[
-      N(k) = \f{\f{4}{3}\pi k^3}{\f{1}{2} \l(\f{2\pi}{L}\r)^3}
+      N(k) = \f{\f{4}{3}\pi k^3}{\f{1}{2} \l(\f{2\pi}{L}\r)^3}=\f{L^3}{3\pi^2}k^3 \tag{3.3.1}
       \]</span></p>
-      <p>エネルギー <span class="math inline">\(E\)</span> 以下の電子の数 <span class="math inline">\(N(E)\)</span> は</p>
+      <p>エネルギー <span class="math inline">\(E\)</span> 以下の電子の数 <span class="math inline">\(N(E)\)</span> は、</p>
       <p><span class="math display">\[
-      N(E) = \f{L^3}{3\pi^2}\l(\f{2mE}{\hbar^2}\r)^{\f{3}{2}}
+      N(E) = \f{L^3}{3\pi^2}\l(\f{2mE}{\hbar^2}\r)^{\f{3}{2}} \tag{3.3.2}
       \]</span></p>
-      <p>エネルギー <span class="math inline">\(E\)</span> にある電子の数密度を、状態密度 <span class="math inline">\(D(E)\)</span> とすると、</p>
+      <p>状態密度 <span class="math inline">\(D(E)\)</span>（エネルギー <span class="math inline">\(E\)</span> をインデックスとしたときの電子数密度）は、</p>
       <p><span class="math display">\[
-      D(E) = \d{}{E}\f{N(E)}{L^3} = \f{1}{2\pi^2}\l(\f{2m}{\hbar^2}\r)^{\f{3}{2}}E^{\f{1}{2}}
+      D(E) = \d{}{E}\f{N(E)}{L^3} = \f{1}{2\pi^2}\l(\f{2m}{\hbar^2}\r)^{\f{3}{2}}\sqrt{E} \tag{3.3.3}
       \]</span></p>
-      <p>☆ 状態密度はエネルギーの 1/2 乗に比例する</p>
+      <p>☆ 状態密度はエネルギーのルートのオーダー</p>
       <h3 id="フェルミ準位">3.4. フェルミ準位</h3>
-      <p>最外殻電子は、共有結合を作ったり、金属の自由電子となったり、その原子の特性に大きく影響する。ところで、最外殻電子は原子の中で最も高いエネルギー状態にある電子なので、k 空間上でも「最外殻」に位置している。</p>
+      <p>最外殻電子は、共有結合を作ったり、金属の自由電子となったり、その原子の特性に大きく影響する。最外殻電子は原子の中で最も高いエネルギー状態にある電子なので、k 空間上で「最外殻」に位置している。</p>
       <p>実格子空間で <span class="math inline">\(L^3\)</span> の単位格子中にある <span class="math inline">\(N\)</span> 個の電子が安定状態にある状況を考える。また <span class="math inline">\(N\)</span> は十分大きいとする。</p>
-      <p>原点の近くから順に球状に埋まっていくので、その球の半径を <span class="math inline">\(k_F\)</span> とすると、</p>
+      <p>エネルギーが低い状態、逆格子空間上で原点の近くから順に球状に埋まっていくので、その球の半径を <span class="math inline">\(k_F\)</span> とすると、</p>
       <p><span class="math display">\[
-      \f{4}{3}\pi k_F^3 = \f{1}{2} N \l(\f{2\pi}{L}\r)^3
+      \f{4}{3}\pi k_F^3 = \f{1}{2} N \l(\f{2\pi}{L}\r)^3 \tag{3.4.1}
       \]</span></p>
-      <p>電子密度 <span class="math inline">\(n\)</span> を用いて、</p>
+      <p>電子密度 <span class="math inline">\(n=\f{N}{L^3}\)</span> を用いて、</p>
       <p><span class="math display">\[
-      k_F = \sqrt[3]{3\pi^2\f{N}{L^3}} = \sqrt[3]{3\pi^2n}
+      k_F = \sqrt[3]{3\pi^2\f{N}{L^3}} = \sqrt[3]{3\pi^2n} \tag{3.4.2}
       \]</span></p>
       <p>これをフェルミ半径という。</p>
-      <p>フェルミエネルギー</p>
+      <p>フェルミエネルギー（フェルミ半径上のエネルギー）</p>
       <p><span class="math display">\[
-      E_F = E(\bm{k}\_F) = \f{\hbar^2}{2m}(3\pi^2n)^{\f{2}{3}}
+      E_F = E(\bm{k}_F) = \f{\hbar^2}{2m}(3\pi^2n)^{\f{2}{3}} \tag{3.4.3}
       \]</span></p>
       <p>フェルミ温度</p>
       <p><span class="math display">\[
-      T_F = \f{E_F}{k_B}
+      T_F = \f{E_F}{k_B} \tag{3.4.4}
       \]</span></p>
       <p>フェルミ速度</p>
       <p><span class="math display">\[
-      v_F = \sqrt{\f{2E_F}{m}}
+      v_F = \sqrt{\f{2E_F}{m}} \tag{3.4.5}
       \]</span></p>
       <p>また、この格子中に含まれる全電子のエネルギーの和は</p>
       <p><span class="math display">\[
-      E = 2 \sum\_{E&lt;E_P} \f{\hbar^2|\bm{k}|^2}{2m} \sim \f{V}{\pi^2}\f{\hbar^2 k_F^5}{10m}
+      E = 2 \sum_{E\leq E_F} \f{\hbar^2|\bm{k}|^2}{2m} \sim \f{V}{\pi^2}\f{\hbar^2 k_F^5}{10m} \tag{3.4.6}
       \]</span></p>
       <h3 id="金属の電子比熱">3.5. 金属の電子比熱</h3>
-      <p>温度 0 のとき、フェルミ準位を超えた電子はいないが、温度が上がると少しずつフェルミ準位を飛び出した電子がみられるようになる。（熱励起）</p>
-      <p>どの程度、フェルミ準位を超えて飛び出すかを表したのがフェルミ分布関数</p>
+      <p>温度 0 のとき、フェルミ準位まで電子が埋まっており、フェルミ準位以上の電子はいない。（ゆらぎによってわずかに飛び出す。）温度が上がると少しずつフェルミ準位を飛び出すようになる。（熱励起）</p>
+      <p>ある温度のとき、どの程度の電子が、フェルミ準位を超えて飛び出すかを表したのがフェルミ分布関数</p>
       <p><span class="math display">\[
-      f(E,T) = \f{1}{\exp\l(\f{E-\mu}{k_BT}\r)+1}
+      f(E,T) = \f{1}{\exp\l(\f{E-\mu}{k_BT}\r)+1} \tag{3.5.1}
       \]</span></p>
       <p><span class="math inline">\(\mu\)</span> は化学ポテンシャル <span class="math inline">\(\sim E_F\)</span></p>
-      <p>ある温度の電子の状態分布は、状態密度 × フェルミ分布関数 で求まる。</p>
+      <p>ある温度における電子の状態密度は、状態密度 × フェルミ分布関数 で求まる。</p>
       <p><span class="math display">\[
-      D(E,T) = D(E) \times f(E,T)
+      D(E,T) = D(E) \times f(E,T) \tag{3.5.2}
       \]</span></p>
       <p>温度が上がるとエネルギーがどの程度上昇するか？を代表した量が「電子比熱」である。「比熱」は、温度を上げるために必要な熱量のことだが、これを広く、温度とエネルギーの上昇の割合の比 <span class="math inline">\(\f{dE}{dT}\)</span> と考えよう。</p>
       <p>フェルミエネルギーから飛び出した電子に注目して、</p>
       <p><span class="math display">\[
-      \Delta U = U(T) - U(0) \sim (k_B T)\l(n\f{T}{T_F}\r)
+      \Delta E = E(T) - E(0) \sim (k_B T)\l(n\f{T}{T_F}\r)
       \]</span></p>
       <p><span class="math display">\[
       C_e = \f{dU}{dT} \sim 2nk_B\f{T}{T_F}
@@ -768,11 +771,11 @@
       <p><span class="math display">\[
       K_e = \f{1}{3} C_e v_e l_e = \f{\pi^2}{3}nk_B^2T\tau_e
       \]</span></p>
+      <p>フェルミ準位における</p>
       <ul>
-      <li><span class="math inline">\(v_e\)</span> 速度</li>
-      <li><span class="math inline">\(l_e\)</span> 平均自由行程</li>
-      <li><span class="math inline">\(\tau_e\)</span> 緩和時間</li>
-      <li>フェルミ状態のものを使う</li>
+      <li><span class="math inline">\(v_F\)</span> 速度</li>
+      <li><span class="math inline">\(l_F\)</span> 平均自由行程</li>
+      <li><span class="math inline">\(\tau_F\)</span> 緩和時間</li>
       </ul>
       <p>☆ 金属が熱をよく伝える理由</p>
       <h3 id="まとめ">まとめ</h3>
@@ -787,31 +790,32 @@
       <h3 id="半導体のバンド構造">4.1. 半導体のバンド構造</h3>
       <p>格子点 <span class="math inline">\(\bm{R}_n\)</span> にある原子の作るポテンシャル <span class="math inline">\(v(\bm{r}-\bm{R}_n)\)</span> の合計が、全体のポテンシャル</p>
       <p><span class="math display">\[
-      V(\bm{r})=\sum_n v(\bm{r}-\bm{R}_n)
+      V(\bm{r})=\sum_n v(\bm{r}-\bm{R}_n) \tag{4.1.1}
       \]</span></p>
       <p>周期的なポテンシャルに対する、シュレディンガー方程式</p>
       <p><span class="math display">\[
-      \l[-\f{\hbar^2}{2m}\nabla^2+V(\bm{r})\r]\phi(\bm{r})=E\phi(\bm{r})
+      \l[-\f{\hbar^2}{2m}\nabla^2+V(\bm{r})\r]\phi(\bm{r})=E\phi(\bm{r}) \tag{4.1.2}
       \]</span></p>
       <p>の解は、周期的なブロホ関数</p>
       <p><span class="math display">\[
-      \phi(\bm{r})=u_\bm{R}(\bm{r})\exp(i\bm{R}\cdot\bm{r})
+      \phi(\bm{r})=u_{\bm{R}}(\bm{r})\exp(i\bm{R}\cdot\bm{r}) \tag{4.1.3}
       \]</span></p>
       <p>となる。ただし、<span class="math inline">\(u\)</span> には周期性がある。</p>
       <p><span class="math display">\[
-      u_\bm{R}(\bm{r})=u_\bm{R}(\bm{r}+\bm{R})
+      u_{\bm{R}}(\bm{r})=u_{\bm{R}}(\bm{r}+\bm{R}) \tag{4.1.4}
       \]</span></p>
       <p><span class="math inline">\(u\)</span> は一般の <span class="math inline">\(V\)</span> に対して簡単には解けない。</p>
       <h3 id="導体と半導体の違い">4.2. 導体と半導体の違い</h3>
       <p>電流</p>
       <p><span class="math display">\[
-      \bm{J}=-e\sum_\bm{k} v(\bm{k})
+      \bm{J}=-e\sum_{\bm{k}} v(\bm{k}) \tag{4.2.1}
       \]</span></p>
       <p>電場が存在すると、</p>
       <p><span class="math display">\[
-      \d{P}{t}=\hbar\d{k}{t}=-eE
+      \d{P}{t}=\hbar\d{k}{t}=-eE \tag{4.2.2}
       \]</span></p>
-      <h3 id="np">4.3. NP</h3>
+      <p><img src="./img/Fig_4_2_1.dio.svg" /></p>
+      <h3 id="バンドギャップとドーピング">4.3. バンドギャップとドーピング</h3>
       <h3 id="温度特性">4.4. 温度特性</h3>
       <h3 id="光学特性">4.5. 光学特性</h3>
       <h4 id="直接遷移">直接遷移</h4>
