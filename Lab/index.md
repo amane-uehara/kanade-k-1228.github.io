@@ -20,6 +20,8 @@ title: 研究室へようこそ
 
 ## 制御工学
 
+[グリーン関数](./Control/GreenFunction/)
+
 [バネ・マス系](./Control/SpringMassSystem/)
 
 ## 機械工学

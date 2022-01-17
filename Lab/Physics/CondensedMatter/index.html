@@ -470,7 +470,7 @@
 <li><a href="#直流電場応答">2.1. 直流電場応答</a></li>
 <li><a href="#交流電場応答">2.2. 交流電場応答</a></li>
 </ul></li>
-<li><a href="#金属中の電子状態">3. 金属中の電子状態</a><ul>
+<li><a href="#金属中の電子構造">3. 金属中の電子構造</a><ul>
 <li><a href="#シュレディンガー方程式">3.1. シュレディンガー方程式</a></li>
 <li><a href="#k-空間-逆格子空間">3.2. k 空間 逆格子空間</a></li>
 <li><a href="#状態密度">3.3. 状態密度</a></li>
@@ -478,8 +478,16 @@
 <li><a href="#金属の電子比熱">3.5. 金属の電子比熱</a></li>
 <li><a href="#まとめ">まとめ</a></li>
 </ul></li>
-<li><a href="#半導体">4. 半導体</a><ul>
+<li><a href="#半導体中の電子構造">4. 半導体中の電子構造</a><ul>
 <li><a href="#半導体のバンド構造">4.1. 半導体のバンド構造</a></li>
+<li><a href="#導体と半導体の違い">4.2. 導体と半導体の違い</a></li>
+<li><a href="#np">4.3. NP</a></li>
+<li><a href="#温度特性">4.4. 温度特性</a></li>
+<li><a href="#光学特性">4.5. 光学特性</a></li>
+<li><a href="#pn-接合">4.6. PN 接合</a></li>
+<li><a href="#バイポーラトランジスタ">4.7. バイポーラトランジスタ</a></li>
+</ul></li>
+<li><a href="#フォノン">5. フォノン</a><ul>
 <li><a href="#一次元調和振動子モデル">一次元調和振動子モデル</a></li>
 <li><a href="#位相速度">位相速度</a></li>
 <li><a href="#群速度">群速度</a></li>
@@ -487,7 +495,7 @@
 <li><a href="#例題二原子分子の一次元調和振動子モデル">例題：二原子分子の一次元調和振動子モデル</a></li>
 </ul></li>
 <li><a href="#熱物性">熱物性</a><ul>
-<li><a href="#フォノン">フォノン</a></li>
+<li><a href="#フォノン-1">フォノン</a></li>
 <li><a href="#エネルギー">エネルギー</a></li>
 <li><a href="#格子比熱">格子比熱</a></li>
 <li><a href="#フォノン気体">フォノン気体</a></li>
@@ -641,7 +649,7 @@
       <p><span class="math display">\[
       R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2
       \]</span></p>
-      <h2 id="金属中の電子状態">3. 金属中の電子状態</h2>
+      <h2 id="金属中の電子構造">3. 金属中の電子構造</h2>
       <p>無限に広がった結晶（バルク結晶）の電子状態を考える。周期境界条件を課したシュレディンガー方程式で波動関数を求める。（ゾンマーフェルトモデル）</p>
       <h3 id="シュレディンガー方程式">3.1. シュレディンガー方程式</h3>
       <p>シュレディンガー方程式</p>
@@ -777,8 +785,53 @@
       <li>電子状態に実際に電子を配置して、フェルミ半径を求めた。</li>
       <li>フェルミ分布関数を使って実際の金属電子の状態を求めた。</li>
       </ol>
-      <h2 id="半導体">4. 半導体</h2>
+      <h2 id="半導体中の電子構造">4. 半導体中の電子構造</h2>
       <h3 id="半導体のバンド構造">4.1. 半導体のバンド構造</h3>
+      <p>格子点 <span class="math inline">\(\bm{R}_n\)</span> にある原子の作るポテンシャル <span class="math inline">\(v(\bm{r}-\bm{R}_n)\)</span> の合計が、全体のポテンシャル</p>
+      <p><span class="math display">\[
+      V(\bm{r})=\sum_n v(\bm{r}-\bm{R}_n)
+      \]</span></p>
+      <p>周期的なポテンシャルに対する、シュレディンガー方程式</p>
+      <p><span class="math display">\[
+      \l[-\f{\hbar^2}{2m}\nabla^2+V(\bm{r})\r]\phi(\bm{r})=E\phi(\bm{r})
+      \]</span></p>
+      <p>の解は、周期的なブロホ関数</p>
+      <p><span class="math display">\[
+      \phi(\bm{r})=u_\bm{R}(\bm{r})\exp(i\bm{R}\cdot\bm{r})
+      \]</span></p>
+      <p>となる。ただし、<span class="math inline">\(u\)</span> には周期性がある。</p>
+      <p><span class="math display">\[
+      u_\bm{R}(\bm{r})=u_\bm{R}(\bm{r}+\bm{R})
+      \]</span></p>
+      <p><span class="math inline">\(u\)</span> は一般の <span class="math inline">\(V\)</span> に対して簡単には解けない。</p>
+      <h3 id="導体と半導体の違い">4.2. 導体と半導体の違い</h3>
+      <p>電流</p>
+      <p><span class="math display">\[
+      \bm{J}=-e\sum_\bm{k} v(\bm{k})
+      \]</span></p>
+      <p>電場が存在すると、</p>
+      <p><span class="math display">\[
+      \d{P}{t}=\hbar\d{k}{t}=-eE
+      \]</span></p>
+      <h3 id="np">4.3. NP</h3>
+      <h3 id="温度特性">4.4. 温度特性</h3>
+      <h3 id="光学特性">4.5. 光学特性</h3>
+      <h4 id="直接遷移">直接遷移</h4>
+      <p>運動量保存</p>
+      <p><span class="math display">\[
+      \hbar k + \hbar k_P = \hbar k&#39;
+      \]</span></p>
+      <p>光子の運動量は小さいので、バンド図上で真上に移動する。（<span class="math inline">\(k=k&#39;\)</span>）</p>
+      <p>エネルギー保存</p>
+      <p><span class="math display">\[
+      E(k) + \hbar \omega_P = E&#39;(k&#39;)
+      \]</span></p>
+      <p>この式を満たす遷移が可能なとき、遷移が起きる。</p>
+      <h4 id="間接遷移">間接遷移</h4>
+      <p>格子振動が関わる場合</p>
+      <h3 id="pn-接合">4.6. PN 接合</h3>
+      <h3 id="バイポーラトランジスタ">4.7. バイポーラトランジスタ</h3>
+      <h2 id="フォノン">5. フォノン</h2>
       <h3 id="一次元調和振動子モデル">一次元調和振動子モデル</h3>
       <p>原子間のポテンシャルは、Lennard-Jones ポテンシャルは</p>
       <p>安定点まわりで近似すると、二次曲線になるが、二次曲線のポテンシャルとはバネのポテンシャルと同じである。</p>
@@ -906,7 +959,7 @@
       \]</span></p>
       <p><span class="math inline">\(K=100\rm{eV/nm^2}=10\rm{N/m}\)</span>、<span class="math inline">\(M=10\rm{g/mol}=10^{-25}\rm{kg}\)</span>、<span class="math inline">\(a=1 \dot{A}=10^{-10}\rm{m}\)</span> を代入してオーダーを推定すると、<span class="math inline">\(v_g=1000\rm{m/s}\)</span></p>
       <h2 id="熱物性">熱物性</h2>
-      <h3 id="フォノン">フォノン</h3>
+      <h3 id="フォノン-1">フォノン</h3>
       <ul>
       <li>格子振動を量子化したもの</li>
       <li>フォノンの状態は、周波数・波数・量子数</li>
