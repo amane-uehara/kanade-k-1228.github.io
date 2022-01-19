@@ -1,5 +1,5 @@
 ---
-title: フーリエ変換
+title: フーリエ変換チートシート
 ---
 
 ## フーリエ級数展開
@@ -39,3 +39,27 @@ title: フーリエ変換
 > $$
 > \F^{-1} [f(k)] = \f{1}{\sqrt{2\pi}} \intinf \exp(ikx) dk
 > $$
+
+### 微分演算子
+
+$$
+\begin{CD}
+f     @>D>>  Df \\
+@V\F VV            @VV \F V \\
+\F f @>(ik)>>  \F D f = (ik)\F f
+\end{CD}
+$$
+
+### 畳み込み
+
+$$
+f*g=\intinf f(\tau)g(t-\tau) d\tau
+$$
+
+$$
+\begin{CD}
+f\otimes g     @>*>>  f*g \\
+@V\F VV            @VV \F V \\
+\F[f]\otimes \F[g] @>\times>>  \F[f*g] = \F[f]\F[g]
+\end{CD}
+$$
