@@ -4,7 +4,9 @@ title: 研究室へようこそ
 
 ## 数学
 
-[微分方程式](./Mathmatics/DifferentialEquation/)
+[グリーン関数](./Mathmatics/GreenFunction/)
+
+[フーリエ変換](./Mathmatics/FourierTransform/)
 
 ## 物理学
 
@@ -19,8 +21,6 @@ title: 研究室へようこそ
 [物性物理](./Physics/CondensedMatter/)
 
 ## 制御工学
-
-[グリーン関数](./Control/GreenFunction/)
 
 [バネ・マス系](./Control/SpringMassSystem/)
 
