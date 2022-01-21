@@ -612,42 +612,45 @@
       \sigma = 1/\rho = \f{ne^2\tau}{m} \tag{2.1.7}
       \]</span></p>
       <h3 id="交流電場応答">2.2. 交流電場応答</h3>
-      <p>運動方程式は</p>
+      <p>運動方程式は、<span class="math inline">\((2.1.1)\)</span> と同じで、</p>
       <p><span class="math display">\[
       m\dd{v}{t} + \f{m}{\tau}\d{v}{t} = -eE(t) \tag{2.2.1}
       \]</span></p>
-      <p>周波数 <span class="math inline">\(\omega\)</span> の交流電場 <span class="math inline">\(E(t)=E_0\exp(-i\omega t)\)</span> 速度 <span class="math inline">\(v(t)=v_0\exp(-i\omega t)\)</span> を代入すると、</p>
+      <p>周波数 <span class="math inline">\(\omega\)</span> の交流電場 <span class="math inline">\(E(t)=E_0\exp(-i\omega t)\)</span> 変位 <span class="math inline">\(u(t)=u_0\exp(-i\omega t)\)</span> を代入すると、</p>
       <p><span class="math display">\[
       \l(-m\omega^2-i\f{m\omega}{\tau}\r)u_0\exp(-i\omega t) = -eE_0\exp(-i\omega t) \tag{2.2.2}
       \]</span></p>
+      <p>変位の振幅は、</p>
       <p><span class="math display">\[
-      u_0=\f{eE_0}{m\omega (\omega + i/\tau)} \tag{2.2.3}
+      u_0(\omega)=\f{eE_0}{m\omega (\omega + i/\tau)} \tag{2.2.3}
       \]</span></p>
       <p>☆ 電流の振幅は周波数の関数になっている</p>
-      <p>電束密度</p>
+      <p>ところで、電束密度は</p>
       <p><span class="math display">\[
-      D=\eps E = \eps_0 \eps_r E= \eps_0 E + P \tag{2.2.4}
+      D = \eps E = \eps_0 \eps_r E= \eps_0 E + P \tag{2.2.4}
       \]</span></p>
-      <p>分極率 <span class="math inline">\(P=-neu\)</span></p>
+      <p>また、分極率 <span class="math inline">\(P=-neu\)</span> は、</p>
       <p><span class="math display">\[
       P = -\f{ne^2}{m}\f{1}{\omega(\omega + i/\tau)}E \tag{2.2.5}
       \]</span></p>
-      <p>プラズマ周波数</p>
+      <p>よって、比誘電率は、</p>
       <p><span class="math display">\[
-      \omega_P = \sqrt{\f{ne^2}{m\eps_0}} \tag{2.2.6}
+      \eps_r = 1-\f{\omega_P^2}{\omega(\omega + i/\tau)} \tag{2.2.6}
       \]</span></p>
-      <p>以上より、</p>
+      <p>ただし、<span class="math inline">\(\omega_P\)</span> はプラズマ周波数</p>
       <p><span class="math display">\[
-      \eps_r = 1-\f{\omega_P^2}{\omega(\omega + i/\tau)} \tag{2.2.7}
+      \omega_P = \sqrt{\f{ne^2}{m\eps_0}} \tag{2.2.7}
       \]</span></p>
       <p>誘電率を実部と虚部に分解して、</p>
       <p><span class="math display">\[
-      \eps_r = \eps&#39;\_r + i \eps&#39;&#39;\_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r)
+      \eps_r = \eps&#39;\_r + i \eps&#39;&#39;\_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r) \tag{2.2.8}
       \]</span></p>
-      <p>金属の反射率 <span class="math inline">\(R\)</span> は、</p>
+      <p>金属の反射率 <span class="math inline">\(R\)</span> は、空気の比誘電率 <span class="math inline">\(\eps_{r1}\)</span> と、金属の比誘電率 <span class="math inline">\(\eps_{r2}\)</span> を用いて、</p>
       <p><span class="math display">\[
-      R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2
+      R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2 \tag{2.2.9}
       \]</span></p>
+      <p>ドルーテモデルを使うと、周波数ごとの反射率の違いとして、金属の色を説明できる。</p>
+      <p>良さげな PDF → <a href="http://home.sato-gallery.com/research/reflection_mechanism_proof.pdf">光の反射メカニズム</a></p>
       <h2 id="金属中の電子構造">3. 金属中の電子構造</h2>
       <p>無限に広がった結晶（バルク結晶）の電子状態を考える。周期境界条件を課したシュレディンガー方程式で波動関数を求める。（ゾンマーフェルトモデル）</p>
       <h3 id="シュレディンガー方程式">3.1. シュレディンガー方程式</h3>
