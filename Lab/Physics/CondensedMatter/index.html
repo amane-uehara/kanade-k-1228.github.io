@@ -460,6 +460,7 @@
 
           \newcommand{\R}{\mathcal{R}}
           \newcommand{\C}{\mathcal{C}}
+          \newcommand{\Z}{\mathcal{Z}}
           \newcommand{\bm}[1]{\boldsymbol{#1}}
         \]
       </p>
@@ -629,7 +630,7 @@
       <p><span class="math display">\[
       D = \eps E = \eps_0 \eps_r E= \eps_0 E + P \tag{2.2.4}
       \]</span></p>
-      <p>また、分極率 <span class="math inline">\(P=-neu\)</span> は、</p>
+      <p>また、分極率（単位体積あたりの、電荷の偏り） <span class="math inline">\(P=-neu\)</span> は、</p>
       <p><span class="math display">\[
       P = -\f{ne^2}{m}\f{1}{\omega(\omega + i/\tau)}E \tag{2.2.5}
       \]</span></p>
@@ -643,13 +644,14 @@
       \]</span></p>
       <p>誘電率を実部と虚部に分解して、</p>
       <p><span class="math display">\[
-      \eps_r = \eps&#39;\_r + i \eps&#39;&#39;\_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r) \tag{2.2.8}
+      \eps_r = \eps&#39;_r + i \eps&#39;&#39;_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r) \tag{2.2.8}
       \]</span></p>
       <p>金属の反射率 <span class="math inline">\(R\)</span> は、空気の比誘電率 <span class="math inline">\(\eps_{r1}\)</span> と、金属の比誘電率 <span class="math inline">\(\eps_{r2}\)</span> を用いて、</p>
       <p><span class="math display">\[
       R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2 \tag{2.2.9}
       \]</span></p>
       <p>ドルーテモデルを使うと、周波数ごとの反射率の違いとして、金属の色を説明できる。</p>
+      <p>プラズマ周波数以上の光は反射率 1 になる。</p>
       <p>良さげな PDF → <a href="http://home.sato-gallery.com/research/reflection_mechanism_proof.pdf">光の反射メカニズム</a></p>
       <h2 id="金属中の電子構造">3. 金属中の電子構造</h2>
       <p>無限に広がった結晶（バルク結晶）の電子状態を考える。周期境界条件を課したシュレディンガー方程式で波動関数を求める。（ゾンマーフェルトモデル）</p>

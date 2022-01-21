@@ -151,7 +151,7 @@ $$
 D = \eps E = \eps_0 \eps_r E= \eps_0 E + P \tag{2.2.4}
 $$
 
-また、分極率 $P=-neu$ は、
+また、分極率（単位体積あたりの、電荷の偏り） $P=-neu$ は、
 
 $$
 P = -\f{ne^2}{m}\f{1}{\omega(\omega + i/\tau)}E \tag{2.2.5}
@@ -172,7 +172,7 @@ $$
 誘電率を実部と虚部に分解して、
 
 $$
-\eps_r = \eps'\_r + i \eps''\_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r) \tag{2.2.8}
+\eps_r = \eps'_r + i \eps''_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r) \tag{2.2.8}
 $$
 
 金属の反射率 $R$ は、空気の比誘電率 $\eps_{r1}$ と、金属の比誘電率 $\eps_{r2}$ を用いて、
@@ -182,6 +182,8 @@ R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\
 $$
 
 ドルーテモデルを使うと、周波数ごとの反射率の違いとして、金属の色を説明できる。
+
+プラズマ周波数以上の光は反射率 1 になる。
 
 良さげな PDF → [光の反射メカニズム](http://home.sato-gallery.com/research/reflection_mechanism_proof.pdf)
 
