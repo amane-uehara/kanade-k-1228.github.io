@@ -125,59 +125,65 @@ $$
 
 ### 2.2. 交流電場応答
 
-運動方程式は
+運動方程式は、$(2.1.1)$ と同じで、
 
 $$
 m\dd{v}{t} + \f{m}{\tau}\d{v}{t} = -eE(t) \tag{2.2.1}
 $$
 
-周波数 $\omega$ の交流電場 $E(t)=E_0\exp(-i\omega t)$ 速度 $v(t)=v_0\exp(-i\omega t)$ を代入すると、
+周波数 $\omega$ の交流電場 $E(t)=E_0\exp(-i\omega t)$ 変位 $u(t)=u_0\exp(-i\omega t)$ を代入すると、
 
 $$
 \l(-m\omega^2-i\f{m\omega}{\tau}\r)u_0\exp(-i\omega t) = -eE_0\exp(-i\omega t) \tag{2.2.2}
 $$
 
+変位の振幅は、
+
 $$
-u_0=\f{eE_0}{m\omega (\omega + i/\tau)} \tag{2.2.3}
+u_0(\omega)=\f{eE_0}{m\omega (\omega + i/\tau)} \tag{2.2.3}
 $$
 
 ☆ 電流の振幅は周波数の関数になっている
 
-電束密度
+ところで、電束密度は
 
 $$
-D=\eps E = \eps_0 \eps_r E= \eps_0 E + P \tag{2.2.4}
+D = \eps E = \eps_0 \eps_r E= \eps_0 E + P \tag{2.2.4}
 $$
 
-分極率 $P=-neu$
+また、分極率 $P=-neu$ は、
 
 $$
 P = -\f{ne^2}{m}\f{1}{\omega(\omega + i/\tau)}E \tag{2.2.5}
 $$
 
-プラズマ周波数
+よって、比誘電率は、
 
 $$
-\omega_P = \sqrt{\f{ne^2}{m\eps_0}} \tag{2.2.6}
+\eps_r = 1-\f{\omega_P^2}{\omega(\omega + i/\tau)} \tag{2.2.6}
 $$
 
-以上より、
+ただし、$\omega_P$ はプラズマ周波数
 
 $$
-\eps_r = 1-\f{\omega_P^2}{\omega(\omega + i/\tau)} \tag{2.2.7}
+\omega_P = \sqrt{\f{ne^2}{m\eps_0}} \tag{2.2.7}
 $$
 
 誘電率を実部と虚部に分解して、
 
 $$
-\eps_r = \eps'\_r + i \eps''\_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r)
+\eps_r = \eps'\_r + i \eps''\_r = \l(1-\f{\omega_P^2}{\omega^2+1/\tau^2}\r) + i\l(\f{\omega_P^2}{\omega\tau(\omega_P^2+1/\tau^2)}\r) \tag{2.2.8}
 $$
 
-金属の反射率 $R$ は、
+金属の反射率 $R$ は、空気の比誘電率 $\eps_{r1}$ と、金属の比誘電率 $\eps_{r2}$ を用いて、
 
 $$
-R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2
+R = \l|\f{\sqrt{\eps_{r2}}-\sqrt{\eps_{r1}}}{\sqrt{\eps_{r2}}+\sqrt{\eps_{r1}}}\r|^2 \tag{2.2.9}
 $$
+
+ドルーテモデルを使うと、周波数ごとの反射率の違いとして、金属の色を説明できる。
+
+良さげな PDF → [光の反射メカニズム](http://home.sato-gallery.com/research/reflection_mechanism_proof.pdf)
 
 ## 3. 金属中の電子構造
 
