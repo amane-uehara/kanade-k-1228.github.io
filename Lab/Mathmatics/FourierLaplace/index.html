@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang="ja"
+  xml:lang="ja"
+  prefix="og: http://ogp.me/ns#"
+>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -26,11 +31,11 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>フーリエ変換・ラプラス変換 | Kanade's Website</title>
-    
+          <title>フーリエ変換・ラプラス変換 | Kanade's Website</title>
+
     <!-- OGP -->
         <!-- END OGP -->
-    
+
     <style>
       body {
         margin: 0;
@@ -350,6 +355,14 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <style>
+      mjx-container[jax="CHTML"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+
     <script>
       function tweet() {
         window.open(
@@ -420,7 +433,8 @@
               />
             </svg>
           </a>
-        </div> <!-- End Top Nav -->
+        </div>
+        <!-- End Top Nav -->
         <!-- Title -->
                 <h1 style="margin: 0">フーリエ変換・ラプラス変換</h1>
                 <!-- Date -->
@@ -428,43 +442,30 @@
               </header>
 
       <!-- TeX Macros -->
-      <p style="display: none;"> 
-        \[
-          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
-          \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-          \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-          \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
-          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
-          \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-          \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
-          \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
-          \newcommand{\p}{\partial}
-          \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-          \newcommand{\Re}{\mathrm{Re}}
-          \newcommand{\Im}{\mathrm{Im}}
-          \newcommand{\bra}[1]{\left\langle #1 \right|}
-          \newcommand{\ket}[1]{\left|#1 \right\rangle}
-          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-          \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
-          
-          \newcommand{\l}{\left}
-          \newcommand{\m}{\middle}
-          \newcommand{\r}{\right}
-          \newcommand{\f}[2]{\frac{#1}{#2}}
-          \newcommand{\eps}{\varepsilon}
-          \newcommand{\ra}{\rightarrow}
-          \newcommand{\F}{\mathcal{F}}
-          \newcommand{\L}{\mathcal{L}}
-          \newcommand{\t}{\quad}
-          \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
-
-          \newcommand{\R}{\mathcal{R}}
-          \newcommand{\C}{\mathcal{C}}
-          \newcommand{\Z}{\mathcal{Z}}
-          \newcommand{\bm}[1]{\boldsymbol{#1}}
-        \]
+      <p style="display: none">
+        \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+        \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+        \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+        \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+        \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+        \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+        \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+        \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+        \newcommand{\p}{\partial} \newcommand{\D}[2]{\frac{\mathrm{D}
+        #1}{\mathrm{D} #2}} \newcommand{\Re}{\mathrm{Re}}
+        \newcommand{\Im}{\mathrm{Im}} \newcommand{\bra}[1]{\left\langle #1
+        \right|} \newcommand{\ket}[1]{\left|#1 \right\rangle}
+        \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+        \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+        \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+        \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+        \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+        \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+        \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+        \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
       </p>
- 
+
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#フーリエ級数展開">フーリエ級数展開</a><ul>
@@ -482,119 +483,118 @@
 <li><a href="#二階線形微分方程式">二階線形微分方程式</a></li>
 </ul></li>
 </ul></nav>
-      
-      <p>正規直交系をなす関数集合 <span class="math inline">\(\{f_n\}\)</span></p>
-      <p><span class="math display">\[
-      \int f_i f_j dx = \delta_{ij}
-      \]</span></p>
-      <p>を基底として</p>
-      <p><span class="math display">\[
-      f = \sum_n c_n f_n
-      \]</span></p>
-      <p>と関数を表す．</p>
-      <h2 id="フーリエ級数展開">フーリエ級数展開</h2>
-      <h3 id="パーシバルの関係式">パーシバルの関係式</h3>
-      <h3 id="波動方程式の解法">波動方程式の解法</h3>
-      <h3 id="熱伝達方程式の解法">熱伝達方程式の解法</h3>
-      <h2 id="フーリエ変換">フーリエ変換</h2>
-      <h3 id="ガウス関数">ガウス関数</h3>
-      <p><span class="math display">\[
-      \begin{aligned}
-      \F[\exp(-\alpha t^2)]
-      &amp;= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp(-at^2) \exp(-i\omega t) dt \\
-      &amp;= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp\l\{-a\l(t+\f{i\omega}{2\alpha}\r)^2-\f{\omega^2}{4\alpha}\r\} dt \\
-      &amp;= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \int_{-\infty}^{\infty} \exp(-a\tau^2) d\tau \\
-      &amp;= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \sqrt{\f{\pi}{\alpha}} \\
-      &amp;= \f{1}{\sqrt{2\alpha}} \exp\l(-\f{\omega^2}{4\alpha}\r)
-      \end{aligned}
-      \]</span></p>
-      <p>途中でガウス積分の公式</p>
-      <p><span class="math display">\[
-      \int_{-\infty}^{\infty} \exp(-ax^2) dx = \sqrt{\f{\pi}{a}}
-      \]</span></p>
-      <p>を用いた。</p>
-      <p>求めたい積分を <span class="math inline">\(I=\int_{-\infty}^{\infty} \exp(-ax^2) dx\)</span> とする。</p>
-      <p><span class="math display">\[
-      \begin{aligned}
-      I^2
-      &amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(-ax^2) \exp(-ay^2) dx dy \\
-      &amp;= \int_0^{\infty} \int_{-\pi}^{\pi} \exp(-ar^2) r d\theta dr \\
-      &amp;= 2\pi \int_0^{\infty} r\exp(-ar^2) dr\\
-      &amp;= 2\pi \l[-\f{1}{2a} \exp(-ar^2)\r]_0^{\infty} \\
-      &amp;= \f{\pi}{a}
-      \end{aligned}
-      \]</span></p>
-      <p>よって</p>
-      <p><span class="math display">\[
-      I=\sqrt{\f{\pi}{a}}
-      \]</span></p>
-      <h3 id="熱伝達方程式の解法-1">熱伝達方程式の解法</h3>
-      <h2 id="ラプラス変換">ラプラス変換</h2>
-      <h2 id="ラプラス変換による微分方程式の解法">ラプラス変換による微分方程式の解法</h2>
-      <h3 id="振動">振動</h3>
-      <p><span class="math display">\[
-      f&#39;&#39;(t) + 2 \zeta \omega f&#39;(t) + \omega^2 f(t) = g(t)
-      \]</span></p>
-      <p><span class="math display">\[
-      (s^2F(s) - sf(0) - f&#39;(0)) + 2 \zeta \omega (sF(s)-f(0)) + \omega^2 F(s) = G(s)
-      \]</span></p>
-      <p><span class="math display">\[
-      (s^2 + 2 \zeta \omega s + \omega^2) F(s) = G(s) + sf(0) + f&#39;(0) + 2\zeta\omega f(0)
-      \]</span></p>
-      <h4 id="減衰なし-zeta0">減衰なし <span class="math inline">\(\zeta=0\)</span></h4>
-      <p><span class="math display">\[
-      (s^2 + \omega^2) F(s) = G(s) + sf(0) + f&#39;(0)
-      \]</span></p>
-      <p><span class="math display">\[
-      F(s) = \frac{G(s)}{s^2 + \omega^2} + \frac{sf(0)}{s^2 + \omega^2} + \frac{f&#39;(0)}{s^2 + \omega^2}
-      \]</span></p>
-      <p>積の逆ラプラス変換は畳み込み</p>
-      <p><span class="math display">\[
-      \L^{-1} \left[\frac{G(s)}{s^2 + \omega^2}\right] = \frac{1}{\omega}\sin(\omega t) * g(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t)) * g(\tau) d\tau
-      \]</span></p>
-      <p><span class="math display">\[
-      f(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t))g(\tau) d\tau + f(0) \cos\omega t + f&#39;(0) \frac{1}{\omega} \sin\omega t
-      \]</span></p>
-      <h3 id="二階線形微分方程式">二階線形微分方程式</h3>
-      <p><span class="math display">\[
-      f&#39;&#39;(t) + P(t) f&#39;(t) + Q(t) f(t) + R(t) = 0
-      \]</span></p>
-      <h4 id="固有関数">固有関数</h4>
-      <p><span class="math display">\[
-      \dd[u]{x} = -\lambda u \quad (0 &lt; x &lt; 1 , \lambda \geq 0,)
-      \]</span></p>
-      <p>自由端（<span class="math inline">\(u&#39;(0)=u&#39;(1)=0\)</span>）</p>
-      <ul>
-      <li><span class="math inline">\(\lambda = 0\)</span> の場合 <span class="math inline">\(u(x)=0\)</span></li>
-      <li><span class="math inline">\(\lambda \neq 0\)</span> の場合</li>
-      </ul>
-      <p><span class="math display">\[
-      (s^2 U(s) - su(0) - u&#39;(0)) + \lambda U(s) = 0
-      \]</span></p>
-      <p><span class="math display">\[
-      U(s) = \frac{s}{s^2+\lambda} u(0) + \frac{1}{s^2+\lambda} u&#39;(0)
-      \]</span></p>
-      <p><span class="math display">\[
-      u(x) = u(0) \cos(\sqrt{\lambda}t) + \frac{u&#39;(0)}{\sqrt{\lambda}} \sin(\sqrt{\lambda}t)
-      \]</span></p>
-      <p>境界条件から</p>
-      <p><span class="math display">\[
-      u(x) = u(0) \cos(\sqrt{\lambda}x)
-      \]</span></p>
-      <p><span class="math display">\[
-      u&#39;(1) = - u(0) \sqrt{\lambda} \sin(\sqrt{\lambda}) = 0
-      \]</span></p>
-      <ul>
-      <li><span class="math inline">\(u(0)=0\)</span> の場合 <span class="math inline">\(u(x)=0\)</span></li>
-      <li><span class="math inline">\(\sin(\sqrt{\lambda})=0\)</span> の場合 <span class="math inline">\(\sqrt{\lambda} = n\pi\)</span></li>
-      </ul>
-      <p><span class="math display">\[
-      u(x) = u(0) \cos(n\pi x)
-      \]</span></p>
-      <h4 id="例１">例１</h4>
-      <p><span class="math display">\[
-      f&#39;&#39;(t) + P(t) f&#39;(t) + Q(t) f(t) + R(t) = 0
-      \]</span></p>
+       <p>正規直交系をなす関数集合 <span class="math inline">\(\{f_n\}\)</span></p>
+<p><span class="math display">\[
+\int f_i f_j dx = \delta_{ij}
+\]</span></p>
+<p>を基底として</p>
+<p><span class="math display">\[
+f = \sum_n c_n f_n
+\]</span></p>
+<p>と関数を表す．</p>
+<h2 id="フーリエ級数展開">フーリエ級数展開</h2>
+<h3 id="パーシバルの関係式">パーシバルの関係式</h3>
+<h3 id="波動方程式の解法">波動方程式の解法</h3>
+<h3 id="熱伝達方程式の解法">熱伝達方程式の解法</h3>
+<h2 id="フーリエ変換">フーリエ変換</h2>
+<h3 id="ガウス関数">ガウス関数</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\F[\exp(-\alpha t^2)]
+&amp;= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp(-at^2) \exp(-i\omega t) dt \\
+&amp;= \f{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp\l\{-a\l(t+\f{i\omega}{2\alpha}\r)^2-\f{\omega^2}{4\alpha}\r\} dt \\
+&amp;= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \int_{-\infty}^{\infty} \exp(-a\tau^2) d\tau \\
+&amp;= \f{1}{\sqrt{2\pi}} \exp\l(-\f{\omega^2}{4\alpha}\r) \sqrt{\f{\pi}{\alpha}} \\
+&amp;= \f{1}{\sqrt{2\alpha}} \exp\l(-\f{\omega^2}{4\alpha}\r)
+\end{aligned}
+\]</span></p>
+<p>途中でガウス積分の公式</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} \exp(-ax^2) dx = \sqrt{\f{\pi}{a}}
+\]</span></p>
+<p>を用いた。</p>
+<p>求めたい積分を <span class="math inline">\(I=\int_{-\infty}^{\infty} \exp(-ax^2) dx\)</span> とする。</p>
+<p><span class="math display">\[
+\begin{aligned}
+I^2
+&amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(-ax^2) \exp(-ay^2) dx dy \\
+&amp;= \int_0^{\infty} \int_{-\pi}^{\pi} \exp(-ar^2) r d\theta dr \\
+&amp;= 2\pi \int_0^{\infty} r\exp(-ar^2) dr\\
+&amp;= 2\pi \l[-\f{1}{2a} \exp(-ar^2)\r]_0^{\infty} \\
+&amp;= \f{\pi}{a}
+\end{aligned}
+\]</span></p>
+<p>よって</p>
+<p><span class="math display">\[
+I=\sqrt{\f{\pi}{a}}
+\]</span></p>
+<h3 id="熱伝達方程式の解法-1">熱伝達方程式の解法</h3>
+<h2 id="ラプラス変換">ラプラス変換</h2>
+<h2 id="ラプラス変換による微分方程式の解法">ラプラス変換による微分方程式の解法</h2>
+<h3 id="振動">振動</h3>
+<p><span class="math display">\[
+f&#39;&#39;(t) + 2 \zeta \omega f&#39;(t) + \omega^2 f(t) = g(t)
+\]</span></p>
+<p><span class="math display">\[
+(s^2F(s) - sf(0) - f&#39;(0)) + 2 \zeta \omega (sF(s)-f(0)) + \omega^2 F(s) = G(s)
+\]</span></p>
+<p><span class="math display">\[
+(s^2 + 2 \zeta \omega s + \omega^2) F(s) = G(s) + sf(0) + f&#39;(0) + 2\zeta\omega f(0)
+\]</span></p>
+<h4 id="減衰なし-zeta0">減衰なし <span class="math inline">\(\zeta=0\)</span></h4>
+<p><span class="math display">\[
+(s^2 + \omega^2) F(s) = G(s) + sf(0) + f&#39;(0)
+\]</span></p>
+<p><span class="math display">\[
+F(s) = \frac{G(s)}{s^2 + \omega^2} + \frac{sf(0)}{s^2 + \omega^2} + \frac{f&#39;(0)}{s^2 + \omega^2}
+\]</span></p>
+<p>積の逆ラプラス変換は畳み込み</p>
+<p><span class="math display">\[
+\L^{-1} \left[\frac{G(s)}{s^2 + \omega^2}\right] = \frac{1}{\omega}\sin(\omega t) * g(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t)) * g(\tau) d\tau
+\]</span></p>
+<p><span class="math display">\[
+f(t) = \frac{1}{\omega} \int_0^t \sin(\omega (\tau - t))g(\tau) d\tau + f(0) \cos\omega t + f&#39;(0) \frac{1}{\omega} \sin\omega t
+\]</span></p>
+<h3 id="二階線形微分方程式">二階線形微分方程式</h3>
+<p><span class="math display">\[
+f&#39;&#39;(t) + P(t) f&#39;(t) + Q(t) f(t) + R(t) = 0
+\]</span></p>
+<h4 id="固有関数">固有関数</h4>
+<p><span class="math display">\[
+\dd[u]{x} = -\lambda u \quad (0 &lt; x &lt; 1 , \lambda \geq 0,)
+\]</span></p>
+<p>自由端（<span class="math inline">\(u&#39;(0)=u&#39;(1)=0\)</span>）</p>
+<ul>
+<li><span class="math inline">\(\lambda = 0\)</span> の場合 <span class="math inline">\(u(x)=0\)</span></li>
+<li><span class="math inline">\(\lambda \neq 0\)</span> の場合</li>
+</ul>
+<p><span class="math display">\[
+(s^2 U(s) - su(0) - u&#39;(0)) + \lambda U(s) = 0
+\]</span></p>
+<p><span class="math display">\[
+U(s) = \frac{s}{s^2+\lambda} u(0) + \frac{1}{s^2+\lambda} u&#39;(0)
+\]</span></p>
+<p><span class="math display">\[
+u(x) = u(0) \cos(\sqrt{\lambda}t) + \frac{u&#39;(0)}{\sqrt{\lambda}} \sin(\sqrt{\lambda}t)
+\]</span></p>
+<p>境界条件から</p>
+<p><span class="math display">\[
+u(x) = u(0) \cos(\sqrt{\lambda}x)
+\]</span></p>
+<p><span class="math display">\[
+u&#39;(1) = - u(0) \sqrt{\lambda} \sin(\sqrt{\lambda}) = 0
+\]</span></p>
+<ul>
+<li><span class="math inline">\(u(0)=0\)</span> の場合 <span class="math inline">\(u(x)=0\)</span></li>
+<li><span class="math inline">\(\sin(\sqrt{\lambda})=0\)</span> の場合 <span class="math inline">\(\sqrt{\lambda} = n\pi\)</span></li>
+</ul>
+<p><span class="math display">\[
+u(x) = u(0) \cos(n\pi x)
+\]</span></p>
+<h4 id="例１">例１</h4>
+<p><span class="math display">\[
+f&#39;&#39;(t) + P(t) f&#39;(t) + Q(t) f(t) + R(t) = 0
+\]</span></p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

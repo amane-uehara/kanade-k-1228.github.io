@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang="ja"
+  xml:lang="ja"
+  prefix="og: http://ogp.me/ns#"
+>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -26,11 +31,11 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>超小型 Arduino 互換ボード Coinduino 製作記 | Kanade's Website</title>
-    
+          <title>超小型 Arduino 互換ボード Coinduino 製作記 | Kanade's Website</title>
+
     <!-- OGP -->
         <!-- END OGP -->
-    
+
     <style>
       body {
         margin: 0;
@@ -350,6 +355,14 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <style>
+      mjx-container[jax="CHTML"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+
     <script>
       function tweet() {
         window.open(
@@ -420,7 +433,8 @@
               />
             </svg>
           </a>
-        </div> <!-- End Top Nav -->
+        </div>
+        <!-- End Top Nav -->
         <!-- Title -->
                 <h1 style="margin: 0">超小型 Arduino 互換ボード Coinduino 製作記</h1>
                 <!-- Date -->
@@ -428,43 +442,30 @@
               </header>
 
       <!-- TeX Macros -->
-      <p style="display: none;"> 
-        \[
-          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
-          \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-          \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-          \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
-          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
-          \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-          \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
-          \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
-          \newcommand{\p}{\partial}
-          \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-          \newcommand{\Re}{\mathrm{Re}}
-          \newcommand{\Im}{\mathrm{Im}}
-          \newcommand{\bra}[1]{\left\langle #1 \right|}
-          \newcommand{\ket}[1]{\left|#1 \right\rangle}
-          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-          \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
-          
-          \newcommand{\l}{\left}
-          \newcommand{\m}{\middle}
-          \newcommand{\r}{\right}
-          \newcommand{\f}[2]{\frac{#1}{#2}}
-          \newcommand{\eps}{\varepsilon}
-          \newcommand{\ra}{\rightarrow}
-          \newcommand{\F}{\mathcal{F}}
-          \newcommand{\L}{\mathcal{L}}
-          \newcommand{\t}{\quad}
-          \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
-
-          \newcommand{\R}{\mathcal{R}}
-          \newcommand{\C}{\mathcal{C}}
-          \newcommand{\Z}{\mathcal{Z}}
-          \newcommand{\bm}[1]{\boldsymbol{#1}}
-        \]
+      <p style="display: none">
+        \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+        \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+        \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+        \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+        \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+        \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+        \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+        \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+        \newcommand{\p}{\partial} \newcommand{\D}[2]{\frac{\mathrm{D}
+        #1}{\mathrm{D} #2}} \newcommand{\Re}{\mathrm{Re}}
+        \newcommand{\Im}{\mathrm{Im}} \newcommand{\bra}[1]{\left\langle #1
+        \right|} \newcommand{\ket}[1]{\left|#1 \right\rangle}
+        \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+        \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+        \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+        \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+        \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+        \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+        \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+        \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
       </p>
- 
+
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#回路構成">回路構成</a></li>
@@ -481,74 +482,73 @@
 </ul></li>
 <li><a href="#発注実装">発注＆実装</a></li>
 </ul></nav>
-      
-      <ul>
-      <li>超小型 (3cm x 3 cm)</li>
-      <li>リチウムバッテリー搭載</li>
-      <li>ワイヤレス給電可能
-      <ul>
-      <li>水密</li>
-      </ul></li>
-      <li>ATMEGA 32U4 搭載
-      <ul>
-      <li>Arduino Leonald 互換</li>
-      </ul></li>
-      </ul>
-      <h2 id="回路構成">回路構成</h2>
-      <p><img src="./img/about.dio.svg" /></p>
-      <h2 id="部品選定">部品選定</h2>
-      <h3 id="充電-ic">充電 IC</h3>
-      <ul>
-      <li>ワイヤレス給電・USB 給電の両方を制御できる</li>
-      <li>リチウム電池を充電できる</li>
-      <li><p>できればレギュレータも内臓しててほしい</p></li>
-      <li>Renesas</li>
-      <li>AD
-      <ul>
-      <li><a href="https://www.analog.com/en/products/LTC4124.html">LTC4124</a></li>
-      <li><a href="https://www.analog.com/en/products/ltc4126.html">LTC4126</a>
-      <ul>
-      <li>出力 1.2 V なので ✕</li>
-      </ul></li>
-      </ul></li>
-      <li>TI
-      <ul>
-      <li><a href="https://www.tij.co.jp/product/jp/BQ51050B">BQ5105xB</a>
-      <ul>
-      <li>充電電圧ごと型番の x が違う</li>
-      </ul></li>
-      </ul></li>
-      <li>ST
-      <ul>
-      <li><a href="https://www.st.com/ja/power-management/stwlc68.html">STWLC68</a></li>
-      </ul></li>
-      <li>SEMTECH
-      <ul>
-      <li><a href="https://www.semtech.com/products/wireless-charging/linkcharge-ics/ts51224">TS51224</a></li>
-      </ul></li>
-      </ul>
-      <p>AnalogDevices の LTC4123 ！君に決めた！</p>
-      <p>単価 851 円ってマ？壊れるなぁ… <a href="https://www.digikey.jp/ja/products/detail/analog-devices-inc/LTC4124EV-TRMPBF/9990337">Digikey</a> <a href="https://www.mouser.jp/ProductDetail/Analog-Devices/LTC4124EVTRMPBF?qs=l4Gc20tDgJL6kEUp5cxquQ%3D%3D">MOUSER</a></p>
-      <p><a href="https://forum.digikey.com/t/trmpbf-suffix-vs-trpbf-suffix-in-linear-technology-parts/218">TRMPBF suffix vs. TRPBF suffix in Linear Technology parts</a></p>
-      <h3 id="コイル">コイル</h3>
-      <p><a href="https://akizukidenshi.com/catalog/g/gP-15174/">Ｒｘコイルユニット（受信用ワイヤレス給電コイル） ＷＲ２０２０１０－１８Ｍ８－ＩＤ</a></p>
-      <h3 id="バッテリー">バッテリー</h3>
-      <ul>
-      <li>LIR2032 : 二酸化マンガンリチウムイオン電池</li>
-      <li>リチウムポリマーのボタン電池はあんまりないみたいだね…</li>
-      <li><a href="https://akizukidenshi.com/catalog/g/gP-06925/">ホルダー</a></li>
-      <li><a href="https://akizukidenshi.com/catalog/g/gP-12908/">カバー付き</a></li>
-      <li><a href="https://akizukidenshi.com/catalog/g/gP-12893/">引き出し付き</a></li>
-      </ul>
-      <h3 id="レギュレータ">レギュレータ</h3>
-      <p>回路全体の消費電力を推定すると、？</p>
-      <h2 id="pcb-設計">PCB 設計</h2>
-      <h3 id="部品を揃える">部品を揃える</h3>
-      <h3 id="回路図を引く">回路図を引く</h3>
-      <h3 id="ボード図を引く">ボード図を引く</h3>
-      <p>PCB 業者のデザインルールを確認</p>
-      <p>サーマルパッドをはんだ付けするために、via を打ち、レジストを塗らない</p>
-      <h2 id="発注実装">発注＆実装</h2>
+       <ul>
+<li>超小型 (3cm x 3 cm)</li>
+<li>リチウムバッテリー搭載</li>
+<li>ワイヤレス給電可能
+<ul>
+<li>水密</li>
+</ul></li>
+<li>ATMEGA 32U4 搭載
+<ul>
+<li>Arduino Leonald 互換</li>
+</ul></li>
+</ul>
+<h2 id="回路構成">回路構成</h2>
+<p><img src="./img/about.dio.svg" /></p>
+<h2 id="部品選定">部品選定</h2>
+<h3 id="充電-ic">充電 IC</h3>
+<ul>
+<li>ワイヤレス給電・USB 給電の両方を制御できる</li>
+<li>リチウム電池を充電できる</li>
+<li><p>できればレギュレータも内臓しててほしい</p></li>
+<li>Renesas</li>
+<li>AD
+<ul>
+<li><a href="https://www.analog.com/en/products/LTC4124.html">LTC4124</a></li>
+<li><a href="https://www.analog.com/en/products/ltc4126.html">LTC4126</a>
+<ul>
+<li>出力 1.2 V なので ✕</li>
+</ul></li>
+</ul></li>
+<li>TI
+<ul>
+<li><a href="https://www.tij.co.jp/product/jp/BQ51050B">BQ5105xB</a>
+<ul>
+<li>充電電圧ごと型番の x が違う</li>
+</ul></li>
+</ul></li>
+<li>ST
+<ul>
+<li><a href="https://www.st.com/ja/power-management/stwlc68.html">STWLC68</a></li>
+</ul></li>
+<li>SEMTECH
+<ul>
+<li><a href="https://www.semtech.com/products/wireless-charging/linkcharge-ics/ts51224">TS51224</a></li>
+</ul></li>
+</ul>
+<p>AnalogDevices の LTC4123 ！君に決めた！</p>
+<p>単価 851 円ってマ？壊れるなぁ… <a href="https://www.digikey.jp/ja/products/detail/analog-devices-inc/LTC4124EV-TRMPBF/9990337">Digikey</a> <a href="https://www.mouser.jp/ProductDetail/Analog-Devices/LTC4124EVTRMPBF?qs=l4Gc20tDgJL6kEUp5cxquQ%3D%3D">MOUSER</a></p>
+<p><a href="https://forum.digikey.com/t/trmpbf-suffix-vs-trpbf-suffix-in-linear-technology-parts/218">TRMPBF suffix vs. TRPBF suffix in Linear Technology parts</a></p>
+<h3 id="コイル">コイル</h3>
+<p><a href="https://akizukidenshi.com/catalog/g/gP-15174/">Ｒｘコイルユニット（受信用ワイヤレス給電コイル） ＷＲ２０２０１０－１８Ｍ８－ＩＤ</a></p>
+<h3 id="バッテリー">バッテリー</h3>
+<ul>
+<li>LIR2032 : 二酸化マンガンリチウムイオン電池</li>
+<li>リチウムポリマーのボタン電池はあんまりないみたいだね…</li>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-06925/">ホルダー</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-12908/">カバー付き</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-12893/">引き出し付き</a></li>
+</ul>
+<h3 id="レギュレータ">レギュレータ</h3>
+<p>回路全体の消費電力を推定すると、？</p>
+<h2 id="pcb-設計">PCB 設計</h2>
+<h3 id="部品を揃える">部品を揃える</h3>
+<h3 id="回路図を引く">回路図を引く</h3>
+<h3 id="ボード図を引く">ボード図を引く</h3>
+<p>PCB 業者のデザインルールを確認</p>
+<p>サーマルパッドをはんだ付けするために、via を打ち、レジストを塗らない</p>
+<h2 id="発注実装">発注＆実装</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

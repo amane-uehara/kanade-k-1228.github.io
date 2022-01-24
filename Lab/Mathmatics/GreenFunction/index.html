@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang="ja"
+  xml:lang="ja"
+  prefix="og: http://ogp.me/ns#"
+>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -26,11 +31,11 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>制御工学の背景にある数学 | Kanade's Website</title>
-    
+          <title>制御工学の背景にある数学 | Kanade's Website</title>
+
     <!-- OGP -->
         <!-- END OGP -->
-    
+
     <style>
       body {
         margin: 0;
@@ -350,6 +355,14 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <style>
+      mjx-container[jax="CHTML"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+
     <script>
       function tweet() {
         window.open(
@@ -420,7 +433,8 @@
               />
             </svg>
           </a>
-        </div> <!-- End Top Nav -->
+        </div>
+        <!-- End Top Nav -->
         <!-- Title -->
                 <h1 style="margin: 0">制御工学の背景にある数学</h1>
                 <!-- Date -->
@@ -428,43 +442,30 @@
               </header>
 
       <!-- TeX Macros -->
-      <p style="display: none;"> 
-        \[
-          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
-          \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-          \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-          \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
-          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
-          \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-          \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
-          \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
-          \newcommand{\p}{\partial}
-          \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-          \newcommand{\Re}{\mathrm{Re}}
-          \newcommand{\Im}{\mathrm{Im}}
-          \newcommand{\bra}[1]{\left\langle #1 \right|}
-          \newcommand{\ket}[1]{\left|#1 \right\rangle}
-          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-          \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
-          
-          \newcommand{\l}{\left}
-          \newcommand{\m}{\middle}
-          \newcommand{\r}{\right}
-          \newcommand{\f}[2]{\frac{#1}{#2}}
-          \newcommand{\eps}{\varepsilon}
-          \newcommand{\ra}{\rightarrow}
-          \newcommand{\F}{\mathcal{F}}
-          \newcommand{\L}{\mathcal{L}}
-          \newcommand{\t}{\quad}
-          \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
-
-          \newcommand{\R}{\mathcal{R}}
-          \newcommand{\C}{\mathcal{C}}
-          \newcommand{\Z}{\mathcal{Z}}
-          \newcommand{\bm}[1]{\boldsymbol{#1}}
-        \]
+      <p style="display: none">
+        \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+        \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+        \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+        \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+        \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+        \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+        \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+        \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+        \newcommand{\p}{\partial} \newcommand{\D}[2]{\frac{\mathrm{D}
+        #1}{\mathrm{D} #2}} \newcommand{\Re}{\mathrm{Re}}
+        \newcommand{\Im}{\mathrm{Im}} \newcommand{\bra}[1]{\left\langle #1
+        \right|} \newcommand{\ket}[1]{\left|#1 \right\rangle}
+        \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+        \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+        \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+        \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+        \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+        \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+        \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+        \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
       </p>
- 
+
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#線形微分方程式">線形微分方程式</a><ul>
@@ -494,229 +495,228 @@
 <li><a href="#ラプラス方程式-1">ラプラス方程式</a></li>
 <li><a href="#ポアソン方程式-1">ポアソン方程式</a></li>
 </ul></nav>
-      
-      <h2 id="線形微分方程式">線形微分方程式</h2>
-      <p>線形微分演算子 <span class="math inline">\(L\)</span> について、微分方程式</p>
-      <p><span class="math display">\[
-      L[y(x)]=f(x)
-      \]</span></p>
-      <p>を線形微分方程式という。特に<span class="math inline">\(f(x)=0\)</span>のとき、同次微分方程式という。</p>
-      <p>逆演算子 <span class="math inline">\(L^{-1}\)</span> が求まれば、<span class="math inline">\(y(x)=L^{-1}[f(x)]\)</span>だが、一般に逆演算子を求めるのは難しい。</p>
-      <h4 id="演算子">演算子</h4>
-      <p><span class="math inline">\(L\)</span>は関数を引数に取り関数を返す関数（演算子）。フーリエ変換・ラプラス変換と同じタイプ。</p>
-      <p>線形演算子は、線形性</p>
-      <ol type="1">
-      <li><span class="math inline">\(L[cy(x)]=cL[y(x)] \t (c\in \R)\)</span></li>
-      <li><span class="math inline">\(L[y_1(x)+y_2(x)]=L[y_1(x)]+L[y_1(x)]\)</span></li>
-      </ol>
-      <p>を満たす。</p>
-      <p>線形微分演算子は一般に</p>
-      <p><span class="math display">\[
-      L=a_n(x)\dn{}{x}{n}+a_{n-1}(x)\dn{}{x}{n-1}+...+a_1(x)\d{}{x}+a_0(x)
-      \]</span></p>
-      <p>と書ける。</p>
-      <h4 id="関数空間">関数空間</h4>
-      <p>関数空間は線形空間になっている。</p>
-      <p>内積を</p>
-      <p><span class="math display">\[
-      \inner{f}{g}=\int_{-\infty}^{\infty}f(x)g(x)dx
-      \]</span></p>
-      <p>とする。</p>
-      <p>微分演算子は</p>
-      <p><span class="math display">\[
-      \begin{aligned}
-      \inner{\d{}{x}f}{g}
-      &amp;= \int_{-\infty}^{\infty}\d{}{x}f(x)g(x)dx \\
-      &amp;= [f(x)g(x)]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}\d{}{x}f(x)g(x)dx \\
-      &amp;= -\inner{f}{\d{}{x}g}
-      \end{aligned}
-      \]</span></p>
-      <p>ただし、 <span class="math inline">\(f(x),g(x)\)</span> は <span class="math inline">\(\pm\infty\)</span> で <span class="math inline">\(0\)</span> になるものだけを扱う。</p>
-      <h3 id="解の任意性">解の任意性</h3>
-      <p>非同次方程式<span class="math inline">\(L[y(x)]=f(x)\)</span>の解に、同次方程式<span class="math inline">\(L[y_0(x)]=0\)</span>の解を加えても、線形性から、</p>
-      <p><span class="math display">\[
-      L[y(x)+cy_0(x)]=f(x) \t (c\in \R)
-      \]</span></p>
-      <p>を満たす。つまり、線形微分方程式の解は無数にあることになる。</p>
-      <h3 id="同次線形微分方程式">同次線形微分方程式</h3>
-      <p>同次形の線形微分方程式は一般に</p>
-      <p><span class="math display">\[
-      a_n(x)\dn{y}{x}{n}+a_{n-1}(x)\dn{y}{x}{n-1}+...+a_1(x)\d{y}{x}+a_0(x)y
-      \]</span></p>
-      <h3 id="グリーン関数">グリーン関数</h3>
-      <p>非同次微分方程式</p>
-      <p><span class="math display">\[
-      L[y(x)]=f(x)
-      \]</span></p>
-      <p>を解きたい。</p>
-      <p>逆演算子 <span class="math inline">\(L^{-1}\)</span> を求めて、</p>
-      <p><span class="math display">\[
-      y(x)=L^{-1}[f(x)]
-      \]</span></p>
-      <p>としたいが、一般に逆演算子を求めるのは難しい。</p>
-      <p>そのため、 <span class="math inline">\(f(x)\)</span> をスライスする。</p>
-      <p><span class="math display">\[
-      f(x) =\int_{-\infty}^{\infty} f(\xi)\delta(x-\xi) d\xi = f(x) * \delta(x)
-      \]</span></p>
-      <p><span class="math inline">\(f(x)\)</span> のかわりに、デルタ関数 <span class="math inline">\(\delta(x-\xi)\)</span> について、</p>
-      <p><span class="math display">\[
-      G(x;\xi)=L^{-1}[\delta(x-\xi)]
-      \]</span></p>
-      <p>を解く。この解 <span class="math inline">\(G(x;\xi)\)</span> のことをグリーン関数という。</p>
-      <p>グリーン関数を<span class="math inline">\(f(x)\)</span>で加重積分してもとの<span class="math inline">\(f(x)\)</span>を戻してやると、解が得られる</p>
-      <p><span class="math display">\[
-      \begin{aligned}
-      y(x) &amp;= L^{-1}[f(x)] \\
-      &amp;= L^{-1}\l[\int_{-\infty}^{\infty} f(\xi)\delta(x-\xi) d\xi\r] \\
-      &amp;= \int_{-\infty}^{\infty} f(\xi) L^{-1}[\delta(x-\xi)] d\xi \\
-      &amp;= \int_{-\infty}^{\infty} f(\xi) G(x,\xi) d\xi
-      \end{aligned}
-      \]</span></p>
-      <h3 id="グリーン関数の求め方">グリーン関数の求め方</h3>
-      <p>フーリエ変換を使って求める。グリーン関数の逆フーリエ変換式</p>
-      <p><span class="math display">\[
-      G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk
-      \]</span></p>
-      <p>デルタ関数の逆フーリエ変換式</p>
-      <p><span class="math display">\[
-      \delta(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
-      \]</span></p>
-      <p>これをグリーン関数の式</p>
-      <p><span class="math display">\[
-      L[G(x)]=\delta(x)
-      \]</span></p>
-      <p>に代入して、</p>
-      <p><span class="math display">\[
-      L\l[\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk\r]=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
-      \]</span></p>
-      <p><span class="math inline">\(L\)</span> は <span class="math inline">\(x\)</span> に対して作用するので、</p>
-      <p><span class="math display">\[
-      \int_{-\infty}^{\infty}G(k)L[\exp(ikx)]dk=\int_{-\infty}^{\infty}\exp(ikx)dk
-      \]</span></p>
-      <p><span class="math inline">\(L\)</span> は <span class="math inline">\(\exp(ikx)\)</span> に作用すると、</p>
-      <p><span class="math display">\[
-      \dn{}{x}{n} \ra (ik)^n
-      \]</span></p>
-      <p>と数に変換される。</p>
-      <p><span class="math display">\[
-      L \ra L(k)
-      \]</span></p>
-      <p>とおくと、</p>
-      <p><span class="math display">\[
-      \int_{-\infty}^{\infty}G(k)L(k)\exp(ikx)dk=\int_{-\infty}^{\infty}\exp(ikx)dk
-      \]</span></p>
-      <p>両辺の被積分関数を比較して、</p>
-      <p><span class="math display">\[
-      L(k)G(k)=1
-      \]</span></p>
-      <p><span class="math inline">\(k\)</span>空間のグリーン関数<span class="math inline">\(G(k)\)</span>が求まったので、<span class="math inline">\(x\)</span>空間に戻すと、</p>
-      <p><span class="math display">\[
-      G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\f{1}{L(k)}\exp(ikx)dk
-      \]</span></p>
-      <p>半円形の経路で複素積分して求める。円弧の部分は <span class="math inline">\(0\)</span> になる。<span class="math inline">\(L(k)=0\)</span> なる点 <span class="math inline">\(k_0\)</span> を探して留数定理で求める。</p>
-      <p><span class="math display">\[
-      \mathrm{Res}(k_0)=\l[(k-k_0)\f{1}{L(k)}\exp(ikx)\r]_{k=k_0}
-      \]</span></p>
-      <p><span class="math display">\[
-      G(x) = 2 \pi i \sum_{L(k)=0}  \mathrm{Res}(k)
-      \]</span></p>
-      <h3 id="多変数関数">多変数関数</h3>
-      <p><span class="math display">\[
-      L[u(\bm{r})]=f(\bm{r})
-      \]</span></p>
-      <p>のグリーン関数は、</p>
-      <p><span class="math display">\[
-      L[G(\bm{r};\bm{r&#39;})]=\delta^3(\bm{r}-\bm{r&#39;})
-      \]</span></p>
-      <h2 id="ラプラス方程式">ラプラス方程式</h2>
-      <p><span class="math display">\[
-      \nabla^2 \phi = 0
-      \]</span></p>
-      <p><span class="math display">\[
-      L=\nabla^2
-      \]</span></p>
-      <h3 id="直交座標">直交座標</h3>
-      <h3 id="円筒座標">円筒座標</h3>
-      <p>ベッセル関数</p>
-      <h3 id="球座標">球座標</h3>
-      <p>球面調和関数</p>
-      <h2 id="ポアソン方程式">ポアソン方程式</h2>
-      <p><span class="math display">\[
-      \nabla^2 \phi = f
-      \]</span></p>
-      <h3 id="グリーン関数-1">グリーン関数</h3>
-      <p><span class="math display">\[
-      L = \nabla^2
-      \]</span></p>
-      <p><span class="math display">\[
-      L[G(\bm{r})]=\delta^3(\bm{r}-\bm{r&#39;})
-      \]</span></p>
-      <p>逆フーリエ変換</p>
-      <p><span class="math display">\[
-      \delta^3(\bm{r}) = \f{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} \exp(i\bm{k}\cdot\bm{r})d^3\bm{k}
-      \]</span></p>
-      <h2 id="ヘルムホルツ方程式">ヘルムホルツ方程式</h2>
-      <p><span class="math display">\[
-      \nabla^2 u + \alpha^2 u = 0
-      \]</span></p>
-      <h3 id="グリーン関数-2">グリーン関数</h3>
-      <p><span class="math display">\[
-      L = \nabla^2 + \alpha^2
-      \]</span></p>
-      <p><span class="math display">\[
-      L(k) = -k^2 + \alpha^2
-      \]</span></p>
-      <p><span class="math display">\[
-      G(k)=\f{1}{\alpha^2-k^2}
-      \]</span></p>
-      <p><span class="math display">\[
-      G(x) = \f{1}{2\pi}\int_{-\infty}^{\infty} \f{1}{\alpha^2-k^2} \exp(ikx) dk
-      \]</span></p>
-      <p>この特異点<span class="math inline">\(k=\pm \alpha\)</span>は実軸上にあるので、積分経路上から除かないといけない。</p>
-      <p><span class="math display">\[
-      \int_{-\infty}^{\infty} \f{1}{k^2-(\alpha+i\eps)^2} \exp(ikx) dk
-      \]</span></p>
-      <p><span class="math display">\[
-      G(x)=-\f{i}{2\pi}\exp(\pm i\alpha x)
-      \]</span></p>
-      <h2 id="拡散方程式">拡散方程式</h2>
-      <p><span class="math display">\[
-      \pd{}{t} \phi = D\nabla^2 \phi
-      \]</span></p>
-      <p><span class="math display">\[
-      L = D \nabla^2 - \pd{}{t}
-      \]</span></p>
-      <h3 id="グリーン関数-3">グリーン関数</h3>
-      <p><span class="math display">\[
-      \begin{aligned}
-      G(x,t;\xi,\tau)
-      &amp;=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
-      &amp;=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
-      \end{aligned}
-      \]</span></p>
-      <h2 id="波動方程式">波動方程式</h2>
-      <p><span class="math display">\[
-      \pdd{}{t}u = c^2\nabla^2 u
-      \]</span></p>
-      <p><span class="math display">\[
-      L = c^2\nabla^2 - \pdd{}{t}
-      \]</span></p>
-      <h3 id="グリーン関数-4">グリーン関数</h3>
-      <p><span class="math display">\[
-      \begin{aligned}
-      G(x,t;\xi,\tau)
-      &amp;=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
-      &amp;=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
-      \end{aligned}
-      \]</span></p>
-      <h2 id="ラプラス方程式-1">ラプラス方程式</h2>
-      <p><span class="math display">\[
-      \nabla^2 \phi = 0
-      \]</span></p>
-      <h2 id="ポアソン方程式-1">ポアソン方程式</h2>
-      <p><span class="math display">\[
-      \nabla^2 \phi = \rho
-      \]</span></p>
+       <h2 id="線形微分方程式">線形微分方程式</h2>
+<p>線形微分演算子 <span class="math inline">\(L\)</span> について、微分方程式</p>
+<p><span class="math display">\[
+L[y(x)]=f(x)
+\]</span></p>
+<p>を線形微分方程式という。特に<span class="math inline">\(f(x)=0\)</span>のとき、同次微分方程式という。</p>
+<p>逆演算子 <span class="math inline">\(L^{-1}\)</span> が求まれば、<span class="math inline">\(y(x)=L^{-1}[f(x)]\)</span>だが、一般に逆演算子を求めるのは難しい。</p>
+<h4 id="演算子">演算子</h4>
+<p><span class="math inline">\(L\)</span>は関数を引数に取り関数を返す関数（演算子）。フーリエ変換・ラプラス変換と同じタイプ。</p>
+<p>線形演算子は、線形性</p>
+<ol type="1">
+<li><span class="math inline">\(L[cy(x)]=cL[y(x)] \t (c\in \R)\)</span></li>
+<li><span class="math inline">\(L[y_1(x)+y_2(x)]=L[y_1(x)]+L[y_1(x)]\)</span></li>
+</ol>
+<p>を満たす。</p>
+<p>線形微分演算子は一般に</p>
+<p><span class="math display">\[
+L=a_n(x)\dn{}{x}{n}+a_{n-1}(x)\dn{}{x}{n-1}+...+a_1(x)\d{}{x}+a_0(x)
+\]</span></p>
+<p>と書ける。</p>
+<h4 id="関数空間">関数空間</h4>
+<p>関数空間は線形空間になっている。</p>
+<p>内積を</p>
+<p><span class="math display">\[
+\inner{f}{g}=\int_{-\infty}^{\infty}f(x)g(x)dx
+\]</span></p>
+<p>とする。</p>
+<p>微分演算子は</p>
+<p><span class="math display">\[
+\begin{aligned}
+\inner{\d{}{x}f}{g}
+&amp;= \int_{-\infty}^{\infty}\d{}{x}f(x)g(x)dx \\
+&amp;= [f(x)g(x)]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}\d{}{x}f(x)g(x)dx \\
+&amp;= -\inner{f}{\d{}{x}g}
+\end{aligned}
+\]</span></p>
+<p>ただし、 <span class="math inline">\(f(x),g(x)\)</span> は <span class="math inline">\(\pm\infty\)</span> で <span class="math inline">\(0\)</span> になるものだけを扱う。</p>
+<h3 id="解の任意性">解の任意性</h3>
+<p>非同次方程式<span class="math inline">\(L[y(x)]=f(x)\)</span>の解に、同次方程式<span class="math inline">\(L[y_0(x)]=0\)</span>の解を加えても、線形性から、</p>
+<p><span class="math display">\[
+L[y(x)+cy_0(x)]=f(x) \t (c\in \R)
+\]</span></p>
+<p>を満たす。つまり、線形微分方程式の解は無数にあることになる。</p>
+<h3 id="同次線形微分方程式">同次線形微分方程式</h3>
+<p>同次形の線形微分方程式は一般に</p>
+<p><span class="math display">\[
+a_n(x)\dn{y}{x}{n}+a_{n-1}(x)\dn{y}{x}{n-1}+...+a_1(x)\d{y}{x}+a_0(x)y
+\]</span></p>
+<h3 id="グリーン関数">グリーン関数</h3>
+<p>非同次微分方程式</p>
+<p><span class="math display">\[
+L[y(x)]=f(x)
+\]</span></p>
+<p>を解きたい。</p>
+<p>逆演算子 <span class="math inline">\(L^{-1}\)</span> を求めて、</p>
+<p><span class="math display">\[
+y(x)=L^{-1}[f(x)]
+\]</span></p>
+<p>としたいが、一般に逆演算子を求めるのは難しい。</p>
+<p>そのため、 <span class="math inline">\(f(x)\)</span> をスライスする。</p>
+<p><span class="math display">\[
+f(x) =\int_{-\infty}^{\infty} f(\xi)\delta(x-\xi) d\xi = f(x) * \delta(x)
+\]</span></p>
+<p><span class="math inline">\(f(x)\)</span> のかわりに、デルタ関数 <span class="math inline">\(\delta(x-\xi)\)</span> について、</p>
+<p><span class="math display">\[
+G(x;\xi)=L^{-1}[\delta(x-\xi)]
+\]</span></p>
+<p>を解く。この解 <span class="math inline">\(G(x;\xi)\)</span> のことをグリーン関数という。</p>
+<p>グリーン関数を<span class="math inline">\(f(x)\)</span>で加重積分してもとの<span class="math inline">\(f(x)\)</span>を戻してやると、解が得られる</p>
+<p><span class="math display">\[
+\begin{aligned}
+y(x) &amp;= L^{-1}[f(x)] \\
+&amp;= L^{-1}\l[\int_{-\infty}^{\infty} f(\xi)\delta(x-\xi) d\xi\r] \\
+&amp;= \int_{-\infty}^{\infty} f(\xi) L^{-1}[\delta(x-\xi)] d\xi \\
+&amp;= \int_{-\infty}^{\infty} f(\xi) G(x,\xi) d\xi
+\end{aligned}
+\]</span></p>
+<h3 id="グリーン関数の求め方">グリーン関数の求め方</h3>
+<p>フーリエ変換を使って求める。グリーン関数の逆フーリエ変換式</p>
+<p><span class="math display">\[
+G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk
+\]</span></p>
+<p>デルタ関数の逆フーリエ変換式</p>
+<p><span class="math display">\[
+\delta(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
+\]</span></p>
+<p>これをグリーン関数の式</p>
+<p><span class="math display">\[
+L[G(x)]=\delta(x)
+\]</span></p>
+<p>に代入して、</p>
+<p><span class="math display">\[
+L\l[\f{1}{2\pi}\int_{-\infty}^{\infty}G(k)\exp(ikx)dk\r]=\f{1}{2\pi}\int_{-\infty}^{\infty}\exp(ikx)dk
+\]</span></p>
+<p><span class="math inline">\(L\)</span> は <span class="math inline">\(x\)</span> に対して作用するので、</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty}G(k)L[\exp(ikx)]dk=\int_{-\infty}^{\infty}\exp(ikx)dk
+\]</span></p>
+<p><span class="math inline">\(L\)</span> は <span class="math inline">\(\exp(ikx)\)</span> に作用すると、</p>
+<p><span class="math display">\[
+\dn{}{x}{n} \ra (ik)^n
+\]</span></p>
+<p>と数に変換される。</p>
+<p><span class="math display">\[
+L \ra L(k)
+\]</span></p>
+<p>とおくと、</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty}G(k)L(k)\exp(ikx)dk=\int_{-\infty}^{\infty}\exp(ikx)dk
+\]</span></p>
+<p>両辺の被積分関数を比較して、</p>
+<p><span class="math display">\[
+L(k)G(k)=1
+\]</span></p>
+<p><span class="math inline">\(k\)</span>空間のグリーン関数<span class="math inline">\(G(k)\)</span>が求まったので、<span class="math inline">\(x\)</span>空間に戻すと、</p>
+<p><span class="math display">\[
+G(x)=\f{1}{2\pi}\int_{-\infty}^{\infty}\f{1}{L(k)}\exp(ikx)dk
+\]</span></p>
+<p>半円形の経路で複素積分して求める。円弧の部分は <span class="math inline">\(0\)</span> になる。<span class="math inline">\(L(k)=0\)</span> なる点 <span class="math inline">\(k_0\)</span> を探して留数定理で求める。</p>
+<p><span class="math display">\[
+\mathrm{Res}(k_0)=\l[(k-k_0)\f{1}{L(k)}\exp(ikx)\r]_{k=k_0}
+\]</span></p>
+<p><span class="math display">\[
+G(x) = 2 \pi i \sum_{L(k)=0}  \mathrm{Res}(k)
+\]</span></p>
+<h3 id="多変数関数">多変数関数</h3>
+<p><span class="math display">\[
+L[u(\bm{r})]=f(\bm{r})
+\]</span></p>
+<p>のグリーン関数は、</p>
+<p><span class="math display">\[
+L[G(\bm{r};\bm{r&#39;})]=\delta^3(\bm{r}-\bm{r&#39;})
+\]</span></p>
+<h2 id="ラプラス方程式">ラプラス方程式</h2>
+<p><span class="math display">\[
+\nabla^2 \phi = 0
+\]</span></p>
+<p><span class="math display">\[
+L=\nabla^2
+\]</span></p>
+<h3 id="直交座標">直交座標</h3>
+<h3 id="円筒座標">円筒座標</h3>
+<p>ベッセル関数</p>
+<h3 id="球座標">球座標</h3>
+<p>球面調和関数</p>
+<h2 id="ポアソン方程式">ポアソン方程式</h2>
+<p><span class="math display">\[
+\nabla^2 \phi = f
+\]</span></p>
+<h3 id="グリーン関数-1">グリーン関数</h3>
+<p><span class="math display">\[
+L = \nabla^2
+\]</span></p>
+<p><span class="math display">\[
+L[G(\bm{r})]=\delta^3(\bm{r}-\bm{r&#39;})
+\]</span></p>
+<p>逆フーリエ変換</p>
+<p><span class="math display">\[
+\delta^3(\bm{r}) = \f{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} \exp(i\bm{k}\cdot\bm{r})d^3\bm{k}
+\]</span></p>
+<h2 id="ヘルムホルツ方程式">ヘルムホルツ方程式</h2>
+<p><span class="math display">\[
+\nabla^2 u + \alpha^2 u = 0
+\]</span></p>
+<h3 id="グリーン関数-2">グリーン関数</h3>
+<p><span class="math display">\[
+L = \nabla^2 + \alpha^2
+\]</span></p>
+<p><span class="math display">\[
+L(k) = -k^2 + \alpha^2
+\]</span></p>
+<p><span class="math display">\[
+G(k)=\f{1}{\alpha^2-k^2}
+\]</span></p>
+<p><span class="math display">\[
+G(x) = \f{1}{2\pi}\int_{-\infty}^{\infty} \f{1}{\alpha^2-k^2} \exp(ikx) dk
+\]</span></p>
+<p>この特異点<span class="math inline">\(k=\pm \alpha\)</span>は実軸上にあるので、積分経路上から除かないといけない。</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} \f{1}{k^2-(\alpha+i\eps)^2} \exp(ikx) dk
+\]</span></p>
+<p><span class="math display">\[
+G(x)=-\f{i}{2\pi}\exp(\pm i\alpha x)
+\]</span></p>
+<h2 id="拡散方程式">拡散方程式</h2>
+<p><span class="math display">\[
+\pd{}{t} \phi = D\nabla^2 \phi
+\]</span></p>
+<p><span class="math display">\[
+L = D \nabla^2 - \pd{}{t}
+\]</span></p>
+<h3 id="グリーン関数-3">グリーン関数</h3>
+<p><span class="math display">\[
+\begin{aligned}
+G(x,t;\xi,\tau)
+&amp;=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
+&amp;=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
+\end{aligned}
+\]</span></p>
+<h2 id="波動方程式">波動方程式</h2>
+<p><span class="math display">\[
+\pdd{}{t}u = c^2\nabla^2 u
+\]</span></p>
+<p><span class="math display">\[
+L = c^2\nabla^2 - \pdd{}{t}
+\]</span></p>
+<h3 id="グリーン関数-4">グリーン関数</h3>
+<p><span class="math display">\[
+\begin{aligned}
+G(x,t;\xi,\tau)
+&amp;=L^{-1}[\delta(x-\xi)\delta(t-\tau)] \\
+&amp;=-\f{1}{2\pi\sqrt{\pi D (t-\tau)}}\exp\l(-\f{(x-\xi)^2}{4D(t-\tau)}\r)
+\end{aligned}
+\]</span></p>
+<h2 id="ラプラス方程式-1">ラプラス方程式</h2>
+<p><span class="math display">\[
+\nabla^2 \phi = 0
+\]</span></p>
+<h2 id="ポアソン方程式-1">ポアソン方程式</h2>
+<p><span class="math display">\[
+\nabla^2 \phi = \rho
+\]</span></p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang="ja"
+  xml:lang="ja"
+  prefix="og: http://ogp.me/ns#"
+>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -26,11 +31,11 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>フーリエ変換チートシート | Kanade's Website</title>
-    
+          <title>フーリエ変換チートシート | Kanade's Website</title>
+
     <!-- OGP -->
         <!-- END OGP -->
-    
+
     <style>
       body {
         margin: 0;
@@ -350,6 +355,14 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <style>
+      mjx-container[jax="CHTML"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+
     <script>
       function tweet() {
         window.open(
@@ -420,7 +433,8 @@
               />
             </svg>
           </a>
-        </div> <!-- End Top Nav -->
+        </div>
+        <!-- End Top Nav -->
         <!-- Title -->
                 <h1 style="margin: 0">フーリエ変換チートシート</h1>
                 <!-- Date -->
@@ -428,43 +442,30 @@
               </header>
 
       <!-- TeX Macros -->
-      <p style="display: none;"> 
-        \[
-          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
-          \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-          \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-          \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
-          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
-          \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-          \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
-          \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
-          \newcommand{\p}{\partial}
-          \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-          \newcommand{\Re}{\mathrm{Re}}
-          \newcommand{\Im}{\mathrm{Im}}
-          \newcommand{\bra}[1]{\left\langle #1 \right|}
-          \newcommand{\ket}[1]{\left|#1 \right\rangle}
-          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-          \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
-          
-          \newcommand{\l}{\left}
-          \newcommand{\m}{\middle}
-          \newcommand{\r}{\right}
-          \newcommand{\f}[2]{\frac{#1}{#2}}
-          \newcommand{\eps}{\varepsilon}
-          \newcommand{\ra}{\rightarrow}
-          \newcommand{\F}{\mathcal{F}}
-          \newcommand{\L}{\mathcal{L}}
-          \newcommand{\t}{\quad}
-          \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
-
-          \newcommand{\R}{\mathcal{R}}
-          \newcommand{\C}{\mathcal{C}}
-          \newcommand{\Z}{\mathcal{Z}}
-          \newcommand{\bm}[1]{\boldsymbol{#1}}
-        \]
+      <p style="display: none">
+        \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+        \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+        \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+        \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+        \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+        \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+        \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+        \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+        \newcommand{\p}{\partial} \newcommand{\D}[2]{\frac{\mathrm{D}
+        #1}{\mathrm{D} #2}} \newcommand{\Re}{\mathrm{Re}}
+        \newcommand{\Im}{\mathrm{Im}} \newcommand{\bra}[1]{\left\langle #1
+        \right|} \newcommand{\ket}[1]{\left|#1 \right\rangle}
+        \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+        \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+        \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+        \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+        \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+        \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+        \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+        \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
       </p>
- 
+
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#フーリエ級数展開">フーリエ級数展開</a></li>
@@ -474,58 +475,57 @@
 <li><a href="#畳み込み">畳み込み</a></li>
 </ul></li>
 </ul></nav>
-      
-      <h2 id="フーリエ級数展開">フーリエ級数展開</h2>
-      <blockquote>
-      <p>周期 <span class="math inline">\(T\)</span></p>
-      <p><span class="math display">\[
-      a_n = \f{2}{T}\int_{0}^{T} f(t)\cos\f{2\pi nt}{T} dt
-      \]</span></p>
-      <p><span class="math display">\[
-      b_n = \f{2}{T}\int_{0}^{T} f(t)\sin\f{2\pi nt}{T} dt
-      \]</span></p>
-      <p><span class="math display">\[
-      f(t) = \f{a_0}{2} + \sum_n \l\{a_n\cos\f{2\pi nt}{T} + b_n\sin\f{2\pi nt}{T}\r\}
-      \]</span></p>
-      </blockquote>
-      <h2 id="複素フーリエ級数展開">複素フーリエ級数展開</h2>
-      <blockquote>
-      <p>周期<span class="math inline">\(T\)</span></p>
-      <p><span class="math display">\[
-      c_n = \f{1}{T} \int_0^T \exp\l(-2\pi i\f{nt}{T}\r) dt
-      \]</span></p>
-      <p><span class="math display">\[
-      f(t) = \sum_{n=-\infty}^{+\infty} c_n \exp\l(2\pi i\f{nt}{T}\r)
-      \]</span></p>
-      </blockquote>
-      <h2 id="フーリエ変換">フーリエ変換</h2>
-      <blockquote>
-      <p><span class="math display">\[
-      \F [f(t)] = \f{1}{\sqrt{2\pi}} \intinf f(t)\exp(-ikt) dt
-      \]</span></p>
-      <p><span class="math display">\[
-      \F^{-1} [f(k)] = \f{1}{\sqrt{2\pi}} \intinf \exp(ikx) dk
-      \]</span></p>
-      </blockquote>
-      <h3 id="微分演算子">微分演算子</h3>
-      <p><span class="math display">\[
-      \begin{CD}
-      f     @&gt;D&gt;&gt;  Df \\
-      @V\F VV            @VV \F V \\
-      \F f @&gt;(ik)&gt;&gt;  \F D f = (ik)\F f
-      \end{CD}
-      \]</span></p>
-      <h3 id="畳み込み">畳み込み</h3>
-      <p><span class="math display">\[
-      f*g=\intinf f(\tau)g(t-\tau) d\tau
-      \]</span></p>
-      <p><span class="math display">\[
-      \begin{CD}
-      f\otimes g     @&gt;*&gt;&gt;  f*g \\
-      @V\F VV            @VV \F V \\
-      \F[f]\otimes \F[g] @&gt;\times&gt;&gt;  \F[f*g] = \F[f]\F[g]
-      \end{CD}
-      \]</span></p>
+       <h2 id="フーリエ級数展開">フーリエ級数展開</h2>
+<blockquote>
+<p>周期 <span class="math inline">\(T\)</span></p>
+<p><span class="math display">\[
+a_n = \f{2}{T}\int_{0}^{T} f(t)\cos\f{2\pi nt}{T} dt
+\]</span></p>
+<p><span class="math display">\[
+b_n = \f{2}{T}\int_{0}^{T} f(t)\sin\f{2\pi nt}{T} dt
+\]</span></p>
+<p><span class="math display">\[
+f(t) = \f{a_0}{2} + \sum_n \l\{a_n\cos\f{2\pi nt}{T} + b_n\sin\f{2\pi nt}{T}\r\}
+\]</span></p>
+</blockquote>
+<h2 id="複素フーリエ級数展開">複素フーリエ級数展開</h2>
+<blockquote>
+<p>周期<span class="math inline">\(T\)</span></p>
+<p><span class="math display">\[
+c_n = \f{1}{T} \int_0^T \exp\l(-2\pi i\f{nt}{T}\r) dt
+\]</span></p>
+<p><span class="math display">\[
+f(t) = \sum_{n=-\infty}^{+\infty} c_n \exp\l(2\pi i\f{nt}{T}\r)
+\]</span></p>
+</blockquote>
+<h2 id="フーリエ変換">フーリエ変換</h2>
+<blockquote>
+<p><span class="math display">\[
+\F [f(t)] = \f{1}{\sqrt{2\pi}} \intinf f(t)\exp(-ikt) dt
+\]</span></p>
+<p><span class="math display">\[
+\F^{-1} [f(k)] = \f{1}{\sqrt{2\pi}} \intinf \exp(ikx) dk
+\]</span></p>
+</blockquote>
+<h3 id="微分演算子">微分演算子</h3>
+<p><span class="math display">\[
+\begin{CD}
+f     @&gt;D&gt;&gt;  Df \\
+@V\F VV            @VV \F V \\
+\F f @&gt;(ik)&gt;&gt;  \F D f = (ik)\F f
+\end{CD}
+\]</span></p>
+<h3 id="畳み込み">畳み込み</h3>
+<p><span class="math display">\[
+f*g=\intinf f(\tau)g(t-\tau) d\tau
+\]</span></p>
+<p><span class="math display">\[
+\begin{CD}
+f\otimes g     @&gt;*&gt;&gt;  f*g \\
+@V\F VV            @VV \F V \\
+\F[f]\otimes \F[g] @&gt;\times&gt;&gt;  \F[f*g] = \F[f]\F[g]
+\end{CD}
+\]</span></p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

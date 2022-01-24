@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang="ja"
+  xml:lang="ja"
+  prefix="og: http://ogp.me/ns#"
+>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -27,11 +32,11 @@
       href="https://avatars.githubusercontent.com/u/54773334"
     />
         <meta name="dcterms.date" content="2021-01-13" />
-                <title>Azoteq IQS127D （静電容量タッチセンサIC）の使い方 | Kanade's Website</title>
-    
+          <title>Azoteq IQS127D （静電容量タッチセンサIC）の使い方 | Kanade's Website</title>
+
     <!-- OGP -->
         <!-- END OGP -->
-    
+
     <style>
       body {
         margin: 0;
@@ -351,6 +356,14 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <style>
+      mjx-container[jax="CHTML"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+
     <script>
       function tweet() {
         window.open(
@@ -421,7 +434,8 @@
               />
             </svg>
           </a>
-        </div> <!-- End Top Nav -->
+        </div>
+        <!-- End Top Nav -->
         <!-- Title -->
                 <h1 style="margin: 0">Azoteq IQS127D （静電容量タッチセンサIC）の使い方</h1>
                 <!-- Date -->
@@ -430,43 +444,30 @@
               </header>
 
       <!-- TeX Macros -->
-      <p style="display: none;"> 
-        \[
-          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
-          \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-          \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-          \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
-          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
-          \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-          \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
-          \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
-          \newcommand{\p}{\partial}
-          \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-          \newcommand{\Re}{\mathrm{Re}}
-          \newcommand{\Im}{\mathrm{Im}}
-          \newcommand{\bra}[1]{\left\langle #1 \right|}
-          \newcommand{\ket}[1]{\left|#1 \right\rangle}
-          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-          \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
-          
-          \newcommand{\l}{\left}
-          \newcommand{\m}{\middle}
-          \newcommand{\r}{\right}
-          \newcommand{\f}[2]{\frac{#1}{#2}}
-          \newcommand{\eps}{\varepsilon}
-          \newcommand{\ra}{\rightarrow}
-          \newcommand{\F}{\mathcal{F}}
-          \newcommand{\L}{\mathcal{L}}
-          \newcommand{\t}{\quad}
-          \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
-
-          \newcommand{\R}{\mathcal{R}}
-          \newcommand{\C}{\mathcal{C}}
-          \newcommand{\Z}{\mathcal{Z}}
-          \newcommand{\bm}[1]{\boldsymbol{#1}}
-        \]
+      <p style="display: none">
+        \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+        \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+        \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+        \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+        \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+        \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+        \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+        \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+        \newcommand{\p}{\partial} \newcommand{\D}[2]{\frac{\mathrm{D}
+        #1}{\mathrm{D} #2}} \newcommand{\Re}{\mathrm{Re}}
+        \newcommand{\Im}{\mathrm{Im}} \newcommand{\bra}[1]{\left\langle #1
+        \right|} \newcommand{\ket}[1]{\left|#1 \right\rangle}
+        \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+        \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+        \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+        \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+        \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+        \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+        \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+        \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
       </p>
- 
+
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#機能">機能</a></li>
@@ -474,32 +475,31 @@
 <li><a href="#簡単な使い方">簡単な使い方</a></li>
 <li><a href="#静電容量の値を取る">静電容量の値を取る</a></li>
 </ul></nav>
-      
-      <p><a href="https://www.azoteq.com/product/iqs127d/">メーカーのページ</a></p>
-      <p><a href="https://www.mouser.jp/datasheet/2/42/iqs127_datasheet-1602122.pdf">データシート</a></p>
-      <p><a href="https://www.azoteq.com/wp-content/uploads/2019/02/azd017_iqs127_1-wire_protocol_sample_code.pdf">サンプルコード</a></p>
-      <h2 id="機能">機能</h2>
-      <ul>
-      <li>電極とIC（とコンデンサと抵抗）だけでタッチスイッチを作れる</li>
-      <li>Proximity output （近接状態を検出できる）</li>
-      <li>ATI（自動調整機能）</li>
-      <li>1-Wire通信でセンサ値を取れる</li>
-      </ul>
-      <h2 id="pin">PIN</h2>
-      <ol type="1">
-      <li>TOUT - スイッチの出力・シリアル通信にも使用</li>
-      <li>VSS - Ground</li>
-      <li>POUT - Proximity output</li>
-      <li>VREG - 内部レギュレータ用コンデンサに接続</li>
-      <li>VDDHI - 電源（2.95V～5.5V）</li>
-      <li>CX - 電極（抵抗を直列接続）</li>
-      </ol>
-      <h2 id="簡単な使い方">簡単な使い方</h2>
-      <p>TOUTをトランジスタにつなぐだけで，スイッチとして使える</p>
-      <h2 id="静電容量の値を取る">静電容量の値を取る</h2>
-      <p>1-Wire っていうプロトコル((電源ラインと信号ラインを1本にまとめられるらしい（ここではそうなってはいないが）．簡易なセンサ用の通信によさそう．))で通信できて容量値を取れたり閾値を設定できたりするっぽい</p>
-      <hr />
-      <p>タッチセンサ用のIC，アキバを回っても見つからなかったから秋月とかで売ってくれないかな</p>
+       <p><a href="https://www.azoteq.com/product/iqs127d/">メーカーのページ</a></p>
+<p><a href="https://www.mouser.jp/datasheet/2/42/iqs127_datasheet-1602122.pdf">データシート</a></p>
+<p><a href="https://www.azoteq.com/wp-content/uploads/2019/02/azd017_iqs127_1-wire_protocol_sample_code.pdf">サンプルコード</a></p>
+<h2 id="機能">機能</h2>
+<ul>
+<li>電極とIC（とコンデンサと抵抗）だけでタッチスイッチを作れる</li>
+<li>Proximity output （近接状態を検出できる）</li>
+<li>ATI（自動調整機能）</li>
+<li>1-Wire通信でセンサ値を取れる</li>
+</ul>
+<h2 id="pin">PIN</h2>
+<ol type="1">
+<li>TOUT - スイッチの出力・シリアル通信にも使用</li>
+<li>VSS - Ground</li>
+<li>POUT - Proximity output</li>
+<li>VREG - 内部レギュレータ用コンデンサに接続</li>
+<li>VDDHI - 電源（2.95V～5.5V）</li>
+<li>CX - 電極（抵抗を直列接続）</li>
+</ol>
+<h2 id="簡単な使い方">簡単な使い方</h2>
+<p>TOUTをトランジスタにつなぐだけで，スイッチとして使える</p>
+<h2 id="静電容量の値を取る">静電容量の値を取る</h2>
+<p>1-Wire っていうプロトコル((電源ラインと信号ラインを1本にまとめられるらしい（ここではそうなってはいないが）．簡易なセンサ用の通信によさそう．))で通信できて容量値を取れたり閾値を設定できたりするっぽい</p>
+<hr />
+<p>タッチセンサ用のIC，アキバを回っても見つからなかったから秋月とかで売ってくれないかな</p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

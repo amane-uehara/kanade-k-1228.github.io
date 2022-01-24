@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  lang="ja"
+  xml:lang="ja"
+  prefix="og: http://ogp.me/ns#"
+>
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -26,11 +31,11 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-                <title>共変・反変 | Kanade's Website</title>
-    
+          <title>共変・反変 | Kanade's Website</title>
+
     <!-- OGP -->
         <!-- END OGP -->
-    
+
     <style>
       body {
         margin: 0;
@@ -350,6 +355,14 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <style>
+      mjx-container[jax="CHTML"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+
     <script>
       function tweet() {
         window.open(
@@ -420,7 +433,8 @@
               />
             </svg>
           </a>
-        </div> <!-- End Top Nav -->
+        </div>
+        <!-- End Top Nav -->
         <!-- Title -->
                 <h1 style="margin: 0">共変・反変</h1>
                 <!-- Date -->
@@ -428,79 +442,65 @@
               </header>
 
       <!-- TeX Macros -->
-      <p style="display: none;"> 
-        \[
-          \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
-          \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-          \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-          \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
-          \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
-          \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-          \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
-          \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
-          \newcommand{\p}{\partial}
-          \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-          \newcommand{\Re}{\mathrm{Re}}
-          \newcommand{\Im}{\mathrm{Im}}
-          \newcommand{\bra}[1]{\left\langle #1 \right|}
-          \newcommand{\ket}[1]{\left|#1 \right\rangle}
-          \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-          \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
-          
-          \newcommand{\l}{\left}
-          \newcommand{\m}{\middle}
-          \newcommand{\r}{\right}
-          \newcommand{\f}[2]{\frac{#1}{#2}}
-          \newcommand{\eps}{\varepsilon}
-          \newcommand{\ra}{\rightarrow}
-          \newcommand{\F}{\mathcal{F}}
-          \newcommand{\L}{\mathcal{L}}
-          \newcommand{\t}{\quad}
-          \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
-
-          \newcommand{\R}{\mathcal{R}}
-          \newcommand{\C}{\mathcal{C}}
-          \newcommand{\Z}{\mathcal{Z}}
-          \newcommand{\bm}[1]{\boldsymbol{#1}}
-        \]
+      <p style="display: none">
+        \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+        \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+        \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+        \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+        \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+        \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+        \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+        \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+        \newcommand{\p}{\partial} \newcommand{\D}[2]{\frac{\mathrm{D}
+        #1}{\mathrm{D} #2}} \newcommand{\Re}{\mathrm{Re}}
+        \newcommand{\Im}{\mathrm{Im}} \newcommand{\bra}[1]{\left\langle #1
+        \right|} \newcommand{\ket}[1]{\left|#1 \right\rangle}
+        \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+        \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+        \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+        \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+        \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+        \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+        \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+        \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+        \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
       </p>
- 
+
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#共変反変">共変・反変</a></li>
 <li><a href="#例">例：</a></li>
 </ul></nav>
-      
-      <p>座標変換に対して二通りのふるまいがあるということ．</p>
-      <h2 id="共変反変">共変・反変</h2>
-      <p>あるベクトル <span class="math inline">\(a\)</span> を基底 <span class="math inline">\(e_i\)</span> と成分 <span class="math inline">\(a^i\)</span> で表す．</p>
-      <p><span class="math display">\[
-      a = a^ie_i
-      \]</span></p>
-      <p>座標を <span class="math inline">\(e&#39;_i\)</span> に変換する．</p>
-      <p><span class="math display">\[
-      e&#39;_i = E^j_ie_j
-      \]</span></p>
-      <p>このとき <span class="math inline">\(e&#39;_i\)</span> に対する成分 <span class="math inline">\(a&#39;^i\)</span> は，</p>
-      <p><span class="math display">\[
-      a&#39;^i = E^i_ja^j
-      \]</span></p>
-      <p>説明</p>
-      <p><span class="math display">\[
-      \begin{aligned}
-      a&#39;^ie&#39;_i &amp;= E^i_ja^je&#39;_i \\
-               &amp;= a^je_j
-      \end{aligned}
-      \]</span></p>
-      <blockquote>
-      <p>座標変換に対して <span class="math display">\[
-      \begin{aligned}
-      共変：a&#39;_i=E^j_ia_j \\
-      反変：a&#39;^i=E^i_ja^j
-      \end{aligned}
-      \]</span></p>
-      </blockquote>
-      <h2 id="例">例：</h2>
+       <p>座標変換に対して二通りのふるまいがあるということ．</p>
+<h2 id="共変反変">共変・反変</h2>
+<p>あるベクトル <span class="math inline">\(a\)</span> を基底 <span class="math inline">\(e_i\)</span> と成分 <span class="math inline">\(a^i\)</span> で表す．</p>
+<p><span class="math display">\[
+a = a^ie_i
+\]</span></p>
+<p>座標を <span class="math inline">\(e&#39;_i\)</span> に変換する．</p>
+<p><span class="math display">\[
+e&#39;_i = E^j_ie_j
+\]</span></p>
+<p>このとき <span class="math inline">\(e&#39;_i\)</span> に対する成分 <span class="math inline">\(a&#39;^i\)</span> は，</p>
+<p><span class="math display">\[
+a&#39;^i = E^i_ja^j
+\]</span></p>
+<p>説明</p>
+<p><span class="math display">\[
+\begin{aligned}
+a&#39;^ie&#39;_i &amp;= E^i_ja^je&#39;_i \\
+         &amp;= a^je_j
+\end{aligned}
+\]</span></p>
+<blockquote>
+<p>座標変換に対して <span class="math display">\[
+\begin{aligned}
+共変：a&#39;_i=E^j_ia_j \\
+反変：a&#39;^i=E^i_ja^j
+\end{aligned}
+\]</span></p>
+</blockquote>
+<h2 id="例">例：</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
