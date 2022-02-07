@@ -14,6 +14,6 @@
 
 ## 旅行記
 
-[大寒波！雪の東北旅](./Travel/2021W-Touhoku/)
+[大寒波！雪の東北旅](./Travel/2021-12-Touhoku/)
 
 [フリーパスまとめ](./Travel/FreePass/)
