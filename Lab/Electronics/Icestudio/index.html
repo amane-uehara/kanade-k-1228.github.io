@@ -31,9 +31,8 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-        <meta name="dcterms.date" content="2022-03-26" />
-         <meta name="keywords" content="TinyFPGA, TinyFPGA BX, FPGA, Lattice, ice40, Icestudio" />
-         <title>TinyFPGA BX の使い方 | Kanade's Website</title>
+         <meta name="keywords" content="Icestudio, FPGA, Lattice, ice40" />
+         <title>Icestudio の使い方 | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -371,7 +370,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "TinyFPGA BX の使い方",
+            "Icestudio の使い方",
           "_blank"
         );
       }
@@ -438,9 +437,8 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">TinyFPGA BX の使い方</h1>
+                <h1 style="margin: 0">Icestudio の使い方</h1>
                 <!-- Date -->
-                <p align="right">2022-03-26</p>
                 <!-- Description -->
               </header>
 
@@ -471,62 +469,11 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#ブートローダのアップデート">ブートローダのアップデート</a></li>
-<li><a href="#開発環境">開発環境</a></li>
-<li><a href="#l-チカ">L チカ</a></li>
-<li><a href="#データシート">データシート</a></li>
+<li><a href="#ブロックの配置">ブロックの配置</a></li>
 </ul></nav>
-       <p>TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボードです。</p>
-<p><a href="https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-5C6J">せんごくネット通販 - TinyFPGA BX</a></p>
-<p><a href="https://tinyfpga.com/b-series-guide.html">TinyFPGA BX ユーザーガイド</a></p>
-<h2 id="ブートローダのアップデート">ブートローダのアップデート</h2>
-<p>Python と pip が必要なのでインストールしておきましょう。</p>
-<p>TinyFPGA に必要なツールをインストールします。依存するモジュールをインストールしろと言われたらインストールします。</p>
-<pre><code>pip install tinyprog</code></pre>
-<p>TinyFPGA ボードを PC に接続して、ドライバが認識されたのを確認します。</p>
-<p>Windows 10 以前のバージョンを使っている場合、<a href="https://www.pjrc.com/teensy/usb_serial.html">Virtual Serial Port</a> が必要なようです。</p>
-<p>TinyFPGA のブートローダのアップデートをします。</p>
-<pre><code>tinyprog --update-bootloader</code></pre>
-<p>※ TinyFPGA BX にはプログラマ基板が不要です。その代わり、FPGA の一部にプログラマ回路が書き込まれています。間違えて上書きしてしまった場合、Arduino を使ってブートローダを復元することができます。<a href="https://github.com/tinyfpga/TinyFPGA-B-Series/tree/master/programmer_arduino">Programming with an Arduino</a></p>
-<h2 id="開発環境">開発環境</h2>
-<ul>
-<li>Lattice の iCEcube2 ← ユーザーガイドに書かれてる方法</li>
-<li>APIO (Atom プラグイン)
-<ul>
-<li><a href="https://apiodoc.readthedocs.io/en/stable/source/installation.html">APIO ドキュメント</a></li>
-</ul></li>
-<li>Icestorm
-<ul>
-<li><a href="https://qiita.com/KYhei/items/0b8fb029bb8813c8cbd6">tinyFPGA-BX board に Terminal のみで build とボードへの書き込みを行った</a></li>
-</ul></li>
-<li>Icestudio ← 今回はこれ</li>
-</ul>
-<p><a href="https://icestudio.io/#lk-download">Icestudio</a>をインストールします。インストーラに従うだけなので省略。</p>
-<p>Icestudio を開いて、</p>
-<p>ボードの選択画面が出てきたら、TinyFPGA BX を選択。</p>
-<p>右下のポップアップに従って必要なツールをインストール。</p>
-<h2 id="l-チカ">L チカ</h2>
-<p>サンプルコードから、L チカを選択。</p>
-<p><img src="./img/01.png" /></p>
-<p>Convert を選択。</p>
-<p><img src="./img/02.png" /></p>
-<p>LED を接続するピンを選択。</p>
-<p><img src="./img/03.png" /></p>
-<p>TinyFPGA ボードを接続して、右下の Upload をクリック。</p>
-<p><img src="./img/04.png" /></p>
-<p>L チカしました。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hzZ5VPpSlpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<p>※ うまくいかない場合、<strong>USB アダプタに接続して電源のみを供給</strong> すると、L チカするはずです。PC に接続すると、ブートローダは通信待機状態で起動してしまい、ユーザーイメージを読み込みません。</p>
-<h2 id="データシート">データシート</h2>
-<p><a href="https://www.latticesemi.com/~/media/LatticeSemi/Documents/Handbooks/iCE40FamilyHandbook.pdf">iCE 40 Family Handbook</a></p>
-<p><a href="https://www.latticesemi.com/~/media/LatticeSemi/Documents/DataSheets/iCE/iCE40LPHXFamilyDataSheet.pdf">iCE 40 DataSheet</a></p>
-<p><a href="https://www.latticesemi.com/view_document?document_id=46502">iCE 40 Programming and Configuration</a></p>
-<p><a href="https://www.macnica.co.jp/business/semiconductor/articles/iCE40_UserGuide_rev1.7__2.pdf">iCE40 ユーザーガイド</a></p>
-<p><a href="https://github.com/tinyfpga/TinyFPGA-BX/blob/master/board/TinyFPGA-BX-Schematic.pdf">TinyFPGA BX 回路図</a></p>
-<p><a href="https://github.com/tinyfpga/TinyFPGA-Bootloader">TinyFPGA ブートローダ</a></p>
-<p><a href="https://www.mouser.jp/datasheet/2/590/at25sf041b-1888127.pdf">AT25SF041B SPI Flash データシート</a></p>
-<p>https://gojimmypi.blogspot.com/2019/01/risc-v-on-fpga-tinyfpga-via-wsl.html</p>
+       <p>ノーコードで FPGA を使えるのでおすすめです。ここからインストールできます<a href="https://icestudio.io/">Icestudio</a>。</p>
+<p><a href="https://github.com/FPGAwars/icestudio/wiki/Installation">インストールガイド</a></p>
+<h2 id="ブロックの配置">ブロックの配置</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
