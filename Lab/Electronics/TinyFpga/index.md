@@ -4,7 +4,7 @@ date: 2022-03-26
 keywords: TinyFPGA, TinyFPGA BX, FPGA, Lattice, ice40, Icestudio
 ---
 
-TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボードです。
+TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボードです。iCE40 は一連の開発ツールが完全にオープンソース化されている数少ない FPGA です。
 
 [せんごくネット通販 - TinyFPGA BX](https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-5C6J)
 
@@ -73,7 +73,7 @@ L チカしました。
 
 ※ うまくいかない場合、**USB アダプタに接続して電源のみを供給** すると、L チカするはずです。PC に接続すると、ブートローダは通信待機状態で起動してしまい、ユーザーイメージを読み込みません。
 
-## データシート
+## 資料
 
 [iCE 40 Family Handbook](https://www.latticesemi.com/~/media/LatticeSemi/Documents/Handbooks/iCE40FamilyHandbook.pdf)
 
@@ -89,4 +89,4 @@ L チカしました。
 
 [AT25SF041B SPI Flash データシート](https://www.mouser.jp/datasheet/2/590/at25sf041b-1888127.pdf)
 
-https://gojimmypi.blogspot.com/2019/01/risc-v-on-fpga-tinyfpga-via-wsl.html
+[RISC-V on FPGA (the tinyFPGA) via WSL - Part 2](https://gojimmypi.blogspot.com/2019/01/risc-v-on-fpga-tinyfpga-via-wsl.html)
