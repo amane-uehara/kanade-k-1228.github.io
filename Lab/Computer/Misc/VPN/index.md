@@ -1,14 +1,14 @@
-% SoftEther VPN + Conoha VPS で共用ルーターを突破する
-%
-%
+---
+title: SoftEther VPN で共用ルーターを突破する
+---
 
 ![](./img/network.drawio.svg)
 
-共用ルーターは外部からのトラフィックを通さない設定になっているので，自宅からサーバーを公開できません．外部のサーバーを介して自宅の LAN に接続する VPN を作ります．
+下宿の共用ルーターが外部からのトラフィックを通さない設定になっていたので、自宅からサーバーを公開できませんでした。なので、外部のサーバーを介して自宅の LAN に接続する VPN を作っていきます。
 
 ## SoftEther VPN Server を設定
 
-レンタルサーバーに VPN サーバーをインストールする．公式のドキュメント（[7.3 Linux へのインストールと初期設定](https://ja.softether.org/4-docs/1-manual/7/7.3)）に従って設定していく．
+レンタルサーバーに VPN サーバーをインストールする。公式のドキュメント（[7.3 Linux へのインストールと初期設定](https://ja.softether.org/4-docs/1-manual/7/7.3)）に従って設定していく。
 
 - ビルド
   - サーバーのソースをダウンロードして
@@ -35,7 +35,7 @@
 ## VPN に接続
 
 - PC から
-  - クライアントとして使いたい PC に，「SoftEther VPN Client」をインストール．（[SoftEther VPN](https://ja.softether.org/5-download)）
+  - クライアントとして使いたい PC に、「SoftEther VPN Client」をインストール。（[SoftEther VPN](https://ja.softether.org/5-download)）
   - 仮想 LAN カードの作成
   - 新しい接続
 - iPhone から
@@ -50,6 +50,6 @@
 
 ## SoftEther VPN Bridge
 
-自宅のサーバーに SoftEther VPN Bridge をインストールする．
+自宅のサーバーに SoftEther VPN Bridge をインストールする。
 
 [](https://ja.softether.org/4-docs/1-manual/A/10.B)

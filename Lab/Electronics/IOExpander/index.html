@@ -31,7 +31,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>研究室へようこそ | Kanade's Website</title>
+          <title>I2C IOエクスパンダ MCP23017 の使い方 | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -378,7 +378,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "研究室へようこそ",
+            "I2C IOエクスパンダ MCP23017 の使い方",
           "_blank"
         );
       }
@@ -445,7 +445,7 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">研究室へようこそ</h1>
+                <h1 style="margin: 0">I2C IOエクスパンダ MCP23017 の使い方</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -477,72 +477,188 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#数学">数学</a></li>
-<li><a href="#物理学">物理学</a><ul>
-<li><a href="#力学">力学</a></li>
-<li><a href="#物性">物性</a></li>
+<li><a href="#mcp23017">MCP23017</a></li>
+<li><a href="#レジスタ">レジスタ</a><ul>
+<li><a href="#iocon">IOCON</a></li>
 </ul></li>
-<li><a href="#制御工学">制御工学</a></li>
-<li><a href="#機械工学">機械工学</a></li>
-<li><a href="#電気電子工学">電気電子工学</a><ul>
-<li><a href="#電子工作">電子工作</a></li>
-<li><a href="#電波">電波</a></li>
-<li><a href="#マイコン">マイコン</a></li>
+<li><a href="#簡単な使い方">簡単な使い方</a><ul>
+<li><a href="#デバイスアドレス">デバイスアドレス</a></li>
+<li><a href="#設定レジスタ">設定レジスタ</a></li>
+<li><a href="#出力">出力</a></li>
+<li><a href="#入力">入力</a></li>
 </ul></li>
-<li><a href="#情報工学">情報工学</a><ul>
-<li><a href="#リレーコンピュータ">リレーコンピュータ</a></li>
-</ul></li>
+<li><a href="#テスト">テスト</a></li>
 </ul></nav>
-       <h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/GreenFunction/">グリーン関数</a></p>
-<p><a href="./Mathmatics/FourierTransform/">フーリエ変換</a></p>
-<h2 id="物理学">物理学</h2>
-<h3 id="力学">力学</h3>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<h3 id="物性">物性</h3>
-<p><a href="./Physics/CondensedMatter/">物性物理</a></p>
-<h2 id="制御工学">制御工学</h2>
-<p><a href="./Control/SpringMassSystem/">バネ・マス系</a></p>
-<h2 id="機械工学">機械工学</h2>
-<p><a href="./Mech/Manufacturing/">生産技術</a></p>
-<p>人体と機械</p>
-<p>熱機関</p>
-<h2 id="電気電子工学">電気電子工学</h2>
-<h3 id="電子工作">電子工作</h3>
-<p><a href="https://kanade-k-1228.github.io/YMZ294/">YMZ294 で音楽を再生する</a></p>
-<p>オペアンプ</p>
-<p>ロータリーエンコーダを自作</p>
-<h3 id="電波">電波</h3>
-<p>ダイオード 2 本でお手軽エネルギーハーベスティング</p>
-<p>無線送電を作って遊ぶ</p>
-<p>一級陸上無線技術士を取りました</p>
-<h3 id="マイコン">マイコン</h3>
-<p><a href="./Electronics/TinyFpga/">TinyFPGA を使ってみた</a></p>
-<h2 id="情報工学">情報工学</h2>
-<p><a href="./Computer/Misc/TLA/">TLA+ 入門</a></p>
-<p><a href="./Computer/Misc/VPN/">SoftEther VPN で共用ルーターを突破する</a></p>
-<p><a href="./Computer/Misc/ServerSetup/">サーバーセットアップメモ</a></p>
-<p><a href="./Computer/Misc/LongestWay/">最長片道切符</a></p>
-<h3 id="リレーコンピュータ">リレーコンピュータ</h3>
-<p><a href="./Computer/RelayComputer/Day1_Introduction/">リレーから始める CPU 自作</a></p>
-<p><a href="./Computer/RelayComputer/Day2_SwitchLogic/">スイッチで作る組合回路</a></p>
-<p><a href="./Computer/RelayComputer/Day3_RelayLogic/">リレーで作る組合回路</a></p>
-<p><a href="./Computer/RelayComputer/Day4_Latch/">早押しボタンを作ってみる</a></p>
-<p><a href="./Computer/RelayComputer/Day5_DFF/">D フリップフロップ回路</a></p>
-<p><a href="./Computer/RelayComputer/Day6_Counter/">カウンタ回路</a></p>
-<p><a href="./Computer/RelayComputer/Day7_Clock/">クロック回路</a></p>
-<p><a href="./Computer/RelayComputer/Day8_Illumination/">点滅するイルミネーションを作ってみる</a></p>
-<p><a href="./Computer/RelayComputer/Day9_ROM/">イルミネーションをプログラマブルにする</a></p>
-<p><a href="./Computer/RelayComputer/Day10_Components/">回路まとめ</a></p>
-<p><a href="./Computer/RelayComputer/Day11_CPU/">CPU になりきる</a></p>
-<p><a href="./Computer/RelayComputer/Day12_ComputerSystem/">コンピュータのしくみ</a></p>
-<p><a href="./Computer/RelayComputer/Day13_RelayCPU/">リレーコンピュータの仕様</a></p>
-<p><a href="./Computer/RelayComputer/Day14_MemoryMap/">メモリマップ</a></p>
-<p><a href="./Computer/RelayComputer/Day15_MOV/">MOV 命令</a></p>
-<p><a href="./Computer/RelayComputer/Day16_LOAD/">LOAD 命令</a></p>
-<p><a href="./Computer/RelayComputer/Day17_JMPIF/">JMPIF 命令</a></p>
-<p><a href="./Computer/RelayComputer/Day18_ALU/">演算回路</a></p>
+       <h2 id="mcp23017">MCP23017</h2>
+<ul>
+<li>I2C 通信で GPIO ピンを拡張する</li>
+<li>割り込み出力がある</li>
+</ul>
+<p><a href="https://akizukidenshi.com/catalog/g/gI-09486/">秋月電子</a></p>
+<p><a href="http://ww1.microchip.com/downloads/cn/DeviceDoc/cn026496.pdf">参考：MCP23008 のデータシート</a></p>
+<h2 id="レジスタ">レジスタ</h2>
+<p>全て 8bit のレジスタです。それぞれのレジスタについて、A/B があります。レジスタの 8bit が 8 本の GPIO ピンに対応しています。</p>
+<table>
+<thead>
+<tr class="header">
+<th>名前</th>
+<th></th>
+<th>機能</th>
+<th>値</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IODIR</td>
+<td>RW</td>
+<td>入力か出力か？</td>
+<td>1:入力 0:出力</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>IPOL</td>
+<td>RW</td>
+<td>入力ピンの極性</td>
+<td>1:反転 0:同じ</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>GPINTEN</td>
+<td>RW</td>
+<td>入力状態変化時に割り込みを起こすか？</td>
+<td>1:割り込み有 0:無</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DEFVAL</td>
+<td>RW</td>
+<td>割り込みの比較値</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>INTCON</td>
+<td>RW</td>
+<td>割り込みの比較値</td>
+<td>1:DEFVAL の値 0:前の値</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>IOCON</td>
+<td>RW</td>
+<td>I2C の設定</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>GPPU</td>
+<td>RW</td>
+<td>入力ピンのプルアップ (100kΩ) を設定</td>
+<td>1:プルアップ有 0:無</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>INTF</td>
+<td>R</td>
+<td>割り込みの状態</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>INTCAP</td>
+<td>R</td>
+<td>割り込み発生時のキャプチャ値</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>GPIO</td>
+<td>RW</td>
+<td>入力値/出力値</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>OLAT</td>
+<td>RW</td>
+<td>出力ラッチ</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="iocon">IOCON</h3>
+<table>
+<thead>
+<tr class="header">
+<th>ビットの名前</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SEQOP</td>
+<td>シーケンシャル動作</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>（I2C の通信回数に応じて、レジスタアドレスポインタを増分する）</td>
+</tr>
+<tr class="odd">
+<td>DISSLW</td>
+<td>SDA 出力スルーレート設定</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>（パルスのカーブを急峻にするので基本許可でいい）</td>
+</tr>
+<tr class="odd">
+<td>HAEN</td>
+<td>（MCP23S08 のみ）A2,A1 ピンでハードウェアアドレスを変更する</td>
+</tr>
+<tr class="even">
+<td>ODR</td>
+<td>INT ピン（割り込み出力）をオープンドレインにする</td>
+</tr>
+<tr class="odd">
+<td>INTPOL</td>
+<td>INT ピンの極性</td>
+</tr>
+</tbody>
+</table>
+<h2 id="簡単な使い方">簡単な使い方</h2>
+<p>割り込みを使わなければ簡単に使えるはずです。</p>
+<h3 id="デバイスアドレス">デバイスアドレス</h3>
+<p>A2,A1,A0 ピンでアドレスを設定します。</p>
+<p>アドレスは 0b0100[a2][a1][a0]になります。</p>
+<p>今回は全部 LOW に設定するので、0b0100000。</p>
+<h3 id="設定レジスタ">設定レジスタ</h3>
+<ol type="1">
+<li>GPINTEN = 0 （割り込みは起こさない）</li>
+<li>IOCON =
+<ol type="1">
+<li>SEQOP = 1 （I2C のレジスタアドレスは自動で増分しない）</li>
+<li>DISSLW = 0</li>
+<li>ODR = 0 （INT ピンは使わない）</li>
+<li>INTPOL = 0</li>
+</ol></li>
+</ol>
+<h3 id="出力">出力</h3>
+<p>ピンを出力に設定</p>
+<p>IODIR = 0</p>
+<p>したうえで、</p>
+<p>GPIO レジスタに出力値を送るとピンから出力されます。</p>
+<h3 id="入力">入力</h3>
+<p>ピンを入力に設定</p>
+<p>IODIR = 1</p>
+<p>入力ピンのプルアップを設定</p>
+<p>GPPU = 1</p>
+<p>したうえで、</p>
+<p>GPIO レジスタの値を読むと入力値を取得できます。</p>
+<h2 id="テスト">テスト</h2>
+<p>Arduino でテストします。</p>
+<p>FPGA でテストします。</p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

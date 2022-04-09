@@ -56,6 +56,14 @@ title: 研究室へようこそ
 
 ## 情報工学
 
+[TLA+ 入門](./Computer/Misc/TLA/)
+
+[SoftEther VPN で共用ルーターを突破する](./Computer/Misc/VPN/)
+
+[サーバーセットアップメモ](./Computer/Misc/ServerSetup/)
+
+[最長片道切符](./Computer/Misc/LongestWay/)
+
 ### リレーコンピュータ
 
 [リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)

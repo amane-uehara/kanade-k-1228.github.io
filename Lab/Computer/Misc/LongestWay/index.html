@@ -476,7 +476,8 @@
       </p>
 
       <!-- Table of Contents -->
-       <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"></a>
+       <p>大昔に作った最長片道切符の経路を求めるプログラムが発掘されたので供養。アルゴリズムもデータ構造もさっぱりなプログラミング初心者はこうやって全探索を書くんやな（）</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
 <a class="sourceLine" id="cb1-4" title="4"><span class="pp">#define JOINTED_MAX 8 </span><span class="co">//接続する線区の最大数(仙台６)+2</span></a>
@@ -548,7 +549,7 @@
 <a class="sourceLine" id="cb1-70" title="70">            &amp;line_list[i].length);</a>
 <a class="sourceLine" id="cb1-71" title="71">    }</a>
 <a class="sourceLine" id="cb1-72" title="72">    fclose(fp);</a>
-<a class="sourceLine" id="cb1-73" title="73">    </a>
+<a class="sourceLine" id="cb1-73" title="73"></a>
 <a class="sourceLine" id="cb1-74" title="74">    <span class="co">//線区リストから、駅リストを作る</span></a>
 <a class="sourceLine" id="cb1-75" title="75">    st st_list[ST] = { <span class="st">&quot;&quot;</span>,{ <span class="dv">0</span> } ,{ <span class="dv">0</span> } };<span class="co">//駅リスト[駅番号].name.line_jointed[index].st_jointed[index]</span></a>
 <a class="sourceLine" id="cb1-76" title="76">    <span class="dt">int</span> s = <span class="dv">1</span>;<span class="co">//今のところの駅数（駅番号0はnull）</span></a>
