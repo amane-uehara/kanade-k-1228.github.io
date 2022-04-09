@@ -1,10 +1,10 @@
-% 最長片道切符
-%
-%
+---
+title: 最長片道切符
+---
 
+大昔に作った最長片道切符の経路を求めるプログラムが発掘されたので供養。アルゴリズムもデータ構造もさっぱりなプログラミング初心者はこうやって全探索を書くんやな（）
 
-
-``` C
+```C
 
 #include <stdio.h>
 #include <string.h>
@@ -77,7 +77,7 @@ int main(void) {
 			&line_list[i].length);
 	}
 	fclose(fp);
-	
+
 	//線区リストから、駅リストを作る
 	st st_list[ST] = { "",{ 0 } ,{ 0 } };//駅リスト[駅番号].name.line_jointed[index].st_jointed[index]
 	int s = 1;//今のところの駅数（駅番号0はnull）
