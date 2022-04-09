@@ -1,17 +1,6 @@
-% 2 次元上の倒立振子
-%
-%
-
-$$
-\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
-\newcommand{\Re}{\mathrm{Re}}
-\newcommand{\Im}{\mathrm{Im}}
-$$
+---
+title: 倒立振子
+---
 
 ## 運動方程式
 
