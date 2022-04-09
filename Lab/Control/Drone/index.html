@@ -31,7 +31,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>2 次元上の倒立振子 | Kanade's Website</title>
+          <title>ドローンの制御 | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -378,7 +378,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "2 次元上の倒立振子",
+            "ドローンの制御",
           "_blank"
         );
       }
@@ -445,7 +445,7 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">2 次元上の倒立振子</h1>
+                <h1 style="margin: 0">ドローンの制御</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -477,78 +477,379 @@
 
       <!-- Table of Contents -->
             <nav><ul>
+<li><a href="#機体系">機体系</a><ul>
 <li><a href="#運動方程式">運動方程式</a></li>
+<li><a href="#観測方程式">観測方程式</a></li>
 <li><a href="#状態方程式">状態方程式</a></li>
+<li><a href="#制御方式状態の計測">制御方式・状態の計測</a></li>
+<li><a href="#ブロック線図">ブロック線図</a></li>
+<li><a href="#シュミレーション">シュミレーション</a></li>
+<li><a href="#考察">考察</a></li>
+</ul></li>
+<li><a href="#モーター-プロペラ系">モーター-プロペラ系</a><ul>
+<li><a href="#モーター">モーター</a></li>
+<li><a href="#プロペラ">プロペラ</a></li>
+<li><a href="#ブロック線図-1">ブロック線図</a></li>
+<li><a href="#制御">制御</a></li>
+</ul></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
-\newcommand{\Re}{\mathrm{Re}}
-\newcommand{\Im}{\mathrm{Im}}
-\]</span></p>
-<h2 id="運動方程式">運動方程式</h2>
-<p>速度ベクトルは</p>
-<p><span class="math display">\[
-v=\begin{pmatrix}
-    \dot{x} \\ \dot{y} \\ 0
-\end{pmatrix} +
-l\dot{\theta}
-\begin{pmatrix}
-    -\sin\theta \\ \cos\theta \\ 0
-\end{pmatrix} +
-l\dot{\phi}
-\begin{pmatrix}
-    \cos\theta\cos\phi \\ \sin\theta\cos\phi \\ -\sin\phi
-\end{pmatrix}
-\]</span></p>
+       <p>2 次元上を動くドローンをある位置に移動させたい。</p>
+<p>ドローンの制御を、機体系（推力による速度の制御）と モーター-プロペラ系（推力の制御） に分けて考える。</p>
+<p><img src="./img/fig2.drawio.svg" /></p>
+<h2 id="機体系">機体系</h2>
+<p><img src="./img/fig1.drawio.svg" /></p>
+<p>二つのプロペラの推力でドローンを動かす。状態の観測のために 加速度センサ、角速度センサを取り付ける。位置の測定のために、カメラでドローンを撮る。</p>
+<table>
+<thead>
+<tr class="header">
+<th>記号の定義</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>定数</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M\)</span></td>
+<td>機体重量</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(I\)</span></td>
+<td>機体の重心まわりの慣性モーメント</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L\)</span></td>
+<td>プロペラの軸間長さ</td>
+</tr>
+<tr class="odd">
+<td>変数</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((x,y)\)</span></td>
+<td>重心位置</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\theta\)</span></td>
+<td>傾き</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f_1,f_2\)</span></td>
+<td>プロペラの推力</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((a_x,a_y)\)</span></td>
+<td>加速度センサの値</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\omega\)</span></td>
+<td>角速度センサの値</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((x_c,y_c)\)</span></td>
+<td>カメラから推定した位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="運動方程式">運動方程式</h3>
+<p>モーターの反トルク、空気抵抗は無視している。</p>
 <p><span class="math display">\[
 \begin{aligned}
-v^2 &amp;= (\dot{x}-l\dot{\theta}\sin\theta+l\dot{\phi}\cos\theta\cos\phi)^2 + (\dot{y}+l\dot{\theta}\cos\theta+l\dot{\phi}\sin\theta\cos\phi)^2 + (-l\dot{\phi}\sin\phi)^2 \\
-&amp;=\dot{x}^2 + l^2\dot{\theta}^2\sin^2\theta + l^2\dot{\phi}^2\cos^2\theta\cos^2\phi - 2\dot{x}l\dot{\theta}\sin\theta - 2l^2\dot{\theta}\dot{\phi}\sin\theta\cos\theta\cos\phi + 2l\dot{x}\dot{\phi}\cos\theta\cos\phi\\
-&amp;+ \dot{y}^2+l^2\dot{\theta}^2\cos^2\theta+l^2\dot{\phi}^2\sin^2\theta\cos^2\phi + 2\dot{y}l\dot{\theta}\cos\theta + 2l^2\dot{\theta}\dot{\phi}\cos\theta\sin\theta\cos\phi + 2l\dot{y}\dot{\phi}\sin\theta\cos\phi\\
-&amp;+ l^2\dot{\phi}^2\sin^2\phi \\
-&amp;= \dot{x}^2 + \dot{y}^2 + l^2\dot{\theta}^2 + l^2\dot{\phi}^2 + 2l\dot{\theta}(-\dot{x}\sin\theta + \dot{y}\cos\theta) + 2l\dot{\phi}\cos\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)
+M\ddot{x} &amp;= -(f_1+f_2)\sin\theta \\
+M\ddot{y} &amp;=  (f_1+f_2)\cos\theta - Mg \\
+I\ddot{\theta} &amp;= \frac{L}{2}(f_1-f_2)
 \end{aligned}
 \]</span></p>
-<p>ラグランジアンは</p>
-<p><span class="math display">\[
-L=\frac{1}{2} m[\dot{x}^2 + \dot{y}^2 + l^2\dot{\theta}^2 + l^2\dot{\phi}^2 + 2l\dot{\theta}(-\dot{x}\sin\theta + \dot{y}\cos\theta) + 2l\dot{\phi}\cos\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)]-mgl\cos\phi
-\]</span></p>
-<p>以下<span class="math inline">\(m\)</span> は省略する</p>
+<h3 id="観測方程式">観測方程式</h3>
+<p>加速度センサの値はセンサに固定された座標系における値であることに注意して、観測方程式を求める。</p>
 <p><span class="math display">\[
 \begin{aligned}
-\pd[L]{x} &amp;=0 \\
-\pd[L]{\dot{x}} &amp;= \dot{x} - l\dot{\theta}\sin\theta + l\dot{\phi}\cos\phi\cos\theta \\
-\d{t}\pd[L]{\dot{x}} &amp;= \ddot{x} - l\ddot{\theta}\sin\theta - l\dot{\theta}^2\cos\theta + l\ddot{\phi}\cos\phi\cos\theta - l\dot{\phi}^2\sin\phi\cos\theta - l\dot{\phi}\dot{\theta}\cos\phi\sin\theta \\
-\pd[L]{y} &amp;=0 \\
-\pd[L]{\dot{y}} &amp;= \dot{y} + l\dot{\theta}\cos\theta + l\dot{\phi}\cos\phi\sin\theta \\
-\d{t}\pd[L]{\dot{y}} &amp;= \ddot{y} + l\ddot{\theta}\cos\theta - l\dot{\theta}^2\sin\theta + l\ddot{\phi}\cos\phi\sin\theta - l\dot{\phi}^2\sin\phi\sin\theta + l\dot{\phi}\dot{\theta}\cos\phi\cos\theta \\
-\pd[L]{\theta} &amp;= l\dot{\theta}(-\dot{x}\cos\theta - \dot{y}\sin\theta) + l\dot{\phi}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta) \\
-\pd[L]{\dot{\theta}} &amp;= l^2\dot{\theta} + l(-\dot{x}\sin\theta + \dot{y}\cos\theta) \\
-\d{t}\pd[L]{\dot{\theta}} &amp;= l^2\ddot{\theta} + l(-\ddot{x}\sin\theta -\dot{x}\dot{\theta}\cos\theta + \ddot{y}\cos\theta - \dot{y}\dot{\theta}\sin\theta) \\
-\pd[L]{\phi} &amp;= -l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)+gl\sin\phi\\
-\pd[L]{\dot{\phi}} &amp;= l^2\dot{\phi} + l\cos\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)\\
-\d{t}\pd[L]{\dot{\phi}} &amp;= l^2\ddot{\phi} - l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta) + l\cos\phi(\ddot{x}\cos\theta + \ddot{y}\sin\theta) + + l\dot{\theta}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta)
+x_c &amp;= x \\
+y_c &amp;= y \\
+a_x &amp;=  \ddot{x}\cos\theta + (\ddot{y}-g)\sin\theta \\
+a_y &amp;= -\ddot{x}\sin\theta + (\ddot{y}-g)\cos\theta \\
+\omega &amp;= \dot{\theta}
 \end{aligned}
 \]</span></p>
-<p>オイラー・ラグランジュの運動方程式</p>
+<p>加速度センサはセンサにかかる加速度を計測するが、機体の加速度に比べて重力加速度が十分大きいので、もっぱら鉛直方向を指し示すセンサとして働く。</p>
+<h3 id="状態方程式">状態方程式</h3>
 <p><span class="math display">\[
-\pd[L]{x_i}-\d{t}\pd[L]{\dot{x_i}}=0
+\bm{x} =
+\begin{bmatrix}
+x &amp; \dot{x} &amp; y &amp; \dot{y} &amp; \theta &amp; \dot{\theta}
+\end{bmatrix}^T
+\quad
+\bm{u} = \begin{bmatrix}
+f_1 &amp; f_2
+\end{bmatrix}^T
+\quad
+\bm{y} =
+\begin{bmatrix}
+x_c &amp; y_c &amp; a_x &amp; a_y &amp; \omega
+\end{bmatrix}^T
 \]</span></p>
-<p>より，</p>
+<p><span class="math display">\[
+\dot{\bm{x}} = \bm{f}(\bm{x},\bm{u}) =
+\begin{bmatrix}
+x_2 \\
+-\frac{1}{M}(u_1+u_2)\sin x_5 \\
+x_4 \\
+ \frac{1}{M}(u_1+u_2)\cos x_5 - g \\
+x_6 \\
+\frac{L}{2I}(u_1-u_2)
+\end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\bm{y}= \bm{g}(\bm{x},\bm{u}) =
+\begin{bmatrix}
+x_1 \\
+x_3 \\
+-\frac{1}{M}(u_1+u_2) \sin x_5 \cos x_5 + \left(\frac{1}{M}(u_1+u_2)\cos x_5 - 2g\right)\sin x_5 \\
+ \frac{1}{M}(u_1+u_2) \sin x_5 \sin x_5 + \left(\frac{1}{M}(u_1+u_2)\cos x_5 - 2g\right)\cos x_5 \\
+ x_6
+\end{bmatrix}
+\]</span></p>
+<p>平衡点（ホバリング状態） <span class="math inline">\(\bm{x}_0=\bm{0},\bm{u}_0=\left(\frac{Mg}{2},\frac{Mg}{2}\right)\)</span> まわりで一次近似して線形な状態方程式を求めると、</p>
+<p><span class="math display">\[
+\dot{\bm{x}} =
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+  &amp; 0 &amp; 0 &amp; 0 &amp;-g &amp; 0 \\
+  &amp;   &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+  &amp;   &amp;   &amp; 0 &amp; 0 &amp; 0 \\
+  &amp;   &amp;   &amp;   &amp; 0 &amp; 1 \\
+  &amp;   &amp;   &amp;   &amp;   &amp; 0 \\
+\end{bmatrix}
+\bm{x}
++
+\begin{bmatrix}
+0 &amp; 0 \\
+0 &amp; 0 \\
+0 &amp; 0 \\
+\frac{1}{M} &amp; \frac{1}{M} \\
+0 &amp; 0 \\
+\frac{L}{2I} &amp; -\frac{L}{2I} \\
+\end{bmatrix}
+(\bm{u}-\bm{u}_0)
+\]</span></p>
+<p><span class="math display">\[
+\bm{y} =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp;    &amp;   \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp;    &amp;   \\
+  &amp;   &amp;   &amp;   &amp;-2g &amp;   \\
+  &amp;   &amp;   &amp;   &amp; 2g &amp;   \\
+  &amp;   &amp;   &amp;   &amp;    &amp; 1
+\end{bmatrix}
+\bm{x}
++
+\begin{bmatrix}
+0 &amp; 0 \\
+0 &amp; 0 \\
+0 &amp; 0 \\
+\frac{1}{M} &amp; \frac{1}{M} \\
+0 &amp; 0
+\end{bmatrix}
+(\bm{u}-\bm{u}_0)
+\]</span></p>
+<h3 id="制御方式状態の計測">制御方式・状態の計測</h3>
+<p>Matlab を用いて可制御・可観測を確認した。</p>
+<pre><code>SS = ss(A,B,C,D)
+rank(ctrb(SS)) == length(A)
+rank(obsv(SS)) == length(A)</code></pre>
+<p>制御方式は最適制御とし、フィードバックゲインを以下の Matlab コードで求めた。</p>
+<pre><code>Q = diag([80,10,80,10,10,30]);
+R = diag([50,50]);
+[Kreg,~,Ef] = lqr(A,B,Q,R);</code></pre>
+<p>双対システムのフィードバックゲインを求め、オブザーバゲインとした。</p>
+<pre><code>S = diag([64,100,63,100,100,100]);
+T = diag([10,10,10,10,10]);
+[Lregt,~,Eo] = lqr(A&#39;,C&#39;,S,T);
+Lreg = Lregt&#39;;</code></pre>
+<h3 id="ブロック線図">ブロック線図</h3>
+<p><img src="./img/block.png" /></p>
+<h3 id="シュミレーション">シュミレーション</h3>
+<p>パラメタを <span class="math inline">\(M=0.2 \mathrm{kg},\,L=0.4 \mathrm{m},\, I=0.008\mathrm{kgm^2}\)</span> とする。ホバリング推力は <span class="math inline">\(u_0=\frac{Mg}{2}=0.98\mathrm{N}\)</span> である。</p>
+<p>初期位置を <span class="math inline">\((x,y,\theta)=(-1,-1,10^\circ)\)</span> としたときのシュミレーション結果を示す。</p>
+<p><img src="./img/path_1-1-10.png" /></p>
+<p><img src="./img/time_1-1-10.png" /></p>
+<p>また、初期位置を <span class="math inline">\((x,y,\theta)=(-3,-3,10^\circ)\)</span> としたときのシュミレーション結果は</p>
+<p><img src="./img/path_3-3-10.png" /></p>
+<h3 id="考察">考察</h3>
+<ul>
+<li>最適制御の評価関数を決めるのに苦労した。各重みの変化に対して根軌跡をプロットすれば直観的に決められると考えられる。</li>
+<li>x 方向に大きく移動すると大きく傾いている。線形近似した運動方程式では、x 方向の加速度を増すために傾きを大きくするしかない。さらに、元の非線形な運動方程式では、傾きによる x 方向の加速度の増加が、線形の場合よりも抑えられるため、現実のドローンはシュミレーションよりも大きな傾きとなることが考えられる。傾きが大きくなると、今回の制御の線形近似から外れ、さらに傾きが増大する危険性がある。x 方向に大きく動かさないようにする必要がある。</li>
+</ul>
+<h2 id="モーター-プロペラ系">モーター-プロペラ系</h2>
+<h3 id="モーター">モーター</h3>
+<table>
+<thead>
+<tr class="header">
+<th>記号</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>定数</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(K_T\)</span></td>
+<td>トルク定数</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(K_E\)</span></td>
+<td>逆起電力定数</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R\)</span></td>
+<td>巻線抵抗</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L\)</span></td>
+<td>インダクタンス</td>
+</tr>
+<tr class="even">
+<td>変数</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(e\)</span></td>
+<td>逆起電力</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(E\)</span></td>
+<td>入力電圧</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(I\)</span></td>
+<td>電流</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\omega\)</span></td>
+<td>角速度</td>
+</tr>
+</tbody>
+</table>
+<p>キルヒホッフの法則より</p>
+<p><span class="math display">\[
+E-e=RI+L\dot{I}
+\]</span></p>
+<p>逆起電力は</p>
+<p><span class="math display">\[
+e=K_E\omega
+\]</span></p>
+<p>トルクは</p>
+<p><span class="math display">\[
+T=K_TI
+\]</span></p>
+<h3 id="プロペラ">プロペラ</h3>
+<table>
+<thead>
+<tr class="header">
+<th>記号</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>定数</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\rho\)</span></td>
+<td>空気密度</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(D\)</span></td>
+<td>直径</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(I_R\)</span></td>
+<td>慣性モーメント</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta\)</span></td>
+<td>羽根角</td>
+</tr>
+<tr class="even">
+<td>変数</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(V\)</span></td>
+<td>対気速度</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(n\)</span></td>
+<td>回転数</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\omega\)</span></td>
+<td>角速度</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(J\)</span></td>
+<td>進行率</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_F\)</span></td>
+<td>プロペラ推力係数</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(C_Q\)</span></td>
+<td>プロペラ反トルク係数</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T\)</span></td>
+<td>入力トルク</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(F\)</span></td>
+<td>推力</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Q\)</span></td>
+<td>反トルク</td>
+</tr>
+</tbody>
+</table>
+<p>回転の運動方程式は</p>
+<p><span class="math display">\[
+I_R\dot{\omega}=T-Q
+\]</span></p>
+<p>推力と反トルクは の関数</p>
 <p><span class="math display">\[
 \begin{aligned}
-0  &amp;= \ddot{x} - l\ddot{\theta}\sin\theta - l\dot{\theta}^2\cos\theta + l\ddot{\phi}\cos\phi\cos\theta - l\dot{\phi}^2\sin\phi\cos\theta - l\dot{\phi}\dot{\theta}\cos\phi\sin\theta \\
-0 &amp;= \ddot{y} + l\ddot{\theta}\cos\theta - l\dot{\theta}^2\sin\theta + l\ddot{\phi}\cos\phi\sin\theta - l\dot{\phi}^2\sin\phi\sin\theta + l\dot{\phi}\dot{\theta}\cos\phi\cos\theta \\
-l\dot{\theta}(-\dot{x}\cos\theta - \dot{y}\sin\theta) + l\dot{\phi}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta)  &amp;= l^2\ddot{\theta} + l(-\ddot{x}\sin\theta -\dot{x}\dot{\theta}\cos\theta + \ddot{y}\cos\theta - \dot{y}\dot{\theta}\sin\theta) \\
--l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta)+gl\sin\phi &amp;= l^2\ddot{\phi} - l\dot{\phi}\sin\phi(\dot{x}\cos\theta + \dot{y}\sin\theta) + l\cos\phi(\ddot{x}\cos\theta + \ddot{y}\sin\theta) + l\dot{\theta}\cos\phi(-\dot{x}\sin\theta + \dot{y}\cos\theta)
+  F &amp;= C_F\rho D^4 n^2 \\
+  Q &amp;= C_Q\rho D^5 n^2
 \end{aligned}
 \]</span></p>
-<h2 id="状態方程式">状態方程式</h2>
+<p><span class="math inline">\(C_F,C_Q\)</span> は一般に 羽根角 <span class="math inline">\(\beta\)</span> と進行率 <span class="math inline">\(J=\frac{V}{nD}\)</span> の非線形な関数であり、風洞実験から計測する。今回は対気速度がプロペラの回転数に対して十分小さい領域で動作するので、<span class="math inline">\(C_F,C_Q\)</span>は定数とする。</p>
+<p>定数 <span class="math inline">\(K_F,K_Q\)</span> を</p>
+<p><span class="math display">\[
+\begin{aligned}
+  K_F &amp;:= \frac{C_F\rho D^4}{4\pi^2} \\
+  K_Q &amp;:= \frac{C_Q\rho D^5}{4\pi^2}
+\end{aligned}
+\]</span></p>
+<p>とすると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  F &amp;= K_F\omega^2\\
+  Q &amp;= K_Q\omega^2
+\end{aligned}
+\]</span></p>
+<p>参考：航空工学講座６　プロペラ（日本航空技術協会）</p>
+<h3 id="ブロック線図-1">ブロック線図</h3>
+<p>プロペラとモーターを結合した系のブロック線図は以下のようになる。</p>
+<p><img src="./img/fig5.drawio.svg" /></p>
+<h3 id="制御">制御</h3>
+<p>センサとして回転軸にエンコーダを取り付け回転数を計測する。推力指令に対して追従する制御を行う。ホバリング推力前後で特性が良くなるようにゲインを調整する。</p>
+<p><img src="./img/fig6.drawio.svg" /></p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
