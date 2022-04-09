@@ -24,6 +24,10 @@ title: 研究室へようこそ
 
 [バネ・マス系](./Control/SpringMassSystem/)
 
+[ドローンの制御](./Control/Drone/)
+
+[車輪型倒立振子の制御](./Control/Segway/)
+
 ## 機械工学
 
 [生産技術](./Mech/Manufacturing/)
