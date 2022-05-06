@@ -68,6 +68,16 @@ title: 研究室へようこそ
 
 [最長片道切符](./Computer/Misc/LongestWay/)
 
+### プログラミング入門以前
+
+コンピューターシステムの構造
+
+ハードウェア
+
+OS
+
+ブラウザ
+
 ### リレーコンピュータ
 
 [リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
