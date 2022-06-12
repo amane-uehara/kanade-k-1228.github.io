@@ -54,9 +54,11 @@ title: 研究室へようこそ
 
 一級陸上無線技術士を取りました
 
-### マイコン
+### FPGA
 
 [TinyFPGA を使ってみた](./Electronics/TinyFpga/)
+
+[FPGA で音源 IC を作って鳴らしてみた](./Electronics/FPGASound/)
 
 ## 情報工学
 
