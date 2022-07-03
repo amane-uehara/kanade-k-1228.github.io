@@ -32,7 +32,7 @@ TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボー�
   - [RISC-V on FPGA (the tinyFPGA) via WSL - Part 2](https://gojimmypi.blogspot.com/2019/01/risc-v-on-fpga-tinyfpga-via-wsl.html)
   - [AT25SF041B SPI Flash データシート](https://www.mouser.jp/datasheet/2/590/at25sf041b-1888127.pdf)
 
-## ブートローダのアップデート
+## TinyFPGA 内蔵ブートローダのアップデート
 
 Python と pip が必要なのでインストールしておきましょう。
 
@@ -42,9 +42,9 @@ TinyFPGA に必要なツールをインストールします。依存するモ�
 pip install tinyprog
 ```
 
-TinyFPGA ボードを PC に接続して、ドライバが認識されたのを確認します。
+TinyFPGA ボードを PC に接続して、認識されるか確認します。
 
-Windows 10 以前のバージョンを使っている場合、[Virtual Serial Port](https://www.pjrc.com/teensy/usb_serial.html) が必要なようです。
+※ Windows 10 以前のバージョンを使っている場合、[Virtual Serial Port](https://www.pjrc.com/teensy/usb_serial.html) が必要なようです。
 
 TinyFPGA のブートローダのアップデートをします。
 
@@ -52,16 +52,18 @@ TinyFPGA のブートローダのアップデートをします。
 tinyprog --update-bootloader
 ```
 
-※ TinyFPGA BX にはプログラマ基板が不要です。その代わり、FPGA の一部にプログラマ回路が書き込まれています。間違えて上書きしてしまった場合、Arduino を使ってブートローダを復元することができます。[Programming with an Arduino](https://github.com/tinyfpga/TinyFPGA-B-Series/tree/master/programmer_arduino)
+※ TinyFPGA BX にはプログラマ基板が不要です。その代わり、FPGA の一部にプログラマ回路が書き込まれています。間違えて上書きしてしまった場合、Arduino を使ってブートローダを復元することができます。参考 → [Programming with an Arduino](https://github.com/tinyfpga/TinyFPGA-B-Series/tree/master/programmer_arduino)
 
 ## 開発環境
 
-- Lattice の iCEcube2 ← ユーザーガイドに書かれてる方法
+- Lattice の iCEcube2 ← iCE40 ユーザーガイドに書かれてる方法
 - APIO (Atom プラグイン)
+  - オープンソースのツールチェーン
   - [APIO ドキュメント](https://apiodoc.readthedocs.io/en/stable/source/installation.html)
 - Icestorm
   - [tinyFPGA-BX board に Terminal のみで build とボードへの書き込みを行った](https://qiita.com/KYhei/items/0b8fb029bb8813c8cbd6)
-- Icestudio ← 今回はこれ
+- **Icestudio ← 今回はこれ**
+  - オープンソースのビジュアル HDL 開発環境
 
 [Icestudio](https://icestudio.io/#lk-download)をインストールします。インストーラに従うだけなので省略。
 
@@ -75,24 +77,22 @@ Icestudio を開いて、
 
 サンプルコードから、L チカを選択。
 
-![](./img/01.png)
+![](./img/11.png)
 
 Convert を選択。
 
-![](./img/02.png)
+![](./img/12.png)
 
 LED を接続するピンを選択。
 
-![](./img/03.png)
+![](./img/13.png)
 
 TinyFPGA ボードを接続して、右下の Upload をクリック。
 
-![](./img/04.png)
+![](./img/14.png)
 
 L チカしました。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hzZ5VPpSlpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ※ うまくいかない場合、**USB アダプタに接続して電源のみを供給** すると、L チカするはずです。PC に接続すると、ブートローダは通信待機状態で起動してしまい、ユーザーイメージを読み込みません。
-
-## 資料
