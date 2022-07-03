@@ -6,9 +6,21 @@ keywords: TinyFPGA, TinyFPGA BX, FPGA, Lattice, ice40, Icestudio
 
 TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボードです。iCE40 は一連の開発ツールが完全にオープンソース化されている数少ない FPGA です。
 
-[せんごくネット通販 - TinyFPGA BX](https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-5C6J)
+## 情報リンク
 
-[TinyFPGA BX ユーザーガイド](https://tinyfpga.com/b-series-guide.html)
+- IceStudio
+  - [リポジトリ](https://github.com/FPGAwars/icestudio)
+  - [インストールマニュアル](https://github.com/FPGAwars/icestudio/wiki/Installation)
+- TinyFPGA BX
+  - [ウェブサイト](https://tinyfpga.com/)
+  - [TinyFPGA BX ユーザーガイド](https://tinyfpga.com/b-series-guide.html)
+  - [リポジトリ](https://github.com/tinyfpga/TinyFPGA-BX)
+  - 通販
+    - [CrowdSupply](https://www.crowdsupply.com/tinyfpga/tinyfpga-ax-bx)
+    - [Sparkfun](https://www.sparkfun.com/products/14829)
+    - [Mouser](https://www.mouser.jp/new/crowd-supply/crowd-supply-tinyfpga-bx-board/)
+    - [千石電商](https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-5C6J)
+    - ※ どこも在庫切れ（2022/06/26 確認）みたいです orz………おらの村には半導体がねぇ
 
 ## ブートローダのアップデート
 
