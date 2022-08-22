@@ -40,7 +40,9 @@ title: 研究室へようこそ
 
 ### 電子工作
 
-[YMZ294 で音楽を再生する](./Electronics/YMZ294/)
+[YMZ294 で音楽を再生する](Electronics/YMZ294/)
+
+[5000 円で作るリフロー装置](Electronics/HotplateReflow/)
 
 オペアンプ
 
@@ -48,7 +50,7 @@ title: 研究室へようこそ
 
 ### 電波
 
-ダイオード 2 本でお手軽エネルギーハーベスティング
+[ダイオード 2 本でお手軽エネルギーハーベスティング](Electronics/RectennaLED/)
 
 無線送電を作って遊ぶ
 
