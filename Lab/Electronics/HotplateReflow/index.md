@@ -12,10 +12,15 @@ keywords: リフロー, 表面実装, ホットプレート
 - [ソリッドステートリレー](https://akizukidenshi.com/catalog/g/gK-00203/)
   - 250 円
   - 25A
-  - 要ヒートシンク
+- [ヒートシンク](https://akizukidenshi.com/catalog/g/gP-05050/)
+  - 60 円
+- [絶縁放熱シート](https://akizukidenshi.com/catalog/g/gP-12791/)
+  - 20円
 - [6V トランス](https://akizukidenshi.com/catalog/g/gP-08731/)
   - 1050 円
-- ブリッジダイオード
+  - センタータップ付き
+- ダイオード [30V1A 11EQS03L](https://akizukidenshi.com/catalog/g/gI-11362/)
+  - 低Vf
 - レギュレータ [7805](https://akizukidenshi.com/catalog/g/gI-08678/)
 - サーミスタ [１０３ＮＴ－４－Ｒ０２５Ｈ４１Ｇ](https://akizukidenshi.com/catalog/g/gP-11896/)
   - [データシート](https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf)
