@@ -8,16 +8,34 @@ keywords: リフロー, 表面実装, ホットプレート
 
 |                                                                         | 値段 | 備考                                                                            |
 | ----------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
+| パワー系                                                                |      |                                                                                 |
 | [ホットプレート](https://amzn.asia/d/dPVi2IT)                           | 1500 | 750W                                                                            |
 | [ソリッドステートリレー](https://akizukidenshi.com/catalog/g/gK-00203/) | 250  | 25A                                                                             |
 | [ヒートシンク](https://akizukidenshi.com/catalog/g/gP-05050/)           | 60   |                                                                                 |
 | [絶縁放熱シート](https://akizukidenshi.com/catalog/g/gP-12791/)         | 20   |                                                                                 |
-| [サーミスタ](https://akizukidenshi.com/catalog/g/gP-11896/)             | 50   | [データシート](https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf) |
+| [M3 プラネジ](https://akizukidenshi.com/catalog/g/gP-03583/)            |      |                                                                                 |
+| 制御系                                                                  |      |                                                                                 |
 | [Arduino](https://akizukidenshi.com/catalog/g/gK-10347/)                | 950  |                                                                                 |
+| [5V 電源](https://akizukidenshi.com/catalog/g/gM-06096/)                | 600  |                                                                                 |
+| [DC ジャック](https://akizukidenshi.com/catalog/g/gC-09408/)            |      |                                                                                 |
+| [サーミスタ](https://akizukidenshi.com/catalog/g/gP-11896/)             | 50   | [データシート](https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf) |
+| 空冷系                                                                  |      |                                                                                 |
 | [MOSFET](https://akizukidenshi.com/catalog/g/gI-15751/)                 | 50   | お好きな MOSFET をどうぞ                                                        |
 | [ファン](https://akizukidenshi.com/catalog/g/gP-16828/)                 | 280  |                                                                                 |
-| [5V 電源](https://akizukidenshi.com/catalog/g/gM-06096/)                | 600  |                                                                                 |
-| 小計                                                                    | 3820 |                                                                                 |
+| 発注基板                                                                |      |                                                                                 |
+
+[一括注文リンク＠秋月](https://akizukidenshi.com/catalog/cart/cart.aspx?goods=K-00203,P-05050,P-12791,P-03583,K-10347,M-06096,C-09408,P-11896,I-15751,P-16828&qty=1,1,1,1,1,1,1,1,1,1)
+
+K-00203 1
+P-05050 1
+P-12791 1
+P-03583 1
+K-10347 1
+M-06096 1
+C-09408 1
+P-11896 1
+I-15751 1
+P-16828 1
 
 ## メモ
 
