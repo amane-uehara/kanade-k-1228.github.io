@@ -22,9 +22,13 @@ keywords: リフロー, 表面実装, ホットプレート
 | 空冷系                                                                  |      |                                                                                 |
 | [MOSFET](https://akizukidenshi.com/catalog/g/gI-15751/)                 | 50   | お好きな MOSFET をどうぞ                                                        |
 | [ファン](https://akizukidenshi.com/catalog/g/gP-16828/)                 | 280  |                                                                                 |
-| 発注基板                                                                |      |                                                                                 |
+| ほか                                                                    |      |                                                                                 |
+| [ターミナル](https://akizukidenshi.com/catalog/g/gP-01306/)             | 20   | 3 個                                                                            |
+| 抵抗                                                                    |      |                                                                                 |
+|                                                                         |      |                                                                                 |
+|                                                                         |      |                                                                                 |
 
-[一括注文リンク＠秋月](https://akizukidenshi.com/catalog/cart/cart.aspx?goods=K-00203,P-05050,P-12791,P-03583,K-10347,M-06096,C-09408,P-11896,I-15751,P-16828&qty=1,1,1,1,1,1,1,1,1,1)
+[一括注文リンク＠秋月](https://akizukidenshi.com/catalog/cart/cart.aspx?goods=K-00203,P-05050,P-12791,P-03583,K-10347,M-06096,C-09408,P-11896,I-15751,P-16828,P-01306,&qty=1,1,1,1,1,1,1,1,1,1,3,)
 
 K-00203 1
 P-05050 1
@@ -36,6 +40,7 @@ C-09408 1
 P-11896 1
 I-15751 1
 P-16828 1
+P-01306 3
 
 ## メモ
 
