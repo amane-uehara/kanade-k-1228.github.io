@@ -487,16 +487,18 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#部品表">部品表</a></li>
+<li><a href="#回路図">回路図</a></li>
 <li><a href="#メモ">メモ</a><ul>
 <li><a href="#温度制御">温度制御</a></li>
 <li><a href="#プログラム">プログラム</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="部品表">部品表</h2>
+       <h2 id="回路図">回路図</h2>
+<p><img src="img/reflow_schematic.png" /></p>
 <table>
 <thead>
 <tr class="header">
+<th></th>
 <th></th>
 <th>値段</th>
 <th>備考</th>
@@ -504,99 +506,124 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>パワー系</td>
 <td></td>
-<td></td>
-</tr>
-<tr class="even">
 <td><a href="https://amzn.asia/d/dPVi2IT">ホットプレート</a></td>
 <td>1500</td>
 <td>750W</td>
 </tr>
-<tr class="odd">
-<td><a href="https://akizukidenshi.com/catalog/g/gK-00203/">ソリッドステートリレー</a></td>
-<td>250</td>
-<td>25A</td>
-</tr>
 <tr class="even">
+<td></td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-05050/">ヒートシンク</a></td>
 <td>60</td>
 <td></td>
 </tr>
 <tr class="odd">
+<td></td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-12791/">絶縁放熱シート</a></td>
 <td>20</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-03583/">M3 プラネジ</a></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>制御系</td>
 <td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="https://akizukidenshi.com/catalog/g/gK-10347/">Arduino</a></td>
-<td>950</td>
-<td></td>
-</tr>
-<tr class="odd">
 <td><a href="https://akizukidenshi.com/catalog/g/gM-06096/">5V 電源</a></td>
 <td>600</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
 <td><a href="https://akizukidenshi.com/catalog/g/gC-09408/">DC ジャック</a></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
+<td></td>
+<td><a href="https://akizukidenshi.com/catalog/g/gP-16828/">ファン</a></td>
+<td>280</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-11896/">サーミスタ</a></td>
 <td>50</td>
 <td><a href="https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf">データシート</a></td>
 </tr>
+<tr class="odd">
+<td></td>
+<td><a href="https://akizukidenshi.com/catalog/g/gK-00203/">SSR キット</a></td>
+<td>250</td>
+<td>25A</td>
+</tr>
 <tr class="even">
-<td>空冷系</td>
+<td>IC1</td>
+<td>フォトトライアック</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
+<td>IC2</td>
+<td><a href="https://akizukidenshi.com/catalog/g/gK-10347/">Arduino</a></td>
+<td>950</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Q1</td>
+<td>トライアック</td>
+<td>SSR キット</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Q2</td>
 <td><a href="https://akizukidenshi.com/catalog/g/gI-15751/">MOSFET</a></td>
 <td>50</td>
 <td>お好きな MOSFET をどうぞ</td>
 </tr>
 <tr class="even">
-<td><a href="https://akizukidenshi.com/catalog/g/gP-16828/">ファン</a></td>
-<td>280</td>
+<td>R1</td>
+<td>100Ω</td>
+<td>SSR キット</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>ほか</td>
-<td></td>
+<td>R2</td>
+<td>330Ω</td>
+<td>SSR キット</td>
 <td></td>
 </tr>
 <tr class="even">
+<td>R3</td>
+<td>100Ω</td>
+<td></td>
+<td>MOS-FET ゲート抵抗</td>
+</tr>
+<tr class="odd">
+<td>R4</td>
+<td>10kΩ</td>
+<td></td>
+<td>MOS-FET ゲート-ソース抵抗</td>
+</tr>
+<tr class="even">
+<td>R5</td>
+<td>47Ω 金属皮膜</td>
+<td></td>
+<td>サーミスタ分圧</td>
+</tr>
+<tr class="odd">
+<td>C1</td>
+<td>10μF セラコン</td>
+<td></td>
+<td>モーターノイズ用</td>
+</tr>
+<tr class="even">
+<td></td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-01306/">ターミナル</a></td>
 <td>20</td>
 <td>3 個</td>
-</tr>
-<tr class="odd">
-<td>抵抗</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
