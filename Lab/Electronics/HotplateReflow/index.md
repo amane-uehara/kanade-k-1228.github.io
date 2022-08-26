@@ -4,29 +4,32 @@ date: 2022-08-23
 keywords: リフロー, 表面実装, ホットプレート
 ---
 
-## 部品表
+## 回路図
 
-|                                                                         | 値段 | 備考                                                                            |
-| ----------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
-| パワー系                                                                |      |                                                                                 |
-| [ホットプレート](https://amzn.asia/d/dPVi2IT)                           | 1500 | 750W                                                                            |
-| [ソリッドステートリレー](https://akizukidenshi.com/catalog/g/gK-00203/) | 250  | 25A                                                                             |
-| [ヒートシンク](https://akizukidenshi.com/catalog/g/gP-05050/)           | 60   |                                                                                 |
-| [絶縁放熱シート](https://akizukidenshi.com/catalog/g/gP-12791/)         | 20   |                                                                                 |
-| [M3 プラネジ](https://akizukidenshi.com/catalog/g/gP-03583/)            |      |                                                                                 |
-| 制御系                                                                  |      |                                                                                 |
-| [Arduino](https://akizukidenshi.com/catalog/g/gK-10347/)                | 950  |                                                                                 |
-| [5V 電源](https://akizukidenshi.com/catalog/g/gM-06096/)                | 600  |                                                                                 |
-| [DC ジャック](https://akizukidenshi.com/catalog/g/gC-09408/)            |      |                                                                                 |
-| [サーミスタ](https://akizukidenshi.com/catalog/g/gP-11896/)             | 50   | [データシート](https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf) |
-| 空冷系                                                                  |      |                                                                                 |
-| [MOSFET](https://akizukidenshi.com/catalog/g/gI-15751/)                 | 50   | お好きな MOSFET をどうぞ                                                        |
-| [ファン](https://akizukidenshi.com/catalog/g/gP-16828/)                 | 280  |                                                                                 |
-| ほか                                                                    |      |                                                                                 |
-| [ターミナル](https://akizukidenshi.com/catalog/g/gP-01306/)             | 20   | 3 個                                                                            |
-| 抵抗                                                                    |      |                                                                                 |
-|                                                                         |      |                                                                                 |
-|                                                                         |      |                                                                                 |
+![](img/reflow_schematic.png)
+
+|     |                                                                 | 値段       | 備考                                                                            |
+| --- | --------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------- |
+|     | [ホットプレート](https://amzn.asia/d/dPVi2IT)                   | 1500       | 750W                                                                            |
+|     | [ヒートシンク](https://akizukidenshi.com/catalog/g/gP-05050/)   | 60         |                                                                                 |
+|     | [絶縁放熱シート](https://akizukidenshi.com/catalog/g/gP-12791/) | 20         |                                                                                 |
+|     | [M3 プラネジ](https://akizukidenshi.com/catalog/g/gP-03583/)    |            |                                                                                 |
+|     | [5V 電源](https://akizukidenshi.com/catalog/g/gM-06096/)        | 600        |                                                                                 |
+|     | [DC ジャック](https://akizukidenshi.com/catalog/g/gC-09408/)    |            |                                                                                 |
+|     | [ファン](https://akizukidenshi.com/catalog/g/gP-16828/)         | 280        |                                                                                 |
+|     | [サーミスタ](https://akizukidenshi.com/catalog/g/gP-11896/)     | 50         | [データシート](https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf) |
+|     | [SSR キット](https://akizukidenshi.com/catalog/g/gK-00203/)     | 250        | 25A                                                                             |
+| IC1 | フォトトライアック                                              |            |                                                                                 |
+| IC2 | [Arduino](https://akizukidenshi.com/catalog/g/gK-10347/)        | 950        |                                                                                 |
+| Q1  | トライアック                                                    | SSR キット |                                                                                 |
+| Q2  | [MOSFET](https://akizukidenshi.com/catalog/g/gI-15751/)         | 50         | お好きな MOSFET をどうぞ                                                        |
+| R1  | 100Ω                                                            | SSR キット |                                                                                 |
+| R2  | 330Ω                                                            | SSR キット |                                                                                 |
+| R3  | 100Ω                                                            |            | MOS-FET ゲート抵抗                                                              |
+| R4  | 10kΩ                                                            |            | MOS-FET ゲート-ソース抵抗                                                       |
+| R5  | 47Ω 金属皮膜                                                    |            | サーミスタ分圧                                                                  |
+| C1  | 10μF セラコン                                                   |            | モーターノイズ用                                                                |
+|     | [ターミナル](https://akizukidenshi.com/catalog/g/gP-01306/)     | 20         | 3 個                                                                            |
 
 [一括注文リンク＠秋月](https://akizukidenshi.com/catalog/cart/cart.aspx?goods=K-00203,P-05050,P-12791,P-03583,K-10347,M-06096,C-09408,P-11896,I-15751,P-16828,P-01306,&qty=1,1,1,1,1,1,1,1,1,1,3,)
 
