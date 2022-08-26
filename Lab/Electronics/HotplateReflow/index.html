@@ -487,13 +487,29 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#回路図">回路図</a></li>
-<li><a href="#メモ">メモ</a><ul>
+<li><a href="#設計">設計</a></li>
+<li><a href="#回路">回路</a></li>
+<li><a href="#制御">制御</a><ul>
 <li><a href="#温度制御">温度制御</a></li>
-<li><a href="#プログラム">プログラム</a></li>
+<li><a href="#温度計測">温度計測</a></li>
+<li><a href="#温度プロファイル">温度プロファイル</a></li>
+<li><a href="#温度プロファイルのフォーマット">温度プロファイルのフォーマット</a></li>
+<li><a href="#ux">UX</a></li>
+<li><a href="#通信方式">通信方式</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="回路図">回路図</h2>
+       <h2 id="設計">設計</h2>
+<p><img src="img/about.dio.svg" /></p>
+<ul>
+<li>サーミスタで温度を計測しフィードバック制御する</li>
+</ul>
+<p><img src="img/ui.dio.svg" /></p>
+<ul>
+<li>温度プロファイルの設定 UI は、React で実装する</li>
+<li>Web Serial API を使ってブラウザと Arduino でシリアル通信する</li>
+<li>リアルタイムで温度のグラフを表示する</li>
+</ul>
+<h2 id="回路">回路</h2>
 <p><img src="img/reflow_schematic.png" /></p>
 <table>
 <thead>
@@ -647,37 +663,173 @@
 </table>
 <p><a href="https://akizukidenshi.com/catalog/cart/cart.aspx?goods=K-00203,K-10347,I-15751,R-25101,R-25103,R-16620,P-10149,P-01306,P-16828,P-11896,M-06096,C-09408,P-05050,P-05052,P-12791,P-03583&amp;qty=1,1,1,1,1,1,1,3,1,1,1,1,1,1,2,1">一括注文リンク＠秋月</a></p>
 <p>K-00203 1 K-10347 1 I-15751 1 R-25101 1 R-25103 1 R-16620 1 P-10149 1 P-01306 3 P-16828 1 P-11896 1 M-06096 1 C-09408 1 P-05050 1 P-05052 1 P-12791 2 P-03583 1</p>
-<h2 id="メモ">メモ</h2>
-<p><img src="img/about.dio.svg" /></p>
-<p>制御プログラムは、Web Serial API を使ってブラウザで実装する。</p>
-<p>SVG on React で温度グラフをリアルタイムで描画。</p>
-<p><img src="img/ui.dio.svg" /></p>
+<h2 id="制御">制御</h2>
 <h3 id="温度制御">温度制御</h3>
 <ul>
-<li>温度プロファイル
-<ol type="1">
-<li>△ 2 ~ 3 °C/sec</li>
-<li>150 ~ 175 °C / 60 ~ 120 sec</li>
-<li>△ 4 °C/sec</li>
-<li>250 °C / 60 ~ 90 sec</li>
-<li>ファンで急冷</li>
-</ol></li>
+<li>トライアックがゼロクロス
+<ul>
+<li>→ 最大でも 50/60Hz の制御</li>
+<li>とりあえず PI 制御でいいかな</li>
+<li>分岐予測器みたいなオートマトンを使った ON/OFF 制御でもよさそう
+<ul>
+<li>離散化した PI 制御と等価になりそう</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="温度計測">温度計測</h3>
+<ul>
 <li>サーミスタの特性
 <ul>
 <li><a href="https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf">データシート</a></li>
 <li>exp(exp())っぽい特性</li>
 <li>160 度で 134Ω</li>
 <li>260 度で 23Ω</li>
+</ul></li>
 <li>47Ω ぐらいの抵抗を使うとよさそう？</li>
 <li>ダイナミックレンジを広げたいなら、トランジスタの exp 特性を使うのがよさそう</li>
-</ul></li>
 </ul>
-<h3 id="プログラム">プログラム</h3>
+<h3 id="温度プロファイル">温度プロファイル</h3>
+<ol type="1">
+<li>△ 2 ~ 3 °C/sec</li>
+<li>150 ~ 175 °C / 60 ~ 120 sec</li>
+<li>△ 4 °C/sec</li>
+<li>250 °C / 60 ~ 90 sec</li>
+<li>ファンで急冷</li>
+</ol>
+<h3 id="温度プロファイルのフォーマット">温度プロファイルのフォーマット</h3>
+<table>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>7~4</td>
+<td>ステップ番号(0~15)</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>3~0</td>
+<td>内容(0:SLOPE,1:CONST,2:FAN,3:END)</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>7~0</td>
+<td>温度(SLOPE,FAN なら到達目標温度、CONST なら維持する温度)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>7~0</td>
+<td>時間(sec)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="例">例</h4>
+<table>
+<tbody>
+<tr class="odd">
+<td>0000-0000</td>
+<td>#0 SLOPE</td>
+<td>60 秒で 150°C まで上げる</td>
+</tr>
+<tr class="even">
+<td>0d 150</td>
+<td>150 °C</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0d 60</td>
+<td>60 sec</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0001-0001</td>
+<td>#1 CONST</td>
+<td>90 秒間 150°C を維持</td>
+</tr>
+<tr class="odd">
+<td>0d 150</td>
+<td>150 °C</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0d 90</td>
+<td>90 sec</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0010-0000</td>
+<td>#2 SLOPE</td>
+<td>60 秒で 250°C まで上げる</td>
+</tr>
+<tr class="even">
+<td>0d 250</td>
+<td>250 °C</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0d 30</td>
+<td>30 sec</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0011-0001</td>
+<td>#3 CONST</td>
+<td>60 秒間 250°C を維持</td>
+</tr>
+<tr class="odd">
+<td>0d 250</td>
+<td>250 °C</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0d 60</td>
+<td>60 sec</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0100-0010</td>
+<td>#4 FAN</td>
+<td>30 °C になるまでファンで冷却</td>
+</tr>
+<tr class="even">
+<td>0d 30</td>
+<td>30 °C</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>- sec</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0101-0011</td>
+<td>#5 END</td>
+<td>おわり</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ux">UX</h3>
 <ol type="1">
 <li>GUI でプロファイル指定</li>
-<li>RUN</li>
+<li>RUN ボタン押す</li>
+<li>温度制御開始</li>
 <li>温度モニタリング</li>
 </ol>
+<h3 id="通信方式">通信方式</h3>
+<h4 id="実行命令">実行命令</h4>
+<ul>
+<li>温度プロファイルを送信することでリフローを開始する</li>
+<li>フォーマットは、</li>
+</ul>
+<h4 id="停止命令">停止命令</h4>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
