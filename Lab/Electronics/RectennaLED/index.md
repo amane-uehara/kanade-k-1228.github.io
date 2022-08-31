@@ -11,15 +11,15 @@ date: 2022-08-26
 
 ダイオードと LED を、
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">回路図（迫真 <a href="https://t.co/W204w1RaKG">pic.twitter.com/W204w1RaKG</a></p>&mdash; Канадэ@MFT9/3~4::E-06-03 (@kanade_k_1228) <a href="https://twitter.com/kanade_k_1228/status/1322134935126204416?ref_src=twsrc%5Etfw">October 30, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+![](img/circuit.drawio.png)
 
 このようにはんだ付けします。
 
-ダイオードには、周波数特性が良いショットキーバリアダイオード [1SS106](https://akizukidenshi.com/catalog/g/gI-13881/) を使用しています。
+ダイオードには、*周波数特性が良い*ショットキーバリアダイオード [1SS106](https://akizukidenshi.com/catalog/g/gI-13881/) を使用しています。
 
 WiFi の周波数は 2.4GHz で波長は 125mm 程度です。
 
-うまく光らない場合は、ダイオードが半波長 63mm 程度の長さになるように切ってください。
+うまく光らない場合は、ダイオードが半波長 62mm 程度の長さになるように切ってください。
 
 ## しくみ
 
@@ -59,11 +59,11 @@ WiFi の周波数は 2.4GHz で波長は 125mm 程度です。
 
 ## 参考
 
+- [グリーンエレクトロニクス 17 号 P77](https://shop.cqpub.co.jp/hanbai/books/48/48471.html)
+- [丸山珠美先生の講演](https://ken.ieice.org/ken/paper/2019042201Mt/)
+
 これを作ったのは、B1 の時に電気情報通信学会の無線電力伝送研究会に飛び入り参加したのがきっかけです。
 当時はスミスチャート？Ｑ値？なにそれ？みたいなレベルで、大半の発表は正直よくわからなかったのでしたが、
-唯一理解できたのが函館高専の[丸山珠美先生の講演](https://ken.ieice.org/ken/paper/2019042201Mt/)でした。
+唯一理解できたのが函館高専の丸山珠美先生の講演でした。
 
-このダイオードレクテナを「八木宇田アンテナ」みたいに配列することで、並べられたレクテナ導波器のように働き、伝送距離が長くなったという実験の報告でした。
-
-グリーンエレクトロニクスという雑誌（初めて聞いた）を参考にしたとのことでしたので、
-秋葉原の書泉ブックタワーの 3 階の、いつもの CQ 出版コーナーで漁ったところ、『グリーンエレクトロニクス 17 号 P77』に記述がありました。
+このレクテナを「八木宇田アンテナ」みたいに配列することで、並べられたレクテナ導波器のように働き、伝送距離が長くなったという実験の報告でした。
