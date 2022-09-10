@@ -20,32 +20,34 @@ keywords: リフロー, 表面実装, ホットプレート
 
 ![](img/Circuit.png)
 
-|      |                                                                                 | 値段      | 備考                     |
-| ---- | ------------------------------------------------------------------------------- | --------- | ------------------------ |
-| HOT  | [ホットプレート](https://amzn.asia/d/dPVi2IT)                                   | 1518      | 750W                     |
-| IC1  | [フォトトライアック](https://akizukidenshi.com/catalog/g/gI-07634/)             | 70        |                          |
-| IC2  | [秋月 Arduino](https://akizukidenshi.com/catalog/g/gK-10347/)                   | 950       |                          |
-| Q1   | [トライアック](https://akizukidenshi.com/catalog/g/gI-01017/)                   | 160       |                          |
-| Q2   | [MOSFET](https://akizukidenshi.com/catalog/g/gI-15751/)                         | 50        | お好きな MOSFET をどうぞ |
-| R1   | 100Ω                                                                            | 1         |                          |
-| R2   | 330Ω                                                                            | 1         |                          |
-| R3   | [100Ω](https://akizukidenshi.com/catalog/g/gR-25101/)                           | 1         | MOSFET ゲート抵抗        |
-| R4   | [10kΩ](https://akizukidenshi.com/catalog/g/gR-25103/)                           | 1         | MOSFET ゲート-ソース抵抗 |
-| R5   | [47Ω](https://akizukidenshi.com/catalog/g/gR-25470/)                            | 1         | サーミスタ分圧           |
-| C1   | [0.1μF セラコン](https://akizukidenshi.com/catalog/g/gP-15927/)                 | 12        | モーターノイズ用         |
-| ZNR  | [バリスタ](https://akizukidenshi.com/catalog/g/gP-12563/)                       | 25        |                          |
-|      | [ターミナル](https://akizukidenshi.com/catalog/g/gP-01306/)                     | 20\*3=60  |                          |
-| FAN  | [DC ファン](https://akizukidenshi.com/catalog/g/gP-16828/)                      | 280       | DC 5V 0.3A               |
-| NTC  | [NT サーミスタ](https://akizukidenshi.com/catalog/g/gP-11896/)                  | 50        |                          |
-|      |                                                                                 |           |                          |
-| POW  | [5V 電源](https://akizukidenshi.com/catalog/g/gM-11996/)                        | 580       | 5V 2A                    |
-| POW  | [DC ジャック](https://akizukidenshi.com/catalog/g/gC-09408/)                    | 30        |                          |
-|      |                                                                                 |           |                          |
-|      | [ヒートシンク（トライアック用）](https://akizukidenshi.com/catalog/g/gP-05050/) | 60        |                          |
-|      | [ヒートシンク（FET 用）](https://akizukidenshi.com/catalog/g/gP-05052/)         | 35        | 不要かも                 |
-|      | [絶縁放熱シート](https://akizukidenshi.com/catalog/g/gP-12791/)                 | 20\*2=40  |                          |
-|      | [M3 プラネジ](https://akizukidenshi.com/catalog/g/gP-10359/)                    | 400/100=4 |                          |
-| 合計 |                                                                                 | 3952      |                          |
+|      |                                                                                 | 値段 | 備考             |
+| ---- | ------------------------------------------------------------------------------- | ---- | ---------------- |
+| HOT  | [ホットプレート](https://amzn.asia/d/dPVi2IT)                                   | 1518 | 750W             |
+| IC1  | [フォトトライアック](https://akizukidenshi.com/catalog/g/gI-07634/)             | 70   |                  |
+| IC2  | [秋月 Arduino](https://akizukidenshi.com/catalog/g/gK-10347/)                   | 950  |                  |
+| Q1   | [トライアック](https://akizukidenshi.com/catalog/g/gI-01017/)                   | 160  |                  |
+| Q2   | [MOSFET](https://akizukidenshi.com/catalog/g/gI-15751/)                         | 50   | Nch              |
+| R1   | 100Ω                                                                            | 1    |                  |
+| R2   | 330Ω                                                                            | 1    |                  |
+| R3   | [100Ω](https://akizukidenshi.com/catalog/g/gR-25101/)                           | 1    | ゲート抵抗       |
+| R4   | [10kΩ](https://akizukidenshi.com/catalog/g/gR-25103/)                           | 1    | ゲートソース抵抗 |
+| R5   | [47Ω](https://akizukidenshi.com/catalog/g/gR-25470/)                            | 1    | サーミスタ分圧   |
+| C1   | [0.1μF セラコン](https://akizukidenshi.com/catalog/g/gP-15927/)                 | 12   | モーターノイズ用 |
+| ZNR  | [バリスタ](https://akizukidenshi.com/catalog/g/gP-12563/)                       | 25   |                  |
+|      | [ターミナル](https://akizukidenshi.com/catalog/g/gP-01306/)                     | 60   | 3 個             |
+| FAN  | [DC ファン](https://akizukidenshi.com/catalog/g/gP-16828/)                      | 280  | DC 5V 0.3A       |
+| NTC  | [NT サーミスタ](https://akizukidenshi.com/catalog/g/gP-11896/)                  | 50   |                  |
+|      |                                                                                 |      |                  |
+| POW  | [5V 電源](https://akizukidenshi.com/catalog/g/gM-11996/)                        | 580  | 5V 2A            |
+| POW  | [DC ジャック](https://akizukidenshi.com/catalog/g/gC-09408/)                    | 30   |                  |
+|      |                                                                                 |      |                  |
+|      | [ヒートシンク（トライアック用）](https://akizukidenshi.com/catalog/g/gP-05051/) | 110  |                  |
+|      | [ヒートシンク（FET 用）](https://akizukidenshi.com/catalog/g/gP-05052/)         | 35   | 不要かも         |
+|      | [絶縁放熱シート](https://akizukidenshi.com/catalog/g/gP-12791/)                 | 40   | 2 枚             |
+|      | [M3 プラネジ](https://akizukidenshi.com/catalog/g/gP-10359/)                    | 4    | 2 本             |
+| 合計 |                                                                                 | 3979 |                  |
+
+[カプトンテープ](https://akizukidenshi.com/catalog/g/gT-09379/)
 
 ## 制御
 
