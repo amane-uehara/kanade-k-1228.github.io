@@ -492,6 +492,7 @@
 <li><a href="#制御">制御</a><ul>
 <li><a href="#温度制御">温度制御</a></li>
 <li><a href="#温度計測">温度計測</a></li>
+<li><a href="#温度逆算">温度逆算</a></li>
 <li><a href="#温度プロファイル">温度プロファイル</a></li>
 <li><a href="#温度プロファイルのフォーマット">温度プロファイルのフォーマット</a></li>
 <li><a href="#ux">UX</a></li>
@@ -681,13 +682,50 @@
 <li>サーミスタの特性
 <ul>
 <li><a href="https://www.semitec.co.jp/uploads/2021/11/nt_thermistor2015.pdf">データシート</a></li>
-<li>exp(exp())っぽい特性</li>
-<li>160 度で 134Ω</li>
-<li>260 度で 23Ω</li>
 </ul></li>
-<li>47Ω ぐらいの抵抗を使うとよさそう？</li>
-<li>ダイナミックレンジを広げたいなら、トランジスタの exp 特性を使うのがよさそう</li>
 </ul>
+<p><span class="math display">\[
+R(T) = R_0 \exp \l[ B \l( \f{1}{T} - \f{1}{T_0} \r) \r]
+\]</span></p>
+<p><span class="math display">\[
+V(T) = V_0 \f{R_P}{R(T)+R_P}
+\]</span></p>
+<ul>
+<li>基準温度：<span class="math inline">\(T_0=298 \rm{K} (25°C)\)</span></li>
+<li>基準抵抗：<span class="math inline">\(R_0=10000 \Omega\)</span></li>
+<li>B 定数：<span class="math inline">\(B=4126 \rm{K}\)</span></li>
+<li>分圧抵抗：<span class="math inline">\(R_P=47 \Omega\)</span></li>
+<li>全電圧：<span class="math inline">\(V_0=5\rm{V}\)</span></li>
+</ul>
+<h3 id="温度逆算">温度逆算</h3>
+<p><span class="math display">\[
+R(T) = R_P \l(\f{V_0}{V(T)}-1\r)
+\]</span></p>
+<p><span class="math display">\[
+\f{1}{T} = \f{1}{B} \ln\l(\f{R(T)}{R_0}\r) + \f{1}{T_0}
+\]</span></p>
+<p><span class="math display">\[
+T = \l\{\f{1}{B} \ln\l[\f{R_P}{R_0}\l(\f{V_0}{V(T)}-1\r)\r] + \f{1}{T_0}\r\}^{-1}
+\]</span></p>
+<ol type="1">
+<li>ADC の値<span class="math inline">\(V_A\)</span>から</li>
+</ol>
+<p><span class="math display">\[
+X = \f{47}{10000}\f{1024-V_{A}}{V_{A}}
+\]</span></p>
+<ol start="2" type="1">
+<li>対数を取る</li>
+</ol>
+<p><span class="math display">\[
+Y = \ln X
+\]</span></p>
+<p>対数関数は X のまわりで近似したものを使う</p>
+<ol start="3" type="1">
+<li>温度を得る</li>
+</ol>
+<p><span class="math display">\[
+T = \f{1}{\f{Y}{B} + \f{1}{T_0}}
+\]</span></p>
 <h3 id="温度プロファイル">温度プロファイル</h3>
 <ol type="1">
 <li>△ 2 ~ 3 °C/sec</li>
