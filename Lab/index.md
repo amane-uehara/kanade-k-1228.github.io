@@ -82,6 +82,12 @@ OS
 
 ブラウザ
 
+### 自作マイコン
+
+[自作マイコンについて](./Computer/Micon/About/)
+
+[PWM](./Computer/Micon/PWM/)
+
 ### リレーコンピュータ
 
 [リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
