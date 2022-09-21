@@ -16,6 +16,10 @@ title: マイコン用CPU、RISC-K
 
 関数呼び出しができないので、スタックを実装する。
 
+### サブルーチン
+
+### 割り込み
+
 ## 回路詳細
 
 ### メモリマップ
@@ -87,72 +91,3 @@ title: マイコン用CPU、RISC-K
 | 0038 | I2C  |
 | 00   | SPI  |
 |      | UART |
-
-#### GPIO
-
-入出力フラグ（0 が入力、1 が出力）。
-
-出力はトライステート、入力はシュミットトリガ。
-
-| Addr | Name       | Func          |
-| ---- | ---------- | ------------- |
-| 0020 | gpio0_conf | 入出力フラグ  |
-| 0021 | gpio0      | GPIO レジスタ |
-| 0022 | gpio1_conf |               |
-| 0023 | gpio1      |               |
-
-#### ADC
-
-| Addr |     |
-| ---- | --- |
-|      |     |
-
-[ADC 選定中…](https://www.mouser.jp/c/semiconductors/data-converter-ics/analog-to-digital-converters-adc/?interface%20type=Parallel~~Parallel%20CMOS%2C%20Parallel%20LVDS&mounting%20style=Through%20Hole&rp=semiconductors%2Fdata-converter-ics%2Fanalog-to-digital-converters-adc%7C~Interface%20Type&sort=pricing)
-
-[MAX154](https://www.mouser.jp/ProductDetail/Maxim-Integrated/MAX154ACNG%2b?qs=d3kjJb5aE2YrP%2FUO4CrDQg%3D%3D)
-
-[MAX118](https://www.mouser.jp/ProductDetail/Maxim-Integrated/MAX118CPI%2b?qs=d3kjJb5aE2ZybZ9VNzWdhg%3D%3D)
-
-#### DAC
-
-#### PWM
-
-分周器で自作する。
-
-8bit カウンタ（分周器）を回して、デューティー比と比較して、一致したら OFF。
-
-分周器が 0 に戻ったら ON。
-
-| Addr |           |                        |
-| ---- | --------- | ---------------------- |
-| 0030 | pwm0_conf | ON/OFF、ベースクロック |
-| 0031 | pwm0A     | デューティー比         |
-| 0032 | pwm0B     |                        |
-| 0033 | pwm1_conf |                        |
-| 0034 | pwm1A     |                        |
-| 0035 | pwm1B     |                        |
-| 0036 | pwm2_conf |                        |
-| 0037 | pwm2A     |                        |
-| 0038 | pwm2B     |                        |
-| 0039 | pwm3_conf |                        |
-| 003A | pwm3A     |                        |
-| 003B | pwm3B     |                        |
-
-#### I2C
-
-#### SPI
-
-#### UART
-
-| Addr |     |                         |
-| ---- | --- | ----------------------- |
-|      | UDR | UART データレジスタ     |
-|      | UBR | UART ボーレートレジスタ |
-
-### SRAM
-
-### VRAM
-
-### EEPROM
-
-固定値を書き込みます。

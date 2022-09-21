@@ -98,6 +98,8 @@ OS
 
 [周辺回路を作る](./Computer/Micon/05_Peripheral)
 
+[ロジック IC で組む](./Computer/Micon/06_LogicIC)
+
 ### リレーコンピュータ
 
 [リレーから始める CPU 自作](./Computer/RelayComputer/Day1_Introduction/)
