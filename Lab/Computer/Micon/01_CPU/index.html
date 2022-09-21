@@ -485,15 +485,15 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</a></li>
-<li><a href="#命令セット">命令セット</a></li>
+<li><a href="#命令セット">命令セット</a><ul>
+<li><a href="#サブルーチン">サブルーチン</a></li>
+<li><a href="#割り込み">割り込み</a></li>
+</ul></li>
 <li><a href="#回路詳細">回路詳細</a><ul>
 <li><a href="#メモリマップ">メモリマップ</a></li>
 <li><a href="#汎用レジスタ">汎用レジスタ</a></li>
 <li><a href="#演算レジスタ">演算レジスタ</a></li>
 <li><a href="#入出力レジスタ">入出力レジスタ</a></li>
-<li><a href="#sram">SRAM</a></li>
-<li><a href="#vram">VRAM</a></li>
-<li><a href="#eeprom">EEPROM</a></li>
 </ul></li>
 </ul></nav>
        <h2 id="vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</h2>
@@ -503,6 +503,8 @@
 <h2 id="命令セット">命令セット</h2>
 <p>リレーコンピュータの、4 命令 ISA をベースにする。</p>
 <p>関数呼び出しができないので、スタックを実装する。</p>
+<h3 id="サブルーチン">サブルーチン</h3>
+<h3 id="割り込み">割り込み</h3>
 <h2 id="回路詳細">回路詳細</h2>
 <h3 id="メモリマップ">メモリマップ</h3>
 <table>
@@ -786,162 +788,6 @@
 </tr>
 </tbody>
 </table>
-<h4 id="gpio">GPIO</h4>
-<p>入出力フラグ（0 が入力、1 が出力）。</p>
-<p>出力はトライステート、入力はシュミットトリガ。</p>
-<table>
-<thead>
-<tr class="header">
-<th>Addr</th>
-<th>Name</th>
-<th>Func</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0020</td>
-<td>gpio0_conf</td>
-<td>入出力フラグ</td>
-</tr>
-<tr class="even">
-<td>0021</td>
-<td>gpio0</td>
-<td>GPIO レジスタ</td>
-</tr>
-<tr class="odd">
-<td>0022</td>
-<td>gpio1_conf</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>0023</td>
-<td>gpio1</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="adc">ADC</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Addr</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://www.mouser.jp/c/semiconductors/data-converter-ics/analog-to-digital-converters-adc/?interface%20type=Parallel~~Parallel%20CMOS%2C%20Parallel%20LVDS&amp;mounting%20style=Through%20Hole&amp;rp=semiconductors%2Fdata-converter-ics%2Fanalog-to-digital-converters-adc%7C~Interface%20Type&amp;sort=pricing">ADC 選定中…</a></p>
-<p><a href="https://www.mouser.jp/ProductDetail/Maxim-Integrated/MAX154ACNG%2b?qs=d3kjJb5aE2YrP%2FUO4CrDQg%3D%3D">MAX154</a></p>
-<p><a href="https://www.mouser.jp/ProductDetail/Maxim-Integrated/MAX118CPI%2b?qs=d3kjJb5aE2ZybZ9VNzWdhg%3D%3D">MAX118</a></p>
-<h4 id="dac">DAC</h4>
-<h4 id="pwm">PWM</h4>
-<p>分周器で自作する。</p>
-<p>8bit カウンタ（分周器）を回して、デューティー比と比較して、一致したら OFF。</p>
-<p>分周器が 0 に戻ったら ON。</p>
-<table>
-<thead>
-<tr class="header">
-<th>Addr</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0030</td>
-<td>pwm0_conf</td>
-<td>ON/OFF、ベースクロック</td>
-</tr>
-<tr class="even">
-<td>0031</td>
-<td>pwm0A</td>
-<td>デューティー比</td>
-</tr>
-<tr class="odd">
-<td>0032</td>
-<td>pwm0B</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>0033</td>
-<td>pwm1_conf</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>0034</td>
-<td>pwm1A</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>0035</td>
-<td>pwm1B</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>0036</td>
-<td>pwm2_conf</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>0037</td>
-<td>pwm2A</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>0038</td>
-<td>pwm2B</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>0039</td>
-<td>pwm3_conf</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>003A</td>
-<td>pwm3A</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>003B</td>
-<td>pwm3B</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="i2c">I2C</h4>
-<h4 id="spi">SPI</h4>
-<h4 id="uart">UART</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Addr</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>UDR</td>
-<td>UART データレジスタ</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>UBR</td>
-<td>UART ボーレートレジスタ</td>
-</tr>
-</tbody>
-</table>
-<h3 id="sram">SRAM</h3>
-<h3 id="vram">VRAM</h3>
-<h3 id="eeprom">EEPROM</h3>
-<p>固定値を書き込みます。</p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

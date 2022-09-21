@@ -484,9 +484,53 @@
 
       <!-- Table of Contents -->
             <nav><ul>
+<li><a href="#gpio">GPIO</a></li>
 <li><a href="#pwm">PWM</a></li>
+<li><a href="#adc">ADC</a></li>
+<li><a href="#uart">UART</a></li>
+<li><a href="#spi">SPI</a></li>
+<li><a href="#i2c">I2C</a></li>
+<li><a href="#回路">回路</a></li>
 </ul></nav>
-       <h2 id="pwm">PWM</h2>
+       <h2 id="gpio">GPIO</h2>
+<p>入出力フラグ（0 が入力、1 が出力）。</p>
+<p>出力はトライステート、入力はシュミットトリガ。</p>
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gI-03632/">3 ステートバッファ</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/gI-14054/">シュミットトリガインバータ</a></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Addr</th>
+<th>Name</th>
+<th>Func</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0020</td>
+<td>gpio0_conf</td>
+<td>入出力フラグ</td>
+</tr>
+<tr class="even">
+<td>0021</td>
+<td>gpio0</td>
+<td>GPIO レジスタ</td>
+</tr>
+<tr class="odd">
+<td>0022</td>
+<td>gpio1_conf</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0023</td>
+<td>gpio1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="pwm">PWM</h2>
 <p>PWM の方法には三角波比較方式とかあるけど、今回はロジック回路だけで実装する。</p>
 <ol type="1">
 <li>ベースクロックの生成</li>
@@ -502,6 +546,108 @@
 <li><a href="https://akizukidenshi.com/catalog/g/gI-10879/">2 回路 D フリップフロップ</a></li>
 <li><a href="https://akizukidenshi.com/catalog/g/gI-11487/">3 ステートバッファ</a></li>
 </ul>
+<table>
+<thead>
+<tr class="header">
+<th>Addr</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0030</td>
+<td>pwm0_conf</td>
+<td>ON/OFF、ベースクロックの分周比</td>
+</tr>
+<tr class="even">
+<td>0031</td>
+<td>pwm0A</td>
+<td>閾値</td>
+</tr>
+<tr class="odd">
+<td>0032</td>
+<td>pwm0B</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0033</td>
+<td>pwm1_conf</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0034</td>
+<td>pwm1A</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0035</td>
+<td>pwm1B</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0036</td>
+<td>pwm2_conf</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0037</td>
+<td>pwm2A</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0038</td>
+<td>pwm2B</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0039</td>
+<td>pwm3_conf</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>003A</td>
+<td>pwm3A</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>003B</td>
+<td>pwm3B</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="adc">ADC</h2>
+<p><a href="https://www.mouser.jp/c/semiconductors/data-converter-ics/analog-to-digital-converters-adc/?interface%20type=Parallel~~Parallel%20CMOS%2C%20Parallel%20LVDS&amp;mounting%20style=Through%20Hole&amp;rp=semiconductors%2Fdata-converter-ics%2Fanalog-to-digital-converters-adc%7C~Interface%20Type&amp;sort=pricing">ADC 選定中…</a></p>
+<p><a href="https://www.mouser.jp/ProductDetail/Maxim-Integrated/MAX154ACNG%2b?qs=d3kjJb5aE2YrP%2FUO4CrDQg%3D%3D">MAX154</a></p>
+<p><a href="https://www.mouser.jp/ProductDetail/Maxim-Integrated/MAX118CPI%2b?qs=d3kjJb5aE2ZybZ9VNzWdhg%3D%3D">MAX118</a></p>
+<h2 id="uart">UART</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Addr</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>UDR</td>
+<td>UART データレジスタ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>UBR</td>
+<td>UART ボーレートレジスタ</td>
+</tr>
+</tbody>
+</table>
+<h2 id="spi">SPI</h2>
+<h2 id="i2c">I2C</h2>
+<h2 id="回路">回路</h2>
+<p>前作った FPGA 基板を拡張して、周辺回路をつけます。</p>
+<p>この状態でひとまず Arduino みたいに使えるはずです。</p>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
