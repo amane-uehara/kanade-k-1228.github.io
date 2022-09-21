@@ -86,21 +86,17 @@ OS
 
 ### 自作マイコン
 
-[自作マイコンについて](./Computer/Micon/About/)
+[自作マイコンについて](./Computer/Micon/00_About/)
 
-RISC-K の設計
+[CPU の設計](./Computer/Micon/01_CPU/)
 
-FPGA による検証
+[FPGA で動かしてみる](./Computer/Micon/02_FPGA)
 
-アセンブラ
+[アセンブラ＆コンパイラ](./Computer/Micon/03_Compile)
 
-コンパイラ
+[さまざまなプログラムを動かす](./Computer/Micon/04_Programing)
 
-書き込み回路
-
-I2C
-
-[PWM を自作する](./Computer/Micon/PWM/)
+[周辺回路を作る](./Computer/Micon/05_Peripheral)
 
 ### リレーコンピュータ
 

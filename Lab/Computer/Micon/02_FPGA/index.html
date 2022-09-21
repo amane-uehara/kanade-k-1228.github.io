@@ -31,7 +31,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>自作マイコン | Kanade's Website</title>
+          <title>FPGAで動かしてみる | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -378,7 +378,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "自作マイコン",
+            "FPGAで動かしてみる",
           "_blank"
         );
       }
@@ -452,7 +452,7 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">自作マイコン</h1>
+                <h1 style="margin: 0">FPGAで動かしてみる</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -484,24 +484,15 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#目標">目標</a></li>
-<li><a href="#仕様">仕様</a></li>
+<li><a href="#回路設計">回路設計</a></li>
+<li><a href="#verilog">Verilog</a></li>
 </ul></nav>
-       <h2 id="目標">目標</h2>
-<ol type="1">
-<li>簡素な CPU
-<ul>
-<li>リレーコンピュータのアーキテクチャをベースにした、単純なアーキと単純な機械語</li>
-</ul></li>
-<li>充実したペリフェラル
-<ul>
-<li>割り込み</li>
-<li>DMA</li>
-<li>入出力：GPIO、ADC、DAC、PWM</li>
-<li>通信：I2C、SPI、Serial</li>
-</ul></li>
-</ol>
-<h2 id="仕様">仕様</h2>
+       <p>CPU をロジック IC で組む前に、FPGA でテストします。</p>
+<h2 id="回路設計">回路設計</h2>
+<p>プログラム ROM 用の Flash、メインメモリの SRAM、定数記憶用の EEPROM の使い方も確かめたいので、これらを FPGA に接続して使います。</p>
+<p>Flash と EEPROM への書き込み回路も作って、</p>
+<p>んで、できた回路がこれです。</p>
+<h2 id="verilog">Verilog</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
