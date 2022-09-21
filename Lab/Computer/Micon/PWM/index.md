@@ -15,3 +15,4 @@ PWM の方法には三角波比較方式とかあるけど、今回はロジッ�
 - [8 ビット バイナリカウンタ 74590](https://akizukidenshi.com/catalog/g/gI-10014/)
 - [8 ビット 比較演算器 74688](https://eleshop.jp/shop/g/gT11582/)
 - [2 回路 D フリップフロップ](https://akizukidenshi.com/catalog/g/gI-10879/)
+- [3 ステートバッファ](https://akizukidenshi.com/catalog/g/gI-11487/)

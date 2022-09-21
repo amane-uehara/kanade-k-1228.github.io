@@ -44,6 +44,8 @@ title: 研究室へようこそ
 
 [5000 円で作るリフロー装置](Electronics/HotplateReflow/)
 
+[秋月で買えるスルーホール 74 シリーズ一覧](Electronics/LogicIC/)
+
 オペアンプ
 
 ロータリーエンコーダを自作
@@ -86,7 +88,19 @@ OS
 
 [自作マイコンについて](./Computer/Micon/About/)
 
-[PWM](./Computer/Micon/PWM/)
+RISC-K の設計
+
+FPGA による検証
+
+アセンブラ
+
+コンパイラ
+
+書き込み回路
+
+I2C
+
+[PWM を自作する](./Computer/Micon/PWM/)
 
 ### リレーコンピュータ
 
