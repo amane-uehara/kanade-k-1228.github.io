@@ -20,7 +20,7 @@ keyword: FPGA, VGA,
 
 ## 回路
 
-[D サブコネクタ](https://akizukidenshi.com/catalog/g/gC-00645/)
+[VGA コネクタ](https://www.marutsu.co.jp/pc/i/838015/)
 
 ## 参考
 

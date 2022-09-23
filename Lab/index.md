@@ -58,23 +58,21 @@ title: 研究室へようこそ
 
 [ダイオード 2 本でお手軽エネルギーハーベスティング](Electronics/Radio/RectennaLED/)
 
-無線送電を作って遊ぶ
+<!-- 無線送電を作って遊ぶ -->
 
-一級陸上無線技術士を取りました
+<!-- 一級陸上無線技術士を取りました -->
 
 ### FPGA
 
 [TinyFPGA を使ってみた](./Electronics/FPGA/TinyFpga/)
 
-[FPGA で VGA 映像出力](./Electronics/FPGA/FPGAVGA/)
-
-FPGA で音源 IC を作って鳴らしてみた
+<!-- [FPGA で VGA 映像出力](./Electronics/FPGA/FPGAVGA/) -->
 
 <!-- [FPGA で音源 IC を作って鳴らしてみた](./Electronics/FPGASound/) -->
 
-FPGA で PWM
+<!-- FPGA で PWM -->
 
-FPGA でシリアル通信
+<!-- FPGA でシリアル通信 -->
 
 ## 情報工学
 
