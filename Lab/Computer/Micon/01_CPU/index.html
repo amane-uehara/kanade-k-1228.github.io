@@ -31,7 +31,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>マイコン用CPU、RISC-K | Kanade's Website</title>
+          <title>自作マイコン用CPU、RISC-K | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -378,7 +378,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "マイコン用CPU、RISC-K",
+            "自作マイコン用CPU、RISC-K",
           "_blank"
         );
       }
@@ -452,7 +452,7 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">マイコン用CPU、RISC-K</h1>
+                <h1 style="margin: 0">自作マイコン用CPU、RISC-K</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -484,29 +484,29 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</a></li>
-<li><a href="#命令セット">命令セット</a><ul>
-<li><a href="#サブルーチン">サブルーチン</a></li>
-<li><a href="#割り込み">割り込み</a></li>
-</ul></li>
-<li><a href="#回路詳細">回路詳細</a><ul>
-<li><a href="#メモリマップ">メモリマップ</a></li>
+<li><a href="#概要">概要</a></li>
+<li><a href="#メモリ空間">メモリ空間</a><ul>
 <li><a href="#汎用レジスタ">汎用レジスタ</a></li>
 <li><a href="#演算レジスタ">演算レジスタ</a></li>
 <li><a href="#入出力レジスタ">入出力レジスタ</a></li>
+<li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
+<li><a href="#rom-eeprom">ROM (EEPROM)</a></li>
+<li><a href="#ram-sram">RAM (SRAM)</a></li>
+</ul></li>
+<li><a href="#命令セット">命令セット</a><ul>
+<li><a href="#移動系命令">移動系命令</a></li>
+<li><a href="#制御系命令">制御系命令</a></li>
+</ul></li>
+<li><a href="#vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</a><ul>
+<li><a href="#サブルーチン">サブルーチン</a></li>
+<li><a href="#割り込み">割り込み</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</h2>
-<p>記憶されている値の移動と演算処理を行う Value Flow Controller (VFC) と、</p>
-<p>プログラムの制御を行う部分 Program Flow Controller (PFC) からなるアーキテクチャ。</p>
-<p><img src="./img/arch.dio.svg" /></p>
-<h2 id="命令セット">命令セット</h2>
-<p>リレーコンピュータの、4 命令 ISA をベースにする。</p>
-<p>関数呼び出しができないので、スタックを実装する。</p>
-<h3 id="サブルーチン">サブルーチン</h3>
-<h3 id="割り込み">割り込み</h3>
-<h2 id="回路詳細">回路詳細</h2>
-<h3 id="メモリマップ">メモリマップ</h3>
+       <h2 id="概要">概要</h2>
+<ul>
+<li>メインメモリ空間とプログラムメモリ空間が分離された、ハーバードアーキテクチャ</li>
+</ul>
+<h2 id="メモリ空間">メモリ空間</h2>
 <table>
 <thead>
 <tr class="header">
@@ -651,8 +651,8 @@
 </tbody>
 </table>
 <h3 id="演算レジスタ">演算レジスタ</h3>
-<p>このアーキテクチャでは、演算命令を MOV のエイリアスとして実装します。</p>
-<p>あるレジスタにアクセスすることで演算結果を得るようなハードウェアになっているからです。</p>
+<p>このアーキテクチャでは、演算命令を mov のエイリアスとして実装します。</p>
+<p>レジスタアクセスと同じ手続きで、演算結果を得るようなハードウェアになっているからです。</p>
 <table>
 <thead>
 <tr class="header">
@@ -750,6 +750,7 @@
 </tbody>
 </table>
 <h3 id="入出力レジスタ">入出力レジスタ</h3>
+<p>各 IO に必要なレジスタ数がわからないので、仮です。</p>
 <table>
 <thead>
 <tr class="header">
@@ -788,6 +789,114 @@
 </tr>
 </tbody>
 </table>
+<h3 id="vram-dual-access-sram">VRAM (Dual access SRAM)</h3>
+<p>表示の候補として、</p>
+<ul>
+<li>300 x 400 画素 : RGB 4 段階 (6bit)</li>
+<li>300 x 400 画素 : 白黒 2 段階 (1bit)</li>
+<li>テキスト表示（フォントを EEPROM に置いておく）</li>
+</ul>
+<h3 id="rom-eeprom">ROM (EEPROM)</h3>
+<h3 id="ram-sram">RAM (SRAM)</h3>
+<h2 id="命令セット">命令セット</h2>
+<h3 id="移動系命令">移動系命令</h3>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>引数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mov</td>
+<td>レジスタ → レジスタ</td>
+<td>1.レジスタ番号 2.レジスタ番号</td>
+</tr>
+<tr class="even">
+<td>load</td>
+<td>メモリ → レジスタ</td>
+<td>1.レジスタ番号 2.メモリアドレス</td>
+</tr>
+<tr class="odd">
+<td>store</td>
+<td>レジスタ → メモリ</td>
+<td>1.レジスタ番号 2.メモリアドレス</td>
+</tr>
+<tr class="even">
+<td>load_a</td>
+<td>メモリ[レジスタ] → レジスタ</td>
+<td>1.レジスタ番号 2.レジスタ番号</td>
+</tr>
+<tr class="odd">
+<td>store_a</td>
+<td>レジスタ → メモリ[レジスタ]</td>
+<td>1.レジスタ番号 2.レジスタ番号</td>
+</tr>
+</tbody>
+</table>
+<h3 id="制御系命令">制御系命令</h3>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>引数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jmpif</td>
+<td>条件分岐</td>
+<td>1.条件 2.分岐先</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>call</td>
+<td>関数呼び出し</td>
+<td>1.アドレス</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>ret</td>
+<td>関数抜け出し</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>intr</td>
+<td>割込呼び出し</td>
+<td>1.例外コード</td>
+<td>全てのレジスタを退避し、ハンドラへ制御を渡す</td>
+</tr>
+<tr class="odd">
+<td>ret_intr</td>
+<td>割込抜け出し</td>
+<td>-</td>
+<td>退避したレジスタを戻し、元の処理に戻る</td>
+</tr>
+<tr class="even">
+<td>ac_intr</td>
+<td>割込受付</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>rj_intr</td>
+<td>割込拒否</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</h2>
+<p>記憶されている値の移動を行う Value Flow Controller (VFC) と、</p>
+<p>プログラムの制御を行う Program Flow Controller (PFC) からなるアーキテクチャ。</p>
+<p><img src="./img/arch.dio.svg" /></p>
+<h3 id="サブルーチン">サブルーチン</h3>
+<h3 id="割り込み">割り込み</h3>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
