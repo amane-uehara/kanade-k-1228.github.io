@@ -40,19 +40,23 @@ title: 研究室へようこそ
 
 ### 電子工作
 
-[YMZ294 で音楽を再生する](Electronics/YMZ294/)
+[YMZ294 で音楽を再生する](Electronics/Misc/YMZ294/)
 
-[5000 円で作るリフロー装置](Electronics/HotplateReflow/)
+[5000 円で作るリフロー装置](Electronics/Misc/HotplateReflow/)
 
-[秋月で買えるスルーホール 74 シリーズ一覧](Electronics/LogicIC/)
+[秋月で買えるスルーホール 74 シリーズ一覧](Electronics/Misc/LogicIC/)
+
+### 電子回路
 
 オペアンプ
+
+### メカトロ
 
 ロータリーエンコーダを自作
 
 ### 電波
 
-[ダイオード 2 本でお手軽エネルギーハーベスティング](Electronics/RectennaLED/)
+[ダイオード 2 本でお手軽エネルギーハーベスティング](Electronics/Radio/RectennaLED/)
 
 無線送電を作って遊ぶ
 
@@ -60,9 +64,17 @@ title: 研究室へようこそ
 
 ### FPGA
 
-[TinyFPGA を使ってみた](./Electronics/TinyFpga/)
+[TinyFPGA を使ってみた](./Electronics/FPGA/TinyFpga/)
 
-[FPGA で音源 IC を作って鳴らしてみた](./Electronics/FPGASound/)
+[FPGA で VGA 映像出力](./Electronics/FPGA/FPGAVGA/)
+
+FPGA で音源 IC を作って鳴らしてみた
+
+<!-- [FPGA で音源 IC を作って鳴らしてみた](./Electronics/FPGASound/) -->
+
+FPGA で PWM
+
+FPGA でシリアル通信
 
 ## 情報工学
 
@@ -73,16 +85,6 @@ title: 研究室へようこそ
 [サーバーセットアップメモ](./Computer/Misc/ServerSetup/)
 
 [最長片道切符](./Computer/Misc/LongestWay/)
-
-### プログラミング入門以前
-
-コンピューターシステムの構造
-
-ハードウェア
-
-OS
-
-ブラウザ
 
 ### 自作マイコン
 

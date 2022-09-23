@@ -484,14 +484,20 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#回路設計">回路設計</a></li>
+<li><a href="#回路設計">回路設計</a><ul>
+<li><a href="#sram">SRAM</a></li>
+<li><a href="#eeprom">EEPROM</a></li>
+</ul></li>
 <li><a href="#verilog">Verilog</a></li>
 </ul></nav>
        <p>CPU をロジック IC で組む前に、FPGA でテストします。</p>
 <h2 id="回路設計">回路設計</h2>
-<p>プログラム ROM 用の Flash、メインメモリの SRAM、定数記憶用の EEPROM の使い方も確かめたいので、これらを FPGA に接続して使います。</p>
-<p>Flash と EEPROM への書き込み回路も作って、</p>
-<p>んで、できた回路がこれです。</p>
+<p>メインメモリの SRAM、プログラム ROM 用と、固定値記憶用の EEPROM の使い方も確かめたいので、これらを FPGA に接続して使います。</p>
+<h3 id="sram">SRAM</h3>
+<p><a href="https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71256sa-50v-32k-x-8-asynchronous-static-ram">Renesas 71256SA</a></p>
+<h3 id="eeprom">EEPROM</h3>
+<p><a href="https://www.microchip.com/en-us/product/AT28C64B">Atmel AT28C64B</a></p>
+<p>8192 x 8bit</p>
 <h2 id="verilog">Verilog</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
