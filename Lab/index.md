@@ -84,6 +84,8 @@ title: 研究室へようこそ
 
 [最長片道切符](./Computer/Misc/LongestWay/)
 
+[RISC-V](./Computer/Misc/RISC-V/)
+
 ### 自作マイコン
 
 [自作マイコンについて](./Computer/Micon/00_About/)
