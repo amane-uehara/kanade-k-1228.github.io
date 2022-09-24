@@ -487,8 +487,9 @@
 <li><a href="#レジスタ">レジスタ</a></li>
 <li><a href="#命令セット">命令セット</a><ul>
 <li><a href="#命令フォーマット">命令フォーマット</a></li>
+<li><a href="#レジスタ演算">レジスタ演算</a></li>
+<li><a href="#即値演算">即値演算</a></li>
 <li><a href="#メモリアクセス">メモリアクセス</a></li>
-<li><a href="#演算命令">演算命令</a></li>
 <li><a href="#条件分岐">条件分岐</a></li>
 <li><a href="#ジャンプ">ジャンプ</a></li>
 <li><a href="#割り込み">割り込み</a></li>
@@ -541,82 +542,75 @@
 <td>〇</td>
 </tr>
 <tr class="odd">
-<td>x4</td>
-<td>s0</td>
+<td>x4-7</td>
+<td>s0-3</td>
 <td>保存レジスタ</td>
 <td>〇</td>
 </tr>
 <tr class="even">
-<td>x5</td>
-<td>s1</td>
-<td>保存レジスタ</td>
-<td>〇</td>
-</tr>
-<tr class="odd">
-<td>x6</td>
-<td>s2</td>
-<td>保存レジスタ</td>
-<td>〇</td>
-</tr>
-<tr class="even">
-<td>x7</td>
-<td>s3</td>
-<td>保存レジスタ</td>
-<td>〇</td>
-</tr>
-<tr class="odd">
-<td>x8</td>
-<td>t0</td>
-<td>一時レジスタ</td>
-<td>✕</td>
-</tr>
-<tr class="even">
-<td>x9</td>
-<td>t1</td>
+<td>x8-11</td>
+<td>t0-3</td>
 <td>一時レジスタ</td>
 <td>✕</td>
 </tr>
 <tr class="odd">
-<td>x10</td>
-<td>t2</td>
-<td>一時レジスタ</td>
-<td>✕</td>
-</tr>
-<tr class="even">
-<td>x11</td>
-<td>t3</td>
-<td>一時レジスタ</td>
-<td>✕</td>
-</tr>
-<tr class="odd">
-<td>x12</td>
-<td>a0</td>
-<td>引数・返値</td>
-<td>✕</td>
-</tr>
-<tr class="even">
-<td>x13</td>
-<td>a1</td>
-<td>引数・返値</td>
-<td>✕</td>
-</tr>
-<tr class="odd">
-<td>x14</td>
-<td>a2</td>
-<td>引数・返値</td>
-<td>✕</td>
-</tr>
-<tr class="even">
-<td>x15</td>
-<td>a3</td>
+<td>x12-15</td>
+<td>a0-3</td>
 <td>引数・返値</td>
 <td>✕</td>
 </tr>
 </tbody>
 </table>
 <h2 id="命令セット">命令セット</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>rd</th>
+<th>rs1</th>
+<th>rs2</th>
+<th>imm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>add</td>
+<td></td>
+<td></td>
+<td></td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>addi</td>
+<td></td>
+<td></td>
+<td>-</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>load</td>
+<td></td>
+<td></td>
+<td>-</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>store</td>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>beq</td>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="命令フォーマット">命令フォーマット</h3>
-<p>即値が必要な場合は次のアドレスに書かれている。</p>
 <table>
 <thead>
 <tr class="header">
@@ -625,63 +619,45 @@
 <th>11-8</th>
 <th>7-4</th>
 <th>3-0</th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td></td>
 <td>OPC</td>
-<td>Reg R1</td>
-<td>Reg R2</td>
-<td>Reg W</td>
-<td>Reg W = ALU_OPC(Reg R1, Reg R2)</td>
-</tr>
-<tr class="even">
-<td>IMM</td>
-<td>IMM</td>
-<td>IMM</td>
-<td>IMM</td>
-<td>IMM</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>R-M</td>
-<td>OPC</td>
-<td>OPC</td>
-<td>OPC</td>
-<td>OPC</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>P</td>
-<td>OPC</td>
-<td>OPC</td>
-<td>OPC</td>
-<td>OPC</td>
-<td></td>
+<td>rd</td>
+<td>rs1</td>
+<td>rs2</td>
 </tr>
 </tbody>
 </table>
-<h3 id="メモリアクセス">メモリアクセス</h3>
-<ol type="1">
-<li>load x, y, z</li>
-</ol>
-<p>メモリの「レジスタ y + 即値 z 」番地の値を、レジスタ x に書き込む。</p>
-<p>y を zero レジスタとすることで、絶対参照ができる。</p>
-<ol start="2" type="1">
-<li>store x, y, z</li>
-</ol>
-<p>レジスタ x の値を、メモリの「レジスタ y + 即値 z 」番地に書き込む。</p>
-<h3 id="演算命令">演算命令</h3>
+<h3 id="レジスタ演算">レジスタ演算</h3>
 <blockquote>
-<p>add rd, rs1, rs2 sub rd, rs1, rs2 sll slt sltu xor srl sra or and</p>
+<p>add rd, rs1, rs2</p>
+<p>x[rd] = x[rs1] + x[rs2]</p>
 </blockquote>
+<h3 id="即値演算">即値演算</h3>
+<blockquote>
+<p>addi rd, rs, imm</p>
+<p>x[rd] = x[rs] + imm</p>
+</blockquote>
+<h3 id="メモリアクセス">メモリアクセス</h3>
+<blockquote>
+<p>load rd, rs, imm</p>
+<p>x[rd] = m[ x[rs] + imm ]</p>
+</blockquote>
+<p>メモリの「レジスタ rs + 即値 imm 」番地の値を、レジスタ rd に書き込む。</p>
+<p>rs を zero レジスタとすることで、絶対参照ができる。</p>
+<blockquote>
+<p>store rs1, rs2, imm</p>
+<p>m[ x[rs] + imm] = x[rs]</p>
+</blockquote>
+<p>レジスタ rd の値を、メモリの「レジスタ rs + 即値 imm 」番地に書き込む。</p>
 <h3 id="条件分岐">条件分岐</h3>
 <blockquote>
-<p>beq rs1, rs2, offset</p>
+<p>beq rs1, rs2, imm</p>
 </blockquote>
-<p>if(x[rs1]==x[rs2]) PC = PC + 4 + offset (else PC = PC + 4)</p>
+<p>if(x[rs1]==x[rs2]) PC = PC + 4 + imm (else PC = PC + 4)</p>
 <h3 id="ジャンプ">ジャンプ</h3>
 <blockquote>
 <p>jal rd, offset</p>
@@ -714,11 +690,11 @@
 <li>リターンアドレスをスタックに退避</li>
 <li>引数をレジスタにセット</li>
 <li>レジスタが足りなければスタックにセット</li>
-<li><p>サブルーチンにジャンプ</p></li>
+<li>サブルーチンにジャンプ</li>
 <li>レジスタを復元</li>
 <li>リターンアドレスを復元</li>
 <li>スタックポインタを加算</li>
-<li><p>リターンアドレスにジャンプ</p></li>
+<li>リターンアドレスにジャンプ</li>
 </ol>
 <h3 id="割り込み処理">割り込み処理</h3>
 <ol type="1">
