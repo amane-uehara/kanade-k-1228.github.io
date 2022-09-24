@@ -487,21 +487,20 @@
 <li><a href="#概要">概要</a></li>
 <li><a href="#メモリ空間">メモリ空間</a><ul>
 <li><a href="#汎用レジスタ">汎用レジスタ</a></li>
-<li><a href="#演算レジスタ">演算レジスタ</a></li>
-<li><a href="#入出力レジスタ">入出力レジスタ</a></li>
+<li><a href="#io">IO</a></li>
 <li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
 <li><a href="#rom-eeprom">ROM (EEPROM)</a></li>
 <li><a href="#ram-sram">RAM (SRAM)</a></li>
 </ul></li>
 <li><a href="#命令セット">命令セット</a><ul>
 <li><a href="#命令フォーマット">命令フォーマット</a></li>
+<li><a href="#演算命令">演算命令</a></li>
 <li><a href="#移動系命令">移動系命令</a></li>
 <li><a href="#制御系命令">制御系命令</a></li>
-</ul></li>
-<li><a href="#vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</a><ul>
 <li><a href="#サブルーチン">サブルーチン</a></li>
 <li><a href="#割り込み">割り込み</a></li>
 </ul></li>
+<li><a href="#vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</a></li>
 </ul></nav>
        <h2 id="概要">概要</h2>
 <ul>
@@ -562,196 +561,97 @@
 <tr class="even">
 <td>0001</td>
 <td>x1</td>
-<td>retern_addr</td>
+<td>ra</td>
 <td>戻りアドレス</td>
 </tr>
 <tr class="odd">
 <td>0002</td>
 <td>x2</td>
-<td>stack_pointer</td>
-<td>スタックポインタ</td>
+<td>sp</td>
+<td>スタック・ポインタ</td>
 </tr>
 <tr class="even">
 <td>0003</td>
 <td>x3</td>
-<td></td>
-<td></td>
+<td>gp</td>
+<td>グローバル・ポインタ</td>
 </tr>
 <tr class="odd">
 <td>0004</td>
 <td>x4</td>
-<td></td>
-<td></td>
+<td>tp</td>
+<td>スレッド・ポインタ</td>
 </tr>
 <tr class="even">
 <td>0005</td>
 <td>x5</td>
-<td></td>
-<td></td>
+<td>t0</td>
+<td>一時レジスタ</td>
 </tr>
 <tr class="odd">
 <td>0006</td>
 <td>x6</td>
-<td></td>
-<td></td>
+<td>t1</td>
+<td>一時レジスタ</td>
 </tr>
 <tr class="even">
 <td>0007</td>
 <td>x7</td>
-<td></td>
-<td></td>
+<td>t2</td>
+<td>一時レジスタ</td>
 </tr>
 <tr class="odd">
 <td>0008</td>
-<td></td>
+<td>x8</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>0009</td>
-<td></td>
+<td>x9</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>000A</td>
-<td></td>
+<td>x10</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>000B</td>
-<td></td>
+<td>x11</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>000C</td>
-<td></td>
+<td>x12</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>000D</td>
-<td></td>
+<td>x13</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>000E</td>
-<td></td>
+<td>x14</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>000F</td>
-<td></td>
-<td></td>
-<td></td>
+<td>x15</td>
+<td>imm</td>
+<td>即値</td>
 </tr>
 </tbody>
 </table>
-<h3 id="演算レジスタ">演算レジスタ</h3>
-<p>このアーキテクチャでは、演算命令を mov のエイリアスとして実装します。</p>
-<p>レジスタアクセスと同じ手続きで、演算結果を得るようなハードウェアになっているからです。</p>
-<table>
-<thead>
-<tr class="header">
-<th>Addr</th>
-<th></th>
-<th>Func</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0010</td>
-<td>alu_conf</td>
-<td>ALU の入出力レジスタを指定</td>
-</tr>
-<tr class="even">
-<td>0010</td>
-<td>sl</td>
-<td>&lt; 左シフト</td>
-</tr>
-<tr class="odd">
-<td>0011</td>
-<td>sr</td>
-<td>&gt; 右シフト</td>
-</tr>
-<tr class="even">
-<td>0012</td>
-<td>add</td>
-<td>+</td>
-</tr>
-<tr class="odd">
-<td>0013</td>
-<td>sub</td>
-<td>-</td>
-</tr>
-<tr class="even">
-<td>0014</td>
-<td>xor</td>
-<td>^</td>
-</tr>
-<tr class="odd">
-<td>0015</td>
-<td>or</td>
-<td>|</td>
-</tr>
-<tr class="even">
-<td>0016</td>
-<td>and</td>
-<td>&amp;</td>
-</tr>
-<tr class="odd">
-<td>0017</td>
-<td>not</td>
-<td>~</td>
-</tr>
-<tr class="even">
-<td>0018</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>0019</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>001A</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>001B</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>001C</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>001D</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>001E</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>001F</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="入出力レジスタ">入出力レジスタ</h3>
-<p>各 IO に必要なレジスタ数がわからないので、仮です。</p>
+<h3 id="io">IO</h3>
+<p>各 IO に必要なパラメタ数がわからないので、仮です。</p>
 <table>
 <thead>
 <tr class="header">
@@ -801,82 +701,57 @@
 <h3 id="ram-sram">RAM (SRAM)</h3>
 <h2 id="命令セット">命令セット</h2>
 <h3 id="命令フォーマット">命令フォーマット</h3>
+<p>即値が必要な場合は次のアドレスに書かれている。</p>
 <table>
 <thead>
 <tr class="header">
 <th></th>
-<th>15</th>
-<th>14</th>
-<th>13</th>
-<th>12</th>
-<th>11</th>
-<th>10</th>
-<th>9</th>
-<th>8</th>
-<th>7</th>
-<th>6</th>
-<th>5</th>
-<th>4</th>
-<th>3</th>
-<th>2</th>
-<th>1</th>
-<th>0</th>
+<th>15-12</th>
+<th>11-8</th>
+<th>7-4</th>
+<th>3-0</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>R-R</td>
+<td></td>
 <td>OPC</td>
-<td>OPC</td>
-<td>OPC</td>
-<td>OPC</td>
-<td>R1</td>
-<td>R1</td>
-<td>R1</td>
-<td>R1</td>
-<td>R1</td>
-<td>R1</td>
-<td>R2</td>
-<td>R2</td>
-<td>R2</td>
-<td>R2</td>
-<td>R2</td>
-<td>R2</td>
+<td>Reg R1</td>
+<td>Reg R2</td>
+<td>Reg W</td>
+<td>Reg W = ALU_OPC(Reg R1, Reg R2)</td>
 </tr>
 <tr class="even">
+<td>IMM</td>
+<td>IMM</td>
+<td>IMM</td>
+<td>IMM</td>
+<td>IMM</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>R-M</td>
 <td>OPC</td>
 <td>OPC</td>
 <td>OPC</td>
 <td>OPC</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>P</td>
 <td>OPC</td>
 <td>OPC</td>
 <td>OPC</td>
 <td>OPC</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="演算命令">演算命令</h3>
+<table>
+<tbody>
+<tr class="odd">
 <td></td>
 <td></td>
 <td></td>
@@ -975,12 +850,25 @@
 </tr>
 </tbody>
 </table>
+<h3 id="サブルーチン">サブルーチン</h3>
+<p>https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf</p>
+<ol type="1">
+<li>退避するレジスタ数だけ、スタックポインタを減算</li>
+<li>レジスタをスタックに退避</li>
+<li>リターンアドレスをスタックに退避</li>
+<li>引数をレジスタにセット</li>
+<li>レジスタが足りなければスタックにセット</li>
+<li><p>サブルーチンにジャンプ</p></li>
+<li>レジスタを復元</li>
+<li>リターンアドレスを復元</li>
+<li>スタックポインタを加算</li>
+<li><p>リターンアドレスにジャンプ</p></li>
+</ol>
+<h3 id="割り込み">割り込み</h3>
 <h2 id="vfcpfc-アーキテクチャ">VFC/PFC アーキテクチャ</h2>
 <p>記憶されている値の移動を行う Value Flow Controller (VFC) と、</p>
 <p>プログラムの制御を行う Program Flow Controller (PFC) からなるアーキテクチャ。</p>
 <p><img src="./img/arch.dio.svg" /></p>
-<h3 id="サブルーチン">サブルーチン</h3>
-<h3 id="割り込み">割り込み</h3>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
