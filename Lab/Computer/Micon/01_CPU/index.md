@@ -80,26 +80,28 @@ RISC-V では特殊な機能をもったレジスタはなく、命令の引数�
 
 ### メモリアクセス
 
-> load rd, rs, imm
+> load rd, rs1, imm_12
 >
-> x[rd] = m[ x[rs] + imm ]
+> x[rd] = m[ x[rs1] + imm_12 ]
 
-メモリの「レジスタ rs + 即値 imm 」番地の値を、レジスタ rd に書き込む。
+メモリの「レジスタ rs + 即値 imm_12 」番地の値を、レジスタ rd に書き込む。
 
 rs を zero レジスタとすることで、絶対参照ができる。
 
-> store rs1, rs2, imm
+> store rs1, rs2, imm_12
 >
-> m[ x[rs] + imm] = x[rs]
+> m[ x[rs1] + imm_12] = x[rs2]k
 
 レジスタ rd の値を、メモリの「レジスタ rs + 即値 imm 」番地に書き込む。
 
 ### 条件分岐
 
-> beq rs1, rs2, imm
+> beq rs1, rs2, imm_12
 
-if(x[rs1]==x[rs2]) PC = PC + 4 + imm
+if(x[rs1]==x[rs2]) PC = PC + 4 + imm_12
 (else PC = PC + 4)
+
+> bneq rs1, rs2, imm_12
 
 ### ジャンプ
 
@@ -131,18 +133,28 @@ if(x[rs1]==x[rs2]) PC = PC + 4 + imm
 
 ### サブルーチン
 
-https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf
+[参考](https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf)
 
-1. 退避するレジスタ数だけ、スタックポインタを減算
-2. レジスタをスタックに退避
-3. リターンアドレスをスタックに退避
-4. 引数をレジスタにセット
-5. レジスタが足りなければスタックにセット
-6. サブルーチンにジャンプ
-7. レジスタを復元
-8. リターンアドレスを復元
-9. スタックポインタを加算
-10. リターンアドレスにジャンプ
+| ASM            |                                                          |
+| -------------- | -------------------------------------------------------- |
+| subi sp sp 5   | 退避するレジスタ数＋引数の数だけ、スタックポインタを減算 |
+| store s0 0(sp) | レジスタをスタックに退避                                 |
+| store s1 1(sp) |                                                          |
+| store s1 2(sp) |                                                          |
+| store s1 3(sp) |                                                          |
+| store ra 4(sp) | リターンアドレスも退避                                   |
+| loadi a0 334   | 引数をレジスタにセット                                   |
+|                | レジスタが足りなければスタックにセット                   |
+| jal            | サブルーチンにジャンプ                                   |
+|                | サブルーチンの処理                                       |
+|                | サブルーチン終了                                         |
+| load ra 0(sp)  | レジスタを復元                                           |
+| load ra 1(sp)  |                                                          |
+| load ra 2(sp)  |                                                          |
+| load ra 3(sp)  |                                                          |
+| load ra 4(sp)  | リターンアドレスを復元                                   |
+| addi sp sp 5   | スタックポインタを加算                                   |
+| jr ra          | リターンアドレスにジャンプ                               |
 
 ### 割り込み処理
 

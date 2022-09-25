@@ -714,21 +714,24 @@
 </blockquote>
 <h3 id="メモリアクセス">メモリアクセス</h3>
 <blockquote>
-<p>load rd, rs, imm</p>
-<p>x[rd] = m[ x[rs] + imm ]</p>
+<p>load rd, rs1, imm_12</p>
+<p>x[rd] = m[ x[rs1] + imm_12 ]</p>
 </blockquote>
-<p>メモリの「レジスタ rs + 即値 imm 」番地の値を、レジスタ rd に書き込む。</p>
+<p>メモリの「レジスタ rs + 即値 imm_12 」番地の値を、レジスタ rd に書き込む。</p>
 <p>rs を zero レジスタとすることで、絶対参照ができる。</p>
 <blockquote>
-<p>store rs1, rs2, imm</p>
-<p>m[ x[rs] + imm] = x[rs]</p>
+<p>store rs1, rs2, imm_12</p>
+<p>m[ x[rs1] + imm_12] = x[rs2]k</p>
 </blockquote>
 <p>レジスタ rd の値を、メモリの「レジスタ rs + 即値 imm 」番地に書き込む。</p>
 <h3 id="条件分岐">条件分岐</h3>
 <blockquote>
-<p>beq rs1, rs2, imm</p>
+<p>beq rs1, rs2, imm_12</p>
 </blockquote>
-<p>if(x[rs1]==x[rs2]) PC = PC + 4 + imm (else PC = PC + 4)</p>
+<p>if(x[rs1]==x[rs2]) PC = PC + 4 + imm_12 (else PC = PC + 4)</p>
+<blockquote>
+<p>bneq rs1, rs2, imm_12</p>
+</blockquote>
 <h3 id="ジャンプ">ジャンプ</h3>
 <blockquote>
 <p>jal rd, offset</p>
@@ -754,19 +757,89 @@
 </blockquote>
 <p>割り込みフラグを設定する。</p>
 <h3 id="サブルーチン">サブルーチン</h3>
-<p>https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf</p>
-<ol type="1">
-<li>退避するレジスタ数だけ、スタックポインタを減算</li>
-<li>レジスタをスタックに退避</li>
-<li>リターンアドレスをスタックに退避</li>
-<li>引数をレジスタにセット</li>
-<li>レジスタが足りなければスタックにセット</li>
-<li>サブルーチンにジャンプ</li>
-<li>レジスタを復元</li>
-<li>リターンアドレスを復元</li>
-<li>スタックポインタを加算</li>
-<li>リターンアドレスにジャンプ</li>
-</ol>
+<p><a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考</a></p>
+<table>
+<thead>
+<tr class="header">
+<th>ASM</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>subi sp sp 5</td>
+<td>退避するレジスタ数＋引数の数だけ、スタックポインタを減算</td>
+</tr>
+<tr class="even">
+<td>store s0 0(sp)</td>
+<td>レジスタをスタックに退避</td>
+</tr>
+<tr class="odd">
+<td>store s1 1(sp)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>store s1 2(sp)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>store s1 3(sp)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>store ra 4(sp)</td>
+<td>リターンアドレスも退避</td>
+</tr>
+<tr class="odd">
+<td>loadi a0 334</td>
+<td>引数をレジスタにセット</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>レジスタが足りなければスタックにセット</td>
+</tr>
+<tr class="odd">
+<td>jal</td>
+<td>サブルーチンにジャンプ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>サブルーチンの処理</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>サブルーチン終了</td>
+</tr>
+<tr class="even">
+<td>load ra 0(sp)</td>
+<td>レジスタを復元</td>
+</tr>
+<tr class="odd">
+<td>load ra 1(sp)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>load ra 2(sp)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>load ra 3(sp)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>load ra 4(sp)</td>
+<td>リターンアドレスを復元</td>
+</tr>
+<tr class="odd">
+<td>addi sp sp 5</td>
+<td>スタックポインタを加算</td>
+</tr>
+<tr class="even">
+<td>jr ra</td>
+<td>リターンアドレスにジャンプ</td>
+</tr>
+</tbody>
+</table>
 <h3 id="割り込み処理">割り込み処理</h3>
 <ol type="1">
 <li>全てのレジスタをスタックに退避</li>
