@@ -487,8 +487,9 @@
 <li><a href="#レジスタ">レジスタ</a></li>
 <li><a href="#命令セット">命令セット</a><ul>
 <li><a href="#命令フォーマット">命令フォーマット</a></li>
-<li><a href="#レジスタ演算">レジスタ演算</a></li>
+<li><a href="#レジスタ間演算">レジスタ間演算</a></li>
 <li><a href="#即値演算">即値演算</a></li>
+<li><a href="#即値ロード">即値ロード</a></li>
 <li><a href="#メモリアクセス">メモリアクセス</a></li>
 <li><a href="#条件分岐">条件分岐</a></li>
 <li><a href="#ジャンプ">ジャンプ</a></li>
@@ -512,7 +513,7 @@
 <tr class="header">
 <th></th>
 <th></th>
-<th>Func</th>
+<th>機能</th>
 <th>保持</th>
 </tr>
 </thead>
@@ -559,6 +560,12 @@
 <td>引数・返値</td>
 <td>✕</td>
 </tr>
+<tr class="even">
+<td>-</td>
+<td>pc</td>
+<td>プログラムカウンタ</td>
+<td>-</td>
+</tr>
 </tbody>
 </table>
 <h2 id="命令セット">命令セット</h2>
@@ -575,38 +582,38 @@
 <tbody>
 <tr class="odd">
 <td>add</td>
-<td></td>
-<td></td>
-<td></td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
 <td>-</td>
 </tr>
 <tr class="even">
 <td>addi</td>
-<td></td>
-<td></td>
+<td>〇</td>
+<td>〇</td>
 <td>-</td>
-<td></td>
+<td>〇</td>
 </tr>
 <tr class="odd">
 <td>load</td>
-<td></td>
-<td></td>
+<td>〇</td>
+<td>〇</td>
 <td>-</td>
-<td></td>
+<td>〇</td>
 </tr>
 <tr class="even">
 <td>store</td>
 <td>-</td>
-<td></td>
-<td></td>
-<td></td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
 </tr>
 <tr class="odd">
 <td>beq</td>
 <td>-</td>
-<td></td>
-<td></td>
-<td></td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
 </tr>
 </tbody>
 </table>
@@ -634,15 +641,76 @@
 <p>16bit に即値フィールドが取れない問題</p>
 <p>RISC-V では特殊な機能をもったレジスタはなく、命令の引数に自由なレジスタをとることができる。 対して x86 では特定の機能ってレジスタが強固に結びついている。 自由度が上がるものの実際はコンパイラは機能とレジスタの対応をとる。 実装上、そうしたほうが良いプロセッサ現在多い。</p>
 <p>なので、命令</p>
-<h3 id="レジスタ演算">レジスタ演算</h3>
+<h3 id="レジスタ間演算">レジスタ間演算</h3>
 <blockquote>
 <p>add rd, rs1, rs2</p>
 <p>x[rd] = x[rs1] + x[rs2]</p>
 </blockquote>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>演算</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+</td>
+<td>add</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>sub</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>xor</td>
+</tr>
+<tr class="even">
+<td>|</td>
+<td>or</td>
+</tr>
+<tr class="odd">
+<td>&amp;</td>
+<td>and</td>
+</tr>
+<tr class="even">
+<td>&lt;</td>
+<td>less than</td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td>less than unsigned</td>
+</tr>
+<tr class="even">
+<td>&gt;&gt;</td>
+<td>shift left logical</td>
+</tr>
+<tr class="odd">
+<td>&gt;&gt;</td>
+<td>shift left arithmetic</td>
+</tr>
+<tr class="even">
+<td>&lt;&lt;</td>
+<td>shift right logical</td>
+</tr>
+<tr class="odd">
+<td>&lt;&lt;</td>
+<td>shift right arithmetic</td>
+</tr>
+</tbody>
+</table>
 <h3 id="即値演算">即値演算</h3>
 <blockquote>
-<p>addi rd, rs, imm</p>
-<p>x[rd] = x[rs] + imm</p>
+<p>addi rd, rs, imm_8</p>
+<p>x[rd] = x[rs] + imm_8</p>
+</blockquote>
+<p>8bit の即値と演算します。</p>
+<p>16bit で演算する場合は即値ロードをした後演算をする。</p>
+<h3 id="即値ロード">即値ロード</h3>
+<blockquote>
+<p>lim rd, imm_16</p>
+<p>x[rd] = imm_16</p>
 </blockquote>
 <h3 id="メモリアクセス">メモリアクセス</h3>
 <blockquote>
