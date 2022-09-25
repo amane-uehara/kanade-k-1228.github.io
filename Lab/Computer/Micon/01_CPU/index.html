@@ -804,50 +804,105 @@
 </tr>
 <tr class="even">
 <td></td>
-<td>サブルーチンの処理</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>サブルーチン終了</td>
+<td>:</td>
+<td>サブルーチンの処理</td>
 </tr>
 <tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>load ra 0(sp)</td>
 <td>レジスタを復元</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>load ra 1(sp)</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>load ra 2(sp)</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>load ra 3(sp)</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>load ra 4(sp)</td>
 <td>リターンアドレスを復元</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>addi sp sp 5</td>
 <td>スタックポインタを加算</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>jr ra</td>
-<td>リターンアドレスにジャンプ</td>
+<td>PC を戻す</td>
 </tr>
 </tbody>
 </table>
 <h3 id="割り込み処理">割り込み処理</h3>
-<ol type="1">
-<li>全てのレジスタをスタックに退避</li>
-<li>割り込み番号に応じて、ジャンプ</li>
-<li>割り込み処理を行う</li>
-<li>レジスタを復元</li>
-<li>PC を戻す</li>
-</ol>
+<table>
+<thead>
+<tr class="header">
+<th>ASM</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>subi sp 16</td>
+<td>全てのレジスタをスタックに退避</td>
+</tr>
+<tr class="even">
+<td>store x1 0(sp)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>store x15 14(sp)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>jal</td>
+<td>ジャンプ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>:</td>
+<td>割り込み処理を行う</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>load x1 0{sp}</td>
+<td>レジスタを復元</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>load x15 14(sp)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>jr ra</td>
+<td>PC を戻す</td>
+</tr>
+</tbody>
+</table>
 <h3 id="割り込み-1">割り込み</h3>
 <h2 id="メモリ空間">メモリ空間</h2>
 <table>
