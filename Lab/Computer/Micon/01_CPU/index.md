@@ -168,10 +168,6 @@ https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf
 
 ### RAM (SRAM)
 
-## VFC/PFC アーキテクチャ
+## 回路
 
-記憶されている値の移動を行う Value Flow Controller (VFC) と、
-
-プログラムの制御を行う Program Flow Controller (PFC) からなるアーキテクチャ。
-
-![](./img/arch.dio.svg)
+![](./img/arch2.dio.svg)

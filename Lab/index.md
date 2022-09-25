@@ -90,7 +90,7 @@ title: 研究室へようこそ
 
 [自作マイコンについて](./Computer/Micon/00_About/)
 
-[CPU の設計](./Computer/Micon/01_CPU/)
+[自作マイコン用 CPU、RISC-K](./Computer/Micon/01_CPU/)
 
 [FPGA で動かしてみる](./Computer/Micon/02_FPGA)
 
