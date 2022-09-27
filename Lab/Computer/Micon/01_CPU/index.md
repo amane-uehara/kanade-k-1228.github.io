@@ -247,23 +247,23 @@ if の分岐先は近いアドレスであるが、関数呼び出しは遠い�
 
 命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。
 
-#### 即値デコード：
-
-![](img/imm_decode.dio.svg)
-
 #### 動作：
 
 |      | CLK | R_IN_SEL | RD_SEL | RS1_SEL | RS2_SEL | S2_SEL | RAM_CON | ALU_CON | PC_CON |
 | ---- | --- | -------- | ------ | ------- | ------- | ------ | ------- | ------- | ------ |
-| add  | Reg | ALU      | rd     | rs1     | rs2     | REG    | -       | Func    | -      |
-| addi | Reg | ALU      | rd     | rs2     | -       | IMM    | -       | Func    | -      |
-| li   | Reg | IMM      | rd     | zero    | -       | IMM    | -       | ADD     | -      |
-| l    | Reg | MEM      | rd     | rs1     | -       | IMM    | READ    | ADD     | -      |
-| s    | Mem | -        | -      | rs1     | rs2     | IMM    | WRITE   | ADD     | -      |
-| jie  | -   | -        | -      | rs1     | rs2     | IMM    | -       | SUB     |        |
-| jil  | -   | -        | -      | rs1     | rs2     | IMM    | -       | SUB     |        |
-| j    | Reg | PC       | rd     | -       | -       | -      | -       | -       |        |
-| jr   | Reg | PC       | rd     | rs1     | -       | IMM    | -       | ADD     |        |
+| add  | Reg | 0:ALU    | rd     | rs1     | rs2     | 1      | -       | Func    | -      |
+| addi | Reg | 0:ALU    | rd     | rs2     | -       | 0      | -       | Func    | -      |
+| li   | Reg | 0:ALU    | rd     | 0:zero  | -       | 0      | -       | ADD     | -      |
+| l    | Reg | 1:MEM    | rd     | rs1     | -       | 0      | READ    | ADD     | -      |
+| s    | Mem | -        | -      | rs1     | rs2     | 0      | WRITE   | ADD     | -      |
+| jie  | -   | -        | -      | rs1     | rs2     | 0      | -       | SUB     |        |
+| jil  | -   | -        | -      | rs1     | rs2     | 0      | -       | SUB     |        |
+| j    | Reg | 2:PC     | rd     | -       | -       | -      | -       | -       |        |
+| jr   | Reg | 2:PC     | rd     | rs1     | -       | 0      | -       | ADD     |        |
+
+#### 即値デコード：
+
+![](img/imm_decode.dio.svg)
 
 ### PFC
 
