@@ -506,7 +506,7 @@
 </ul></li>
 <li><a href="#回路">回路</a><ul>
 <li><a href="#id">ID</a></li>
-<li><a href="#next-pc">Next-PC</a></li>
+<li><a href="#pfc">PFC</a></li>
 </ul></li>
 </ul></nav>
        <p>RISC-V をベースに、16bit 向けに小細工をしました。</p>
@@ -953,10 +953,24 @@
 <h3 id="rom-eeprom">ROM (EEPROM)</h3>
 <h3 id="ram-sram">RAM (SRAM)</h3>
 <h2 id="回路">回路</h2>
-<p><img src="./img/arch.dio.svg" /></p>
+<p><img src="img/arch.dio.svg" /></p>
 <h3 id="id">ID</h3>
 <p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
-<h3 id="next-pc">Next-PC</h3>
+<h3 id="pfc">PFC</h3>
+<p>プログラムフローコントローラ。</p>
+<p>ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理する。</p>
+<p><img src="img/pfc.dio.svg" /></p>
+<h4 id="動作">動作：</h4>
+<ol type="1">
+<li>割り込みの場合、割り込みアドレスに飛ぶ</li>
+<li>通常は PC+1 を返す</li>
+<li>ジャンプ命令の場合、
+<ol type="1">
+<li>PC + IMM</li>
+<li>ALU の演算結果 にジャンプする</li>
+</ol></li>
+<li>分岐命令の場合、ALU の演算結果をもとに、分岐を判定して、PC+IMM にジャンプ</li>
+</ol>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
