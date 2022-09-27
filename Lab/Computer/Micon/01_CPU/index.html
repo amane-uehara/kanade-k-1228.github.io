@@ -945,8 +945,6 @@
 <p><img src="img/arch.dio.svg" /></p>
 <h3 id="id">ID</h3>
 <p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
-<h4 id="即値デコード">即値デコード：</h4>
-<p><img src="img/imm_decode.dio.svg" /></p>
 <h4 id="動作">動作：</h4>
 <table>
 <thead>
@@ -967,11 +965,11 @@
 <tr class="odd">
 <td>add</td>
 <td>Reg</td>
-<td>ALU</td>
+<td>0:ALU</td>
 <td>rd</td>
 <td>rs1</td>
 <td>rs2</td>
-<td>REG</td>
+<td>1</td>
 <td>-</td>
 <td>Func</td>
 <td>-</td>
@@ -979,11 +977,11 @@
 <tr class="even">
 <td>addi</td>
 <td>Reg</td>
-<td>ALU</td>
+<td>0:ALU</td>
 <td>rd</td>
 <td>rs2</td>
 <td>-</td>
-<td>IMM</td>
+<td>0</td>
 <td>-</td>
 <td>Func</td>
 <td>-</td>
@@ -991,11 +989,11 @@
 <tr class="odd">
 <td>li</td>
 <td>Reg</td>
-<td>IMM</td>
+<td>0:ALU</td>
 <td>rd</td>
-<td>zero</td>
+<td>0:zero</td>
 <td>-</td>
-<td>IMM</td>
+<td>0</td>
 <td>-</td>
 <td>ADD</td>
 <td>-</td>
@@ -1003,11 +1001,11 @@
 <tr class="even">
 <td>l</td>
 <td>Reg</td>
-<td>MEM</td>
+<td>1:MEM</td>
 <td>rd</td>
 <td>rs1</td>
 <td>-</td>
-<td>IMM</td>
+<td>0</td>
 <td>READ</td>
 <td>ADD</td>
 <td>-</td>
@@ -1019,7 +1017,7 @@
 <td>-</td>
 <td>rs1</td>
 <td>rs2</td>
-<td>IMM</td>
+<td>0</td>
 <td>WRITE</td>
 <td>ADD</td>
 <td>-</td>
@@ -1031,7 +1029,7 @@
 <td>-</td>
 <td>rs1</td>
 <td>rs2</td>
-<td>IMM</td>
+<td>0</td>
 <td>-</td>
 <td>SUB</td>
 <td></td>
@@ -1043,7 +1041,7 @@
 <td>-</td>
 <td>rs1</td>
 <td>rs2</td>
-<td>IMM</td>
+<td>0</td>
 <td>-</td>
 <td>SUB</td>
 <td></td>
@@ -1051,7 +1049,7 @@
 <tr class="even">
 <td>j</td>
 <td>Reg</td>
-<td>PC</td>
+<td>2:PC</td>
 <td>rd</td>
 <td>-</td>
 <td>-</td>
@@ -1063,17 +1061,19 @@
 <tr class="odd">
 <td>jr</td>
 <td>Reg</td>
-<td>PC</td>
+<td>2:PC</td>
 <td>rd</td>
 <td>rs1</td>
 <td>-</td>
-<td>IMM</td>
+<td>0</td>
 <td>-</td>
 <td>ADD</td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h4 id="即値デコード">即値デコード：</h4>
+<p><img src="img/imm_decode.dio.svg" /></p>
 <h3 id="pfc">PFC</h3>
 <p>プログラムフローコントローラ。</p>
 <p>ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理する。</p>

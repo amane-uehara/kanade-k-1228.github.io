@@ -92,15 +92,16 @@ title: 研究室へようこそ
 
 [自作マイコン用 CPU、RISC-K](./Computer/Micon/01_CPU/)
 
-[FPGA で動かしてみる](./Computer/Micon/02_FPGA)
+[ロジック IC で組む](./Computer/Micon/02_LogicIC)
 
+<!--
 [アセンブラ＆コンパイラ](./Computer/Micon/03_Compile)
 
 [さまざまなプログラムを動かす](./Computer/Micon/04_Programing)
 
 [周辺回路を作る](./Computer/Micon/05_Peripheral)
 
-[ロジック IC で組む](./Computer/Micon/06_LogicIC)
+[ロジック IC で組む](./Computer/Micon/06_LogicIC) -->
 
 ### リレーコンピュータ
 
