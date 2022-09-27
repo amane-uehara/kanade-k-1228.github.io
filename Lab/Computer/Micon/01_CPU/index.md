@@ -217,4 +217,4 @@ if(x[rs1]==x[rs2]) PC = PC + 4 + imm_12
 
 ## 回路
 
-![](./img/arch2.dio.svg)
+![](./img/arch.dio.svg)
