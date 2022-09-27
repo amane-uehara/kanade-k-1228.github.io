@@ -504,7 +504,10 @@
 <li><a href="#rom-eeprom">ROM (EEPROM)</a></li>
 <li><a href="#ram-sram">RAM (SRAM)</a></li>
 </ul></li>
-<li><a href="#回路">回路</a></li>
+<li><a href="#回路">回路</a><ul>
+<li><a href="#id">ID</a></li>
+<li><a href="#next-pc">Next-PC</a></li>
+</ul></li>
 </ul></nav>
        <p>RISC-V をベースに、16bit 向けに小細工をしました。</p>
 <h2 id="レジスタ">レジスタ</h2>
@@ -951,6 +954,9 @@
 <h3 id="ram-sram">RAM (SRAM)</h3>
 <h2 id="回路">回路</h2>
 <p><img src="./img/arch.dio.svg" /></p>
+<h3 id="id">ID</h3>
+<p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
+<h3 id="next-pc">Next-PC</h3>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
