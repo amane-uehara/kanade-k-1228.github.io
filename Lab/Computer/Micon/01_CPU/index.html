@@ -178,6 +178,7 @@
         display: inline-block;
         padding: 1px;
         border: solid;
+        border-width: 1px;
         border-radius: 5px;
         background: #ffffff;
       }
@@ -503,6 +504,7 @@
 <li><a href="#サブルーチン">サブルーチン</a></li>
 <li><a href="#割り込み処理">割り込み処理</a></li>
 <li><a href="#割り込み-1">割り込み</a></li>
+<li><a href="#実行時エラー">実行時エラー</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a><ul>
 <li><a href="#io">IO</a></li>
@@ -575,6 +577,12 @@
 <td>プログラムカウンタ</td>
 <td>-</td>
 </tr>
+<tr class="odd">
+<td>-</td>
+<td>csr</td>
+<td>コントロール＆ステータスレジスタ</td>
+<td>-</td>
+</tr>
 </tbody>
 </table>
 <h2 id="命令セット">命令セット</h2>
@@ -594,7 +602,7 @@
 <tr class="even">
 <td>1</td>
 <td>—-</td>
-<td><em>0</em>001</td>
+<td><strong>0</strong>001</td>
 </tr>
 <tr class="odd">
 <td>0</td>
@@ -604,7 +612,7 @@
 <tr class="even">
 <td>-1</td>
 <td>—-</td>
-<td><em>1</em>111</td>
+<td><strong>1</strong>111</td>
 </tr>
 <tr class="odd">
 <td>-1</td>
@@ -745,7 +753,7 @@
 <tbody>
 <tr class="odd">
 <td>subi sp sp 5</td>
-<td>退避するレジスタ数＋引数の数だけ、スタックポインタを減算</td>
+<td>スタックポインタを減算し、スタックを確保</td>
 </tr>
 <tr class="even">
 <td>store s0 0(sp)</td>
@@ -881,6 +889,13 @@
 </tbody>
 </table>
 <h3 id="割り込み-1">割り込み</h3>
+<h3 id="実行時エラー">実行時エラー</h3>
+<p>割り込みとしてエラー処理を行う。</p>
+<p>エラーコードを状態レジスタにセットし割り込み。</p>
+<ul>
+<li>スタックオーバーフロー</li>
+<li>メモリの範囲外アクセス</li>
+</ul>
 <h2 id="メモリ空間">メモリ空間</h2>
 <table>
 <thead>
