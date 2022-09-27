@@ -486,8 +486,7 @@
             <nav><ul>
 <li><a href="#レジスタ">レジスタ</a></li>
 <li><a href="#命令セット">命令セット</a><ul>
-<li><a href="#命令フォーマット">命令フォーマット</a></li>
-<li><a href="#レジスタ間演算">レジスタ間演算</a></li>
+<li><a href="#レジスタ演算">レジスタ演算</a></li>
 <li><a href="#即値演算">即値演算</a></li>
 <li><a href="#即値ロード">即値ロード</a></li>
 <li><a href="#メモリアクセス">メモリアクセス</a></li>
@@ -572,83 +571,11 @@
 </tbody>
 </table>
 <h2 id="命令セット">命令セット</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>rd</th>
-<th>rs1</th>
-<th>rs2</th>
-<th>imm</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>add</td>
-<td>〇</td>
-<td>〇</td>
-<td>〇</td>
-<td>-</td>
-</tr>
-<tr class="even">
-<td>addi</td>
-<td>〇</td>
-<td>〇</td>
-<td>-</td>
-<td>〇</td>
-</tr>
-<tr class="odd">
-<td>load</td>
-<td>〇</td>
-<td>〇</td>
-<td>-</td>
-<td>〇</td>
-</tr>
-<tr class="even">
-<td>store</td>
-<td>-</td>
-<td>〇</td>
-<td>〇</td>
-<td>〇</td>
-</tr>
-<tr class="odd">
-<td>beq</td>
-<td>-</td>
-<td>〇</td>
-<td>〇</td>
-<td>〇</td>
-</tr>
-</tbody>
-</table>
-<h3 id="命令フォーマット">命令フォーマット</h3>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>15-12</th>
-<th>11-8</th>
-<th>7-4</th>
-<th>3-0</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>OPC</td>
-<td>rd</td>
-<td>rs1</td>
-<td>rs2</td>
-</tr>
-</tbody>
-</table>
-<p>16bit に即値フィールドが取れない問題</p>
-<p>RISC-V では特殊な機能をもったレジスタはなく、命令の引数に自由なレジスタをとることができる。 対して x86 では特定の機能ってレジスタが強固に結びついている。 自由度が上がるものの実際はコンパイラは機能とレジスタの対応をとる。 実装上、そうしたほうが良いプロセッサ現在多い。</p>
-<p>なので、命令</p>
-<h3 id="レジスタ間演算">レジスタ間演算</h3>
+<h3 id="レジスタ演算">レジスタ演算</h3>
 <blockquote>
 <p>add rd, rs1, rs2</p>
-<p>x[rd] = x[rs1] + x[rs2]</p>
 </blockquote>
+<p>レジスタ x[rs1] と x[rs2] を演算し、レジスタ x[rd] に保存。</p>
 <table>
 <thead>
 <tr class="header">
@@ -705,22 +632,20 @@
 </table>
 <h3 id="即値演算">即値演算</h3>
 <blockquote>
-<p>addi rd, rs, imm_8</p>
-<p>x[rd] = x[rs] + imm_8</p>
+<p>addi rd, rs1, imm_8</p>
 </blockquote>
-<p>8bit の即値と演算します。</p>
-<p>16bit で演算する場合は即値ロードをした後演算をする。</p>
+<p>レジスタ x[rs1] と 8bit の即値を演算し、レジスタ x[rd] に保存。</p>
+<p>16bit で演算する場合は即値ロードをした後に演算をする。</p>
 <h3 id="即値ロード">即値ロード</h3>
 <blockquote>
-<p>lim rd, imm_16</p>
-<p>x[rd] = imm_16</p>
+<p>li rd, imm_16 (Load Immidiate)</p>
 </blockquote>
+<p>16bit の即値をレジスタ x[rd] にロードする。</p>
 <h3 id="メモリアクセス">メモリアクセス</h3>
 <blockquote>
 <p>load rd, rs1, imm_12</p>
-<p>x[rd] = m[ x[rs1] + imm_12 ]</p>
 </blockquote>
-<p>メモリの「レジスタ rs + 即値 imm_12 」番地の値を、レジスタ rd に書き込む。</p>
+<p>メモリの「レジスタ x[rs] + 即値 imm_12 」番地の値を、レジスタ x[rd] に書き込む。</p>
 <p>rs を zero レジスタとすることで、絶対参照ができる。</p>
 <blockquote>
 <p>store rs1, rs2, imm_12</p>
@@ -729,12 +654,18 @@
 <p>レジスタ rd の値を、メモリの「レジスタ rs + 即値 imm 」番地に書き込む。</p>
 <h3 id="条件分岐">条件分岐</h3>
 <blockquote>
-<p>beq rs1, rs2, imm_12</p>
+<p>jie rs1, rs2, imm_12 (Jump If rs1 Equal rs2) jil rs1, rs2, imm_12 (Jump If rs1 is Less than rs2)</p>
 </blockquote>
-<p>if(x[rs1]==x[rs2]) PC = PC + 4 + imm_12 (else PC = PC + 4)</p>
-<blockquote>
-<p>bneq rs1, rs2, imm_12</p>
-</blockquote>
+<p>ALU で減算 x[rs1] - x[rs2] を行い、その結果で分岐判定をします。</p>
+<p>分岐先アドレスは、PC に即値を足したアドレスです。</p>
+<p>即値は符号拡張するので、マイナスのアドレスにも分岐できます。</p>
+<p>分岐条件は、</p>
+<ol type="1">
+<li><p>一致（x[rs1] == x[rs2]）</p>
+<p>演算結果の全 bit の nor を取る（全部 0 のときだけ 1）</p></li>
+<li><p>未満（x[rs1] &lt; x[rs2]）</p>
+<p>演算結果の符号 bit（負の場合は 1）</p></li>
+</ol>
 <h3 id="ジャンプ">ジャンプ</h3>
 <blockquote>
 <p>jal rd, offset</p>
@@ -956,6 +887,7 @@
 <p><img src="img/arch.dio.svg" /></p>
 <h3 id="id">ID</h3>
 <p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
+<h4 id="即値デコード">即値デコード：</h4>
 <h3 id="pfc">PFC</h3>
 <p>プログラムフローコントローラ。</p>
 <p>ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理する。</p>
