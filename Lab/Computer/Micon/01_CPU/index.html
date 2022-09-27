@@ -571,11 +571,46 @@
 </tbody>
 </table>
 <h2 id="命令セット">命令セット</h2>
+<p>r[x0] はレジスタ x0 の値を、m[xx]はメモリの xx 番地の値を意味します。</p>
+<p>i(x) は x bit の即値を意味します。is は符号拡張する即値を意味します。</p>
+<h4 id="符号拡張とは">符号拡張とは</h4>
+<p>4bit の符号付き整数を 8bit にしたい場合、正の数は 0 を埋めればいいですが、負の数は 1 を埋める必要になります。</p>
+<p>一般に、符号付き整数の bit 長を伸ばしたい場合、最上位ビットで埋める必要があります。</p>
+<p>これが符号拡張です。</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0000</td>
+<td>0001</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>—-</td>
+<td>0001</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>—-</td>
+<td>0000</td>
+</tr>
+<tr class="even">
+<td>-1</td>
+<td>—-</td>
+<td>1111</td>
+</tr>
+<tr class="odd">
+<td>-1</td>
+<td>1111</td>
+<td>1111</td>
+</tr>
+</tbody>
+</table>
 <h3 id="レジスタ演算">レジスタ演算</h3>
 <blockquote>
 <p>add rd, rs1, rs2</p>
+<p>r[rd] = r[rs1] + r[rs2]</p>
 </blockquote>
-<p>レジスタ x[rs1] と x[rs2] を演算し、レジスタ x[rd] に保存。</p>
 <table>
 <thead>
 <tr class="header">
@@ -632,32 +667,34 @@
 </table>
 <h3 id="即値演算">即値演算</h3>
 <blockquote>
-<p>addi rd, rs1, imm_8</p>
+<p>addi rd, rs1, is(8)</p>
+<p>r[rd] = r[rs1] + is(8)</p>
 </blockquote>
-<p>レジスタ x[rs1] と 8bit の即値を演算し、レジスタ x[rd] に保存。</p>
-<p>16bit で演算する場合は即値ロードをした後に演算をする。</p>
+<p>16bit で演算したい場合は、即値ロードをした後に演算をする。</p>
 <h3 id="即値ロード">即値ロード</h3>
 <blockquote>
-<p>li rd, imm_16 (Load Immidiate)</p>
+<p>li rd, i(16) (Load Immidiate)</p>
+<p>r[rd] = i(16)</p>
 </blockquote>
-<p>16bit の即値をレジスタ x[rd] にロードする。</p>
 <h3 id="メモリアクセス">メモリアクセス</h3>
 <blockquote>
-<p>load rd, rs1, imm_12</p>
+<p>l rd, rs1, is(12)</p>
+<p>r[rd] = m[r[rs1]+is(12)]</p>
 </blockquote>
-<p>メモリの「レジスタ x[rs] + 即値 imm_12 」番地の値を、レジスタ x[rd] に書き込む。</p>
-<p>rs を zero レジスタとすることで、絶対参照ができる。</p>
 <blockquote>
-<p>store rs1, rs2, imm_12</p>
-<p>m[ x[rs1] + imm_12] = x[rs2]k</p>
+<p>s rs1, rs2, is(12)</p>
+<p>m[x[rs1]+is(12)] = x[rs2]</p>
 </blockquote>
-<p>レジスタ rd の値を、メモリの「レジスタ rs + 即値 imm 」番地に書き込む。</p>
+<p>rs1 を zero レジスタとすることで、絶対参照ができる。</p>
+<p>12bit より広い範囲を参照したい場合は即値ロードを使う。</p>
 <h3 id="条件分岐">条件分岐</h3>
 <blockquote>
-<p>jie rs1, rs2, imm_12 (Jump If rs1 Equal rs2) jil rs1, rs2, imm_12 (Jump If rs1 is Less than rs2)</p>
+<p>jie rs1, rs2, is(12) (Jump If rs1 Equal rs2)</p>
+<p>jil rs1, rs2, is(12) (Jump If rs1 is Less than rs2)</p>
+<p>PC += is(12)</p>
 </blockquote>
-<p>ALU で減算 x[rs1] - x[rs2] を行い、その結果で分岐判定をします。</p>
-<p>分岐先アドレスは、PC に即値を足したアドレスです。</p>
+<p>ALU で減算 r[rs1] - r[rs2] を行い、その結果で分岐判定をします。</p>
+<p>分岐先アドレスは、現在の PC に即値を足したアドレスです。</p>
 <p>即値は符号拡張するので、マイナスのアドレスにも分岐できます。</p>
 <p>分岐条件は、</p>
 <ol type="1">
@@ -668,23 +705,22 @@
 </ol>
 <h3 id="ジャンプ">ジャンプ</h3>
 <blockquote>
-<p>jal rd, offset</p>
+<p>j rd, i(16) (Call)</p>
+<p>r[rd] = PC + 1</p>
+<p>PC = i(16)</p>
 </blockquote>
-<ol type="1">
-<li><p>戻りアドレス（PC + 4）を rd に保存</p>
-<p>x[rd] = PC + 4</p></li>
-<li><p>「PC + offset」にジャンプ</p>
-<p>PC += offset</p></li>
-</ol>
 <blockquote>
-<p>jalr rd, rs1, offset</p>
+<p>jr rd, rs1, is(12)</p>
+<p>r[rd] = PC + 1</p>
+<p>PC = r[rs1] + is(12)</p>
 </blockquote>
-<ol type="1">
-<li><p>戻りアドレス（PC + 4）を rd に保存</p>
-<p>x[rd] = PC + 4</p></li>
-<li><p>「レジスタ rs1 + offset」にジャンプ</p>
-<p>PC = x[rs1] + offset</p></li>
-</ol>
+<p>戻りアドレスを rd に保存し、PC を即値にする。</p>
+<h4 id="分岐とジャンプの違いについて">分岐とジャンプの違いについて</h4>
+<p>分岐は関数内での if 文に、ジャンプは関数呼び出しに対応する。</p>
+<p>if の分岐先は近いアドレスであるが、関数呼び出しは遠いアドレスであることも多い。</p>
+<p>また、関数呼び出しは戻りアドレスを記憶しておく必要がある。</p>
+<p>条件分岐はコンパイラで相対位置を決める。</p>
+<p>関数呼び出しはリンカが絶対位置を決める。</p>
 <h3 id="割り込み">割り込み</h3>
 <blockquote>
 <p>intr xxxxx</p>
@@ -737,7 +773,7 @@
 <td>サブルーチンにジャンプ</td>
 </tr>
 <tr class="even">
-<td></td>
+<td>:</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -745,7 +781,7 @@
 <td>サブルーチンの処理</td>
 </tr>
 <tr class="even">
-<td></td>
+<td>:</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -808,7 +844,7 @@
 <td>ジャンプ</td>
 </tr>
 <tr class="even">
-<td></td>
+<td>:</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -816,7 +852,7 @@
 <td>割り込み処理を行う</td>
 </tr>
 <tr class="even">
-<td></td>
+<td>:</td>
 <td></td>
 </tr>
 <tr class="odd">
