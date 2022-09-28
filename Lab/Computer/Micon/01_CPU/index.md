@@ -266,21 +266,21 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 それぞれのステージで何をするか
 
 0. PC のカウントアップ
-1. S1 のロード
-2. S2 のロード
-3. メモリにストア
+1. メモリを読み出し、RS1 に記録
+2. メモリを読み出し、RS2 に記録
+3. メモリに書き込み
 
-|      | ALU Func      | ALU OUT |       | 2.ADR | 3.ADR  | RS1_SEL | RS2_SEL | S2_SEL | RAM_CON | ALU_CON | PC_CON |
-| ---- | ------------- | ------- | ----- | ----- | ------ | ------- | ------- | ------ | ------- | ------- | ------ |
-| add  | Func(RS1,RS2) | REG     | 0:ALU | rd    | rs1    | rs2     | 1       | -      | Func    | -       |
-| addi | Func(RS1,IMM) | REG     | 0:ALU | rd    | rs2    | -       | 0       | -      | Func    | -       |
-| li   | ADD(ZERO,IMM) | REG     | 0:ALU | rd    | 0:zero | -       | 0       | -      | ADD     | -       |
-| l    | ADD(RS1,IMM)  | ADR     | 1:MEM | rd    | rs1    | -       | 0       | READ   | ADD     | -       |
-| s    | ADD(RS1,IMM)  | ADR     | -     | rs1   | rs2    | 0       | WRITE   | ADD    | -       |
-| be   | SUB(RS1,RS2)  | PFC     | -     | rs1   | rs2    | 0       | -       | SUB    |         |
-| bl   | SUB(RS1,RS2)  | PFC     | -     | rs1   | rs2    | 0       | -       | SUB    |         |
-| j    | ADD(ZERO,IMM) | PFC     | rd    | -     | -      | -       | -       | -      |         |
-| jr   | ADD(RS1,IMM)  | PFC     | rd    | rs1   | -      | 0       | -       | ADD    |         |
+|      | ALU  | S2  | 0.ADR | 1.ADR | 2.ADR | DIN |
+| ---- | ---- | --- | ----- | ----- | ----- | --- |
+| add  | Func | RS2 | R RS1 | R RS2 | W RD  | ALU |
+| addi | Func | IMM | R RS1 | -     | W RD  | ALU |
+| l    | ADD  | IMM | R RS1 | R ALU | W RD  | RS2 |
+| s    | ADD  | IMM | R RS1 | R RS2 | W ALU | RS2 |
+| li   | -    | -   | -     | -     | W RD  | IMM |
+| be   | SUB  | RS2 | R RS1 | R RS2 | -     | -   |
+| bl   | SUB  | RS2 | R RS1 | R RS2 | -     | -   |
+| j    | ADD  | -   | -     | -     | W RD  | PC  |
+| jr   | ADD  | IMM | R RS1 | -     | W RD  | PC  |
 
 ![](img/decode.dio.svg)
 
