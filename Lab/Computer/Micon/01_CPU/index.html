@@ -31,6 +31,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
+        <meta name="dcterms.date" content="2022-09-27" />
           <title>自作マイコン用CPU、RISC-K | Kanade's Website</title>
 
     <!-- OGP -->
@@ -462,6 +463,7 @@
         <!-- Title -->
                 <h1 style="margin: 0">自作マイコン用CPU、RISC-K</h1>
                 <!-- Date -->
+                <p align="right">2022-09-27</p>
                 <!-- Description -->
               </header>
 
@@ -507,6 +509,7 @@
 <li><a href="#実行時エラー">実行時エラー</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a><ul>
+<li><a href="#レジスタ-1">レジスタ</a></li>
 <li><a href="#io">IO</a></li>
 <li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
 <li><a href="#rom-eeprom">ROM (EEPROM)</a></li>
@@ -906,6 +909,14 @@
 </thead>
 <tbody>
 <tr class="odd">
+<td>0000 ~ 000F</td>
+<td>レジスタ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
 <td></td>
 <td>IO</td>
 </tr>
@@ -923,7 +934,14 @@
 </tr>
 </tbody>
 </table>
+<h3 id="レジスタ-1">レジスタ</h3>
+<ul>
+<li>実体としては、SRAM の一部分</li>
+<li>4bit でアクセスする → ISA でビットを節約できる</li>
+</ul>
 <h3 id="io">IO</h3>
+<p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。</p>
+<p>このアドレスへのメモリアドレスは、別のデバイスにスイッチする。</p>
 <p>各 IO に必要なパラメタ数がわからないので、仮です。</p>
 <h4 id="gpio">GPIO</h4>
 <h4 id="adc">ADC</h4>
@@ -1072,6 +1090,16 @@
 </tr>
 </tbody>
 </table>
+<h4 id="タイミングチャート">タイミングチャート：</h4>
+<ol start="0" type="1">
+<li>PC のカウントアップ</li>
+<li>S1 のロード</li>
+<li>S2 のロード</li>
+</ol>
+<p>ALU の 2 つの入力を S1,S2 レジスタにセットします。</p>
+<ol start="3" type="1">
+<li>実行</li>
+</ol>
 <h4 id="即値デコード">即値デコード：</h4>
 <p><img src="img/imm_decode.dio.svg" /></p>
 <h3 id="pfc">PFC</h3>
