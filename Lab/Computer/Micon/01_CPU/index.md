@@ -277,7 +277,7 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 | li   | -    | -   | IMM | -       | -       | RD      |
 | be   | SUB  | RS2 | -   | RS1     | RS2     | 0       |
 | bl   | SUB  | RS2 | -   | RS1     | RS2     | 0       |
-| j    | ADD  | -   | PC  | -       | -       | RD      |
+| j    | -    | -   | PC  | -       | -       | RD      |
 | jr   | ADD  | IMM | PC  | RS1     | -       | RD      |
 
 \- は何でも大丈夫（なはず）
