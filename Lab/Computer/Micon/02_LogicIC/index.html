@@ -492,86 +492,101 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#使えそうなロジック-ic">使えそうなロジック IC</a><ul>
-<li><a href="#d-フリップフロップ">D フリップフロップ</a></li>
-<li><a href="#ステート">3 ステート</a></li>
-<li><a href="#マルチプレクサ">マルチプレクサ</a></li>
-<li><a href="#加算器">加算器</a></li>
-<li><a href="#alu">ALU</a></li>
-<li><a href="#比較演算器">比較演算器</a></li>
+<li><a href="#使えそうな部品">使えそうな部品</a><ul>
 <li><a href="#sram">SRAM</a></li>
+<li><a href="#dual-port-sram">Dual Port SRAM</a></li>
 <li><a href="#eeprom">EEPROM</a></li>
 </ul></li>
-<li><a href="#verilog">Verilog</a></li>
+<li><a href="#メモリ回路">メモリ回路</a><ul>
+<li><a href="#書き込み回路">書き込み回路</a></li>
+</ul></li>
+<li><a href="#alu">ALU</a></li>
+<li><a href="#id">ID</a></li>
+<li><a href="#pfc">PFC</a></li>
 </ul></nav>
-       <h2 id="使えそうなロジック-ic">使えそうなロジック IC</h2>
-<h3 id="d-フリップフロップ">D フリップフロップ</h3>
-<ul>
-<li>74HC273
-<ul>
-<li>8 回路入り DFF</li>
-<li><a href="https://akizukidenshi.com/catalog/g/gI-15412/">秋月</a></li>
-<li><a href="https://eleshop.jp/shop/g/gT11541/">共エレ</a></li>
-</ul></li>
-<li>74HC574
-<ul>
-<li>8 回路入り DFF</li>
-<li>3 ステート出力</li>
-<li><a href="https://eleshop.jp/shop/g/gT11573/">共エレ</a></li>
-</ul></li>
-</ul>
-<h3 id="ステート">3 ステート</h3>
-<ul>
-<li>74HC541
-<ul>
-<li>8 回路入り</li>
-<li><a href="https://akizukidenshi.com/catalog/g/gI-03632/">秋月</a></li>
-<li><a href="https://eleshop.jp/shop/g/gT11569/">共エレ</a></li>
-</ul></li>
-</ul>
-<h3 id="マルチプレクサ">マルチプレクサ</h3>
-<ul>
-<li>74HC157
-<ul>
-<li>2 入力 4 回路入り</li>
-<li>16bit の MUX には、4 個必要になる</li>
-<li><a href="https://eleshop.jp/shop/g/gT11505/">共エレ</a></li>
-</ul></li>
-<li>74HC153
-<ul>
-<li>4 入力 2 回路入り</li>
-<li><a href="https://eleshop.jp/shop/g/gT11502/">共エレ</a></li>
-</ul></li>
-</ul>
-<h3 id="加算器">加算器</h3>
-<ul>
-<li>74HC283
-<ul>
-<li><a href="https://eleshop.jp/shop/g/gT11544/">共エレ</a></li>
-</ul></li>
-</ul>
-<h3 id="alu">ALU</h3>
-<ul>
-<li>74HC181
-<ul>
-<li>地球上に現存してる？</li>
-<li><a href="https://ja.aliexpress.com/i/32857333905.html">アリエク</a></li>
-</ul></li>
-</ul>
-<h3 id="比較演算器">比較演算器</h3>
-<ul>
-<li>74HC85
-<ul>
-<li><a href="https://www.kashinoki.shop/?pid=122479107">樫木</a></li>
-<li>べつにわざわざ専用 IC を使うまでもないか…</li>
-</ul></li>
-</ul>
+       <h2 id="使えそうな部品">使えそうな部品</h2>
+<table>
+<thead>
+<tr class="header">
+<th>74</th>
+<th>機能</th>
+<th>通販</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>74HC273</td>
+<td>DFF x8</td>
+<td><a href="https://akizukidenshi.com/catalog/g/gI-15412/">秋月</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><a href="https://eleshop.jp/shop/g/gT11541/">共エレ</a></td>
+</tr>
+<tr class="odd">
+<td>74HC574</td>
+<td>DFF x8 3-state</td>
+<td><a href="https://eleshop.jp/shop/g/gT11573/">共エレ</a></td>
+</tr>
+<tr class="even">
+<td>74HC541</td>
+<td>3-state x8</td>
+<td><a href="https://akizukidenshi.com/catalog/g/gI-03632/">秋月</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><a href="https://eleshop.jp/shop/g/gT11569/">共エレ</a></td>
+</tr>
+<tr class="even">
+<td>74HC157</td>
+<td>2MUX x4</td>
+<td><a href="https://eleshop.jp/shop/g/gT11505/">共エレ</a></td>
+</tr>
+<tr class="odd">
+<td>74HC153</td>
+<td>4MUX x2</td>
+<td><a href="https://eleshop.jp/shop/g/gT11502/">共エレ</a></td>
+</tr>
+<tr class="even">
+<td>74HC283</td>
+<td>4bit Adder</td>
+<td><a href="https://eleshop.jp/shop/g/gT11544/">共エレ</a></td>
+</tr>
+<tr class="odd">
+<td>74HC181</td>
+<td>4bit ALU</td>
+<td><a href="https://ja.aliexpress.com/i/32857333905.html">アリエク</a></td>
+</tr>
+<tr class="even">
+<td>74HC85</td>
+<td>Compare</td>
+<td><a href="https://www.kashinoki.shop/?pid=122479107">樫木</a></td>
+</tr>
+</tbody>
+</table>
 <h3 id="sram">SRAM</h3>
+<p>64k x 16</p>
 <p><a href="https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71256sa-50v-32k-x-8-asynchronous-static-ram">Renesas 71256SA</a></p>
+<h3 id="dual-port-sram">Dual Port SRAM</h3>
 <h3 id="eeprom">EEPROM</h3>
 <p><a href="https://www.microchip.com/en-us/product/AT28C64B">Atmel AT28C64B</a></p>
 <p>8192 x 8bit</p>
-<h2 id="verilog">Verilog</h2>
+<h2 id="メモリ回路">メモリ回路</h2>
+<ul>
+<li>アドレス/16</li>
+<li>入出力バス/16</li>
+<li>R/W 信号</li>
+<li>書き込みクロック信号</li>
+<li>リセット信号</li>
+</ul>
+<p>アドレスの一部が別のデバイスに割り当てられているので、スイッチする必要がある。</p>
+<h3 id="書き込み回路">書き込み回路</h3>
+<p>プログラムメモリと定数メモリの EEPROM に書き込み回路</p>
+<h2 id="alu">ALU</h2>
+<h2 id="id">ID</h2>
+<h2 id="pfc">PFC</h2>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
