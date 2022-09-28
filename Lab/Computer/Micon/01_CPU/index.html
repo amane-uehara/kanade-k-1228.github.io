@@ -964,13 +964,23 @@
 <h3 id="id">ID</h3>
 <p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
 <h4 id="動作">動作：</h4>
+<p>4 クロックで 1 命令を実行する。</p>
+<p>それぞれのステージで何をするか</p>
+<ol start="0" type="1">
+<li>PC のカウントアップ</li>
+<li>S1 のロード</li>
+<li>S2 のロード</li>
+<li>メモリにストア</li>
+</ol>
 <table>
 <thead>
 <tr class="header">
 <th></th>
-<th>CLK</th>
-<th>R_IN_SEL</th>
-<th>RD_SEL</th>
+<th>ALU Func</th>
+<th>ALU OUT</th>
+<th></th>
+<th>2.ADR</th>
+<th>3.ADR</th>
 <th>RS1_SEL</th>
 <th>RS2_SEL</th>
 <th>S2_SEL</th>
@@ -982,7 +992,8 @@
 <tbody>
 <tr class="odd">
 <td>add</td>
-<td>Reg</td>
+<td>Func(RS1,RS2)</td>
+<td>REG</td>
 <td>0:ALU</td>
 <td>rd</td>
 <td>rs1</td>
@@ -991,10 +1002,12 @@
 <td>-</td>
 <td>Func</td>
 <td>-</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>addi</td>
-<td>Reg</td>
+<td>Func(RS1,IMM)</td>
+<td>REG</td>
 <td>0:ALU</td>
 <td>rd</td>
 <td>rs2</td>
@@ -1003,10 +1016,12 @@
 <td>-</td>
 <td>Func</td>
 <td>-</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>li</td>
-<td>Reg</td>
+<td>ADD(ZERO,IMM)</td>
+<td>REG</td>
 <td>0:ALU</td>
 <td>rd</td>
 <td>0:zero</td>
@@ -1015,10 +1030,12 @@
 <td>-</td>
 <td>ADD</td>
 <td>-</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>l</td>
-<td>Reg</td>
+<td>ADD(RS1,IMM)</td>
+<td>ADR</td>
 <td>1:MEM</td>
 <td>rd</td>
 <td>rs1</td>
@@ -1027,11 +1044,12 @@
 <td>READ</td>
 <td>ADD</td>
 <td>-</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>s</td>
-<td>Mem</td>
-<td>-</td>
+<td>ADD(RS1,IMM)</td>
+<td>ADR</td>
 <td>-</td>
 <td>rs1</td>
 <td>rs2</td>
@@ -1039,11 +1057,13 @@
 <td>WRITE</td>
 <td>ADD</td>
 <td>-</td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
-<td>jie</td>
-<td>-</td>
-<td>-</td>
+<td>be</td>
+<td>SUB(RS1,RS2)</td>
+<td>PFC</td>
 <td>-</td>
 <td>rs1</td>
 <td>rs2</td>
@@ -1051,23 +1071,27 @@
 <td>-</td>
 <td>SUB</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>jil</td>
-<td>-</td>
-<td>-</td>
+<td>bl</td>
+<td>SUB(RS1,RS2)</td>
+<td>PFC</td>
 <td>-</td>
 <td>rs1</td>
 <td>rs2</td>
 <td>0</td>
 <td>-</td>
 <td>SUB</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>j</td>
-<td>Reg</td>
-<td>2:PC</td>
+<td>ADD(ZERO,IMM)</td>
+<td>PFC</td>
 <td>rd</td>
 <td>-</td>
 <td>-</td>
@@ -1075,11 +1099,13 @@
 <td>-</td>
 <td>-</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>jr</td>
-<td>Reg</td>
-<td>2:PC</td>
+<td>ADD(RS1,IMM)</td>
+<td>PFC</td>
 <td>rd</td>
 <td>rs1</td>
 <td>-</td>
@@ -1087,14 +1113,17 @@
 <td>-</td>
 <td>ADD</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h4 id="タイミングチャート">タイミングチャート：</h4>
 <ol start="0" type="1">
 <li>PC のカウントアップ</li>
-<li>S1 のロード</li>
-<li>S2 のロード</li>
+<li><p>S1 のロード</p>
+<p>アドレスに RS1 をセットします。</p></li>
+<li><p>S2 のロード</p></li>
 </ol>
 <p>ALU の 2 つの入力を S1,S2 レジスタにセットします。</p>
 <ol start="3" type="1">

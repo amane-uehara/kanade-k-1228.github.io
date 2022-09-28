@@ -261,22 +261,34 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 
 #### 動作：
 
-|      | CLK | R_IN_SEL | RD_SEL | RS1_SEL | RS2_SEL | S2_SEL | RAM_CON | ALU_CON | PC_CON |
-| ---- | --- | -------- | ------ | ------- | ------- | ------ | ------- | ------- | ------ |
-| add  | Reg | 0:ALU    | rd     | rs1     | rs2     | 1      | -       | Func    | -      |
-| addi | Reg | 0:ALU    | rd     | rs2     | -       | 0      | -       | Func    | -      |
-| li   | Reg | 0:ALU    | rd     | 0:zero  | -       | 0      | -       | ADD     | -      |
-| l    | Reg | 1:MEM    | rd     | rs1     | -       | 0      | READ    | ADD     | -      |
-| s    | Mem | -        | -      | rs1     | rs2     | 0      | WRITE   | ADD     | -      |
-| jie  | -   | -        | -      | rs1     | rs2     | 0      | -       | SUB     |        |
-| jil  | -   | -        | -      | rs1     | rs2     | 0      | -       | SUB     |        |
-| j    | Reg | 2:PC     | rd     | -       | -       | -      | -       | -       |        |
-| jr   | Reg | 2:PC     | rd     | rs1     | -       | 0      | -       | ADD     |        |
+4 クロックで 1 命令を実行する。
+
+それぞれのステージで何をするか
+
+0. PC のカウントアップ
+1. S1 のロード
+2. S2 のロード
+3. メモリにストア
+
+|      | ALU Func      | ALU OUT |       | 2.ADR | 3.ADR  | RS1_SEL | RS2_SEL | S2_SEL | RAM_CON | ALU_CON | PC_CON |
+| ---- | ------------- | ------- | ----- | ----- | ------ | ------- | ------- | ------ | ------- | ------- | ------ |
+| add  | Func(RS1,RS2) | REG     | 0:ALU | rd    | rs1    | rs2     | 1       | -      | Func    | -       |
+| addi | Func(RS1,IMM) | REG     | 0:ALU | rd    | rs2    | -       | 0       | -      | Func    | -       |
+| li   | ADD(ZERO,IMM) | REG     | 0:ALU | rd    | 0:zero | -       | 0       | -      | ADD     | -       |
+| l    | ADD(RS1,IMM)  | ADR     | 1:MEM | rd    | rs1    | -       | 0       | READ   | ADD     | -       |
+| s    | ADD(RS1,IMM)  | ADR     | -     | rs1   | rs2    | 0       | WRITE   | ADD    | -       |
+| be   | SUB(RS1,RS2)  | PFC     | -     | rs1   | rs2    | 0       | -       | SUB    |         |
+| bl   | SUB(RS1,RS2)  | PFC     | -     | rs1   | rs2    | 0       | -       | SUB    |         |
+| j    | ADD(ZERO,IMM) | PFC     | rd    | -     | -      | -       | -       | -      |         |
+| jr   | ADD(RS1,IMM)  | PFC     | rd    | rs1   | -      | 0       | -       | ADD    |         |
 
 #### タイミングチャート：
 
 0. PC のカウントアップ
 1. S1 のロード
+
+   アドレスに RS1 をセットします。
+
 2. S2 のロード
 
 ALU の 2 つの入力を S1,S2 レジスタにセットします。
