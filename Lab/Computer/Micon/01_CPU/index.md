@@ -282,6 +282,8 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 | j    | ADD(ZERO,IMM) | PFC     | rd    | -     | -      | -       | -       | -      |         |
 | jr   | ADD(RS1,IMM)  | PFC     | rd    | rs1   | -      | 0       | -       | ADD    |         |
 
+![](img/decode.dio.svg)
+
 #### タイミングチャート：
 
 0. PC のカウントアップ
