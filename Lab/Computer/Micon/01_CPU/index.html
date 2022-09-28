@@ -968,153 +968,103 @@
 <p>それぞれのステージで何をするか</p>
 <ol start="0" type="1">
 <li>PC のカウントアップ</li>
-<li>S1 のロード</li>
-<li>S2 のロード</li>
-<li>メモリにストア</li>
+<li>メモリを読み出し、RS1 に記録</li>
+<li>メモリを読み出し、RS2 に記録</li>
+<li>メモリに書き込み</li>
 </ol>
 <table>
 <thead>
 <tr class="header">
 <th></th>
-<th>ALU Func</th>
-<th>ALU OUT</th>
-<th></th>
+<th>ALU</th>
+<th>S2</th>
+<th>0.ADR</th>
+<th>1.ADR</th>
 <th>2.ADR</th>
-<th>3.ADR</th>
-<th>RS1_SEL</th>
-<th>RS2_SEL</th>
-<th>S2_SEL</th>
-<th>RAM_CON</th>
-<th>ALU_CON</th>
-<th>PC_CON</th>
+<th>DIN</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>add</td>
-<td>Func(RS1,RS2)</td>
-<td>REG</td>
-<td>0:ALU</td>
-<td>rd</td>
-<td>rs1</td>
-<td>rs2</td>
-<td>1</td>
-<td>-</td>
 <td>Func</td>
-<td>-</td>
-<td></td>
+<td>RS2</td>
+<td>R RS1</td>
+<td>R RS2</td>
+<td>W RD</td>
+<td>ALU</td>
 </tr>
 <tr class="even">
 <td>addi</td>
-<td>Func(RS1,IMM)</td>
-<td>REG</td>
-<td>0:ALU</td>
-<td>rd</td>
-<td>rs2</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
 <td>Func</td>
+<td>IMM</td>
+<td>R RS1</td>
 <td>-</td>
-<td></td>
+<td>W RD</td>
+<td>ALU</td>
+</tr>
+<tr class="odd">
+<td>l</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>R RS1</td>
+<td>R ALU</td>
+<td>W RD</td>
+<td>RS2</td>
+</tr>
+<tr class="even">
+<td>s</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>R RS1</td>
+<td>R RS2</td>
+<td>W ALU</td>
+<td>RS2</td>
 </tr>
 <tr class="odd">
 <td>li</td>
-<td>ADD(ZERO,IMM)</td>
-<td>REG</td>
-<td>0:ALU</td>
-<td>rd</td>
-<td>0:zero</td>
 <td>-</td>
-<td>0</td>
 <td>-</td>
-<td>ADD</td>
 <td>-</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>l</td>
-<td>ADD(RS1,IMM)</td>
-<td>ADR</td>
-<td>1:MEM</td>
-<td>rd</td>
-<td>rs1</td>
 <td>-</td>
-<td>0</td>
-<td>READ</td>
-<td>ADD</td>
-<td>-</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>s</td>
-<td>ADD(RS1,IMM)</td>
-<td>ADR</td>
-<td>-</td>
-<td>rs1</td>
-<td>rs2</td>
-<td>0</td>
-<td>WRITE</td>
-<td>ADD</td>
-<td>-</td>
-<td></td>
-<td></td>
+<td>W RD</td>
+<td>IMM</td>
 </tr>
 <tr class="even">
 <td>be</td>
-<td>SUB(RS1,RS2)</td>
-<td>PFC</td>
-<td>-</td>
-<td>rs1</td>
-<td>rs2</td>
-<td>0</td>
-<td>-</td>
 <td>SUB</td>
-<td></td>
-<td></td>
-<td></td>
+<td>RS2</td>
+<td>R RS1</td>
+<td>R RS2</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr class="odd">
 <td>bl</td>
-<td>SUB(RS1,RS2)</td>
-<td>PFC</td>
-<td>-</td>
-<td>rs1</td>
-<td>rs2</td>
-<td>0</td>
-<td>-</td>
 <td>SUB</td>
-<td></td>
-<td></td>
-<td></td>
+<td>RS2</td>
+<td>R RS1</td>
+<td>R RS2</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr class="even">
 <td>j</td>
-<td>ADD(ZERO,IMM)</td>
-<td>PFC</td>
-<td>rd</td>
+<td>ADD</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>-</td>
-<td>-</td>
-<td></td>
-<td></td>
-<td></td>
+<td>W RD</td>
+<td>PC</td>
 </tr>
 <tr class="odd">
 <td>jr</td>
-<td>ADD(RS1,IMM)</td>
-<td>PFC</td>
-<td>rd</td>
-<td>rs1</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
 <td>ADD</td>
-<td></td>
-<td></td>
-<td></td>
+<td>IMM</td>
+<td>R RS1</td>
+<td>-</td>
+<td>W RD</td>
+<td>PC</td>
 </tr>
 </tbody>
 </table>
