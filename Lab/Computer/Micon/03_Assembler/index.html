@@ -491,7 +491,185 @@
       </p>
 
       <!-- Table of Contents -->
-       
+            <nav><ul>
+<li><a href="#アセンブラ">アセンブラ</a></li>
+<li><a href="#慣用句">慣用句</a><ul>
+<li><a href="#サブルーチン">サブルーチン</a></li>
+<li><a href="#割り込み処理">割り込み処理</a></li>
+</ul></li>
+</ul></nav>
+       <h2 id="アセンブラ">アセンブラ</h2>
+<ol type="1">
+<li>一行読み取る</li>
+<li>フォーマットに当てはめる
+<ol type="1">
+<li>フォーマットを読み取って、バイナリを出力する
+<ol type="1">
+<li>フォーマットエラー（誤った命令名、オペランド不足・超過）</li>
+</ol></li>
+<li>ラベルがオペランドに見つかった場合
+<ol type="1">
+<li>ラベルのリストに、ラベル名とバイナリ上の位置を追加</li>
+</ol></li>
+<li>ラベルの本体が見つかった場合
+<ol type="1">
+<li>ラベルの辞書に、ラベル名とリンク先を追加
+<ol type="1">
+<li>既に存在するラベルの場合、ラベル重複エラー</li>
+</ol></li>
+</ol></li>
+</ol></li>
+<li>EOF に到達</li>
+<li>ラベルのリストをもとにバイナリ中のラベルの書き込み位置を探し、ラベルの値を書き込む。</li>
+</ol>
+<h2 id="慣用句">慣用句</h2>
+<h3 id="サブルーチン">サブルーチン</h3>
+<p><a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考</a></p>
+<table>
+<thead>
+<tr class="header">
+<th>ASM</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>subi sp sp 5</td>
+<td>スタックポインタを減算し、スタックを確保</td>
+</tr>
+<tr class="even">
+<td>s s0 sp 0</td>
+<td>レジスタをスタックに退避</td>
+</tr>
+<tr class="odd">
+<td>s s1 sp 1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>s s1 sp 2</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>s s1 sp 3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>s ra sp 4</td>
+<td>リターンアドレスも退避</td>
+</tr>
+<tr class="odd">
+<td>li a0 334</td>
+<td>引数をレジスタにセット</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>レジスタが足りなければスタックにセット</td>
+</tr>
+<tr class="odd">
+<td>j ra f</td>
+<td>サブルーチンにジャンプ</td>
+</tr>
+<tr class="even">
+<td>f:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>—</td>
+<td>サブルーチンの処理</td>
+</tr>
+<tr class="even">
+<td>—</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l ra sp 0</td>
+<td>レジスタを復元</td>
+</tr>
+<tr class="even">
+<td>l ra sp 1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l ra sp 2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>l ra sp 3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l ra sp 4</td>
+<td>リターンアドレスを復元</td>
+</tr>
+<tr class="even">
+<td>addi sp sp 5</td>
+<td>スタックポインタを加算</td>
+</tr>
+<tr class="odd">
+<td>jr ra 0</td>
+<td>PC を戻す</td>
+</tr>
+</tbody>
+</table>
+<h3 id="割り込み処理">割り込み処理</h3>
+<table>
+<thead>
+<tr class="header">
+<th>ASM</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>subi sp 16</td>
+<td>全てのレジスタをスタックに退避</td>
+</tr>
+<tr class="even">
+<td>s x1 sp 0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>s x15 sp 14</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>j ra xxxx</td>
+<td>ジャンプ</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>:</td>
+<td>割り込み処理を行う</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l x1 sp 0</td>
+<td>レジスタを復元</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l x15 sp 14</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>jr ra 0</td>
+<td>PC を戻す</td>
+</tr>
+</tbody>
+</table>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>

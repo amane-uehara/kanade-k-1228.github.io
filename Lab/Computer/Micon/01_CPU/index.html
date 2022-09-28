@@ -496,15 +496,11 @@
             <nav><ul>
 <li><a href="#レジスタ">レジスタ</a></li>
 <li><a href="#命令セット">命令セット</a><ul>
-<li><a href="#レジスタ演算">レジスタ演算</a></li>
-<li><a href="#即値演算">即値演算</a></li>
-<li><a href="#即値ロード">即値ロード</a></li>
+<li><a href="#演算">演算</a></li>
 <li><a href="#メモリアクセス">メモリアクセス</a></li>
 <li><a href="#条件分岐">条件分岐</a></li>
-<li><a href="#ジャンプ">ジャンプ</a></li>
+<li><a href="#分岐とジャンプの違い">分岐とジャンプの違い</a></li>
 <li><a href="#割り込み">割り込み</a></li>
-<li><a href="#サブルーチン">サブルーチン</a></li>
-<li><a href="#割り込み処理">割り込み処理</a></li>
 <li><a href="#割り込み-1">割り込み</a></li>
 <li><a href="#実行時エラー">実行時エラー</a></li>
 </ul></li>
@@ -603,7 +599,7 @@
 </tr>
 <tr class="even">
 <td>1</td>
-<td></td>
+<td>↑↑↑←</td>
 <td><strong>0</strong>001</td>
 </tr>
 <tr class="odd">
@@ -613,7 +609,7 @@
 </tr>
 <tr class="even">
 <td>-1</td>
-<td></td>
+<td>↓↓↓←</td>
 <td><strong>1</strong>111</td>
 </tr>
 <tr class="odd">
@@ -624,11 +620,79 @@
 </tbody>
 </table>
 <p>RISC-K では RISC-V に倣って、命令の即値の最上位 bit の位置を揃えることで、符号拡張のハードウェアを単純にします。</p>
-<h3 id="レジスタ演算">レジスタ演算</h3>
-<blockquote>
-<p>add rd, rs1, rs2</p>
-<p>r[rd] = r[rs1] + r[rs2]</p>
-</blockquote>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 32%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>命令</th>
+<th>アセンブリ</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>レジスタ演算</td>
+<td>add rd, rs1, rs2</td>
+<td>r[rd] = r[rs1] + r[rs2]</td>
+<td>レジスタ間で演算</td>
+</tr>
+<tr class="even">
+<td>即値演算</td>
+<td>addi rd, rs1, is(8)</td>
+<td>r[rd] = r[rs1] + is(8)</td>
+<td>8bit の即値と演算</td>
+</tr>
+<tr class="odd">
+<td>即値ロード</td>
+<td>li rd, i(16)</td>
+<td>r[rd] = i(16)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ロード</td>
+<td>l rd, rs1, is(12)</td>
+<td>r[rd] = m[r[rs1]+is(12)]</td>
+<td>rs1 = zero で絶対参照</td>
+</tr>
+<tr class="odd">
+<td>ストア</td>
+<td>s rs1, rs2, is(12)</td>
+<td>m[r[rs1]+is(12)] = r[rs2]</td>
+<td>12bit より広い範囲へのアクセスは li を使う</td>
+</tr>
+<tr class="even">
+<td>条件分岐（＝）</td>
+<td>be rs1, rs2, is(12)</td>
+<td>if(r[rs1]=r[rs2]) PC += is(12)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>条件分岐（＜）</td>
+<td>bl rs1, rs2, is(12)</td>
+<td>if(r[rs1]&lt;r[rs2]) PC += is(12)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ジャンプ</td>
+<td>j rd, i(16)</td>
+<td>r[rd] = PC + 1, PC = i(16)</td>
+<td>戻りアドレスを rd に保存 &amp; PC をジャンプ</td>
+</tr>
+<tr class="odd">
+<td>ジャンプ</td>
+<td>jr rd, rs1, is(12)</td>
+<td>r[rd] = PC + 1, PC = r[rs1] + is(12)</td>
+<td>戻りアドレスを rd に保存 &amp; PC をジャンプ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="演算">演算</h3>
 <table>
 <thead>
 <tr class="header">
@@ -683,34 +747,10 @@
 </tr>
 </tbody>
 </table>
-<h3 id="即値演算">即値演算</h3>
-<blockquote>
-<p>addi rd, rs1, is(8)</p>
-<p>r[rd] = r[rs1] + is(8)</p>
-</blockquote>
-<p>16bit で演算したい場合は、即値ロードをした後に演算をする。</p>
-<h3 id="即値ロード">即値ロード</h3>
-<blockquote>
-<p>li rd, i(16) (Load Immidiate)</p>
-<p>r[rd] = i(16)</p>
-</blockquote>
 <h3 id="メモリアクセス">メモリアクセス</h3>
-<blockquote>
-<p>l rd, rs1, is(12)</p>
-<p>r[rd] = m[r[rs1]+is(12)]</p>
-</blockquote>
-<blockquote>
-<p>s rs1, rs2, is(12)</p>
-<p>m[r[rs1]+is(12)] = r[rs2]</p>
-</blockquote>
 <p>rs1 を zero レジスタとすることで、絶対参照ができる。</p>
 <p>12bit より広い範囲を参照したい場合は即値ロードを使う。</p>
 <h3 id="条件分岐">条件分岐</h3>
-<blockquote>
-<p>jie rs1, rs2, is(12) (Jump If rs1 Equal rs2)</p>
-<p>jil rs1, rs2, is(12) (Jump If rs1 is Less than rs2)</p>
-<p>PC += is(12)</p>
-</blockquote>
 <p>ALU で減算 r[rs1] - r[rs2] を行い、その結果で分岐判定をします。</p>
 <p>分岐先アドレスは、現在の PC に即値を足したアドレスです。</p>
 <p>即値は符号拡張するので、マイナスのアドレスにも分岐できます。</p>
@@ -721,176 +761,13 @@
 <li><p>未満（r[rs1] &lt; r[rs2]）</p>
 <p>演算結果の符号 bit（負の場合は 1）</p></li>
 </ol>
-<h3 id="ジャンプ">ジャンプ</h3>
-<blockquote>
-<p>j rd, i(16) (Call)</p>
-<p>r[rd] = PC + 1</p>
-<p>PC = i(16)</p>
-</blockquote>
-<blockquote>
-<p>jr rd, rs1, is(12)</p>
-<p>r[rd] = PC + 1</p>
-<p>PC = r[rs1] + is(12)</p>
-</blockquote>
-<p>戻りアドレスを rd に保存し、PC を即値にする。</p>
-<h4 id="分岐とジャンプの違いについて">分岐とジャンプの違いについて</h4>
-<p>分岐は関数内での if 文に、ジャンプは関数呼び出しに対応する。</p>
-<p>if の分岐先は近いアドレスであるが、関数呼び出しは遠いアドレスであることも多い。</p>
-<p>また、関数呼び出しは戻りアドレスを記憶しておく必要がある。</p>
-<p>条件分岐はコンパイラで相対位置を決める。</p>
-<p>関数呼び出しはリンカが絶対位置を決める。</p>
+<h3 id="分岐とジャンプの違い">分岐とジャンプの違い</h3>
+<p>分岐は関数内での if 文に、ジャンプは goto または関数呼び出しに対応する。if の分岐先は近いアドレスであるが、関数呼び出しは遠いアドレスであることも多い。また、関数呼び出しは戻りアドレスを記憶しておく必要がある。条件分岐はコンパイラで相対位置を決める。goto や関数呼び出しはリンカがラベルに対してアドレスを付与する。</p>
 <h3 id="割り込み">割り込み</h3>
 <blockquote>
 <p>intr xxxxx</p>
 </blockquote>
 <p>割り込みフラグを設定する。</p>
-<h3 id="サブルーチン">サブルーチン</h3>
-<p><a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考</a></p>
-<table>
-<thead>
-<tr class="header">
-<th>ASM</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>subi sp sp 5</td>
-<td>スタックポインタを減算し、スタックを確保</td>
-</tr>
-<tr class="even">
-<td>store s0 0(sp)</td>
-<td>レジスタをスタックに退避</td>
-</tr>
-<tr class="odd">
-<td>store s1 1(sp)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>store s1 2(sp)</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>store s1 3(sp)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>store ra 4(sp)</td>
-<td>リターンアドレスも退避</td>
-</tr>
-<tr class="odd">
-<td>loadi a0 334</td>
-<td>引数をレジスタにセット</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>レジスタが足りなければスタックにセット</td>
-</tr>
-<tr class="odd">
-<td>jal</td>
-<td>サブルーチンにジャンプ</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>:</td>
-<td>サブルーチンの処理</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>load ra 0(sp)</td>
-<td>レジスタを復元</td>
-</tr>
-<tr class="even">
-<td>load ra 1(sp)</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>load ra 2(sp)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>load ra 3(sp)</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>load ra 4(sp)</td>
-<td>リターンアドレスを復元</td>
-</tr>
-<tr class="even">
-<td>addi sp sp 5</td>
-<td>スタックポインタを加算</td>
-</tr>
-<tr class="odd">
-<td>jr ra</td>
-<td>PC を戻す</td>
-</tr>
-</tbody>
-</table>
-<h3 id="割り込み処理">割り込み処理</h3>
-<table>
-<thead>
-<tr class="header">
-<th>ASM</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>subi sp 16</td>
-<td>全てのレジスタをスタックに退避</td>
-</tr>
-<tr class="even">
-<td>store x1 0(sp)</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>store x15 14(sp)</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>jal</td>
-<td>ジャンプ</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>:</td>
-<td>割り込み処理を行う</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>load x1 0{sp}</td>
-<td>レジスタを復元</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>load x15 14(sp)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>jr ra</td>
-<td>PC を戻す</td>
-</tr>
-</tbody>
-</table>
 <h3 id="割り込み-1">割り込み</h3>
 <h3 id="実行時エラー">実行時エラー</h3>
 <p>割り込みとしてエラー処理を行う。</p>
