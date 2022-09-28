@@ -263,14 +263,12 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 
 4 クロックで 1 命令を実行する。
 
-それぞれのステージで何をするか
-
 0. PC のカウントアップ
 1. メモリを読み出し、RS1 に記録
 2. メモリを読み出し、RS2 に記録
 3. メモリに書き込み
 
-|      | ALU  | S2  | 0.ADR | 1.ADR | 2.ADR | DIN |
+|      | ALU  | S2  | 1.ADR | 2.ADR | 3.ADR | DIN |
 | ---- | ---- | --- | ----- | ----- | ----- | --- |
 | add  | Func | RS2 | R RS1 | R RS2 | W RD  | ALU |
 | addi | Func | IMM | R RS1 | -     | W RD  | ALU |
