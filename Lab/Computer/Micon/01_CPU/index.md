@@ -268,17 +268,19 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 2. メモリを読み出し、RS2 に記録
 3. メモリに書き込み
 
-|      | ALU  | S2  | 1.ADR | 2.ADR | 3.ADR | DIN |
-| ---- | ---- | --- | ----- | ----- | ----- | --- |
-| add  | Func | RS2 | R RS1 | R RS2 | W RD  | ALU |
-| addi | Func | IMM | R RS1 | -     | W RD  | ALU |
-| l    | ADD  | IMM | R RS1 | R ALU | W RD  | RS2 |
-| s    | ADD  | IMM | R RS1 | R RS2 | W ALU | RS2 |
-| li   | -    | -   | -     | -     | W RD  | IMM |
-| be   | SUB  | RS2 | R RS1 | R RS2 | -     | -   |
-| bl   | SUB  | RS2 | R RS1 | R RS2 | -     | -   |
-| j    | ADD  | -   | -     | -     | W RD  | PC  |
-| jr   | ADD  | IMM | R RS1 | -     | W RD  | PC  |
+|      | ALU  | S2  | DIN | 1.R ADR | 2.R ADR | 3.W ADR |
+| ---- | ---- | --- | --- | ------- | ------- | ------- |
+| add  | Func | RS2 | ALU | RS1     | RS2     | RD      |
+| addi | Func | IMM | ALU | RS1     | -       | RD      |
+| l    | ADD  | IMM | RS2 | RS1     | ALU     | RD      |
+| s    | ADD  | IMM | RS2 | RS1     | RS2     | ALU     |
+| li   | -    | -   | IMM | -       | -       | RD      |
+| be   | SUB  | RS2 | -   | RS1     | RS2     | 0       |
+| bl   | SUB  | RS2 | -   | RS1     | RS2     | 0       |
+| j    | ADD  | -   | PC  | -       | -       | RD      |
+| jr   | ADD  | IMM | PC  | RS1     | -       | RD      |
+
+\- は何でも大丈夫（なはず）
 
 ![](img/decode.dio.svg)
 
