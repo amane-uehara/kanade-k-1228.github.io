@@ -297,9 +297,9 @@ ALU の 2 つの入力を S1,S2 レジスタにセットします。
 
 3. 実行
 
-#### 即値デコード：
+#### デコーダ回路
 
-![](img/imm_decode.dio.svg)
+![](img/decoder.dio.svg)
 
 ### PFC
 
