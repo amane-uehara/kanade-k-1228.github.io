@@ -92,12 +92,13 @@ title: 研究室へようこそ
 
 [自作マイコン用 CPU、RISC-K](./Computer/Micon/01_CPU/)
 
-[ロジック IC で組む](./Computer/Micon/02_LogicIC)
+[ロジック IC で組む](./Computer/Micon/02_LogicIC/)
 
-<!--
-[アセンブラ＆コンパイラ](./Computer/Micon/03_Compile)
+[アセンブラ](./Computer/Micon/03_Assembler/)
 
-[さまざまなプログラムを動かす](./Computer/Micon/04_Programing)
+[コンパイラ](./Computer/Micon/04_Compiler/)
+
+<!-- [さまざまなプログラムを動かす](./Computer/Micon/04_Programing/)
 
 [周辺回路を作る](./Computer/Micon/05_Peripheral)
 
