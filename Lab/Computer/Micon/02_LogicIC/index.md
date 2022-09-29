@@ -17,6 +17,10 @@ title: ロジックICで組む
 | 74HC181 | 4bit ALU       | [アリエク](https://ja.aliexpress.com/i/32857333905.html) |
 | 74HC85  | Compare        | [樫木](https://www.kashinoki.shop/?pid=122479107)        |
 
+### Program ROM
+
+[NOR Flash 128k x 16](https://www.mouser.jp/ProductDetail/Microchip-Technology/SST39VF200A-70-4C-B3KE?qs=FY5l1181cfDUkmgn1A4zBw%3D%3D)
+
 ### SRAM
 
 64k x 16

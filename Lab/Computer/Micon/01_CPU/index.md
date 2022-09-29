@@ -41,33 +41,27 @@ RISC-V をベースに、16bit 向けに小細工をしました。
 
 RISC-K では RISC-V に倣って、命令の即値の最上位 bit の位置を揃えることで、符号拡張のハードウェアを単純にします。
 
-| 命令           | アセンブリ          |                                      |
-| -------------- | ------------------- | ------------------------------------ | ------------------------------------------ |
-| レジスタ演算   | add rd, rs1, rs2    | r[rd] = r[rs1] + r[rs2]              | レジスタ間で演算                           |
-| 即値演算       | addi rd, rs1, is(8) | r[rd] = r[rs1] + is(8)               | 8bit の即値と演算                          |
-| 即値ロード     | li rd, i(16)        | r[rd] = i(16)                        |                                            |
-| ロード         | l rd, rs1, is(12)   | r[rd] = m[r[rs1]+is(12)]             | rs1 = zero で絶対参照                      |
-| ストア         | s rs1, rs2, is(12)  | m[r[rs1]+is(12)] = r[rs2]            | 12bit より広い範囲へのアクセスは li を使う |
-| 条件分岐（＝） | be rs1, rs2, is(12) | if(r[rs1]=r[rs2]) PC += is(12)       |
-| 条件分岐（＜） | bl rs1, rs2, is(12) | if(r[rs1]<r[rs2]) PC += is(12)       |                                            |
-| ジャンプ       | j rd, i(16)         | r[rd] = PC + 1, PC = i(16)           | 戻りアドレスを rd に保存 & PC をジャンプ   |
-| ジャンプ       | jr rd, rs1, is(12)  | r[rd] = PC + 1, PC = r[rs1] + is(12) | 戻りアドレスを rd に保存 & PC をジャンプ   |
+| 命令           | アセンブリ            |                                     |
+| -------------- | --------------------- | ----------------------------------- | ---------------------------------------- |
+| レジスタ演算   | add rd, rs1, rs2      | r[rd] = r[rs1] + r[rs2]             | レジスタ間で演算                         |
+| 即値演算       | addi rd, rs1, is(12)  | r[rd] = r[rs1] + i(16)              | 12bit の即値と演算                       |
+| ロード         | load rd, rs1, i(16)   | r[rd] = m[r[rs1]+i(16)]             | rs1 = zero で絶対参照                    |
+| ストア         | store rs1, rs2, i(16) | m[r[rs1]+is(12)] = r[rs2]           |                                          |
+| 即値ロード     | loadi rd, i(16)       | r[rd] = i(16)                       |                                          |
+| 条件分岐（＝） | be rs1, rs2, i(16)    | if(r[rs1]=r[rs2]) PC = is(16)       |
+| 条件分岐（＜） | bl rs1, rs2, i(16)    | if(r[rs1]<r[rs2]) PC = is(16)       |                                          |
+| ジャンプ       | jump rd, rs1, i(16)   | r[rd] = PC + 1, PC = r[rs1] + i(16) | 戻りアドレスを rd に保存 & PC をジャンプ |
 
 ### 演算
 
-|     | 演算                   |
-| --- | ---------------------- |
-| +   | add                    |
-| -   | sub                    |
-| ^   | xor                    |
-| \|  | or                     |
-| &   | and                    |
-| <   | less than              |
-| <   | less than unsigned     |
-| >>  | shift left logical     |
-| >>  | shift left arithmetic  |
-| <<  | shift right logical    |
-| <<  | shift right arithmetic |
+|     | 演算 |     |                        |
+| --- | ---- | --- | ---------------------- |
+| +   | add  | <   | less than              |
+| -   | sub  | <   | less than unsigned     |
+| &   | and  | >>  | shift left logical     |
+| \|  | or   | >>  | shift left arithmetic  |
+| ^   | xor  | <<  | shift right logical    |
+| ~   | not  | <<  | shift right arithmetic |
 
 ### メモリアクセス
 
