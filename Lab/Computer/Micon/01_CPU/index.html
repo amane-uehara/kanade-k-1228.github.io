@@ -623,9 +623,9 @@
 <table>
 <colgroup>
 <col style="width: 12%" />
-<col style="width: 17%" />
-<col style="width: 32%" />
-<col style="width: 37%" />
+<col style="width: 19%" />
+<col style="width: 31%" />
+<col style="width: 36%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -644,50 +644,44 @@
 </tr>
 <tr class="even">
 <td>即値演算</td>
-<td>addi rd, rs1, is(8)</td>
-<td>r[rd] = r[rs1] + is(8)</td>
-<td>8bit の即値と演算</td>
+<td>addi rd, rs1, is(12)</td>
+<td>r[rd] = r[rs1] + i(16)</td>
+<td>12bit の即値と演算</td>
+</tr>
+<tr class="odd">
+<td>ロード</td>
+<td>load rd, rs1, i(16)</td>
+<td>r[rd] = m[r[rs1]+i(16)]</td>
+<td>rs1 = zero で絶対参照</td>
+</tr>
+<tr class="even">
+<td>ストア</td>
+<td>store rs1, rs2, i(16)</td>
+<td>m[r[rs1]+is(12)] = r[rs2]</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>即値ロード</td>
-<td>li rd, i(16)</td>
+<td>loadi rd, i(16)</td>
 <td>r[rd] = i(16)</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>ロード</td>
-<td>l rd, rs1, is(12)</td>
-<td>r[rd] = m[r[rs1]+is(12)]</td>
-<td>rs1 = zero で絶対参照</td>
-</tr>
-<tr class="odd">
-<td>ストア</td>
-<td>s rs1, rs2, is(12)</td>
-<td>m[r[rs1]+is(12)] = r[rs2]</td>
-<td>12bit より広い範囲へのアクセスは li を使う</td>
-</tr>
-<tr class="even">
 <td>条件分岐（＝）</td>
-<td>be rs1, rs2, is(12)</td>
-<td>if(r[rs1]=r[rs2]) PC += is(12)</td>
+<td>be rs1, rs2, i(16)</td>
+<td>if(r[rs1]=r[rs2]) PC = is(16)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>条件分岐（＜）</td>
-<td>bl rs1, rs2, is(12)</td>
-<td>if(r[rs1]&lt;r[rs2]) PC += is(12)</td>
+<td>bl rs1, rs2, i(16)</td>
+<td>if(r[rs1]&lt;r[rs2]) PC = is(16)</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>ジャンプ</td>
-<td>j rd, i(16)</td>
-<td>r[rd] = PC + 1, PC = i(16)</td>
-<td>戻りアドレスを rd に保存 &amp; PC をジャンプ</td>
-</tr>
-<tr class="odd">
-<td>ジャンプ</td>
-<td>jr rd, rs1, is(12)</td>
-<td>r[rd] = PC + 1, PC = r[rs1] + is(12)</td>
+<td>jump rd, rs1, i(16)</td>
+<td>r[rd] = PC + 1, PC = r[rs1] + i(16)</td>
 <td>戻りアドレスを rd に保存 &amp; PC をジャンプ</td>
 </tr>
 </tbody>
@@ -698,50 +692,44 @@
 <tr class="header">
 <th></th>
 <th>演算</th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>+</td>
 <td>add</td>
+<td>&lt;</td>
+<td>less than</td>
 </tr>
 <tr class="even">
 <td>-</td>
 <td>sub</td>
-</tr>
-<tr class="odd">
-<td>^</td>
-<td>xor</td>
-</tr>
-<tr class="even">
-<td>|</td>
-<td>or</td>
+<td>&lt;</td>
+<td>less than unsigned</td>
 </tr>
 <tr class="odd">
 <td>&amp;</td>
 <td>and</td>
-</tr>
-<tr class="even">
-<td>&lt;</td>
-<td>less than</td>
-</tr>
-<tr class="odd">
-<td>&lt;</td>
-<td>less than unsigned</td>
-</tr>
-<tr class="even">
 <td>&gt;&gt;</td>
 <td>shift left logical</td>
 </tr>
-<tr class="odd">
+<tr class="even">
+<td>|</td>
+<td>or</td>
 <td>&gt;&gt;</td>
 <td>shift left arithmetic</td>
 </tr>
-<tr class="even">
+<tr class="odd">
+<td>^</td>
+<td>xor</td>
 <td>&lt;&lt;</td>
 <td>shift right logical</td>
 </tr>
-<tr class="odd">
+<tr class="even">
+<td>~</td>
+<td>not</td>
 <td>&lt;&lt;</td>
 <td>shift right arithmetic</td>
 </tr>
