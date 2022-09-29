@@ -175,17 +175,16 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 2. メモリを読み出し、RS2 に記録
 3. メモリに書き込み
 
-|      | ALU  | S2  | DIN | 1.R ADR | 2.R ADR | 3.W ADR |
-| ---- | ---- | --- | --- | ------- | ------- | ------- |
-| add  | Func | RS2 | ALU | RS1     | RS2     | RD      |
-| addi | Func | IMM | ALU | RS1     | -       | RD      |
-| l    | ADD  | IMM | RS2 | RS1     | ALU     | RD      |
-| s    | ADD  | IMM | RS2 | RS1     | RS2     | ALU     |
-| li   | -    | -   | IMM | -       | -       | RD      |
-| be   | SUB  | RS2 | -   | RS1     | RS2     | 0       |
-| bl   | SUB  | RS2 | -   | RS1     | RS2     | 0       |
-| j    | -    | -   | PC  | -       | -       | RD      |
-| jr   | ADD  | IMM | PC  | RS1     | -       | RD      |
+|       | ALU  | S2  | DIN | 1.R ADR | 2.R ADR | 3.W ADR |
+| ----- | ---- | --- | --- | ------- | ------- | ------- |
+| add   | Func | RS2 | ALU | RS1     | RS2     | RD      |
+| addi  | Func | IMM | ALU | RS1     | -       | RD      |
+| load  | ADD  | IMM | RS2 | RS1     | ALU     | RD      |
+| store | ADD  | IMM | RS2 | RS1     | RS2     | ALU     |
+| loadi | -    | -   | IMM | -       | -       | RD      |
+| be    | SUB  | RS2 | -   | RS1     | RS2     | 0       |
+| bl    | SUB  | RS2 | -   | RS1     | RS2     | 0       |
+| jump  | ADD  | IMM | PC  | RS1     | -       | RD      |
 
 \- は何でも大丈夫（なはず）
 
