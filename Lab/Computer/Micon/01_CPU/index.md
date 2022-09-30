@@ -3,8 +3,6 @@ title: 自作マイコン用CPU、RISC-K
 date: 2022-09-27
 ---
 
-RISC-V をベースに、16bit 向けに小細工をしました。
-
 ## レジスタ
 
 0x00 ~ 0x3F まで 64 本のレジスタ。
@@ -74,35 +72,34 @@ RISC-V をベースに、16bit 向けに小細工をしました。
 
 ## メモリ空間
 
-| Addr        | Function |
-| ----------- | -------- |
-| 0000 ~ 000F | レジスタ |
-|             |          |
-|             | IO       |
-|             | VRAM     |
-|             | EEPROM   |
-|             | RAM      |
+| Addr            | Function |
+| --------------- | -------- |
+| 0x0000 - 0x003F | レジスタ |
+| 0x0040 - 0x00FF | -        |
+| 0x0100 - 0x01FF | IO       |
+| 0x0200 - 0x0FFF | -        |
+| 0x1000 - 0x2FFF | VRAM     |
+| 0x3FFF - 0xFFFF | RAM      |
 
 ### レジスタ
 
 - 実体としては、SRAM の一部分
-- 4bit でアクセスする → ISA でビットを節約できる
+- 6bit でアクセスする → ISA でビットを節約できる
 
 ### IO
 
-IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、別のデバイスにスイッチする。各 IO に必要なパラメタ数がわからないので、仮です。
+IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、デバイスにスイッチ。
 
 ### VRAM (Dual access SRAM)
 
 表示の候補として、
 
-- 300 x 400 画素 : RGB 4 段階 (6bit)
-- 300 x 400 画素 : 白黒 2 段階 (1bit)
+- 300 x 400 画素 x 白黒 2 段階 (1bit) = 120000 bit ~ 16bit x 8k
 - テキスト表示（フォントを EEPROM に置いておく）
 
-### Program ROM (NOR Flash)
-
 ### RAM (SRAM)
+
+### Program ROM (NOR Flash)
 
 ## 回路
 
