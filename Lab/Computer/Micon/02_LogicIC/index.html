@@ -492,21 +492,16 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#使えそうな部品">使えそうな部品</a><ul>
-<li><a href="#program-rom">Program ROM</a></li>
-<li><a href="#sram">SRAM</a></li>
-<li><a href="#dual-port-sram">Dual Port SRAM</a></li>
-<li><a href="#eeprom">EEPROM</a></li>
-</ul></li>
-<li><a href="#メモリ回路">メモリ回路</a><ul>
+<li><a href="#使えそうな部品">使えそうな部品</a></li>
+<li><a href="#プログラムメモリ">プログラムメモリ</a><ul>
 <li><a href="#書き込み回路">書き込み回路</a></li>
 </ul></li>
 <li><a href="#alu">ALU</a></li>
 <li><a href="#id">ID</a></li>
 <li><a href="#pfc">PFC</a><ul>
-<li><a href="#hc193">74HC193</a></li>
 <li><a href="#タイミングチャート">タイミングチャート</a></li>
 </ul></li>
+<li><a href="#部品メモ">部品メモ</a></li>
 </ul></nav>
        <h2 id="使えそうな部品">使えそうな部品</h2>
 <p><a href="https://eleshop.jp/shop/pages/search_74.aspx">共エレ 74</a></p>
@@ -571,7 +566,7 @@
 </tr>
 <tr class="odd">
 <td><a href="https://toshiba.semicon-storage.com/info/TC74HC193AF_datasheet_ja_20140301.pdf?did=12347&amp;prodName=TC74HC193AF">74HC193</a></td>
-<td>4bit binary presetable counter</td>
+<td>4bit bin cnt</td>
 <td><a href="https://eleshop.jp/shop/g/gT11522/">共エレ</a></td>
 </tr>
 <tr class="even">
@@ -590,8 +585,33 @@
 <td><a href="https://www.mouser.jp/ProductDetail/Renesas-IDT/71256SA15TPGI?qs=SmUuHNCnblpoMjjkYC0fsw%3D%3D">Mouser</a></td>
 </tr>
 <tr class="odd">
+<td>NOR Flash</td>
 <td></td>
 <td></td>
+</tr>
+<tr class="even">
+<td>SST39VF200A</td>
+<td>128k x 16 bit</td>
+<td><a href="https://www.mouser.jp/ProductDetail/Microchip-Technology/SST39VF200A-70-4C-B3KE?qs=FY5l1181cfDUkmgn1A4zBw%3D%3D">Mouser</a></td>
+</tr>
+<tr class="odd">
+<td>VRAM (Dual Port SRAM)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>EEPROM</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.microchip.com/en-us/product/AT28C64B">Atmel AT28C64B</a></td>
+<td>8k x 8bit</td>
 <td></td>
 </tr>
 </tbody>
@@ -603,15 +623,7 @@
 <li>541 はピン配置が綺麗なので基板の配線が楽になる</li>
 </ul></li>
 </ul>
-<h3 id="program-rom">Program ROM</h3>
-<p><a href="https://www.mouser.jp/ProductDetail/Microchip-Technology/SST39VF200A-70-4C-B3KE?qs=FY5l1181cfDUkmgn1A4zBw%3D%3D">NOR Flash 128k x 16</a></p>
-<h3 id="sram">SRAM</h3>
-<p>x 2</p>
-<h3 id="dual-port-sram">Dual Port SRAM</h3>
-<h3 id="eeprom">EEPROM</h3>
-<p><a href="https://www.microchip.com/en-us/product/AT28C64B">Atmel AT28C64B</a></p>
-<p>8192 x 8bit</p>
-<h2 id="メモリ回路">メモリ回路</h2>
+<h2 id="プログラムメモリ">プログラムメモリ</h2>
 <ul>
 <li>アドレス/16</li>
 <li>入出力バス/16</li>
@@ -625,17 +637,6 @@
 <h2 id="alu">ALU</h2>
 <h2 id="id">ID</h2>
 <h2 id="pfc">PFC</h2>
-<h3 id="hc193">74HC193</h3>
-<ul>
-<li>CLR</li>
-<li>A ~ D</li>
-<li>LOAD</li>
-<li>COUNT UP</li>
-<li>COUNT DOWN</li>
-<li>QA ~ QD</li>
-<li>CARRY</li>
-<li>BORROW</li>
-</ul>
 <h3 id="タイミングチャート">タイミングチャート</h3>
 <ul>
 <li>ジャンプなし
@@ -646,6 +647,11 @@
 <ul>
 <li>DATA INPUT に次のアドレスをセットして、!LOAD に NEGEDGE を入れる</li>
 </ul></li>
+</ul>
+<h2 id="部品メモ">部品メモ</h2>
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-01137/">ボックスピンヘッダ</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/gC-08931/">フラットケーブル</a></li>
 </ul>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
