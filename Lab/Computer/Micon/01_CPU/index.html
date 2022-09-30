@@ -496,17 +496,14 @@
             <nav><ul>
 <li><a href="#レジスタ">レジスタ</a></li>
 <li><a href="#命令セット">命令セット</a><ul>
-<li><a href="#演算">演算</a></li>
-<li><a href="#メモリアクセス">メモリアクセス</a></li>
-<li><a href="#条件分岐">条件分岐</a></li>
-<li><a href="#分岐とジャンプの違い">分岐とジャンプの違い</a></li>
+<li><a href="#演算の種類">演算の種類</a></li>
 <li><a href="#割り込み">割り込み</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a><ul>
 <li><a href="#レジスタ-1">レジスタ</a></li>
 <li><a href="#io">IO</a></li>
 <li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
-<li><a href="#rom-eeprom">ROM (EEPROM)</a></li>
+<li><a href="#program-rom-nor-flash">Program ROM (NOR Flash)</a></li>
 <li><a href="#ram-sram">RAM (SRAM)</a></li>
 </ul></li>
 <li><a href="#回路">回路</a><ul>
@@ -684,13 +681,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="演算">演算</h3>
+<h3 id="演算の種類">演算の種類</h3>
 <table>
 <thead>
 <tr class="header">
-<th></th>
+<th>func</th>
 <th>演算</th>
-<th></th>
+<th>func</th>
 <th>演算</th>
 </tr>
 </thead>
@@ -733,21 +730,6 @@
 </tr>
 </tbody>
 </table>
-<h3 id="メモリアクセス">メモリアクセス</h3>
-<p>rs1 を zero レジスタとすることで、絶対参照ができる。</p>
-<h3 id="条件分岐">条件分岐</h3>
-<p>ALU で減算 r[rs1] - r[rs2] を行い、その結果で分岐判定をします。</p>
-<p>分岐先アドレスは、現在の PC に即値を足したアドレスです。</p>
-<p>即値は符号拡張するので、マイナスのアドレスにも分岐できます。</p>
-<p>分岐条件は、</p>
-<ol type="1">
-<li><p>一致（r[rs1] == r[rs2]）</p>
-<p>演算結果の全 bit の nor を取る（全部 0 のときだけ 1）</p></li>
-<li><p>未満（r[rs1] &lt; r[rs2]）</p>
-<p>演算結果の符号 bit（負の場合は 1）</p></li>
-</ol>
-<h3 id="分岐とジャンプの違い">分岐とジャンプの違い</h3>
-<p>分岐は関数内での if 文に、ジャンプは goto または関数呼び出しに対応する。if の分岐先は近いアドレスであるが、関数呼び出しは遠いアドレスであることも多い。また、関数呼び出しは戻りアドレスを記憶しておく必要がある。条件分岐はコンパイラで相対位置を決める。goto や関数呼び出しはリンカがラベルに対してアドレスを付与する。</p>
 <h3 id="割り込み">割り込み</h3>
 <p>割り込みとしてエラー処理を行う。</p>
 <p>エラーコードを状態レジスタにセットし割り込み。</p>
@@ -797,13 +779,6 @@
 </ul>
 <h3 id="io">IO</h3>
 <p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、別のデバイスにスイッチする。各 IO に必要なパラメタ数がわからないので、仮です。</p>
-<h4 id="gpio">GPIO</h4>
-<h4 id="adc">ADC</h4>
-<h4 id="dac">DAC</h4>
-<h4 id="pwm">PWM</h4>
-<h4 id="uart">UART</h4>
-<h4 id="spi">SPI</h4>
-<h4 id="i2c">I2C</h4>
 <h3 id="vram-dual-access-sram">VRAM (Dual access SRAM)</h3>
 <p>表示の候補として、</p>
 <ul>
@@ -811,7 +786,7 @@
 <li>300 x 400 画素 : 白黒 2 段階 (1bit)</li>
 <li>テキスト表示（フォントを EEPROM に置いておく）</li>
 </ul>
-<h3 id="rom-eeprom">ROM (EEPROM)</h3>
+<h3 id="program-rom-nor-flash">Program ROM (NOR Flash)</h3>
 <h3 id="ram-sram">RAM (SRAM)</h3>
 <h2 id="回路">回路</h2>
 <p><img src="img/arch.dio.svg" /></p>
@@ -928,8 +903,7 @@
 <h4 id="デコーダ回路">デコーダ回路</h4>
 <p><img src="img/decoder.dio.svg" /></p>
 <h3 id="pfc">PFC</h3>
-<p>プログラムフローコントローラ。</p>
-<p>ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理する。</p>
+<p>プログラムフローコントローラ。ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理します。</p>
 <p><img src="img/pfc.dio.svg" /></p>
 <h4 id="動作-1">動作：</h4>
 <table>
@@ -958,6 +932,14 @@
 </tr>
 </tbody>
 </table>
+<h4 id="条件分岐の実装">条件分岐の実装</h4>
+<p>ALU で減算 r[rs1] - r[rs2] を行い、その結果で分岐判定をします。</p>
+<ol type="1">
+<li><p>一致（r[rs1] == r[rs2]）</p>
+<p>演算結果の全 bit の nor を取る（全部 0 のときだけ 1）</p></li>
+<li><p>未満（r[rs1] &lt; r[rs2]）</p>
+<p>演算結果の符号 bit（負の場合は 1）</p></li>
+</ol>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
