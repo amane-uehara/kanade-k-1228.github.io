@@ -586,40 +586,6 @@
 </table>
 <h2 id="命令セット">命令セット</h2>
 <p><img src="img/isa.png" /></p>
-<p><code>r[x0]</code> はレジスタ x0 の値を、<code>m[xx]</code> はメモリの xx 番地の値を意味します。</p>
-<p><code>i(x)</code> は x bit の即値を、<code>is</code> は符号拡張する即値を意味します。</p>
-<h4 id="符号拡張とは">符号拡張とは</h4>
-<p>4bit の符号付き整数を 8bit にしたい場合、正の数は 0 を埋めればいいですが、負の数は 1 を埋める必要になります。符号付き整数の符号は、最上位 bit で表されるので、一般に、符号付き整数の bit 長を伸ばしたい場合、最上位ビットで埋める必要があります。これが符号拡張です。</p>
-<table>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>0000</td>
-<td>0001</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>↑↑↑←</td>
-<td><strong>0</strong>001</td>
-</tr>
-<tr class="odd">
-<td>0</td>
-<td></td>
-<td>0000</td>
-</tr>
-<tr class="even">
-<td>-1</td>
-<td>↓↓↓←</td>
-<td><strong>1</strong>111</td>
-</tr>
-<tr class="odd">
-<td>-1</td>
-<td>1111</td>
-<td>1111</td>
-</tr>
-</tbody>
-</table>
-<p>RISC-K では RISC-V に倣って、命令の即値の最上位 bit の位置を揃えることで、符号拡張のハードウェアを単純にします。</p>
 <table>
 <colgroup>
 <col style="width: 12%" />
@@ -686,6 +652,40 @@
 </tr>
 </tbody>
 </table>
+<p><code>r[x0]</code> はレジスタ x0 の値を、<code>m[xx]</code> はメモリの xx 番地の値を意味します。</p>
+<p><code>i(x)</code> は x bit の即値を、<code>is</code> は符号拡張する即値を意味します。</p>
+<h4 id="符号拡張とは">符号拡張とは</h4>
+<p>4bit の符号付き整数を 8bit にしたい場合、正の数は 0 を埋めればいいですが、負の数は 1 を埋める必要になります。符号付き整数の符号は、最上位 bit で表されるので、一般に、符号付き整数の bit 長を伸ばしたい場合、最上位ビットで埋める必要があります。これが符号拡張です。</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0000</td>
+<td>0001</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>↑↑↑←</td>
+<td><strong>0</strong>001</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td></td>
+<td>0000</td>
+</tr>
+<tr class="even">
+<td>-1</td>
+<td>↓↓↓←</td>
+<td><strong>1</strong>111</td>
+</tr>
+<tr class="odd">
+<td>-1</td>
+<td>1111</td>
+<td>1111</td>
+</tr>
+</tbody>
+</table>
+<p>RISC-K では RISC-V に倣って、命令の即値の最上位 bit の位置を揃えることで、符号拡張のハードウェアを単純にします。</p>
 <h3 id="演算">演算</h3>
 <table>
 <thead>
@@ -805,9 +805,7 @@
 <li>4bit でアクセスする → ISA でビットを節約できる</li>
 </ul>
 <h3 id="io">IO</h3>
-<p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。</p>
-<p>このアドレスへのメモリアドレスは、別のデバイスにスイッチする。</p>
-<p>各 IO に必要なパラメタ数がわからないので、仮です。</p>
+<p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、別のデバイスにスイッチする。各 IO に必要なパラメタ数がわからないので、仮です。</p>
 <h4 id="gpio">GPIO</h4>
 <h4 id="adc">ADC</h4>
 <h4 id="dac">DAC</h4>
@@ -828,6 +826,7 @@
 <p><img src="img/arch.dio.svg" /></p>
 <h3 id="id">ID</h3>
 <p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
+<p><img src="img/decode.dio.svg" /></p>
 <h4 id="動作">動作：</h4>
 <p>4 クロックで 1 命令を実行する。</p>
 <ol start="0" type="1">
@@ -924,7 +923,6 @@
 </tbody>
 </table>
 <p>- は何でも大丈夫（なはず）</p>
-<p><img src="img/decode.dio.svg" /></p>
 <h4 id="タイミングチャート">タイミングチャート：</h4>
 <ol start="0" type="1">
 <li>PC のカウントアップ</li>
