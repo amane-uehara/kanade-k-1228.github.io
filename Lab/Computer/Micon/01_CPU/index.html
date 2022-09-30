@@ -501,8 +501,6 @@
 <li><a href="#条件分岐">条件分岐</a></li>
 <li><a href="#分岐とジャンプの違い">分岐とジャンプの違い</a></li>
 <li><a href="#割り込み">割り込み</a></li>
-<li><a href="#割り込み-1">割り込み</a></li>
-<li><a href="#実行時エラー">実行時エラー</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a><ul>
 <li><a href="#レジスタ-1">レジスタ</a></li>
@@ -633,22 +631,22 @@
 <td></td>
 </tr>
 <tr class="even">
+<td>ジャンプ</td>
+<td>jump rd, rs1, i(16)</td>
+<td>r[rd] = PC + 1, PC = r[rs1] + i(16)</td>
+<td>戻りアドレスを rd に保存 &amp; PC をジャンプ</td>
+</tr>
+<tr class="odd">
 <td>条件分岐（＝）</td>
 <td>be rs1, rs2, i(16)</td>
 <td>if(r[rs1]=r[rs2]) PC = is(16)</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>条件分岐（＜）</td>
 <td>bl rs1, rs2, i(16)</td>
 <td>if(r[rs1]&lt;r[rs2]) PC = is(16)</td>
 <td></td>
-</tr>
-<tr class="even">
-<td>ジャンプ</td>
-<td>jump rd, rs1, i(16)</td>
-<td>r[rd] = PC + 1, PC = r[rs1] + i(16)</td>
-<td>戻りアドレスを rd に保存 &amp; PC をジャンプ</td>
 </tr>
 </tbody>
 </table>
@@ -737,7 +735,6 @@
 </table>
 <h3 id="メモリアクセス">メモリアクセス</h3>
 <p>rs1 を zero レジスタとすることで、絶対参照ができる。</p>
-<p>12bit より広い範囲を参照したい場合は即値ロードを使う。</p>
 <h3 id="条件分岐">条件分岐</h3>
 <p>ALU で減算 r[rs1] - r[rs2] を行い、その結果で分岐判定をします。</p>
 <p>分岐先アドレスは、現在の PC に即値を足したアドレスです。</p>
@@ -752,12 +749,6 @@
 <h3 id="分岐とジャンプの違い">分岐とジャンプの違い</h3>
 <p>分岐は関数内での if 文に、ジャンプは goto または関数呼び出しに対応する。if の分岐先は近いアドレスであるが、関数呼び出しは遠いアドレスであることも多い。また、関数呼び出しは戻りアドレスを記憶しておく必要がある。条件分岐はコンパイラで相対位置を決める。goto や関数呼び出しはリンカがラベルに対してアドレスを付与する。</p>
 <h3 id="割り込み">割り込み</h3>
-<blockquote>
-<p>intr xxxxx</p>
-</blockquote>
-<p>割り込みフラグを設定する。</p>
-<h3 id="割り込み-1">割り込み</h3>
-<h3 id="実行時エラー">実行時エラー</h3>
 <p>割り込みとしてエラー処理を行う。</p>
 <p>エラーコードを状態レジスタにセットし割り込み。</p>
 <ul>
@@ -830,10 +821,10 @@
 <h4 id="動作">動作：</h4>
 <p>4 クロックで 1 命令を実行する。</p>
 <ol start="0" type="1">
-<li>PC のカウントアップ</li>
 <li>メモリを読み出し、RS1 に記録</li>
 <li>メモリを読み出し、RS2 に記録</li>
 <li>メモリに書き込み</li>
+<li>PC のカウントアップ</li>
 </ol>
 <table>
 <thead>
@@ -894,6 +885,15 @@
 <td>RD</td>
 </tr>
 <tr class="even">
+<td>jump</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>PC</td>
+<td>RS1</td>
+<td>-</td>
+<td>RD</td>
+</tr>
+<tr class="odd">
 <td>be</td>
 <td>SUB</td>
 <td>RS2</td>
@@ -902,7 +902,7 @@
 <td>RS2</td>
 <td>0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>bl</td>
 <td>SUB</td>
 <td>RS2</td>
@@ -910,15 +910,6 @@
 <td>RS1</td>
 <td>RS2</td>
 <td>0</td>
-</tr>
-<tr class="even">
-<td>jump</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>PC</td>
-<td>RS1</td>
-<td>-</td>
-<td>RD</td>
 </tr>
 </tbody>
 </table>
