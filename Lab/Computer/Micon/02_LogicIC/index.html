@@ -503,13 +503,17 @@
 </ul></li>
 <li><a href="#alu">ALU</a></li>
 <li><a href="#id">ID</a></li>
-<li><a href="#pfc">PFC</a></li>
+<li><a href="#pfc">PFC</a><ul>
+<li><a href="#hc193">74HC193</a></li>
+<li><a href="#タイミングチャート">タイミングチャート</a></li>
+</ul></li>
 </ul></nav>
        <h2 id="使えそうな部品">使えそうな部品</h2>
+<p><a href="https://eleshop.jp/shop/pages/search_74.aspx">共エレ 74</a></p>
 <table>
 <thead>
 <tr class="header">
-<th>74</th>
+<th>品番</th>
 <th>機能</th>
 <th>通販</th>
 </tr>
@@ -570,13 +574,39 @@
 <td>4bit binary presetable counter</td>
 <td><a href="https://eleshop.jp/shop/g/gT11522/">共エレ</a></td>
 </tr>
+<tr class="even">
+<td><a href="https://toshiba.semicon-storage.com/info/TC74HC191AF_datasheet_ja_20140301.pdf?did=12133&amp;prodName=TC74HC191AF">74HC191</a></td>
+<td></td>
+<td><a href="https://eleshop.jp/shop/g/gT11520/">共エレ</a></td>
+</tr>
+<tr class="odd">
+<td>SRAM</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><a href="https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71256sa-50v-32k-x-8-asynchronous-static-ram">Renesas 71256SA</a></td>
+<td>64k x 16 bit dip</td>
+<td><a href="https://www.mouser.jp/ProductDetail/Renesas-IDT/71256SA15TPGI?qs=SmUuHNCnblpoMjjkYC0fsw%3D%3D">Mouser</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<ul>
+<li>MUX を 3 ステートで作るか、MUX の IC で作るか問題
+<ul>
+<li>157 は A/B の選択に加え、出力を 0 にする ST ピンがある</li>
+<li>541 はピン配置が綺麗なので基板の配線が楽になる</li>
+</ul></li>
+</ul>
 <h3 id="program-rom">Program ROM</h3>
 <p><a href="https://www.mouser.jp/ProductDetail/Microchip-Technology/SST39VF200A-70-4C-B3KE?qs=FY5l1181cfDUkmgn1A4zBw%3D%3D">NOR Flash 128k x 16</a></p>
 <h3 id="sram">SRAM</h3>
-<p>64k x 16</p>
-<p><a href="https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71256sa-50v-32k-x-8-asynchronous-static-ram">Renesas 71256SA</a></p>
+<p>x 2</p>
 <h3 id="dual-port-sram">Dual Port SRAM</h3>
 <h3 id="eeprom">EEPROM</h3>
 <p><a href="https://www.microchip.com/en-us/product/AT28C64B">Atmel AT28C64B</a></p>
@@ -595,6 +625,28 @@
 <h2 id="alu">ALU</h2>
 <h2 id="id">ID</h2>
 <h2 id="pfc">PFC</h2>
+<h3 id="hc193">74HC193</h3>
+<ul>
+<li>CLR</li>
+<li>A ~ D</li>
+<li>LOAD</li>
+<li>COUNT UP</li>
+<li>COUNT DOWN</li>
+<li>QA ~ QD</li>
+<li>CARRY</li>
+<li>BORROW</li>
+</ul>
+<h3 id="タイミングチャート">タイミングチャート</h3>
+<ul>
+<li>ジャンプなし
+<ul>
+<li>COUNT UP に POSEDGE を入れる</li>
+</ul></li>
+<li>ジャンプあり
+<ul>
+<li>DATA INPUT に次のアドレスをセットして、!LOAD に NEGEDGE を入れる</li>
+</ul></li>
+</ul>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
