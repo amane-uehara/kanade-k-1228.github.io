@@ -52,14 +52,14 @@ date: 2022-09-27
 
 ### 演算の種類
 
-| func | 演算  | func | 演算                      |
-| ---- | ----- | ---- | ------------------------- |
-| 0    | + add | 6    | < less than               |
-| 1    | - sub | 7    | < less than unsigned      |
-| 2    | & and | 8    | >> shift left logical     |
-| 3    | \| or | 9    | >> shift left arithmetic  |
-| 4    | ^ xor | A    | << shift right logical    |
-| 5    | ~ not | B    | << shift right arithmetic |
+| No  |     | 演算 | No  |     | 演算                  |
+| --- | --- | ---- | --- | --- | --------------------- | ------------------------------ |
+| 0   | +   | add  | 6   | <   | less than             |                                |
+| 1   | -   | sub  | 7   | <   | less than unsigned    | 符号なしで比較                 |
+| 2   | &   | and  | 8   | >>  | shift left logical    | 上位ビットを符号ビットで埋める |
+| 3   | \|  | or   | 9   | >>  | shift left arithmetic | 上位ビットを 0 で埋めする      |
+| 4   | ^   | xor  | A   | <<  | shift right           | 下位ビットは 0 で埋める        |
+| 5   | ~   | not  | B   |     |                       |                                |
 
 ### 割り込み
 
