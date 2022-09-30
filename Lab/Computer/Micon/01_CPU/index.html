@@ -503,16 +503,15 @@
 <li><a href="#レジスタ-1">レジスタ</a></li>
 <li><a href="#io">IO</a></li>
 <li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
-<li><a href="#program-rom-nor-flash">Program ROM (NOR Flash)</a></li>
 <li><a href="#ram-sram">RAM (SRAM)</a></li>
+<li><a href="#program-rom-nor-flash">Program ROM (NOR Flash)</a></li>
 </ul></li>
 <li><a href="#回路">回路</a><ul>
 <li><a href="#id">ID</a></li>
 <li><a href="#pfc">PFC</a></li>
 </ul></li>
 </ul></nav>
-       <p>RISC-V をベースに、16bit 向けに小細工をしました。</p>
-<h2 id="レジスタ">レジスタ</h2>
+       <h2 id="レジスタ">レジスタ</h2>
 <p>0x00 ~ 0x3F まで 64 本のレジスタ。</p>
 <table>
 <thead>
@@ -747,27 +746,27 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>0000 ~ 000F</td>
+<td>0x0000 - 0x003F</td>
 <td>レジスタ</td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
+<td>0x0040 - 0x00FF</td>
+<td>-</td>
 </tr>
 <tr class="odd">
-<td></td>
+<td>0x0100 - 0x01FF</td>
 <td>IO</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>VRAM</td>
+<td>0x0200 - 0x0FFF</td>
+<td>-</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>EEPROM</td>
+<td>0x1000 - 0x2FFF</td>
+<td>VRAM</td>
 </tr>
 <tr class="even">
-<td></td>
+<td>0x3FFF - 0xFFFF</td>
 <td>RAM</td>
 </tr>
 </tbody>
@@ -775,19 +774,18 @@
 <h3 id="レジスタ-1">レジスタ</h3>
 <ul>
 <li>実体としては、SRAM の一部分</li>
-<li>4bit でアクセスする → ISA でビットを節約できる</li>
+<li>6bit でアクセスする → ISA でビットを節約できる</li>
 </ul>
 <h3 id="io">IO</h3>
-<p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、別のデバイスにスイッチする。各 IO に必要なパラメタ数がわからないので、仮です。</p>
+<p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、デバイスにスイッチ。</p>
 <h3 id="vram-dual-access-sram">VRAM (Dual access SRAM)</h3>
 <p>表示の候補として、</p>
 <ul>
-<li>300 x 400 画素 : RGB 4 段階 (6bit)</li>
-<li>300 x 400 画素 : 白黒 2 段階 (1bit)</li>
+<li>300 x 400 画素 x 白黒 2 段階 (1bit) = 120000 bit ~ 16bit x 8k</li>
 <li>テキスト表示（フォントを EEPROM に置いておく）</li>
 </ul>
-<h3 id="program-rom-nor-flash">Program ROM (NOR Flash)</h3>
 <h3 id="ram-sram">RAM (SRAM)</h3>
+<h3 id="program-rom-nor-flash">Program ROM (NOR Flash)</h3>
 <h2 id="回路">回路</h2>
 <p><img src="img/arch.dio.svg" /></p>
 <h3 id="id">ID</h3>
