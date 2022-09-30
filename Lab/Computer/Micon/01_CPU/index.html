@@ -516,6 +516,7 @@
 </ul></nav>
        <p>RISC-V をベースに、16bit 向けに小細工をしました。</p>
 <h2 id="レジスタ">レジスタ</h2>
+<p>0x00 ~ 0x3F まで 64 本のレジスタ。</p>
 <table>
 <thead>
 <tr class="header">
@@ -527,43 +528,43 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>x0</td>
+<td>0x00</td>
 <td>zero</td>
 <td>ゼロ固定</td>
 <td>-</td>
 </tr>
 <tr class="even">
-<td>x1</td>
+<td>0x01</td>
 <td>ra</td>
 <td>戻りアドレス</td>
 <td>✕</td>
 </tr>
 <tr class="odd">
-<td>x2</td>
+<td>0x02</td>
 <td>sp</td>
 <td>スタック・ポインタ</td>
 <td>〇</td>
 </tr>
 <tr class="even">
-<td>x3</td>
+<td>0x03</td>
 <td>gp</td>
 <td>グローバル・ポインタ</td>
 <td>〇</td>
 </tr>
 <tr class="odd">
-<td>x4-7</td>
+<td>0x10 - 0x1F</td>
 <td>s0-3</td>
 <td>保存レジスタ</td>
 <td>〇</td>
 </tr>
 <tr class="even">
-<td>x8-11</td>
+<td>0x20 - 0x2F</td>
 <td>t0-3</td>
 <td>一時レジスタ</td>
 <td>✕</td>
 </tr>
 <tr class="odd">
-<td>x12-15</td>
+<td>0x30 - 0x3F</td>
 <td>a0-3</td>
 <td>引数・返値</td>
 <td>✕</td>
@@ -609,13 +610,13 @@
 <tr class="even">
 <td>即値演算</td>
 <td>addi rd, rs1, is(12)</td>
-<td>r[rd] = r[rs1] + i(16)</td>
+<td>r[rd] = r[rs1] + is(12)</td>
 <td>12bit の即値と演算</td>
 </tr>
 <tr class="odd">
 <td>ロード</td>
 <td>load rd, rs1, i(16)</td>
-<td>r[rd] = m[r[rs1]+i(16)]</td>
+<td>r[rd] = m[r[rs1] + i(16)]</td>
 <td>rs1 = zero で絶対参照</td>
 </tr>
 <tr class="even">
@@ -639,18 +640,18 @@
 <tr class="odd">
 <td>条件分岐（＝）</td>
 <td>be rs1, rs2, i(16)</td>
-<td>if(r[rs1]=r[rs2]) PC = is(16)</td>
+<td>if(r[rs1]=r[rs2]) PC = i(16)</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>条件分岐（＜）</td>
 <td>bl rs1, rs2, i(16)</td>
-<td>if(r[rs1]&lt;r[rs2]) PC = is(16)</td>
+<td>if(r[rs1]&lt;r[rs2]) PC = i(16)</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p><code>r[x0]</code> はレジスタ x0 の値を、<code>m[xx]</code> はメモリの xx 番地の値を意味します。</p>
+<p><code>r[x]</code> はレジスタ x の値を、<code>m[x]</code> はメモリの x 番地の値を意味します。</p>
 <p><code>i(x)</code> は x bit の即値を、<code>is</code> は符号拡張する即値を意味します。</p>
 <h4 id="符号拡張とは">符号拡張とは</h4>
 <p>4bit の符号付き整数を 8bit にしたい場合、正の数は 0 を埋めればいいですが、負の数は 1 を埋める必要になります。符号付き整数の符号は、最上位 bit で表されるので、一般に、符号付き整数の bit 長を伸ばしたい場合、最上位ビットで埋める必要があります。これが符号拡張です。</p>
@@ -683,7 +684,6 @@
 </tr>
 </tbody>
 </table>
-<p>RISC-K では RISC-V に倣って、命令の即値の最上位 bit の位置を揃えることで、符号拡張のハードウェアを単純にします。</p>
 <h3 id="演算">演算</h3>
 <table>
 <thead>
@@ -691,45 +691,45 @@
 <th></th>
 <th>演算</th>
 <th></th>
-<th></th>
+<th>演算</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>+</td>
-<td>add</td>
-<td>&lt;</td>
-<td>less than</td>
+<td>0</td>
+<td>+ add</td>
+<td>6</td>
+<td>&lt; less than</td>
 </tr>
 <tr class="even">
-<td>-</td>
-<td>sub</td>
-<td>&lt;</td>
-<td>less than unsigned</td>
+<td>1</td>
+<td>- sub</td>
+<td>7</td>
+<td>&lt; less than unsigned</td>
 </tr>
 <tr class="odd">
-<td>&amp;</td>
-<td>and</td>
-<td>&gt;&gt;</td>
-<td>shift left logical</td>
+<td>2</td>
+<td>&amp; and</td>
+<td>8</td>
+<td>&gt;&gt; shift left logical</td>
 </tr>
 <tr class="even">
-<td>|</td>
-<td>or</td>
-<td>&gt;&gt;</td>
-<td>shift left arithmetic</td>
+<td>3</td>
+<td>| or</td>
+<td>9</td>
+<td>&gt;&gt; shift left arithmetic</td>
 </tr>
 <tr class="odd">
-<td>^</td>
-<td>xor</td>
-<td>&lt;&lt;</td>
-<td>shift right logical</td>
+<td>4</td>
+<td>^ xor</td>
+<td>A</td>
+<td>&lt;&lt; shift right logical</td>
 </tr>
 <tr class="even">
-<td>~</td>
-<td>not</td>
-<td>&lt;&lt;</td>
-<td>shift right arithmetic</td>
+<td>5</td>
+<td>~ not</td>
+<td>B</td>
+<td>&lt;&lt; shift right arithmetic</td>
 </tr>
 </tbody>
 </table>
