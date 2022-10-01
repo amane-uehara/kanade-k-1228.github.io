@@ -508,6 +508,7 @@
 </ul></li>
 <li><a href="#回路">回路</a><ul>
 <li><a href="#id">ID</a></li>
+<li><a href="#クロック">クロック</a></li>
 <li><a href="#pfc">PFC</a></li>
 </ul></li>
 </ul></nav>
@@ -700,7 +701,7 @@
 <td>add</td>
 <td>6</td>
 <td>&lt;</td>
-<td>less than</td>
+<td>lt (less than)</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -709,8 +710,8 @@
 <td>sub</td>
 <td>7</td>
 <td>&lt;</td>
-<td>less than unsigned</td>
-<td>符号なしで比較</td>
+<td>ltu (less than unsigned)</td>
+<td>符号なし整数として比較</td>
 </tr>
 <tr class="odd">
 <td>2</td>
@@ -718,7 +719,7 @@
 <td>and</td>
 <td>8</td>
 <td>&gt;&gt;</td>
-<td>shift left logical</td>
+<td>rsl (right shift logical)</td>
 <td>上位ビットを符号ビットで埋める</td>
 </tr>
 <tr class="even">
@@ -727,7 +728,7 @@
 <td>or</td>
 <td>9</td>
 <td>&gt;&gt;</td>
-<td>shift left arithmetic</td>
+<td>rsa (right shift arithmetic)</td>
 <td>上位ビットを 0 で埋めする</td>
 </tr>
 <tr class="odd">
@@ -736,8 +737,8 @@
 <td>xor</td>
 <td>A</td>
 <td>&lt;&lt;</td>
-<td>shift right</td>
-<td>下位ビットは 0 で埋める</td>
+<td>ls (left shift)</td>
+<td>left shift 下位ビットは 0 で埋める</td>
 </tr>
 <tr class="even">
 <td>5</td>
@@ -907,20 +908,9 @@
 </tr>
 </tbody>
 </table>
-<p>- は何でも大丈夫（なはず）</p>
-<h4 id="タイミングチャート">タイミングチャート：</h4>
-<ol start="0" type="1">
-<li>PC のカウントアップ</li>
-<li><p>S1 のロード</p>
-<p>アドレスに RS1 をセットします。</p></li>
-<li><p>S2 のロード</p></li>
-</ol>
-<p>ALU の 2 つの入力を S1,S2 レジスタにセットします。</p>
-<ol start="3" type="1">
-<li>実行</li>
-</ol>
-<h4 id="デコーダ回路">デコーダ回路</h4>
 <p><img src="img/decoder.dio.svg" /></p>
+<h3 id="クロック">クロック</h3>
+<p><img src="img/timing.dio.svg" /></p>
 <h3 id="pfc">PFC</h3>
 <p>プログラムフローコントローラ。ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理します。</p>
 <p><img src="img/pfc.dio.svg" /></p>
