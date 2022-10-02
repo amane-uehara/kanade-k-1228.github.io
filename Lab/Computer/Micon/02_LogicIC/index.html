@@ -493,13 +493,15 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#使えそうな部品">使えそうな部品</a></li>
-<li><a href="#プログラムメモリ">プログラムメモリ</a><ul>
-<li><a href="#書き込み回路">書き込み回路</a></li>
+<li><a href="#ram">RAM</a></li>
+<li><a href="#rom">ROM</a><ul>
+<li><a href="#rom-ライタ">ROM ライタ</a></li>
 </ul></li>
 <li><a href="#alu">ALU</a></li>
 <li><a href="#id">ID</a></li>
-<li><a href="#pfc">PFC</a><ul>
-<li><a href="#タイミングチャート">タイミングチャート</a></li>
+<li><a href="#pfc">PFC</a></li>
+<li><a href="#クロック">クロック</a><ul>
+<li><a href="#ステートカウンタ">ステートカウンタ</a></li>
 </ul></li>
 <li><a href="#部品メモ">部品メモ</a></li>
 </ul></nav>
@@ -614,24 +616,62 @@
 </ul></li>
 </ul>
 <p>入手性を考えて、できるだけ少ない種類で実装したい。 高機能 IC は入手性が悪いので単純な IC で作りたい。</p>
-<h2 id="プログラムメモリ">プログラムメモリ</h2>
+<h2 id="ram">RAM</h2>
+<p><a href="https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71v016-33v-64k-x-16-bit-asynchronous-static-ram">Renesas 64K x 16 SRAM 71V016</a> （<a href="https://www.renesas.com/jp/en/document/dst/71v016sa-datasheet?r=13422">データシート</a>）</p>
+<p>これをメインメモリにします。ふつうの SRAM です。SRAM といってもフリップフロップが大量に並んでるだけなので、使い方は単純です。</p>
 <ul>
-<li>アドレス/16</li>
-<li>入出力バス/16</li>
-<li>R/W 信号</li>
-<li>書き込みクロック信号</li>
-<li>リセット信号</li>
+<li>Note
+<ul>
+<li>出力は最大 50mA</li>
+<li>!CS=1 で Z 出力</li>
+<li>TSOP</li>
+<li>3.3V</li>
+</ul></li>
+<li>READ
+<ul>
+<li>!WE=1, !CS=0, !OE=0, !BHE=0, !BLE=0</li>
+<li>ADDRESS にアドレスを書き込めば、</li>
+<li>tAA &lt; 10ns でデータが出力される</li>
+</ul></li>
+<li>WRITE
+<ul>
+<li>!CS=0, !OE=1, !BHE=0, !BLE=0</li>
+<li>ADDRESS と DATA にセットします</li>
+<li>!WE の立ち上がりでデータが保存されます</li>
+</ul></li>
 </ul>
-<p>アドレスの一部が別のデバイスに割り当てられているので、スイッチする必要がある。</p>
-<h3 id="書き込み回路">書き込み回路</h3>
-<p>プログラムメモリと定数メモリの EEPROM に書き込み回路</p>
+<h2 id="rom">ROM</h2>
+<p><a href="https://www.microchip.com/en-us/product/SST39VF200A">Microchip 2Mb Flash SST39VF200A</a> （<a href="https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/25001A.pdf">データシート</a>）</p>
+<ul>
+<li>Note
+<ul>
+<li>3.3V</li>
+<li>TSOP</li>
+</ul></li>
+<li>READ
+<ul>
+<li>!CE=0, !OE=0</li>
+<li>ADDRESS を入力すると</li>
+<li>TAA &lt; 55ns でデータが出力される</li>
+</ul></li>
+<li>WRITE
+<ul>
+<li>コントローラにコマンドを送る必要がある</li>
+<li>めんどいがライタでやるのでヨシ</li>
+</ul></li>
+</ul>
+<h3 id="rom-ライタ">ROM ライタ</h3>
+<p>ROM は別基板にして取り外せるようにします。</p>
+<p>ROM 基板を ROM ライタ基板に挿して Arduino で書き込みます。</p>
 <h2 id="alu">ALU</h2>
-<p>74HC181 を使って、plus・minus・not・and・or・xor の演算ができる。</p>
+<p>74181 を使って、plus・minus・not・and・or・xor の演算ができる。</p>
+<p>左シフトは 74181 の A plus A を使う</p>
 <p>シフト演算は、MUX の 0 出力を使う？</p>
-<p>左シフトは、(A and not B) plus A を使って、B = imm = 0 の lsi として実装</p>
 <h2 id="id">ID</h2>
 <h2 id="pfc">PFC</h2>
-<h3 id="タイミングチャート">タイミングチャート</h3>
+<h2 id="クロック">クロック</h2>
+<p>マイコンの心臓だが…回路は単純</p>
+<h3 id="ステートカウンタ">ステートカウンタ</h3>
 <ul>
 <li>ジャンプなし
 <ul>
