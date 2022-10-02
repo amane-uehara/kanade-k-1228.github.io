@@ -34,33 +34,66 @@ title: ロジックICで組む
 入手性を考えて、できるだけ少ない種類で実装したい。
 高機能 IC は入手性が悪いので単純な IC で作りたい。
 
-## プログラムメモリ
+## RAM
 
-- アドレス/16
-- 入出力バス/16
-- R/W 信号
-- 書き込みクロック信号
-- リセット信号
+[Renesas 64K x 16 SRAM 71V016](https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71v016-33v-64k-x-16-bit-asynchronous-static-ram)
+（[データシート](https://www.renesas.com/jp/en/document/dst/71v016sa-datasheet?r=13422)）
 
-アドレスの一部が別のデバイスに割り当てられているので、スイッチする必要がある。
+これをメインメモリにします。ふつうの SRAM です。SRAM といってもフリップフロップが大量に並んでるだけなので、使い方は単純です。
 
-### 書き込み回路
+- Note
+  - 出力は最大 50mA
+  - !CS=1 で Z 出力
+  - TSOP
+  - 3.3V
+- READ
+  - !WE=1, !CS=0, !OE=0, !BHE=0, !BLE=0
+  - ADDRESS にアドレスを書き込めば、
+  - tAA < 10ns でデータが出力される
+- WRITE
+  - !CS=0, !OE=1, !BHE=0, !BLE=0
+  - ADDRESS と DATA にセットします
+  - !WE の立ち上がりでデータが保存されます
 
-プログラムメモリと定数メモリの EEPROM に書き込み回路
+## ROM
+
+[Microchip 2Mb Flash SST39VF200A](https://www.microchip.com/en-us/product/SST39VF200A)
+（[データシート](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/25001A.pdf)）
+
+- Note
+  - 3.3V
+  - TSOP
+- READ
+  - !CE=0, !OE=0
+  - ADDRESS を入力すると
+  - TAA < 55ns でデータが出力される
+- WRITE
+  - コントローラにコマンドを送る必要がある
+  - めんどいがライタでやるのでヨシ
+
+### ROM ライタ
+
+ROM は別基板にして取り外せるようにします。
+
+ROM 基板を ROM ライタ基板に挿して Arduino で書き込みます。
 
 ## ALU
 
-74HC181 を使って、plus・minus・not・and・or・xor の演算ができる。
+74181 を使って、plus・minus・not・and・or・xor の演算ができる。
+
+左シフトは 74181 の A plus A を使う
 
 シフト演算は、MUX の 0 出力を使う？
-
-左シフトは、(A and not B) plus A を使って、B = imm = 0 の lsi として実装
 
 ## ID
 
 ## PFC
 
-### タイミングチャート
+## クロック
+
+マイコンの心臓だが…回路は単純
+
+### ステートカウンタ
 
 - ジャンプなし
   - COUNT UP に POSEDGE を入れる
