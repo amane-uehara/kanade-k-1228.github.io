@@ -493,9 +493,10 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#使えそうな部品">使えそうな部品</a></li>
-<li><a href="#ram">RAM</a></li>
-<li><a href="#rom">ROM</a><ul>
+<li><a href="#ram">RAM</a><ul>
 <li><a href="#io">IO</a></li>
+</ul></li>
+<li><a href="#rom">ROM</a><ul>
 <li><a href="#rom-ライタ">ROM ライタ</a></li>
 </ul></li>
 <li><a href="#alu">ALU</a></li>
@@ -602,6 +603,8 @@
 <li>!WE の立ち上がりでデータが保存されます</li>
 </ul></li>
 </ul>
+<h3 id="io">IO</h3>
+<p>IO 領域のアドレスが指定された場合、SRAM の!CE=1 にします。</p>
 <h2 id="rom">ROM</h2>
 <p><a href="https://www.microchip.com/en-us/product/SST39VF200A">Microchip 2Mb Flash SST39VF200A</a> （<a href="https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/25001A.pdf">データシート</a>）</p>
 <ul>
@@ -622,8 +625,6 @@
 <li>めんどいがライタでやるのでヨシ</li>
 </ul></li>
 </ul>
-<h3 id="io">IO</h3>
-<p>一部のアドレスで SRAM を無効にして、IO にデータをスイッチします。</p>
 <h3 id="rom-ライタ">ROM ライタ</h3>
 <p>ROM は別基板にして取り外せるようにします。</p>
 <p>ROM 基板を ROM ライタ基板に挿して Arduino で書き込みます。</p>
