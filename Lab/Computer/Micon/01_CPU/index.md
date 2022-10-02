@@ -111,14 +111,12 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 
 ![](img/decode.dio.svg)
 
-#### 動作：
-
 4 クロックで 1 命令を実行する。
 
-0. メモリを読み出し、RS1 に記録
-1. メモリを読み出し、RS2 に記録
-2. メモリに書き込み
-3. PC のカウントアップ
+1. メモリを読み出し、RS1 に記録
+2. メモリを読み出し、RS2 に記録
+3. メモリに書き込み
+4. PC のカウントアップ
 
 |       | ALU  | S2  | DIN | 1.R ADR | 2.R ADR | 3.W ADR |
 | ----- | ---- | --- | --- | ------- | ------- | ------- |
@@ -133,6 +131,8 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 
 ![](img/decoder.dio.svg)
 
+### ALU
+
 ### クロック
 
 ![](img/timing.dio.svg)
@@ -143,23 +143,9 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 
 ![](img/pfc.dio.svg)
 
-#### 動作：
-
 |      | 次の PC            |
 | ---- | ------------------ |
 | -    | PC+1               |
 | be   | ALU=0 ? IMM : PC+1 |
 | bl   | ALU>0 ? IMM : PC+1 |
 | jump | ALU                |
-
-#### 条件分岐の実装
-
-ALU で減算 r[rs1] - r[rs2] を行い、その結果で分岐判定をします。
-
-1. 一致（r[rs1] == r[rs2]）
-
-   演算結果の全 bit の nor を取る（全部 0 のときだけ 1）
-
-2. 未満（r[rs1] < r[rs2]）
-
-   演算結果の符号 bit（負の場合は 1）

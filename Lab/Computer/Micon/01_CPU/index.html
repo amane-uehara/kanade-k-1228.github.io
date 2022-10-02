@@ -508,6 +508,7 @@
 </ul></li>
 <li><a href="#回路">回路</a><ul>
 <li><a href="#id">ID</a></li>
+<li><a href="#alu">ALU</a></li>
 <li><a href="#クロック">クロック</a></li>
 <li><a href="#pfc">PFC</a></li>
 </ul></li>
@@ -813,9 +814,8 @@
 <h3 id="id">ID</h3>
 <p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
 <p><img src="img/decode.dio.svg" /></p>
-<h4 id="動作">動作：</h4>
 <p>4 クロックで 1 命令を実行する。</p>
-<ol start="0" type="1">
+<ol type="1">
 <li>メモリを読み出し、RS1 に記録</li>
 <li>メモリを読み出し、RS2 に記録</li>
 <li>メモリに書き込み</li>
@@ -909,12 +909,12 @@
 </tbody>
 </table>
 <p><img src="img/decoder.dio.svg" /></p>
+<h3 id="alu">ALU</h3>
 <h3 id="クロック">クロック</h3>
 <p><img src="img/timing.dio.svg" /></p>
 <h3 id="pfc">PFC</h3>
 <p>プログラムフローコントローラ。ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理します。</p>
 <p><img src="img/pfc.dio.svg" /></p>
-<h4 id="動作-1">動作：</h4>
 <table>
 <thead>
 <tr class="header">
@@ -941,14 +941,6 @@
 </tr>
 </tbody>
 </table>
-<h4 id="条件分岐の実装">条件分岐の実装</h4>
-<p>ALU で減算 r[rs1] - r[rs2] を行い、その結果で分岐判定をします。</p>
-<ol type="1">
-<li><p>一致（r[rs1] == r[rs2]）</p>
-<p>演算結果の全 bit の nor を取る（全部 0 のときだけ 1）</p></li>
-<li><p>未満（r[rs1] &lt; r[rs2]）</p>
-<p>演算結果の符号 bit（負の場合は 1）</p></li>
-</ol>
 
       <button class="comment-button" onclick="tweet();">コメント</button>
     </article>
