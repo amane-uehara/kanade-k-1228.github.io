@@ -47,6 +47,10 @@ title: ロジックICで組む
   - ADDRESS と DATA にセットします
   - !WE の立ち上がりでデータが保存されます
 
+### IO
+
+IO 領域のアドレスが指定された場合、SRAM の!CE=1 にします。
+
 ## ROM
 
 [Microchip 2Mb Flash SST39VF200A](https://www.microchip.com/en-us/product/SST39VF200A)
@@ -62,10 +66,6 @@ title: ロジックICで組む
 - WRITE
   - コントローラにコマンドを送る必要がある
   - めんどいがライタでやるのでヨシ
-
-### IO
-
-一部のアドレスで SRAM を無効にして、IO にデータをスイッチします。
 
 ### ROM ライタ
 
