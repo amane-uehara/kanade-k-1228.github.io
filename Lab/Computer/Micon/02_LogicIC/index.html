@@ -495,10 +495,10 @@
 <li><a href="#使えそうな部品">使えそうな部品</a></li>
 <li><a href="#ram">RAM</a></li>
 <li><a href="#rom">ROM</a><ul>
+<li><a href="#io">IO</a></li>
 <li><a href="#rom-ライタ">ROM ライタ</a></li>
 </ul></li>
 <li><a href="#alu">ALU</a></li>
-<li><a href="#id">ID</a></li>
 <li><a href="#pfc">PFC</a></li>
 <li><a href="#クロック">クロック</a><ul>
 <li><a href="#ステートカウンタ">ステートカウンタ</a></li>
@@ -566,56 +566,18 @@
 <td></td>
 <td><a href="https://eleshop.jp/shop/g/gT11520/">共エレ</a></td>
 </tr>
-<tr class="odd">
-<td>SRAM</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71256sa-50v-32k-x-8-asynchronous-static-ram">Renesas 71256SA</a></td>
-<td>64k x 16 bit dip</td>
-<td><a href="https://www.mouser.jp/ProductDetail/Renesas-IDT/71256SA15TPGI?qs=SmUuHNCnblpoMjjkYC0fsw%3D%3D">Mouser</a></td>
-</tr>
-<tr class="odd">
-<td>NOR Flash</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>SST39VF200A</td>
-<td>128k x 16 bit</td>
-<td><a href="https://www.mouser.jp/ProductDetail/Microchip-Technology/SST39VF200A-70-4C-B3KE?qs=FY5l1181cfDUkmgn1A4zBw%3D%3D">Mouser</a></td>
-</tr>
-<tr class="odd">
-<td>VRAM (Dual Port SRAM)</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>EEPROM</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="https://www.microchip.com/en-us/product/AT28C64B">Atmel AT28C64B</a></td>
-<td>8k x 8bit</td>
-<td></td>
-</tr>
 </tbody>
 </table>
 <ul>
+<li>入手性を考えて、できるだけ少ない種類で実装したい。</li>
+<li>高機能 IC は入手性が悪いので単純な IC で作りたい。</li>
 <li>MUX を 3 ステートで作るか、MUX の IC で作るか問題
 <ul>
 <li>157 は A/B の選択に加え、出力を 0 にする ST ピンがある</li>
 <li>541 はピン配置が綺麗なので基板の配線が楽になる</li>
+<li>541 は排他回路が必要</li>
 </ul></li>
 </ul>
-<p>入手性を考えて、できるだけ少ない種類で実装したい。 高機能 IC は入手性が悪いので単純な IC で作りたい。</p>
 <h2 id="ram">RAM</h2>
 <p><a href="https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71v016-33v-64k-x-16-bit-asynchronous-static-ram">Renesas 64K x 16 SRAM 71V016</a> （<a href="https://www.renesas.com/jp/en/document/dst/71v016sa-datasheet?r=13422">データシート</a>）</p>
 <p>これをメインメモリにします。ふつうの SRAM です。SRAM といってもフリップフロップが大量に並んでるだけなので、使い方は単純です。</p>
@@ -660,6 +622,8 @@
 <li>めんどいがライタでやるのでヨシ</li>
 </ul></li>
 </ul>
+<h3 id="io">IO</h3>
+<p>一部のアドレスで SRAM を無効にして、IO にデータをスイッチします。</p>
 <h3 id="rom-ライタ">ROM ライタ</h3>
 <p>ROM は別基板にして取り外せるようにします。</p>
 <p>ROM 基板を ROM ライタ基板に挿して Arduino で書き込みます。</p>
@@ -667,7 +631,6 @@
 <p>74181 を使って、plus・minus・not・and・or・xor の演算ができる。</p>
 <p>左シフトは 74181 の A plus A を使う</p>
 <p>シフト演算は、MUX の 0 出力を使う？</p>
-<h2 id="id">ID</h2>
 <h2 id="pfc">PFC</h2>
 <h2 id="クロック">クロック</h2>
 <p>マイコンの心臓だが…回路は単純</p>
