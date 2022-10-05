@@ -19,3 +19,9 @@ title: 自作 CPU RK8
 | addi | rs1 = R[rs1] | -            | R[rd] = alu  | pc++                   |
 | mov  | rs1 = R[rs1] | rs2 = R[rs2] | R[alu] = rs2 | pc++                   |
 | br   | rs1 = R[rs1] | rs2 = R[rs2] | -            | pc = flag ? imm : pc++ |
+
+## 部品
+
+[押しボタンスイッチ](https://akizukidenshi.com/catalog/g/gP-11669/)
+
+[分周器付き発振器](https://akizukidenshi.com/catalog/g/gP-01685/)
