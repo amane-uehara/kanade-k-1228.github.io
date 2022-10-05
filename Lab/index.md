@@ -88,6 +88,10 @@ title: 研究室へようこそ
 
 [RISC-V](./Computer/Misc/RISC-V/)
 
+### 自作 CPU : RK8
+
+[RK8 の概要](./Computer/RK8/)
+
 ### 自作マイコン
 
 [自作マイコンについて](./Computer/Micon/00_About/)
