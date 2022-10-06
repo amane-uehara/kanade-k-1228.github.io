@@ -44,7 +44,7 @@ title: 研究室へようこそ
 
 [5000 円で作るリフロー装置](Electronics/Misc/HotplateReflow/)
 
-[秋月で買えるスルーホール 74 シリーズ一覧](Electronics/Misc/LogicIC/)
+[ロジック IC リスト](Electronics/Misc/LogicIC/)
 
 ### 電子回路
 
