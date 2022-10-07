@@ -4,6 +4,12 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 ---
 
 <style>
+.gsc-search-box .gsc-input .gsc-search-button .gsc-clear-button
+{
+    background: #ffffff00;
+    border: none;
+}
+
 /** 外枠に色を付けて角丸にする */
 .gsc-control-cse
 {
@@ -14,13 +20,12 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 }
- 
+
 /** 外枠内側のマージンを0にする */
 .gsc-search-box
 {
 	margin: 0px !important;
 }
- 
  
 /** キーワード入力部分のボーダーを消し、角丸にする */
 .gsc-input-box 
