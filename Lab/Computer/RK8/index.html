@@ -491,9 +491,6 @@
       </p>
 
       <!-- Table of Contents -->
-            <nav><ul>
-<li><a href="#部品">部品</a></li>
-</ul></nav>
        <p><img src="img/arch.dio.svg" /></p>
 <table>
 <thead>
@@ -545,6 +542,9 @@
 <th>Stage 1</th>
 <th>Stage 2</th>
 <th>Stage 3</th>
+<th>S2=</th>
+<th>D = STG2 &amp;</th>
+<th>ADDR=STG0&amp;</th>
 </tr>
 </thead>
 <tbody>
@@ -554,6 +554,9 @@
 <td>rs2 = R[rs2]</td>
 <td>R[rd] = alu</td>
 <td>pc++</td>
+<td>RS2</td>
+<td>ALU</td>
+<td>RS1</td>
 </tr>
 <tr class="even">
 <td>addi</td>
@@ -561,6 +564,9 @@
 <td>-</td>
 <td>R[rd] = alu</td>
 <td>pc++</td>
+<td>IMM2</td>
+<td>ALU</td>
+<td>RS1</td>
 </tr>
 <tr class="odd">
 <td>mov</td>
@@ -568,6 +574,9 @@
 <td>rs2 = R[rs2]</td>
 <td>R[alu] = rs2</td>
 <td>pc++</td>
+<td>IMM0</td>
+<td>RS2</td>
+<td>RS1</td>
 </tr>
 <tr class="even">
 <td>br</td>
@@ -575,12 +584,139 @@
 <td>rs2 = R[rs2]</td>
 <td>-</td>
 <td>pc = flag ? imm : pc++</td>
+<td>RS2</td>
+<td>-</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="部品">部品</h2>
-<p><a href="https://akizukidenshi.com/catalog/g/gP-11669/">押しボタンスイッチ</a></p>
-<p><a href="https://akizukidenshi.com/catalog/g/gP-01685/">分周器付き発振器</a></p>
+<table>
+<thead>
+<tr class="header">
+<th>op</th>
+<th>S2=!RS2</th>
+<th>S2=!IMM0</th>
+<th>S2=!IMM2</th>
+<th>ADDR=RS1</th>
+<th>ADDR=RS2</th>
+<th>ADDR=RD</th>
+<th>D = STG2 &amp;</th>
+<th>ADDR=STG0&amp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>add</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>STG0</td>
+<td>STG1</td>
+<td>STG2 &amp; RD</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>addi</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>STG0</td>
+<td>STG1</td>
+<td>STG2 &amp; RD</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>mov</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>STG0</td>
+<td>STG1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>br</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>STG0</td>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>品番</th>
+<th>個数</th>
+<th>用途</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>74HC139 2to4 デコーダ</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>74HC161 バイナリカウンタ</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>74HC164 シフトレジスタ</td>
+<td>1</td>
+<td>ステージカウンタ</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>分周器付き発振器</td>
+<td>1</td>
+<td>クロック</td>
+<td><a href="https://akizukidenshi.com/catalog/g/gP-01685/">秋月</a></td>
+</tr>
+<tr class="even">
+<td>押しボタンスイッチ（赤）</td>
+<td>1</td>
+<td>手動クロック</td>
+<td><a href="https://akizukidenshi.com/catalog/g/gP-11669/">秋月</a></td>
+</tr>
+<tr class="odd">
+<td>押しボタンスイッチ（黒）</td>
+<td>1</td>
+<td>リセット</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>切り替えスイッチ</td>
+<td>1</td>
+<td>クロック切り替え</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>スライドスイッチ</td>
+<td>4</td>
+<td>周波数選択</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -74,6 +74,8 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 }
 </style>
 
+## 通販
+
 <script async src="https://cse.google.com/cse.js?cx=13bef89176b6c409c"></script>
 <div class="gcse-search"></div>
 
@@ -91,3 +93,54 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 - [RS](https://jp.rs-online.com/)
 - [Mouser](https://www.mouser.jp/)
 - [DigiKey](https://www.digikey.jp/)
+
+## 秋葉原の店
+
+#### [秋月電子](https://www.akizukidenshi.com/)
+
+#### [千石電商](https://www.sengoku.co.jp/)
+
+#### [マルツ]()
+
+#### [オヤイデ電気](http://www.oyaide.com/ja)
+
+- ワイヤ・ケーブルの店
+- [日米商事](https://my-site-105174-102944.square.site/)
+  - 17 号沿いのジャンク屋
+
+### ラジオデパート
+
+#### [海神無線](http://www.kaijin-musen.jp/)
+
+#### [サンエレクトロ](https://www.sun-elle.com/)
+
+- レアな IC
+- マイコン関連、ロジック IC
+
+#### 光南電気
+
+- レアな IC、トランジスタ、ダイオード
+- Z80 売ってる
+- 聞くと出てくる
+
+### 電波会館（電気街口高架下）
+
+### ラジオ会館（電気街南口側）
+
+#### [若松通商](https://wakamatsu.co.jp/)
+
+会津若松
+
+## 大須の店
+
+#### 上小田井マルツ
+
+名古屋圏でたぶん唯一の大手の店舗
+
+### 第一アメ横
+
+#### [ボントン](http://www.bonton-nagoya.com/)
+
+## 日本橋の店
+
+#### [RPE パーツ](http://rpe-parts.co.jp/)
