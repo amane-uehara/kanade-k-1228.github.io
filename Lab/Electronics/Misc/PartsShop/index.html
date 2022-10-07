@@ -492,48 +492,45 @@
 
       <!-- Table of Contents -->
        <style>
-.gsc-search-box,.gsc-input,.gsc-search-button,.gsc-clear-button,.gsib_a,.gsib_b
-{
-    background: #ffffff00;
-    border: none;
-}
-
-/** 外枠に色を付けて角丸にする */
+/* 外枠 */
 .gsc-control-cse
 {
-    margin: 0px !important;
-    padding: 0px !important;
-    border: 2px solid #00a0e9 !important;
+    margin: 0px;
+    padding: 0px;
+    border: 2px solid #00a0e9;
     border-radius: 30px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
 }
 
-/** 外枠内側のマージンを0にする */
+/*  */
 .gsc-search-box
 {
     margin: 0px !important;
 }
- 
-/** キーワード入力部分のボーダーを消し、角丸にする */
-.gsc-input-box 
+
+/* 検索ボックス内 */
+.gsc-input,.gsc-search-button,.gsc-clear-button
 {
-    border: none !important;
-    border-radius: 30px !important;
-    -webkit-border-radius: 30px !important;
-    -moz-border-radius: 30px !important;
+    border: none;
 }
- 
- 
-/** キーワード入力部分の左側に20ピクセル余白を入れる */
-.gsib_a
+
+/* キーワード入力部分 */
+.gsc-input-box
 {
-    padding-left: 20px !important;
+    border: none;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
 }
- 
- 
- 
-/** 検索ボタンを無色透明にし、線を消す */
+
+
+.gsib_a,.gsib_b
+{
+    border: none;
+}
+
+/* 検索ボタンを無色透明にし、線を消す */
 .gsc-search-button-v2
 {
     margin: 0px !important;
@@ -549,15 +546,19 @@
     border-left-style: none !important;
     cursor:pointer;
 }
- 
- 
- 
-/** 検索ボタンのアイコンの色と大きさを設定 */
+
+/* 検索ボタンのアイコンの色と大きさを設定 */
 .gsc-search-button-v2 svg 
 {
     fill: #00a0e9!important;
     width: 20px;
     height: 20px;
+}
+
+.gsc-search-box,.gsc-input,.gsc-search-button,.gsc-clear-button,.gsib_a,.gsib_b
+{
+    background: #ffffff00;
+    border: none;
 }
 </style>
 <script async src="https://cse.google.com/cse.js?cx=13bef89176b6c409c"></script>
