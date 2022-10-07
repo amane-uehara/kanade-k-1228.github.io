@@ -67,7 +67,7 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
     height: 20px;
 }
 
-.gsc-search-box,.gsc-input,.gsc-search-button,.gsc-clear-button,.gsib_a,.gsib_b
+.gsc-search-box,.gsc-input,.gsc-search-button,.gsc-clear-button,.gsib_a,.gsib_b,.gsc-result-info-container,.gsc-orderby-container
 {
     background: #ffffff00;
     border: none;
