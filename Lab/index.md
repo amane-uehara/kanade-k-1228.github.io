@@ -40,6 +40,8 @@ title: 研究室へようこそ
 
 ### 電子工作
 
+[電子部品の通販サイト](Electronics/Misc/PartsShop/)
+
 [YMZ294 で音楽を再生する](Electronics/Misc/YMZ294/)
 
 [5000 円で作るリフロー装置](Electronics/Misc/HotplateReflow/)
