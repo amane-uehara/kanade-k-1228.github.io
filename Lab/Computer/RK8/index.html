@@ -593,7 +593,7 @@
 <td>add</td>
 <td>00</td>
 <td>0- : REG2</td>
-<td>1 : ALU</td>
+<td>0 : ALU</td>
 <td>1 : CODE0</td>
 <td>0</td>
 <td>-</td>
@@ -603,7 +603,7 @@
 <td>addi</td>
 <td>10</td>
 <td>10 : CODE2</td>
-<td>1 : ALU</td>
+<td>0 : ALU</td>
 <td>0 : ALU</td>
 <td>0</td>
 <td>-</td>
@@ -613,7 +613,7 @@
 <td>mov</td>
 <td>11</td>
 <td>11 : CODE1</td>
-<td>0 : REG2</td>
+<td>1 : REG2</td>
 <td>1 : CODE0</td>
 <td>0</td>
 <td>-</td>
@@ -631,6 +631,7 @@
 </tr>
 </tbody>
 </table>
+<p>2:opc 1:jmp 5:func</p>
 <table>
 <thead>
 <tr class="header">
@@ -712,6 +713,15 @@
 <td>0</td>
 <td>1</td>
 <td>1</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>NOT</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>-</td>
