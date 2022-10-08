@@ -1,6 +1,6 @@
 ---
-title: 電子部品の通販サイト
-keyword: 電子部品,電子工作,通販,秋葉原,日本橋
+title: 電子部品の買える店
+keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 ---
 
 <style>
@@ -81,7 +81,7 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 
 下記のサイトから検索します。
 
-- [秋月電子](https://www.akizukidenshi.com/)
+- [秋月電子](https://akizukidenshi.com/)
 - [千石電商](https://www.sengoku.co.jp/)
 - [マルツ](https://www.marutsu.co.jp/)
 - [Aitendo](https://www.aitendo.com/)
@@ -94,23 +94,33 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 - [Mouser](https://www.mouser.jp/)
 - [DigiKey](https://www.digikey.jp/)
 
+### 国内通販
+
+古い部品とか扱ってる
+
 ## 秋葉原の店
 
-#### [秋月電子](https://www.akizukidenshi.com/)
+#### [秋月電子](https://akizukidenshi.com/catalog/contents2/akiba.aspx)
 
-#### [千石電商](https://www.sengoku.co.jp/)
+#### [千石電商](https://www.sengoku.co.jp/shop_01.html)
 
-#### [マルツ]()
+- ラジオデパートにも店がある
 
-#### [オヤイデ電気](http://www.oyaide.com/ja)
+#### [マルツ](https://www.marutsu.co.jp/pc/static/shop/akihabara)
+
+#### [Aitendo](https://www.aitendo.com/)
+
+- 店舗休業中…
+
+#### [オヤイデ電気](http://www.oyaide.com/ja/akihabara)
 
 - ワイヤ・ケーブルの店
-- [日米商事](https://my-site-105174-102944.square.site/)
-  - 17 号沿いのジャンク屋
+
+#### [日米商事](https://my-site-105174-102944.square.site/)
+
+- 17 号沿いのジャンク屋
 
 ### ラジオデパート
-
-#### [海神無線](http://www.kaijin-musen.jp/)
 
 #### [サンエレクトロ](https://www.sun-elle.com/)
 
@@ -121,7 +131,19 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 
 - レアな IC、トランジスタ、ダイオード
 - Z80 売ってる
-- 聞くと出てくる
+
+#### [海神無線](http://www.kaijin-musen.jp/)
+
+#### [サンエイ電機](https://twitter.com/sanei_denki?lang=ja)
+
+- 真空管
+- ニキシー管、VFD 管も売ってる
+
+#### [真空管長谷川](http://www.kydsem.co.jp/)
+
+#### [エスエス無線](https://www.ss-musen.co.jp/)
+
+- ケースの店
 
 ### 電波会館（電気街口高架下）
 
@@ -129,7 +151,7 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 
 #### [若松通商](https://wakamatsu.co.jp/)
 
-会津若松
+- 会津若松
 
 ## 大須の店
 
@@ -137,10 +159,12 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋
 
 名古屋圏でたぶん唯一の大手の店舗
 
+#### [RPE パーツ](http://rpe-parts.co.jp/)
+
 ### 第一アメ横
 
 #### [ボントン](http://www.bonton-nagoya.com/)
 
-## 日本橋の店
+### 第一アメ横
 
-#### [RPE パーツ](http://rpe-parts.co.jp/)
+## 日本橋の店

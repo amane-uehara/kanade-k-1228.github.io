@@ -40,7 +40,7 @@ title: 研究室へようこそ
 
 ### 電子工作
 
-[電子部品の通販サイト](Electronics/Misc/PartsShop/)
+[電子部品の買える店](Electronics/Misc/PartsShop/)
 
 [YMZ294 で音楽を再生する](Electronics/Misc/YMZ294/)
 
