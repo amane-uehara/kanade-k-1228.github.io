@@ -13,19 +13,30 @@ title: 自作 CPU RK8
 
 ![](img/decode.dio.svg)
 
-| op   | Stage 0      | Stage 1      | Stage 2      | Stage 3                | S2=  | D = STG2 & | ADDR=STG0& |
-| ---- | ------------ | ------------ | ------------ | ---------------------- | ---- | ---------- | ---------- |
-| add  | rs1 = R[rs1] | rs2 = R[rs2] | R[rd] = alu  | pc++                   | RS2  | ALU        | RS1        |
-| addi | rs1 = R[rs1] | -            | R[rd] = alu  | pc++                   | IMM2 | ALU        | RS1        |
-| mov  | rs1 = R[rs1] | rs2 = R[rs2] | R[alu] = rs2 | pc++                   | IMM0 | RS2        | RS1        |
-| br   | rs1 = R[rs1] | rs2 = R[rs2] | -            | pc = flag ? imm : pc++ | RS2  | -          |
+| op   | Stage 0      | Stage 1      | Stage 2      | Stage 3                |
+| ---- | ------------ | ------------ | ------------ | ---------------------- |
+| add  | rs1 = R[rs1] | rs2 = R[rs2] | R[rd] = alu  | pc++                   |
+| addi | rs1 = R[rs1] | -            | R[rd] = alu  | pc++                   |
+| mov  | rs1 = R[rs1] | rs2 = R[rs2] | R[alu] = rs2 | pc++                   |
+| br   | rs1 = R[rs1] | rs2 = R[rs2] | -            | pc = flag ? imm : pc++ |
 
-| op   | S2=!RS2 | S2=!IMM0 | S2=!IMM2 | ADDR=RS1 | ADDR=RS2 | ADDR=RD   | D = STG2 & | ADDR=STG0& |
-| ---- | ------- | -------- | -------- | -------- | -------- | --------- | ---------- | ---------- |
-| add  | 0       | 1        | 1        | STG0     | STG1     | STG2 & RD |            |            |
-| addi | 1       | 1        | 0        | STG0     | STG1     | STG2 & RD |            |            |
-| mov  | 1       | 0        | 1        | STG0     | STG1     |           |            |            |
-| br   | 0       | 1        | 1        | STG0     | -        |           |            |            |
+| op   | opc | S2_SEL     | DOUT_SEL | DADR_SEL  | JMP | COND | ALU  |
+| ---- | --- | ---------- | -------- | --------- | --- | ---- | ---- |
+| add  | 00  | 0- : REG2  | 1 : ALU  | 1 : CODE0 | 0   | -    | func |
+| addi | 10  | 10 : CODE2 | 1 : ALU  | 0 : ALU   | 0   | -    | func |
+| mov  | 11  | 11 : CODE1 | 0 : REG2 | 1 : CODE0 | 0   | -    | ADD  |
+| br   | 01  | 0- : REG2  | -        | 1 : CODE0 | 1   | 0/1  | SUB  |
+
+| ALU  | S3  | S2  | S1  | S0  | M   | CN  |
+| ---- | --- | --- | --- | --- | --- | --- |
+| ADD  | 1   | 0   | 0   | 1   | 0   | 0   |
+| SUB  | 0   | 1   | 1   | 0   | 0   | 1   |
+| AND  | 1   | 1   | 1   | 0   | 1   | -   |
+| NAND | 0   | 0   | 0   | 1   | 1   | -   |
+| OR   | 1   | 0   | 1   | 1   | 1   | -   |
+| NOR  | 0   | 1   | 0   | 0   | 1   | -   |
+| XOR  | 1   | 0   | 0   | 1   | 1   | -   |
+| XNOR | 0   | 1   | 1   | 0   | 1   | -   |
 
 | 品番                     | 個数 | 用途               |                                                       |
 | ------------------------ | ---- | ------------------ | ----------------------------------------------------- |
