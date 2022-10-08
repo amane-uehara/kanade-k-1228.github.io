@@ -94,9 +94,14 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 - [Mouser](https://www.mouser.jp/)
 - [DigiKey](https://www.digikey.jp/)
 
-### 国内通販
+### レア物検索
 
-古い部品とか扱ってる
+- [若松通商](https://www.wakamatsu.co.jp/)
+- [樫木総業](https://www.kashinoki.shop/)
+- [サンエレクトロ](https://www.sun-elle.com/)
+- [楠電子](http://www.kusunoki-e.co.jp/)
+- [梅澤無線](https://umezawa-sendai.shop-pro.jp/)
+- [電技パーツ](http://www.dengiparts.co.jp/)
 
 ## 秋葉原の店
 
@@ -151,7 +156,9 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 
 #### [若松通商](https://wakamatsu.co.jp/)
 
-- 会津若松
+- 会津若松の店らしい
+
+## 関東近郊
 
 ## 大須の店
 
@@ -161,6 +168,12 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 
 #### [RPE パーツ](http://rpe-parts.co.jp/)
 
+金山
+
+#### [楠電子](http://www.kusunoki-e.co.jp/)
+
+北区
+
 ### 第一アメ横
 
 #### [ボントン](http://www.bonton-nagoya.com/)
@@ -168,3 +181,20 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 ### 第一アメ横
 
 ## 日本橋の店
+
+## 全国の店
+
+- [フリーラボ](http://www.freelab.jp/)＠旭川
+- [梅澤無線](https://umezawa-sendai.shop-pro.jp/)
+- [タケウチ電子](http://www2.odn.ne.jp/~aag56520/www2.odn.ne.jp/)
+- [イージーコンプ](https://com-p.jp/sales/index.html)＠上田
+- [カホパーツ](https://www.kahoparts.co.jp/)
+- [西日本ラジオ](http://www.nishinihon-radio.com/)
+- [ドイ音響](http://www.ccsnet.ne.jp/~doionkyo/index.htm)
+- [松本無線](http://www.mmusen.com/)
+- [徳山ソニック](http://www.tokuyamasonic.gr.jp/)
+- [電化センター](http://denka-ct.co.jp/)
+- [山陽電子商会](http://www.sanyo-densi.com/)
+- [テクノパーツ](https://store.shopping.yahoo.co.jp/t-parts/)
+- [中山電子パーツ](http://web.kyoto-inet.or.jp/people/s-nakay_/index.html)
+- [サトー電気](http://www.maroon.dti.ne.jp/satodenki/)
