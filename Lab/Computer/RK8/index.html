@@ -542,9 +542,6 @@
 <th>Stage 1</th>
 <th>Stage 2</th>
 <th>Stage 3</th>
-<th>S2=</th>
-<th>D = STG2 &amp;</th>
-<th>ADDR=STG0&amp;</th>
 </tr>
 </thead>
 <tbody>
@@ -554,9 +551,6 @@
 <td>rs2 = R[rs2]</td>
 <td>R[rd] = alu</td>
 <td>pc++</td>
-<td>RS2</td>
-<td>ALU</td>
-<td>RS1</td>
 </tr>
 <tr class="even">
 <td>addi</td>
@@ -564,9 +558,6 @@
 <td>-</td>
 <td>R[rd] = alu</td>
 <td>pc++</td>
-<td>IMM2</td>
-<td>ALU</td>
-<td>RS1</td>
 </tr>
 <tr class="odd">
 <td>mov</td>
@@ -574,9 +565,6 @@
 <td>rs2 = R[rs2]</td>
 <td>R[alu] = rs2</td>
 <td>pc++</td>
-<td>IMM0</td>
-<td>RS2</td>
-<td>RS1</td>
 </tr>
 <tr class="even">
 <td>br</td>
@@ -584,9 +572,6 @@
 <td>rs2 = R[rs2]</td>
 <td>-</td>
 <td>pc = flag ? imm : pc++</td>
-<td>RS2</td>
-<td>-</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -594,60 +579,142 @@
 <thead>
 <tr class="header">
 <th>op</th>
-<th>S2=!RS2</th>
-<th>S2=!IMM0</th>
-<th>S2=!IMM2</th>
-<th>ADDR=RS1</th>
-<th>ADDR=RS2</th>
-<th>ADDR=RD</th>
-<th>D = STG2 &amp;</th>
-<th>ADDR=STG0&amp;</th>
+<th>opc</th>
+<th>S2_SEL</th>
+<th>DOUT_SEL</th>
+<th>DADR_SEL</th>
+<th>JMP</th>
+<th>COND</th>
+<th>ALU</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>add</td>
+<td>00</td>
+<td>0- : REG2</td>
+<td>1 : ALU</td>
+<td>1 : CODE0</td>
 <td>0</td>
-<td>1</td>
-<td>1</td>
-<td>STG0</td>
-<td>STG1</td>
-<td>STG2 &amp; RD</td>
-<td></td>
-<td></td>
+<td>-</td>
+<td>func</td>
 </tr>
 <tr class="even">
 <td>addi</td>
-<td>1</td>
-<td>1</td>
+<td>10</td>
+<td>10 : CODE2</td>
+<td>1 : ALU</td>
+<td>0 : ALU</td>
 <td>0</td>
-<td>STG0</td>
-<td>STG1</td>
-<td>STG2 &amp; RD</td>
-<td></td>
-<td></td>
+<td>-</td>
+<td>func</td>
 </tr>
 <tr class="odd">
 <td>mov</td>
-<td>1</td>
+<td>11</td>
+<td>11 : CODE1</td>
+<td>0 : REG2</td>
+<td>1 : CODE0</td>
 <td>0</td>
-<td>1</td>
-<td>STG0</td>
-<td>STG1</td>
-<td></td>
-<td></td>
-<td></td>
+<td>-</td>
+<td>ADD</td>
 </tr>
 <tr class="even">
 <td>br</td>
+<td>01</td>
+<td>0- : REG2</td>
+<td>-</td>
+<td>1 : CODE0</td>
+<td>1</td>
+<td>0/1</td>
+<td>SUB</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>ALU</th>
+<th>S3</th>
+<th>S2</th>
+<th>S1</th>
+<th>S0</th>
+<th>M</th>
+<th>CN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ADD</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>SUB</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>STG0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>AND</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
 <td>-</td>
-<td></td>
-<td></td>
-<td></td>
+</tr>
+<tr class="even">
+<td>NAND</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>OR</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>NOR</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>XOR</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>XNOR</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
