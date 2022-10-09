@@ -76,10 +76,10 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 
 ## 通販
 
+### 大手
+
 <script async src="https://cse.google.com/cse.js?cx=13bef89176b6c409c"></script>
 <div class="gcse-search"></div>
-
-下記のサイトから検索します。
 
 - [秋月電子](https://akizukidenshi.com/)
 - [千石電商](https://www.sengoku.co.jp/)
@@ -94,7 +94,9 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 - [Mouser](https://www.mouser.jp/)
 - [DigiKey](https://www.digikey.jp/)
 
-### レア部品検索
+### 中小
+
+大手の検索結果で埋もれてしまうので、分離しました。大手では取り扱ってないレア物・ディスコン部品の探索にどうぞ。
 
 - [若松通商](https://www.wakamatsu.co.jp/)
 - [樫木総業](https://www.kashinoki.shop/)
@@ -103,88 +105,6 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 - [梅澤無線](https://umezawa-sendai.shop-pro.jp/)
 - [電技パーツ](http://www.dengiparts.co.jp/)
 - [Bispa](https://bispa.co.jp/)
-
-## 秋葉原の店
-
-#### [秋月電子](https://akizukidenshi.com/catalog/contents2/akiba.aspx)
-
-#### [千石電商](https://www.sengoku.co.jp/shop_01.html)
-
-- ラジオデパートにも店がある
-
-#### [マルツ](https://www.marutsu.co.jp/pc/static/shop/akihabara)
-
-#### [Aitendo](https://www.aitendo.com/)
-
-- 店舗休業中…
-
-#### [オヤイデ電気](http://www.oyaide.com/ja/akihabara)
-
-- ワイヤ・ケーブルの店
-
-#### [日米商事](https://my-site-105174-102944.square.site/)
-
-- 17 号沿いのジャンク屋
-
-### ラジオデパート
-
-#### [サンエレクトロ](https://www.sun-elle.com/)
-
-- レアな IC
-- マイコン関連、ロジック IC
-
-#### 光南電気
-
-- レアな IC、トランジスタ、ダイオード
-- Z80 売ってる
-
-#### [海神無線](http://www.kaijin-musen.jp/)
-
-#### [サンエイ電機](https://twitter.com/sanei_denki?lang=ja)
-
-- 真空管
-- ニキシー管、VFD 管も売ってる
-
-#### [真空管長谷川](http://www.kydsem.co.jp/)
-
-#### [エスエス無線](https://www.ss-musen.co.jp/)
-
-- ケースの店
-
-### 電波会館（電気街口高架下）
-
-### ラジオ会館（電気街南口側）
-
-#### [若松通商](https://wakamatsu.co.jp/)
-
-- 会津若松の店らしい
-
-## 関東近郊
-
-## 大須の店
-
-#### 上小田井マルツ
-
-名古屋圏でたぶん唯一の大手の店舗
-
-#### [RPE パーツ](http://rpe-parts.co.jp/)
-
-金山
-
-#### [楠電子](http://www.kusunoki-e.co.jp/)
-
-北区
-
-### 第一アメ横
-
-#### [ボントン](http://www.bonton-nagoya.com/)
-
-### 第一アメ横
-
-## 日本橋の店
-
-## 全国の店
-
 - [フリーラボ](http://www.freelab.jp/)＠旭川
 - [梅澤無線](https://umezawa-sendai.shop-pro.jp/)
 - [タケウチ電子](http://www2.odn.ne.jp/~aag56520/www2.odn.ne.jp/)
@@ -199,3 +119,125 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 - [テクノパーツ](https://store.shopping.yahoo.co.jp/t-parts/)
 - [中山電子パーツ](http://web.kyoto-inet.or.jp/people/s-nakay_/index.html)
 - [サトー電気](http://www.maroon.dti.ne.jp/satodenki/)
+
+## 秋葉原の店
+
+#### [秋月電子](https://akizukidenshi.com/catalog/contents2/akiba.aspx)
+
+- 通販サイトが充実してる
+- 商品ページの「店舗在庫情報」から、部品が置いてある棚がわかるよ
+
+#### [千石電商](https://www.sengoku.co.jp/shop_01.html)
+
+- 1 階はマイコンボードと工具
+- 2 階はエレキギター
+  - 端子類はここにもある
+- 3 階はキット、機械部品、モーター、ケース、LED
+- 地下 1 階は、各社の抵抗・キャパシタ・インダクタ、半導体、各社の端子、計り売りのワイヤなど
+- 2 号店（隣）は各種ケーブルと変換ケーブル
+  - Lightning ケーブルよくなくすので助かってる
+- ラジオデパート店は、アーケードゲーム用のボタンなど
+
+#### [マルツ](https://www.marutsu.co.jp/pc/static/shop/akihabara)
+
+- 2 階のマイコンフロアが閉店してしまった…
+- ちょっとお高め
+
+#### [Aitendo](https://www.aitendo.com/)
+
+- 店舗休業中…
+
+#### [オヤイデ電気](http://www.oyaide.com/ja/akihabara)
+
+- ワイヤ・ケーブルの店
+- 特殊な線材はここで
+
+#### [日米商事](https://my-site-105174-102944.square.site/)
+
+- 17 号沿いのジャンク屋
+
+#### 計測器ランド
+
+- 中古のオシロとか
+
+### ラジオデパート
+
+#### [サンエレクトロ](https://www.sun-elle.com/)
+
+- IC の店
+- マイコン周辺の IC、ロジック IC
+
+#### 光南電気
+
+- IC、トランジスタ、ダイオードの店
+- 昔の半導体が多くて楽しい
+- Z80 売ってる
+
+#### [海神無線](http://www.kaijin-musen.jp/)
+
+#### [サンエイ電機](https://twitter.com/sanei_denki?lang=ja)
+
+- 真空管
+- ニキシー管、VFD 管が買える数少ない店
+- ソ連製が多い。Урааааа！
+
+#### [真空管長谷川](http://www.kydsem.co.jp/)
+
+- こちらも真空管
+
+#### [エスエス無線](https://www.ss-musen.co.jp/)
+
+- ケースの店
+- アルミ、スチール、プラなど何でもある
+
+### 電波会館（電気街口高架下）
+
+#### 田中電機
+
+- リレー
+
+### ラジオ会館（電気街南口側）
+
+#### [若松通商](https://wakamatsu.co.jp/)
+
+- 会津若松の店らしい
+- 半導体の取り扱いが豊富
+- 取り寄せてもらおう
+
+## 関東近郊
+
+#### 八潮秋月
+
+#### サトー電気＠川崎・横浜・町田
+
+## 大須の店
+
+### 第一アメ横
+
+#### [ボントン](http://www.bonton-nagoya.com/)
+
+### 第二アメ横
+
+#### タケイムセン（閉店）
+
+- 半導体の店
+- 閉店してた
+- かなしい
+
+### 名古屋近郊
+
+#### 上小田井マルツ
+
+- 名古屋圏で唯一の大手の店舗
+
+#### [楠電子](http://www.kusunoki-e.co.jp/)
+
+- 小牧線味美駅徒歩 15 分
+  - 城北線…？知らない子ですね…
+
+#### [RPE パーツ](http://rpe-parts.co.jp/)
+
+- 金山駅南口徒歩 5 分
+- ビルの 3 階
+
+## 日本橋の店
