@@ -685,17 +685,16 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 </tr>
 </tbody>
 </table>
-<p>0~1:OP, 2:CN, 3:M, 4<sub>7:S0</sub>3</p>
 <table>
 <thead>
 <tr class="header">
-<th>ALU</th>
-<th>CN</th>
+<th>74181</th>
+<th>Cn</th>
 <th>M</th>
-<th>S3</th>
-<th>S2</th>
-<th>S1</th>
-<th>S0</th>
+<th>S<sub>3</sub></th>
+<th>S<sub>2</sub></th>
+<th>S<sub>1</sub></th>
+<th>S<sub>0</sub></th>
 </tr>
 </thead>
 <tbody>
@@ -779,6 +778,102 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <td>0</td>
 <td>0</td>
 <td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>opc</th>
+<th>Cn / Cond</th>
+<th>M,S<sub>3:0</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>addi</td>
+<td>00</td>
+<td>0</td>
+<td>0 1001 add</td>
+</tr>
+<tr class="even">
+<td>subi</td>
+<td>00</td>
+<td>1</td>
+<td>0 0110 sub</td>
+</tr>
+<tr class="odd">
+<td>andi</td>
+<td>00</td>
+<td>-</td>
+<td>1 1110 adn</td>
+</tr>
+<tr class="even">
+<td>ori</td>
+<td>00</td>
+<td>-</td>
+<td>1 1011 or</td>
+</tr>
+<tr class="odd">
+<td>xori</td>
+<td>00</td>
+<td>-</td>
+<td>1 1001 xor</td>
+</tr>
+<tr class="even">
+<td>mov</td>
+<td>01</td>
+<td>0</td>
+<td>0 1001 add</td>
+</tr>
+<tr class="odd">
+<td>add</td>
+<td>10</td>
+<td>0</td>
+<td>0 1001 add</td>
+</tr>
+<tr class="even">
+<td>sub</td>
+<td>10</td>
+<td>1</td>
+<td>0 0110 sub</td>
+</tr>
+<tr class="odd">
+<td>and</td>
+<td>10</td>
+<td>-</td>
+<td>1 1110 and</td>
+</tr>
+<tr class="even">
+<td>or</td>
+<td>10</td>
+<td>-</td>
+<td>1 1011 or</td>
+</tr>
+<tr class="odd">
+<td>not</td>
+<td>10</td>
+<td>-</td>
+<td>1 0000 not</td>
+</tr>
+<tr class="even">
+<td>xor</td>
+<td>10</td>
+<td>-</td>
+<td>1 1001 xor</td>
+</tr>
+<tr class="odd">
+<td>be</td>
+<td>11</td>
+<td>0 A=B</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>bl</td>
+<td>11</td>
+<td>1 A&lt;B</td>
+<td>0 0110 sub</td>
 </tr>
 </tbody>
 </table>
