@@ -582,149 +582,149 @@
 <th>opc</th>
 <th>S2_SEL</th>
 <th>DOUT_SEL</th>
-<th>DADR_SEL</th>
-<th>JMP</th>
-<th>COND</th>
+<th>DADR_SEL(NOR)</th>
+<th>JMP(AND)</th>
+<th>COND=CN</th>
 <th>ALU</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>add</td>
+<td>addi</td>
 <td>00</td>
-<td>0- : REG2</td>
+<td>00 : CODE2</td>
 <td>0 : ALU</td>
-<td>1 : CODE0</td>
+<td>1 : ALU</td>
 <td>0</td>
 <td>-</td>
 <td>func</td>
 </tr>
 <tr class="even">
-<td>addi</td>
-<td>10</td>
-<td>10 : CODE2</td>
-<td>0 : ALU</td>
-<td>0 : ALU</td>
-<td>0</td>
-<td>-</td>
-<td>func</td>
-</tr>
-<tr class="odd">
 <td>mov</td>
-<td>11</td>
-<td>11 : CODE1</td>
+<td>01</td>
+<td>01 : CODE1</td>
 <td>1 : REG2</td>
-<td>1 : CODE0</td>
+<td>0 : CODE0</td>
 <td>0</td>
 <td>-</td>
 <td>ADD</td>
 </tr>
+<tr class="odd">
+<td>add</td>
+<td>10</td>
+<td>1- : REG2</td>
+<td>0 : ALU</td>
+<td>0 : CODE0</td>
+<td>0</td>
+<td>-</td>
+<td>func</td>
+</tr>
 <tr class="even">
 <td>br</td>
-<td>01</td>
-<td>0- : REG2</td>
+<td>11</td>
+<td>1- : REG2</td>
 <td>-</td>
-<td>1 : CODE0</td>
+<td>0 : CODE0</td>
 <td>1</td>
-<td>0/1</td>
+<td>0:EQ 1:LT</td>
 <td>SUB</td>
 </tr>
 </tbody>
 </table>
-<p>2:opc 1:jmp 5:func</p>
+<p>0~1:OP, 2:CN, 3:M, 4<sub>7:S0</sub>3</p>
 <table>
 <thead>
 <tr class="header">
 <th>ALU</th>
+<th>CN</th>
+<th>M</th>
 <th>S3</th>
 <th>S2</th>
 <th>S1</th>
 <th>S0</th>
-<th>M</th>
-<th>CN</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>ADD</td>
-<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 </tr>
 <tr class="even">
 <td>SUB</td>
-<td>0</td>
-<td>1</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
+<td>1</td>
+<td>0</td>
 </tr>
 <tr class="odd">
 <td>AND</td>
+<td>-</td>
+<td>1</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
-<td>1</td>
-<td>-</td>
 </tr>
 <tr class="even">
 <td>NAND</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
 <td>-</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>OR</td>
+<td>-</td>
+<td>1</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>1</td>
-<td>-</td>
 </tr>
 <tr class="even">
 <td>NOR</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
 <td>-</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr class="odd">
 <td>XOR</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
 <td>-</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
 </tr>
 <tr class="even">
 <td>XNOR</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
 <td>-</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
 </tr>
 <tr class="odd">
 <td>NOT</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
 <td>-</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
