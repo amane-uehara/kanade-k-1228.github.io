@@ -2,6 +2,8 @@
 title: 研究室へようこそ
 ---
 
+[リンク集](./Links/)
+
 ## 数学
 
 [グリーン関数](./Mathmatics/GreenFunction/)
