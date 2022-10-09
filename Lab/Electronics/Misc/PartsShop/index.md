@@ -94,7 +94,7 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 - [Mouser](https://www.mouser.jp/)
 - [DigiKey](https://www.digikey.jp/)
 
-### レア物検索
+### レア部品検索
 
 - [若松通商](https://www.wakamatsu.co.jp/)
 - [樫木総業](https://www.kashinoki.shop/)
@@ -102,6 +102,7 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 - [楠電子](http://www.kusunoki-e.co.jp/)
 - [梅澤無線](https://umezawa-sendai.shop-pro.jp/)
 - [電技パーツ](http://www.dengiparts.co.jp/)
+- [Bispa](https://bispa.co.jp/)
 
 ## 秋葉原の店
 
