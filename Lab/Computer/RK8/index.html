@@ -553,7 +553,7 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <th></th>
 <th></th>
 <th></th>
-<th></th>
+<th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
@@ -562,28 +562,28 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <td>rd</td>
 <td>rs1</td>
 <td>rs2</td>
-<td>R[rd]=R[rs1]+R[rs2]</td>
+<td style="text-align: left;">R[rd]=R[rs1]+R[rs2]</td>
 </tr>
 <tr class="even">
 <td>addi</td>
 <td>rd</td>
 <td>rs1</td>
 <td>imm</td>
-<td>R[rd]=R[rs1]+imm</td>
+<td style="text-align: left;">R[rd]=R[rs1]+imm</td>
 </tr>
 <tr class="odd">
 <td>mov</td>
 <td>imm</td>
 <td>rs1</td>
 <td>rs2</td>
-<td>R[rs1+imm]=R[rs2]</td>
+<td style="text-align: left;">R[rs1+imm]=R[rs2]</td>
 </tr>
 <tr class="even">
 <td>br</td>
 <td>imm</td>
 <td>rs1</td>
 <td>rs2</td>
-<td>if(rs1=rs2) PC = imm</td>
+<td style="text-align: left;">if(rs1=rs2) PC = imm</td>
 </tr>
 </tbody>
 </table>
@@ -634,54 +634,54 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <tr class="header">
 <th>op</th>
 <th>opc</th>
-<th>S2_SEL</th>
-<th>DOUT_SEL</th>
-<th>DADR_SEL(NOR)</th>
-<th>JMP(AND)</th>
-<th>COND=CN</th>
-<th>ALU</th>
+<th style="text-align: left;">S2_SEL</th>
+<th style="text-align: left;">DOUT_SEL</th>
+<th style="text-align: left;">DADR_SEL(NOR)</th>
+<th style="text-align: left;">JMP(AND)</th>
+<th style="text-align: left;">COND=CN</th>
+<th style="text-align: left;">ALU</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>addi</td>
 <td>00</td>
-<td>00 : CODE2</td>
-<td>0 : ALU</td>
-<td>1 : ALU</td>
-<td>0</td>
-<td>-</td>
-<td>func</td>
+<td style="text-align: left;">00 : CODE2</td>
+<td style="text-align: left;">0 : ALU</td>
+<td style="text-align: left;">1 : ALU</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">func</td>
 </tr>
 <tr class="even">
 <td>mov</td>
 <td>01</td>
-<td>01 : CODE1</td>
-<td>1 : REG2</td>
-<td>0 : CODE0</td>
-<td>0</td>
-<td>-</td>
-<td>ADD</td>
+<td style="text-align: left;">01 : CODE1</td>
+<td style="text-align: left;">1 : REG2</td>
+<td style="text-align: left;">0 : CODE0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">ADD</td>
 </tr>
 <tr class="odd">
 <td>add</td>
 <td>10</td>
-<td>1- : REG2</td>
-<td>0 : ALU</td>
-<td>0 : CODE0</td>
-<td>0</td>
-<td>-</td>
-<td>func</td>
+<td style="text-align: left;">1- : REG2</td>
+<td style="text-align: left;">0 : ALU</td>
+<td style="text-align: left;">0 : CODE0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">func</td>
 </tr>
 <tr class="even">
 <td>br</td>
 <td>11</td>
-<td>1- : REG2</td>
-<td>-</td>
-<td>0 : CODE0</td>
-<td>1</td>
-<td>0:EQ 1:LT</td>
-<td>SUB</td>
+<td style="text-align: left;">1- : REG2</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">0 : CODE0</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0:EQ 1:LT</td>
+<td style="text-align: left;">SUB</td>
 </tr>
 </tbody>
 </table>
@@ -787,7 +787,7 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <th></th>
 <th>opc</th>
 <th>Cn / Cond</th>
-<th>M,S<sub>3:0</sub></th>
+<th style="text-align: left;">M,S<sub>3:0</sub></th>
 </tr>
 </thead>
 <tbody>
@@ -795,228 +795,228 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <td>addi</td>
 <td>00</td>
 <td>0</td>
-<td>0 1001 add</td>
+<td style="text-align: left;">0 1001 add</td>
 </tr>
 <tr class="even">
 <td>subi</td>
 <td>00</td>
 <td>1</td>
-<td>0 0110 sub</td>
+<td style="text-align: left;">0 0110 sub</td>
 </tr>
 <tr class="odd">
 <td>andi</td>
 <td>00</td>
 <td>-</td>
-<td>1 1110 adn</td>
+<td style="text-align: left;">1 1110 adn</td>
 </tr>
 <tr class="even">
 <td>ori</td>
 <td>00</td>
 <td>-</td>
-<td>1 1011 or</td>
+<td style="text-align: left;">1 1011 or</td>
 </tr>
 <tr class="odd">
 <td>xori</td>
 <td>00</td>
 <td>-</td>
-<td>1 1001 xor</td>
+<td style="text-align: left;">1 1001 xor</td>
 </tr>
 <tr class="even">
 <td>mov</td>
 <td>01</td>
 <td>0</td>
-<td>0 1001 add</td>
+<td style="text-align: left;">0 1001 add</td>
 </tr>
 <tr class="odd">
 <td>add</td>
 <td>10</td>
 <td>0</td>
-<td>0 1001 add</td>
+<td style="text-align: left;">0 1001 add</td>
 </tr>
 <tr class="even">
 <td>sub</td>
 <td>10</td>
 <td>1</td>
-<td>0 0110 sub</td>
+<td style="text-align: left;">0 0110 sub</td>
 </tr>
 <tr class="odd">
 <td>and</td>
 <td>10</td>
 <td>-</td>
-<td>1 1110 and</td>
+<td style="text-align: left;">1 1110 and</td>
 </tr>
 <tr class="even">
 <td>or</td>
 <td>10</td>
 <td>-</td>
-<td>1 1011 or</td>
+<td style="text-align: left;">1 1011 or</td>
 </tr>
 <tr class="odd">
 <td>not</td>
 <td>10</td>
 <td>-</td>
-<td>1 0000 not</td>
+<td style="text-align: left;">1 0000 not</td>
 </tr>
 <tr class="even">
 <td>xor</td>
 <td>10</td>
 <td>-</td>
-<td>1 1001 xor</td>
+<td style="text-align: left;">1 1001 xor</td>
 </tr>
 <tr class="odd">
 <td>be</td>
 <td>11</td>
 <td>0 A=B</td>
-<td>-</td>
+<td style="text-align: left;">0 0110 -</td>
 </tr>
 <tr class="even">
 <td>bl</td>
 <td>11</td>
 <td>1 A&lt;B</td>
-<td>0 0110 sub</td>
+<td style="text-align: left;">0 0110 sub</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr class="header">
-<th>品番</th>
+<th style="text-align: left;">品番</th>
 <th>個数</th>
-<th>用途</th>
+<th style="text-align: left;">用途</th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>ロジック IC</strong></td>
+<td style="text-align: left;"><strong>ロジック IC</strong></td>
 <td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>74HC00 NAND</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>74HC02 NOR</td>
-<td></td>
-<td></td>
+<td style="text-align: left;"></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>74HC04 NOT</td>
+<td style="text-align: left;">74HC00 NAND</td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>74HC08 AND</td>
+<td style="text-align: left;">74HC02 NOR</td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>74HC32 OR</td>
+<td style="text-align: left;">74HC04 NOT</td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>74HC564 8bit DFF 反転 3state 出力</td>
+<td style="text-align: left;">74HC08 AND</td>
+<td></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">74HC32 OR</td>
+<td></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">74HC564 8bit DFF 反転 3state 出力</td>
 <td>2</td>
-<td>レジスタ</td>
+<td style="text-align: left;">レジスタ</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>74HC181 ALU</td>
+<td style="text-align: left;">74HC181 ALU</td>
 <td>2</td>
-<td>ALU</td>
+<td style="text-align: left;">ALU</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>74HC564 8bit DFF 非反転 3state 出力</td>
+<td style="text-align: left;">74HC564 8bit DFF 非反転 3state 出力</td>
 <td>1</td>
-<td>出力部</td>
+<td style="text-align: left;">出力部</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>74HC540 3state バッファ 反転</td>
+<td style="text-align: left;">74HC540 3state バッファ 反転</td>
 <td>5</td>
-<td>セレクタ</td>
+<td style="text-align: left;">セレクタ</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>74HC541 3state バッファ 非反転</td>
+<td style="text-align: left;">74HC541 3state バッファ 非反転</td>
 <td>6</td>
-<td>セレクタ、入力部</td>
+<td style="text-align: left;">セレクタ、入力部</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>74HC161 バイナリカウンタ</td>
+<td style="text-align: left;">74HC161 バイナリカウンタ</td>
 <td>2</td>
-<td>プログラムカウンタ</td>
+<td style="text-align: left;">プログラムカウンタ</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>74HC175 4bit DFF</td>
+<td style="text-align: left;">74HC175 4bit DFF</td>
 <td>1</td>
-<td>ステージカウンタ</td>
+<td style="text-align: left;">ステージカウンタ</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>74HC14 シュミットトリガ</td>
+<td style="text-align: left;">74HC14 シュミットトリガ</td>
 <td>1</td>
-<td>チャタリング防止、NOT</td>
+<td style="text-align: left;">チャタリング防止、NOT</td>
 <td><a href="https://akizukidenshi.com/catalog/g/gI-10923/">秋月</a></td>
 </tr>
 <tr class="odd">
-<td><strong>メモリ</strong></td>
+<td style="text-align: left;"><strong>メモリ</strong></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>256 x 8 SRAM</td>
+<td style="text-align: left;">256 x 8 SRAM</td>
 <td>1</td>
-<td>メインメモリ</td>
+<td style="text-align: left;">メインメモリ</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>256 x 8 EEROM? Flash?</td>
+<td style="text-align: left;">256 x 8 EEROM? Flash?</td>
 <td>4</td>
-<td>プログラム ROM</td>
+<td style="text-align: left;">プログラム ROM</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><strong>クロック</strong></td>
+<td style="text-align: left;"><strong>クロック</strong></td>
 <td></td>
-<td></td>
+<td style="text-align: left;"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>分周器付き発振器</td>
+<td style="text-align: left;">分周器付き発振器</td>
 <td>1</td>
-<td>クロック</td>
+<td style="text-align: left;">クロック</td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-01685/">秋月</a></td>
 </tr>
 <tr class="even">
-<td>押しボタンスイッチ（LED）</td>
+<td style="text-align: left;">押しボタンスイッチ（LED）</td>
 <td>1</td>
-<td>手動クロック &amp; 電源ランプ</td>
+<td style="text-align: left;">手動クロック &amp; 電源ランプ</td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-02010/">秋月</a></td>
 </tr>
 <tr class="odd">
-<td>タクトスイッチ</td>
+<td style="text-align: left;">タクトスイッチ</td>
 <td>1</td>
-<td>リセット</td>
+<td style="text-align: left;">リセット</td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-03647/">秋月</a></td>
 </tr>
 <tr class="even">
-<td>スライドスイッチ</td>
+<td style="text-align: left;">スライドスイッチ</td>
 <td>1</td>
-<td>クロック切り替え</td>
+<td style="text-align: left;">クロック切り替え</td>
 <td><a href="https://akizukidenshi.com/catalog/g/gP-15707/">秋月</a></td>
 </tr>
 </tbody>
