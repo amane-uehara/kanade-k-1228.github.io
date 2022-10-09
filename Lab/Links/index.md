@@ -13,6 +13,8 @@ title: リンク集
 
 #### [チェリーたくあんの Web サイト](https://cherry-takuan.org/)
 
+NAND だけで CPU 作ってる方。
+
 [![](img/Cherry-banner.png)](https://cherry-takuan.org/)
 
 - [Twitter](https://twitter.com/cherry_takuan)
