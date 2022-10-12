@@ -100,6 +100,8 @@ keyword: 電子部品,電子工作,通販,秋葉原,日本橋,大須
 
 - [若松通商](https://www.wakamatsu.co.jp/)
 - [樫木総業](https://www.kashinoki.shop/)
+- [鈴商](https://suzushoweb.shop-pro.jp/)
+- [昭和電子](http://www.showadenshisangyo.co.jp/)
 - [サンエレクトロ](https://www.sun-elle.com/)
 - [楠電子](http://www.kusunoki-e.co.jp/)
 - [梅澤無線](https://umezawa-sendai.shop-pro.jp/)
