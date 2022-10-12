@@ -56,27 +56,27 @@ title: 自作 CPU RK8
 | be   | 11  | 0 A=B     | 0 0110 -   |
 | bl   | 11  | 1 A<B     | 0 0110 sub |
 
-| 品番                                | 個数 | 用途                      |                                                       |
-| :---------------------------------- | ---- | :------------------------ | ----------------------------------------------------- |
-| **ロジック IC**                     |      |                           |                                                       |
-| 74HC00 NAND                         |      |                           |                                                       |
-| 74HC02 NOR                          |      |                           |                                                       |
-| 74HC04 NOT                          |      |                           |                                                       |
-| 74HC08 AND                          |      |                           |                                                       |
-| 74HC32 OR                           |      |                           |                                                       |
-| 74HC564 8bit DFF 反転 3state 出力   | 2    | レジスタ                  |                                                       |
-| 74HC181 ALU                         | 2    | ALU                       |                                                       |
-| 74HC564 8bit DFF 非反転 3state 出力 | 1    | 出力部                    |                                                       |
-| 74HC540 3state バッファ 反転        | 5    | セレクタ                  |                                                       |
-| 74HC541 3state バッファ 非反転      | 6    | セレクタ、入力部          |                                                       |
-| 74HC161 バイナリカウンタ            | 2    | プログラムカウンタ        |                                                       |
-| 74HC175 4bit DFF                    | 1    | ステージカウンタ          |                                                       |
-| 74HC14 シュミットトリガ             | 1    | チャタリング防止、NOT     | [秋月](https://akizukidenshi.com/catalog/g/gI-10923/) |
-| **メモリ**                          |      |                           |
-| 256 x 8 SRAM                        | 1    | メインメモリ              |                                                       |
-| 256 x 8 EEROM? Flash?               | 4    | プログラム ROM            |                                                       |
-| **クロック**                        |      |                           |                                                       |
-| 分周器付き発振器                    | 1    | クロック                  | [秋月](https://akizukidenshi.com/catalog/g/gP-01685/) |
-| 押しボタンスイッチ（LED）           | 1    | 手動クロック & 電源ランプ | [秋月](https://akizukidenshi.com/catalog/g/gP-02010/) |
-| タクトスイッチ                      | 1    | リセット                  | [秋月](https://akizukidenshi.com/catalog/g/gP-03647/) |
-| スライドスイッチ                    | 1    | クロック切り替え          | [秋月](https://akizukidenshi.com/catalog/g/gP-15707/) |
+| 品番                                                                      | 個数 | 用途                      |                                                                             |
+| :------------------------------------------------------------------------ | ---- | :------------------------ | --------------------------------------------------------------------------- |
+| **ロジック IC**                                                           |      |                           |                                                                             |
+| 74HC00 NAND                                                               |      |                           |                                                                             |
+| 74HC02 NOR                                                                |      |                           |                                                                             |
+| 74HC04 NOT                                                                |      |                           |                                                                             |
+| 74HC08 AND                                                                |      |                           |                                                                             |
+| 74HC32 OR                                                                 |      |                           |                                                                             |
+| 74HC564 8bit DFF 反転 3state 出力                                         | 2    | レジスタ                  |                                                                             |
+| 74HC181 ALU                                                               | 2    | ALU                       |                                                                             |
+| 74HC564 8bit DFF 非反転 3state 出力                                       | 1    | 出力部                    |                                                                             |
+| 74HC540 3state バッファ 反転                                              | 5    | セレクタ                  |                                                                             |
+| 74HC541 3state バッファ 非反転                                            | 6    | セレクタ、入力部          |                                                                             |
+| 74HC161 バイナリカウンタ                                                  | 2    | プログラムカウンタ        |                                                                             |
+| 74HC175 4bit DFF                                                          | 1    | ステージカウンタ          |                                                                             |
+| 74HC14 シュミットトリガ                                                   | 1    | チャタリング防止、NOT     | [秋月](https://akizukidenshi.com/catalog/g/gI-10923/)                       |
+| **メモリ**                                                                |      |                           |
+| [UPD431016LE-15](https://wakamatsu.co.jp/biz/aac/14143.pdf) 65536 x 16    | 1    | メインメモリ              | [若松](https://wakamatsu.co.jp/biz/products/detail.php?product_id=17010392) |
+| [5V NOR Flash](https://www.alliancememory.com/new-5v-parallel-nor-flash/) | 2    | プログラム ROM            |                                                                             |
+| **クロック**                                                              |      |                           |                                                                             |
+| 分周器付き発振器                                                          | 1    | クロック                  | [秋月](https://akizukidenshi.com/catalog/g/gP-01685/)                       |
+| 押しボタンスイッチ（LED）                                                 | 1    | 手動クロック & 電源ランプ | [秋月](https://akizukidenshi.com/catalog/g/gP-02010/)                       |
+| タクトスイッチ                                                            | 1    | リセット                  | [秋月](https://akizukidenshi.com/catalog/g/gP-03647/)                       |
+| スライドスイッチ                                                          | 1    | クロック切り替え          | [秋月](https://akizukidenshi.com/catalog/g/gP-15707/)                       |
