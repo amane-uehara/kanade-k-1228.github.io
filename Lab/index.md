@@ -52,9 +52,9 @@ title: 研究室へようこそ
 
 ### 電子回路
 
-オペアンプ
+[トランジスタ](Electronics/Circuit/Transistor/)
 
-トランジスタ
+オペアンプ
 
 ### メカトロ
 
