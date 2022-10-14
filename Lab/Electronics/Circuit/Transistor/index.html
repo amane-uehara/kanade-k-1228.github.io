@@ -86,7 +86,7 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>研究室へようこそ | Kanade's Website</title>
+          <title>トランジスタの使い方 | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -440,7 +440,7 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "研究室へようこそ",
+            "トランジスタの使い方",
           "_blank"
         );
       }
@@ -514,7 +514,7 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">研究室へようこそ</h1>
+                <h1 style="margin: 0">トランジスタの使い方</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -546,103 +546,58 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#数学">数学</a></li>
-<li><a href="#物理学">物理学</a><ul>
-<li><a href="#力学">力学</a></li>
-<li><a href="#物性">物性</a></li>
+<li><a href="#トランジスタ-vs-fet">トランジスタ vs FET</a></li>
+<li><a href="#トランジスタの動作">トランジスタの動作</a></li>
+<li><a href="#エミッタ接地">エミッタ接地</a></li>
+<li><a href="#コレクタ接地">コレクタ接地</a></li>
+<li><a href="#ベース接地">ベース接地</a><ul>
+<li><a href="#コラム点接触トランジスタ">コラム：点接触トランジスタ</a></li>
 </ul></li>
-<li><a href="#制御工学">制御工学</a></li>
-<li><a href="#機械工学">機械工学</a></li>
-<li><a href="#電気電子工学">電気電子工学</a><ul>
-<li><a href="#電子工作">電子工作</a></li>
-<li><a href="#電子回路">電子回路</a></li>
-<li><a href="#メカトロ">メカトロ</a></li>
-<li><a href="#電波">電波</a></li>
-<li><a href="#fpga">FPGA</a></li>
-</ul></li>
-<li><a href="#情報工学">情報工学</a><ul>
-<li><a href="#自作-cpurk8">自作 CPU：RK8</a></li>
-<li><a href="#自作マイコン">自作マイコン</a></li>
-<li><a href="#リレーコンピュータ">リレーコンピュータ</a></li>
-</ul></li>
+<li><a href="#厳密な話">厳密な話</a></li>
 </ul></nav>
-       <p><a href="./Links/">リンク集</a></p>
-<h2 id="数学">数学</h2>
-<p><a href="./Mathmatics/GreenFunction/">グリーン関数</a></p>
-<p><a href="./Mathmatics/FourierTransform/">フーリエ変換</a></p>
-<h2 id="物理学">物理学</h2>
-<h3 id="力学">力学</h3>
-<p><a href="./Physics/ContinuumMechanics/">連続体力学</a></p>
-<p><a href="./Physics/FluidMechanics/">流体力学</a></p>
-<h3 id="物性">物性</h3>
-<p><a href="./Physics/CondensedMatter/">物性物理</a></p>
-<h2 id="制御工学">制御工学</h2>
-<p><a href="./Control/SpringMassSystem/">バネ・マス系</a></p>
-<p><a href="./Control/Drone/">ドローンの制御</a></p>
-<p><a href="./Control/Segway/">車輪型倒立振子の制御</a></p>
-<h2 id="機械工学">機械工学</h2>
-<p><a href="./Mech/Manufacturing/">生産技術</a></p>
-<p>人体と機械</p>
-<p>熱機関</p>
-<h2 id="電気電子工学">電気電子工学</h2>
-<h3 id="電子工作">電子工作</h3>
-<p><a href="Electronics/Misc/PartsShop/">電子部品の買える店</a></p>
-<p><a href="Electronics/Misc/YMZ294/">YMZ294 で音楽を再生する</a></p>
-<p><a href="Electronics/Misc/HotplateReflow/">5000 円で作るリフロー装置</a></p>
-<p><a href="Electronics/Misc/LogicIC/">ロジック IC リスト</a></p>
-<h3 id="電子回路">電子回路</h3>
-<p><a href="Electronics/Circuit/Transistor/">トランジスタ</a></p>
-<p>オペアンプ</p>
-<h3 id="メカトロ">メカトロ</h3>
-<p>ロータリーエンコーダを自作</p>
-<h3 id="電波">電波</h3>
-<p><a href="Electronics/Radio/RectennaLED/">ダイオード 2 本でお手軽エネルギーハーベスティング</a></p>
-<!-- 無線送電を作って遊ぶ -->
-<!-- 一級陸上無線技術士を取りました -->
-<h3 id="fpga">FPGA</h3>
-<p><a href="./Electronics/FPGA/TinyFpga/">TinyFPGA を使ってみた</a></p>
-<!-- [FPGA で VGA 映像出力](./Electronics/FPGA/FPGAVGA/) -->
-<!-- [FPGA で音源 IC を作って鳴らしてみた](./Electronics/FPGASound/) -->
-<!-- FPGA で PWM -->
-<!-- FPGA でシリアル通信 -->
-<h2 id="情報工学">情報工学</h2>
-<p><a href="./Computer/Misc/TLA/">TLA+ 入門</a></p>
-<p><a href="./Computer/Misc/VPN/">SoftEther VPN で共用ルーターを突破する</a></p>
-<p><a href="./Computer/Misc/ServerSetup/">サーバーセットアップメモ</a></p>
-<p><a href="./Computer/Misc/LongestWay/">最長片道切符</a></p>
-<p><a href="./Computer/Misc/RISC-V/">RISC-V</a></p>
-<h3 id="自作-cpurk8">自作 CPU：RK8</h3>
-<p><a href="./Computer/RK8/">RK8 の概要</a></p>
-<h3 id="自作マイコン">自作マイコン</h3>
-<p><a href="./Computer/Micon/00_About/">自作マイコンについて</a></p>
-<p><a href="./Computer/Micon/01_CPU/">自作マイコン用 CPU、RISC-K</a></p>
-<p><a href="./Computer/Micon/02_LogicIC/">ロジック IC で組む</a></p>
-<p><a href="./Computer/Micon/03_Assembler/">アセンブラ</a></p>
-<p><a href="./Computer/Micon/04_Compiler/">コンパイラ</a></p>
-<!-- [さまざまなプログラムを動かす](./Computer/Micon/04_Programing/)
-
-[周辺回路を作る](./Computer/Micon/05_Peripheral)
-
-[ロジック IC で組む](./Computer/Micon/06_LogicIC) -->
-<h3 id="リレーコンピュータ">リレーコンピュータ</h3>
-<p><a href="./Computer/RelayComputer/Day1_Introduction/">リレーから始める CPU 自作</a></p>
-<p><a href="./Computer/RelayComputer/Day2_SwitchLogic/">スイッチで作る組合回路</a></p>
-<p><a href="./Computer/RelayComputer/Day3_RelayLogic/">リレーで作る組合回路</a></p>
-<p><a href="./Computer/RelayComputer/Day4_Latch/">早押しボタンを作ってみる</a></p>
-<p><a href="./Computer/RelayComputer/Day5_DFF/">D フリップフロップ回路</a></p>
-<p><a href="./Computer/RelayComputer/Day6_Counter/">カウンタ回路</a></p>
-<p><a href="./Computer/RelayComputer/Day7_Clock/">クロック回路</a></p>
-<p><a href="./Computer/RelayComputer/Day8_Illumination/">点滅するイルミネーションを作ってみる</a></p>
-<p><a href="./Computer/RelayComputer/Day9_ROM/">イルミネーションをプログラマブルにする</a></p>
-<p><a href="./Computer/RelayComputer/Day10_Components/">回路まとめ</a></p>
-<p><a href="./Computer/RelayComputer/Day11_CPU/">CPU になりきる</a></p>
-<p><a href="./Computer/RelayComputer/Day12_ComputerSystem/">コンピュータのしくみ</a></p>
-<p><a href="./Computer/RelayComputer/Day13_RelayCPU/">リレーコンピュータの仕様</a></p>
-<p><a href="./Computer/RelayComputer/Day14_MemoryMap/">メモリマップ</a></p>
-<p><a href="./Computer/RelayComputer/Day15_MOV/">MOV 命令</a></p>
-<p><a href="./Computer/RelayComputer/Day16_LOAD/">LOAD 命令</a></p>
-<p><a href="./Computer/RelayComputer/Day17_JMPIF/">JMPIF 命令</a></p>
-<p><a href="./Computer/RelayComputer/Day18_ALU/">演算回路</a></p>
+       <p>2 本足の抵抗やコンデンサに比べて、3 本足のトランジスタの使い方は途端に難しく感じられます。</p>
+<p>トランジスタが複雑に絡み合った回路を見ると、全くお手上げになってしまうかも。</p>
+<p>しかし、このような複雑な回路も、基本的な 3 種類のトランジスタ回路の組み合わせにすぎません。</p>
+<h2 id="トランジスタ-vs-fet">トランジスタ vs FET</h2>
+<p>トランジスタは小さな電流・電圧で大きな電流・電圧を制御する素子です。電気的なバルブ、蛇口だと思ってください。</p>
+<p>蛇口を弱く回せば水流を調整できるし、</p>
+<p>全開にすれば水のスイッチ</p>
+<p>トランジスタも全く同じで、入力に比例して出力するようにしたり、ON/OFF のスイッチとして使うこともできます。</p>
+<p>入力に比例して出力する</p>
+<p>たとえば、ラジオの微弱な信号を増幅してスピーカーで聞こえるようにしたり、センサの</p>
+<p>スイッチとしての使い方は、モーターの回転を制御したり、ロジック回路として使えたりします。</p>
+<p>トランジスタには大きく２種類あります。バイポーラトランジスタ（BJT）と、電界効果トランジスタ（FET）です。</p>
+<p>小信号の増幅用にバイポーラ、電力制御用に FET 使われることが多いです。</p>
+<p>よく誤解されがちですが、バイポーラを電力制御に使うことも、FET を信号増幅に使うことも可能です。</p>
+<p>BJT と FET、アンプとスイッチの相違をきちんと理解</p>
+<p>このスイッチとアンプの機能が別物として語られがちなことが、混乱の原因になっていると思います。本来は同じものだけど、飽和か線形かの違いで</p>
+<p>単にトランジスタと言った場合、バイポーラのことを指す場合が多いです。</p>
+<h2 id="トランジスタの動作">トランジスタの動作</h2>
+<p>トランジスタには、ベース・コレクタ・エミッタの 3 本のピンが生えています。</p>
+<p>トランジスタは電流の蛇口です。コレクタ・エミッタ間電流を流す量を、ベースに流れる電流で制御します。</p>
+<p>ベース・エミッタ間の電流 <span class="math inline">\(I_{BE}\)</span> の <span class="math inline">\(h_{FE}\)</span> 倍の電流を コレクタに流す。</p>
+<p><span class="math display">\[
+I_{CE} = h_{FE} I_{BE}
+\]</span></p>
+<h2 id="エミッタ接地">エミッタ接地</h2>
+<p><img src="./img/emitter.dio.svg" /></p>
+<p>最も基本的な回路です。</p>
+<p><span class="math display">\[
+I_B = \f{V_{IN}-V_{BE}}{R_{IN}}
+\]</span></p>
+<p><span class="math display">\[
+I_C = h_{FE} I_B
+\]</span></p>
+<p><span class="math display">\[
+V_{OUT} = V_{PP} - R_C I_C
+\]</span></p>
+<h2 id="コレクタ接地">コレクタ接地</h2>
+<h2 id="ベース接地">ベース接地</h2>
+<h3 id="コラム点接触トランジスタ">コラム：点接触トランジスタ</h3>
+<p>少し奇妙な見た目ですが、実は由緒正しいトランジスタの回路</p>
+<h2 id="厳密な話">厳密な話</h2>
+<p>実際には変動があります。</p>
+<p>厳密には、データシートのグラフを全て満たしているかを確認する必要があります。</p>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
