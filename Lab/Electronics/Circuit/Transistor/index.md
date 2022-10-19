@@ -77,7 +77,7 @@ I_C = h_{FE} I_B
 $$
 
 $$
-I_E = I_B + I_C \simeq I_C (I_B \ll I_C)
+I_E = I_B + I_C \simeq I_C \qquad (I_B \ll I_C)
 $$
 
 $$

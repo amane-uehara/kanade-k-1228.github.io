@@ -15,8 +15,7 @@ title: ロジックICで組む
 
 ## RAM
 
-[Renesas 64K x 16 SRAM 71V016](https://www.renesas.com/jp/ja/products/memory-logic/srams/asynchronous-srams/71v016-33v-64k-x-16-bit-asynchronous-static-ram)
-（[データシート](https://www.renesas.com/jp/en/document/dst/71v016sa-datasheet?r=13422)）
+[Renesas 64K x 16 SRAM 71016](https://www.renesas.com/jp/en/document/dst/71016-data-sheet)
 
 これをメインメモリにします。ふつうの SRAM です。SRAM といってもフリップフロップが大量に並んでるだけなので、使い方は単純です。
 
@@ -24,7 +23,7 @@ title: ロジックICで組む
   - 出力は最大 50mA
   - !CS=1 で Z 出力
   - TSOP
-  - 3.3V
+  - 5V
 - READ
   - !WE=1, !CS=0, !OE=0, !BHE=0, !BLE=0
   - ADDRESS にアドレスを書き込めば、
@@ -44,7 +43,7 @@ IO 領域のアドレスが指定された場合、SRAM の!CE=1 にします。
 （[データシート](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/25001A.pdf)）
 
 - Note
-  - 3.3V
+  - 5V
   - TSOP
 - READ
   - !CE=0, !OE=0
