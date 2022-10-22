@@ -63,7 +63,7 @@ I_C = h_{FE} I_B
 $$
 
 $$
-V_{OUT} = V_{PP} - R_C I_C
+V_{OUT} = V_{CC} - R_C I_C
 $$
 
 ## コレクタ接地
