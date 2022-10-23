@@ -552,7 +552,12 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <li><a href="#エミッタ接地">エミッタ接地</a></li>
 <li><a href="#コレクタ接地">コレクタ接地</a></li>
 <li><a href="#ベース接地">ベース接地</a></li>
-<li><a href="#厳密な話">厳密な話</a></li>
+<li><a href="#ダイオードとして使う">ダイオードとして使う</a></li>
+<li><a href="#定電流回路">定電流回路</a></li>
+<li><a href="#カレントミラー">カレントミラー</a></li>
+<li><a href="#差動増幅回路">差動増幅回路</a></li>
+<li><a href="#プッシュプル">プッシュプル</a></li>
+<li><a href="#クロスオーバー">クロスオーバー</a></li>
 </ul></li>
 <li><a href="#電界効果トランジスタ">電界効果トランジスタ</a></li>
 </ul></nav>
@@ -651,9 +656,42 @@ I_E = I_B + I_C \approx I_C \quad (I_B \ll I_C)
 <p><span class="math display">\[
 V_{OUT} = V_{CC} - I_C R_C
 \]</span></p>
-<h3 id="厳密な話">厳密な話</h3>
-<p>実際には変動があります。</p>
-<p>厳密には、データシートのグラフを全て満たしているかを確認する必要があります。</p>
+<h3 id="ダイオードとして使う">ダイオードとして使う</h3>
+<p>ベース-エミッタ間だけをみると、 PN 接合のダイオードとみなせます。</p>
+<p><span class="math inline">\(V_{BE}\)</span> の電圧降下が欲しいときに使います。</p>
+<h3 id="定電流回路">定電流回路</h3>
+<p>ベース接地回路を使って、</p>
+<p>ただ、<span class="math inline">\(V_{CC}\)</span> が変わると、定電流ではなくなります。</p>
+<p>そこで、<span class="math inline">\(V_{BE}\)</span> が一定であることを利用します。</p>
+<h3 id="カレントミラー">カレントミラー</h3>
+<p>入力側のトランジスタはベース-コレクタが接続されているので、ダイオードとみなせる。</p>
+<p>ベース入力電圧は、</p>
+<p><span class="math display">\[
+R I_{IN} + V_{BE}
+\]</span></p>
+<p><span class="math display">\[
+R I_{OUT} + V_{BE}
+\]</span></p>
+<p><span class="math inline">\(I_{OUT}&lt;I_{IN}\)</span> になると、ベース電流が増大し、<span class="math inline">\(I_{OUT}\)</span> も増加します。</p>
+<p><span class="math inline">\(I_{OUT}&gt;I_{IN}\)</span> になると、<span class="math inline">\(V_E\)</span> が上昇し、トランジスタ OFF になるので、<span class="math inline">\(I_{OUT}\)</span> は減少します。 ※ 突然トランジスタが OFF になって、<span class="math inline">\(I_{OUT}=0\)</span> になるわけではない。過渡部分で徐々に電流が減る。</p>
+<h3 id="差動増幅回路">差動増幅回路</h3>
+<h3 id="プッシュプル">プッシュプル</h3>
+<p>コンプリメンタルな NPN と PNP を使う。</p>
+<p><span class="math inline">\(V_{IN}&gt;V_{BE}\)</span> のとき、NPN が ON に、PNP が OFF になるので、NPN のコレクタ接地回路とみなせる。</p>
+<p><span class="math inline">\(V_{IN}&lt;-V_{BE}\)</span> のとき、PNP が ON になり、NPN が OFF になるので、PNP のコレクタ接地回路とみなせる。</p>
+<p>入出力のグラフはこうなる。0V 付近で途切れている。</p>
+<p>これを回避するために、入力にバイアスを加えたものが次の回路。</p>
+<h3 id="クロスオーバー">クロスオーバー</h3>
+<p>入力部分にトランジスタを追加した。</p>
+<p>ベース-コレクタが接続されているので、ダイオードとみなせる。</p>
+<p>ダイオードにより、バイアスがかかるので、</p>
+<p><span class="math display">\[
+V_{B}_{NPN} = V_{IN} + V_{BE}
+\]</span></p>
+<p><span class="math display">\[
+V_{B}_{PNP} = V_{IN} - V_{BE}
+\]</span></p>
+<p>よって、NPN が ON になる条件は、<span class="math inline">\(V_{IN}+V_{BE}&gt;V_{BE} \therefore V_{IN}&gt;0\)</span>。PNP が ON になる条件は、<span class="math inline">\(V_{IN}-V_{BE}&lt;V_{BE} \therefore V_{IN}&lt;0\)</span>。これで、入出力のグラフが綺麗な直線になった。</p>
 <h2 id="電界効果トランジスタ">電界効果トランジスタ</h2>
 
       <svg
