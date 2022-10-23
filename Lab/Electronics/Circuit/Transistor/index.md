@@ -68,6 +68,8 @@ $$
 
 ## コレクタ接地
 
+![](./img/collector.dio.svg)
+
 $$
 I_B = \f{V_{IN} - V_{BE} - I_E R_E}{R_B}
 $$
@@ -85,6 +87,8 @@ V_{OUT} = I_E R_E
 $$
 
 ## ベース接地
+
+![](./img/base.dio.svg)
 
 エミッタ接地の GND を入力にしたような回路です。
 
