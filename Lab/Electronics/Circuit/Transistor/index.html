@@ -598,23 +598,23 @@ I_B = \f{V_{IN} - V_{BE} - I_E R_E}{R_B}
 I_C = h_{FE} I_B
 \]</span></p>
 <p><span class="math display">\[
-I_E = I_B + I_C \simeq I_C \qquad (I_B \ll I_C)
+I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
 \]</span></p>
 <p><span class="math display">\[
 V_{OUT} = I_E R_E
 \]</span></p>
 <h2 id="ベース接地">ベース接地</h2>
 <p><img src="./img/base.dio.svg" /></p>
-<p>エミッタ接地の GND を入力にしたような回路です。</p>
-<p>入力は負電圧です。<span class="math inline">\(V_{IN}&lt;0\)</span></p>
+<p>エミッタ接地に似た回路です。</p>
+<p>入力は負電圧です。</p>
 <p><span class="math display">\[
-I_B = \f{-V_{IN} - V_{BE}}{R_B}
+I_E = \f{V_{IN} - V_{BE}}{R_E}
 \]</span></p>
 <p><span class="math display">\[
-I_C = h_{FE} I_B
+I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
 \]</span></p>
 <p><span class="math display">\[
-V_{OUT} = V_{PP} - I_C R_C
+V_{OUT} = V_{CC} - I_C R_C
 \]</span></p>
 <h2 id="厳密な話">厳密な話</h2>
 <p>実際には変動があります。</p>

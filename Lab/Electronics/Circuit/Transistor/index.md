@@ -79,7 +79,7 @@ I_C = h_{FE} I_B
 $$
 
 $$
-I_E = I_B + I_C \simeq I_C \qquad (I_B \ll I_C)
+I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
 $$
 
 $$
@@ -90,20 +90,20 @@ $$
 
 ![](./img/base.dio.svg)
 
-エミッタ接地の GND を入力にしたような回路です。
+エミッタ接地に似た回路です。
 
-入力は負電圧です。$V_{IN}<0$
-
-$$
-I_B = \f{-V_{IN} - V_{BE}}{R_B}
-$$
+入力は負電圧です。
 
 $$
-I_C = h_{FE} I_B
+I_E = \f{V_{IN} - V_{BE}}{R_E}
 $$
 
 $$
-V_{OUT} = V_{PP} - I_C R_C
+I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
+$$
+
+$$
+V_{OUT} = V_{CC} - I_C R_C
 $$
 
 ## 厳密な話
