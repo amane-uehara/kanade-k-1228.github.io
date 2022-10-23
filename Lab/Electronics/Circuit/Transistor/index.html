@@ -575,7 +575,15 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 <p>トランジスタは電流の蛇口です。コレクタ・エミッタ間電流を流す量を、ベースに流れる電流で制御します。</p>
 <p>ベース・エミッタ間の電流 <span class="math inline">\(I_{BE}\)</span> の <span class="math inline">\(h_{FE}\)</span> 倍の電流を コレクタに流す。</p>
 <p><span class="math display">\[
-I_{CE} = h_{FE} I_{BE}
+I_C = h_{FE} I_B
+\]</span></p>
+<p>また、トランジスタは電流を吸い込んだり、吐き出したりするわけではないので、キルヒホッフの法則から、</p>
+<p><span class="math display">\[
+I_E = I_B + I_C
+\]</span></p>
+<p>増幅率 <span class="math inline">\(h_{FE}\)</span> が十分大きいと仮定すると、</p>
+<p><span class="math display">\[
+I_E = I_B + I_C \approx I_C \quad (I_B \ll I_C)
 \]</span></p>
 <h2 id="エミッタ接地">エミッタ接地</h2>
 <p><img src="./img/emitter.dio.svg" /></p>
@@ -592,26 +600,23 @@ V_{OUT} = V_{CC} - R_C I_C
 <h2 id="コレクタ接地">コレクタ接地</h2>
 <p><img src="./img/collector.dio.svg" /></p>
 <p><span class="math display">\[
-I_B = \f{V_{IN} - V_{BE} - I_E R_E}{R_B}
+V_{OUT} = V_{IN} - V_{BE}
 \]</span></p>
 <p><span class="math display">\[
-I_C = h_{FE} I_B
+I_E = \f{V_{IN}-V_{BE}}{R_E}
 \]</span></p>
 <p><span class="math display">\[
-I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
+I_B = \f{1}{1 + h_{FE}} I_E
 \]</span></p>
-<p><span class="math display">\[
-V_{OUT} = I_E R_E
-\]</span></p>
+<p><span class="math inline">\(R_E\)</span> 定電圧電源として使えます</p>
 <h2 id="ベース接地">ベース接地</h2>
 <p><img src="./img/base.dio.svg" /></p>
-<p>エミッタ接地に似た回路です。</p>
-<p>入力は負電圧です。</p>
+<p>エミッタ接地に似た回路です。入力は負電圧です。</p>
 <p><span class="math display">\[
 I_E = \f{V_{IN} - V_{BE}}{R_E}
 \]</span></p>
 <p><span class="math display">\[
-I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
+I_E = I_B + I_C \approx I_C \quad (I_B \ll I_C)
 \]</span></p>
 <p><span class="math display">\[
 V_{OUT} = V_{CC} - I_C R_C

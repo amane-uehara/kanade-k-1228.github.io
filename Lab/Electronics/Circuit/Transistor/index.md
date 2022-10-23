@@ -45,7 +45,19 @@ BJT と FET、アンプとスイッチの相違をきちんと理解
 ベース・エミッタ間の電流 $I_{BE}$ の $h_{FE}$ 倍の電流を コレクタに流す。
 
 $$
-I_{CE} = h_{FE} I_{BE}
+I_C = h_{FE} I_B
+$$
+
+また、トランジスタは電流を吸い込んだり、吐き出したりするわけではないので、キルヒホッフの法則から、
+
+$$
+I_E = I_B + I_C
+$$
+
+増幅率 $h_{FE}$ が十分大きいと仮定すると、
+
+$$
+I_E = I_B + I_C \approx I_C \quad (I_B \ll I_C)
 $$
 
 ## エミッタ接地
@@ -71,35 +83,31 @@ $$
 ![](./img/collector.dio.svg)
 
 $$
-I_B = \f{V_{IN} - V_{BE} - I_E R_E}{R_B}
+V_{OUT} = V_{IN} - V_{BE}
 $$
 
 $$
-I_C = h_{FE} I_B
+I_E = \f{V_{IN}-V_{BE}}{R_E}
 $$
 
 $$
-I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
+I_B = \f{1}{1 + h_{FE}} I_E
 $$
 
-$$
-V_{OUT} = I_E R_E
-$$
+$R_E$ 定電圧電源として使えます
 
 ## ベース接地
 
 ![](./img/base.dio.svg)
 
-エミッタ接地に似た回路です。
-
-入力は負電圧です。
+エミッタ接地に似た回路です。入力は負電圧です。
 
 $$
 I_E = \f{V_{IN} - V_{BE}}{R_E}
 $$
 
 $$
-I_E = I_B + I_C \approx I_C \qquad (I_B \ll I_C)
+I_E = I_B + I_C \approx I_C \quad (I_B \ll I_C)
 $$
 
 $$
