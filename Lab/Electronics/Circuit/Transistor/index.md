@@ -170,11 +170,11 @@ $V_{IN}<-V_{BE}$ のとき、PNP が ON になり、NPN が OFF になるので�
 ダイオードにより、バイアスがかかるので、
 
 $$
-V_{B}_{NPN} = V_{IN} + V_{BE}
+V_{BNPN} = V_{IN} + V_{BE}
 $$
 
 $$
-V_{B}_{PNP} = V_{IN} - V_{BE}
+V_{BPNP} = V_{IN} - V_{BE}
 $$
 
 よって、NPN が ON になる条件は、$V_{IN}+V_{BE}>V_{BE} \therefore V_{IN}>0$。PNP が ON になる条件は、$V_{IN}-V_{BE}<V_{BE} \therefore V_{IN}<0$。これで、入出力のグラフが綺麗な直線になった。
