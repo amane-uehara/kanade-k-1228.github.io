@@ -86,8 +86,7 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-        <meta name="dcterms.date" content="2022-09-27" />
-          <title>自作マイコン用CPU、RISC-K | Kanade's Website</title>
+          <title>アセンブラ | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -441,7 +440,7 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "自作マイコン用CPU、RISC-K",
+            "アセンブラ",
           "_blank"
         );
       }
@@ -515,9 +514,8 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">自作マイコン用CPU、RISC-K</h1>
+                <h1 style="margin: 0">アセンブラ</h1>
                 <!-- Date -->
-                <p align="right">2022-09-27</p>
                 <!-- Description -->
               </header>
 
@@ -548,450 +546,240 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#レジスタ">レジスタ</a></li>
-<li><a href="#命令セット">命令セット</a><ul>
-<li><a href="#演算の種類">演算の種類</a></li>
-<li><a href="#割り込み">割り込み</a></li>
-</ul></li>
-<li><a href="#メモリ空間">メモリ空間</a><ul>
-<li><a href="#レジスタ-1">レジスタ</a></li>
-<li><a href="#io">IO</a></li>
-<li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
-<li><a href="#ram-sram">RAM (SRAM)</a></li>
-<li><a href="#program-rom-nor-flash">Program ROM (NOR Flash)</a></li>
-</ul></li>
-<li><a href="#回路">回路</a><ul>
-<li><a href="#id">ID</a></li>
-<li><a href="#alu">ALU</a></li>
-<li><a href="#クロック">クロック</a></li>
-<li><a href="#pfc">PFC</a></li>
+<li><a href="#命令一覧">命令一覧</a></li>
+<li><a href="#アセンブラの実装">アセンブラの実装</a></li>
+<li><a href="#慣用句">慣用句</a><ul>
+<li><a href="#サブルーチン">サブルーチン</a></li>
+<li><a href="#割り込み処理">割り込み処理</a></li>
 </ul></li>
 </ul></nav>
-       <h2 id="レジスタ">レジスタ</h2>
-<p>0x00 ~ 0x3F まで 64 本のレジスタ。</p>
+       <h2 id="命令一覧">命令一覧</h2>
 <table>
-<thead>
-<tr class="header">
-<th></th>
-<th></th>
-<th>機能</th>
-<th>保持</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x00</td>
-<td>zero</td>
-<td>ゼロ固定</td>
-<td>-</td>
-</tr>
-<tr class="even">
-<td>0x01</td>
-<td>ra</td>
-<td>戻りアドレス</td>
-<td>✕</td>
-</tr>
-<tr class="odd">
-<td>0x02</td>
-<td>sp</td>
-<td>スタック・ポインタ</td>
-<td>〇</td>
-</tr>
-<tr class="even">
-<td>0x03</td>
-<td>gp</td>
-<td>グローバル・ポインタ</td>
-<td>〇</td>
-</tr>
-<tr class="odd">
-<td>0x10 - 0x1F</td>
-<td>s0-3</td>
-<td>保存レジスタ</td>
-<td>〇</td>
-</tr>
-<tr class="even">
-<td>0x20 - 0x2F</td>
-<td>t0-3</td>
-<td>一時レジスタ</td>
-<td>✕</td>
-</tr>
-<tr class="odd">
-<td>0x30 - 0x3F</td>
-<td>a0-3</td>
-<td>引数・返値</td>
-<td>✕</td>
-</tr>
-<tr class="even">
-<td>-</td>
-<td>pc</td>
-<td>プログラムカウンタ</td>
-<td>-</td>
-</tr>
-<tr class="odd">
-<td>-</td>
-<td>csr</td>
-<td>コントロール＆ステータスレジスタ</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h2 id="命令セット">命令セット</h2>
-<p><img src="img/isa.png" /></p>
-<table>
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 19%" />
-<col style="width: 31%" />
-<col style="width: 36%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>命令</th>
 <th>アセンブリ</th>
-<th></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>レジスタ演算</td>
-<td>add rd, rs1, rs2</td>
-<td>r[rd] = r[rs1] + r[rs2]</td>
-<td>レジスタ間で演算</td>
+<td>add rd rs1 rs2</td>
+<td>rd = rs1 + rs2</td>
 </tr>
 <tr class="even">
 <td>即値演算</td>
-<td>addi rd, rs1, is(12)</td>
-<td>r[rd] = r[rs1] + is(12)</td>
-<td>12bit の即値と演算</td>
+<td>addi rd rs1 imm</td>
+<td>rd = rs1 + imm</td>
 </tr>
 <tr class="odd">
 <td>ロード</td>
-<td>load rd, rs1, i(16)</td>
-<td>r[rd] = m[r[rs1] + i(16)]</td>
-<td>rs1 = zero で絶対参照</td>
+<td>load rd rs1 imm</td>
+<td>rd = mem[rs1 + imm]</td>
 </tr>
 <tr class="even">
 <td>ストア</td>
-<td>store rs1, rs2, i(16)</td>
-<td>m[r[rs1]+is(12)] = r[rs2]</td>
-<td></td>
+<td>store rs1 rs2 imm</td>
+<td>mem[rs1 + imm] = rs2</td>
 </tr>
 <tr class="odd">
 <td>即値ロード</td>
-<td>loadi rd, i(16)</td>
-<td>r[rd] = i(16)</td>
-<td></td>
+<td>loadi rd imm</td>
+<td>rd = imm</td>
 </tr>
 <tr class="even">
 <td>ジャンプ</td>
-<td>jump rd, rs1, i(16)</td>
-<td>r[rd] = PC + 1, PC = r[rs1] + i(16)</td>
-<td>戻りアドレスを rd に保存 &amp; PC をジャンプ</td>
+<td>jump rd rs1 imm</td>
+<td>rd = PC + 1, PC = rs1 + imm</td>
 </tr>
 <tr class="odd">
 <td>条件分岐（＝）</td>
-<td>be rs1, rs2, i(16)</td>
-<td>if(r[rs1]=r[rs2]) PC = i(16)</td>
-<td></td>
+<td>breq rs1 rs2 imm</td>
+<td>if(rs1 = rs2) PC = imm</td>
 </tr>
 <tr class="even">
 <td>条件分岐（＜）</td>
-<td>bl rs1, rs2, i(16)</td>
-<td>if(r[rs1]&lt;r[rs2]) PC = i(16)</td>
-<td></td>
+<td>brlt rs1 rs2 imm</td>
+<td>if(rs1 &lt; rs2) PC = imm</td>
 </tr>
 </tbody>
 </table>
-<p><code>r[x]</code> はレジスタ x の値を、<code>m[x]</code> はメモリの x 番地の値を意味します。</p>
-<p><code>i(x)</code> は x bit の即値を、<code>is</code> は符号拡張する即値を意味します。</p>
-<h4 id="符号拡張とは">符号拡張とは</h4>
-<p>4bit の符号付き整数を 8bit にしたい場合、正の数は 0 を埋めればいいですが、負の数は 1 を埋める必要になります。符号付き整数の符号は、最上位 bit で表されるので、一般に、符号付き整数の bit 長を伸ばしたい場合、最上位ビットで埋める必要があります。これが符号拡張です。</p>
-<table>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>0000</td>
-<td>0001</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>↑↑↑←</td>
-<td><strong>0</strong>001</td>
-</tr>
-<tr class="odd">
-<td>0</td>
-<td></td>
-<td>0000</td>
-</tr>
-<tr class="even">
-<td>-1</td>
-<td>↓↓↓←</td>
-<td><strong>1</strong>111</td>
-</tr>
-<tr class="odd">
-<td>-1</td>
-<td>1111</td>
-<td>1111</td>
-</tr>
-</tbody>
-</table>
-<h3 id="演算の種類">演算の種類</h3>
-<table>
-<thead>
-<tr class="header">
-<th>No</th>
-<th></th>
-<th>演算</th>
-<th>No</th>
-<th></th>
-<th>演算</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>+</td>
-<td>add</td>
-<td>6</td>
-<td>&lt;</td>
-<td>lt (less than)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>-</td>
-<td>sub</td>
-<td>7</td>
-<td>&lt;</td>
-<td>ltu (less than unsigned)</td>
-<td>符号なし整数として比較</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>&amp;</td>
-<td>and</td>
-<td>8</td>
-<td>&gt;&gt;</td>
-<td>rsl (right shift logical)</td>
-<td>上位ビットを符号ビットで埋める</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>|</td>
-<td>or</td>
-<td>9</td>
-<td>&gt;&gt;</td>
-<td>rsa (right shift arithmetic)</td>
-<td>上位ビットを 0 で埋めする</td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td>^</td>
-<td>xor</td>
-<td>A</td>
-<td>&lt;&lt;</td>
-<td>ls (left shift)</td>
-<td>left shift 下位ビットは 0 で埋める</td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td>~</td>
-<td>not</td>
-<td>B</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="割り込み">割り込み</h3>
-<p>割り込みとしてエラー処理を行う。</p>
-<p>エラーコードを状態レジスタにセットし割り込み。</p>
-<ul>
-<li>スタックオーバーフロー</li>
-<li>メモリの範囲外アクセス</li>
-</ul>
-<h2 id="メモリ空間">メモリ空間</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Addr</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x0000 - 0x003F</td>
-<td>レジスタ</td>
-</tr>
-<tr class="even">
-<td>0x0040 - 0x00FF</td>
-<td>-</td>
-</tr>
-<tr class="odd">
-<td>0x0100 - 0x01FF</td>
-<td>IO</td>
-</tr>
-<tr class="even">
-<td>0x0200 - 0x0FFF</td>
-<td>-</td>
-</tr>
-<tr class="odd">
-<td>0x1000 - 0x2FFF</td>
-<td>VRAM</td>
-</tr>
-<tr class="even">
-<td>0x3FFF - 0xFFFF</td>
-<td>RAM</td>
-</tr>
-</tbody>
-</table>
-<h3 id="レジスタ-1">レジスタ</h3>
-<ul>
-<li>実体としては、SRAM の一部分</li>
-<li>6bit でアクセスする → ISA でビットを節約できる</li>
-</ul>
-<h3 id="io">IO</h3>
-<p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、デバイスにスイッチ。</p>
-<h3 id="vram-dual-access-sram">VRAM (Dual access SRAM)</h3>
-<p>表示の候補として、</p>
-<ul>
-<li>300 x 400 画素 x 白黒 2 段階 (1bit) = 120000 bit ~ 16bit x 8k</li>
-<li>テキスト表示（フォントを EEPROM に置いておく）</li>
-</ul>
-<h3 id="ram-sram">RAM (SRAM)</h3>
-<h3 id="program-rom-nor-flash">Program ROM (NOR Flash)</h3>
-<h2 id="回路">回路</h2>
-<p><img src="img/arch.dio.svg" /></p>
-<h3 id="id">ID</h3>
-<p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
-<p><img src="img/decode.dio.svg" /></p>
-<p>4 クロックで 1 命令を実行する。</p>
+<p>※ 未定義シンボルだらけになるので相対ジャンプにしたい、、、</p>
+<h2 id="アセンブラの実装">アセンブラの実装</h2>
 <ol type="1">
-<li>メモリを読み出し、RS1 に記録</li>
-<li>メモリを読み出し、RS2 に記録</li>
-<li>メモリに書き込み</li>
-<li>PC のカウントアップ</li>
+<li>一行づつ読み取る
+<ol type="1">
+<li>コメント、空行を削除</li>
+<li>一語目を読む
+<ol type="1">
+<li>命令の場合
+<ol type="1">
+<li>命令の引数の型に従い、続く語を読む</li>
+<li>引数にラベルがある場合、ラベルを記録して保留</li>
+</ol></li>
+<li>ラベルの場合
+<ol type="1">
+<li>ラベルの辞書に、ラベルの指すアドレスを記録</li>
+</ol></li>
+</ol></li>
+</ol></li>
+<li>ラベルの置換（リロケーション</li>
+<li>バイナリを出力</li>
 </ol>
+<h2 id="慣用句">慣用句</h2>
+<h3 id="サブルーチン">サブルーチン</h3>
+<p><a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考</a></p>
 <table>
 <thead>
 <tr class="header">
+<th>RKASM</th>
 <th></th>
-<th>ALU</th>
-<th>S2</th>
-<th>DIN</th>
-<th>1.R ADR</th>
-<th>2.R ADR</th>
-<th>3.W ADR</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>add</td>
-<td>Func</td>
-<td>RS2</td>
-<td>ALU</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>RD</td>
+<td>subi sp sp 5</td>
+<td>スタックポインタを減算し、スタックを確保</td>
 </tr>
 <tr class="even">
-<td>addi</td>
-<td>Func</td>
-<td>IMM</td>
-<td>ALU</td>
-<td>RS1</td>
-<td>-</td>
-<td>RD</td>
+<td>store s0 sp 0</td>
+<td>レジスタをスタックに退避</td>
 </tr>
 <tr class="odd">
-<td>load</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RS2</td>
-<td>RS1</td>
-<td>ALU</td>
-<td>RD</td>
+<td>store s1 sp 1</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>store</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RS2</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>ALU</td>
+<td>store s1 sp 2</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>loadi</td>
-<td>-</td>
-<td>-</td>
-<td>IMM</td>
-<td>-</td>
-<td>-</td>
-<td>RD</td>
+<td>store s1 sp 3</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>jump</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>PC</td>
-<td>RS1</td>
-<td>-</td>
-<td>RD</td>
+<td>store ra sp 4</td>
+<td>リターンアドレスも退避</td>
 </tr>
 <tr class="odd">
-<td>be</td>
-<td>SUB</td>
-<td>RS2</td>
-<td>-</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>0</td>
+<td>loadi a0 334</td>
+<td>引数をレジスタにセット</td>
 </tr>
 <tr class="even">
-<td>bl</td>
-<td>SUB</td>
-<td>RS2</td>
-<td>-</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>0</td>
+<td>loadi a1 2</td>
+<td>※ 引数レジスタが足りなければスタックにセット</td>
+</tr>
+<tr class="odd">
+<td>jump ra func</td>
+<td>サブルーチンにジャンプ</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>ここに戻ってくる</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>func:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>—</td>
+<td>サブルーチンの処理</td>
+</tr>
+<tr class="even">
+<td>—</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l ra sp 0</td>
+<td>レジスタを復元</td>
+</tr>
+<tr class="even">
+<td>l ra sp 1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l ra sp 2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>l ra sp 3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l ra sp 4</td>
+<td>リターンアドレスを復元</td>
+</tr>
+<tr class="even">
+<td>addi sp sp 5</td>
+<td>スタックポインタを加算</td>
+</tr>
+<tr class="odd">
+<td>jump zero ra 0</td>
+<td>PC を戻す</td>
 </tr>
 </tbody>
 </table>
-<p><img src="img/decoder.dio.svg" /></p>
-<h3 id="alu">ALU</h3>
-<h3 id="クロック">クロック</h3>
-<p><img src="img/timing.dio.svg" /></p>
-<h3 id="pfc">PFC</h3>
-<p>プログラムフローコントローラ。ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理します。</p>
-<p><img src="img/pfc.dio.svg" /></p>
+<h3 id="割り込み処理">割り込み処理</h3>
 <table>
 <thead>
 <tr class="header">
+<th>ASM</th>
 <th></th>
-<th>次の PC</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>-</td>
-<td>PC+1</td>
+<td>subi sp 16</td>
+<td>全てのレジスタをスタックに退避</td>
 </tr>
 <tr class="even">
-<td>be</td>
-<td>ALU=0 ? IMM : PC+1</td>
+<td>s x1 sp 0</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>bl</td>
-<td>ALU&gt;0 ? IMM : PC+1</td>
+<td>:</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>jump</td>
-<td>ALU</td>
+<td>s x15 sp 14</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>j ra xxxx</td>
+<td>ジャンプ</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>:</td>
+<td>割り込み処理を行う</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l x1 sp 0</td>
+<td>レジスタを復元</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>l x15 sp 14</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>jr ra 0</td>
+<td>PC を戻す</td>
 </tr>
 </tbody>
 </table>
