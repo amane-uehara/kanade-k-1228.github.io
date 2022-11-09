@@ -100,19 +100,15 @@ title: 研究室へようこそ
 
 [自作マイコンについて](./Computer/Micon/00_About/)
 
-[自作マイコン用 CPU、RISC-K](./Computer/Micon/01_CPU/)
+[アーキテクチャの設計](./Computer/Micon/10_Architecture/)
 
-[ロジック IC で組む](./Computer/Micon/02_LogicIC/)
+[アセンブラの実装](./Computer/Micon/20_Assembler/)
 
-[アセンブラ](./Computer/Micon/03_Assembler/)
+[エミュレータの実装](./Computer/Micon/30_Emulator/)
 
-[コンパイラ](./Computer/Micon/04_Compiler/)
+[コンパイラの実装](./Computer/Micon/40_Compiler/)
 
-<!-- [さまざまなプログラムを動かす](./Computer/Micon/04_Programing/)
-
-[周辺回路を作る](./Computer/Micon/05_Peripheral)
-
-[ロジック IC で組む](./Computer/Micon/06_LogicIC) -->
+[OS の実装](./Computer/Micon/50_OS/)
 
 ### リレーコンピュータ
 
