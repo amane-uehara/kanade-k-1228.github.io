@@ -100,15 +100,19 @@ title: 研究室へようこそ
 
 [自作マイコンについて](./Computer/Micon/00_About/)
 
-[アーキテクチャの設計](./Computer/Micon/10_Architecture/)
+[アーキテクチャ](./Computer/Micon/10_Architecture/)
 
-[アセンブラの実装](./Computer/Micon/20_Assembler/)
+[アセンブラ](./Computer/Micon/20_Assembler/)
 
-[エミュレータの実装](./Computer/Micon/30_Emulator/)
+[エミュレータ](./Computer/Micon/30_Emulator/)
 
-[コンパイラの実装](./Computer/Micon/40_Compiler/)
+[コンパイラ](./Computer/Micon/40_Compiler/)
 
-[OS の実装](./Computer/Micon/50_OS/)
+[リンカ](./Computer/Micon/50_Linker/)
+
+[リアルタイム OS](./Computer/Micon/60_OS/)
+
+[ハードウェア](./Computer/Micon/70_Hardware/)
 
 ### リレーコンピュータ
 
