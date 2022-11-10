@@ -1,15 +1,6 @@
-% 統計力学
-%
-%
-
-$$
-\newcommand{\D}[2][]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\newcommand{\pddd}[2][]{\frac{\partial^3 #1}{\partial {#2}^3}}
-$$
+---
+title: 統計力学
+---
 
 ## 位相空間
 
@@ -300,8 +291,6 @@ l = \tau \times v
 $$
 
 ロシュミット数（標準状態の気体 1L に含まれる分子数）$n_0=N_A/V_{mol}$
-
-
 
 ### クヌッセン数
 

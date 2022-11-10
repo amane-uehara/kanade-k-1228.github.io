@@ -1,6 +1,6 @@
-% ソフトマター
-%
-%
+---
+title: ソフトマター
+---
 
 ## ソフトマターとは
 
@@ -28,10 +28,10 @@
 溶質が溶媒中に **均一に** 溶けている液体
 
 - 温度 $T$
-- 圧力 $P$ 
+- 圧力 $P$
 - 体積 $V$
-- 溶質・溶媒の 
-  - 分子数 $N_P$ $N_S$ 
+- 溶質・溶媒の
+  - 分子数 $N_P$ $N_S$
   - 分子量 $m_P$ $m_S$
   - 質量 $m_PN_P$ $m_SN_S$
 - 全質量 $M=m_PN_P+m_SN_S$
@@ -40,20 +40,22 @@
 ### 濃度
 
 重量濃度
+
 $$
 c=\frac{m_PN_P}{V}
 $$
 
 数密度
+
 $$
 n=\frac{N_P}{V}
 $$
 
 重量分率
+
 $$
 \phi=\frac{m_PN_P}{M}=\frac{m_PN_P}{m_PN_P+M_SN_S}
 $$
-
 
 ### 自由エネルギー
 
@@ -69,7 +71,7 @@ $$
 
 単位質量あたりの自由エネルギー $g$
 
-単位体積あたりの自由エネルギー 
+単位体積あたりの自由エネルギー
 
 $$
 f(c,T,P)=\rho g(\phi,T,P)
@@ -85,7 +87,6 @@ $$
 \mu_S &=\frac{\partial G}{\partial N_S}&=&\frac{\partial M}{\partial N_S}g+M\frac{\partial g}{\partial \phi}\frac{\partial \phi}{\partial N_S}&=&m_S\{g+(1-\phi) g'\} \\
 \end{aligned}
 $$
-
 
 ### 溶液の混合
 
@@ -134,12 +135,9 @@ $$
 
 ## 格子模型
 
-
-
-
 $$
 \begin{aligned}
-\ln W 
+\ln W
 &= \ln N_{tot}! - \ln N_P! - \ln N_S! \\
 &= N_{tot} \ln N_{tot} - N_{tot} - N_P \ln N_P + N_P - N_S \ln N_S + N_S \\
 &= N_{tot} \ln N_{tot} - N_P \ln N_P - N_S \ln N_S
@@ -154,17 +152,15 @@ $$
 
 $$
 \begin{aligned}
-\ln W 
+\ln W
 &= N_{tot} \ln N_{tot} - N_{tot}\phi \ln N_{tot}\phi - N_{tot}(1-\phi) \ln N_{tot}(1-\phi) \\
 &= N_{tot} (\ln N_{tot} - \phi \ln N_{tot} - \phi \ln \phi - (1-\phi) \ln N_{tot} - (1-\phi) \ln(1-\phi)) \\
-&= N_{tot} ( - \phi \ln \phi - (1-\phi) \ln(1-\phi)) 
+&= N_{tot} ( - \phi \ln \phi - (1-\phi) \ln(1-\phi))
 \end{aligned}
 $$
 
 よって
+
 $$
--k_BT\ln W = k_B T N_{tot} ( \phi \ln \phi + (1-\phi) \ln(1-\phi)) 
+-k_BT\ln W = k_B T N_{tot} ( \phi \ln \phi + (1-\phi) \ln(1-\phi))
 $$
-
-
-

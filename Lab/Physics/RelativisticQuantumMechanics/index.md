@@ -1,6 +1,6 @@
-% 相対論的量子力学
-%
-%
+---
+title: 相対論的量子力学
+---
 
 $$
 \newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
@@ -10,10 +10,8 @@ $$
 \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
 $$
 
-
 - 特殊相対性原理に従う
-- $c\rightarrow\inf$ の極限で
-
+- $c\ra\infty$ の極限
 
 ## ディラック方程式
 
@@ -45,7 +43,6 @@ $$
 \psi(x,t) = \tilde{\psi}(x,E)e^{-iEt/\hbar} \tag{5}
 $$
 
-
 2. 運動量演算子 $p=-i\hbar \nabla$ はハミルトニアンと可換なので同時固有関数が存在する
 
 $$
@@ -73,14 +70,14 @@ $$
 $$
 
 $$
-\begin{pmatrix} E-mc^2 & \\ & E+mc^2 \end{pmatrix} 
+\begin{pmatrix} E-mc^2 & \\ & E+mc^2 \end{pmatrix}
 \begin{pmatrix} \varphi \\ \zeta \end{pmatrix} = 0
 $$
 
 $$
 \psi(x,t) = \begin{cases}
 \begin{pmatrix} \chi \\ 0  \end{pmatrix} e^{-imc^2t/\hbar} & (E=mc^2) \\
-\begin{pmatrix} 0 \\ \chi  \end{pmatrix} e^{imc^2t/\hbar} & (E=-mc^2) \\ 
+\begin{pmatrix} 0 \\ \chi  \end{pmatrix} e^{imc^2t/\hbar} & (E=-mc^2) \\
 \end{cases} \\
 \chi = \begin{pmatrix} \chi_+ \\ \chi_- \\ \end{pmatrix}
 $$
@@ -91,14 +88,14 @@ $$
 #### $p\neq 0$
 
 $$
-\begin{pmatrix} E-mc^2 & -\sigma \cdot p c \\ -\sigma \cdot p c & E+mc^2 \end{pmatrix} 
+\begin{pmatrix} E-mc^2 & -\sigma \cdot p c \\ -\sigma \cdot p c & E+mc^2 \end{pmatrix}
 \begin{pmatrix} \varphi \\ \zeta \end{pmatrix} = 0
 $$
 
 $$
 \psi(x,t) = \begin{cases}
 \begin{pmatrix} \chi \\ \frac{\sigma\cdot p c}{E+mc^2} \chi \end{pmatrix} e^{i(p\cdot x-Et)/\hbar} & (E>mc^2) \\
-\begin{pmatrix} \frac{\sigma\cdot p c}{E-mc^2} \chi \\ \chi \end{pmatrix} e^{i(p\cdot x-Et)/\hbar} & (E<-mc^2) \\ 
+\begin{pmatrix} \frac{\sigma\cdot p c}{E-mc^2} \chi \\ \chi \end{pmatrix} e^{i(p\cdot x-Et)/\hbar} & (E<-mc^2) \\
 \end{cases} \\
 \chi = \begin{pmatrix} \chi_+ \\ \chi_- \\ \end{pmatrix}
 $$
@@ -109,10 +106,7 @@ $$
 
 $\psi(x)\rightarrow\psi'(x')$ に対してディラック方程式がどうなるか
 
-
 #### 連続変換
-
-
 
 #### 反転変換
 
@@ -124,26 +118,17 @@ $$
 E^2 = m^2c^4 + p^2c^2
 $$
 
-
-
-
-
-
 ## 反粒子
 
 ### 負エネルギー解
 
 #### 時間逆行する粒子
 
-
-
-
-
 ## スピン
 
 ## 量子場
 
-1粒子系の波動関数は状態 $\alpha$ に対して
+1 粒子系の波動関数は状態 $\alpha$ に対して
 
 $$
 \psi_\alpha(x)=\braket{x}{\alpha}
@@ -159,7 +144,7 @@ $$
 
 ## 生成消滅演算子
 
-## CPT定理
+## CPT 定理
 
 ## スピノルの数学
 
@@ -183,9 +168,6 @@ $$
 \gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu &= g^{\mu\nu} \\
 (\gamma^\mu)^\dagger &= g_\mu^\mu\gamma^\mu \\
 (\gamma^\mu)^2 &= g_\mu^\mu \\
-\gamma^\mu\gamma^\nu &= -\gamma^\nu\gamma^\mu  
+\gamma^\mu\gamma^\nu &= -\gamma^\nu\gamma^\mu
 \end{aligned}
 $$
-
-
-
