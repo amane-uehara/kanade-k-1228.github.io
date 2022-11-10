@@ -1,16 +1,12 @@
-% 複素解析
-%
-%
+---
+title: 複素解析
+---
 
 $$
 \newcommand{\O}{\mathcal{O}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\S}{\mathbb{S}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 $$
 
 - 高橋礼司「複素解析」（東京大学出版会）

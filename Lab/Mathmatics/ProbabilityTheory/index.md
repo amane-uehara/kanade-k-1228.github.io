@@ -1,6 +1,6 @@
-% 確率論
-%
-%
+---
+title: 確率論
+---
 
 $$
 \newcommand{\bs}{\backslash}

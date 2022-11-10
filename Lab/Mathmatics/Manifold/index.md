@@ -5,10 +5,6 @@
 $$
 \newcommand{\O}{\mathcal{O}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
 $$
 
 - 多様体の基礎（松本幸夫）
