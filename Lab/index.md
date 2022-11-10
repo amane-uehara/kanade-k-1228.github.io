@@ -6,9 +6,19 @@ title: 研究室へようこそ
 
 ## 数学
 
-[グリーン関数](./Mathmatics/GreenFunction/)
+[複素解析](./Mathmatics/ComplexAnalysis/)
 
 [フーリエ変換](./Mathmatics/FourierTransform/)
+
+[ラプラス変換](./Mathmatics/LaplaceTransform/)
+
+[グリーン関数](./Mathmatics/GreenFunction/)
+
+[多様体](Mathmatics/Manifold/)
+
+[測度論](Mathmatics/MeasureTheory/)
+
+[確率論](Mathmatics/ProbabilityTheory/)
 
 ## 物理学
 
@@ -16,7 +26,19 @@ title: 研究室へようこそ
 
 [連続体力学](./Physics/ContinuumMechanics/)
 
+[材料力学](./Physics/MaterialMechanics/)
+
 [流体力学](./Physics/FluidMechanics/)
+
+[解析力学](./Physics/AnalyticalMechanics/)
+
+### 相対論
+
+[電磁気学](./Physics/Electromagnetism/)
+
+[特殊相対論]()
+
+[一般相対論]()
 
 ### 物性
 

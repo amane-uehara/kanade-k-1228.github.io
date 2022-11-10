@@ -1,6 +1,6 @@
-% 多様体
-%
-%
+---
+title: 多様体
+---
 
 $$
 \newcommand{\O}{\mathcal{O}}
