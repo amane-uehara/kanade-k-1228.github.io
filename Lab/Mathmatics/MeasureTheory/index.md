@@ -1,6 +1,6 @@
-% 測度論
-%
-%
+---
+title: 測度論
+---
 
 $$
 \newcommand{\bs}{\backslash}
