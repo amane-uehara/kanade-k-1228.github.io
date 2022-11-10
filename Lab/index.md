@@ -36,7 +36,7 @@ title: 研究室へようこそ
 
 [電磁気学](./Physics/Electromagnetism/)
 
-[特殊相対論]()
+[特殊相対論](./Physics/SpecialRelativity/)
 
 [相対論的量子力学](./Physics/RelativisticQuantumMechanics/)
 
@@ -44,7 +44,19 @@ title: 研究室へようこそ
 
 ### 量子論
 
+[量子力学](./Physics/QuantumMechanics/)
+
 [物性物理](./Physics/CondensedMatter/)
+
+### 熱・統計
+
+[統計力学](./Physics/StatisticalMechanics/)
+
+[熱力学](./Physics/ThermoDynamics/)
+
+[ソフトマター](./Physics/SoftMatter/)
+
+[移動現象論](./Physics/TransportPhenomena/)
 
 ## 制御工学
 
