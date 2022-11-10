@@ -559,18 +559,12 @@ MMMMWO,. ...',,,,,,'..'.............;;.l00kkdxXWNWMWWWNNO:',,,,;;;;;:::ldkO00Okx
 </ul></li>
 <li><a href="#粘性">粘性</a></li>
 </ul></nav>
-       <p><span class="math display">\[
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\dd}[2][]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pdd}[2][]{\frac{\partial^2 #1}{\partial {#2}^2}}
-\]</span></p>
-<p>非定常系</p>
+       <p>非定常系</p>
 <h2 id="輸送の一般式">輸送の一般式</h2>
 <p><span class="math display">\[
 \begin{alignedat}{10}
 J    &amp;=&amp;       &amp;-k&amp; &amp;\nabla F \\
-流束 &amp;\propto&amp; &amp;  &amp; &amp; 駆動力 
+流束 &amp;\propto&amp; &amp;  &amp; &amp; 駆動力
 \end{alignedat}
 \]</span></p>
 <p>※　駆動力があまり大きくないときに成り立つ現象論的な線形近似</p>
@@ -605,14 +599,16 @@ j = - \sigma \nabla V
 <blockquote>
 <p><span class="math display">\[
 q = -D \nabla C
-\]</span> <span class="math inline">\(D\)</span> : 拡散係数</p>
+\]</span></p>
+<p><span class="math inline">\(D\)</span> : 拡散係数</p>
 </blockquote>
 <p>の関係（フィクスの第１法則）が見られる．</p>
 <h3 id="拡散方程式フィクスの第２法則">拡散方程式（フィクスの第２法則）</h3>
 <blockquote>
 <p><span class="math display">\[
 \pd[C]{t} = \kappa_C \nabla^2 C
-\]</span> <span class="math inline">\(\kappa_C:=\frac{k_C}{\rho}\)</span> : 質量拡散係数</p>
+\]</span></p>
+<p><span class="math inline">\(\kappa_C:=\frac{k_C}{\rho}\)</span> : 質量拡散係数</p>
 </blockquote>
 <p>静止した混合流体中に閉曲面 <span class="math inline">\(A\)</span> と <span class="math inline">\(A\)</span> に囲まれた閉領域 <span class="math inline">\(V\)</span> をとる．</p>
 <p>質量保存則より，<span class="math inline">\(V\)</span> 内質量の増加量は <span class="math inline">\(A\)</span> の表面からの流入量と等しいので，（<span class="math inline">\(n_A\)</span> は外向きを正とする．最後の変形にガウスの発散定理を用いる．）</p>
@@ -628,11 +624,13 @@ q = -D \nabla C
 <p>フィクスの第１法則はブラウン運動のモデル（ランダムに分子が運動するモデル）で説明できて，</p>
 <p><span class="math display">\[
 D = \mu k_B T
-\]</span> <span class="math inline">\(\mu\)</span> : 移動度</p>
+\]</span></p>
+<p><span class="math inline">\(\mu\)</span> : 移動度</p>
 <p>低レイノルズ数の液体を媒体とした球形粒子の拡散の場合，</p>
 <p><span class="math display">\[
 D = \frac{k_BT}{6\pi \eta r}
-\]</span> <span class="math inline">\(\eta\)</span> : 動粘性係数</p>
+\]</span></p>
+<p><span class="math inline">\(\eta\)</span> : 動粘性係数</p>
 <h4 id="ボルツマン輸送方程式から">ボルツマン輸送方程式から</h4>
 <p>Chapman &amp; Cowling (1939) を読むと良いらしい</p>
 <p>位相空間上の分布関数 <span class="math inline">\(f(x,v,t)\)</span></p>
@@ -667,14 +665,16 @@ q = -k_C\left[\nabla C + \frac{k_T}{T} \nabla T\right]
 <blockquote>
 <p><span class="math display">\[
 q = - k \nabla T
-\]</span> 熱伝導係数 <span class="math inline">\(k\)</span></p>
+\]</span></p>
+<p>熱伝導係数 <span class="math inline">\(k\)</span></p>
 </blockquote>
 <p>の関係（フーリエの法則）が見られる．</p>
 <h3 id="熱伝導方程式">熱伝導方程式</h3>
 <blockquote>
 <p><span class="math display">\[
 \pd[T]{t} = \kappa_T \nabla^2 T
-\]</span> 温度拡散係数 <span class="math inline">\(\kappa_T:=\frac{k}{\rho C_p}\)</span></p>
+\]</span></p>
+<p>温度拡散係数 <span class="math inline">\(\kappa_T:=\frac{k}{\rho C_p}\)</span></p>
 </blockquote>
 <p>静止流体中に閉曲面 <span class="math inline">\(A\)</span> と <span class="math inline">\(A\)</span> に囲まれた閉領域 <span class="math inline">\(V\)</span> をとる．</p>
 <p><span class="math inline">\(V\)</span> 内の熱エネルギーの時間変化は</p>
