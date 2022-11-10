@@ -38,9 +38,11 @@ title: 研究室へようこそ
 
 [特殊相対論]()
 
-[一般相対論]()
+[相対論的量子力学](./Physics/RelativisticQuantumMechanics/)
 
-### 物性
+[一般相対論](./Physics/GeneralTheoryOfRelativity/)
+
+### 量子論
 
 [物性物理](./Physics/CondensedMatter/)
 

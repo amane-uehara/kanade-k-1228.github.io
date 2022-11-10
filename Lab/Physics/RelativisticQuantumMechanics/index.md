@@ -2,14 +2,6 @@
 title: 相対論的量子力学
 ---
 
-$$
-\newcommand{\d}[2][]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
-\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\bra}[1]{\left\langle #1 \right|}
-\newcommand{\ket}[1]{\left|#1 \right\rangle}
-\newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
-$$
-
 - 特殊相対性原理に従う
 - $c\ra\infty$ の極限
 
