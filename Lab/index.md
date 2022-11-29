@@ -122,7 +122,7 @@ title: 研究室へようこそ
 
 [I2C](Electronics/Micon/I2C/)
 
-### 電力系
+### 動力系
 
 [モーター](Electronics/Power/Moter/)
 
