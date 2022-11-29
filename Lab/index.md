@@ -114,23 +114,25 @@ title: 研究室へようこそ
 
 [割り込み](Electronics/Micon/Interrupt/)
 
-### メカトロ
+### 電力系
 
-[モーター](Electronics/MechTronics/Moter/)
+[モーター](Electronics/Power/Moter/)
 
-[エンコーダ](Electronics/MechTronics/Encoder/)
+[エンコーダ](Electronics/Power/Encoder/)
+
+[モータードライバ](Electronics/Power/MoterDriver/)
 
 ### 電波
+
+[電磁波](Electronics/Radio/RadioWave/)
+
+[アンテナ](Electronics/Radio/Antenna/)
 
 [ダイオード 2 本でお手軽エネルギーハーベスティング](Electronics/Radio/RectennaLED/)
 
 <!-- 無線送電を作って遊ぶ -->
 
 <!-- 一級陸上無線技術士を取りました -->
-
-電磁波
-
-アンテナ
 
 ### FPGA
 
