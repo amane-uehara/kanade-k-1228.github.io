@@ -108,11 +108,19 @@ title: 研究室へようこそ
 
 [メモリ](Electronics/Micon/Memory/)
 
-[アナログ・デジタル](Electronics/Micon/AD/)
-
-[シリアル通信](Electronics/Micon/Serial/)
-
 [割り込み](Electronics/Micon/Interrupt/)
+
+[ADC](Electronics/Micon/ADC/)
+
+[DAC](Electronics/Micon/DAC/)
+
+[PWM](Electronics/Micon/PWM/)
+
+[UART](Electronics/Micon/UART/)
+
+[SPI](Electronics/Micon/SPI/)
+
+[I2C](Electronics/Micon/I2C/)
 
 ### 電力系
 
