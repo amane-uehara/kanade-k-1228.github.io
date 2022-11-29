@@ -88,13 +88,37 @@ title: 研究室へようこそ
 
 ### 電子回路
 
-[トランジスタ](Electronics/Circuit/Transistor/)
+[ダイオード](Electronics/Circuit/Diode/)
 
-オペアンプ
+[バイポーラトランジスタ](Electronics/Circuit/BJT/)
+
+[電界効果トランジスタ](Electronics/Circuit/FET/)
+
+[オペアンプ](Electronics/Circuit/OPAMP/)
+
+[CMOS 回路](Electronics/Circuit/CMOS/)
+
+[フリップフロップ](Electronics/Circuit/FlipFlop/)
+
+### マイコン
+
+[マイコン](Electronics/Micon/Micon/)
+
+[CPU](Electronics/Micon/CPU/)
+
+[メモリ](Electronics/Micon/Memory/)
+
+[アナログ・デジタル](Electronics/Micon/AD/)
+
+[シリアル通信](Electronics/Micon/Serial/)
+
+[割り込み](Electronics/Micon/Interrupt/)
 
 ### メカトロ
 
-ロータリーエンコーダを自作
+[モーター](Electronics/MechTronics/Moter/)
+
+[エンコーダ](Electronics/MechTronics/Encoder/)
 
 ### 電波
 
@@ -103,6 +127,10 @@ title: 研究室へようこそ
 <!-- 無線送電を作って遊ぶ -->
 
 <!-- 一級陸上無線技術士を取りました -->
+
+電磁波
+
+アンテナ
 
 ### FPGA
 
