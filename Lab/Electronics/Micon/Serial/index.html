@@ -33,8 +33,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-        <meta name="dcterms.date" content="2021-06-17" />
-          <title>オペアンプ | Kanade's Website</title>
+          <title>シリアル通信 | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -388,7 +387,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "オペアンプ",
+            "シリアル通信",
           "_blank"
         );
       }
@@ -462,9 +461,8 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">オペアンプ</h1>
+                <h1 style="margin: 0">シリアル通信</h1>
                 <!-- Date -->
-                <p align="right">2021-06-17</p>
                 <!-- Description -->
               </header>
 
@@ -497,83 +495,7 @@
       </p>
 
       <!-- Table of Contents -->
-            <nav><ul>
-<li><a href="#オペアンプは電気的なテコ">オペアンプは電気的なテコ</a><ul>
-<li><a href="#増幅">増幅</a></li>
-<li><a href="#積分微分">積分・微分</a></li>
-</ul></li>
-<li><a href="#オペアンプを選ぶ">オペアンプを選ぶ</a><ul>
-<li><a href="#単電源">単電源？</a></li>
-<li><a href="#フルスイング-rail-to-rail">フルスイング？ rail to rail ?</a></li>
-</ul></li>
-<li><a href="#オペアンプで遊ぶ">オペアンプで遊ぶ</a><ul>
-<li><a href="#必要なもの">必要なもの</a></li>
-</ul></li>
-<li><a href="#オペアンプの理論">オペアンプの理論</a><ul>
-<li><a href="#バーチャルショート">バーチャルショート</a></li>
-<li><a href="#増幅回路">増幅回路</a></li>
-<li><a href="#微分回路">微分回路</a></li>
-<li><a href="#積分回路">積分回路</a></li>
-<li><a href="#加算回路">加算回路</a></li>
-</ul></li>
-<li><a href="#差動信号">差動信号</a></li>
-<li><a href="#非線形回路">非線形回路</a><ul>
-<li><a href="#トンネルダイオード">トンネルダイオード</a></li>
-</ul></li>
-</ul></nav>
-       <h2 id="オペアンプは電気的なテコ">オペアンプは電気的なテコ</h2>
-<h3 id="増幅">増幅</h3>
-<p><img src="img/opamp.dio.svg" /></p>
-<h3 id="積分微分">積分・微分</h3>
-<h2 id="オペアンプを選ぶ">オペアンプを選ぶ</h2>
-<h3 id="単電源">単電源？</h3>
-<h3 id="フルスイング-rail-to-rail">フルスイング？ rail to rail ?</h3>
-<h2 id="オペアンプで遊ぶ">オペアンプで遊ぶ</h2>
-<h3 id="必要なもの">必要なもの</h3>
-<ul>
-<li>オペアンプ</li>
-<li>オシロスコープ or Arduino</li>
-<li>電源
-<ul>
-<li>単電源</li>
-<li>双電源</li>
-</ul></li>
-</ul>
-<h2 id="オペアンプの理論">オペアンプの理論</h2>
-<p><span class="math display">\[ V*{out}=A (V*+ - V\_-) \]</span></p>
-<p>解析するときは、増幅率は無限大と仮定します。</p>
-<p><span class="math display">\[ A\rightarrow \infty \]</span></p>
-<p>実際のオペアンプでは、増幅度は数万あります。ただし、オペアンプの電源電圧以上の出力電圧は出せません。</p>
-<p>解析をするときには、入力電流は 0 で、出力電流はいくらでも取り出せると仮定します。</p>
-<p><span class="math display">\[
-I_+,I_-=0 \\
--\infty \lt I_{out} \lt \infty
-\]</span></p>
-<p>実際のオペアンプでは、入力電流は数ナノアンペアで動いてくれます。これを使って、か弱いセンサの信号を増幅してやることができたりします。</p>
-<p>出力電流は、「信号としては」大きい電流を流せますが、モーターなどのアクチュエータを動かすために使わないほうがいいです（軽いモーターだったら回せちゃいますが）。</p>
-<h3 id="バーチャルショート">バーチャルショート</h3>
-<p>オペアンプはフィードバックがかかっているとき、 <span class="math inline">\(V_+=V_-\)</span> となるように働きます。ただ電流は流れないのでバーチャルショートと言われます。</p>
-<p>オペアンプが「テコ」</p>
-<h3 id="増幅回路">増幅回路</h3>
-<p><span class="math display">\[
-V_{out}=-\frac{1}{1+\frac{1}{A}+\frac{R_2}{R_1}\frac{1}{A}}\frac{R_2}{R_1}V_{in}\rightarrow -\frac{R_2}{R_1}V_{in}
-\]</span></p>
-<h3 id="微分回路">微分回路</h3>
-<p><span class="math display">\[
-V_{out}=-\frac{1}{1+\frac{1}{A}}RC\frac{dV_{in}}{dt}\rightarrow -RC\frac{dV_{in}}{dt}
-\]</span></p>
-<h3 id="積分回路">積分回路</h3>
-<p><span class="math display">\[
-V_{out}\rightarrow -\frac{1}{RC}\int_0^t V_{in} dt
-\]</span></p>
-<h3 id="加算回路">加算回路</h3>
-<p><span class="math display">\[
-V_{out}=\rightarrow -R_f\sum_{i=1}^n \frac{V_i}{R_i}
-\]</span></p>
-<h2 id="差動信号">差動信号</h2>
-<p><img src="img/differential.dio.svg" /></p>
-<h2 id="非線形回路">非線形回路</h2>
-<h3 id="トンネルダイオード">トンネルダイオード</h3>
+       <p>I2C・SPI・UART</p>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
