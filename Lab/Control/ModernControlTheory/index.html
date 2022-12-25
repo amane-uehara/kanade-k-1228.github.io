@@ -500,7 +500,8 @@
 <li><a href="#安定性">安定性</a></li>
 <li><a href="#極配置">極配置</a></li>
 <li><a href="#オブザーバ">オブザーバ</a></li>
-<li><a href="#h制御">H∞制御</a><ul>
+<li><a href="#h制御">H∞制御</a>
+<ul>
 <li><a href="#hinfty-ノルム"><span class="math inline">\(H^\infty\)</span> ノルム</a></li>
 </ul></li>
 <li><a href="#カルマンフィルタ">カルマンフィルタ</a></li>
@@ -515,9 +516,9 @@
 <p><span class="math display">\[
 \parallel G(s) \parallel_\infty = \max_{0 &lt; \omega &lt; \infty} |G(j\omega)|
 \]</span></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode matlab"><code class="sourceCode matlab"><a class="sourceLine" id="cb1-1" title="1">G = tf([<span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>],[<span class="fl">1</span> <span class="fl">1</span> <span class="fl">10</span>])</a>
-<a class="sourceLine" id="cb1-2" title="2">[ninf,fpeak] = norm(G,inf)</a>
-<a class="sourceLine" id="cb1-3" title="3">dB = <span class="fl">20</span> * log10(ninf)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="va">G</span> <span class="op">=</span> <span class="va">tf</span>([<span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>]<span class="op">,</span>[<span class="fl">1</span> <span class="fl">1</span> <span class="fl">10</span>])</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>[<span class="va">ninf</span><span class="op">,</span><span class="va">fpeak</span>] <span class="op">=</span> <span class="va">norm</span>(<span class="va">G</span><span class="op">,</span><span class="va">inf</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="va">dB</span> <span class="op">=</span> <span class="fl">20</span> <span class="op">*</span> <span class="va">log10</span>(<span class="va">ninf</span>)</span></code></pre></div>
 <h2 id="カルマンフィルタ">カルマンフィルタ</h2>
 
       <svg

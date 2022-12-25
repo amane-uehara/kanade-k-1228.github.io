@@ -559,24 +559,24 @@
 <ul>
 <li>例のごとくdocker-compose.ymlを書く</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">version:</span><span class="at"> </span><span class="st">&quot;3&quot;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="fu">services:</span></a>
-<a class="sourceLine" id="cb1-3" title="3">  <span class="fu">app:</span></a>
-<a class="sourceLine" id="cb1-4" title="4">    <span class="fu">image:</span><span class="at"> nginx:latest</span></a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="fu">container_name:</span><span class="at"> </span><span class="st">&quot;app&quot;</span></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="fu">ports:</span></a>
-<a class="sourceLine" id="cb1-7" title="7">      <span class="kw">-</span> <span class="st">&quot;8080:80&quot;</span></a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="fu">volumes:</span></a>
-<a class="sourceLine" id="cb1-9" title="9">      <span class="kw">-</span> ./src/html:/app</a>
-<a class="sourceLine" id="cb1-10" title="10">      <span class="kw">-</span> ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf</a>
-<a class="sourceLine" id="cb1-11" title="11"></a>
-<a class="sourceLine" id="cb1-12" title="12">  <span class="fu">node:</span></a>
-<a class="sourceLine" id="cb1-13" title="13">    <span class="fu">image:</span><span class="at"> node:10</span></a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="fu">container_name:</span><span class="at"> node</span></a>
-<a class="sourceLine" id="cb1-15" title="15">    <span class="fu">tty:</span><span class="at"> </span><span class="ch">true</span></a>
-<a class="sourceLine" id="cb1-16" title="16">    <span class="fu">working_dir:</span><span class="at"> /usr/src/app</span></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="fu">volumes:</span></a>
-<a class="sourceLine" id="cb1-18" title="18">      <span class="kw">-</span> ./src:/usr/src/app</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;3&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> nginx:latest</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;app&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;8080:80&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./src/html:/app</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="at">  </span><span class="fu">node</span><span class="kw">:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> node:10</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> node</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a><span class="at">    </span><span class="fu">tty</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a><span class="at">    </span><span class="fu">working_dir</span><span class="kw">:</span><span class="at"> /usr/src/app</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./src:/usr/src/app</span></span></code></pre></div>
 <ul>
 <li>volumes:のとこがあってればとりあえず動きそう</li>
 </ul>
