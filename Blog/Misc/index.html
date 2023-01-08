@@ -1,0 +1,717 @@
+<!-- (ฅ^･ω･^ฅ) ﾆｬｰ -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114187773-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-114187773-1");
+  </script>
+  <!-- End Google Analytics -->
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="@kanade_k_1228" />
+  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
+      <title>いろいろ | Kanade's Website</title>
+
+  <!-- OGP -->
+    <!-- END OGP -->
+  <style>
+    body {
+      margin: 0;
+      /* background-color: #fcfeff; */
+      /* background-color: #e4f0fc; */
+      background-color: #f0f8ff;
+      font-size: 16px;
+      font-family: メイリオ, Meiryo, 游ゴシック体, "Yu Gothic", YuGothic,
+        "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Osaka,
+        "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      line-height: 1.5;
+      color: #202020;
+    }
+
+    article {
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 1220px) {
+      article {
+        width: 1200px;
+      }
+    }
+
+    @media (max-width: 1219px) {
+      article {
+        width: 100%;
+      }
+    }
+
+    h1 {
+      display: block;
+      margin: 0.5em 0 0.5em 0;
+      padding: 8px;
+      color: #d64acf;
+      font-size: 25px;
+      font-weight: bold;
+      background-color: #ffccff;
+    }
+
+    h2 {
+      display: block;
+      margin: 0.5em 0 0.5em 0;
+      padding: 8px;
+      color: #2c8ecf;
+      font-size: 20px;
+      font-weight: bold;
+      background: #bbddff;
+    }
+
+    h3 {
+      font-weight: bold;
+      margin: 1em 0 0.5em 0.5em;
+    }
+
+    h4 {
+      font-weight: bold;
+      margin: 0.5em 0 0.5em 0.7em;
+    }
+
+    p {
+      margin: 0.5em 0 0.5em 1em;
+    }
+
+    small {
+      font-size: 10px;
+    }
+
+    table {
+      margin: 0.5em auto;
+      border-collapse: collapse;
+    }
+
+    th {
+      border: 1px solid;
+      padding: 0.3em;
+      text-align: center;
+      background-color: #e8ffbd;
+    }
+
+    td {
+      border: 1px solid;
+      padding: 0.3em;
+      text-align: center;
+      background-color: #f0f0ff;
+    }
+
+    ul,
+    ol {
+      margin: 0.5em 0 0.5em 1em;
+      padding: 0 0 0 1.5em;
+    }
+
+    ul ul,
+    ul ul ul,
+    ol ol,
+    ol ol ol {
+      margin: 0;
+    }
+
+    blockquote {
+      border: 1px solid;
+      border-radius: 2px;
+      background-color: white;
+      margin: 0.5em 1em 0.5em 1em;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      min-width: 50%;
+    }
+
+    header>ul {
+      margin: 0.5em 0 0.5em 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+    }
+
+    header>ul>li {
+      width: 25%;
+      text-align: center;
+    }
+
+    header>ul>li>a {
+      display: block;
+    }
+
+    div#header-links {
+      height: 50px;
+      display: flex;
+      margin: 0.5em 0 0.5em 0;
+      justify-content: space-evenly;
+    }
+
+    div#header-links>a {
+      text-decoration: none;
+    }
+
+    nav {
+      border: 1px solid;
+      border-radius: 2px;
+      background-color: white;
+      margin: 0.5em 1em 0.5em 1em;
+    }
+
+    nav>ul {
+      margin: 0;
+    }
+
+    button {
+      display: block;
+      margin: 0.5em auto;
+    }
+
+    iframe {
+      display: block;
+      margin: 0.5em auto;
+    }
+
+    code {
+      display: inline-block;
+      padding: 1px;
+      border: solid;
+      border-width: 1px;
+      border-radius: 5px;
+      background: #ffffff;
+    }
+  </style>
+  <style>
+    a.sourceLine {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    a.sourceLine {
+      pointer-events: none;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    a.sourceLine:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+      font-family: Consolas, Menlo, "Liberation Mono", Courier, monospace;
+    }
+
+    code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    div.sourceCode {
+      margin: 0.5em 1em 0.5em 1em;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      a.sourceLine {
+        text-indent: -1em;
+        padding-left: 1em;
+      }
+    }
+
+    pre.numberSource a.sourceLine {
+      position: relative;
+      left: -4em;
+    }
+
+    pre.numberSource a.sourceLine::before {
+      content: attr(title);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      pointer-events: all;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {
+      color: rgb(212, 212, 212);
+      background-color: rgb(0, 0, 0);
+    }
+
+    @media screen {
+      a.sourceLine::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ef2929;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #8f5902;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #c4a000;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: rgb(86, 156, 214);
+    }
+
+    /* BaseN */
+    code span.cf {
+      color: rgb(197, 134, 192);
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4e9a06;
+    }
+
+    /* Char */
+    code span.cn {
+      color: rgb(181, 206, 168);
+    }
+
+    /* Constant */
+    code span.co {
+      color: rgb(106, 153, 85);
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #8f5902;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #8f5902;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: rgb(86, 156, 214);
+    }
+
+    /* DataType */
+    code span.dv {
+      color: rgb(181, 206, 168);
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #a40000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: rgb(181, 206, 168);
+    }
+
+    /* Float */
+    code span.fu {
+      color: rgb(220, 220, 170);
+    }
+
+    /* Function */
+    code span.im {
+      color: rgb(206, 145, 120);
+    }
+
+    /* Import */
+    code span.in {
+      color: #8f5902;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: rgb(78, 201, 176);
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {}
+
+    /* Operator */
+    code span.ot {
+      color: #8f5902;
+    }
+
+    /* Other */
+    code span.pp {
+      color: rgb(197, 134, 192);
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: rgb(215, 186, 125);
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #4e9a06;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: rgb(206, 145, 120);
+    }
+
+    /* String */
+    code span.va {
+      color: rgb(156, 220, 254);
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4e9a06;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #8f5902;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    mjx-container[jax="CHTML"][display="true"] {
+      display: block;
+      text-align: center;
+      margin: 0;
+    }
+  </style>
+  <!-- SyntaxHighlight -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs2015.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+  <script>
+    function tweet() {
+      window.open(
+        "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
+        location.href +
+        "&text=" +
+        "いろいろ",
+        "_blank"
+      );
+    }
+  </script>
+</head>
+
+<body>
+  <article>
+    <header>
+      <ul>
+        <li><a href="/">ﾎｰﾑ</a></li>
+        <li><a href="/Portfolio/">ﾎﾟﾄﾌｫﾘｵ</a></li>
+        <li><a href="/Lab/">研究室</a></li>
+        <li><a href="/Blog/">雑記</a></li>
+      </ul>
+      <div id="header-links">
+        <a href="https://twitter.com/kanade_k_1228" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
+            style="margin: 0; padding: 0">
+            <circle cx="420.944" cy="296.781" r="294.5" fill="#2daae1" />
+            <path
+              d="M609.773 179.634c-13.891 6.164-28.811 10.331-44.498 12.204 16.01-9.587 28.275-24.779 34.066-42.86a154.78 154.78 0 0 1-49.209 18.801c-14.125-15.056-34.267-24.456-56.551-24.456-42.773 0-77.462 34.675-77.462 77.473 0 6.064.683 11.98 1.996 17.66-64.389-3.236-121.474-34.079-159.684-80.945-6.672 11.446-10.491 24.754-10.491 38.953 0 26.875 13.679 50.587 34.464 64.477a77.122 77.122 0 0 1-35.097-9.686v.979c0 37.54 26.701 68.842 62.145 75.961-6.511 1.784-13.344 2.716-20.413 2.716-4.998 0-9.847-.473-14.584-1.364 9.859 30.769 38.471 53.166 72.363 53.799-26.515 20.785-59.925 33.175-96.212 33.175-6.25 0-12.427-.373-18.491-1.104 34.291 21.988 75.006 34.824 118.759 34.824 142.496 0 220.428-118.052 220.428-220.428 0-3.361-.074-6.697-.236-10.021a157.855 157.855 0 0 0 38.707-40.158z"
+              fill="#fff" />
+          </svg>
+        </a>
+        <a href="https://github.com/kanade-k-1228" target="_blank">
+          <svg width="50px" height="50px" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+              transform="scale(64)" fill="#1B1F23" />
+          </svg>
+        </a>
+        <a href="https://t.co/E5xtfEQs4A" target="_blank">
+          <img src="http://kanade-k-1228.github.io/img/niconico.png" width="50px" height="50px"
+            style="border-radius: 50%" /></a>
+        <a href="https://www.youtube.com/channel/UCoeuc9-XQ5EpeYSCn4ESpQw" target="_blank">
+          <svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333333 333333">
+            <path
+              d="M166667 0c92048 0 166667 74619 166667 166667s-74619 166667-166667 166667S0 258715 0 166667 74619 0 166667 0zm84195 132297s-1678-11849-6843-17052c-6545-6843-13873-6887-17223-7283-24036-1751-60138-1751-60138-1751h-63s-36085 0-60135 1751c-3363 409-10681 437-17223 7283-5168 5203-6811 17052-6811 17052s-1711 13904-1711 27838v13029c0 13905 1709 27837 1709 27837s1678 11849 6811 17061c6542 6843 15139 6621 18977 7350 13761 1314 58457 1710 58457 1710s36133-64 60169-1783c3363-397 10678-438 17223-7284 5168-5202 6843-17065 6843-17065s1711-13904 1711-27837v-13028c-35-13905-1745-27837-1745-27837l-9 9-1-1zm-102010 56674v-48312l46437 24237-46437 24075z"
+              fill="red" />
+          </svg>
+        </a>
+      </div>
+      <!-- End Top Nav -->
+      <!-- Title -->
+            <h1 style="margin: 0">いろいろ</h1>
+            <!-- Date -->
+            <!-- Description -->
+          </header>
+
+    <!-- TeX Macros -->
+    <!-- prettier-ignore -->
+    <p style="display: none">
+      \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+      \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+      \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+      \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+      \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+      \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+      \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+      \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+      \newcommand{\p}{\partial}
+      \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+      \newcommand{\Re}{\mathrm{Re}}
+      \newcommand{\Im}{\mathrm{Im}}
+      \newcommand{\bra}[1]{\left\langle #1 \right|}
+      \newcommand{\ket}[1]{\left|#1 \right\rangle}
+      \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+      \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+      \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+      \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+      \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+      \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+      \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+      \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+      \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
+    </p>
+
+    <!-- Table of Contents -->
+        <nav><ul>
+<li><a href="#人体の設計思想">人体の設計思想</a>
+<ul>
+<li><a href="#血管">血管</a></li>
+</ul></li>
+<li><a href="#欲望">欲望</a>
+<ul>
+<li><a href="#機械">機械</a></li>
+<li><a href="#広告">広告</a></li>
+</ul></li>
+<li><a href="#slam">SLAM</a></li>
+<li><a href="#pc">PC</a></li>
+<li><a href="#風呂">風呂</a></li>
+<li><a href="#妄想触媒">妄想触媒</a></li>
+<li><a href="#止まった時計の誤謬">止まった時計の誤謬</a></li>
+<li><a href="#創作の道-2021-10-01">創作の道 2021-10-01</a></li>
+<li><a href="#未完の美学-2021-10-04">未完の美学 2021-10-04</a></li>
+<li><a href="#土地">土地</a></li>
+<li><a href="#生産者と消費者">生産者と消費者</a></li>
+<li><a href="#双対性">双対性</a></li>
+<li><a href="#数学と人間">数学と人間</a></li>
+<li><a href="#学問と文化">学問と文化</a>
+<ul>
+<li><a href="#日本の学問の歴史">日本の学問の歴史</a></li>
+<li><a href="#学問の振興のために">学問の振興のために</a></li>
+</ul></li>
+<li><a href="#オンライン化について">オンライン化について</a>
+<ul>
+<li><a href="#ランダムネスの消えた学校">ランダムネスの消えた学校</a></li>
+<li><a href="#隠れたカリキュラムとオンライン授業">隠れたカリキュラムとオンライン授業</a></li>
+</ul></li>
+<li><a href="#野暮">野暮</a>
+<ul>
+<li><a href="#説明的であること">説明的であること</a></li>
+</ul></li>
+<li><a href="#section"></a></li>
+<li><a href="#伝達関数">伝達関数</a></li>
+<li><a href="#汎用的な非線形アナログ回路">汎用的な非線形アナログ回路</a></li>
+<li><a href="#完全な乱数">完全な乱数</a></li>
+<li><a href="#境界">境界</a></li>
+<li><a href="#旅行">旅行</a></li>
+</ul></nav>
+     <h2 id="人体の設計思想">人体の設計思想</h2>
+<h3 id="血管">血管</h3>
+<p>血管には非常に多様な成分が流れている．</p>
+<p>あらゆる機能が集約されている．</p>
+<p>このような複雑な機能をもったネットワークを，人工的に作ることはできていない</p>
+<p>血管を漂流する細胞・分子によってなされている．血管を完全にコントロールしている細胞はない．</p>
+<p>現代社会の乱雑なコミュニティに似たものがある</p>
+<p>リンパ管はどうか？</p>
+<p>循環器系と</p>
+<h2 id="欲望">欲望</h2>
+<p>人間に適量の不満と適量の満足を与えると幸せになる．</p>
+<h3 id="機械">機械</h3>
+<p>得体のしれぬ欲望というものこそ人間の特徴ではなかろうか．</p>
+<p>いまのところ機械は，人間に規定された欲望のみを持ち，人間のような不可解な欲望を持っていないように見える．評価関数を定めているのは相変わらず人間だし，最適化は欲望なしではありえない．</p>
+<p>機械が人間のように自ら何かを欲するようになったとき，機械の社会における役割はより人間に近くなるだろう．</p>
+<h3 id="広告">広告</h3>
+<p>欲望を満たす仕事が製造業なら，欲望を与える仕事が広告業である．人間のぼんやりとした不満を具体的な欲望へとすり替え，その欲望を満たすようにそそのかす．</p>
+<h2 id="slam">SLAM</h2>
+<p>変化する環境を前提とした SLAM</p>
+<h2 id="pc">PC</h2>
+<p>一日中画面に向かう</p>
+<h2 id="風呂">風呂</h2>
+<p>日本人は風呂の呪縛に囚われている．</p>
+<p>毎日風呂に入るという習慣は脊髄に組み込まれた文化である．</p>
+<p>温泉の意味が変わっている</p>
+<p>ハゲ</p>
+<h2 id="妄想触媒">妄想触媒</h2>
+<p>かねてから，日本橋から三条大橋まで旧街道を歩いてみたいと思っていろいろ妄想している．</p>
+<p>一種の妄想であって</p>
+<p>「聖地巡礼」は人間に普遍の性癖なのか，</p>
+<p>妄想にリアリティを与える</p>
+<p>創作の舞台を</p>
+<p>先日，知的そうな方々　彼らの話に耳をそばだてているうちにホームズが実在していたように思えてきた．</p>
+<p>「ホームズの家の近くにケインズの家があった．彼らの思想的影響をみるに交流があったのではなかろうか．ちょうど間のところに喫茶がある．」</p>
+<p>などと言っているもんだから変に笑いそうになったが彼らは大真面目で語っている．</p>
+<p>シャーロキアンと呼ばれる人々を生み出すほど強力に，聖地が妄想を触媒していたの</p>
+<p>妄想触媒たりうる元素は他にあるだろうかと考えてみると，そこにはある美学がある．</p>
+<p>これは完全に私の感覚ではあるが，あずにゃんのギターを買うよりも桜ヶ丘高校軽音部の部室に行くことを望む．</p>
+<p>複製不可能性・到達困難性・秘匿</p>
+<p>しかしこれだけでは説明できていないわだかまりが残っていることを記しておく．聖地には奇妙なプレーンさ，白さがある．妄想の余地．まさに触媒という例えのように，聖地は物語の舞台でしかない．という</p>
+<p>聖地という表現は正鵠を射ている．敬虔なガルパン教徒は一生に一度は大洗に巡礼せねばならない．㌠硬貨を懐中に忍ばせる．</p>
+<h2 id="止まった時計の誤謬">止まった時計の誤謬</h2>
+<p>止まった時計は動いている時計より正確である．日に 2 回，正しい時間を指す．</p>
+<p>さらに高速回転する時計のほうが正確である．1 秒に 24 時間回転する時計は毎秒正確な時間を指す．</p>
+<p>それにひきかえ，正確と標榜する時計はほとんど正しい時間を示さない．</p>
+<h2 id="創作の道-2021-10-01">創作の道 2021-10-01</h2>
+<p>近頃世間ではベーシックインカムという言葉がもてはやされ，twitter の社会面は喧々諤々（と言いたいところだがあそこはいつでも騒がしい），某社長は宇宙から金をばら撒こうかという勢いである．</p>
+<p>一億総中流と言われた国民にあった素朴な満足感に比べて今の価値観の混沌たるや．そこに円という欲望の缶詰を振りまいてしまった社会の成れの果てを社会学者はあれこれ想像するけれども，結局そこにあるのは毎月お金を貰う人々であり，さまざまな欲望を実行したりしなかったりする人間である．</p>
+<p>資本主義を継ぐ現代社会においてお金というのは最も多様なコンテクストが与えられたオブジェクトである．</p>
+<p>毎月お金を貰ったら何がしたいか妄想を語る以上でも以下でもない．実際に無償のお金を現前にしたとき，妄想を敬虔に実践できる人は，妄想すらしていなかった人である気がしてならない．</p>
+<p>私もまたベーシックインカムに大いに期待し妄想しているうちのひとりだからである．関東平野の縁のあたりの安い戸建てにひとり住まい，工作の部品機械のために多少の勤めをして，近くの図書館に通いながら物を書くという妄想している．</p>
+<p>創造とはとこしえの葛藤とかりそめの安堵の堂々巡りであって，そこに完成という出口を開けるのは，唯一つ，切迫感である．達成感というのは解脱の喜びではなく，解放感にすぎず，完成物は重くのしかかる．切迫感の無い暮らしには完成が無く，未完成のガラクタが溜まるだけという懸念がある．</p>
+<p>慧眼は愁眉に開かれない．</p>
+<h2 id="未完の美学-2021-10-04">未完の美学 2021-10-04</h2>
+<p>失敗は成功より尊い．未完は完成より尊い．</p>
+<p>自分の過去を省みるに，このような美学によって整理されていることを見出した．</p>
+<p>野暮ったいとは美学に反することである</p>
+<h2 id="土地">土地</h2>
+<p>都会の土地に強い性格がある．機能が集約されている．</p>
+<h2 id="生産者と消費者">生産者と消費者</h2>
+<h2 id="双対性">双対性</h2>
+<h2 id="数学と人間">数学と人間</h2>
+<p>数学の公理は「私は世界をこう認識します」と宣言することに他ならない．</p>
+<p>認識のフレームワークは人間の身体的と切り離せない部分があると思われる</p>
+<p>数学の普遍性というのは人間の普遍性に依存してそう</p>
+<p>人間の認知についての共通見解</p>
+<p>宇宙人と数学の話はできない</p>
+<figure>
+<img src="https://youtu.be/MffTSkj5b0Y" alt="" /><figcaption>Spotlight Live: The Brain or the Universe – Where Does Math Come From?</figcaption>
+</figure>
+<figure>
+<img src="https://youtu.be/vO2XeDq3QSY" alt="" /><figcaption>『宇宙と宇宙をつなぐ数学』加藤文元先生インタビュー　第3回　「宇宙人と共有できる数学、できない数学」</figcaption>
+</figure>
+<h2 id="学問と文化">学問と文化</h2>
+<p>学問はひとつの文化にすぎない．学問というものを一言で言い表すことは難しいが，根底には古代ギリシアの昔から今までに共通する何かがあるという感覚はある．時代にかかわらず「学者」は存在してその共通観念を受け継いできた．それが文化であろう．</p>
+<p>それは考えることを</p>
+<p>著作によって結びついたコミュニティのような</p>
+<p>文化を維持するには凄い労力がかかる．文化を維持してきた歴史こそが文化の重みである．</p>
+<p>街外れの狂人</p>
+<p>現代日本の学問は明治期に西洋から分枝した．</p>
+<p>重みがを感じられないのではなかろうか</p>
+<h3 id="日本の学問の歴史">日本の学問の歴史</h3>
+<p>日本における学問の歴史を考えてみよう．</p>
+<p>学者のコミュニティが存在していたかどうか．</p>
+<ul>
+<li>遣唐使の時代</li>
+<li>仏教
+<ul>
+<li>比叡山・高野山などの本山は未だに仏教研究コミュニティの中心である．</li>
+</ul></li>
+<li>儒学</li>
+</ul>
+<h3 id="学問の振興のために">学問の振興のために</h3>
+<p>思考を美徳とする学問という文化が，現代社会において，どのような立場にあるのか．</p>
+<h2 id="オンライン化について">オンライン化について</h2>
+<h3 id="ランダムネスの消えた学校">ランダムネスの消えた学校</h3>
+<p>大学の授業がことごとくオンライン授業になって</p>
+<h3 id="隠れたカリキュラムとオンライン授業">隠れたカリキュラムとオンライン授業</h3>
+<p>教育学には「隠れたカリキュラム」という用語がある．普通カリキュラムと言った場合，学習指導要領のように意図的に教える事柄のことを指すが，隠れたカリキュラムは，意図せずに教えている事柄のことをいう．</p>
+<p>オンライン授業によってカリキュラムは変わってないかもしれないが，隠れたカリキュラムは全然変わってしまった．</p>
+<h2 id="野暮">野暮</h2>
+<h3 id="説明的であること">説明的であること</h3>
+<p>The Witness というゲームで数日間徹夜をしてしまった。表面的に言えばオープンワールドのパズルゲームということになるが、その実態は体験型の哲学書である。ゲームの世界を探索する中で制作者の思想が浮かび上がり、</p>
+<p>ゲームの世界は思想を体験させるために綿密に設計されている。</p>
+<h2 id="section"></h2>
+<p>動画編集、一瞬のエフェクトにすごい時間がかかる</p>
+<p>大量複製でたくさんの人にみられるから労力に見合う？部分があるのかなと</p>
+<h2 id="伝達関数">伝達関数</h2>
+<h2 id="汎用的な非線形アナログ回路">汎用的な非線形アナログ回路</h2>
+<p>江崎ダイオード</p>
+<h2 id="完全な乱数">完全な乱数</h2>
+<p>乱数の生成方法と内部状態を完全に知られていたとしても、乱数出力の予測ができない（統計的に意味のある予測が）</p>
+<p>量子乱数は種となる量子の生成方法がわかっていたら分布がわかる</p>
+<p>↑ 破綻してそう</p>
+<h2 id="境界">境界</h2>
+<p>境界は微分である</p>
+<p>物を分離して認識できるのは、境界に性質の著しい変化があるからであり、グラデーションの中に境界は認識しにくい</p>
+<h2 id="旅行">旅行</h2>
+<p>ひとり旅という言葉が一般的に使われているように、旅行というと複数人で行くものと認識されているように思います。2 人からという旅館をしばし見かけますし、おもえらく、複数人の旅行の第一目的は体験の共有にあります。 一方、ひとり旅は事物の観測です。</p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
+      style="margin: auto; padding: 0; display: block" onclick="tweet();">
+      <circle cx="420.944" cy="296.781" r="294.5" fill="#2daae1" />
+      <path
+        d="M609.773 179.634c-13.891 6.164-28.811 10.331-44.498 12.204 16.01-9.587 28.275-24.779 34.066-42.86a154.78 154.78 0 0 1-49.209 18.801c-14.125-15.056-34.267-24.456-56.551-24.456-42.773 0-77.462 34.675-77.462 77.473 0 6.064.683 11.98 1.996 17.66-64.389-3.236-121.474-34.079-159.684-80.945-6.672 11.446-10.491 24.754-10.491 38.953 0 26.875 13.679 50.587 34.464 64.477a77.122 77.122 0 0 1-35.097-9.686v.979c0 37.54 26.701 68.842 62.145 75.961-6.511 1.784-13.344 2.716-20.413 2.716-4.998 0-9.847-.473-14.584-1.364 9.859 30.769 38.471 53.166 72.363 53.799-26.515 20.785-59.925 33.175-96.212 33.175-6.25 0-12.427-.373-18.491-1.104 34.291 21.988 75.006 34.824 118.759 34.824 142.496 0 220.428-118.052 220.428-220.428 0-3.361-.074-6.697-.236-10.021a157.855 157.855 0 0 0 38.707-40.158z"
+        fill="#fff" />
+    </svg>
+  </article>
+</body>
+
+</html>
