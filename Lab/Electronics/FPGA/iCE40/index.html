@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-      <title>点接触トランジスタ作ってみた | Kanade's Website</title>
+      <title>iCE40 で始める FPGA | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -462,7 +462,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "点接触トランジスタ作ってみた",
+        "iCE40 で始める FPGA",
         "_blank"
       );
     }
@@ -508,7 +508,7 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-            <h1 style="margin: 0">点接触トランジスタ作ってみた</h1>
+            <h1 style="margin: 0">iCE40 で始める FPGA</h1>
             <!-- Date -->
             <!-- Description -->
           </header>
@@ -543,19 +543,134 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#トランジスタの発明">トランジスタの発明</a></li>
+<li><a href="#fpga-の内部">FPGA の内部</a>
+<ul>
+<li><a href="#look-up-table-lut">Look Up Table (LUT)</a></li>
+<li><a href="#d-flipflop-dff">D-FlipFlop (DFF)</a></li>
+<li><a href="#multiplexer">Multiplexer</a></li>
+</ul></li>
+<li><a href="#開発の流れ">開発の流れ</a>
+<ul>
+<li><a href="#ハードウェア記述言語-hardware-description-language-hdl">ハードウェア記述言語 Hardware Description Language (HDL)</a></li>
+<li><a href="#合成-synthesis">合成 Synthesis</a></li>
+<li><a href="#配置配線-place-and-route">配置・配線 Place and Route</a></li>
+<li><a href="#パッケージ-package">パッケージ Package</a></li>
+<li><a href="#書き込み-upload">書き込み Upload</a></li>
+</ul></li>
+<li><a href="#ああ">ああ</a></li>
 </ul></nav>
-     <p>トランジスタの回路記号って奇妙ですよね？</p>
-<p>抵抗、コンデンサ、コイルなどの記号は、構造をそのまま表しています。</p>
-<p>トランジスタは半導体のサンドイッチなので、こういう記号になってもいいはずです。</p>
-<h2 id="トランジスタの発明">トランジスタの発明</h2>
-<p>1947 年、ベル研究所のウィリアム・ショックレー、ウォルタ・ブラッテン、ジョン・バーディーンは、ゲルマニウムを用いた増幅素子を発明します。</p>
-<p>トランジスタと名付け</p>
-<p>ショックレーはトランジスタの発明からわずか５週間でその原理を解明し、接合型トランジスタを生み出します。</p>
-<p>三名の天才によって、大半導体時代が幕を開けたわけです。</p>
-<p>では、世界初のトランジスタを詳しく見てみましょう。</p>
-<p>これが点接触トランジスタの特許 <a href="https://patents.google.com/patent/US2524035">アメリカ合衆国特許第 2,524,035 号</a> です。</p>
-<p>特許語を解読してみると、</p>
+     <p>iCE40 は、SiliconBlue（Lattice が買収）が開発した、組み込み向けの FPGA シリーズです。</p>
+<p>FPGA の中では安く、構造が単純なので、入門用におすすめです。</p>
+<h2 id="fpga-の内部">FPGA の内部</h2>
+<p>FPGA は、内部を書き換えられる IC です。</p>
+<p>このような、Programabble Logic Block がたくさん入っています。</p>
+<p>PLC は 8 個の Logic Cell からなっており、Logic Cell には Look Up Table(LUT) と、DFF が入っています。</p>
+<h3 id="look-up-table-lut">Look Up Table (LUT)</h3>
+<p>LUT は任意の組合回路を作ることができる回路です。</p>
+<p>例えば、3 入力の組合回路を考えてみましょう。</p>
+<p>真理値表は、このように 2^3 = 8 行になります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>IN</th>
+<th>OUT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>000</td>
+<td>O_0</td>
+</tr>
+<tr class="even">
+<td>001</td>
+<td>O_1</td>
+</tr>
+<tr class="odd">
+<td>010</td>
+<td>O_2</td>
+</tr>
+<tr class="even">
+<td>011</td>
+<td>O_3</td>
+</tr>
+<tr class="odd">
+<td>100</td>
+<td>O_4</td>
+</tr>
+<tr class="even">
+<td>101</td>
+<td>O_5</td>
+</tr>
+<tr class="odd">
+<td>110</td>
+<td>O_6</td>
+</tr>
+<tr class="even">
+<td>111</td>
+<td>O_7</td>
+</tr>
+</tbody>
+</table>
+<p>この表の入力をアドレス、出力を値として見れば、1bit x 8 の ROM としてみなせます。</p>
+<p>ROM に真理値表の出力値を順番に書き込むことで、任意の組合回路を作ることができます。</p>
+<p>これが LUT です。</p>
+<h3 id="d-flipflop-dff">D-FlipFlop (DFF)</h3>
+<p>DFF は、順序回路</p>
+<h3 id="multiplexer">Multiplexer</h3>
+<p>この中の、台形（マルチプレクサ）と ■ が、組み替えられるスイッチです。</p>
+<h2 id="開発の流れ">開発の流れ</h2>
+<table>
+<thead>
+<tr class="header">
+<th>ステップ</th>
+<th>ツール</th>
+<th>生成物</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HDL</td>
+<td>verilog</td>
+<td>.v</td>
+</tr>
+<tr class="even">
+<td>Syntesis</td>
+<td>yosys</td>
+<td>.blif</td>
+</tr>
+<tr class="odd">
+<td>Place and Route</td>
+<td>next pnr</td>
+<td>.asc</td>
+</tr>
+<tr class="even">
+<td>Package</td>
+<td>icepack</td>
+<td>.bin</td>
+</tr>
+<tr class="odd">
+<td>Upload</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ハードウェア記述言語-hardware-description-language-hdl">ハードウェア記述言語 Hardware Description Language (HDL)</h3>
+<p>まず、論理回路を HDL で記述します。</p>
+<h3 id="合成-synthesis">合成 Synthesis</h3>
+<p>ネットリストという形式に変換します。</p>
+<h3 id="配置配線-place-and-route">配置・配線 Place and Route</h3>
+<p>ネットリストの各素子を、具体的にどの Logic Cell に割り当てるか、そして、どこを経由して Logic Cell 間を接続するかを決めます。</p>
+<h3 id="パッケージ-package">パッケージ Package</h3>
+<p>ビットストリーム</p>
+<h3 id="書き込み-upload">書き込み Upload</h3>
+<h2 id="ああ">ああ</h2>
+<ul>
+<li><a href="https://www.latticesemi.com/~/media/LatticeSemi/Documents/Handbooks/iCE40FamilyHandbook.pdf">iCE 40 Family Handbook</a></li>
+<li><a href="https://www.latticesemi.com/~/media/LatticeSemi/Documents/DataSheets/iCE/iCE40LPHXFamilyDataSheet.pdf">iCE 40 DataSheet</a></li>
+<li><a href="https://www.latticesemi.com/view_document?document_id=46502">iCE 40 Programming and Configuration</a></li>
+<li><a href="https://www.macnica.co.jp/business/semiconductor/articles/iCE40_UserGuide_rev1.7__2.pdf">iCE40 ユーザーガイド</a></li>
+</ul>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
