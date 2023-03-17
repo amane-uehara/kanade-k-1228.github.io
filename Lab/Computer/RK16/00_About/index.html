@@ -20,7 +20,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-      <title>自作 CPU RK8 | Kanade's Website</title>
+    <meta name="dcterms.date" content="2022-09-23" />
+      <title>マイコンを作りたい！ | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -462,7 +463,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "自作 CPU RK8",
+        "マイコンを作りたい！",
         "_blank"
       );
     }
@@ -508,8 +509,9 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-            <h1 style="margin: 0">自作 CPU RK8</h1>
+            <h1 style="margin: 0">マイコンを作りたい！</h1>
             <!-- Date -->
+            <p align="right">2022-09-23</p>
             <!-- Description -->
           </header>
 
@@ -542,483 +544,79 @@
     </p>
 
     <!-- Table of Contents -->
-     <p>RK8 は RK16 を 8bit 化した CPU です。 RK16 を ロジック IC で実装する前に、RK8 を作って検証します。</p>
-<p><img src="img/rk8_arch.dio.svg" /></p>
-<table>
-<thead>
-<tr class="header">
-<th>op</th>
-<th></th>
-<th></th>
-<th></th>
-<th style="text-align: left;"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>add</td>
-<td>rd</td>
-<td>rs1</td>
-<td>rs2</td>
-<td style="text-align: left;">R[rd]=R[rs1]+R[rs2]</td>
-</tr>
-<tr class="even">
-<td>addi</td>
-<td>rd</td>
-<td>rs1</td>
-<td>imm</td>
-<td style="text-align: left;">R[rd]=R[rs1]+imm</td>
-</tr>
-<tr class="odd">
-<td>mov</td>
-<td>imm</td>
-<td>rs1</td>
-<td>rs2</td>
-<td style="text-align: left;">R[rs1+imm]=R[rs2]</td>
-</tr>
-<tr class="even">
-<td>br</td>
-<td>imm</td>
-<td>rs1</td>
-<td>rs2</td>
-<td style="text-align: left;">if(rs1=rs2) PC = imm</td>
-</tr>
-</tbody>
-</table>
-<p><img src="img/decode.dio.svg" /></p>
-<table>
-<thead>
-<tr class="header">
-<th>op</th>
-<th>Stage 0</th>
-<th>Stage 1</th>
-<th>Stage 2</th>
-<th>Stage 3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>add</td>
-<td>rs1 = R[rs1]</td>
-<td>rs2 = R[rs2]</td>
-<td>R[rd] = alu</td>
-<td>pc++</td>
-</tr>
-<tr class="even">
-<td>addi</td>
-<td>rs1 = R[rs1]</td>
-<td>-</td>
-<td>R[rd] = alu</td>
-<td>pc++</td>
-</tr>
-<tr class="odd">
-<td>mov</td>
-<td>rs1 = R[rs1]</td>
-<td>rs2 = R[rs2]</td>
-<td>R[alu] = rs2</td>
-<td>pc++</td>
-</tr>
-<tr class="even">
-<td>br</td>
-<td>rs1 = R[rs1]</td>
-<td>rs2 = R[rs2]</td>
-<td>-</td>
-<td>pc = flag ? imm : pc++</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>op</th>
-<th>opc</th>
-<th style="text-align: left;">S2_SEL</th>
-<th style="text-align: left;">DOUT_SEL</th>
-<th style="text-align: left;">DADR_SEL(NOR)</th>
-<th style="text-align: left;">JMP(AND)</th>
-<th style="text-align: left;">COND=CN</th>
-<th style="text-align: left;">ALU</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>addi</td>
-<td>00</td>
-<td style="text-align: left;">00 : CODE2</td>
-<td style="text-align: left;">0 : ALU</td>
-<td style="text-align: left;">1 : ALU</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">func</td>
-</tr>
-<tr class="even">
-<td>mov</td>
-<td>01</td>
-<td style="text-align: left;">01 : CODE1</td>
-<td style="text-align: left;">1 : REG2</td>
-<td style="text-align: left;">0 : CODE0</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">ADD</td>
-</tr>
-<tr class="odd">
-<td>add</td>
-<td>10</td>
-<td style="text-align: left;">1- : REG2</td>
-<td style="text-align: left;">0 : ALU</td>
-<td style="text-align: left;">0 : CODE0</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">func</td>
-</tr>
-<tr class="even">
-<td>br</td>
-<td>11</td>
-<td style="text-align: left;">1- : REG2</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">0 : CODE0</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">0:EQ 1:LT</td>
-<td style="text-align: left;">SUB</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>74181</th>
-<th>Cn</th>
-<th>M</th>
-<th>S<sub>3</sub></th>
-<th>S<sub>2</sub></th>
-<th>S<sub>1</sub></th>
-<th>S<sub>0</sub></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ADD</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>SUB</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>AND</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>NAND</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>OR</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>NOR</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>XOR</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>XNOR</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>NOT</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>opc</th>
-<th>Cn / Cond</th>
-<th style="text-align: left;">M,S<sub>3:0</sub></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>addi</td>
-<td>00</td>
-<td>0</td>
-<td style="text-align: left;">0 1001 add</td>
-</tr>
-<tr class="even">
-<td>subi</td>
-<td>00</td>
-<td>1</td>
-<td style="text-align: left;">0 0110 sub</td>
-</tr>
-<tr class="odd">
-<td>andi</td>
-<td>00</td>
-<td>-</td>
-<td style="text-align: left;">1 1110 adn</td>
-</tr>
-<tr class="even">
-<td>ori</td>
-<td>00</td>
-<td>-</td>
-<td style="text-align: left;">1 1011 or</td>
-</tr>
-<tr class="odd">
-<td>xori</td>
-<td>00</td>
-<td>-</td>
-<td style="text-align: left;">1 1001 xor</td>
-</tr>
-<tr class="even">
-<td>mov</td>
-<td>01</td>
-<td>0</td>
-<td style="text-align: left;">0 1001 add</td>
-</tr>
-<tr class="odd">
-<td>add</td>
-<td>10</td>
-<td>0</td>
-<td style="text-align: left;">0 1001 add</td>
-</tr>
-<tr class="even">
-<td>sub</td>
-<td>10</td>
-<td>1</td>
-<td style="text-align: left;">0 0110 sub</td>
-</tr>
-<tr class="odd">
-<td>and</td>
-<td>10</td>
-<td>-</td>
-<td style="text-align: left;">1 1110 and</td>
-</tr>
-<tr class="even">
-<td>or</td>
-<td>10</td>
-<td>-</td>
-<td style="text-align: left;">1 1011 or</td>
-</tr>
-<tr class="odd">
-<td>not</td>
-<td>10</td>
-<td>-</td>
-<td style="text-align: left;">1 0000 not</td>
-</tr>
-<tr class="even">
-<td>xor</td>
-<td>10</td>
-<td>-</td>
-<td style="text-align: left;">1 1001 xor</td>
-</tr>
-<tr class="odd">
-<td>be</td>
-<td>11</td>
-<td>0 A=B</td>
-<td style="text-align: left;">0 0110 -</td>
-</tr>
-<tr class="even">
-<td>bl</td>
-<td>11</td>
-<td>1 A&lt;B</td>
-<td style="text-align: left;">0 0110 sub</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">品番</th>
-<th>個数</th>
-<th style="text-align: left;">用途</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>ロジック IC</strong></td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">74HC00 NAND</td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">74HC02 NOR</td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">74HC04 NOT</td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">74HC08 AND</td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">74HC32 OR</td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">74HC564 8bit DFF 反転 3state 出力</td>
-<td>2</td>
-<td style="text-align: left;">レジスタ</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">74HC181 ALU</td>
-<td>2</td>
-<td style="text-align: left;">ALU</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">74HC564 8bit DFF 非反転 3state 出力</td>
-<td>1</td>
-<td style="text-align: left;">出力部</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">74HC540 3state バッファ 反転</td>
-<td>5</td>
-<td style="text-align: left;">セレクタ</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">74HC541 3state バッファ 非反転</td>
-<td>6</td>
-<td style="text-align: left;">セレクタ、入力部</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">74HC161 バイナリカウンタ</td>
-<td>2</td>
-<td style="text-align: left;">プログラムカウンタ</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">74HC175 4bit DFF</td>
-<td>1</td>
-<td style="text-align: left;">ステージカウンタ</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">74HC14 シュミットトリガ</td>
-<td>1</td>
-<td style="text-align: left;">チャタリング防止、NOT</td>
-<td><a href="https://akizukidenshi.com/catalog/g/gI-10923/">秋月</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>メモリ</strong></td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://wakamatsu.co.jp/biz/aac/14143.pdf">UPD431016LE-15</a> 65536 x 16</td>
-<td>1</td>
-<td style="text-align: left;">メインメモリ</td>
-<td><a href="https://wakamatsu.co.jp/biz/products/detail.php?product_id=17010392">若松</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://www.alliancememory.com/new-5v-parallel-nor-flash/">5V NOR Flash</a></td>
-<td>2</td>
-<td style="text-align: left;">プログラム ROM</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>クロック</strong></td>
-<td></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">分周器付き発振器</td>
-<td>1</td>
-<td style="text-align: left;">クロック</td>
-<td><a href="https://akizukidenshi.com/catalog/g/gP-01685/">秋月</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">押しボタンスイッチ（LED）</td>
-<td>1</td>
-<td style="text-align: left;">手動クロック &amp; 電源ランプ</td>
-<td><a href="https://akizukidenshi.com/catalog/g/gP-02010/">秋月</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">タクトスイッチ</td>
-<td>1</td>
-<td style="text-align: left;">リセット</td>
-<td><a href="https://akizukidenshi.com/catalog/g/gP-03647/">秋月</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">スライドスイッチ</td>
-<td>1</td>
-<td style="text-align: left;">クロック切り替え</td>
-<td><a href="https://akizukidenshi.com/catalog/g/gP-15707/">秋月</a></td>
-</tr>
-</tbody>
-</table>
+        <nav><ul>
+<li><a href="#目標野望">目標・野望</a>
+<ul>
+<li><a href="#ロジック-ic-で作る">1. ロジック IC で作る</a></li>
+<li><a href="#全部自作">2. 全部自作。</a></li>
+<li><a href="#実用性">3. 実用性</a></li>
+<li><a href="#柔軟な開発">4. 柔軟な開発</a></li>
+</ul></li>
+<li><a href="#作るもの">作るもの</a>
+<ul>
+<li><a href="#cpu">CPU</a></li>
+<li><a href="#アセンブラ">アセンブラ</a></li>
+<li><a href="#コンパイラ">コンパイラ</a></li>
+<li><a href="#エミュレータ">エミュレータ</a></li>
+<li><a href="#os">OS</a></li>
+<li><a href="#ハードウェア">ハードウェア</a></li>
+<li><a href="#ライタ">ライタ</a></li>
+</ul></li>
+<li><a href="#将来的に作りたいもの">将来的に作りたいもの</a>
+<ul>
+<li><a href="#llvm-バックエンド">LLVM バックエンド</a></li>
+<li><a href="#デバッガ">デバッガ</a></li>
+<li><a href="#開発環境">開発環境</a></li>
+</ul></li>
+</ul></nav>
+     <p>MFT2022、お疲れ様でした。 リレーコンピュータを構想してから 5 年、なんとか完成することができました。 ということで、ようやくトランジスタ縛りから開放されたので、トランジスタで CPU を作って、OS を動かしていきます。 来年の MFT2023 に出せたらいいな…？</p>
+<h2 id="目標野望">目標・野望</h2>
+<blockquote>
+<p>ロマンと実用性の両立！楽しい！感動できる！</p>
+</blockquote>
+<h3 id="ロジック-ic-で作る">1. ロジック IC で作る</h3>
+<p>できるだけスルーホールのロジック IC を使って作ります。</p>
+<h3 id="全部自作">2. 全部自作。</h3>
+<p>回路から、アセンブラ、コンパイラ、OS を全て手作りします。</p>
+<h3 id="実用性">3. 実用性</h3>
+<p>組み込み用としても、パソコンとしても使えるように、いろいろな機能をつけます。 CPU の性能が低いので、専用回路で補おうという算段です。</p>
+<ul>
+<li>割り込み</li>
+<li>DMA</li>
+<li>VGA 映像出力</li>
+<li>キーボード入力</li>
+<li>GPIO、ADC、DAC、PWM</li>
+<li>I2C、SPI、Serial</li>
+</ul>
+<h3 id="柔軟な開発">4. 柔軟な開発</h3>
+<p>リレーコンピュータの完成まで5年もの時間を要したのは、何回か大幅な設計変更をしたためです。 特に、回路を作った後に設計変更するのは、かなり萎えます。</p>
+<p>今回のマイコン開発では†アジャイル開発†をします。 アジャイル開発とは、ソフトウェア開発の手法で、要件を完全に定義してから開発するのではなく、とりあえず動作するものを作って改良しながら開発していくという方法です。</p>
+<p>今回は、CPUのエミュレータを作って、そこでOSを開発します。 OSを作る中で、CPUの仕様を変えたくなったらエミュレータを書き換えるだけで済みます。</p>
+<h2 id="作るもの">作るもの</h2>
+<h3 id="cpu">CPU</h3>
+<p>RISC-V っぽい ISA にします。</p>
+<h3 id="アセンブラ">アセンブラ</h3>
+<p>アセンブリと機械語を一対一に変換するだではなく、変数・定数にラベルを割り当てて、生でアセンブリを書く負担を減らします。</p>
+<h3 id="コンパイラ">コンパイラ</h3>
+<p>C言語っぽい高級言語を自作して、そのコンパイラを作ります。</p>
+<h3 id="エミュレータ">エミュレータ</h3>
+<p>機械語コードを読んで CPU をエミュレートします。</p>
+<h3 id="os">OS</h3>
+<p>リアルタイム OS を作ります。</p>
+<h3 id="ハードウェア">ハードウェア</h3>
+<p>ロジック IC で CPU を組みます。</p>
+<h3 id="ライタ">ライタ</h3>
+<p>パソコンから ROM に機械語コードを書き込みます。</p>
+<h2 id="将来的に作りたいもの">将来的に作りたいもの</h2>
+<h3 id="llvm-バックエンド">LLVM バックエンド</h3>
+<blockquote>
+<p>LLVM 神「力が…欲しいか…」</p>
+</blockquote>
+<p>LLVM の力を借りて、C 言語が完全にサポートされたコンパイラを作ります。</p>
+<h3 id="デバッガ">デバッガ</h3>
+<p>パソコン側から、ステップ実行したり、ROM の値を読んだりできるようにします。</p>
+<h3 id="開発環境">開発環境</h3>
+<p>VSCode の拡張機能として、フォーマッタ、シンタックスハイライトを実装します。 VSCode のデバッガインターフェースを使って実行＆デバッグできるようにします。</p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">

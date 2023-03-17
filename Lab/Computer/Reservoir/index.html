@@ -20,8 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-    <meta name="dcterms.date" content="2022-09-23" />
-      <title>自作マイコン | Kanade's Website</title>
+      <title>レザバー計算のまとめ | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -463,7 +462,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "自作マイコン",
+        "レザバー計算のまとめ",
         "_blank"
       );
     }
@@ -509,9 +508,8 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-            <h1 style="margin: 0">自作マイコン</h1>
+            <h1 style="margin: 0">レザバー計算のまとめ</h1>
             <!-- Date -->
-            <p align="right">2022-09-23</p>
             <!-- Description -->
           </header>
 
@@ -544,65 +542,15 @@
     </p>
 
     <!-- Table of Contents -->
-        <nav><ul>
-<li><a href="#概要">概要</a></li>
-<li><a href="#予定というか野望">予定というか野望</a></li>
-</ul></nav>
-     <p>MFT2022、お疲れ様でした。</p>
-<p>リレーコンピュータを構想してから 5 年、なんとか完成することができました。</p>
-<p>ということで、ようやくトランジスタ縛りから開放されたので、トランジスタで CPU を作って、OS を動かしていきます。</p>
-<p>来年の MFT2023 に出せたらいいな…？</p>
-<h2 id="概要">概要</h2>
-<ol type="1">
-<li>ロジック IC を使って回路を作る</li>
-</ol>
-<p>マイコンとかメモリとかを組み合わせてコンピュータを作ってた時代があったらしいですね。</p>
-<p>ということで、その時代の雰囲気を再現すべく、できるだけスルーホールの IC を使って作ります。</p>
-<ol start="2" type="1">
-<li>簡素な CPU</li>
-</ol>
-<p>RISC-V を参考に簡単な回路＆機械語になるようにします。</p>
-<ol start="3" type="1">
-<li>充実した機能</li>
-</ol>
-<p>組み込み用としても、パソコンとしても使えるように、周辺回路をマシマシにします。</p>
-<p>というのも、CPU の性能が低いので、専用回路で補おうという算段です。</p>
+     <ul>
+<li>京大 土屋研究室 (https://www.nms.me.kyoto-u.ac.jp/tag/reservoir-computing/)
 <ul>
-<li>割り込み</li>
-<li>DMA</li>
-<li>VGA 映像出力</li>
-<li>キーボード入力</li>
-<li>IO：GPIO、ADC、DAC、PWM</li>
-<li>通信：I2C、SPI、Serial</li>
+<li>(https://doi.org/10.1109/MEMS51670.2022.9699777)</li>
+<li>(https://doi.org/10.1109/MEMS49605.2023.10052286)</li>
+</ul></li>
+<li>(https://doi.org/10.1109/JMEMS.2020.2978467)</li>
+<li>MNIST (https://www.nature.com/articles/s41378-021-00313-7)</li>
 </ul>
-<h2 id="予定というか野望">予定というか野望</h2>
-<h4 id="アーキテクチャ">アーキテクチャ</h4>
-<p>とりあえず、CPU のアーキテクチャを作ってみます。</p>
-<p>暫定なので、エミュレータを動かしてみたり、回路図を書いたり、いろいろ試行錯誤してるうちに変わっていくはずです</p>
-<h4 id="単一ファイルのアセンブラ">単一ファイルのアセンブラ</h4>
-<p>アセンブリと機械語を一対一に変換するだけの単純なアセンブラを作ります</p>
-<h4 id="エミュレータ">エミュレータ</h4>
-<p>機械語コードを読んで CPU をエミュレートします</p>
-<p>しばらくはこれでいろいろ動かしてくよ</p>
-<h4 id="コンパイラ">コンパイラ</h4>
-<p>C 言語のサブセット、C– のコンパイラを作ります</p>
-<h4 id="リンカ">リンカ</h4>
-<p>コンパイラを改造して、オブジェクトファイルを出力するように変更します</p>
-<p>さらに、リンカを作り、オブジェクトファイルをリンクして機械語コードを出力します</p>
-<h4 id="os">OS</h4>
-<p>リアルタイム OS を作り、エミュレータ上で動かします（リアルタイムとは</p>
-<p>割り込みとかどうしよ。テストベンチ作る？</p>
-<h4 id="ハードウェア">ハードウェア</h4>
-<p>この時点で仕様が決まってるはずなので？ロジック IC で CPU を組みます</p>
-<h4 id="ライタデバッガ">ライタ＆デバッガ</h4>
-<p>パソコンから ROM に機械語コードを書き込みます</p>
-<p>パソコン側から、ステップ実行したり、ROM の値を読んだりできるようにします</p>
-<h4 id="開発環境">開発環境</h4>
-<p>VSCode の拡張機能として、フォーマッタ、シンタックスハイライトを実装します</p>
-<p>VSCode のインターフェースを使って実行＆デバッグできるようにします</p>
-<h4 id="llvm-バックエンド">LLVM バックエンド</h4>
-<p>LLVM 神「力が…欲しいか…」</p>
-<p>LLVM の力を借りて、C 言語が完全にサポートされたコンパイラを作ります</p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
