@@ -2,7 +2,10 @@
 title: 自作 CPU RK8
 ---
 
-![](img/arch.dio.svg)
+RK8 は RK16 を 8bit 化した CPU です。
+RK16 を ロジック IC で実装する前に、RK8 を作って検証します。
+
+![](img/rk8_arch.dio.svg)
 
 | op   |     |     |     |                      |
 | ---- | --- | --- | --- | :------------------- |

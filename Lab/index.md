@@ -166,27 +166,27 @@ title: 研究室へようこそ
 
 [RISC-V](./Computer/Misc/RISC-V/)
 
+### 自作マイコン：RK16
+
+[自作マイコンについて](./Computer/RK16/00_About/)
+
+[アーキテクチャ](./Computer/RK16/10_Architecture/)
+
+[アセンブラ](./Computer/RK16/20_Assembler/)
+
+[エミュレータ](./Computer/RK16/30_Emulator/)
+
+[コンパイラ](./Computer/RK16/40_Compiler/)
+
+[リンカ](./Computer/RK16/50_Linker/)
+
+[リアルタイム OS](./Computer/RK16/60_OS/)
+
+[ハードウェア](./Computer/RK16/70_Hardware/)
+
 ### 自作 CPU：RK8
 
 [RK8 の概要](./Computer/RK8/)
-
-### 自作マイコン
-
-[自作マイコンについて](./Computer/Micon/00_About/)
-
-[アーキテクチャ](./Computer/Micon/10_Architecture/)
-
-[アセンブラ](./Computer/Micon/20_Assembler/)
-
-[エミュレータ](./Computer/Micon/30_Emulator/)
-
-[コンパイラ](./Computer/Micon/40_Compiler/)
-
-[リンカ](./Computer/Micon/50_Linker/)
-
-[リアルタイム OS](./Computer/Micon/60_OS/)
-
-[ハードウェア](./Computer/Micon/70_Hardware/)
 
 ### リレーコンピュータ
 
