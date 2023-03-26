@@ -906,7 +906,7 @@
 <h3 id="レジスタ-1">レジスタ</h3>
 <ul>
 <li>実体としては、SRAM の一部分</li>
-<li>6bit でアクセスする → ISA でビットを節約できる</li>
+<li>4bit でアクセスする → ISA でビットを節約できる</li>
 </ul>
 <h3 id="io">IO</h3>
 <p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、デバイスにスイッチ。</p>
@@ -922,7 +922,7 @@
 <p><img src="img/arch.dio.svg" /></p>
 <h3 id="id">ID</h3>
 <p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
-<p><img src="img/decode.dio.svg" /></p>
+<p><img src="img/data_path.dio.svg" /></p>
 <p>4 クロックで 1 命令を実行する。</p>
 <ol type="1">
 <li>メモリを読み出し、RS1 に記録</li>
@@ -937,9 +937,9 @@
 <th>ALU</th>
 <th>S2</th>
 <th>DIN</th>
-<th>1.R ADR</th>
-<th>2.R ADR</th>
-<th>3.W ADR</th>
+<th>1.ADR</th>
+<th>2.ADR</th>
+<th>3.ADR</th>
 </tr>
 </thead>
 <tbody>
@@ -980,76 +980,165 @@
 <td>ALU</td>
 </tr>
 <tr class="odd">
-<td>loadi</td>
-<td>-</td>
-<td>-</td>
-<td>IMM</td>
-<td>-</td>
-<td>-</td>
-<td>RD</td>
-</tr>
-<tr class="even">
-<td>jump</td>
-<td>ADD</td>
+<td>jmpif</td>
+<td>EQ</td>
 <td>IMM</td>
 <td>PC</td>
 <td>RS1</td>
-<td>-</td>
+<td>ZERO</td>
 <td>RD</td>
-</tr>
-<tr class="odd">
-<td>be</td>
-<td>SUB</td>
-<td>RS2</td>
-<td>-</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>bl</td>
-<td>SUB</td>
-<td>RS2</td>
-<td>-</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>0</td>
 </tr>
 </tbody>
 </table>
 <p><img src="img/decoder.dio.svg" /></p>
 <h3 id="alu">ALU</h3>
-<h3 id="クロック">クロック</h3>
-<p><img src="img/timing.dio.svg" /></p>
-<h3 id="pfc">PFC</h3>
-<p>プログラムフローコントローラ。ジャンプ命令、分岐命令、割り込みによる、プログラムの流れの変化を処理します。</p>
-<p><img src="img/pfc.dio.svg" /></p>
+<p>演算装置。必要な演算は、</p>
 <table>
 <thead>
 <tr class="header">
 <th></th>
-<th>次の PC</th>
+<th>演算</th>
+<th>実装</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>-</td>
-<td>PC+1</td>
+<td>+</td>
+<td>加算</td>
+<td>74181</td>
 </tr>
 <tr class="even">
-<td>be</td>
-<td>ALU=0 ? IMM : PC+1</td>
+<td>-</td>
+<td>減算</td>
+<td>74181</td>
 </tr>
 <tr class="odd">
-<td>bl</td>
-<td>ALU&gt;0 ? IMM : PC+1</td>
+<td>&amp;</td>
+<td>ビット AND</td>
+<td>74181</td>
 </tr>
 <tr class="even">
-<td>jump</td>
-<td>ALU</td>
+<td>|</td>
+<td>ビット OR</td>
+<td>74181</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>ビット XOR</td>
+<td>74181</td>
+</tr>
+<tr class="even">
+<td>~</td>
+<td>ビット NOT</td>
+<td>74181</td>
+</tr>
+<tr class="odd">
+<td>&gt;&gt;</td>
+<td>右シフト（符号あり）</td>
+<td>MUX</td>
+</tr>
+<tr class="even">
+<td>&gt;&gt;</td>
+<td>右シフト（符号なし）</td>
+<td>MUX</td>
+</tr>
+<tr class="odd">
+<td>&lt;&lt;</td>
+<td>左シフト</td>
+<td>74181</td>
+</tr>
+<tr class="even">
+<td>==</td>
+<td>一致比較</td>
+<td>7485</td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td>大小比較（符号あり）</td>
+<td>7485</td>
+</tr>
+<tr class="even">
+<td>&lt;</td>
+<td>大小比較（符号なし）</td>
+<td>7485 + MSB NOT</td>
 </tr>
 </tbody>
 </table>
+<p>74HC181 で実装する。</p>
+<table>
+<thead>
+<tr class="header">
+<th>74181</th>
+<th>Cn</th>
+<th>M</th>
+<th>S<sub>3</sub></th>
+<th>S<sub>2</sub></th>
+<th>S<sub>1</sub></th>
+<th>S<sub>0</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ADD +</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>SUB -</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>AND &amp;</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>OR |</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>XOR ^</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>NOT ~</td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="クロック">クロック</h3>
+<p><img src="img/timing.dio.svg" /></p>
+<h3 id="pfc">PFC</h3>
+<p>プログラムフローコントローラ。プログラムの流れの変化を処理します。</p>
+<p><img src="img/pfc.dio.svg" /></p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
