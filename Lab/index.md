@@ -172,6 +172,9 @@ title: 研究室へようこそ
 
 [自作マイコンのアーキテクチャ](./Computer/RK16/01_Architecture/)
 
+自作マイコン
+ほげほげ
+
 [アセンブラ](./Computer/RK16/02_Assembler/)
 
 [エミュレータ](./Computer/RK16/03_Emulator/)
