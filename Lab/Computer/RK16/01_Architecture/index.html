@@ -578,62 +578,68 @@
 <th>アドレス</th>
 <th></th>
 <th>機能</th>
-<th>保持</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>-</td>
-<td>pc</td>
-<td>プログラムカウンタ</td>
-<td>-</td>
-</tr>
-<tr class="even">
-<td>-</td>
-<td>ira</td>
-<td>割り込み戻りアドレス</td>
-<td></td>
-</tr>
-<tr class="odd">
 <td>0x00</td>
 <td>zero</td>
 <td>ゼロ固定</td>
-<td>-</td>
+<td>R</td>
 </tr>
 <tr class="even">
 <td>0x01</td>
+<td>pc</td>
+<td>プログラムカウンタ</td>
+<td>R</td>
+</tr>
+<tr class="odd">
+<td>0x02</td>
+<td>ira</td>
+<td>割り込み戻りアドレス</td>
+<td>R</td>
+</tr>
+<tr class="even">
+<td>0x03</td>
+<td>csr</td>
+<td>状態制御レジスタ</td>
+<td>RW</td>
+</tr>
+<tr class="odd">
+<td>0x04</td>
 <td>ra</td>
 <td>戻りアドレス</td>
 <td>✕</td>
 </tr>
-<tr class="odd">
-<td>0x02</td>
+<tr class="even">
+<td>0x05</td>
 <td>sp</td>
 <td>スタック・ポインタ</td>
 <td>〇</td>
 </tr>
-<tr class="even">
-<td>0x03</td>
+<tr class="odd">
+<td>0x06</td>
 <td>fp</td>
 <td>フレーム・ポインタ</td>
 <td>〇</td>
 </tr>
+<tr class="even">
+<td>0x07</td>
+<td></td>
+<td></td>
+<td>〇</td>
+</tr>
 <tr class="odd">
-<td>0x04 - 0x07</td>
+<td>0x08 - 0x0b</td>
 <td>s0 - s3</td>
 <td>保存レジスタ</td>
 <td>〇</td>
 </tr>
 <tr class="even">
-<td>0x08 - 0x0b</td>
+<td>0x0c - 0x0f</td>
 <td>t0 - t3</td>
 <td>一時レジスタ</td>
-<td>✕</td>
-</tr>
-<tr class="odd">
-<td>0x0c - 0x0f</td>
-<td>a0 - a3</td>
-<td>引数・返値</td>
 <td>✕</td>
 </tr>
 </tbody>
@@ -821,7 +827,7 @@
 </tr>
 <tr class="even">
 <td>ストア</td>
-<td>store rs1 rs2 imm</td>
+<td>store rs2 rs1 imm</td>
 <td>mem[rs1 + imm] = rs2</td>
 </tr>
 </tbody>
@@ -840,8 +846,8 @@
 <tbody>
 <tr class="odd">
 <td>条件呼出</td>
-<td>jmpif rd rs1 imm</td>
-<td>rd = PC + 1, if(rs1 == 0) PC = imm</td>
+<td>callif rd rs2 rs1 imm</td>
+<td>rd = PC + 1, if(rs2 == 0) PC = rs1 + imm</td>
 </tr>
 </tbody>
 </table>
@@ -852,7 +858,6 @@
 <tr class="header">
 <th>疑似命令</th>
 <th>ASM</th>
-<th></th>
 <th>処理</th>
 </tr>
 </thead>
@@ -860,25 +865,21 @@
 <tr class="odd">
 <td>即値ロード</td>
 <td>loadi rd imm</td>
-<td>addi rd zero imm</td>
 <td>rd = imm</td>
 </tr>
 <tr class="even">
 <td>条件分岐</td>
 <td>br rs1 imm</td>
-<td>jmpif zero rs1 imm</td>
 <td>if(rs1 == 0) PC = imm</td>
 </tr>
 <tr class="odd">
 <td>ジャンプ</td>
 <td>jump imm</td>
-<td>jumpif zero zero imm</td>
 <td>PC = imm</td>
 </tr>
 <tr class="even">
 <td>関数呼出</td>
 <td>call imm</td>
-<td>jumpif ra zero imm</td>
 <td>ra = PC + 1, PC = imm</td>
 </tr>
 </tbody>
@@ -906,17 +907,13 @@
 </tr>
 <tr class="even">
 <td>0x0010 - 0x00FF</td>
-<td>Ctrl Registor</td>
+<td>IO Ctrl Registor</td>
 </tr>
 <tr class="odd">
-<td>0x0100 - 0x1FFF</td>
-<td>IO</td>
-</tr>
-<tr class="even">
 <td>0x1000 - 0x2FFF</td>
 <td>VRAM</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x3000 - 0xFFFF</td>
 <td>RAM</td>
 </tr>
@@ -999,12 +996,12 @@
 <td>ALU</td>
 </tr>
 <tr class="odd">
-<td>jmpif</td>
-<td>EQ</td>
+<td>callif</td>
+<td>ADD</td>
 <td>IMM</td>
-<td>PC</td>
+<td>RA</td>
 <td>RS1</td>
-<td>ZERO</td>
+<td>RS2</td>
 <td>RD</td>
 </tr>
 </tbody>
