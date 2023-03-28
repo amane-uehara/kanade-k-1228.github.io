@@ -7,17 +7,18 @@ date: 2023-03-26
 
 レジスタはSRAMの一部として実装します。
 
-| アドレス    |         | 機能                 | 保持 |
-| ----------- | ------- | -------------------- | ---- |
-| -           | pc      | プログラムカウンタ   | -    |
-| -           | ira     | 割り込み戻りアドレス |      |
-| 0x00        | zero    | ゼロ固定             | -    |
-| 0x01        | ra      | 戻りアドレス         | ✕    |
-| 0x02        | sp      | スタック・ポインタ   | 〇   |
-| 0x03        | fp      | フレーム・ポインタ   | 〇   |
-| 0x04 - 0x07 | s0 - s3 | 保存レジスタ         | 〇   |
-| 0x08 - 0x0b | t0 - t3 | 一時レジスタ         | ✕    |
-| 0x0c - 0x0f | a0 - a3 | 引数・返値           | ✕    |
+| アドレス    |         | 機能                 |     |
+| ----------- | ------- | -------------------- | --- |
+| 0x00        | zero    | ゼロ固定             | R   |
+| 0x01        | pc      | プログラムカウンタ   | R   |
+| 0x02        | ira     | 割り込み戻りアドレス | R   |
+| 0x03        | csr     | 状態制御レジスタ     | RW  |
+| 0x04        | ra      | 戻りアドレス         | ✕   |
+| 0x05        | sp      | スタック・ポインタ   | 〇  |
+| 0x06        | fp      | フレーム・ポインタ   | 〇  |
+| 0x07        |         |                      | 〇  |
+| 0x08 - 0x0b | s0 - s3 | 保存レジスタ         | 〇  |
+| 0x0c - 0x0f | t0 - t3 | 一時レジスタ         | ✕   |
 
 ## 命令セット
 
@@ -81,7 +82,7 @@ date: 2023-03-26
 | 命令   | ASM               |                      |
 | ------ | ----------------- | -------------------- |
 | ロード | load rd rs1 imm   | rd = mem[rs1 + imm]  |
-| ストア | store rs1 rs2 imm | mem[rs1 + imm] = rs2 |
+| ストア | store rs2 rs1 imm | mem[rs1 + imm] = rs2 |
 
 ロード命令は、メモリからレジスタに値を移動します。
 ストア命令は、レジスタからメモリに値を移動します。
@@ -90,9 +91,9 @@ date: 2023-03-26
 
 ### 制御命令
 
-| 命令     | ASM              | 処理                               |
-| -------- | ---------------- | ---------------------------------- |
-| 条件呼出 | jmpif rd rs1 imm | rd = PC + 1, if(rs1 == 0) PC = imm |
+| 命令     | ASM                   | 処理                                     |
+| -------- | --------------------- | ---------------------------------------- |
+| 条件呼出 | callif rd rs2 rs1 imm | rd = PC + 1, if(rs2 == 0) PC = rs1 + imm |
 
 プログラムの制御に関する命令は全てこれで実行できます。
 この命令を生で呼び出すことは想定していません。
@@ -100,12 +101,12 @@ date: 2023-03-26
 
 ### 疑似命令
 
-| 疑似命令   | ASM          |                      | 処理                  |
-| ---------- | ------------ | -------------------- | --------------------- |
-| 即値ロード | loadi rd imm | addi rd zero imm     | rd = imm              |
-| 条件分岐   | br rs1 imm   | jmpif zero rs1 imm   | if(rs1 == 0) PC = imm |
-| ジャンプ   | jump imm     | jumpif zero zero imm | PC = imm              |
-| 関数呼出   | call imm     | jumpif ra zero imm   | ra = PC + 1, PC = imm |
+| 疑似命令   | ASM          | 処理                  |
+| ---------- | ------------ | --------------------- |
+| 即値ロード | loadi rd imm | rd = imm              |
+| 条件分岐   | br rs1 imm   | if(rs1 == 0) PC = imm |
+| ジャンプ   | jump imm     | PC = imm              |
+| 関数呼出   | call imm     | ra = PC + 1, PC = imm |
 
 ### 割り込み
 
@@ -120,13 +121,12 @@ date: 2023-03-26
 
 メモリ空間は 0x1000 ごとにバンクに区切られていて、RAM以外のデバイスに置き換えられる。
 
-| Addr            | Function      |
-| --------------- | ------------- |
-| 0x0000 - 0x000F | Registor      |
-| 0x0010 - 0x00FF | Ctrl Registor |
-| 0x0100 - 0x1FFF | IO            |
-| 0x1000 - 0x2FFF | VRAM          |
-| 0x3000 - 0xFFFF | RAM           |
+| Addr            | Function         |
+| --------------- | ---------------- |
+| 0x0000 - 0x000F | Registor         |
+| 0x0010 - 0x00FF | IO Ctrl Registor |
+| 0x1000 - 0x2FFF | VRAM             |
+| 0x3000 - 0xFFFF | RAM              |
 
 ### レジスタ
 
@@ -165,13 +165,13 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 3. メモリに書き込み
 4. PC のカウントアップ
 
-|       | ALU  | S2  | DIN | 1.ADR | 2.ADR | 3.ADR |
-| ----- | ---- | --- | --- | ----- | ----- | ----- |
-| add   | Func | RS2 | ALU | RS1   | RS2   | RD    |
-| addi  | Func | IMM | ALU | RS1   | -     | RD    |
-| load  | ADD  | IMM | RS2 | RS1   | ALU   | RD    |
-| store | ADD  | IMM | RS2 | RS1   | RS2   | ALU   |
-| jmpif | EQ   | IMM | PC  | RS1   | ZERO  | RD    |
+|        | ALU  | S2  | DIN | 1.ADR | 2.ADR | 3.ADR |
+| ------ | ---- | --- | --- | ----- | ----- | ----- |
+| add    | Func | RS2 | ALU | RS1   | RS2   | RD    |
+| addi   | Func | IMM | ALU | RS1   | -     | RD    |
+| load   | ADD  | IMM | RS2 | RS1   | ALU   | RD    |
+| store  | ADD  | IMM | RS2 | RS1   | RS2   | ALU   |
+| callif | ADD  | IMM | RA  | RS1   | RS2   | RD    |
 
 ![](img/decoder.dio.svg)
 
