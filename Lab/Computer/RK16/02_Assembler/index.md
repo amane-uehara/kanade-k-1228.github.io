@@ -15,8 +15,6 @@ title: アセンブラ
 | 条件分岐（＝） | breq rs1 rs2 imm  | if(rs1 = rs2) PC = imm      |
 | 条件分岐（＜） | brlt rs1 rs2 imm  | if(rs1 < rs2) PC = imm      |
 
-※ シンボルだらけになるので相対ジャンプにしたい、、、
-
 ## アセンブラの実装
 
 1. 一行づつ読み取る
