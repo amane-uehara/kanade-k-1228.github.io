@@ -551,6 +551,7 @@
 <li><a href="#演算命令">演算命令</a></li>
 <li><a href="#移値命令">移値命令</a></li>
 <li><a href="#制御命令">制御命令</a></li>
+<li><a href="#疑似命令">疑似命令</a></li>
 <li><a href="#割り込み">割り込み</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a>
@@ -588,42 +589,48 @@
 <td>-</td>
 </tr>
 <tr class="even">
+<td>-</td>
+<td>ira</td>
+<td>割り込み戻りアドレス</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>0x00</td>
 <td>zero</td>
 <td>ゼロ固定</td>
 <td>-</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x01</td>
 <td>ra</td>
 <td>戻りアドレス</td>
 <td>✕</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x02</td>
 <td>sp</td>
 <td>スタック・ポインタ</td>
 <td>〇</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x03</td>
 <td>fp</td>
 <td>フレーム・ポインタ</td>
 <td>〇</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x04 - 0x07</td>
 <td>s0 - s3</td>
 <td>保存レジスタ</td>
 <td>〇</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x08 - 0x0b</td>
 <td>t0 - t3</td>
 <td>一時レジスタ</td>
 <td>✕</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x0c - 0x0f</td>
 <td>a0 - a3</td>
 <td>引数・返値</td>
@@ -651,12 +658,12 @@
 <tr class="odd">
 <td>レジスタ演算</td>
 <td>add rd rs1 rs2</td>
-<td>rd = add(rs1,rs2)</td>
+<td>rd = rs1 + rs2</td>
 </tr>
 <tr class="even">
 <td>即値演算</td>
 <td>addi rd rs1 imm</td>
-<td>rd = add(rs1,sext(imm))</td>
+<td>rd = rs1 + imm</td>
 </tr>
 </tbody>
 </table>
@@ -817,31 +824,44 @@
 <td>store rs1 rs2 imm</td>
 <td>mem[rs1 + imm] = rs2</td>
 </tr>
-<tr class="odd">
-<td>即値ロード</td>
-<td>loadi rd imm</td>
-<td>rd = imm</td>
-</tr>
 </tbody>
 </table>
-<p>ロード命令は、メモリからレジスタに値を移動します。 ストア命令は、レジスタからメモリに値を移動します。 即値ロード命令は、レジスタに定数値を移動します。</p>
+<p>ロード命令は、メモリからレジスタに値を移動します。 ストア命令は、レジスタからメモリに値を移動します。</p>
 <p>メモリのアドレスは、レジスタに入ってる値と即値を足します。(mem[rs1 + imm])</p>
 <h3 id="制御命令">制御命令</h3>
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th>疑似命令</th>
 <th>命令</th>
+<th>ASM</th>
 <th>処理</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
+<td>条件呼出</td>
 <td>jmpif rd rs1 imm</td>
 <td>rd = PC + 1, if(rs1 == 0) PC = imm</td>
+</tr>
+</tbody>
+</table>
+<p>プログラムの制御に関する命令は全てこれで実行できます。 この命令を生で呼び出すことは想定していません。 後述する疑似命令を使います。</p>
+<h3 id="疑似命令">疑似命令</h3>
+<table>
+<thead>
+<tr class="header">
+<th>疑似命令</th>
+<th>ASM</th>
+<th></th>
+<th>処理</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>即値ロード</td>
+<td>loadi rd imm</td>
+<td>addi rd zero imm</td>
+<td>rd = imm</td>
 </tr>
 <tr class="even">
 <td>条件分岐</td>
@@ -857,13 +877,12 @@
 </tr>
 <tr class="even">
 <td>関数呼出</td>
-<td>call rd imm</td>
-<td>jumpif rd zero imm</td>
-<td>rd = PC + 1, PC = imm</td>
+<td>call imm</td>
+<td>jumpif ra zero imm</td>
+<td>ra = PC + 1, PC = imm</td>
 </tr>
 </tbody>
 </table>
-<p>関数呼び出しは、戻りアドレスを rd に保存して、PC を関数のアドレスに書き換えます。</p>
 <h3 id="割り込み">割り込み</h3>
 <p>割り込みとしてエラー処理を行う。</p>
 <p>エラーコードを状態レジスタにセットし割り込み。</p>
