@@ -165,6 +165,45 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 3. メモリに書き込み
 4. PC のカウントアップ
 
+```
+module ID(
+    input  wire [31: 0] OP,
+    output wire [ 3: 0] RS1,
+    output wire [ 3: 0] RS2,
+    output wire [ 3: 0] RD,
+    output wire [31:16] IMM,
+    output wire [ 1: 0] DIN_SEL,
+    output wire [ 1: 0] ADDR_SEL,
+    output wire [ 3: 0] ALU_CTRL,
+    output wire         PFC_CTRL,
+);
+
+wire [3:0] OPC;
+
+assign RS1 = OP[ 3: 0];
+assing RS2 = OP[ 7: 4];
+assign RD  = OP[11: 8];
+assign OPC = OP[15:12];
+assign IMM = OP[31:16];
+
+assign ALU_CTRL = OPC==CALC  ? OP[19:16]
+                : OPC==CALCI ? OP[ 7: 4]
+                : ALU_ADD;
+
+assign ADDR_SEL = STAGE==0 ? ADDR_RS1
+                : STAGE==1 ? ADDR_RS2
+                : STAGE==2 ? ADDR_RD;
+
+assign DIN_SEL = OPC==CALC|CALCI ? DIN_ALU 
+               : OPC==LOAD|STORE ? DIN_RS2
+               : OPC==CALLIF     ? DIN_RA;
+
+assign S2_SEL = OPC==CALC ? S2_RS2 
+                          : S2_IMM;
+
+endmodule
+```
+
 |        | ALU  | S2  | DIN | 1.ADR | 2.ADR | 3.ADR |
 | ------ | ---- | --- | --- | ----- | ----- | ----- |
 | add    | Func | RS2 | ALU | RS1   | RS2   | RD    |

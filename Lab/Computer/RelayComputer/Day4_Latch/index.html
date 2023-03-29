@@ -21,7 +21,7 @@
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
     <meta name="dcterms.date" content="2021-12-04" />
-      <meta name="description" content="リレーを使って早押しボタンを作ります。" />
+      <meta name="description" content="状態を記憶する回路を作ります。" />
     <title>早押しボタンを作ってみる | Kanade's Website</title>
 
   <!-- OGP -->
@@ -29,7 +29,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://kanade-k-1228.github.io/Lab/Computer/RelayComputer/Day4_Latch" />
   <meta property="og:image" content="https://kanade-k-1228.github.io/Lab/Computer/RelayComputer/Day4_Latch/img/ogp.png" />
-    <meta property="og:description" content="リレーを使って早押しボタンを作ります。" />
+    <meta property="og:description" content="状態を記憶する回路を作ります。" />
     <meta property="og:site_name" content="Kanade's Website" />
     <!-- END OGP -->
   <style>
@@ -520,7 +520,7 @@
             <!-- Date -->
             <p align="right">2021-12-04</p>
             <!-- Description -->
-            <p>リレーを使って早押しボタンを作ります。</p>
+            <p>状態を記憶する回路を作ります。</p>
           </header>
 
     <!-- TeX Macros -->
@@ -553,27 +553,45 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#フリップフロップ">フリップフロップ</a></li>
+<li><a href="#ラッチ">ラッチ</a></li>
+<li><a href="#rs-フリップフロップ">RS フリップフロップ</a></li>
 <li><a href="#早押しボタン">早押しボタン</a></li>
 </ul></nav>
      <p>これは <a href="https://adventar.org/calendars/7052">リレーから始める CPU 自作 Advent Calendar 2021</a> 4 日目の記事です。<a href="../Day3_RelayLogic/">&lt;&lt;&lt; 3 日目</a></p>
-<h2 id="フリップフロップ">フリップフロップ</h2>
+<p>前回までは、組合回路を作ってきました。 組合回路は、ある入力に対して出力が一意に定まる回路です。 数学の関数 <span class="math inline">\(y=f(x)\)</span> みたいなもので、入力が決まれば答えが決まります。</p>
+<p>しかし、それだけではコンピュータは作れません。 コンピュータが数学の関数と違うところは、記憶ができるという点です。 コンピュータは内部状態をもっていて、内部状態の変化で多彩な動作をします。</p>
+<p>ということで、今回は、状態を記憶できる「順序回路」という回路を作ります。</p>
+<h2 id="ラッチ">ラッチ</h2>
 <p><img src="./img/Latch.dio.svg" /></p>
-<p>① ボタンを押すと、リレーが ON になる</p>
-<p>② リレーが ON になると、リレーのスイッチが導通する</p>
-<p>③ ボタンを離しても、リレーが ON し続ける</p>
-<p>一度ボタンを押したら、リレーが ON になりっぱなしになります。</p>
+<ol type="1">
+<li>ボタンを押すと、リレーが ON になる</li>
+<li>リレーが ON になると、リレーのスイッチが導通する</li>
+<li>ボタンを離しても、リレーが ON し続ける</li>
+</ol>
+<p>一度ボタンを押したら、リレーが ON になりっぱなしになります。 このような回路を「ラッチ」といいます。</p>
+<p>この回路には、OFFとONの2状態があって、スイッチが押されると状態がOFFからONに切り替わります。</p>
+<p><img src="./img/state.dio.svg" /></p>
+<p>電源を入れてから今までにスイッチが押されていればONに、スイッチが押されていなければOFFになります。 過去の状態に応じて出力が変わる順序回路の一種であるといえます。</p>
+<h2 id="rs-フリップフロップ">RS フリップフロップ</h2>
 <p>リセットするボタンをつけると、</p>
 <p><img src="./img/Reset.dio.svg" /></p>
 <p>手押しのボタンではなく、リレーを使って電気的に信号を入力できるようにすると、</p>
 <p><img src="./img/SRFF.dio.svg" /></p>
 <p>これが SR フリップフロップと呼ばれる回路です。</p>
 <h2 id="早押しボタン">早押しボタン</h2>
+<p>早押しボタンの機能は、</p>
+<ul>
+<li>ある人がボタンを押したら、ランプが光り続ける</li>
+<li>ある人がボタンを押したら、他の人がボタンを押しても光らない</li>
+<li>ゲームマスターがリセットできる</li>
+</ul>
 <p><img src="./img/FastPush.dio.svg" /></p>
-<p>① A のボタンを押すと、リレー A が ON 状態になる</p>
-<p>② A が ON になると、E が ON になる</p>
-<p>③ E が ON になると、BC のボタンを押してもリレーが ON にならなくなる（入力を受け付けなくなる）</p>
-<p>④ リセットボタンを押すと、リレー A の ON 状態が解除され OFF 状態になる</p>
+<ol type="1">
+<li>A のボタンを押すと、リレー A が ON 状態になる</li>
+<li>A が ON になると、E が ON になる</li>
+<li>E が ON になると、BC のボタンを押してもリレーが ON にならなくなる（入力を受け付けなくなる）</li>
+<li>リセットボタンを押すと、リレー A の ON 状態が解除され OFF 状態になる</li>
+</ol>
 <p><a href="../Day5_DFF/">&gt;&gt;&gt; 5 日目</a></p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
