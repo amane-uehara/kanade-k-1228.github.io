@@ -1,0 +1,63 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="369px" height="106px" viewBox="-0.5 -0.5 369 106" content="&lt;mxfile&gt;&lt;diagram id=&quot;Ld8VcQikfIPjMy8nHifn&quot; name=&quot;Page-1&quot;&gt;7VfBjpswEP0ajpWwHQIcE5rtHlqpUlT17IIXLBFMjdkk/fqOg8EBEiVsqbqr7SUZnsfj8XvjMTgk2h0+SVpmX0TCcge7ycEhHx2MQ7SAXw0cG8ALcQOkkicNhCyw5b+YAV2D1jxhVc9RCZErXvbBWBQFi1UPo1KKfd/tSeT9VUuashGwjWk+Rr/zRGUNGmDf4o+Mp1m7MlqGzciOts5mJ1VGE7E/g8jGIZEUQjXW7hCxXHPX8tLMe7gy2iUmWaHumWB4f6Z5bfa2+vzNwcscZq9/SJ2hOpptL3/WOq31kyjUh+okygockFeCrms7Dlaq//3FY4QCk5INg6Woi4TpBFzw2mdcsW1JYz26h3IBLFO7HJ6QWcwUAPJOwU/5MqnY4eqeUcckVCATO6bkEVzMhMBwb4oPtVrsrZQdlp3JuDAYNdWTdpEtwWAYji/zvRjx7WyIE2BnTU4GsUaIjLGK2qGodX6YUaLAe3UKdVT/C4mWY4mG/LAiWek2Ak9xTquKx1cpwZYSloy6yk1CzjbsXdhvi0mWU8Wf++EvkWBW+Co4LNzxvXD7fPsDGitRy5iZSefdZBgHD3RbDgIpKlOmRoGATHo8cyu1Q3V/vqE7LS3U8wejScCWR6fAXRUT/K8YNDx5d5fMMNAfl0zvnE8TEnm3lYQbu9SmkNNbY8IlvI5wUQAABGmd5miXJLzdLi91SzxDt0Tztkv0Foqf+AO+3RcWPwm9y8LN3C9H67jzNkDkv8MOiGe6M4fvOn/rzsTT7sxhWjPfmehdXpr9Y9ieyul35svaxm2Z4NF+ezbu9gOebH4D&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="57" width="120" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 77px; margin-left: 1px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 15px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                ALU
+                                <br style="font-size: 15px;"/>
+                                74HC181
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="60" y="82" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="15px" text-anchor="middle">
+                    ALU...
+                </text>
+            </switch>
+        </g>
+        <rect x="160" y="57" width="120" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 77px; margin-left: 161px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 15px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                コンパレータ
+                                <br style="font-size: 15px;"/>
+                                74HC85
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="220" y="82" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="15px" text-anchor="middle">
+                    コンパレータ
+74HC85
+                </text>
+            </switch>
+        </g>
+        <path d="M 320 7 L 320 17 Q 320 27 327.07 34.07 L 333.54 40.54 Q 340 47 340 57 L 340 90.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 340 95.88 L 336.5 88.88 L 340 90.63 L 343.5 88.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 320 77 L 320 90.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 320 95.88 L 316.5 88.88 L 320 90.63 L 323.5 88.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 310 57 Q 330 57 330 67 Q 330 77 310 77 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(90,320,67)" pointer-events="all"/>
+        <path d="M 290 37 L 305 37 Q 315 37 315 43.82 L 315 50.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 315 55.88 L 311.5 48.88 L 315 50.63 L 318.5 48.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 340 7 L 340 17 Q 340 27 347.07 34.07 L 353.54 40.54 Q 360 47 360 57 L 360 90.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 360 95.88 L 356.5 88.88 L 360 90.63 L 363.5 88.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 325 32 L 325 50.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 325 55.88 L 321.5 48.88 L 325 50.63 L 328.5 48.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
