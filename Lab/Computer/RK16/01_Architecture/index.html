@@ -551,7 +551,6 @@
 <li><a href="#演算命令">演算命令</a></li>
 <li><a href="#移値命令">移値命令</a></li>
 <li><a href="#制御命令">制御命令</a></li>
-<li><a href="#疑似命令">疑似命令</a></li>
 <li><a href="#割り込み">割り込み</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a>
@@ -802,14 +801,14 @@
 <td>unsigned として比較</td>
 </tr>
 <tr class="even">
-<td>!</td>
-<td>論理反転</td>
-<td>lnot</td>
+<td></td>
+<td>論理キャスト</td>
+<td>lcast</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>比較演算は true = 0xFFFF false = 0x0000 を返します。 論理反転は false = 0x0000 を 0xFFFF に、false 以外の値を 0x0000 に変換します。</p>
+<p>比較演算は true = 0xFFFF false = 0x0000 を返します。 論理キャストは false(0x0000) 以外の値を 0xFFFF に変換します。 論理演算をビット演算で行えます。</p>
 <h3 id="移値命令">移値命令</h3>
 <table>
 <thead>
@@ -821,12 +820,22 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>ロード</td>
+<td>アドレス間移動</td>
+<td>mov rd rs</td>
+<td>rd = rs</td>
+</tr>
+<tr class="even">
+<td>即値ロード</td>
+<td>loadi rd imm</td>
+<td>rd = imm</td>
+</tr>
+<tr class="odd">
+<td>メモリロード</td>
 <td>load rd rs1 imm</td>
 <td>rd = mem[rs1 + imm]</td>
 </tr>
 <tr class="even">
-<td>ストア</td>
+<td>メモリストア</td>
 <td>store rs2 rs1 imm</td>
 <td>mem[rs1 + imm] = rs2</td>
 </tr>
@@ -846,30 +855,12 @@
 <tbody>
 <tr class="odd">
 <td>条件呼出</td>
-<td>callif rd rs2 rs1 imm</td>
+<td></td>
 <td>rd = PC + 1, if(rs2 == 0) PC = rs1 + imm</td>
-</tr>
-</tbody>
-</table>
-<p>プログラムの制御に関する命令は全てこれで実行できます。 この命令を生で呼び出すことは想定していません。 後述する疑似命令を使います。</p>
-<h3 id="疑似命令">疑似命令</h3>
-<table>
-<thead>
-<tr class="header">
-<th>疑似命令</th>
-<th>ASM</th>
-<th>処理</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>即値ロード</td>
-<td>loadi rd imm</td>
-<td>rd = imm</td>
 </tr>
 <tr class="even">
 <td>条件分岐</td>
-<td>br rs1 imm</td>
+<td>if rs2 imm</td>
 <td>if(rs1 == 0) PC = imm</td>
 </tr>
 <tr class="odd">
@@ -882,14 +873,80 @@
 <td>call imm</td>
 <td>ra = PC + 1, PC = imm</td>
 </tr>
+<tr class="odd">
+<td>関数復帰</td>
+<td>ret</td>
+<td>PC = ra</td>
+</tr>
+<tr class="even">
+<td>割込復帰</td>
+<td>iret</td>
+<td>PC = ira</td>
+</tr>
 </tbody>
 </table>
+<p>プログラムの制御に関する命令は全てこれで実行できます。 この命令を生で呼び出すことは想定していません。 後述する疑似命令を使います。</p>
 <h3 id="割り込み">割り込み</h3>
-<p>割り込みとしてエラー処理を行う。</p>
-<p>エラーコードを状態レジスタにセットし割り込み。</p>
+<p>割り込みは関数呼び出しとほとんど同じです。 唯一の違いは、戻りアドレスをRAではなくIRAに保存する点です。</p>
+<p><img src="img/intr_timing.dio.svg" /></p>
+<ol type="1">
+<li>割り込み発生</li>
+<li>現在実行中の命令が終了したら</li>
+<li>次のPCをIRAに退避し、PCを割り込み命令アドレス0x0001にする</li>
+<li>割り込み禁止</li>
+<li>割り込み処理を実行</li>
+<li>割り込み許可（１クロック遅延）</li>
+<li>割り込み復帰</li>
+<li>元の処理を実行</li>
+</ol>
+<h4 id="割り込み番号">割り込み番号</h4>
+<table>
+<thead>
+<tr class="header">
+<th>No</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>リセット</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>外部１</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>外部２</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>外部３</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>タイマ１</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>タイマ２</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>タイマ３</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>タイマ４</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>スタックオーバーフロー</li>
-<li>メモリの範囲外アクセス</li>
+<li>Timer</li>
+<li>WDT (Watch Dog Timer)</li>
+<li>PWM</li>
+<li>DMA</li>
 </ul>
 <h2 id="メモリ空間">メモリ空間</h2>
 <p>メモリ空間は 0x1000 ごとにバンクに区切られていて、RAM以外のデバイスに置き換えられる。</p>
