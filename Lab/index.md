@@ -172,20 +172,29 @@ title: 研究室へようこそ
 
 [自作マイコンのアーキテクチャ](./Computer/RK16/01_Architecture/)
 
-自作マイコン
-ほげほげ
-
 [アセンブラ](./Computer/RK16/02_Assembler/)
 
 [エミュレータ](./Computer/RK16/03_Emulator/)
 
-[コンパイラ](./Computer/RK16/04_Compiler/)
+[アセンブリプログラミング]()
+
+Hello World
+
+関数呼び出しと割り込み
 
 [RTOS](./Computer/RK16/05_RTOS/)
 
+[RTOS]
+
+タスク管理
+
+<!-- 
+
+[コンパイラ](./Computer/RK16/04_Compiler/)
+
 [汎用OS](./Computer/RK16/06_OS/)
 
-[ハードウェア](./Computer/RK16/07_Hardware/)
+[ハードウェア](./Computer/RK16/07_Hardware/) -->
 
 ### 自作 CPU：RK8
 

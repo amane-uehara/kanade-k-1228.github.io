@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-      <title>アセンブラ | Kanade's Website</title>
+      <title>エミュレータで遊ぼう | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -462,7 +462,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "アセンブラ",
+        "エミュレータで遊ぼう",
         "_blank"
       );
     }
@@ -508,7 +508,7 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-            <h1 style="margin: 0">アセンブラ</h1>
+            <h1 style="margin: 0">エミュレータで遊ぼう</h1>
             <!-- Date -->
             <!-- Description -->
           </header>
@@ -543,257 +543,20 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#命令一覧">命令一覧</a></li>
-<li><a href="#命令変数定数のラベル">命令・変数・定数のラベル</a></li>
-<li><a href="#アセンブラの実装">アセンブラの実装</a></li>
-<li><a href="#慣用句">慣用句</a>
+<li><a href="#関数呼び出し">関数呼び出し</a>
 <ul>
-<li><a href="#サブルーチン">サブルーチン</a></li>
-<li><a href="#割り込み処理">割り込み処理</a></li>
+<li><a href="#保存されるレジスタ">保存されるレジスタ</a></li>
 </ul></li>
+<li><a href="#割り込み">割り込み</a></li>
 </ul></nav>
-     <h2 id="命令一覧">命令一覧</h2>
-<table>
-<thead>
-<tr class="header">
-<th>命令</th>
-<th>アセンブリ</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>レジスタ演算</td>
-<td>add rd rs1 rs2</td>
-<td>rd = rs1 + rs2</td>
-</tr>
-<tr class="even">
-<td>即値演算</td>
-<td>addi rd rs1 imm</td>
-<td>rd = rs1 + imm</td>
-</tr>
-<tr class="odd">
-<td>ロード</td>
-<td>load rd rs1 imm</td>
-<td>rd = mem[rs1 + imm]</td>
-</tr>
-<tr class="even">
-<td>ストア</td>
-<td>store rs1 rs2 imm</td>
-<td>mem[rs1 + imm] = rs2</td>
-</tr>
-<tr class="odd">
-<td>即値ロード</td>
-<td>loadi rd imm</td>
-<td>rd = imm</td>
-</tr>
-<tr class="even">
-<td>ジャンプ</td>
-<td>jump rd rs1 imm</td>
-<td>rd = PC + 1, PC = rs1 + imm</td>
-</tr>
-<tr class="odd">
-<td>条件分岐（＝）</td>
-<td>breq rs1 rs2 imm</td>
-<td>if(rs1 = rs2) PC = imm</td>
-</tr>
-<tr class="even">
-<td>条件分岐（＜）</td>
-<td>brlt rs1 rs2 imm</td>
-<td>if(rs1 &lt; rs2) PC = imm</td>
-</tr>
-</tbody>
-</table>
-<h2 id="命令変数定数のラベル">命令・変数・定数のラベル</h2>
-<p>一般的なアセンブラには、ラベルというものがあります。</p>
-<pre><code>   jump label
-~~~
-label:
-   addi s0 s0 4</code></pre>
-<p>プログラム中のある命令を指定します。</p>
-<pre><code>0x0010:
-0x0011: 0x</code></pre>
-<p>この機能を拡張して、変数と定数を定義できるようにします。</p>
-<pre><code>@0xf010 hoge
-#0x0334 hanshin</code></pre>
-<p>ちょっと機能を追加して、アセンブリのコーディングが楽になるようにします。</p>
-<h2 id="アセンブラの実装">アセンブラの実装</h2>
-<ol type="1">
-<li>一行づつ読み取る
-<ol type="1">
-<li>コメント、空行を削除</li>
-<li>一語目を読む
-<ol type="1">
-<li>命令の場合
-<ol type="1">
-<li>命令の引数の型に従い、続く語を読む</li>
-<li>引数にラベルがある場合、ラベルを記録して保留</li>
-</ol></li>
-<li>ラベルの場合
-<ol type="1">
-<li>ラベルの辞書に、ラベルの指すアドレスを記録</li>
-</ol></li>
-</ol></li>
-</ol></li>
-<li>ラベルの置換（リロケーション</li>
-<li>バイナリを出力</li>
-</ol>
-<h2 id="慣用句">慣用句</h2>
-<h3 id="サブルーチン">サブルーチン</h3>
-<p><a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考</a></p>
-<table>
-<thead>
-<tr class="header">
-<th>RKASM</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>subi sp sp 5</td>
-<td>スタックポインタを減算し、スタックを確保</td>
-</tr>
-<tr class="even">
-<td>store s0 sp 0</td>
-<td>レジスタをスタックに退避</td>
-</tr>
-<tr class="odd">
-<td>store s1 sp 1</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>store s1 sp 2</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>store s1 sp 3</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>store ra sp 4</td>
-<td>リターンアドレスも退避</td>
-</tr>
-<tr class="odd">
-<td>loadi a0 334</td>
-<td>引数をレジスタにセット</td>
-</tr>
-<tr class="even">
-<td>loadi a1 2</td>
-<td>※ 引数レジスタが足りなければスタックにセット</td>
-</tr>
-<tr class="odd">
-<td>jump ra func</td>
-<td>サブルーチンにジャンプ</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>ここに戻ってくる</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>func:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>—</td>
-<td>サブルーチンの処理</td>
-</tr>
-<tr class="even">
-<td>—</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>l ra sp 0</td>
-<td>レジスタを復元</td>
-</tr>
-<tr class="even">
-<td>l ra sp 1</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>l ra sp 2</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>l ra sp 3</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>l ra sp 4</td>
-<td>リターンアドレスを復元</td>
-</tr>
-<tr class="even">
-<td>addi sp sp 5</td>
-<td>スタックポインタを加算</td>
-</tr>
-<tr class="odd">
-<td>jump zero ra 0</td>
-<td>PC を戻す</td>
-</tr>
-</tbody>
-</table>
-<h3 id="割り込み処理">割り込み処理</h3>
-<table>
-<thead>
-<tr class="header">
-<th>ASM</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>subi sp 16</td>
-<td>全てのレジスタをスタックに退避</td>
-</tr>
-<tr class="even">
-<td>s x1 sp 0</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>s x15 sp 14</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>j ra xxxx</td>
-<td>ジャンプ</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>:</td>
-<td>割り込み処理を行う</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>l x1 sp 0</td>
-<td>レジスタを復元</td>
-</tr>
-<tr class="even">
-<td>:</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>l x15 sp 14</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>jr ra 0</td>
-<td>PC を戻す</td>
-</tr>
-</tbody>
-</table>
+     <h2 id="関数呼び出し">関数呼び出し</h2>
+<p>関数呼び出しは、引数セット → 関数Call → リターン → 返値取り出し という順番で実行します。</p>
+<h3 id="保存されるレジスタ">保存されるレジスタ</h3>
+<p>保存レジスタは、関数呼び出しの前後で保存されます。</p>
+<p>一時レジスタは、関数呼び出しの前後で保存されません。関数の引数のように、生存時間が関数呼び出しまでの変数を割り当てるといいです。</p>
+<h2 id="割り込み">割り込み</h2>
+<p>割り込みは関数とほとんど同じです。</p>
+<p>唯一の違いが、戻りアドレスが IRA に退避されることです。</p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
