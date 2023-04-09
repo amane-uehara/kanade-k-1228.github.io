@@ -188,7 +188,7 @@ Hello World
 
 タスク管理
 
-[自作高級言語とコンパイラ](./Computer/RK16/04_Compiler/)
+[自作高級言語とコンパイラ](./Computer/RK16/06_Compiler/)
 
 <!-- [汎用OS](./Computer/RK16/06_OS/) -->
 
