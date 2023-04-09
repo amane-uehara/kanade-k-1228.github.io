@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-      <title>コンパイラ | Kanade's Website</title>
+      <title>自作コンパイラ | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -194,6 +194,7 @@
       border-width: 1px;
       border-radius: 5px;
       background: rgba(175, 184, 193, 0.2);
+      font-family: "Ricty Diminished", "Ricty", "Myrica M", "Migu 1M", "Source Han Code JP", "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
     }
   </style>
   <style>
@@ -461,7 +462,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "コンパイラ",
+        "自作コンパイラ",
         "_blank"
       );
     }
@@ -507,7 +508,7 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-            <h1 style="margin: 0">コンパイラ</h1>
+            <h1 style="margin: 0">自作コンパイラ</h1>
             <!-- Date -->
             <!-- Description -->
           </header>
@@ -542,235 +543,34 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#型">型</a>
-<ul>
-<li><a href="#型の書き方">型の書き方</a></li>
-<li><a href="#参照演算子アドレス演算子">参照演算子・アドレス演算子</a></li>
-<li><a href="#キャスト演算子">キャスト演算子</a></li>
-<li><a href="#整数型">整数型</a></li>
-<li><a href="#ポインタ型">ポインタ型</a></li>
-<li><a href="#配列型">配列型</a></li>
-<li><a href="#構造体型">構造体型</a></li>
-<li><a href="#関数型">関数型</a></li>
-</ul></li>
-<li><a href="#プログラム">プログラム</a>
-<ul>
-<li><a href="#文">文</a></li>
-<li><a href="#式">式</a></li>
-<li><a href="#値">値</a></li>
-</ul></li>
-<li><a href="#コンパイラの動作">コンパイラの動作</a>
-<ul>
 <li><a href="#トークン化">トークン化</a></li>
 <li><a href="#抽象構文木の構築">抽象構文木の構築</a></li>
 <li><a href="#シンボルテーブル生成">シンボルテーブル生成</a></li>
-<li><a href="#astの再帰的評価">ASTの再帰的評価</a></li>
-<li><a href="#アセンブラコードの生成">アセンブラコードの生成</a></li>
+<li><a href="#astの再帰的評価">ASTの再帰的評価</a>
+<ul>
+<li><a href="#型のサイズ">型のサイズ</a></li>
+<li><a href="#変数">変数</a></li>
+<li><a href="#アドレス">アドレス</a></li>
+<li><a href="#定数値">定数値</a></li>
+</ul></li>
+<li><a href="#アセンブラコードの生成">アセンブラコードの生成</a>
+<ul>
 <li><a href="#グローバル変数の配置">グローバル変数の配置</a></li>
 <li><a href="#関数のコード生成">関数のコード生成</a></li>
+<li><a href="#実行環境メモ">実行環境メモ</a></li>
+<li><a href="#ローカル変数の配置">ローカル変数の配置</a></li>
 </ul></li>
 <li><a href="#作業日誌">作業日誌</a></li>
 <li><a href="#参考">参考</a></li>
 </ul></nav>
-     <p>自作マイコン用の自作言語、C– (Cょゎょゎ) のコンパイラです。</p>
-<blockquote>
-<p>組み込みシステムを作るために実用上十分な機能を持つこと</p>
-</blockquote>
-<blockquote>
-<p>コンパイラの実装が簡単になること</p>
-</blockquote>
-<blockquote>
-<p>文法がわかりやすいこと</p>
-</blockquote>
-<h2 id="型">型</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>記法</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>整数型</td>
-<td><code>int</code></td>
-</tr>
-<tr class="even">
-<td>ポインタ型</td>
-<td><code>*int</code></td>
-</tr>
-<tr class="odd">
-<td>配列型</td>
-<td><code>[N]int</code></td>
-</tr>
-<tr class="even">
-<td>構造体型</td>
-<td><code>{m0 : int, m1 : int}</code></td>
-</tr>
-<tr class="odd">
-<td>関数型</td>
-<td><code>(a0 : int, a1 : int) =&gt; int</code></td>
-</tr>
-</tbody>
-</table>
-<pre><code>type =
- | type_prim   = ident | &quot;(&quot; type &quot;)&quot;
- | type_ptr    = &quot;*&quot; type
- | type_arr    = &quot;[&quot; expr &quot;]&quot; type
- | type_struct = &quot;{&quot; (ident &quot;:&quot; type) % &quot;,&quot; &quot;}&quot;
- | type_func   = &quot;(&quot; (ident &quot;:&quot; type) % &quot;,&quot; &quot;)&quot; &quot;=&gt;&quot; type</code></pre>
-<p>ポインタ <code>*</code>、配列 <code>[]</code> をベース型の前に置きます。</p>
-<h3 id="型の書き方">型の書き方</h3>
-<p><code>var hoge : int</code></p>
-<p>コロンの後に型を書きます。これによって複合型の型がわかりやすくなります。</p>
-<h3 id="参照演算子アドレス演算子">参照演算子・アドレス演算子</h3>
-<p><code>a*</code> で <code>a</code> をポインタとみなして、<code>a</code> の指す値を得ます。</p>
-<p><code>a : *int</code> → <code>a* : int</code></p>
-<p><code>a@</code> で <code>a</code> のアドレスを得ます。</p>
-<p><code>a : int</code> → <code>a@ : *int</code></p>
-<h3 id="キャスト演算子">キャスト演算子</h3>
-<p><code>a : T</code></p>
-<p>変数の後に型を書いて、キャストができます。</p>
-<p><code>sizeof(a) == sizeof(T)</code></p>
-<p>メモリ上でサイズが同じならキャストができます。</p>
-<p>後置演算子 <code>$</code> で変数をブーリアン型にします。</p>
-<p><code>a : int = 0</code> → <code>a$ = false</code></p>
-<h3 id="整数型">整数型</h3>
-<p>16bit 整数。 符号付きか無しかについては未定。 ハードウェアとかの都合で決める。</p>
-<h3 id="ポインタ型">ポインタ型</h3>
-<p>ポインタ型は 16bit のアドレスです。 これはアドレス空間が 16bit であることに由来します。</p>
-<p>アクセス演算子を適用すると、ベース型になります。</p>
-<p><code>hoge : *int</code> → <code>hoge* : int</code></p>
-<p>アドレス演算子を適用すると、ポインタ型になります。</p>
-<p><code>hoge : int</code> → <code>hoge@ : *int</code></p>
-<h3 id="配列型">配列型</h3>
-<p>配列はコンパイル時にベース型の N 個分のメモリを確保します。</p>
-<p>添字演算子を適用すると、ベースの型になります。</p>
-<p><code>hoge : [N]int</code> → <code>hoge[0] : int</code></p>
-<p>多次元配列は、このように表されます。</p>
-<p><code>hoge : [N][M]int</code></p>
-<p>C言語と異なり、配列とポインタの暗黙のキャストは行いません。</p>
-<p>配列のアドレスが欲しい場合は、アドレス演算子を使います。</p>
-<p><code>hoge : [N]int</code> → <code>hoge@ : *[N]int</code></p>
-<p>配列の先頭の要素のアドレスは、このように取得します。</p>
-<p><code>hoge : [N]int</code> → <code>hoge[0]@ : *int</code></p>
-<p>これらのポインタの値は一致しますが、型は異なります。</p>
-<h3 id="構造体型">構造体型</h3>
-<p>構造体のサイズはメンバの合計です。</p>
-<p>メンバ演算子を適用すると、メンバの型になります。</p>
-<p><code>hoge : {a : int}</code> → <code>hoge.a : int</code></p>
-<h3 id="関数型">関数型</h3>
-<p>関数型は関数の持つ型です。</p>
-<p>関数呼び出し演算子を適用すると、返り値の型になります。</p>
-<p><code>hoge : (arg : Arg) =&gt; Ret</code> → <code>hoge(arg) : Ret</code></p>
-<p>関数型の変数は定義できません。かわりに関数ポインタ型を使います。</p>
-<p><code>var hoge_p : *(arg : Arg) =&gt; Ret = hoge@;</code> → <code>hoge_p*(arg) : Ret</code></p>
-<p>関数ポインタには関数のアドレスが入ってます。</p>
-<h2 id="プログラム">プログラム</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>記法</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>変数定義</td>
-<td><code>var  hoge : int;</code></td>
-</tr>
-<tr class="even">
-<td>関数定義</td>
-<td><code>func hoge : (a : int, b : int) =&gt; int { return a+b; }</code></td>
-</tr>
-<tr class="odd">
-<td>型定義</td>
-<td><code>type hoge : {x : int, y : int};</code></td>
-</tr>
-</tbody>
-</table>
-<p>プログラムのトップレベルには、グローバル変数定義、関数定義、型定義が並びます。</p>
-<pre><code>program  =
- | gvar_def = &quot;var&quot;  ident &quot;:&quot; type &quot;;&quot;
- | func_def = &quot;func&quot; ident &quot;:&quot; type compound
- | type_def = &quot;type&quot; ident &quot;:&quot; type &quot;;&quot;</code></pre>
-<h3 id="文">文</h3>
-<p>関数定義には複文 (compound satements) が続き、 その中には文 (statement) が並びます。</p>
-<pre><code>compound = &quot;{&quot; stmt* &quot;}&quot;
-
-stmt =
-空文
- | void_stmt = &quot;;&quot;
-複文
- | compound  = &quot;{&quot; stmt* &quot;}&quot;
-式文
- | expr_stmt = expr &quot;;&quot;
-ローカル変数定義
- | lvar_def  = &quot;var&quot; ident &quot;:&quot; type &quot;;&quot;
-代入文
- | assign    = expr &quot;=&quot; expr &quot;;&quot;
-制御文
- | if        = &quot;if&quot; &quot;(&quot; expr &quot;)&quot; stmt
- | if_else   = &quot;if&quot; &quot;(&quot; expr &quot;)&quot; stmt &quot;else&quot; stmt
- | goto      = &quot;goto&quot; ident &quot;;&quot;
- | label     = ident &quot;:&quot;
- | return    = &quot;return&quot; expr &quot;;&quot;
-繰り返し文
- | while     = &quot;while&quot; &quot;(&quot; expr &quot;)&quot; stmt
- | continue  = &quot;continue&quot; &quot;;&quot;
- | break     = &quot;break&quot; &quot;;&quot;</code></pre>
-<h4 id="式文">式文</h4>
-<p>式を評価します。評価値は破棄されるため、実用上は副作用を実行するための文です。</p>
-<h4 id="代入文">代入文</h4>
-<p>代入文が変数の値を書き換える唯一の方法です。</p>
-<p>左辺はアドレス、右辺は値として評価できる必要があります。</p>
-<p><code>a : int = b : int</code></p>
-<p>という代入文は、実際には、</p>
-<p><code>a@ : *int &lt;= b : int</code></p>
-<p>このような動作をしています。</p>
-<h4 id="goto-label">goto label</h4>
-<p>関数呼び出しのABIを守るため、gotoは同一の関数内である必要がある。</p>
-<p>ラベルの前に関数名を付記することで <code>&lt;func-name&gt;_&lt;label-name&gt;</code> 、 関数外へのgotoはアセンブラがエラーを出す。</p>
-<p>アドホックですが、gotoはそんなに使わないのでこの程度のエラー処理でいいでしょう。</p>
-<pre><code>func main : ()=&gt;int {
-  goto hoge; //     jump zero zero main_hoge
-hoge:      // main_hoge:
-}</code></pre>
-<h3 id="式">式</h3>
-<h4 id="演算">演算</h4>
-<pre><code>expr = cond = or (&quot;?&quot; expr &quot;:&quot; cond)?
-or  = xor (&quot;|&quot; xor)*
-xor = and (&quot;^&quot; and)*
-and = equal (&quot;&amp;&quot; equal)*
-equal = relat (&quot;==&quot; relat | &quot;!=&quot; relat)*
-relat = shift (&quot;&lt;&quot; shift | &quot;&lt;=&quot; shift | &quot;&gt;&quot; shift | &quot;&gt;=&quot; shift)*
-shift = (shift &quot;&lt;&lt;&quot; | shift &quot;&gt;&gt;&quot;)? add
-add   = mul (&quot;+&quot; mul | &quot;-&quot; mul)*
-mul   = prim (&quot;**&quot; prim | &quot;//&quot; prim | &quot;%%&quot; prim)*</code></pre>
-<h4 id="後置演算子">後置演算子</h4>
-<pre><code>post =
- | prim
- | cast      = post &quot;:&quot; type
- | ref       = post &quot;*&quot;
- | addr      = post &quot;@&quot;
- | array     = post &quot;[&quot; expr &quot;]&quot; 
- | member    = post &quot;.&quot; ident
- | func_call = post &quot;(&quot; expr % &quot;,&quot; )&quot;</code></pre>
-<h3 id="値">値</h3>
-<pre><code>prim =
- | num
- | ident
- | &quot;(&quot; expr &quot;)&quot;
- | &quot;&lt;&quot; type &quot;&gt;&quot; // sizeof</code></pre>
-<h2 id="コンパイラの動作">コンパイラの動作</h2>
-<h3 id="トークン化">トークン化</h3>
+     <h2 id="トークン化">トークン化</h2>
 <p>文字列をトークン列に変換します。</p>
 <ul>
 <li>コメントの除去</li>
 <li>文字列リテラル</li>
 </ul>
-<h3 id="抽象構文木の構築">抽象構文木の構築</h3>
-<p>抽象構文木 (Abstract Syntax Tree : AST) は構造化されたソースコードです。</p>
+<h2 id="抽象構文木の構築">抽象構文木の構築</h2>
+<p>抽象構文木 (Abstract Syntax Tree : AST)</p>
 <table>
 <thead>
 <tr class="header">
@@ -1201,7 +1001,7 @@ mul   = prim (&quot;**&quot; prim | &quot;//&quot; prim | &quot;%%&quot; prim)*<
 </tr>
 </tbody>
 </table>
-<h3 id="シンボルテーブル生成">シンボルテーブル生成</h3>
+<h2 id="シンボルテーブル生成">シンボルテーブル生成</h2>
 <table>
 <thead>
 <tr class="header">
@@ -1248,9 +1048,9 @@ mul   = prim (&quot;**&quot; prim | &quot;//&quot; prim | &quot;%%&quot; prim)*<
 </tr>
 </tbody>
 </table>
-<h3 id="astの再帰的評価">ASTの再帰的評価</h3>
-<p>ASTの部分木を再帰的に評価することで、コード生成に必要なさまざまな情報を得ることができます。</p>
-<h4 id="型のサイズ">型のサイズ</h4>
+<h2 id="astの再帰的評価">ASTの再帰的評価</h2>
+<p>ASTを再帰的に評価することで、コード生成に必要なさまざまな情報を得ることができます。</p>
+<h3 id="型のサイズ">型のサイズ</h3>
 <p>変数に必要なメモリを知るために型のサイズを計算します。</p>
 <ul>
 <li>整数型 : 1 (16bit)</li>
@@ -1259,16 +1059,16 @@ mul   = prim (&quot;**&quot; prim | &quot;//&quot; prim | &quot;%%&quot; prim)*<
 <li>構造体型 : メンバのサイズの合計</li>
 <li>関数型 : 直接評価不可</li>
 </ul>
-<h4 id="変数">変数</h4>
-<h4 id="アドレス">アドレス</h4>
+<h3 id="変数">変数</h3>
+<h3 id="アドレス">アドレス</h3>
 <p>代入文の左辺を評価します。</p>
-<h4 id="定数値">定数値</h4>
+<h3 id="定数値">定数値</h3>
 <p>コンパイル時に値が決まっているべき部分を評価します。</p>
-<h3 id="アセンブラコードの生成">アセンブラコードの生成</h3>
+<h2 id="アセンブラコードの生成">アセンブラコードの生成</h2>
 <h3 id="グローバル変数の配置">グローバル変数の配置</h3>
 <p>グローバル変数はデータ領域に配置されます。</p>
 <h3 id="関数のコード生成">関数のコード生成</h3>
-<h4 id="実行環境メモ">実行環境メモ</h4>
+<h3 id="実行環境メモ">実行環境メモ</h3>
 <p>現在の位置を保持しながらコード生成をする。</p>
 <table>
 <thead>
@@ -1287,7 +1087,7 @@ mul   = prim (&quot;**&quot; prim | &quot;//&quot; prim | &quot;%%&quot; prim)*<
 <p>return, break, continue に必要な情報。</p>
 <p>関数のバイナリはテキスト領域に配置されます。</p>
 <p>低レイヤの世界では「テキスト」は実行可能なバイナリのことを指します。</p>
-<h4 id="ローカル変数の配置">ローカル変数の配置</h4>
+<h3 id="ローカル変数の配置">ローカル変数の配置</h3>
 <p>スタックのアドレスはフレームポインタからの相対アドレスです。</p>
 <h2 id="作業日誌">作業日誌</h2>
 <ul>
