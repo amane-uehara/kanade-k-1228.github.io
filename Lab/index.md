@@ -176,23 +176,17 @@ title: 研究室へようこそ
 
 [エミュレータ](./Computer/RK16/03_Emulator/)
 
-[アセンブリプログラミング]()
+アセンブリプログラミング
 
-Hello World
+[リアルタイムOS](./Computer/RK16/05_RTOS/)
 
-関数呼び出しと割り込み
+[自作言語:C--](./Computer/RK16/06_Cyy/)
 
-[RTOS](./Computer/RK16/05_RTOS/)
+[コンパイラ](./Computer/RK16/07_Compiler/)
 
-[RTOS]
+[汎用OS](./Computer/RK16/08_OS/)
 
-タスク管理
-
-[自作高級言語とコンパイラ](./Computer/RK16/06_Compiler/)
-
-<!-- [汎用OS](./Computer/RK16/06_OS/) -->
-
-<!-- [ハードウェア](./Computer/RK16/07_Hardware/) -->
+[ハードウェア](./Computer/RK16/09_Hardware/)
 
 ### 自作 CPU：RK8
 
