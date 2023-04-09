@@ -188,13 +188,11 @@ Hello World
 
 タスク管理
 
-<!-- 
+[自作高級言語とコンパイラ](./Computer/RK16/04_Compiler/)
 
-[コンパイラ](./Computer/RK16/04_Compiler/)
+<!-- [汎用OS](./Computer/RK16/06_OS/) -->
 
-[汎用OS](./Computer/RK16/06_OS/)
-
-[ハードウェア](./Computer/RK16/07_Hardware/) -->
+<!-- [ハードウェア](./Computer/RK16/07_Hardware/) -->
 
 ### 自作 CPU：RK8
 
