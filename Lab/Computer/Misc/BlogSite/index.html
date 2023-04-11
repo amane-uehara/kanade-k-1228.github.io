@@ -314,6 +314,8 @@
 </ul></li>
 <li><a href="#github-pages">GitHub Pages</a></li>
 <li><a href="#github-actions">GitHub Actions</a></li>
+<li><a href="#syntax-highlight">Syntax Highlight</a></li>
+<li><a href="#ogp">OGP</a></li>
 <li><a href="#課題">課題</a></li>
 </ul></nav>
      <p>自由度が高く保守性も高いブログシステムがタダで作れます</p>
@@ -356,13 +358,21 @@ $endif$</code></pre>
 <li>gh-pages にデプロイ</li>
 </ol>
 <p>これをリポジトリの <code>/.github/workflows/</code> 以下に置くと、勝手に実行してくれます。</p>
+<h2 id="syntax-highlight">Syntax Highlight</h2>
+<p>highlight-js を使う</p>
+<ol type="1">
+<li>https://highlightjs.org/download/ から、必要な言語をポチポチして、ダウンロードする</li>
+<li>サイトの<a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/tree/main/hljs">どこか</a>にjsとcssをおいておく</li>
+<li>html中にhljsをロードするjsを書き込む</li>
+<li>Pandocのデフォルトのハイライタを使わない設定にする <code>pandoc --no-highlight ~options~ index.md</code></li>
+</ol>
+<h2 id="ogp">OGP</h2>
+<ul>
+<li><a href="https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai">参考</a></li>
+</ul>
 <h2 id="課題">課題</h2>
 <ul>
 <li>git にある差分から変更があったファイルだけ調べて変換をすると早くなるよね</li>
-<li>OGP を設定する
-<ul>
-<li><a href="https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai">参考</a></li>
-</ul></li>
 <li>モバイル・デスクトップ両方にいい感じのスタイルを探す</li>
 <li>コメント欄を作る</li>
 </ul>
