@@ -156,6 +156,8 @@ title: 研究室へようこそ
 
 ## 情報工学
 
+[GitHubとPandocで超簡単にブログサイトを作る](./Computer/Misc/BlogSite/)
+
 [TLA+ 入門](./Computer/Misc/TLA/)
 
 [SoftEther VPN で共用ルーターを突破する](./Computer/Misc/VPN/)
