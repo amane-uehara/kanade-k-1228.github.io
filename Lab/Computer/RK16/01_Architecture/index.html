@@ -1007,48 +1007,48 @@
 <li>メモリに書き込み</li>
 <li>PC のカウントアップ</li>
 </ol>
-<pre class="verilog:"><code>`define CALC  4&#39;b0000
-`define CALCI 4&#39;b0001
-`define LOAD  4&#39;b0011
-`define STORE 4&#39;b0111
-`define CALIF 4&#39;b1111
-
-module ID(
-    input  wire [31: 0] OP,
-    output wire [ 3: 0] RS1,
-    output wire [ 3: 0] RS2,
-    output wire [ 3: 0] RD,
-    output wire [31:16] IMM,
-    output wire [ 1: 0] DIN_SEL,
-    output wire [ 1: 0] ADDR_SEL,
-    output wire [ 3: 0] ALU_CTRL,
-    output wire         PFC_CTRL,
-);
-
-wire [3:0] OPC;
-
-assign RS1 = OP[ 3: 0];
-assign RS2 = OP[ 7: 4];
-assign RD  = OP[11: 8];
-assign OPC = OP[15:12];
-assign IMM = OP[31:16];
-
-assign ALU_CTRL = OPC==`CALC  ? OP[19:16]
-                : OPC==`CALCI ? OP[ 7: 4]
-                : `ALU_ADD;
-
-assign ADDR_SEL = STAGE==0 ? `ADDR_RS1
-                : STAGE==1 ? `ADDR_RS2
-                : STAGE==2 ? `ADDR_RD;
-
-assign DIN_SEL = OPC==`CALC|`CALCI ? `DIN_ALU 
-               : OPC==`LOAD|`STORE ? `DIN_RS2
-               : OPC==`CALLIF     ? `DIN_RA;
-
-assign S2_SEL = OPC==`CALC ? `S2_RS2 
-                           : `S2_IMM;
-
-endmodule</code></pre>
+<div class="sourceCode" id="cb1" data-filename="ID.v"><pre class="sourceCode verilog"><code class="sourceCode verilog"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ot">`define CALC  4&#39;b0000</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ot">`define CALCI 4&#39;b0001</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ot">`define LOAD  4&#39;b0011</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ot">`define STORE 4&#39;b0111</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ot">`define CALIF 4&#39;b1111</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="kw">module</span> ID(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="dt">input</span>  <span class="dt">wire</span> [<span class="dv">31</span>: <span class="dv">0</span>] OP,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span> [ <span class="dv">3</span>: <span class="dv">0</span>] RS1,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span> [ <span class="dv">3</span>: <span class="dv">0</span>] RS2,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span> [ <span class="dv">3</span>: <span class="dv">0</span>] RD,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span> [<span class="dv">31</span>:<span class="dv">16</span>] IMM,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span> [ <span class="dv">1</span>: <span class="dv">0</span>] DIN_SEL,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span> [ <span class="dv">1</span>: <span class="dv">0</span>] ADDR_SEL,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span> [ <span class="dv">3</span>: <span class="dv">0</span>] ALU_CTRL,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>    <span class="dt">output</span> <span class="dt">wire</span>         PFC_CTRL,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>);</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a><span class="dt">wire</span> [<span class="dv">3</span>:<span class="dv">0</span>] OPC;</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a><span class="kw">assign</span> RS1 = OP[ <span class="dv">3</span>: <span class="dv">0</span>];</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a><span class="kw">assign</span> RS2 = OP[ <span class="dv">7</span>: <span class="dv">4</span>];</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a><span class="kw">assign</span> RD  = OP[<span class="dv">11</span>: <span class="dv">8</span>];</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a><span class="kw">assign</span> OPC = OP[<span class="dv">15</span>:<span class="dv">12</span>];</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a><span class="kw">assign</span> IMM = OP[<span class="dv">31</span>:<span class="dv">16</span>];</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a><span class="kw">assign</span> ALU_CTRL = OPC==<span class="ot">`CALC</span>  ? OP[<span class="dv">19</span>:<span class="dv">16</span>]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>                : OPC==<span class="ot">`CALCI</span> ? OP[ <span class="dv">7</span>: <span class="dv">4</span>]</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>                : <span class="ot">`ALU_ADD</span>;</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a><span class="kw">assign</span> ADDR_SEL = STAGE==<span class="dv">0</span> ? <span class="ot">`ADDR_RS1</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>                : STAGE==<span class="dv">1</span> ? <span class="ot">`ADDR_RS2</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>                : STAGE==<span class="dv">2</span> ? <span class="ot">`ADDR_RD</span>;</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a><span class="kw">assign</span> DIN_SEL = OPC==<span class="ot">`CALC</span>|<span class="ot">`CALCI</span> ? <span class="ot">`DIN_ALU</span> </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a>               : OPC==<span class="ot">`LOAD</span>|<span class="ot">`STORE</span> ? <span class="ot">`DIN_RS2</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a>               : OPC==<span class="ot">`CALLIF</span>     ? <span class="ot">`DIN_RA</span>;</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a><span class="kw">assign</span> S2_SEL = OPC==<span class="ot">`CALC</span> ? <span class="ot">`S2_RS2</span> </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a>                           : <span class="ot">`S2_IMM</span>;</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true"></a><span class="kw">endmodule</span></span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
