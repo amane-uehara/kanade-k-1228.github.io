@@ -190,7 +190,13 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 3. メモリに書き込み
 4. PC のカウントアップ
 
-```
+```verilog:
+`define CALC  4'b0000
+`define CALCI 4'b0001
+`define LOAD  4'b0011
+`define STORE 4'b0111
+`define CALIF 4'b1111
+
 module ID(
     input  wire [31: 0] OP,
     output wire [ 3: 0] RS1,
@@ -206,25 +212,25 @@ module ID(
 wire [3:0] OPC;
 
 assign RS1 = OP[ 3: 0];
-assing RS2 = OP[ 7: 4];
+assign RS2 = OP[ 7: 4];
 assign RD  = OP[11: 8];
 assign OPC = OP[15:12];
 assign IMM = OP[31:16];
 
-assign ALU_CTRL = OPC==CALC  ? OP[19:16]
-                : OPC==CALCI ? OP[ 7: 4]
-                : ALU_ADD;
+assign ALU_CTRL = OPC==`CALC  ? OP[19:16]
+                : OPC==`CALCI ? OP[ 7: 4]
+                : `ALU_ADD;
 
-assign ADDR_SEL = STAGE==0 ? ADDR_RS1
-                : STAGE==1 ? ADDR_RS2
-                : STAGE==2 ? ADDR_RD;
+assign ADDR_SEL = STAGE==0 ? `ADDR_RS1
+                : STAGE==1 ? `ADDR_RS2
+                : STAGE==2 ? `ADDR_RD;
 
-assign DIN_SEL = OPC==CALC|CALCI ? DIN_ALU 
-               : OPC==LOAD|STORE ? DIN_RS2
-               : OPC==CALLIF     ? DIN_RA;
+assign DIN_SEL = OPC==`CALC|`CALCI ? `DIN_ALU 
+               : OPC==`LOAD|`STORE ? `DIN_RS2
+               : OPC==`CALLIF     ? `DIN_RA;
 
-assign S2_SEL = OPC==CALC ? S2_RS2 
-                          : S2_IMM;
+assign S2_SEL = OPC==`CALC ? `S2_RS2 
+                           : `S2_IMM;
 
 endmodule
 ```
@@ -278,4 +284,3 @@ endmodule
 プログラムフローコントローラ。プログラムの流れの変化を処理します。
 
 ![](img/pfc.dio.svg)
-
