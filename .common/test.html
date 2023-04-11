@@ -26,32 +26,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-  $if(date)$
-  <meta name="dcterms.date" content="$date$" />
-  $endif$ $if(keywords)$
-  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
-  $endif$ $if(description)$
-  <meta name="description" content="$description$" />
-  $endif$
-  <title>$if(title)$$title$$endif$ | Kanade's Website</title>
+    <meta name="dcterms.date" content="2023-04-01" />
+      <meta name="description" content="hoge, fuga" />
+    <title>テスト | Kanade's Website</title>
 
   <!-- OGP -->
-  $if(ogp)$
-  <meta property="og:title" content="$if(title)$$title$$endif$" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://kanade-k-1228.github.io/$ogp$" />
-  <meta property="og:image" content="https://kanade-k-1228.github.io/$ogp$/img/ogp.png" />
-  $if(description)$
-  <meta property="og:description" content="$description$" />
-  $endif$
-  <meta property="og:site_name" content="Kanade's Website" />
-  $endif$
-  <!-- END OGP -->
+    <!-- END OGP -->
   <link rel="stylesheet" href="https://kanade-k-1228.github.io/.common/style.css" />
-  $for(css)$
-  <link rel="stylesheet" href="$css$" />
-  $endfor$
-  <script type="text/javascript" id="MathJax-script" async
+    <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     mjx-container[jax="CHTML"][display="true"] {
@@ -73,7 +55,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "$title$",
+        "テスト",
         "_blank"
       );
     }
@@ -119,18 +101,12 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-      $if(title)$
-      <h1 style="margin: 0">$title$</h1>
-      $endif$
-      <!-- Date -->
-      $if(date)$
-      <p align="right">$date$</p>
-      $endif$
-      <!-- Description -->
-      $if(description)$
-      <p>$description$</p>
-      $endif$
-    </header>
+            <h1 style="margin: 0">テスト</h1>
+            <!-- Date -->
+            <p align="right">2023-04-01</p>
+            <!-- Description -->
+            <p>hoge, fuga</p>
+          </header>
 
     <!-- TeX Macros -->
     <!-- prettier-ignore -->
@@ -161,9 +137,7 @@
     </p>
 
     <!-- Table of Contents -->
-    $if(toc)$
-    <nav>$table-of-contents$</nav>
-    $endif$ $body$
+     <p>aaa</p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
