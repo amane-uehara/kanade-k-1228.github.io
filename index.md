@@ -32,5 +32,5 @@ toc: false
 
 ### 「Maker Faire Tokyo 2021」に出展しました
 
-2022年10月2~3日、~~東京ビックサイト~~ オンラインで開催された「[Maker Faire Tokyo 2021](https://makezine.jp/event/makers-mft2021/m0035/)」に、リレーコンピュータを出展しました。
+2022年10月2/3日、~~東京ビックサイト~~ オンラインで開催された「[Maker Faire Tokyo 2021](https://makezine.jp/event/makers-mft2021/m0035/)」に、リレーコンピュータを出展しました。
 
