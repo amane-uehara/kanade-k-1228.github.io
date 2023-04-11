@@ -1,6 +1,7 @@
-% Pandoc と GitHub で超簡単にサイトを作る
-%
-% 2021-06-20
+---
+title: Pandoc と GitHub で超簡単にサイトを作る
+date: 2021-06-20
+---
 
 自由度が高く保守性も高いブログシステムがタダで作れます
 
@@ -57,10 +58,21 @@ Push されると、
 
 これをリポジトリの `/.github/workflows/` 以下に置くと、勝手に実行してくれます。
 
+## Syntax Highlight
+
+highlight-js を使う
+
+1. https://highlightjs.org/download/ から、必要な言語をポチポチして、ダウンロードする
+2. サイトの[どこか](https://github.com/kanade-k-1228/kanade-k-1228.github.io/tree/main/hljs)にjsとcssをおいておく
+3. html中にhljsをロードするjsを書き込む
+4. Pandocのデフォルトのハイライタを使わない設定にする `pandoc --no-highlight ~options~ index.md`
+
+## OGP
+
+- [参考](https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai)
+
 ## 課題
 
 - git にある差分から変更があったファイルだけ調べて変換をすると早くなるよね
-- OGP を設定する
-  - [参考](https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai)
 - モバイル・デスクトップ両方にいい感じのスタイルを探す
 - コメント欄を作る
