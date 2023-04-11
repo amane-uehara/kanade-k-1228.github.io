@@ -190,7 +190,7 @@ IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装�
 3. メモリに書き込み
 4. PC のカウントアップ
 
-```{.language-verilog filename="ID.v"}
+```{.language-verilog}
 `define CALC  4'b0000
 `define CALCI 4'b0001
 `define LOAD  4'b0011
