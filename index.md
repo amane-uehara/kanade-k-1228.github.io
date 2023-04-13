@@ -5,7 +5,7 @@ toc: false
 
 ## プロジェクト
 
-### Running
+### 実行中
 
 - 自作CPUを語る会
 - FPGA開発環境
@@ -13,14 +13,14 @@ toc: false
 - 自作CPU + 自作言語 + 自作RTOS
   - 次のMFTに間に合わせたい…
 
-### Ready
+### やりたい
 
 - 自作ALU LSI
   - 2023
 - 自作CPU LSI
   - 2024
 
-### Suspended
+### 停止中
 
 - FPGA講座動画
 - リレーコンピュータ改
@@ -45,4 +45,3 @@ toc: false
 ### Maker Faire Tokyo 2021 に出展しました
 
 2022年10月2/3日、~~東京ビックサイト~~ オンラインで開催された「[Maker Faire Tokyo 2021](https://makezine.jp/event/makers-mft2021/m0035/)」に、リレーコンピュータを出展しました。
-
