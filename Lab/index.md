@@ -22,6 +22,12 @@ title: 研究室へようこそ
 
 ## 物理学
 
+### 物理数学
+
+[物理数学](./Physics/PhysicsMathmatics/)
+
+数値解析
+
 ### 力学
 
 [連続体力学](./Physics/ContinuumMechanics/)
