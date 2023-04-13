@@ -162,6 +162,10 @@ title: 研究室へようこそ
 
 <!-- FPGA でシリアル通信 -->
 
+### LSI
+
+[自作CPU用ALU](./Electronics/LSI/MyALU/)
+
 ## 情報工学
 
 [GitHubとPandocで超簡単にブログサイトを作る](./Computer/Misc/BlogSite/)
