@@ -152,6 +152,8 @@ title: 研究室へようこそ
 
 [TinyFPGA を使ってみた](./Electronics/FPGA/TinyFpga/)
 
+[Verilog超入門](./Electronics/FPGA/VerilogIntroduction/)
+
 <!-- [FPGA で VGA 映像出力](./Electronics/FPGA/FPGAVGA/) -->
 
 <!-- [FPGA で音源 IC を作って鳴らしてみた](./Electronics/FPGASound/) -->
