@@ -1,5 +1,5 @@
 ---
-title: Kanade's Website
+title: ようこそ！
 toc: false
 ---
 
