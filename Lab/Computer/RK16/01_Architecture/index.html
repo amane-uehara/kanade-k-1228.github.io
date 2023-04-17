@@ -159,10 +159,6 @@
 <li><a href="#回路">回路</a>
 <ul>
 <li><a href="#命令の実行">命令の実行</a></li>
-<li><a href="#id-命令デコーダ"><code>ID</code> 命令デコーダ</a></li>
-<li><a href="#alu">ALU</a></li>
-<li><a href="#クロック">クロック</a></li>
-<li><a href="#pfc">PFC</a></li>
 </ul></li>
 <li><a href="#スタック">スタック</a></li>
 <li><a href="#関数呼び出し">関数呼び出し</a></li>
@@ -672,7 +668,7 @@
 <td style="text-align: left;">2 RAMからロード</td>
 <td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>計算 : ALU(RS1,RS2,func)</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">RAM<a href="#alu">ALU</a> =&gt; RS2</td>
+<td style="text-align: left;">RAM[ALU] =&gt; RS2</td>
 <td style="text-align: left;">RAM[rs2] =&gt; RS2</td>
 <td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>分岐判定 : IS_ZERO(RS2)</td>
 </tr>
@@ -681,7 +677,7 @@
 <td style="text-align: left;">ALU =&gt; RAM[rd]</td>
 <td style="text-align: left;">ALU =&gt; RAM[rd]</td>
 <td style="text-align: left;">RS2 =&gt; RAM[rd]</td>
-<td style="text-align: left;">RS2 =&gt; RAM<a href="#alu">ALU</a></td>
+<td style="text-align: left;">RS2 =&gt; RAM[ALU]</td>
 <td style="text-align: left;">PC+1 =&gt; RAM[rd]</td>
 </tr>
 <tr class="even">
@@ -694,216 +690,6 @@
 </tr>
 </tbody>
 </table>
-<h3 id="id-命令デコーダ"><code>ID</code> 命令デコーダ</h3>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>ALU</th>
-<th>S2</th>
-<th>DIN</th>
-<th>1.ADR</th>
-<th>2.ADR</th>
-<th>3.ADR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>add</td>
-<td>Func</td>
-<td>RS2</td>
-<td>ALU</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>RD</td>
-</tr>
-<tr class="even">
-<td>addi</td>
-<td>Func</td>
-<td>IMM</td>
-<td>ALU</td>
-<td>RS1</td>
-<td>-</td>
-<td>RD</td>
-</tr>
-<tr class="odd">
-<td>load</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RS2</td>
-<td>RS1</td>
-<td>ALU</td>
-<td>RD</td>
-</tr>
-<tr class="even">
-<td>store</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RS2</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>ALU</td>
-</tr>
-<tr class="odd">
-<td>callif</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RA</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>RD</td>
-</tr>
-</tbody>
-</table>
-<p><img src="img/decoder.dio.svg" /></p>
-<h3 id="alu">ALU</h3>
-<p>演算装置。必要な演算は、</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>演算</th>
-<th>実装</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>+</td>
-<td>加算</td>
-<td>74181</td>
-</tr>
-<tr class="even">
-<td>-</td>
-<td>減算</td>
-<td>74181</td>
-</tr>
-<tr class="odd">
-<td>&amp;</td>
-<td>ビット AND</td>
-<td>74181</td>
-</tr>
-<tr class="even">
-<td>|</td>
-<td>ビット OR</td>
-<td>74181</td>
-</tr>
-<tr class="odd">
-<td>^</td>
-<td>ビット XOR</td>
-<td>74181</td>
-</tr>
-<tr class="even">
-<td>~</td>
-<td>ビット NOT</td>
-<td>74181</td>
-</tr>
-<tr class="odd">
-<td>&gt;&gt;</td>
-<td>右シフト（符号あり）</td>
-<td>MUX</td>
-</tr>
-<tr class="even">
-<td>&gt;&gt;</td>
-<td>右シフト（符号なし）</td>
-<td>MUX</td>
-</tr>
-<tr class="odd">
-<td>&lt;&lt;</td>
-<td>左シフト</td>
-<td>74181</td>
-</tr>
-<tr class="even">
-<td>==</td>
-<td>一致比較</td>
-<td>7485</td>
-</tr>
-<tr class="odd">
-<td>&lt;</td>
-<td>大小比較（符号あり）</td>
-<td>7485</td>
-</tr>
-<tr class="even">
-<td>&lt;</td>
-<td>大小比較（符号なし）</td>
-<td>7485 + MSB NOT</td>
-</tr>
-</tbody>
-</table>
-<p>74HC181 で実装する。</p>
-<table>
-<thead>
-<tr class="header">
-<th>74181</th>
-<th>Cn</th>
-<th>M</th>
-<th>S<sub>3</sub></th>
-<th>S<sub>2</sub></th>
-<th>S<sub>1</sub></th>
-<th>S<sub>0</sub></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ADD +</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>SUB -</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>AND &amp;</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>OR |</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>XOR ^</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>NOT ~</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<h3 id="クロック">クロック</h3>
-<p><img src="img/timing.dio.svg" /></p>
-<h3 id="pfc">PFC</h3>
-<p>プログラムフローコントローラ。プログラムの流れの変化を処理します。</p>
-<p><img src="img/pfc.dio.svg" /></p>
 <h2 id="スタック">スタック</h2>
 <h2 id="関数呼び出し">関数呼び出し</h2>
 <h2 id="割り込み">割り込み</h2>
