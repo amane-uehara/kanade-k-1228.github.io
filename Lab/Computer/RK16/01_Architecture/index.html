@@ -27,7 +27,8 @@
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
     <meta name="dcterms.date" content="2023-03-26" />
-      <title>自作マイコンのアーキテクチャ RK16 | Kanade's Website</title>
+      <meta name="description" content="自作マイコンRK16のISAとABIを解説しています。" />
+    <title>自作マイコンのアーキテクチャ RK16 | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -104,6 +105,7 @@
             <!-- Date -->
             <p align="right">2023-03-26</p>
             <!-- Description -->
+            <p>自作マイコンRK16のISAとABIを解説しています。</p>
           </header>
 
     <!-- TeX Macros -->
@@ -136,7 +138,11 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#レジスタ">レジスタ</a></li>
+<li><a href="#レジスタ">レジスタ</a>
+<ul>
+<li><a href="#特殊レジスタ">特殊レジスタ</a></li>
+<li><a href="#汎用レジスタ">汎用レジスタ</a></li>
+</ul></li>
 <li><a href="#命令セット">命令セット</a>
 <ul>
 <li><a href="#演算命令">演算命令</a></li>
@@ -161,7 +167,7 @@
 </ul></li>
 </ul></nav>
      <h2 id="レジスタ">レジスタ</h2>
-<p>レジスタはSRAMの一部として実装します。</p>
+<p>メモリ空間の上位16個(0x0000X)をレジスタとして割り当てます。</p>
 <table>
 <thead>
 <tr class="header">
@@ -173,74 +179,127 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>0x00</td>
+<td>0x0000</td>
 <td>zero</td>
 <td>ゼロ固定</td>
 <td>R</td>
 </tr>
 <tr class="even">
-<td>0x01</td>
+<td>0x0001</td>
 <td>pc</td>
 <td>プログラムカウンタ</td>
 <td>R</td>
 </tr>
 <tr class="odd">
-<td>0x02</td>
+<td>0x0002</td>
 <td>ira</td>
 <td>割り込み戻りアドレス</td>
 <td>R</td>
 </tr>
 <tr class="even">
-<td>0x03</td>
+<td>0x0003</td>
 <td>csr</td>
 <td>状態制御レジスタ</td>
 <td>RW</td>
 </tr>
 <tr class="odd">
-<td>0x04</td>
+<td>0x0004</td>
 <td>ra</td>
 <td>戻りアドレス</td>
 <td>✕</td>
 </tr>
 <tr class="even">
-<td>0x05</td>
+<td>0x0005</td>
 <td>sp</td>
 <td>スタック・ポインタ</td>
 <td>〇</td>
 </tr>
 <tr class="odd">
-<td>0x06</td>
+<td>0x0006</td>
 <td>fp</td>
 <td>フレーム・ポインタ</td>
 <td>〇</td>
 </tr>
 <tr class="even">
-<td>0x07</td>
-<td></td>
-<td></td>
+<td>0x0007</td>
+<td>-</td>
+<td>用途未定</td>
 <td>〇</td>
 </tr>
 <tr class="odd">
-<td>0x08 - 0x0b</td>
+<td>0x0008 - 0x000b</td>
 <td>s0 - s3</td>
 <td>保存レジスタ</td>
 <td>〇</td>
 </tr>
 <tr class="even">
-<td>0x0c - 0x0f</td>
+<td>0x000c - 0x000f</td>
 <td>t0 - t3</td>
 <td>一時レジスタ</td>
 <td>✕</td>
 </tr>
 </tbody>
 </table>
+<p>ロジックICでCPUを作る場合、レジスタは74HC564などのDフリップフロップを使用します。しかし、今回作るCPUはレジスタが多く(16個)、ロジックICの数が膨大(74HC564×32個)になってしまいます。そのため、このCPUでは、メインメモリのSRAMの一部を、レジスタとして使います。</p>
+<p>レジスタをSRAMとして実装する問題点として、レジスタの値をリアルタイムに取得できないという問題があります。多くの自作CPUは、レジスタの値を直接LEDで見れるようになっています。</p>
+<p>この問題を解消するため、メモリバースト転送という仕組みを実装します。 各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。 レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
+<h3 id="特殊レジスタ">特殊レジスタ</h3>
+<p>レジスタをSRAMとして実装すると述べましたが、SRAMの入出力ポートは１つしかないので、複数のレジスタ値を常に取得し続けることができないという重大な問題があります。</p>
+<p>そのため、4個のレジスタはSRAMではなく、独立したICで実装します。 アドレスの上位12ビットが0の場合 <code>0b0000_0000_0000_00xx</code> SRAMのCEをOFFにして、レジスタICのCEをONにします。（CE : Chip Enable 信号）</p>
+<h4 id="ゼロレジスタ">ゼロ・レジスタ</h4>
+<p>常にゼロを返すレジスタです。</p>
+<h4 id="プログラムカウンタ">プログラム・カウンタ</h4>
+<p>プログラムカウンタは、</p>
+<p>通常のレジスタアクセスの手順で書き換えることができません。</p>
+<h4 id="割り込み戻りアドレス">割り込み戻りアドレス</h4>
+<p>割り込みが発生したら、次のクロックでPCを割り込みのアドレス(0x0001)に変更し、割り込みの処理を行います。その時に、本来次に行くべきPCを退避しておくレジスタが、割り込みリターンアドレス (IRA : Interrupt Return Address) です。</p>
+<h4 id="状態制御レジスタ">状態制御レジスタ</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>csr</th>
+<th></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>ien</td>
+<td>W</td>
+<td style="text-align: left;">割り込み許可</td>
+</tr>
+<tr class="even">
+<td>1-7</td>
+<td>i0 - i6</td>
+<td>R</td>
+<td style="text-align: left;">0-6番割り込み</td>
+</tr>
+<tr class="odd">
+<td>8-f</td>
+<td></td>
+<td></td>
+<td style="text-align: left;">未定</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>mode</td>
+<td></td>
+<td style="text-align: left;">特権モード（仮）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="汎用レジスタ">汎用レジスタ</h3>
+<p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じなので好きに使っていいです。ただ、好き勝手に使うといろいろな問題が生じます。例えば、ライブラリによってレジスタの使い方が違うと、関数呼び出しの方法が変わったりして混乱が生じます。そのため、ABI (Application Binary Interface) でレジスタの使い方を定めています。</p>
+<h4 id="戻りアドレス">戻りアドレス</h4>
+<h4 id="スタックポインタ">スタックポインタ</h4>
+<h4 id="フレームポインタ">フレームポインタ</h4>
 <h2 id="命令セット">命令セット</h2>
 <p><img src="img/isa.png" /></p>
-<ul>
-<li><code>rx</code> はレジスタの値</li>
-<li><code>mem[x]</code> はメモリの x 番地の値</li>
-<li><code>imm</code> は即値</li>
-</ul>
+<p>機械語的に見ると命令は <code>calc</code>,<code>calci</code>,<code>load</code>,<code>store</code>,<code>calif</code> の5種類です。しかし、アセンブラから見ると、??種類の命令があります。多くのアセンブラでは「疑似命令」と呼ばれるシンタックスシュガーを実装しています。例えば、RISC-Vでは、<code>add rd, rs, zero</code> を <code>mov rd, rs</code> と短縮して書くことができます。しかし、RKASMの疑似命令はシンタックスシュガーではありません。その特徴が一番現れているのが <code>calif</code> 命令です。<code>calif</code>をニーモニックとして使うことはできません。アセンブラ <code>if rs2 rs1 imm</code> は、内部的には <code>calif zero rs2 rs1 imm</code> と等価ですが、アセンブラ上で直接 <code>calif zero rs2 rs1 imm</code> と書くことはできません。別にこれを書けるようにしてもいいんですが、引数を4つも取ると、アセンブラが見にくくなるという問題があります。また実用上、引数4つをフルで使うことはない（どれかがzeroになる）ので、<code>calif</code>を直接呼び出せないようにしています。その代わりに、使い方に応じてニーモニック<code>if</code> <code>jump</code> <code>call</code> <code>ret</code> <code>iret</code> を割り当てています。これによって「生で書いてもわかりやすい＆バグりにくいアセンブラ」を実現します。</p>
+<p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。これにより、全ての命令が同じステージ数で実行できるようになり、命令デコーダ (ID:Instruction Decoder) の回路を簡略化できます。</p>
+<p>機械語命令は5種類あるので、命令ビットは 3 ビットで済むはずです。また、バイナリ中で最も多く出現する <code>mov</code> 命令は、意味のあるビットは 12/32 と、命令空間をかなり無駄遣いしています。つまり、この命令セットは情報量に対してかなり余剰なROM空間を消費するということになります。一般的に、特にROM空間が限られる組み込みにおいて、命令セットはバイナリ長が短くなるものが良いです。しかし、RKISAはロジックICで実装するために、ハードウェアの削減に重きをおいています。命令デコーダ(ID)の実装が楽になるように、あえて余分なビットを使っています。</p>
 <h3 id="演算命令">演算命令</h3>
 <table>
 <thead>
