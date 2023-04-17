@@ -148,11 +148,9 @@
 <li><a href="#演算命令">演算命令</a></li>
 <li><a href="#移値命令">移値命令</a></li>
 <li><a href="#制御命令">制御命令</a></li>
-<li><a href="#割り込み">割り込み</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a>
 <ul>
-<li><a href="#レジスタ-1">レジスタ</a></li>
 <li><a href="#io">IO</a></li>
 <li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
 <li><a href="#ram-sram">RAM (SRAM)</a></li>
@@ -160,14 +158,18 @@
 </ul></li>
 <li><a href="#回路">回路</a>
 <ul>
-<li><a href="#id">ID</a></li>
+<li><a href="#命令の実行">命令の実行</a></li>
+<li><a href="#id-命令デコーダ"><code>ID</code> 命令デコーダ</a></li>
 <li><a href="#alu">ALU</a></li>
 <li><a href="#クロック">クロック</a></li>
 <li><a href="#pfc">PFC</a></li>
 </ul></li>
+<li><a href="#スタック">スタック</a></li>
+<li><a href="#関数呼び出し">関数呼び出し</a></li>
+<li><a href="#割り込み">割り込み</a></li>
 </ul></nav>
      <h2 id="レジスタ">レジスタ</h2>
-<p>メモリ空間の上位16個(0x0000X)をレジスタとして割り当てます。</p>
+<p>メモリ空間の上位16個(0x000x)をレジスタとして割り当てます。</p>
 <table>
 <thead>
 <tr class="header">
@@ -240,18 +242,17 @@
 </tr>
 </tbody>
 </table>
-<p>ロジックICでCPUを作る場合、レジスタは74HC564などのDフリップフロップを使用します。しかし、今回作るCPUはレジスタが多く(16個)、ロジックICの数が膨大(74HC564×32個)になってしまいます。そのため、このCPUでは、メインメモリのSRAMの一部を、レジスタとして使います。</p>
-<p>レジスタをSRAMとして実装する問題点として、レジスタの値をリアルタイムに取得できないという問題があります。多くの自作CPUは、レジスタの値を直接LEDで見れるようになっています。</p>
-<p>この問題を解消するため、メモリバースト転送という仕組みを実装します。 各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。 レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
+<p>　ロジックICでCPUを作る場合、レジスタは74HC564などのDフリップフロップを使用します。しかし、今回作るCPUはレジスタが多く(16個)、ロジックICの数が膨大(74HC564×32個)になってしまいます。そのため、このCPUでは、メインメモリのSRAMの一部を、レジスタとして使います。</p>
+<p>　レジスタをSRAMとして実装する問題点として、レジスタの値をリアルタイムに取得できないという問題があります。多くの自作CPUは、レジスタの値を直接LEDで見れるようになっています。</p>
+<p>　この問題を解消するため、メモリバースト転送という仕組みを実装します。 各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。 レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
 <h3 id="特殊レジスタ">特殊レジスタ</h3>
-<p>レジスタをSRAMとして実装すると述べましたが、SRAMの入出力ポートは１つしかないので、複数のレジスタ値を常に取得し続けることができないという重大な問題があります。</p>
-<p>そのため、4個のレジスタはSRAMではなく、独立したICで実装します。 アドレスの上位12ビットが0の場合 <code>0b0000_0000_0000_00xx</code> SRAMのCEをOFFにして、レジスタICのCEをONにします。（CE : Chip Enable 信号）</p>
-<h4 id="ゼロレジスタ">ゼロ・レジスタ</h4>
+<p>　レジスタをSRAMとして実装すると述べましたが、SRAMの入出力ポートは１つしかないので、複数のレジスタ値を常に取得し続けることができないという問題があります。そのため、4個のレジスタはSRAMとは独立したDフリップフロップICで実装します。アドレスの上位12ビットが0の場合 <code>0b0000_0000_0000_00xx</code> SRAMのCE信号をOFFにして、DFFのCE信号をONにします。(CE:Chip Enable)</p>
+<h4 id="zero-ゼロレジスタ"><code>zero</code> ゼロ・レジスタ</h4>
 <p>常にゼロを返すレジスタです。</p>
-<h4 id="プログラムカウンタ">プログラム・カウンタ</h4>
+<h4 id="pc-プログラムカウンタ"><code>pc</code> プログラム・カウンタ</h4>
 <p>プログラムカウンタは、</p>
 <p>通常のレジスタアクセスの手順で書き換えることができません。</p>
-<h4 id="割り込み戻りアドレス">割り込み戻りアドレス</h4>
+<h4 id="ira-割り込み戻りアドレス"><code>ira</code> 割り込み戻りアドレス</h4>
 <p>割り込みが発生したら、次のクロックでPCを割り込みのアドレス(0x0001)に変更し、割り込みの処理を行います。その時に、本来次に行くべきPCを退避しておくレジスタが、割り込みリターンアドレス (IRA : Interrupt Return Address) です。</p>
 <h4 id="状態制御レジスタ">状態制御レジスタ</h4>
 <table>
@@ -291,10 +292,13 @@
 </tbody>
 </table>
 <h3 id="汎用レジスタ">汎用レジスタ</h3>
-<p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じなので好きに使っていいです。ただ、好き勝手に使うといろいろな問題が生じます。例えば、ライブラリによってレジスタの使い方が違うと、関数呼び出しの方法が変わったりして混乱が生じます。そのため、ABI (Application Binary Interface) でレジスタの使い方を定めています。</p>
-<h4 id="戻りアドレス">戻りアドレス</h4>
-<h4 id="スタックポインタ">スタックポインタ</h4>
-<h4 id="フレームポインタ">フレームポインタ</h4>
+<p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じです。ただ、好き勝手に使うといろいろな問題が生じます。例えば、ライブラリによってレジスタの使い方が違うと、関数呼び出しの方法が変わったりして混乱が生じます。そのため、ABI (Application Binary Interface) でレジスタの使い方を定めています。</p>
+<h4 id="ra-戻りアドレス"><code>ra</code> 戻りアドレス</h4>
+<p>関数の戻りアドレスを退避しておくレジスタです。</p>
+<h4 id="sp-スタックポインタ"><code>sp</code> スタックポインタ</h4>
+<p>スタックの先頭を指したポインタです。</p>
+<h4 id="fp-フレームポインタ"><code>fp</code> フレームポインタ</h4>
+<p>関数フレームの基底アドレスを指したポインタです。</p>
 <h2 id="命令セット">命令セット</h2>
 <p><img src="img/isa.png" /></p>
 <p>機械語的に見ると命令は <code>calc</code>,<code>calci</code>,<code>load</code>,<code>store</code>,<code>calif</code> の5種類です。しかし、アセンブラから見ると、??種類の命令があります。多くのアセンブラでは「疑似命令」と呼ばれるシンタックスシュガーを実装しています。例えば、RISC-Vでは、<code>add rd, rs, zero</code> を <code>mov rd, rs</code> と短縮して書くことができます。しかし、RKASMの疑似命令はシンタックスシュガーではありません。その特徴が一番現れているのが <code>calif</code> 命令です。<code>calif</code>をニーモニックとして使うことはできません。アセンブラ <code>if rs2 rs1 imm</code> は、内部的には <code>calif zero rs2 rs1 imm</code> と等価ですが、アセンブラ上で直接 <code>calif zero rs2 rs1 imm</code> と書くことはできません。別にこれを書けるようにしてもいいんですが、引数を4つも取ると、アセンブラが見にくくなるという問題があります。また実用上、引数4つをフルで使うことはない（どれかがzeroになる）ので、<code>calif</code>を直接呼び出せないようにしています。その代わりに、使い方に応じてニーモニック<code>if</code> <code>jump</code> <code>call</code> <code>ret</code> <code>iret</code> を割り当てています。これによって「生で書いてもわかりやすい＆バグりにくいアセンブラ」を実現します。</p>
@@ -304,21 +308,21 @@
 <table>
 <thead>
 <tr class="header">
-<th>命令</th>
-<th>ASM</th>
-<th>処理</th>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">ASM</th>
+<th style="text-align: left;">処理</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>レジスタ演算</td>
-<td>add rd rs1 rs2</td>
-<td>rd = rs1 + rs2</td>
+<td style="text-align: left;">レジスタ演算</td>
+<td style="text-align: left;">add rd rs1 rs2</td>
+<td style="text-align: left;">rd = rs1 + rs2</td>
 </tr>
 <tr class="even">
-<td>即値演算</td>
-<td>addi rd rs1 imm</td>
-<td>rd = rs1 + imm</td>
+<td style="text-align: left;">即値演算</td>
+<td style="text-align: left;">addi rd rs1 imm</td>
+<td style="text-align: left;">rd = rs1 + imm</td>
 </tr>
 </tbody>
 </table>
@@ -327,71 +331,78 @@
 <thead>
 <tr class="header">
 <th></th>
-<th>演算</th>
+<th style="text-align: left;">演算</th>
 <th>ASM</th>
-<th></th>
+<th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>+</td>
-<td>加算</td>
+<td style="text-align: left;">加算</td>
 <td>add</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td>-</td>
-<td>減算</td>
+<td style="text-align: left;">減算</td>
 <td>sub</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td>&amp;</td>
-<td>ビット AND</td>
+<td style="text-align: left;">ビット AND</td>
 <td>and</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td>|</td>
-<td>ビット OR</td>
+<td style="text-align: left;">ビット OR</td>
 <td>or</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td>^</td>
-<td>ビット XOR</td>
+<td style="text-align: left;">ビット XOR</td>
 <td>xor</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td>~</td>
-<td>ビット NOT</td>
+<td style="text-align: left;">ビット NOT</td>
 <td>not</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td>&gt;&gt;</td>
-<td>右シフト（符号あり）</td>
+<td style="text-align: left;">右シフト（符号あり）</td>
 <td>rss</td>
-<td>シフトして符号拡張</td>
+<td style="text-align: left;">シフトして符号拡張</td>
 </tr>
 <tr class="even">
 <td>&gt;&gt;</td>
-<td>右シフト（符号なし）</td>
+<td style="text-align: left;">右シフト（符号なし）</td>
 <td>rsu</td>
-<td>0 埋め</td>
+<td style="text-align: left;">0 埋め</td>
 </tr>
 <tr class="odd">
 <td>&lt;&lt;</td>
-<td>左シフト</td>
+<td style="text-align: left;">左シフト</td>
 <td>ls</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
 <h4 id="符号拡張-sign-extension-とは">符号拡張 (Sign Extension) とは</h4>
-<p>4bit の符号付き整数を 8bit にしたい場合、正の数は 0 を埋めればいいですが、負の数は 1 を埋める必要になります。 符号付き整数の符号は、最上位 bit で表されるので、一般に、符号付き整数の bit 長を伸ばしたい場合、最上位ビットで埋める必要があります。 これが符号拡張です。</p>
+<p>　4bitの符号付き整数を8bitにしたい場合、正の数は<code>0</code>を埋めればいいですが、負の数は<code>1</code>を埋める必要になります。符号付き整数の符号は、最上位ビットで表されるので、一般に、符号付き整数のビット長を伸ばしたい場合、最上位ビットで埋める必要があります。これが符号拡張です。</p>
 <table>
+<thead>
+<tr class="header">
+<th>dec</th>
+<th></th>
+<th>bin</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>1</td>
@@ -400,7 +411,7 @@
 </tr>
 <tr class="even">
 <td></td>
-<td>↑↑↑←</td>
+<td>↖</td>
 <td><strong>0</strong>001</td>
 </tr>
 <tr class="odd">
@@ -410,7 +421,7 @@
 </tr>
 <tr class="even">
 <td></td>
-<td>↓↓↓←</td>
+<td>↙</td>
 <td><strong>1</strong>111</td>
 </tr>
 <tr class="odd">
@@ -426,35 +437,35 @@
 <thead>
 <tr class="header">
 <th></th>
-<th>演算</th>
+<th style="text-align: left;">演算</th>
 <th>ASM</th>
-<th></th>
+<th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>==</td>
-<td>一致比較</td>
+<td style="text-align: left;">一致比較</td>
 <td>eq</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td>&lt;</td>
-<td>大小比較（符号あり）</td>
+<td style="text-align: left;">大小比較（符号あり）</td>
 <td>lts</td>
-<td>signed として比較</td>
+<td style="text-align: left;">signed として比較</td>
 </tr>
 <tr class="odd">
 <td>&lt;</td>
-<td>大小比較（符号なし）</td>
+<td style="text-align: left;">大小比較（符号なし）</td>
 <td>ltu</td>
-<td>unsigned として比較</td>
+<td style="text-align: left;">unsigned として比較</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>論理キャスト</td>
+<td style="text-align: left;">論理キャスト</td>
 <td>lcast</td>
-<td></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -463,31 +474,31 @@
 <table>
 <thead>
 <tr class="header">
-<th>命令</th>
-<th>ASM</th>
-<th></th>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">ASM</th>
+<th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>アドレス間移動</td>
-<td>mov rd rs</td>
-<td>rd = rs</td>
+<td style="text-align: left;">レジスタ間移動</td>
+<td style="text-align: left;">mov rd rs</td>
+<td style="text-align: left;">rd = rs</td>
 </tr>
 <tr class="even">
-<td>即値ロード</td>
-<td>loadi rd imm</td>
-<td>rd = imm</td>
+<td style="text-align: left;">即値ロード</td>
+<td style="text-align: left;">loadi rd imm</td>
+<td style="text-align: left;">rd = imm</td>
 </tr>
 <tr class="odd">
-<td>メモリロード</td>
-<td>load rd rs1 imm</td>
-<td>rd = mem[rs1 + imm]</td>
+<td style="text-align: left;">メモリロード</td>
+<td style="text-align: left;">load rd rs1 imm</td>
+<td style="text-align: left;">rd = mem[rs1 + imm]</td>
 </tr>
 <tr class="even">
-<td>メモリストア</td>
-<td>store rs2 rs1 imm</td>
-<td>mem[rs1 + imm] = rs2</td>
+<td style="text-align: left;">メモリストア</td>
+<td style="text-align: left;">store rs2 rs1 imm</td>
+<td style="text-align: left;">mem[rs1 + imm] = rs2</td>
 </tr>
 </tbody>
 </table>
@@ -497,58 +508,45 @@
 <table>
 <thead>
 <tr class="header">
-<th>命令</th>
-<th>ASM</th>
-<th>処理</th>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">ASM</th>
+<th style="text-align: left;">処理</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>条件呼出</td>
-<td></td>
-<td>rd = PC + 1, if(rs2 == 0) PC = rs1 + imm</td>
+<td style="text-align: left;">条件呼出</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">rd = PC + 1, if(rs2 == 0) PC = rs1 + imm</td>
 </tr>
 <tr class="even">
-<td>条件分岐</td>
-<td>if rs2 imm</td>
-<td>if(rs1 == 0) PC = imm</td>
+<td style="text-align: left;">条件分岐</td>
+<td style="text-align: left;">if rs2 imm</td>
+<td style="text-align: left;">if(rs1 == 0) PC = imm</td>
 </tr>
 <tr class="odd">
-<td>ジャンプ</td>
-<td>jump imm</td>
-<td>PC = imm</td>
+<td style="text-align: left;">ジャンプ</td>
+<td style="text-align: left;">jump imm</td>
+<td style="text-align: left;">PC = imm</td>
 </tr>
 <tr class="even">
-<td>関数呼出</td>
-<td>call imm</td>
-<td>ra = PC + 1, PC = imm</td>
+<td style="text-align: left;">関数呼出</td>
+<td style="text-align: left;">call imm</td>
+<td style="text-align: left;">ra = PC + 1, PC = imm</td>
 </tr>
 <tr class="odd">
-<td>関数復帰</td>
-<td>ret</td>
-<td>PC = ra</td>
+<td style="text-align: left;">関数復帰</td>
+<td style="text-align: left;">ret</td>
+<td style="text-align: left;">PC = ra</td>
 </tr>
 <tr class="even">
-<td>割込復帰</td>
-<td>iret</td>
-<td>PC = ira</td>
+<td style="text-align: left;">割込復帰</td>
+<td style="text-align: left;">iret</td>
+<td style="text-align: left;">PC = ira</td>
 </tr>
 </tbody>
 </table>
-<p>プログラムの制御に関する命令は全てこれで実行できます。 この命令を生で呼び出すことは想定していません。 後述する疑似命令を使います。</p>
-<h3 id="割り込み">割り込み</h3>
-<p>割り込みは関数呼び出しとほとんど同じです。 唯一の違いは、戻りアドレスをRAではなくIRAに保存する点です。</p>
-<p><img src="img/intr_timing.dio.svg" /></p>
-<ol type="1">
-<li>割り込み発生</li>
-<li>現在実行中の命令が終了したら</li>
-<li>次のPCをIRAに退避し、PCを割り込み命令アドレス0x0001にする</li>
-<li>割り込み禁止</li>
-<li>割り込み処理を実行</li>
-<li>割り込み許可（１クロック遅延）</li>
-<li>割り込み復帰</li>
-<li>元の処理を実行</li>
-</ol>
+<p>プログラムの制御に関する命令は全て <code>calif</code> で実行できます。 この命令を生で呼び出すことは想定していません。</p>
 <h4 id="割り込み番号">割り込み番号</h4>
 <table>
 <thead>
@@ -599,53 +597,152 @@
 <li>DMA</li>
 </ul>
 <h2 id="メモリ空間">メモリ空間</h2>
-<p>メモリ空間は 0x1000 ごとにバンクに区切られていて、RAM以外のデバイスに置き換えられる。</p>
+<p>メモリ空間は 0x1000 ごとに区切られていて、<code>CE</code> を使ってRAM以外のデバイスにスイッチできます。</p>
 <table>
 <thead>
 <tr class="header">
-<th>Addr</th>
-<th>Function</th>
+<th>Address</th>
+<th style="text-align: left;">Function</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>0x0000 - 0x000F</td>
-<td>Registor</td>
+<td style="text-align: left;">Registor</td>
 </tr>
 <tr class="even">
 <td>0x0010 - 0x00FF</td>
-<td>IO Ctrl Registor</td>
+<td style="text-align: left;">IO Ctrl Registor</td>
 </tr>
 <tr class="odd">
 <td>0x1000 - 0x2FFF</td>
-<td>VRAM</td>
+<td style="text-align: left;">VRAM</td>
 </tr>
 <tr class="even">
 <td>0x3000 - 0xFFFF</td>
-<td>RAM</td>
+<td style="text-align: left;">RAM</td>
 </tr>
 </tbody>
 </table>
-<h3 id="レジスタ-1">レジスタ</h3>
-<ul>
-<li>実体としては、SRAM の一部分</li>
-<li>4bit でアクセスする → ISA でビットを節約できる</li>
-</ul>
 <h3 id="io">IO</h3>
-<p>IO は SRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、デバイスにスイッチ。</p>
+<p>IOはSRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、デバイスにスイッチ。</p>
 <h3 id="vram-dual-access-sram">VRAM (Dual access SRAM)</h3>
 <p>表示の候補として、</p>
 <ul>
-<li>300 x 400 画素 x 白黒 2 段階 (1bit) = 120000 bit ~ 16bit x 8k</li>
+<li>300 x 400 画素 x 白黒 2 段階 (1bit) = 120000 bit &lt; 16bit x 8k</li>
 <li>テキスト表示（フォントを EEPROM に置いておく）</li>
 </ul>
 <h3 id="ram-sram">RAM (SRAM)</h3>
 <h3 id="program-rom-nor-flash">Program ROM (NOR Flash)</h3>
 <h2 id="回路">回路</h2>
 <p><img src="img/arch.dio.svg" /></p>
-<h3 id="id">ID</h3>
-<p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
+<h3 id="命令の実行">命令の実行</h3>
+<p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。</p>
 <p><img src="img/data_path.dio.svg" /></p>
+<p>4ステージで実行します。</p>
+<ol type="1">
+<li>RAMから読み出し</li>
+<li>RAMから読み出し</li>
+<li>RAMへ書き込む</li>
+<li>PCをカウントアップする</li>
+</ol>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 18%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">ステージ</th>
+<th style="text-align: left;"><code>calc</code></th>
+<th style="text-align: left;"><code>calci</code></th>
+<th style="text-align: left;"><code>load</code></th>
+<th style="text-align: left;"><code>store</code></th>
+<th style="text-align: left;"><code>calif</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1 ロード</td>
+<td style="text-align: left;">RAM[rs1] =&gt; RS1</td>
+<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>計算 : ALU(RS1,<strong>imm</strong>,func)</td>
+<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>計算 : ALU(RS1,<strong>imm</strong>,add)</td>
+<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>計算 : ALU(RS1,<strong>imm</strong>,add)</td>
+<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>計算 : ALU(RS1,<strong>imm</strong>,add)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2 ロード</td>
+<td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>計算 : ALU(RS1,RS2,func)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">RAM<a href="#alu">ALU</a> =&gt; RS2</td>
+<td style="text-align: left;">RAM[rs2] =&gt; RS2</td>
+<td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>分岐判定 : IS_ZERO(RS2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3 ストア</td>
+<td style="text-align: left;">ALU =&gt; RAM[rd]</td>
+<td style="text-align: left;">ALU =&gt; RAM[rd]</td>
+<td style="text-align: left;">RS2 =&gt; RAM[rd]</td>
+<td style="text-align: left;">RS2 =&gt; RAM<a href="#alu">ALU</a></td>
+<td style="text-align: left;">PC+1 =&gt; RAM[rd]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4 PC変更</td>
+<td style="text-align: left;">PC++</td>
+<td style="text-align: left;">PC++</td>
+<td style="text-align: left;">PC++</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">IS_ZERO ? ALU : PC+1 =&gt; PC</td>
+</tr>
+</tbody>
+</table>
+<h4 id="calci"><code>calci</code></h4>
+<ol type="1">
+<li>RS1をロード</li>
+<li>RS2をロード→計算</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Stg0</th>
+<th>Stg1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>calc</code></td>
+<td>RAM[rs1] =&gt; RS1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>calci</code></td>
+<td>=&gt; RS1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>load</code></td>
+<td>=&gt; RS1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>store</code></td>
+<td>=&gt; RS1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>calif</code></td>
+<td>=&gt; RS1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="id-命令デコーダ"><code>ID</code> 命令デコーダ</h3>
+<p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
 <p>4 クロックで 1 命令を実行する。</p>
 <ol type="1">
 <li>メモリを読み出し、RS1 に記録</li>
@@ -653,48 +750,6 @@
 <li>メモリに書き込み</li>
 <li>PC のカウントアップ</li>
 </ol>
-<pre class="language-verilog"><code>`define CALC  4&#39;b0000
-`define CALCI 4&#39;b0001
-`define LOAD  4&#39;b0011
-`define STORE 4&#39;b0111
-`define CALIF 4&#39;b1111
-
-module ID(
-    input  wire [31: 0] OP,
-    output wire [ 3: 0] RS1,
-    output wire [ 3: 0] RS2,
-    output wire [ 3: 0] RD,
-    output wire [31:16] IMM,
-    output wire [ 1: 0] DIN_SEL,
-    output wire [ 1: 0] ADDR_SEL,
-    output wire [ 3: 0] ALU_CTRL,
-    output wire         PFC_CTRL,
-);
-
-wire [3:0] OPC;
-
-assign RS1 = OP[ 3: 0];
-assign RS2 = OP[ 7: 4];
-assign RD  = OP[11: 8];
-assign OPC = OP[15:12];
-assign IMM = OP[31:16];
-
-assign ALU_CTRL = OPC==`CALC  ? OP[19:16]
-                : OPC==`CALCI ? OP[ 7: 4]
-                : `ALU_ADD;
-
-assign ADDR_SEL = STAGE==0 ? `ADDR_RS1
-                : STAGE==1 ? `ADDR_RS2
-                : STAGE==2 ? `ADDR_RD;
-
-assign DIN_SEL = OPC==`CALC|`CALCI ? `DIN_ALU 
-               : OPC==`LOAD|`STORE ? `DIN_RS2
-               : OPC==`CALLIF     ? `DIN_RA;
-
-assign S2_SEL = OPC==`CALC ? `S2_RS2 
-                           : `S2_IMM;
-
-endmodule</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -904,6 +959,21 @@ endmodule</code></pre>
 <h3 id="pfc">PFC</h3>
 <p>プログラムフローコントローラ。プログラムの流れの変化を処理します。</p>
 <p><img src="img/pfc.dio.svg" /></p>
+<h2 id="スタック">スタック</h2>
+<h2 id="関数呼び出し">関数呼び出し</h2>
+<h2 id="割り込み">割り込み</h2>
+<p>割り込みは関数呼び出しとほとんど同じです。 唯一の違いは、戻りアドレスをRAではなくIRAに保存する点です。</p>
+<p><img src="img/intr_timing.dio.svg" /></p>
+<ol type="1">
+<li>割り込み発生</li>
+<li>現在実行中の命令が終了したら</li>
+<li>次のPCをIRAに退避し、PCを割り込み命令アドレス0x0001にする</li>
+<li>割り込み禁止</li>
+<li>割り込み処理を実行</li>
+<li>割り込み許可（１クロック遅延）</li>
+<li>割り込み復帰</li>
+<li>元の処理を実行</li>
+</ol>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
