@@ -639,21 +639,15 @@
 <h3 id="命令の実行">命令の実行</h3>
 <p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。</p>
 <p><img src="img/data_path.dio.svg" /></p>
-<p>4ステージで実行します。</p>
-<ol type="1">
-<li>RAMから読み出し</li>
-<li>RAMから読み出し</li>
-<li>RAMへ書き込む</li>
-<li>PCをカウントアップする</li>
-</ol>
-<table style="width:100%;">
+<p>これを、4ステージで実行します。</p>
+<table>
 <colgroup>
-<col style="width: 3%" />
+<col style="width: 6%" />
+<col style="width: 17%" />
+<col style="width: 19%" />
 <col style="width: 18%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -667,7 +661,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">1 ロード</td>
+<td style="text-align: left;">1 RAMからロード</td>
 <td style="text-align: left;">RAM[rs1] =&gt; RS1</td>
 <td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>計算 : ALU(RS1,<strong>imm</strong>,func)</td>
 <td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>計算 : ALU(RS1,<strong>imm</strong>,add)</td>
@@ -675,7 +669,7 @@
 <td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>計算 : ALU(RS1,<strong>imm</strong>,add)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">2 ロード</td>
+<td style="text-align: left;">2 RAMからロード</td>
 <td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>計算 : ALU(RS1,RS2,func)</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">RAM<a href="#alu">ALU</a> =&gt; RS2</td>
@@ -683,7 +677,7 @@
 <td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>分岐判定 : IS_ZERO(RS2)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">3 ストア</td>
+<td style="text-align: left;">3 RAMへストア</td>
 <td style="text-align: left;">ALU =&gt; RAM[rd]</td>
 <td style="text-align: left;">ALU =&gt; RAM[rd]</td>
 <td style="text-align: left;">RS2 =&gt; RAM[rd]</td>
@@ -692,64 +686,15 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">4 PC変更</td>
-<td style="text-align: left;">PC++</td>
-<td style="text-align: left;">PC++</td>
-<td style="text-align: left;">PC++</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">PC+1 =&gt; PC</td>
+<td style="text-align: left;">PC+1 =&gt; PC</td>
+<td style="text-align: left;">PC+1 =&gt; PC</td>
+<td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">IS_ZERO ? ALU : PC+1 =&gt; PC</td>
 </tr>
 </tbody>
 </table>
-<h4 id="calci"><code>calci</code></h4>
-<ol type="1">
-<li>RS1をロード</li>
-<li>RS2をロード→計算</li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Stg0</th>
-<th>Stg1</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>calc</code></td>
-<td>RAM[rs1] =&gt; RS1</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>calci</code></td>
-<td>=&gt; RS1</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>load</code></td>
-<td>=&gt; RS1</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>store</code></td>
-<td>=&gt; RS1</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>calif</code></td>
-<td>=&gt; RS1</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h3 id="id-命令デコーダ"><code>ID</code> 命令デコーダ</h3>
-<p>命令デコーダ。機械語命令をもとに、マルチプレクサを切り替えて、データの経路を決める。</p>
-<p>4 クロックで 1 命令を実行する。</p>
-<ol type="1">
-<li>メモリを読み出し、RS1 に記録</li>
-<li>メモリを読み出し、RS2 に記録</li>
-<li>メモリに書き込み</li>
-<li>PC のカウントアップ</li>
-</ol>
 <table>
 <thead>
 <tr class="header">
@@ -974,6 +919,7 @@
 <li>割り込み復帰</li>
 <li>元の処理を実行</li>
 </ol>
+<p>割り込み許可を1クロック遅延させるのは、割り込みリターンのところで割り込みが発生するのを防ぐためです。</p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
