@@ -646,16 +646,14 @@
 <p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。</p>
 <p><img src="img/data_path.dio.svg" /></p>
 <p>これを、4ステkージで実行します。</p>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 3%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
+<col style="width: 4%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -664,8 +662,6 @@
 <th style="text-align: left;"><code>calci</code></th>
 <th style="text-align: left;"><code>load</code></th>
 <th style="text-align: left;"><code>store</code></th>
-<th style="text-align: left;"><code>push</code></th>
-<th style="text-align: left;"><code>pop</code></th>
 <th style="text-align: left;"><code>calif</code></th>
 </tr>
 </thead>
@@ -676,34 +672,26 @@
 <td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,func)</td>
 <td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,add)</td>
 <td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,add)</td>
-<td style="text-align: left;">[sp] =&gt; SR1<br/>ALU(SR1,1,add)</td>
-<td style="text-align: left;">[sp] =&gt; SR1<br/>ALU(SR1,-1,add)</td>
 <td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,add)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2.Load</td>
 <td style="text-align: left;">[sa2] =&gt; SR2<br/>ALU(SR1,SR2,func)</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">[ALU] =&gt; SR2<br/></td>
+<td style="text-align: left;">[ALU / SR1] =&gt; SR2<br/></td>
 <td style="text-align: left;">[sa2] =&gt; SR2<br/></td>
-<td style="text-align: left;">[sa2] =&gt; SR2</td>
-<td style="text-align: left;">[ALU] =&gt; SR2</td>
 <td style="text-align: left;">[sa2] =&gt; SR2<br/>IS_ZERO(SR2)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3.Store</td>
 <td style="text-align: left;">ALU =&gt; [da]</td>
 <td style="text-align: left;">ALU =&gt; [da]</td>
-<td style="text-align: left;">SR2 =&gt; [da]</td>
-<td style="text-align: left;">SR2 =&gt; [ALU]</td>
-<td style="text-align: left;">SR2 =&gt; [ALU]<br/>ALU =&gt; SP</td>
 <td style="text-align: left;">SR2 =&gt; [da]<br/>ALU =&gt; SP</td>
+<td style="text-align: left;">SR2 =&gt; [ALU / SR1]<br/>ALU =&gt; SP</td>
 <td style="text-align: left;">PC+1 =&gt; [da]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4.NextPC</td>
-<td style="text-align: left;">PC+1 =&gt; PC</td>
-<td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>

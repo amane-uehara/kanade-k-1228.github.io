@@ -224,12 +224,12 @@ RK16の命令は「RAMから2回読み出し1回書き込む」という形式�
 
 これを、4ステkージで実行します。
 
-| ステージ | `calc`                             | `calci`                            | `load`                            | `store`                           | `push`                         | `pop`                           | `calif`                           |
-| :------- | :--------------------------------- | :--------------------------------- | :-------------------------------- | :-------------------------------- | :----------------------------- | :------------------------------ | :-------------------------------- |
-| 1.Load   | [sa1] => SR1<br/>                  | [sa1] => SR1<br/>ALU(SR1,imm,func) | [sa1] => SR1<br/>ALU(SR1,imm,add) | [sa1] => SR1<br/>ALU(SR1,imm,add) | [sp] => SR1<br/>ALU(SR1,1,add) | [sp] => SR1<br/>ALU(SR1,-1,add) | [sa1] => SR1<br/>ALU(SR1,imm,add) |
-| 2.Load   | [sa2] => SR2<br/>ALU(SR1,SR2,func) |                                    | [ALU] => SR2<br/>                 | [sa2] => SR2<br/>                 | [sa2] => SR2                   | [ALU] => SR2                    | [sa2] => SR2<br/>IS_ZERO(SR2)     |
-| 3.Store  | ALU => [da]                        | ALU => [da]                        | SR2 => [da]                       | SR2 => [ALU]                      | SR2 => [ALU]<br/>ALU => SP     | SR2 => [da]<br/>ALU => SP       | PC+1 => [da]                      |
-| 4.NextPC | PC+1 => PC                         | PC+1 => PC                         | PC+1 => PC                        | PC+1 => PC                        | PC+1 => PC                     | PC+1 => PC                      | IS_ZERO ? ALU : PC+1 => PC        |
+| ステージ | `calc`                             | `calci`                            | `load`                            | `store`                           | `calif`                           |
+| :------- | :--------------------------------- | :--------------------------------- | :-------------------------------- | :-------------------------------- | :-------------------------------- |
+| 1.Load   | [sa1] => SR1<br/>                  | [sa1] => SR1<br/>ALU(SR1,imm,func) | [sa1] => SR1<br/>ALU(SR1,imm,add) | [sa1] => SR1<br/>ALU(SR1,imm,add) | [sa1] => SR1<br/>ALU(SR1,imm,add) |
+| 2.Load   | [sa2] => SR2<br/>ALU(SR1,SR2,func) |                                    | [ALU / SR1] => SR2<br/>           | [sa2] => SR2<br/>                 | [sa2] => SR2<br/>IS_ZERO(SR2)     |
+| 3.Store  | ALU => [da]                        | ALU => [da]                        | SR2 => [da]<br/>ALU => SP         | SR2 => [ALU / SR1]<br/>ALU => SP  | PC+1 => [da]                      |
+| 4.NextPC | PC+1 => PC                         | PC+1 => PC                         | PC+1 => PC                        | PC+1 => PC                        | IS_ZERO ? ALU : PC+1 => PC        |
 
 ![](img/stage_const.dio.svg)
 
