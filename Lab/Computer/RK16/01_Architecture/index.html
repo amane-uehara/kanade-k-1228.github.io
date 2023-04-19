@@ -249,11 +249,11 @@
 <p>　この問題を解消するため、メモリバースト転送という仕組みを実装します。 各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。 レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
 <h3 id="特殊レジスタ">特殊レジスタ</h3>
 <p>　レジスタをSRAMとして実装すると述べましたが、SRAMの入出力ポートは１つしかないので、複数のレジスタ値を常に取得し続けることができないという問題があります。そのため、4個のレジスタはSRAMとは独立したDフリップフロップICで実装します。アドレスの上位12ビットが0の場合 <code>0b0000_0000_0000_00xx</code> SRAMのCE信号をOFFにして、DFFのCE信号をONにします。(CE:Chip Enable)</p>
-<h4 id="zero-ゼロレジスタ">0. <code>zero</code> ゼロ・レジスタ</h4>
+<h4 id="ゼロレジスタzero">0. ゼロ・レジスタ(<code>zero</code>)</h4>
 <p>常にゼロを返すレジスタです。</p>
-<h4 id="ira-割り込み戻りアドレス">1. <code>ira</code> 割り込み戻りアドレス</h4>
+<h4 id="割り込み戻りアドレスira">1. 割り込み戻りアドレス(<code>ira</code>)</h4>
 <p>割り込みが発生したら、次のクロックでPCを割り込みのアドレス(0x0001)に変更し、割り込みの処理を行います。その時に、本来次に行くべきPCを退避しておくレジスタが、割り込みリターンアドレス (IRA : Interrupt Return Address) です。</p>
-<h4 id="csr-状態制御レジスタ">2. <code>csr</code> 状態制御レジスタ</h4>
+<h4 id="状態制御レジスタcsr">2. 状態制御レジスタ(<code>csr</code>)</h4>
 <table>
 <thead>
 <tr class="header">
@@ -290,20 +290,20 @@
 </tr>
 </tbody>
 </table>
-<h4 id="sp-スタックポインタ">3. <code>sp</code> スタック・ポインタ</h4>
+<h4 id="スタックポインタsp">3. スタック・ポインタ(<code>sp</code>)</h4>
 <p>スタックの先頭を指したポインタです。</p>
 <h3 id="汎用レジスタ">汎用レジスタ</h3>
 <p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じです。</p>
 <p>汎用レジスタの用途は ABI (Application Binary Interface) で規定されています。詳細は関数呼び出しの項で。</p>
-<h4 id="ra-戻りアドレス">0. <code>ra</code> 戻りアドレス</h4>
+<h4 id="戻りアドレスra">0. 戻りアドレス(<code>ra</code>)</h4>
 <p>関数の戻りアドレスを退避しておくレジスタです。</p>
-<h4 id="fp-フレームポインタ">1. <code>fp</code> フレームポインタ</h4>
+<h4 id="フレームポインタfp">1. フレームポインタ(<code>fp</code>)</h4>
 <p>関数フレームの基底アドレスを指したポインタです。</p>
-<h4 id="ax-引数戻値レジスタ">2. <code>ax</code> 引数戻値レジスタ</h4>
+<h4 id="引数戻値レジスタax">2. 引数戻値レジスタ(<code>ax</code>)</h4>
 <p>関数の引数を入れておくレジスタです。</p>
-<h4 id="tx-一時レジスタ">3. <code>tx</code> 一時レジスタ</h4>
+<h4 id="一時レジスタtx">3. 一時レジスタ(<code>tx</code>)</h4>
 <p>関数呼び出しの後で値が変化するレジスタです。</p>
-<h4 id="sx-保存レジスタ">4. <code>sx</code> 保存レジスタ</h4>
+<h4 id="保存レジスタsx">4. 保存レジスタ(<code>sx</code>)</h4>
 <p>関数側が関数の前後で値が変化しないことを保証するレジスタです。</p>
 <h2 id="命令セット">命令セット</h2>
 <p><img src="img/isa.png" /></p>
@@ -643,9 +643,8 @@
 <h2 id="回路">回路</h2>
 <p><img src="img/arch.dio.svg" /></p>
 <h3 id="命令の実行">命令の実行</h3>
-<p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。</p>
+<p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。 これを4ステージで実行します。</p>
 <p><img src="img/data_path.dio.svg" /></p>
-<p>これを、4ステkージで実行します。</p>
 <table>
 <colgroup>
 <col style="width: 4%" />
@@ -678,7 +677,7 @@
 <td style="text-align: left;">2.Load</td>
 <td style="text-align: left;">[sa2] =&gt; SR2<br/>ALU(SR1,SR2,func)</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">[ALU / SR1] =&gt; SR2<br/></td>
+<td style="text-align: left;">[ALU] =&gt; SR2<br/></td>
 <td style="text-align: left;">[sa2] =&gt; SR2<br/></td>
 <td style="text-align: left;">[sa2] =&gt; SR2<br/>IS_ZERO(SR2)</td>
 </tr>
