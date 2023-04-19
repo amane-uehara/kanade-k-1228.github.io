@@ -177,64 +177,70 @@
 </thead>
 <tbody>
 <tr class="odd">
+<td><strong>特殊レジスタ</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
 <td>0x0000</td>
 <td>zero</td>
 <td>ゼロ固定</td>
 <td>R</td>
 </tr>
-<tr class="even">
-<td>0x0001</td>
-<td>pc</td>
-<td>プログラムカウンタ</td>
-<td>R</td>
-</tr>
 <tr class="odd">
-<td>0x0002</td>
+<td>0x0001</td>
 <td>ira</td>
 <td>割り込み戻りアドレス</td>
 <td>R</td>
 </tr>
 <tr class="even">
-<td>0x0003</td>
+<td>0x0002</td>
 <td>csr</td>
 <td>状態制御レジスタ</td>
-<td>RW</td>
+<td>R/W</td>
+</tr>
+<tr class="odd">
+<td>0x0003</td>
+<td>sp</td>
+<td>スタックポインタ</td>
+<td>R&amp;W</td>
+</tr>
+<tr class="even">
+<td><strong>汎用レジスタ</strong></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>0x0004</td>
 <td>ra</td>
 <td>戻りアドレス</td>
-<td>✕</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>0x0005</td>
-<td>sp</td>
-<td>スタック・ポインタ</td>
-<td>〇</td>
-</tr>
-<tr class="odd">
-<td>0x0006</td>
 <td>fp</td>
 <td>フレーム・ポインタ</td>
-<td>〇</td>
-</tr>
-<tr class="even">
-<td>0x0007</td>
-<td>-</td>
-<td>用途未定</td>
-<td>〇</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>0x0008 - 0x000b</td>
-<td>s0 - s3</td>
-<td>保存レジスタ</td>
-<td>〇</td>
+<td>0x0006 - 0x0007</td>
+<td>a0 - a1</td>
+<td>引数戻値レジスタ</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>0x000c - 0x000f</td>
+<td>0x0008 - 0x000b</td>
 <td>t0 - t3</td>
 <td>一時レジスタ</td>
-<td>✕</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0x000c - 0x000f</td>
+<td>s0 - s3</td>
+<td>保存レジスタ</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -243,14 +249,11 @@
 <p>　この問題を解消するため、メモリバースト転送という仕組みを実装します。 各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。 レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
 <h3 id="特殊レジスタ">特殊レジスタ</h3>
 <p>　レジスタをSRAMとして実装すると述べましたが、SRAMの入出力ポートは１つしかないので、複数のレジスタ値を常に取得し続けることができないという問題があります。そのため、4個のレジスタはSRAMとは独立したDフリップフロップICで実装します。アドレスの上位12ビットが0の場合 <code>0b0000_0000_0000_00xx</code> SRAMのCE信号をOFFにして、DFFのCE信号をONにします。(CE:Chip Enable)</p>
-<h4 id="zero-ゼロレジスタ"><code>zero</code> ゼロ・レジスタ</h4>
+<h4 id="zero-ゼロレジスタ">0. <code>zero</code> ゼロ・レジスタ</h4>
 <p>常にゼロを返すレジスタです。</p>
-<h4 id="pc-プログラムカウンタ"><code>pc</code> プログラム・カウンタ</h4>
-<p>プログラムカウンタは、</p>
-<p>通常のレジスタアクセスの手順で書き換えることができません。</p>
-<h4 id="ira-割り込み戻りアドレス"><code>ira</code> 割り込み戻りアドレス</h4>
+<h4 id="ira-割り込み戻りアドレス">1. <code>ira</code> 割り込み戻りアドレス</h4>
 <p>割り込みが発生したら、次のクロックでPCを割り込みのアドレス(0x0001)に変更し、割り込みの処理を行います。その時に、本来次に行くべきPCを退避しておくレジスタが、割り込みリターンアドレス (IRA : Interrupt Return Address) です。</p>
-<h4 id="状態制御レジスタ">状態制御レジスタ</h4>
+<h4 id="csr-状態制御レジスタ">2. <code>csr</code> 状態制御レジスタ</h4>
 <table>
 <thead>
 <tr class="header">
@@ -287,17 +290,24 @@
 </tr>
 </tbody>
 </table>
-<h3 id="汎用レジスタ">汎用レジスタ</h3>
-<p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じです。ただ、好き勝手に使うといろいろな問題が生じます。例えば、ライブラリによってレジスタの使い方が違うと、関数呼び出しの方法が変わったりして混乱が生じます。そのため、ABI (Application Binary Interface) でレジスタの使い方を定めています。</p>
-<h4 id="ra-戻りアドレス"><code>ra</code> 戻りアドレス</h4>
-<p>関数の戻りアドレスを退避しておくレジスタです。</p>
-<h4 id="sp-スタックポインタ"><code>sp</code> スタックポインタ</h4>
+<h4 id="sp-スタックポインタ">3. <code>sp</code> スタック・ポインタ</h4>
 <p>スタックの先頭を指したポインタです。</p>
-<h4 id="fp-フレームポインタ"><code>fp</code> フレームポインタ</h4>
+<h3 id="汎用レジスタ">汎用レジスタ</h3>
+<p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じです。</p>
+<p>汎用レジスタの用途は ABI (Application Binary Interface) で規定されています。詳細は関数呼び出しの項で。</p>
+<h4 id="ra-戻りアドレス">0. <code>ra</code> 戻りアドレス</h4>
+<p>関数の戻りアドレスを退避しておくレジスタです。</p>
+<h4 id="fp-フレームポインタ">1. <code>fp</code> フレームポインタ</h4>
 <p>関数フレームの基底アドレスを指したポインタです。</p>
+<h4 id="ax-引数戻値レジスタ">2. <code>ax</code> 引数戻値レジスタ</h4>
+<p>関数の引数を入れておくレジスタです。</p>
+<h4 id="tx-一時レジスタ">3. <code>tx</code> 一時レジスタ</h4>
+<p>関数呼び出しの後で値が変化するレジスタです。</p>
+<h4 id="sx-保存レジスタ">4. <code>sx</code> 保存レジスタ</h4>
+<p>関数側が関数の前後で値が変化しないことを保証するレジスタです。</p>
 <h2 id="命令セット">命令セット</h2>
 <p><img src="img/isa.png" /></p>
-<p>機械語的に見ると命令は <code>calc</code>,<code>calci</code>,<code>load</code>,<code>store</code>,<code>calif</code> の5種類です。しかし、アセンブラから見ると、??種類の命令があります。多くのアセンブラでは「疑似命令」と呼ばれるシンタックスシュガーを実装しています。例えば、RISC-Vでは、<code>add rd, rs, zero</code> を <code>mov rd, rs</code> と短縮して書くことができます。しかし、RKASMの疑似命令はシンタックスシュガーではありません。その特徴が一番現れているのが <code>calif</code> 命令です。<code>calif</code>をニーモニックとして使うことはできません。アセンブラ <code>if rs2 rs1 imm</code> は、内部的には <code>calif zero rs2 rs1 imm</code> と等価ですが、アセンブラ上で直接 <code>calif zero rs2 rs1 imm</code> と書くことはできません。別にこれを書けるようにしてもいいんですが、引数を4つも取ると、アセンブラが見にくくなるという問題があります。また実用上、引数4つをフルで使うことはない（どれかがzeroになる）ので、<code>calif</code>を直接呼び出せないようにしています。その代わりに、使い方に応じてニーモニック<code>if</code> <code>jump</code> <code>call</code> <code>ret</code> <code>iret</code> を割り当てています。これによって「生で書いてもわかりやすい＆バグりにくいアセンブラ」を実現します。</p>
+<p>機械語的に見ると命令は <code>calc</code>,<code>calci</code>,<code>load</code>,<code>store</code>,<code>calif</code> の5種類です。しかし、アセンブラから見ると、??種類の命令があります。多くのアセンブラでは「疑似命令」と呼ばれるシンタックスシュガーを実装しています。例えば、RISC-Vでは、<code>add rd, rs, zero</code> を <code>mov rd, rs</code> と短縮して書くことができます。しかし、RKASMの疑似命令はシンタックスシュガーではありません。その特徴が一番現れているのが <code>calif</code> 命令です。<code>calif</code>をニーモニックとして使うことはできません。アセンブラ <code>if sa2 sa1 imm</code> は、内部的には <code>calif zero sa2 sa1 imm</code> と等価ですが、アセンブラ上で直接 <code>calif zero sa2 sa1 imm</code> と書くことはできません。別にこれを書けるようにしてもいいんですが、引数を4つも取ると、アセンブラが見にくくなるという問題があります。また実用上、引数4つをフルで使うことはない（どれかがzeroになる）ので、<code>calif</code>を直接呼び出せないようにしています。その代わりに、使い方に応じてニーモニック<code>if</code> <code>jump</code> <code>call</code> <code>ret</code> <code>iret</code> を割り当てています。これによって「生で書いてもわかりやすい＆バグりにくいアセンブラ」を実現します。</p>
 <p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。これにより、全ての命令が同じステージ数で実行できるようになり、命令デコーダ (ID:Instruction Decoder) の回路を簡略化できます。</p>
 <p>機械語命令は5種類あるので、命令ビットは 3 ビットで済むはずです。また、バイナリ中で最も多く出現する <code>mov</code> 命令は、意味のあるビットは 12/32 と、命令空間をかなり無駄遣いしています。つまり、この命令セットは情報量に対してかなり余剰なROM空間を消費するということになります。一般的に、特にROM空間が限られる組み込みにおいて、命令セットはバイナリ長が短くなるものが良いです。しかし、RKISAはロジックICで実装するために、ハードウェアの削減に重きをおいています。命令デコーダ(ID)の実装が楽になるように、あえて余分なビットを使っています。</p>
 <h3 id="演算命令">演算命令</h3>
@@ -312,13 +322,13 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">レジスタ演算</td>
-<td style="text-align: left;">add rd rs1 rs2</td>
-<td style="text-align: left;">rd = rs1 + rs2</td>
+<td style="text-align: left;">add da sa1 sa2</td>
+<td style="text-align: left;">[da] = [sa1] + [sa2]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">即値演算</td>
-<td style="text-align: left;">addi rd rs1 imm</td>
-<td style="text-align: left;">rd = rs1 + imm</td>
+<td style="text-align: left;">addi da sa1 imm</td>
+<td style="text-align: left;">[da] = [sa1] + imm</td>
 </tr>
 </tbody>
 </table>
@@ -478,28 +488,28 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">レジスタ間移動</td>
-<td style="text-align: left;">mov rd rs</td>
-<td style="text-align: left;">rd = rs</td>
+<td style="text-align: left;">mov da sa</td>
+<td style="text-align: left;">[da] = [sa]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">即値ロード</td>
-<td style="text-align: left;">loadi rd imm</td>
-<td style="text-align: left;">rd = imm</td>
+<td style="text-align: left;">loadi da imm</td>
+<td style="text-align: left;">[da] = imm</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">メモリロード</td>
-<td style="text-align: left;">load rd rs1 imm</td>
-<td style="text-align: left;">rd = mem[rs1 + imm]</td>
+<td style="text-align: left;">load da sa1 imm</td>
+<td style="text-align: left;">[da] = [[sa1] + imm]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">メモリストア</td>
-<td style="text-align: left;">store rs2 rs1 imm</td>
-<td style="text-align: left;">mem[rs1 + imm] = rs2</td>
+<td style="text-align: left;">store sa2 sa1 imm</td>
+<td style="text-align: left;">[[sa1] + imm] = [sa2]</td>
 </tr>
 </tbody>
 </table>
 <p>ロード命令は、メモリからレジスタに値を移動します。 ストア命令は、レジスタからメモリに値を移動します。</p>
-<p>メモリのアドレスは、レジスタに入ってる値と即値を足します。(mem[rs1 + imm])</p>
+<p>メモリのアドレスは、レジスタに入ってる値と即値を足します。(mem[sa1 + imm])</p>
 <h3 id="制御命令">制御命令</h3>
 <table>
 <thead>
@@ -513,12 +523,12 @@
 <tr class="odd">
 <td style="text-align: left;">条件呼出</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">rd = PC + 1, if(rs2 == 0) PC = rs1 + imm</td>
+<td style="text-align: left;">[da] = PC + 1, if([sa2] == 0) PC = [sa1] + imm</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">条件分岐</td>
-<td style="text-align: left;">if rs2 imm</td>
-<td style="text-align: left;">if(rs1 == 0) PC = imm</td>
+<td style="text-align: left;">if sa2 imm</td>
+<td style="text-align: left;">if([sa1] == 0) PC = imm</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ジャンプ</td>
@@ -528,17 +538,17 @@
 <tr class="even">
 <td style="text-align: left;">関数呼出</td>
 <td style="text-align: left;">call imm</td>
-<td style="text-align: left;">ra = PC + 1, PC = imm</td>
+<td style="text-align: left;">[RA] = PC + 1, PC = imm</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">関数復帰</td>
 <td style="text-align: left;">ret</td>
-<td style="text-align: left;">PC = ra</td>
+<td style="text-align: left;">PC = [RA]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">割込復帰</td>
 <td style="text-align: left;">iret</td>
-<td style="text-align: left;">PC = ira</td>
+<td style="text-align: left;">PC = [IRA]</td>
 </tr>
 </tbody>
 </table>
@@ -635,15 +645,17 @@
 <h3 id="命令の実行">命令の実行</h3>
 <p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。</p>
 <p><img src="img/data_path.dio.svg" /></p>
-<p>これを、4ステージで実行します。</p>
-<table>
+<p>これを、4ステkージで実行します。</p>
+<table style="width:100%;">
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
+<col style="width: 3%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -652,41 +664,51 @@
 <th style="text-align: left;"><code>calci</code></th>
 <th style="text-align: left;"><code>load</code></th>
 <th style="text-align: left;"><code>store</code></th>
+<th style="text-align: left;"><code>push</code></th>
+<th style="text-align: left;"><code>pop</code></th>
 <th style="text-align: left;"><code>calif</code></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">1 ロード</td>
-<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/></td>
-<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>ALU(RS1,imm,func)</td>
-<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>ALU(RS1,imm,add)</td>
-<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>ALU(RS1,imm,add)</td>
-<td style="text-align: left;">RAM[rs1] =&gt; RS1<br/>ALU(RS1,imm,add)</td>
+<td style="text-align: left;">1.Load</td>
+<td style="text-align: left;">[sa1] =&gt; SR1<br/></td>
+<td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,func)</td>
+<td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,add)</td>
+<td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,add)</td>
+<td style="text-align: left;">[sp] =&gt; SR1<br/>ALU(SR1,1,add)</td>
+<td style="text-align: left;">[sp] =&gt; SR1<br/>ALU(SR1,-1,add)</td>
+<td style="text-align: left;">[sa1] =&gt; SR1<br/>ALU(SR1,imm,add)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">2 ロード</td>
-<td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>ALU(RS1,RS2,func)</td>
+<td style="text-align: left;">2.Load</td>
+<td style="text-align: left;">[sa2] =&gt; SR2<br/>ALU(SR1,SR2,func)</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">RAM[<strong>ALU</strong>] =&gt; RS2<br/></td>
-<td style="text-align: left;">RAM[rs2] =&gt; RS2<br/></td>
-<td style="text-align: left;">RAM[rs2] =&gt; RS2<br/>IS_ZERO(RS2)</td>
+<td style="text-align: left;">[ALU] =&gt; SR2<br/></td>
+<td style="text-align: left;">[sa2] =&gt; SR2<br/></td>
+<td style="text-align: left;">[sa2] =&gt; SR2</td>
+<td style="text-align: left;">[ALU] =&gt; SR2</td>
+<td style="text-align: left;">[sa2] =&gt; SR2<br/>IS_ZERO(SR2)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">3 ストア</td>
-<td style="text-align: left;"><strong>ALU</strong> =&gt; RAM[rd]</td>
-<td style="text-align: left;"><strong>ALU</strong> =&gt; RAM[rd]</td>
-<td style="text-align: left;">RS2 =&gt; RAM[rd]</td>
-<td style="text-align: left;">RS2 =&gt; RAM[<strong>ALU</strong>]</td>
-<td style="text-align: left;">PC+1 =&gt; RAM[rd]</td>
+<td style="text-align: left;">3.Store</td>
+<td style="text-align: left;">ALU =&gt; [da]</td>
+<td style="text-align: left;">ALU =&gt; [da]</td>
+<td style="text-align: left;">SR2 =&gt; [da]</td>
+<td style="text-align: left;">SR2 =&gt; [ALU]</td>
+<td style="text-align: left;">SR2 =&gt; [ALU]<br/>ALU =&gt; SP</td>
+<td style="text-align: left;">SR2 =&gt; [da]<br/>ALU =&gt; SP</td>
+<td style="text-align: left;">PC+1 =&gt; [da]</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">4 PC変更</td>
+<td style="text-align: left;">4.NextPC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
-<td style="text-align: left;"><strong>IS_ZERO</strong> ? <strong>ALU</strong> : PC+1 =&gt; PC</td>
+<td style="text-align: left;">PC+1 =&gt; PC</td>
+<td style="text-align: left;">PC+1 =&gt; PC</td>
+<td style="text-align: left;">IS_ZERO ? ALU : PC+1 =&gt; PC</td>
 </tr>
 </tbody>
 </table>
