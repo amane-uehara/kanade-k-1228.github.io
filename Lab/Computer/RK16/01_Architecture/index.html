@@ -146,7 +146,7 @@
 <li><a href="#命令セット">命令セット</a>
 <ul>
 <li><a href="#演算命令">演算命令</a></li>
-<li><a href="#移値命令">移値命令</a></li>
+<li><a href="#転送命令">転送命令</a></li>
 <li><a href="#制御命令">制御命令</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a>
@@ -162,7 +162,10 @@
 </ul></li>
 <li><a href="#スタック">スタック</a></li>
 <li><a href="#関数呼び出し">関数呼び出し</a></li>
-<li><a href="#割り込み">割り込み</a></li>
+<li><a href="#割り込み">割り込み</a>
+<ul>
+<li><a href="#例外">例外</a></li>
+</ul></li>
 </ul></nav>
      <h2 id="レジスタ">レジスタ</h2>
 <p>メモリ空間の上位16個(0x000x)をレジスタとして割り当てます。</p>
@@ -249,11 +252,11 @@
 <p>　この問題を解消するため、メモリバースト転送という仕組みを実装します。 各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。 レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
 <h3 id="特殊レジスタ">特殊レジスタ</h3>
 <p>　レジスタをSRAMとして実装すると述べましたが、SRAMの入出力ポートは１つしかないので、複数のレジスタ値を常に取得し続けることができないという問題があります。そのため、4個のレジスタはSRAMとは独立したDフリップフロップICで実装します。アドレスの上位12ビットが0の場合 <code>0b0000_0000_0000_00xx</code> SRAMのCE信号をOFFにして、DFFのCE信号をONにします。(CE:Chip Enable)</p>
-<h4 id="ゼロレジスタzero">0. ゼロ・レジスタ(<code>zero</code>)</h4>
+<h4 id="ゼロレジスタzero">0. ゼロ・レジスタ(zero)</h4>
 <p>常にゼロを返すレジスタです。</p>
-<h4 id="割り込み戻りアドレスira">1. 割り込み戻りアドレス(<code>ira</code>)</h4>
+<h4 id="割り込み戻りアドレスira">1. 割り込み戻りアドレス(ira)</h4>
 <p>割り込みが発生したら、次のクロックでPCを割り込みのアドレス(0x0001)に変更し、割り込みの処理を行います。その時に、本来次に行くべきPCを退避しておくレジスタが、割り込みリターンアドレス (IRA : Interrupt Return Address) です。</p>
-<h4 id="状態制御レジスタcsr">2. 状態制御レジスタ(<code>csr</code>)</h4>
+<h4 id="状態制御レジスタcsr">2. 状態制御レジスタ(csr)</h4>
 <table>
 <thead>
 <tr class="header">
@@ -277,12 +280,18 @@
 <td style="text-align: left;">0-6番割り込み</td>
 </tr>
 <tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align: left;">内部例外</td>
+</tr>
+<tr class="even">
 <td>8-f</td>
 <td></td>
 <td></td>
 <td style="text-align: left;">未定</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>8</td>
 <td>mode</td>
 <td></td>
@@ -290,20 +299,20 @@
 </tr>
 </tbody>
 </table>
-<h4 id="スタックポインタsp">3. スタック・ポインタ(<code>sp</code>)</h4>
+<h4 id="スタックポインタsp">3. スタック・ポインタ(sp)</h4>
 <p>スタックの先頭を指したポインタです。</p>
 <h3 id="汎用レジスタ">汎用レジスタ</h3>
 <p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じです。</p>
 <p>汎用レジスタの用途は ABI (Application Binary Interface) で規定されています。詳細は関数呼び出しの項で。</p>
-<h4 id="戻りアドレスra">0. 戻りアドレス(<code>ra</code>)</h4>
+<h4 id="戻りアドレスra">0. 戻りアドレス(ra)</h4>
 <p>関数の戻りアドレスを退避しておくレジスタです。</p>
-<h4 id="フレームポインタfp">1. フレームポインタ(<code>fp</code>)</h4>
+<h4 id="フレームポインタfp">1. フレームポインタ(fp)</h4>
 <p>関数フレームの基底アドレスを指したポインタです。</p>
-<h4 id="引数戻値レジスタax">2. 引数戻値レジスタ(<code>ax</code>)</h4>
+<h4 id="引数戻値レジスタa0-a1">2. 引数戻値レジスタ(a0-a1)</h4>
 <p>関数の引数を入れておくレジスタです。</p>
-<h4 id="一時レジスタtx">3. 一時レジスタ(<code>tx</code>)</h4>
+<h4 id="一時レジスタt0-t3">3. 一時レジスタ(t0-t3)</h4>
 <p>関数呼び出しの後で値が変化するレジスタです。</p>
-<h4 id="保存レジスタsx">4. 保存レジスタ(<code>sx</code>)</h4>
+<h4 id="保存レジスタs0-s3">4. 保存レジスタ(s0-s3)</h4>
 <p>関数側が関数の前後で値が変化しないことを保証するレジスタです。</p>
 <h2 id="命令セット">命令セット</h2>
 <p><img src="img/isa.png" /></p>
@@ -476,7 +485,7 @@
 </tbody>
 </table>
 <p>比較演算は true = 0xFFFF false = 0x0000 を返します。 論理キャストは false(0x0000) 以外の値を 0xFFFF に変換します。 論理演算をビット演算で行えます。</p>
-<h3 id="移値命令">移値命令</h3>
+<h3 id="転送命令">転送命令</h3>
 <table>
 <thead>
 <tr class="header">
@@ -686,11 +695,11 @@
 <td style="text-align: left;">ALU =&gt; [da]</td>
 <td style="text-align: left;">ALU =&gt; [da]</td>
 <td style="text-align: left;">SR2 =&gt; [da]<br/>ALU =&gt; SP</td>
-<td style="text-align: left;">SR2 =&gt; [ALU / SR1]<br/>ALU =&gt; SP</td>
+<td style="text-align: left;">SR2 =&gt; [ALU/SR1]<br/>ALU =&gt; SP</td>
 <td style="text-align: left;">PC+1 =&gt; [da]</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">4.NextPC</td>
+<td style="text-align: left;">4.Dump</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
 <td style="text-align: left;">PC+1 =&gt; PC</td>
@@ -700,7 +709,7 @@
 </tbody>
 </table>
 <p><img src="img/stage_const.dio.svg" /></p>
-<p>命令に合わせて、各ステージの長さを調整することで、クロックを上げられます。</p>
+<p>命令に合わせて、各ステージの長さを調整することで、クロック（正確にはIPS）を上げられます。</p>
 <p><img src="img/stage_fast.dio.svg" /></p>
 <h2 id="スタック">スタック</h2>
 <p>一般的なCPUでは、スタックの <code>pop</code> と <code>push</code> 命令があります。</p>
@@ -725,6 +734,28 @@
 <p>割り込み処理から復帰する前に、割り込み許可ビットを<code>1</code>に戻します。変更が反映されるまで、ハードウェア的に1クロック遅延させています。割り込みから復帰する前に割り込みが発生すると、IRAが上書きされ、元の処理がわからなくなります。</p>
 <h4 id="割り込みから復帰">6. 割り込みから復帰</h4>
 <p><code>iret</code> 命令で割り込みから元の処理に戻ります。</p>
+<h3 id="例外">例外</h3>
+<ul>
+<li>外部要因：命令に非同期
+<ul>
+<li>割り込み</li>
+</ul></li>
+<li>内部要因：命令の結果として生じる
+<ul>
+<li>トラップ
+<ul>
+<li>OSシステムコールの呼び出しなど</li>
+</ul></li>
+<li>フォールト
+<ul>
+<li>たぶん元の処理に戻る</li>
+</ul></li>
+<li>アボート
+<ul>
+<li>たぶん元の処理に戻らない</li>
+</ul></li>
+</ul></li>
+</ul>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
