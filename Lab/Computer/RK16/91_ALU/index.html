@@ -140,7 +140,71 @@
 <li><a href="#テスト">テスト</a></li>
 </ul></nav>
      <h2 id="機能">機能</h2>
+<table>
+<thead>
+<tr class="header">
+<th>機能</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>加算</td>
+<td>add</td>
+</tr>
+<tr class="even">
+<td>減算</td>
+<td>sub</td>
+</tr>
+<tr class="odd">
+<td>論理積</td>
+<td>and</td>
+</tr>
+<tr class="even">
+<td>論理和</td>
+<td>or</td>
+</tr>
+<tr class="odd">
+<td>排他的論理和</td>
+<td>xor</td>
+</tr>
+<tr class="even">
+<td>論理否定</td>
+<td>not</td>
+</tr>
+<tr class="odd">
+<td>左シフト</td>
+<td>sl</td>
+</tr>
+<tr class="even">
+<td>等値</td>
+<td>eq</td>
+</tr>
+<tr class="odd">
+<td>比較(signed)</td>
+<td>lts</td>
+</tr>
+<tr class="even">
+<td>比較(unsigned)</td>
+<td>ltu</td>
+</tr>
+<tr class="odd">
+<td>論理キャスト</td>
+<td>lcast</td>
+</tr>
+<tr class="even">
+<td>右シフト(signed)</td>
+<td>srs</td>
+</tr>
+<tr class="odd">
+<td>右シフト(unsigned)</td>
+<td>sru</td>
+</tr>
+</tbody>
+</table>
 <h2 id="設計">設計</h2>
+<p><img src="img/circuit.dio.svg" /></p>
+<p>マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。 遅延はデータシート上ではどちらも 10 ns っぽい。</p>
 <h2 id="実装">実装</h2>
 <ul>
 <li><a href="./doc/74HC181.pdf">74HC181</a></li>
