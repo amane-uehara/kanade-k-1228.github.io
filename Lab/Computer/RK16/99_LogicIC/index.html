@@ -26,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-      <title>汎用OS | Kanade's Website</title>
+      <title>使用する部品の仕様 | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -53,7 +53,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "汎用OS",
+        "使用する部品の仕様",
         "_blank"
       );
     }
@@ -99,7 +99,7 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-            <h1 style="margin: 0">汎用OS</h1>
+            <h1 style="margin: 0">使用する部品の仕様</h1>
             <!-- Date -->
             <!-- Description -->
           </header>
@@ -133,7 +133,95 @@
     </p>
 
     <!-- Table of Contents -->
-     <p>時分割なOSを作ります。</p>
+        <nav><ul>
+<li><a href="#μpd-431016">μPD 431016</a>
+<ul>
+<li><a href="#基本情報">基本情報</a></li>
+<li><a href="#使い方">使い方</a></li>
+<li><a href="#rk16での使い方">RK16での使い方</a></li>
+</ul></li>
+<li><a href="#rom">ROM</a></li>
+<li><a href="#hc191">74HC191</a></li>
+<li><a href="#hc181-74hc182">74HC181 &amp; 74HC182</a></li>
+</ul></nav>
+     <p>使えそうなICを調べたメモです。</p>
+<h2 id="μpd-431016">μPD 431016</h2>
+<p>　65536 word x 16 bits の NEC製SRAMです！サイズがぴったり！<a href="https://wakamatsu.co.jp/biz/products/detail.php?product_id=17010392">若松</a> でいっぱい売ってる！</p>
+<h3 id="基本情報">基本情報</h3>
+<ul>
+<li><a href="./doc/UPD431016.pdf">データシート</a></li>
+<li>アクセス時間は <strong>15 ns</strong></li>
+<li>電源電圧は 5 V</li>
+<li>動作時消費電力は 240 mA</li>
+<li>パッケージは 44 Pin SOJ</li>
+</ul>
+<h3 id="使い方">使い方</h3>
+<p>標準的なSRAMの使い方と同じです。</p>
+<p>ピン名の前の<code>!</code>は負論理を意味しています。名前の意味と逆ということです。</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>!CS</td>
+<td>Chip Sellect</td>
+<td>入出力可能</td>
+<td>HiZ</td>
+</tr>
+<tr class="even">
+<td>!WE</td>
+<td>Write Enable</td>
+<td>書き込み不可</td>
+<td>書き込み状態</td>
+</tr>
+<tr class="odd">
+<td>!LB</td>
+<td>Lower Byte</td>
+<td></td>
+<td>IO1-IO8 HiZ</td>
+</tr>
+<tr class="even">
+<td>!UB</td>
+<td>Upper Byte</td>
+<td></td>
+<td>IO9-IO16 HiZ</td>
+</tr>
+<tr class="odd">
+<td>!OE</td>
+<td>Out Enable</td>
+<td></td>
+<td>IO HiZ</td>
+</tr>
+</tbody>
+</table>
+<p>LB UB は 16 bit のIOを 8 bit ずつ制御できる信号です。</p>
+<h4 id="読み出しサイクル">読み出しサイクル</h4>
+<ol type="1">
+<li><code>!CS=!LB=!UB=0</code> <code>!OE=0</code> <code>!WE=1</code></li>
+<li>A0-A15 にアドレスを入力</li>
+<li>tOH &gt; 5 ns 間は前の出力が残る</li>
+<li>tAA &lt; 15 ns 後にはアドレスから読みだされる</li>
+</ol>
+<h4 id="書き込みサイクル">書き込みサイクル</h4>
+<ol type="1">
+<li><code>!CS=!LB=!UB=0</code> <code>!OE=1</code> <code>!WE=0</code></li>
+<li>A0-A15 にアドレスを、 IO0-IO15 にデータをセットする</li>
+<li><code>!WE=1</code> 立ち上がりでデータが書き込まれます</li>
+</ol>
+<h3 id="rk16での使い方">RK16での使い方</h3>
+<p>RK16はRRWRの4ステージを繰り返すので、このような信号をSRAMの制御に与えればいいです。</p>
+<p><img src="./img/sram_timing.dio.svg" /></p>
+<p>また、アドレスの一部を別のデバイスに振り分けるために、アドレスの上位をデコーダICにつなぎます。</p>
+<h2 id="rom">ROM</h2>
+<h2 id="hc191">74HC191</h2>
+<p>　バイナリカウンタです。</p>
+<h2 id="hc181-74hc182">74HC181 &amp; 74HC182</h2>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">

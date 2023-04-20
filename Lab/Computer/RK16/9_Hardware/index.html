@@ -1,0 +1,528 @@
+<!-- (ฅ^･ω･^ฅ) ﾆｬｰ -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114187773-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-114187773-1");
+  </script>
+  <!-- End Google Analytics -->
+  <!-- Load Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+  <!-- End Google Font -->
+
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="@kanade_k_1228" />
+  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
+      <title>ロジックICで組む | Kanade's Website</title>
+
+  <!-- OGP -->
+    <!-- END OGP -->
+  <link rel="stylesheet" href="https://kanade-k-1228.github.io/.common/style.css" />
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    mjx-container[jax="CHTML"][display="true"] {
+      display: block;
+      text-align: center;
+      margin: 0;
+    }
+  </style>
+  <!-- SyntaxHighlight -->
+  <link rel="stylesheet" href="https://kanade-k-1228.github.io/.common/highlight.css" />
+  <script src="https://kanade-k-1228.github.io/.common/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+  <script>
+    function tweet() {
+      window.open(
+        "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
+        location.href +
+        "&text=" +
+        "ロジックICで組む",
+        "_blank"
+      );
+    }
+  </script>
+</head>
+
+<body>
+  <article>
+    <header>
+      <ul>
+        <li><a href="/">ﾎｰﾑ</a></li>
+        <li><a href="/Portfolio/">ﾎﾟﾄﾌｫﾘｵ</a></li>
+        <li><a href="/Lab/">研究室</a></li>
+        <li><a href="/Blog/">雑記</a></li>
+      </ul>
+      <div id="header-links">
+        <a href="https://twitter.com/kanade_k_1228" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
+            style="margin: 0; padding: 0">
+            <circle cx="420.944" cy="296.781" r="294.5" fill="#2daae1" />
+            <path
+              d="M609.773 179.634c-13.891 6.164-28.811 10.331-44.498 12.204 16.01-9.587 28.275-24.779 34.066-42.86a154.78 154.78 0 0 1-49.209 18.801c-14.125-15.056-34.267-24.456-56.551-24.456-42.773 0-77.462 34.675-77.462 77.473 0 6.064.683 11.98 1.996 17.66-64.389-3.236-121.474-34.079-159.684-80.945-6.672 11.446-10.491 24.754-10.491 38.953 0 26.875 13.679 50.587 34.464 64.477a77.122 77.122 0 0 1-35.097-9.686v.979c0 37.54 26.701 68.842 62.145 75.961-6.511 1.784-13.344 2.716-20.413 2.716-4.998 0-9.847-.473-14.584-1.364 9.859 30.769 38.471 53.166 72.363 53.799-26.515 20.785-59.925 33.175-96.212 33.175-6.25 0-12.427-.373-18.491-1.104 34.291 21.988 75.006 34.824 118.759 34.824 142.496 0 220.428-118.052 220.428-220.428 0-3.361-.074-6.697-.236-10.021a157.855 157.855 0 0 0 38.707-40.158z"
+              fill="#fff" />
+          </svg>
+        </a>
+        <a href="https://github.com/kanade-k-1228" target="_blank">
+          <svg width="50px" height="50px" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+              transform="scale(64)" fill="#1B1F23" />
+          </svg>
+        </a>
+        <a href="https://t.co/E5xtfEQs4A" target="_blank">
+          <img src="http://kanade-k-1228.github.io/.common/niconico.png" width="50px" height="50px"
+            style="border-radius: 50%" /></a>
+        <a href="https://www.youtube.com/channel/UCoeuc9-XQ5EpeYSCn4ESpQw" target="_blank">
+          <svg width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333333 333333">
+            <path
+              d="M166667 0c92048 0 166667 74619 166667 166667s-74619 166667-166667 166667S0 258715 0 166667 74619 0 166667 0zm84195 132297s-1678-11849-6843-17052c-6545-6843-13873-6887-17223-7283-24036-1751-60138-1751-60138-1751h-63s-36085 0-60135 1751c-3363 409-10681 437-17223 7283-5168 5203-6811 17052-6811 17052s-1711 13904-1711 27838v13029c0 13905 1709 27837 1709 27837s1678 11849 6811 17061c6542 6843 15139 6621 18977 7350 13761 1314 58457 1710 58457 1710s36133-64 60169-1783c3363-397 10678-438 17223-7284 5168-5202 6843-17065 6843-17065s1711-13904 1711-27837v-13028c-35-13905-1745-27837-1745-27837l-9 9-1-1zm-102010 56674v-48312l46437 24237-46437 24075z"
+              fill="red" />
+          </svg>
+        </a>
+      </div>
+      <!-- End Top Nav -->
+      <!-- Title -->
+            <h1 style="margin: 0">ロジックICで組む</h1>
+            <!-- Date -->
+            <!-- Description -->
+          </header>
+
+    <!-- TeX Macros -->
+    <!-- prettier-ignore -->
+    <p style="display: none">
+      \[ \newcommand{dn}[3]{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}
+      \newcommand{\d}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+      \newcommand{\dd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
+      \newcommand{\ddd}[2]{\frac{\mathrm{d}^3 #1}{\mathrm{d} {#2}^3}}
+      \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial {#2}^{#3}}}
+      \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+      \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+      \newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+      \newcommand{\p}{\partial}
+      \newcommand{\D}[2]{\frac{\mathrm{D} #1}{\mathrm{D} #2}}
+      \newcommand{\Re}{\mathrm{Re}}
+      \newcommand{\Im}{\mathrm{Im}}
+      \newcommand{\bra}[1]{\left\langle #1 \right|}
+      \newcommand{\ket}[1]{\left|#1 \right\rangle}
+      \newcommand{\braket}[2]{\left\langle #1 \middle|#2 \right\rangle}
+      \newcommand{\inner}[2]{\left\langle #1 ,#2 \right\rangle}
+      \newcommand{\l}{\left} \newcommand{\m}{\middle} \newcommand{\r}{\right}
+      \newcommand{\f}[2]{\frac{#1}{#2}} \newcommand{\eps}{\varepsilon}
+      \newcommand{\ra}{\rightarrow} \newcommand{\F}{\mathcal{F}}
+      \newcommand{\L}{\mathcal{L}} \newcommand{\t}{\quad}
+      \newcommand{\intinf}{\int_{-\infty}^{+\infty}}
+      \newcommand{\R}{\mathcal{R}} \newcommand{\C}{\mathcal{C}}
+      \newcommand{\Z}{\mathcal{Z}} \newcommand{\bm}[1]{\boldsymbol{#1}} \]
+    </p>
+
+    <!-- Table of Contents -->
+        <nav><ul>
+<li><a href="#実装の方針">実装の方針</a>
+<ul>
+<li><a href="#開発のユニット化">開発のユニット化</a></li>
+</ul></li>
+<li><a href="#fpgaでの実装">FPGAでの実装</a>
+<ul>
+<li><a href="#id-命令デコーダ"><code>ID</code> 命令デコーダ</a></li>
+<li><a href="#alu-1">ALU</a></li>
+<li><a href="#クロック">クロック</a></li>
+</ul></li>
+<li><a href="#ロジック-ic">ロジック IC</a></li>
+<li><a href="#ram">RAM</a>
+<ul>
+<li><a href="#io">IO</a></li>
+</ul></li>
+<li><a href="#rom">ROM</a>
+<ul>
+<li><a href="#rom-ライタ">ROM ライタ</a></li>
+</ul></li>
+<li><a href="#alu-2">ALU</a></li>
+<li><a href="#pfc">PFC</a></li>
+<li><a href="#クロック-1">クロック</a>
+<ul>
+<li><a href="#ステートカウンタ">ステートカウンタ</a></li>
+</ul></li>
+<li><a href="#部品メモ">部品メモ</a></li>
+</ul></nav>
+     <h2 id="実装の方針">実装の方針</h2>
+<h3 id="開発のユニット化">開発のユニット化</h3>
+<p><img src="img/unit.dio.svg" /></p>
+<p><img src="img/unit_dev_concept.dio.svg" /></p>
+<p>ユニット開発という開発方針をとります。アジャイル開発を適用したものです。アジャイル開発の肝は、常に動作可能な物を作り続けることにあります。</p>
+<p>普通、ハードウェアは完成するまで動かせません。</p>
+<p>まず、CPUのうち、あるユニットをロジックICで作ります。そうしたら、それ以外の部分をマイコンで補完します。</p>
+<p><img src="img/brain_nou_suisou_denkyoku.png" /></p>
+<p>「実装済み部分＋未実装部分のエミュレータ」</p>
+<h4 id="alu">1. ALU</h4>
+<p>最初にALUを作ります。ALUの遅延がステージ長を決める上で重要なので。 ALUはいうても大きな組み合わせ回路なのでテストが楽です。</p>
+<h4 id="メモリ空間">2. メモリ空間</h4>
+<p>次にメモリ空間を作ります。「空間」といったのはアドレスとバスをインターフェイスとしてデバイスにアクセスするシステムという意味を強調するためです。</p>
+<h4 id="データパス">3. データパス</h4>
+<p>ここまでくれば、演算命令と転送命令を実行することができ、CPUとしての機能を確かめることができます。</p>
+<h4 id="プログラム制御ユニット">4. プログラム制御ユニット</h4>
+<p>プログラムカウンタ周辺の回路を</p>
+<h4 id="romとライタ">5. ROMとライタ</h4>
+<h4 id="命令デコーダとクロック">6. 命令デコーダとクロック</h4>
+<p>プログラムの実行を制御するユニットです。</p>
+<h2 id="fpgaでの実装">FPGAでの実装</h2>
+<h3 id="id-命令デコーダ"><code>ID</code> 命令デコーダ</h3>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>ALU</th>
+<th>S2</th>
+<th>DIN</th>
+<th>1.ADR</th>
+<th>2.ADR</th>
+<th>3.ADR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>add</td>
+<td>Func</td>
+<td>RS2</td>
+<td>ALU</td>
+<td>RS1</td>
+<td>RS2</td>
+<td>RD</td>
+</tr>
+<tr class="even">
+<td>addi</td>
+<td>Func</td>
+<td>IMM</td>
+<td>ALU</td>
+<td>RS1</td>
+<td>-</td>
+<td>RD</td>
+</tr>
+<tr class="odd">
+<td>load</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>RS2</td>
+<td>RS1</td>
+<td>ALU</td>
+<td>RD</td>
+</tr>
+<tr class="even">
+<td>store</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>RS2</td>
+<td>RS1</td>
+<td>RS2</td>
+<td>ALU</td>
+</tr>
+<tr class="odd">
+<td>callif</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>RA</td>
+<td>RS1</td>
+<td>RS2</td>
+<td>RD</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/decoder.dio.svg" /></p>
+<pre class="language-verilog"><code>`define CALC  4&#39;b0000
+`define CALCI 4&#39;b0001
+`define LOAD  4&#39;b0011
+`define STORE 4&#39;b0111
+`define CALIF 4&#39;b1111
+
+module ID(
+    input  wire [31: 0] OP,
+    output wire [ 3: 0] RS1,
+    output wire [ 3: 0] RS2,
+    output wire [ 3: 0] RD,
+    output wire [31:16] IMM,
+    output wire [ 1: 0] DIN_SEL,
+    output wire [ 1: 0] ADDR_SEL,
+    output wire [ 3: 0] ALU_CTRL,
+    output wire         PFC_CTRL,
+);
+
+wire [3:0] OPC;
+
+assign RS1 = OP[ 3: 0];
+assign RS2 = OP[ 7: 4];
+assign RD  = OP[11: 8];
+assign OPC = OP[15:12];
+assign IMM = OP[31:16];
+
+assign ALU_CTRL = OPC==`CALC  ? OP[19:16]
+                : OPC==`CALCI ? OP[ 7: 4]
+                : `ALU_ADD;
+
+assign ADDR_SEL = STAGE==0 ? `ADDR_RS1
+                : STAGE==1 ? `ADDR_RS2
+                : STAGE==2 ? `ADDR_RD;
+
+assign DIN_SEL = OPC==`CALC|`CALCI ? `DIN_ALU 
+               : OPC==`LOAD|`STORE ? `DIN_RS2
+               : OPC==`CALLIF     ? `DIN_RA;
+
+assign S2_SEL = OPC==`CALC ? `S2_RS2 
+                           : `S2_IMM;
+
+endmodule</code></pre>
+<h3 id="alu-1">ALU</h3>
+<p>演算装置。必要な演算は、</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>演算</th>
+<th>実装</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+</td>
+<td>加算</td>
+<td>74181</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>減算</td>
+<td>74181</td>
+</tr>
+<tr class="odd">
+<td>&amp;</td>
+<td>ビット AND</td>
+<td>74181</td>
+</tr>
+<tr class="even">
+<td>|</td>
+<td>ビット OR</td>
+<td>74181</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>ビット XOR</td>
+<td>74181</td>
+</tr>
+<tr class="even">
+<td>~</td>
+<td>ビット NOT</td>
+<td>74181</td>
+</tr>
+<tr class="odd">
+<td>&gt;&gt;</td>
+<td>右シフト（符号あり）</td>
+<td>MUX</td>
+</tr>
+<tr class="even">
+<td>&gt;&gt;</td>
+<td>右シフト（符号なし）</td>
+<td>MUX</td>
+</tr>
+<tr class="odd">
+<td>&lt;&lt;</td>
+<td>左シフト</td>
+<td>74181</td>
+</tr>
+<tr class="even">
+<td>==</td>
+<td>一致比較</td>
+<td>7485</td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td>大小比較（符号あり）</td>
+<td>7485</td>
+</tr>
+<tr class="even">
+<td>&lt;</td>
+<td>大小比較（符号なし）</td>
+<td>7485 + MSB NOT</td>
+</tr>
+</tbody>
+</table>
+<p>74HC181 で実装する。</p>
+<table>
+<thead>
+<tr class="header">
+<th>74181</th>
+<th>Cn</th>
+<th>M</th>
+<th>S<sub>3</sub></th>
+<th>S<sub>2</sub></th>
+<th>S<sub>1</sub></th>
+<th>S<sub>0</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ADD +</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>SUB -</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>AND &amp;</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>OR |</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>XOR ^</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>NOT ~</td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="クロック">クロック</h3>
+<p><img src="img/timing.dio.svg" /></p>
+<h2 id="ロジック-ic">ロジック IC</h2>
+<ul>
+<li>入手性を考えて、できるだけ少ない種類で実装したい。</li>
+<li>高機能 IC は入手性が悪いので単純な IC で作りたい。</li>
+<li>MUX を 3 ステートで作るか、MUX の IC で作るか問題
+<ul>
+<li>157 は A/B の選択に加え、出力を 0 にする ST ピンがある</li>
+<li>541 はピン配置が綺麗なので基板の配線が楽になる</li>
+<li>541 は排他回路が必要</li>
+</ul></li>
+</ul>
+<h2 id="ram">RAM</h2>
+<p><a href="https://www.renesas.com/jp/en/document/dst/71016-data-sheet">Renesas 64K x 16 SRAM 71016</a></p>
+<p>これをメインメモリにします。ふつうの SRAM です。SRAM といってもフリップフロップが大量に並んでるだけなので、使い方は単純です。</p>
+<ul>
+<li>Note
+<ul>
+<li>出力は最大 50mA</li>
+<li>!CS=1 で Z 出力</li>
+<li>TSOP</li>
+<li>5V</li>
+</ul></li>
+<li>READ
+<ul>
+<li>!WE=1, !CS=0, !OE=0, !BHE=0, !BLE=0</li>
+<li>ADDRESS にアドレスを書き込めば、</li>
+<li>tAA &lt; 10ns でデータが出力される</li>
+</ul></li>
+<li>WRITE
+<ul>
+<li>!CS=0, !OE=1, !BHE=0, !BLE=0</li>
+<li>ADDRESS と DATA にセットします</li>
+<li>!WE の立ち上がりでデータが保存されます</li>
+</ul></li>
+</ul>
+<h3 id="io">IO</h3>
+<p>IO 領域のアドレスが指定された場合、SRAM の!CE=1 にします。</p>
+<h2 id="rom">ROM</h2>
+<p><a href="https://www.microchip.com/en-us/product/SST39VF200A">Microchip 2Mb Flash SST39VF200A</a> （<a href="https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/25001A.pdf">データシート</a>）</p>
+<ul>
+<li>Note
+<ul>
+<li>5V</li>
+<li>TSOP</li>
+</ul></li>
+<li>READ
+<ul>
+<li>!CE=0, !OE=0</li>
+<li>ADDRESS を入力すると</li>
+<li>TAA &lt; 55ns でデータが出力される</li>
+</ul></li>
+<li>WRITE
+<ul>
+<li>コントローラにコマンドを送る必要がある</li>
+<li>めんどいがライタでやるのでヨシ</li>
+</ul></li>
+</ul>
+<h3 id="rom-ライタ">ROM ライタ</h3>
+<p>ROM は別基板にして取り外せるようにします。</p>
+<p>ROM 基板を ROM ライタ基板に挿して Arduino で書き込みます。</p>
+<h2 id="alu-2">ALU</h2>
+<p>74181 を使って、plus・minus・not・and・or・xor の演算ができる。</p>
+<p>左シフトは 74181 の A plus A を使う</p>
+<p>シフト演算は、MUX の 0 出力を使う？</p>
+<h2 id="pfc">PFC</h2>
+<h2 id="クロック-1">クロック</h2>
+<p>マイコンの心臓だが…回路は単純</p>
+<h3 id="ステートカウンタ">ステートカウンタ</h3>
+<ul>
+<li>ジャンプなし
+<ul>
+<li>COUNT UP に POSEDGE を入れる</li>
+</ul></li>
+<li>ジャンプあり
+<ul>
+<li>DATA INPUT に次のアドレスをセットして、!LOAD に NEGEDGE を入れる</li>
+</ul></li>
+</ul>
+<h2 id="部品メモ">部品メモ</h2>
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-01137/">ボックスピンヘッダ</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/gC-08931/">フラットケーブル</a></li>
+</ul>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
+      style="margin: auto; padding: 0; display: block" onclick="tweet();">
+      <circle cx="420.944" cy="296.781" r="294.5" fill="#2daae1" />
+      <path
+        d="M609.773 179.634c-13.891 6.164-28.811 10.331-44.498 12.204 16.01-9.587 28.275-24.779 34.066-42.86a154.78 154.78 0 0 1-49.209 18.801c-14.125-15.056-34.267-24.456-56.551-24.456-42.773 0-77.462 34.675-77.462 77.473 0 6.064.683 11.98 1.996 17.66-64.389-3.236-121.474-34.079-159.684-80.945-6.672 11.446-10.491 24.754-10.491 38.953 0 26.875 13.679 50.587 34.464 64.477a77.122 77.122 0 0 1-35.097-9.686v.979c0 37.54 26.701 68.842 62.145 75.961-6.511 1.784-13.344 2.716-20.413 2.716-4.998 0-9.847-.473-14.584-1.364 9.859 30.769 38.471 53.166 72.363 53.799-26.515 20.785-59.925 33.175-96.212 33.175-6.25 0-12.427-.373-18.491-1.104 34.291 21.988 75.006 34.824 118.759 34.824 142.496 0 220.428-118.052 220.428-220.428 0-3.361-.074-6.697-.236-10.021a157.855 157.855 0 0 0 38.707-40.158z"
+        fill="#fff" />
+    </svg>
+  </article>
+</body>
+
+</html>
