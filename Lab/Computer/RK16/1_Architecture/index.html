@@ -27,7 +27,7 @@
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
     <meta name="dcterms.date" content="2023-03-26" />
-      <meta name="description" content="自作マイコンRK16のISAとABIを解説しています。" />
+      <meta name="description" content="ロジックICを使った自作マイコンのアーキテクチャです。" />
     <title>自作マイコンのアーキテクチャ RK16 | Kanade's Website</title>
 
   <!-- OGP -->
@@ -105,7 +105,7 @@
             <!-- Date -->
             <p align="right">2023-03-26</p>
             <!-- Description -->
-            <p>自作マイコンRK16のISAとABIを解説しています。</p>
+            <p>ロジックICを使った自作マイコンのアーキテクチャです。</p>
           </header>
 
     <!-- TeX Macros -->
@@ -143,18 +143,20 @@
 <li><a href="#特殊レジスタ">特殊レジスタ</a></li>
 <li><a href="#汎用レジスタ">汎用レジスタ</a></li>
 </ul></li>
+<li><a href="#メモリ">メモリ</a>
+<ul>
+<li><a href="#状態制御レジスタ">状態制御レジスタ</a></li>
+<li><a href="#入出力制御レジスタ">入出力制御レジスタ</a></li>
+<li><a href="#vram">VRAM</a></li>
+<li><a href="#eeprom">EEPROM</a></li>
+<li><a href="#ram">RAM</a></li>
+<li><a href="#rom">ROM</a></li>
+</ul></li>
 <li><a href="#命令セット">命令セット</a>
 <ul>
 <li><a href="#演算命令">演算命令</a></li>
 <li><a href="#転送命令">転送命令</a></li>
 <li><a href="#制御命令">制御命令</a></li>
-</ul></li>
-<li><a href="#メモリ空間">メモリ空間</a>
-<ul>
-<li><a href="#io">IO</a></li>
-<li><a href="#vram-dual-access-sram">VRAM (Dual access SRAM)</a></li>
-<li><a href="#ram-sram">RAM (SRAM)</a></li>
-<li><a href="#program-rom-nor-flash">Program ROM (NOR Flash)</a></li>
 </ul></li>
 <li><a href="#回路">回路</a>
 <ul>
@@ -199,9 +201,9 @@
 </tr>
 <tr class="even">
 <td>0x0002</td>
-<td>csr</td>
-<td>状態制御レジスタ</td>
-<td>R/W</td>
+<td>pc</td>
+<td>プログラムカウンタ</td>
+<td>R</td>
 </tr>
 <tr class="odd">
 <td>0x0003</td>
@@ -249,76 +251,122 @@
 </table>
 <p>　ロジックICでCPUを作る場合、レジスタは74HC564などのDフリップフロップを使用します。しかし、今回作るCPUはレジスタが多く(16個)、ロジックICの数が膨大(74HC564×32個)になってしまいます。そのため、このCPUでは、メインメモリのSRAMの一部を、レジスタとして使います。</p>
 <p>　レジスタをSRAMとして実装する問題点として、レジスタの値をリアルタイムに取得できないという問題があります。多くの自作CPUは、レジスタの値を直接LEDで見れるようになっています。</p>
-<p>　この問題を解消するため、メモリバースト転送という仕組みを実装します。 各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。 レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
+<p>　この問題を解消するため、メモリバースト転送という仕組みを実装します。各クロックの最後のステージで、デバッガがRAMの内容を全て読み出します。レジスタ値の変化をリアルタイムに見ることはできませんが、命令によるレジスタ値の変化を追跡することができます。</p>
 <h3 id="特殊レジスタ">特殊レジスタ</h3>
 <p>　レジスタをSRAMとして実装すると述べましたが、SRAMの入出力ポートは１つしかないので、複数のレジスタ値を常に取得し続けることができないという問題があります。そのため、4個のレジスタはSRAMとは独立したDフリップフロップICで実装します。アドレスの上位12ビットが0の場合 <code>0b0000_0000_0000_00xx</code> SRAMのCE信号をOFFにして、DFFのCE信号をONにします。(CE:Chip Enable)</p>
 <h4 id="ゼロレジスタzero">0. ゼロ・レジスタ(zero)</h4>
-<p>常にゼロを返すレジスタです。</p>
+<p>　常にゼロを返すレジスタです。</p>
 <h4 id="割り込み戻りアドレスira">1. 割り込み戻りアドレス(ira)</h4>
-<p>割り込みが発生したら、次のクロックでPCを割り込みのアドレス(0x0001)に変更し、割り込みの処理を行います。その時に、本来次に行くべきPCを退避しておくレジスタが、割り込みリターンアドレス (IRA : Interrupt Return Address) です。</p>
-<h4 id="状態制御レジスタcsr">2. 状態制御レジスタ(csr)</h4>
+<p>　割り込みが発生したら、次のクロックでPCを割り込みのアドレス(0x0001)に変更し、割り込みの処理を行います。その時に、本来次に行くべきPCを退避しておくレジスタが、割り込みリターンアドレス (IRA : Interrupt Return Address) です。</p>
+<h4 id="プログラムカウンタpc">2. プログラムカウンタ(pc)</h4>
+<p>　現在実行中のプログラムのアドレスを指します。ただ、リードオンリーで通常のレジスタアクセスでは書き換えられません。PCを書き換えるには、制御命令を使う必要があります。</p>
+<h4 id="スタックポインタsp">3. スタック・ポインタ(sp)</h4>
+<p>　スタックの先頭を指したポインタです。push/pop命令でカウントアップ/カウントダウンされます。</p>
+<h3 id="汎用レジスタ">汎用レジスタ</h3>
+<p>　0x0004-0x000fは、汎用レジスタに割り当てられています。汎用レジスタは、それぞれに特殊な機能があるわけではなく、ハードウェア的にはどれも同じなのですが、標準的な使い方を ABI (Application Binary Interface) で規定しています。詳細は関数呼び出しの項で。</p>
+<h4 id="戻りアドレスra">0. 戻りアドレス(ra)</h4>
+<p>　関数の戻りアドレスを退避しておくレジスタです。</p>
+<h4 id="フレームポインタfp">1. フレームポインタ(fp)</h4>
+<p>　関数フレームの基底アドレスを指したポインタです。</p>
+<h4 id="引数戻値レジスタa0-a1">2. 引数戻値レジスタ(a0-a1)</h4>
+<p>　関数の引数を入れておくレジスタです。</p>
+<h4 id="一時レジスタt0-t3">3. 一時レジスタ(t0-t3)</h4>
+<p>　関数呼び出しの後で値が変化するレジスタです。</p>
+<h4 id="保存レジスタs0-s3">4. 保存レジスタ(s0-s3)</h4>
+<p>　関数側が関数の前後で値が変化しないことを保証するレジスタです。</p>
+<h2 id="メモリ">メモリ</h2>
+<p>　メモリマップドIOです。</p>
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th>csr</th>
-<th></th>
-<th style="text-align: left;"></th>
+<th>アドレス</th>
+<th style="text-align: left;">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>0</td>
-<td>ien</td>
-<td>W</td>
-<td style="text-align: left;">割り込み許可</td>
+<td>0x0000 - 0x000f</td>
+<td style="text-align: left;">レジスタ</td>
 </tr>
 <tr class="even">
-<td>1-7</td>
-<td>i0 - i6</td>
-<td>R</td>
-<td style="text-align: left;">0-6番割り込み</td>
+<td>0x0010 - 0x00ff</td>
+<td style="text-align: left;">状態制御レジスタ</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align: left;">内部例外</td>
+<td>0x0100 - 0x0fff</td>
+<td style="text-align: left;">入出力制御レジスタ</td>
 </tr>
 <tr class="even">
-<td>8-f</td>
-<td></td>
-<td></td>
-<td style="text-align: left;">未定</td>
+<td>0x1000 - 0x2fff</td>
+<td style="text-align: left;">VRAM</td>
 </tr>
 <tr class="odd">
-<td>8</td>
-<td>mode</td>
-<td></td>
-<td style="text-align: left;">特権モード（仮）</td>
+<td>0x3000 - 0x4000</td>
+<td style="text-align: left;">EEPROM</td>
+</tr>
+<tr class="even">
+<td>0x5000 - 0xffff</td>
+<td style="text-align: left;">RAM</td>
 </tr>
 </tbody>
 </table>
-<h4 id="スタックポインタsp">3. スタック・ポインタ(sp)</h4>
-<p>スタックの先頭を指したポインタです。</p>
-<h3 id="汎用レジスタ">汎用レジスタ</h3>
-<p>0x0004-0x000fは、汎用レジスタです。汎用レジスタは、ハードウェア的にはどれも同じです。</p>
-<p>汎用レジスタの用途は ABI (Application Binary Interface) で規定されています。詳細は関数呼び出しの項で。</p>
-<h4 id="戻りアドレスra">0. 戻りアドレス(ra)</h4>
-<p>関数の戻りアドレスを退避しておくレジスタです。</p>
-<h4 id="フレームポインタfp">1. フレームポインタ(fp)</h4>
-<p>関数フレームの基底アドレスを指したポインタです。</p>
-<h4 id="引数戻値レジスタa0-a1">2. 引数戻値レジスタ(a0-a1)</h4>
-<p>関数の引数を入れておくレジスタです。</p>
-<h4 id="一時レジスタt0-t3">3. 一時レジスタ(t0-t3)</h4>
-<p>関数呼び出しの後で値が変化するレジスタです。</p>
-<h4 id="保存レジスタs0-s3">4. 保存レジスタ(s0-s3)</h4>
-<p>関数側が関数の前後で値が変化しないことを保証するレジスタです。</p>
+<h3 id="状態制御レジスタ">状態制御レジスタ</h3>
+<p>　CSR (Control &amp; Status Registors)は、割り込み・例外・特権レベルなど、プロセッサの状態を保持するレジスタです。</p>
+<table>
+<thead>
+<tr class="header">
+<th>アドレス</th>
+<th>R/W</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>W</td>
+<td>割り込み許可</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>W</td>
+<td>割り込みマスク</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>R</td>
+<td>割り込み番号</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>内部例外</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>※特権モード</td>
+</tr>
+</tbody>
+</table>
+<h3 id="入出力制御レジスタ">入出力制御レジスタ</h3>
+<p>　入出力制御レジスタは、シリアル通信、PWM、ADCなど、入出力モジュールを制御するレジスタです。</p>
+<h3 id="vram">VRAM</h3>
+<p>　VRAMは、ディスプレイ表示用のRAMです。同時に2つのポートから読み書きができる Dual Port RAM を使って実装します。表示の方法として 2 種類のモードを切り替えることを考えています。</p>
+<h4 id="ピクセル描画モード">ピクセル描画モード</h4>
+<p>　ひとつはピクセル描画モードです。VRAM の bit と 300 x 400 ピクセルを一対一に対応させ白黒で描画します。必要な VRAM のサイズは 300 x 400 x 1 bit = 120000 bit = 16 bit x 7500 &lt; 16bit x 0x2000</p>
+<h4 id="テキスト描画モード">テキスト描画モード</h4>
+<p>　ふたつめはテキスト描画モードです。VRAM を 1 word ごと文字にして表示します。フォントを別の EEPROM に置いておき、描画時に組み合わせます。</p>
+<h3 id="eeprom">EEPROM</h3>
+<p>　メモリ空間中にEEPROMがあります。これは、定数値を置いておくための領域です。</p>
+<h3 id="ram">RAM</h3>
+<p>　メインの RAM です。SRAMで作ります。</p>
+<h3 id="rom">ROM</h3>
+<p>　ハーバードアーキテクチャなので、データを保持するRAM空間と別に、プログラムを保持するROM空間があります。ROM は高速な NOR Flash で作ります。</p>
 <h2 id="命令セット">命令セット</h2>
 <p><img src="img/isa.png" /></p>
-<p>機械語的に見ると命令は <code>calc</code>,<code>calci</code>,<code>load</code>,<code>store</code>,<code>calif</code> の5種類です。しかし、アセンブラから見ると、??種類の命令があります。多くのアセンブラでは「疑似命令」と呼ばれるシンタックスシュガーを実装しています。例えば、RISC-Vでは、<code>add rd, rs, zero</code> を <code>mov rd, rs</code> と短縮して書くことができます。しかし、RKASMの疑似命令はシンタックスシュガーではありません。その特徴が一番現れているのが <code>calif</code> 命令です。<code>calif</code>をニーモニックとして使うことはできません。アセンブラ <code>if sa2 sa1 imm</code> は、内部的には <code>calif zero sa2 sa1 imm</code> と等価ですが、アセンブラ上で直接 <code>calif zero sa2 sa1 imm</code> と書くことはできません。別にこれを書けるようにしてもいいんですが、引数を4つも取ると、アセンブラが見にくくなるという問題があります。また実用上、引数4つをフルで使うことはない（どれかがzeroになる）ので、<code>calif</code>を直接呼び出せないようにしています。その代わりに、使い方に応じてニーモニック<code>if</code> <code>jump</code> <code>call</code> <code>ret</code> <code>iret</code> を割り当てています。これによって「生で書いてもわかりやすい＆バグりにくいアセンブラ」を実現します。</p>
-<p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。これにより、全ての命令が同じステージ数で実行できるようになり、命令デコーダ (ID:Instruction Decoder) の回路を簡略化できます。</p>
-<p>機械語命令は5種類あるので、命令ビットは 3 ビットで済むはずです。また、バイナリ中で最も多く出現する <code>mov</code> 命令は、意味のあるビットは 12/32 と、命令空間をかなり無駄遣いしています。つまり、この命令セットは情報量に対してかなり余剰なROM空間を消費するということになります。一般的に、特にROM空間が限られる組み込みにおいて、命令セットはバイナリ長が短くなるものが良いです。しかし、RKISAはロジックICで実装するために、ハードウェアの削減に重きをおいています。命令デコーダ(ID)の実装が楽になるように、あえて余分なビットを使っています。</p>
+<p>　機械語的に見ると命令は <code>calc</code>,<code>calci</code>,<code>load</code>,<code>store</code>,<code>calif</code> の5種類です。しかし、アセンブラから見ると、??種類の命令があります。多くのアセンブラでは「疑似命令」と呼ばれるシンタックスシュガーを実装しています。例えば、RISC-Vでは、<code>add rd, rs, zero</code> を <code>mov rd, rs</code> と短縮して書くことができます。しかし、RKASMの疑似命令はシンタックスシュガーではありません。その特徴が一番現れているのが <code>calif</code> 命令です。<code>calif</code>をニーモニックとして使うことはできません。アセンブラ <code>if sa2 sa1 imm</code> は、内部的には <code>calif zero sa2 sa1 imm</code> と等価ですが、アセンブラ上で直接 <code>calif zero sa2 sa1 imm</code> と書くことはできません。別にこれを書けるようにしてもいいんですが、引数を4つも取ると、アセンブラが見にくくなるという問題があります。また実用上、引数4つをフルで使うことはない（どれかがzeroになる）ので、<code>calif</code>を直接呼び出せないようにしています。その代わりに、使い方に応じてニーモニック<code>if</code> <code>jump</code> <code>call</code> <code>ret</code> <code>iret</code> を割り当てています。これによって「生で書いてもわかりやすい＆バグりにくいアセンブラ」を実現します。</p>
+<p>　RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。これにより、全ての命令が同じステージ数で実行できるようになり、命令デコーダ (ID:Instruction Decoder) の回路を簡略化できます。</p>
+<p>　機械語命令は5種類あるので、命令ビットは 3 ビットで済むはずです。また、バイナリ中で最も多く出現する <code>mov</code> 命令は、意味のあるビットは 12/32 と、命令空間をかなり無駄遣いしています。つまり、この命令セットは情報量に対してかなり余剰なROM空間を消費するということになります。一般的に、特にROM空間が限られる組み込みにおいて、命令セットはバイナリ長が短くなるものが良いです。しかし、RKISAはロジックICで実装するために、ハードウェアの削減に重きをおいています。命令デコーダ(ID)の実装が楽になるように、あえて余分なビットを使っています。</p>
 <h3 id="演算命令">演算命令</h3>
 <table>
 <thead>
@@ -447,7 +495,7 @@
 </tbody>
 </table>
 <h4 id="比較演算">比較演算</h4>
-<p>真偽型は、0x0000 のみを false とし、他は全て true とみなします。</p>
+<p>　真偽型は、0x0000 のみを false とし、他は全て true とみなします。</p>
 <table>
 <thead>
 <tr class="header">
@@ -484,7 +532,7 @@
 </tr>
 </tbody>
 </table>
-<p>比較演算は true = 0xFFFF false = 0x0000 を返します。 論理キャストは false(0x0000) 以外の値を 0xFFFF に変換します。 論理演算をビット演算で行えます。</p>
+<p>　比較演算は true = 0xFFFF false = 0x0000 を返します。論理キャストは false(0x0000) 以外の値を 0xFFFF に変換します。論理演算をビット演算で行えます。</p>
 <h3 id="転送命令">転送命令</h3>
 <table>
 <thead>
@@ -517,8 +565,7 @@
 </tr>
 </tbody>
 </table>
-<p>ロード命令は、メモリからレジスタに値を移動します。 ストア命令は、レジスタからメモリに値を移動します。</p>
-<p>メモリのアドレスは、レジスタに入ってる値と即値を足します。(mem[sa1 + imm])</p>
+<p>　ロード命令は、メモリからレジスタに値を移動します。ストア命令は、レジスタからメモリに値を移動します。メモリのアドレスは、レジスタに入ってる値と即値を足します。(mem[sa1 + imm])</p>
 <h3 id="制御命令">制御命令</h3>
 <table>
 <thead>
@@ -561,98 +608,11 @@
 </tr>
 </tbody>
 </table>
-<p>プログラムの制御に関する命令は全て <code>calif</code> で実行できます。 この命令を生で呼び出すことは想定していません。</p>
-<h4 id="割り込み番号">割り込み番号</h4>
-<table>
-<thead>
-<tr class="header">
-<th>No</th>
-<th>機能</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>リセット</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>外部１</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>外部２</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>外部３</td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td>タイマ１</td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td>タイマ２</td>
-</tr>
-<tr class="odd">
-<td>6</td>
-<td>タイマ３</td>
-</tr>
-<tr class="even">
-<td>7</td>
-<td>タイマ４</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Timer</li>
-<li>WDT (Watch Dog Timer)</li>
-<li>PWM</li>
-<li>DMA</li>
-</ul>
-<h2 id="メモリ空間">メモリ空間</h2>
-<p>メモリ空間は 0x1000 ごとに区切られていて、<code>CE</code> を使ってRAM以外のデバイスにスイッチできます。</p>
-<table>
-<thead>
-<tr class="header">
-<th>Address</th>
-<th style="text-align: left;">Function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x0000 - 0x000F</td>
-<td style="text-align: left;">Registor</td>
-</tr>
-<tr class="even">
-<td>0x0010 - 0x00FF</td>
-<td style="text-align: left;">IO Ctrl Registor</td>
-</tr>
-<tr class="odd">
-<td>0x1000 - 0x2FFF</td>
-<td style="text-align: left;">VRAM</td>
-</tr>
-<tr class="even">
-<td>0x3000 - 0xFFFF</td>
-<td style="text-align: left;">RAM</td>
-</tr>
-</tbody>
-</table>
-<h3 id="io">IO</h3>
-<p>IOはSRAM とは別に Dual Port SRAM または DFF の IC を使って実装する。このアドレスへのメモリアドレスは、デバイスにスイッチ。</p>
-<h3 id="vram-dual-access-sram">VRAM (Dual access SRAM)</h3>
-<p>表示の候補として、</p>
-<ul>
-<li>300 x 400 画素 x 白黒 2 段階 (1bit) = 120000 bit &lt; 16bit x 8k</li>
-<li>テキスト表示（フォントを EEPROM に置いておく）</li>
-</ul>
-<h3 id="ram-sram">RAM (SRAM)</h3>
-<h3 id="program-rom-nor-flash">Program ROM (NOR Flash)</h3>
+<p>　プログラムの制御に関する命令は全て <code>calif</code> で実行できます。</p>
 <h2 id="回路">回路</h2>
 <p><img src="img/arch.dio.svg" /></p>
 <h3 id="命令の実行">命令の実行</h3>
-<p>RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。 これを4ステージで実行します。</p>
+<p>　RK16の命令は「RAMから2回読み出し1回書き込む」という形式をとっています。これを4ステージで実行します。</p>
 <p><img src="img/data_path.dio.svg" /></p>
 <table>
 <colgroup>
@@ -694,8 +654,8 @@
 <td style="text-align: left;">3.Store</td>
 <td style="text-align: left;">ALU =&gt; [da]</td>
 <td style="text-align: left;">ALU =&gt; [da]</td>
-<td style="text-align: left;">SR2 =&gt; [da]<br/>ALU =&gt; SP</td>
-<td style="text-align: left;">SR2 =&gt; [ALU/SR1]<br/>ALU =&gt; SP</td>
+<td style="text-align: left;">SR2 =&gt; [da]<br/>(SP+=sd)</td>
+<td style="text-align: left;">SR2 =&gt; [ALU/SR1]<br/>(SP-=sd)</td>
 <td style="text-align: left;">PC+1 =&gt; [da]</td>
 </tr>
 <tr class="even">
@@ -709,13 +669,156 @@
 </tbody>
 </table>
 <p><img src="img/stage_const.dio.svg" /></p>
-<p>命令に合わせて、各ステージの長さを調整することで、クロック（正確にはIPS）を上げられます。</p>
+<p>　命令に合わせて、各ステージの長さを調整することで、クロック（正確にはIPS）を上げられます。</p>
 <p><img src="img/stage_fast.dio.svg" /></p>
 <h2 id="スタック">スタック</h2>
-<p>一般的なCPUでは、スタックの <code>pop</code> と <code>push</code> 命令があります。</p>
-<p>実装してもいいかも。。。</p>
+<p>　RK16 では、スタックの pop / push とメモリの load / store を同じ命令で実行できます。正確にいえば、load/store命令のオプションとして、スタックポインタのインクリメント/デクリメントを行うことができます。RK16のビットフィールドを見ると、loadでは[11:8]が、storeでは[15:12]がオプションのフィールドです。また、load/storeのアドレスが計算された後にSPが変更されるため、pop命令では即値にオフセット1を指定する必要があります。</p>
+<p>　また、余談ですが、標準的にはアドレスが減る方向に伸びますが、逆方向にスタックを伸ばすこともできるようにはなっています。コンパイラとかは対応していませんが暇があったら実装しようかな。スタックをアドレス増加方向に伸ばすと、スタックが予想外に伸びたときに、たいていはアドレスが小さい領域にある重要なデータを破壊せずに、セグメンテーション違反で止まってくれるとかいういいことがあるらしい。</p>
 <h2 id="関数呼び出し">関数呼び出し</h2>
-<p>関数呼び出しは、</p>
+<p>　関数呼び出しの前後で変更していいレジスタと、いけないレジスタがあります。</p>
+<p><a href="https://valinux.hatenablog.com/entry/20210624">参考１</a> <a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考２</a></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">RKASM</th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">関数呼び出し側の仕事 ←①</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push t0</td>
+<td style="text-align: left;">一時レジスタを退避</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push t1</td>
+<td style="text-align: left;">関数呼び出し後に使わないなら</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push t2</td>
+<td style="text-align: left;">退避する必要なし</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push t3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push ra</td>
+<td style="text-align: left;">RAを退避 (callで上書きされる)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push fp</td>
+<td style="text-align: left;">FPを退避 (FPは引数のポインタ)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mov fp sp</td>
+<td style="text-align: left;">SPを退避</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mov a0 xx</td>
+<td style="text-align: left;">引数を引数レジスタに入れる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mov a1 yy</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push zz</td>
+<td style="text-align: left;">入らない引数はスタックに入れる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push ww</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">call func</td>
+<td style="text-align: left;">サブルーチンにジャンプ ←②</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ここに戻ってくる ←③</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mov sp fp</td>
+<td style="text-align: left;">SPを復元</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pop fp</td>
+<td style="text-align: left;">FPを復元</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop ra</td>
+<td style="text-align: left;">RAを復元 ←④</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pop t3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop t2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pop t1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop t0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">func:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push s0</td>
+<td style="text-align: left;">保存レジスタの退避</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push s1</td>
+<td style="text-align: left;">関数内で上書きしなければ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push s2</td>
+<td style="text-align: left;">退避する必要なし</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push s3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nop</td>
+<td style="text-align: left;">関数の処理</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop s3</td>
+<td style="text-align: left;">保存レジスタを復元</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pop s2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop s1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pop s0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ret</td>
+<td style="text-align: left;">元の処理に戻る</td>
+</tr>
+</tbody>
+</table>
 <h2 id="割り込み">割り込み</h2>
 <p><img src="img/intr_timing.dio.svg" /></p>
 <h4 id="割り込み発生">1. 割り込み発生</h4>
