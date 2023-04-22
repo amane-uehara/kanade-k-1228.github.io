@@ -26,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="@kanade_k_1228" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-      <title>ALUを作る | Kanade's Website</title>
+      <title>NPCモジュール | Kanade's Website</title>
 
   <!-- OGP -->
     <!-- END OGP -->
@@ -53,7 +53,7 @@
         "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
         location.href +
         "&text=" +
-        "ALUを作る",
+        "NPCモジュール",
         "_blank"
       );
     }
@@ -99,7 +99,7 @@
       </div>
       <!-- End Top Nav -->
       <!-- Title -->
-            <h1 style="margin: 0">ALUを作る</h1>
+            <h1 style="margin: 0">NPCモジュール</h1>
             <!-- Date -->
             <!-- Description -->
           </header>
@@ -133,191 +133,7 @@
     </p>
 
     <!-- Table of Contents -->
-        <nav><ul>
-<li><a href="#比較演算">比較演算</a>
-<ul>
-<li><a href="#一致不一致">一致/不一致</a></li>
-<li><a href="#大小比較">大小比較</a></li>
-</ul></li>
-<li><a href="#実装">実装</a></li>
-</ul></nav>
-     <table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">演算</th>
-<th style="text-align: left;"></th>
-<th></th>
-<th style="text-align: left;">演算</th>
-<th style="text-align: left;"></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>74181</strong></td>
-<td style="text-align: left;"></td>
-<td></td>
-<td style="text-align: left;"><strong>比較回路</strong></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">加算</td>
-<td style="text-align: left;"><code>A+B</code> (mod 0x10000)</td>
-<td>add</td>
-<td style="text-align: left;">一致</td>
-<td style="text-align: left;"><code>A==B</code></td>
-<td>eq</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">減算</td>
-<td style="text-align: left;"><code>A-B</code> (mod 0x10000)</td>
-<td>sub</td>
-<td style="text-align: left;">不一致</td>
-<td style="text-align: left;"><code>A!=B</code></td>
-<td>neq</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">論理積</td>
-<td style="text-align: left;"><code>A&amp;B</code></td>
-<td>and</td>
-<td style="text-align: left;">比較(signed)</td>
-<td style="text-align: left;"><code>A&lt;B</code></td>
-<td>lts</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">論理和</td>
-<td style="text-align: left;"><code>A\|B</code></td>
-<td>or</td>
-<td style="text-align: left;">比較(unsigned)</td>
-<td style="text-align: left;"><code>A&lt;B</code></td>
-<td>lsu</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">排他的論理和</td>
-<td style="text-align: left;"><code>A^B</code></td>
-<td>xor</td>
-<td style="text-align: left;"><strong>シフト回路</strong></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">論理否定</td>
-<td style="text-align: left;"><code>~A</code></td>
-<td>not</td>
-<td style="text-align: left;">右シフト(signed)</td>
-<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
-<td>srs</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">左シフト</td>
-<td style="text-align: left;"><code>A&lt;&lt;1</code></td>
-<td>sl</td>
-<td style="text-align: left;">右シフト(unsigned)</td>
-<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
-<td>sru</td>
-</tr>
-</tbody>
-</table>
-<p><img src="img/circuit.dio.svg" /></p>
-<h2 id="比較演算">比較演算</h2>
-<p>　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
-<h3 id="一致不一致">一致/不一致</h3>
-<p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。</p>
-<h3 id="大小比較">大小比較</h3>
-<p>　比較には74181の減算を使います。まず、4bitの符号なし整数の減算 <span class="math inline">\(A-B\)</span> を考えます。ビット反転して1を足すと負の数になる (<span class="math inline">\(10000-X=\bar{X}+1\)</span>) ことを利用して計算します。</p>
-<p><span class="math display">\[
-A-B=A+(10000-B)-10000=A+\bar{B}+1-10000
-\]</span></p>
-<p>　減算器は <span class="math inline">\(A+\bar{B}+1\)</span> を計算する回路です。</p>
-<p><span class="math display">\[
-A+\bar{B}+1=A-B+10000
-\]</span></p>
-<p>　キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、</p>
-<p><span class="math display">\[
-A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
-\]</span></p>
-<p>を意味しています。逆にフラグが立っていない場合、</p>
-<p><span class="math display">\[
-A &lt; B
-\]</span></p>
-<p>ということになります。</p>
-<table>
-<thead>
-<tr class="header">
-<th>A:B</th>
-<th>Carry</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A&gt;B</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>A=B</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>A&lt;B</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
-<h2 id="実装">実装</h2>
-<table>
-<thead>
-<tr class="header">
-<th>BOM</th>
-<th></th>
-<th>#</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ALU</td>
-<td><a href="./doc/74HC181.pdf">74HC181</a></td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>Carry</td>
-<td><a href="./doc/74HC182.pdf">74HC182</a></td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>XOR</td>
-<td><a href="./doc/74HC86.pdf">74HC86</a></td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>Decoder</td>
-<td><a href="./doc/74HC138.pdf">74HC138</a></td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>3 State Buffer</td>
-<td><a href="./doc/74HC540.pdf">74HC541</a></td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>3 State Buffer Inv</td>
-<td><a href="./doc/74HC540.pdf">74HC540</a></td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>AND</td>
-<td></td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>NAND (1bit MUX)</td>
-<td></td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<p>マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。 遅延はデータシート上ではどちらも 10 ns っぽい。</p>
+     <p><img src="img/circuit.dio.svg" /></p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
