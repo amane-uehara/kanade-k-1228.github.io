@@ -134,14 +134,12 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#真偽演算">真偽演算</a>
+<li><a href="#比較演算">比較演算</a>
 <ul>
 <li><a href="#一致不一致">一致/不一致</a></li>
 <li><a href="#大小比較">大小比較</a></li>
 </ul></li>
-<li><a href="#設計">設計</a></li>
 <li><a href="#実装">実装</a></li>
-<li><a href="#テスト">テスト</a></li>
 </ul></nav>
      <table>
 <thead>
@@ -213,7 +211,7 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">左シフト</td>
-<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
+<td style="text-align: left;"><code>A&lt;&lt;1</code></td>
 <td>sl</td>
 <td style="text-align: left;">右シフト(unsigned)</td>
 <td style="text-align: left;"><code>A&gt;&gt;1</code></td>
@@ -222,7 +220,7 @@
 </tbody>
 </table>
 <p><img src="img/circuit.dio.svg" /></p>
-<h2 id="真偽演算">真偽演算</h2>
+<h2 id="比較演算">比較演算</h2>
 <p>　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
 <h3 id="一致不一致">一致/不一致</h3>
 <p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。</p>
@@ -267,15 +265,59 @@ A &lt; B
 </tbody>
 </table>
 <p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
-<h2 id="設計">設計</h2>
-<p>マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。 遅延はデータシート上ではどちらも 10 ns っぽい。</p>
 <h2 id="実装">実装</h2>
-<ul>
-<li><a href="./doc/74HC181.pdf">74HC181</a></li>
-<li><a href="./doc/74HC182.pdf">74HC182</a></li>
-</ul>
-<p>を組み合わせて使います！高速ALU！</p>
-<h2 id="テスト">テスト</h2>
+<table>
+<thead>
+<tr class="header">
+<th>BOM</th>
+<th></th>
+<th>#</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ALU</td>
+<td><a href="./doc/74HC181.pdf">74HC181</a></td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Carry</td>
+<td><a href="./doc/74HC182.pdf">74HC182</a></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>XOR</td>
+<td><a href="./doc/74HC86.pdf">74HC86</a></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Decoder</td>
+<td><a href="./doc/74HC138.pdf">74HC138</a></td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3 State Buffer</td>
+<td><a href="./doc/74HC540.pdf">74HC541</a></td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>3 State Buffer Inv</td>
+<td><a href="./doc/74HC540.pdf">74HC540</a></td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>AND</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>NAND (1bit MUX)</td>
+<td></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。 遅延はデータシート上ではどちらも 10 ns っぽい。</p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
