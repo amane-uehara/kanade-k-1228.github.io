@@ -513,26 +513,26 @@
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
+<td>!=</td>
+<td style="text-align: left;">不一致比較</td>
+<td>neq</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
 <td>&lt;</td>
 <td style="text-align: left;">大小比較（符号あり）</td>
 <td>lts</td>
 <td style="text-align: left;">signed として比較</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>&lt;</td>
 <td style="text-align: left;">大小比較（符号なし）</td>
 <td>ltu</td>
 <td style="text-align: left;">unsigned として比較</td>
 </tr>
-<tr class="even">
-<td></td>
-<td style="text-align: left;">論理キャスト</td>
-<td>lcast</td>
-<td style="text-align: left;"></td>
-</tr>
 </tbody>
 </table>
-<p>　比較演算は true = 0xFFFF false = 0x0000 を返します。論理キャストは false(0x0000) 以外の値を 0xFFFF に変換します。論理演算をビット演算で行えます。</p>
+<p>　比較演算は true = 0xFFFF false = 0x0000 を返します。論理キャストは false(0x0000) 以外の値を 0xFFFF に変換します。論理演算をビット演算で行えます。 真偽値型へのキャストは <code>neq x zero</code> でできます。</p>
 <h3 id="転送命令">転送命令</h3>
 <table>
 <thead>

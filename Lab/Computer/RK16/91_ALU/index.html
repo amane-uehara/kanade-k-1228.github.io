@@ -134,76 +134,140 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#機能">機能</a></li>
+<li><a href="#真偽演算">真偽演算</a>
+<ul>
+<li><a href="#一致不一致">一致/不一致</a></li>
+<li><a href="#大小比較">大小比較</a></li>
+</ul></li>
 <li><a href="#設計">設計</a></li>
 <li><a href="#実装">実装</a></li>
 <li><a href="#テスト">テスト</a></li>
 </ul></nav>
-     <h2 id="機能">機能</h2>
-<table>
+     <table>
 <thead>
 <tr class="header">
-<th>機能</th>
+<th style="text-align: left;">演算</th>
+<th style="text-align: left;"></th>
+<th></th>
+<th style="text-align: left;">演算</th>
+<th style="text-align: left;"></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>加算</td>
+<td style="text-align: left;"><strong>74181</strong></td>
+<td style="text-align: left;"></td>
+<td></td>
+<td style="text-align: left;"><strong>比較回路</strong></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">加算</td>
+<td style="text-align: left;"><code>A+B</code> (mod 0x10000)</td>
 <td>add</td>
-</tr>
-<tr class="even">
-<td>減算</td>
-<td>sub</td>
-</tr>
-<tr class="odd">
-<td>論理積</td>
-<td>and</td>
-</tr>
-<tr class="even">
-<td>論理和</td>
-<td>or</td>
-</tr>
-<tr class="odd">
-<td>排他的論理和</td>
-<td>xor</td>
-</tr>
-<tr class="even">
-<td>論理否定</td>
-<td>not</td>
-</tr>
-<tr class="odd">
-<td>左シフト</td>
-<td>sl</td>
-</tr>
-<tr class="even">
-<td>等値</td>
+<td style="text-align: left;">一致</td>
+<td style="text-align: left;"><code>A==B</code></td>
 <td>eq</td>
 </tr>
 <tr class="odd">
-<td>比較(signed)</td>
+<td style="text-align: left;">減算</td>
+<td style="text-align: left;"><code>A-B</code> (mod 0x10000)</td>
+<td>sub</td>
+<td style="text-align: left;">不一致</td>
+<td style="text-align: left;"><code>A!=B</code></td>
+<td>neq</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">論理積</td>
+<td style="text-align: left;"><code>A&amp;B</code></td>
+<td>and</td>
+<td style="text-align: left;">比較(signed)</td>
+<td style="text-align: left;"><code>A&lt;B</code></td>
 <td>lts</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">論理和</td>
+<td style="text-align: left;"><code>A\|B</code></td>
+<td>or</td>
+<td style="text-align: left;">比較(unsigned)</td>
+<td style="text-align: left;"><code>A&lt;B</code></td>
+<td>lsu</td>
+</tr>
 <tr class="even">
-<td>比較(unsigned)</td>
-<td>ltu</td>
+<td style="text-align: left;">排他的論理和</td>
+<td style="text-align: left;"><code>A^B</code></td>
+<td>xor</td>
+<td style="text-align: left;"><strong>シフト回路</strong></td>
+<td style="text-align: left;"></td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>論理キャスト</td>
-<td>lcast</td>
-</tr>
-<tr class="even">
-<td>右シフト(signed)</td>
+<td style="text-align: left;">論理否定</td>
+<td style="text-align: left;"><code>~A</code></td>
+<td>not</td>
+<td style="text-align: left;">右シフト(signed)</td>
+<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
 <td>srs</td>
 </tr>
-<tr class="odd">
-<td>右シフト(unsigned)</td>
+<tr class="even">
+<td style="text-align: left;">左シフト</td>
+<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
+<td>sl</td>
+<td style="text-align: left;">右シフト(unsigned)</td>
+<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
 <td>sru</td>
 </tr>
 </tbody>
 </table>
-<h2 id="設計">設計</h2>
 <p><img src="img/circuit.dio.svg" /></p>
+<h2 id="真偽演算">真偽演算</h2>
+<p>　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
+<h3 id="一致不一致">一致/不一致</h3>
+<p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。</p>
+<h3 id="大小比較">大小比較</h3>
+<p>　比較には減算のキャリー出力と符号ビットを使います。まず、4bitの符号なし整数の減算 <span class="math inline">\(A-B\)</span> を考えます。ビット反転して1を足すと負の数になる (<span class="math inline">\(10000-X=\bar{X}+1\)</span>) という特性を利用して計算します。</p>
+<p><span class="math display">\[
+A-B=A+(10000-B)-10000=A+\bar{B}+1-10000
+\]</span></p>
+<p>　減算器は <span class="math inline">\(A+\bar{B}+1\)</span> を計算する回路です。</p>
+<p><span class="math display">\[
+A+\bar{B}+1=A-B+10000
+\]</span></p>
+<p>　キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、</p>
+<p><span class="math display">\[
+A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
+\]</span></p>
+<p>を意味しています。逆にフラグが立っていない場合、</p>
+<p><span class="math display">\[
+A &lt; B
+\]</span></p>
+<p>ということになります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>A:B</th>
+<th>Carry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A&gt;B</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>A=B</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>A&lt;B</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
+<h2 id="設計">設計</h2>
 <p>マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。 遅延はデータシート上ではどちらも 10 ns っぽい。</p>
 <h2 id="実装">実装</h2>
 <ul>
