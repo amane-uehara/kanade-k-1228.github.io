@@ -134,386 +134,203 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#実装の方針">実装の方針</a>
+<li><a href="#alu">ALU</a>
 <ul>
-<li><a href="#開発のユニット化">開発のユニット化</a></li>
+<li><a href="#比較演算">比較演算</a></li>
+<li><a href="#実装">実装</a></li>
 </ul></li>
-<li><a href="#fpgaでの実装">FPGAでの実装</a>
-<ul>
-<li><a href="#id-命令デコーダ"><code>ID</code> 命令デコーダ</a></li>
-<li><a href="#alu-1">ALU</a></li>
+<li><a href="#メモリ空間">メモリ空間</a></li>
+<li><a href="#データパス">データパス</a></li>
+<li><a href="#npc">NPC</a></li>
 <li><a href="#クロック">クロック</a></li>
-</ul></li>
-<li><a href="#ロジック-ic">ロジック IC</a></li>
-<li><a href="#ram">RAM</a>
-<ul>
-<li><a href="#io">IO</a></li>
-</ul></li>
-<li><a href="#rom">ROM</a>
-<ul>
-<li><a href="#rom-ライタ">ROM ライタ</a></li>
-</ul></li>
-<li><a href="#alu-2">ALU</a></li>
-<li><a href="#pfc">PFC</a></li>
-<li><a href="#クロック-1">クロック</a>
-<ul>
-<li><a href="#ステートカウンタ">ステートカウンタ</a></li>
-</ul></li>
-<li><a href="#部品メモ">部品メモ</a></li>
 </ul></nav>
-     <h2 id="実装の方針">実装の方針</h2>
-<h3 id="開発のユニット化">開発のユニット化</h3>
-<p><img src="img/unit.dio.svg" /></p>
-<p><img src="img/unit_dev_concept.dio.svg" /></p>
-<p>ユニット開発という開発方針をとります。アジャイル開発を適用したものです。アジャイル開発の肝は、常に動作可能な物を作り続けることにあります。</p>
-<p>普通、ハードウェアは完成するまで動かせません。</p>
-<p>まず、CPUのうち、あるユニットをロジックICで作ります。そうしたら、それ以外の部分をマイコンで補完します。</p>
-<p><img src="img/brain_nou_suisou_denkyoku.png" /></p>
-<p>「実装済み部分＋未実装部分のエミュレータ」</p>
-<h4 id="alu">1. ALU</h4>
-<p>最初にALUを作ります。ALUの遅延がステージ長を決める上で重要なので。 ALUはいうても大きな組み合わせ回路なのでテストが楽です。</p>
-<h4 id="メモリ空間">2. メモリ空間</h4>
-<p>次にメモリ空間を作ります。「空間」といったのはアドレスとバスをインターフェイスとしてデバイスにアクセスするシステムという意味を強調するためです。</p>
-<h4 id="データパス">3. データパス</h4>
-<p>ここまでくれば、演算命令と転送命令を実行することができ、CPUとしての機能を確かめることができます。</p>
-<h4 id="プログラム制御ユニット">4. プログラム制御ユニット</h4>
-<p>プログラムカウンタ周辺の回路を</p>
-<h4 id="romとライタ">5. ROMとライタ</h4>
-<h4 id="命令デコーダとクロック">6. 命令デコーダとクロック</h4>
-<p>プログラムの実行を制御するユニットです。</p>
-<h2 id="fpgaでの実装">FPGAでの実装</h2>
-<h3 id="id-命令デコーダ"><code>ID</code> 命令デコーダ</h3>
+     <p><img src="../1_Architecture/img/arch.dio.svg" /></p>
+<h2 id="alu">ALU</h2>
+<p><img src="img/circuit_ALU.dio.svg" /></p>
 <table>
 <thead>
 <tr class="header">
+<th style="text-align: left;">演算</th>
+<th style="text-align: left;"></th>
 <th></th>
-<th>ALU</th>
-<th>S2</th>
-<th>DIN</th>
-<th>1.ADR</th>
-<th>2.ADR</th>
-<th>3.ADR</th>
+<th style="text-align: left;">演算</th>
+<th style="text-align: left;"></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;"><strong>74181</strong></td>
+<td style="text-align: left;"></td>
+<td></td>
+<td style="text-align: left;"><strong>比較回路</strong></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">加算</td>
+<td style="text-align: left;"><code>A+B</code> (mod 0x10000)</td>
 <td>add</td>
-<td>Func</td>
-<td>RS2</td>
-<td>ALU</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>RD</td>
-</tr>
-<tr class="even">
-<td>addi</td>
-<td>Func</td>
-<td>IMM</td>
-<td>ALU</td>
-<td>RS1</td>
-<td>-</td>
-<td>RD</td>
+<td style="text-align: left;">一致</td>
+<td style="text-align: left;"><code>A==B</code></td>
+<td>eq</td>
 </tr>
 <tr class="odd">
-<td>load</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RS2</td>
-<td>RS1</td>
-<td>ALU</td>
-<td>RD</td>
+<td style="text-align: left;">減算</td>
+<td style="text-align: left;"><code>A-B</code> (mod 0x10000)</td>
+<td>sub</td>
+<td style="text-align: left;">不一致</td>
+<td style="text-align: left;"><code>A!=B</code></td>
+<td>neq</td>
 </tr>
 <tr class="even">
-<td>store</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RS2</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>ALU</td>
+<td style="text-align: left;">論理積</td>
+<td style="text-align: left;"><code>A&amp;B</code></td>
+<td>and</td>
+<td style="text-align: left;">比較(signed)</td>
+<td style="text-align: left;"><code>A&lt;B</code></td>
+<td>lts</td>
 </tr>
 <tr class="odd">
-<td>callif</td>
-<td>ADD</td>
-<td>IMM</td>
-<td>RA</td>
-<td>RS1</td>
-<td>RS2</td>
-<td>RD</td>
+<td style="text-align: left;">論理和</td>
+<td style="text-align: left;"><code>A\|B</code></td>
+<td>or</td>
+<td style="text-align: left;">比較(unsigned)</td>
+<td style="text-align: left;"><code>A&lt;B</code></td>
+<td>lsu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">排他的論理和</td>
+<td style="text-align: left;"><code>A^B</code></td>
+<td>xor</td>
+<td style="text-align: left;"><strong>シフト回路</strong></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">論理否定</td>
+<td style="text-align: left;"><code>~A</code></td>
+<td>not</td>
+<td style="text-align: left;">右シフト(signed)</td>
+<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
+<td>srs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">左シフト</td>
+<td style="text-align: left;"><code>A&lt;&lt;1</code></td>
+<td>sl</td>
+<td style="text-align: left;">右シフト(unsigned)</td>
+<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
+<td>sru</td>
 </tr>
 </tbody>
 </table>
-<p><img src="img/decoder.dio.svg" /></p>
-<pre class="language-verilog"><code>`define CALC  4&#39;b0000
-`define CALCI 4&#39;b0001
-`define LOAD  4&#39;b0011
-`define STORE 4&#39;b0111
-`define CALIF 4&#39;b1111
-
-module ID(
-    input  wire [31: 0] OP,
-    output wire [ 3: 0] RS1,
-    output wire [ 3: 0] RS2,
-    output wire [ 3: 0] RD,
-    output wire [31:16] IMM,
-    output wire [ 1: 0] DIN_SEL,
-    output wire [ 1: 0] ADDR_SEL,
-    output wire [ 3: 0] ALU_CTRL,
-    output wire         PFC_CTRL,
-);
-
-wire [3:0] OPC;
-
-assign RS1 = OP[ 3: 0];
-assign RS2 = OP[ 7: 4];
-assign RD  = OP[11: 8];
-assign OPC = OP[15:12];
-assign IMM = OP[31:16];
-
-assign ALU_CTRL = OPC==`CALC  ? OP[19:16]
-                : OPC==`CALCI ? OP[ 7: 4]
-                : `ALU_ADD;
-
-assign ADDR_SEL = STAGE==0 ? `ADDR_RS1
-                : STAGE==1 ? `ADDR_RS2
-                : STAGE==2 ? `ADDR_RD;
-
-assign DIN_SEL = OPC==`CALC|`CALCI ? `DIN_ALU 
-               : OPC==`LOAD|`STORE ? `DIN_RS2
-               : OPC==`CALLIF     ? `DIN_RA;
-
-assign S2_SEL = OPC==`CALC ? `S2_RS2 
-                           : `S2_IMM;
-
-endmodule</code></pre>
-<h3 id="alu-1">ALU</h3>
-<p>演算装置。必要な演算は、</p>
+<h3 id="比較演算">比較演算</h3>
+<p>　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
+<h4 id="一致不一致">一致/不一致</h4>
+<p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。</p>
+<h4 id="大小比較">大小比較</h4>
+<p>　比較には74181の減算を使います。まず、4bitの符号なし整数の減算 <span class="math inline">\(A-B\)</span> を考えます。ビット反転して1を足すと負の数になる (<span class="math inline">\(10000-X=\bar{X}+1\)</span>) ことを利用して計算します。</p>
+<p><span class="math display">\[
+A-B=A+(10000-B)-10000=A+\bar{B}+1-10000
+\]</span></p>
+<p>　減算器は <span class="math inline">\(A+\bar{B}+1\)</span> を計算する回路です。</p>
+<p><span class="math display">\[
+A+\bar{B}+1=A-B+10000
+\]</span></p>
+<p>　キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、</p>
+<p><span class="math display">\[
+A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
+\]</span></p>
+<p>を意味しています。逆にフラグが立っていない場合、</p>
+<p><span class="math display">\[
+A &lt; B
+\]</span></p>
+<p>ということになります。</p>
 <table>
 <thead>
 <tr class="header">
+<th>A:B</th>
+<th>Carry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A&gt;B</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>A=B</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>A&lt;B</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
+<h3 id="実装">実装</h3>
+<table>
+<thead>
+<tr class="header">
+<th>BOM</th>
 <th></th>
-<th>演算</th>
-<th>実装</th>
+<th>#</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>+</td>
-<td>加算</td>
-<td>74181</td>
+<td>ALU</td>
+<td><a href="./doc/74HC181.pdf">74HC181</a></td>
+<td>4</td>
 </tr>
 <tr class="even">
-<td>-</td>
-<td>減算</td>
-<td>74181</td>
+<td>Carry</td>
+<td><a href="./doc/74HC182.pdf">74HC182</a></td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td>&amp;</td>
-<td>ビット AND</td>
-<td>74181</td>
+<td>XOR</td>
+<td><a href="./doc/74HC86.pdf">74HC86</a></td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td>|</td>
-<td>ビット OR</td>
-<td>74181</td>
+<td>Decoder</td>
+<td><a href="./doc/74HC138.pdf">74HC138</a></td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td>^</td>
-<td>ビット XOR</td>
-<td>74181</td>
+<td>3 State Buffer</td>
+<td><a href="./doc/74HC540.pdf">74HC541</a></td>
+<td>4</td>
 </tr>
 <tr class="even">
-<td>~</td>
-<td>ビット NOT</td>
-<td>74181</td>
+<td>3 State Buffer Inv</td>
+<td><a href="./doc/74HC540.pdf">74HC540</a></td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td>&gt;&gt;</td>
-<td>右シフト（符号あり）</td>
-<td>MUX</td>
+<td>AND</td>
+<td></td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td>&gt;&gt;</td>
-<td>右シフト（符号なし）</td>
-<td>MUX</td>
-</tr>
-<tr class="odd">
-<td>&lt;&lt;</td>
-<td>左シフト</td>
-<td>74181</td>
-</tr>
-<tr class="even">
-<td>==</td>
-<td>一致比較</td>
-<td>7485</td>
-</tr>
-<tr class="odd">
-<td>&lt;</td>
-<td>大小比較（符号あり）</td>
-<td>7485</td>
-</tr>
-<tr class="even">
-<td>&lt;</td>
-<td>大小比較（符号なし）</td>
-<td>7485 + MSB NOT</td>
+<td>NAND (1bit MUX)</td>
+<td></td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
-<p>74HC181 で実装する。</p>
-<table>
-<thead>
-<tr class="header">
-<th>74181</th>
-<th>Cn</th>
-<th>M</th>
-<th>S<sub>3</sub></th>
-<th>S<sub>2</sub></th>
-<th>S<sub>1</sub></th>
-<th>S<sub>0</sub></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ADD +</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>SUB -</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>AND &amp;</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>OR |</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>XOR ^</td>
-<td>-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>NOT ~</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<h3 id="クロック">クロック</h3>
-<p><img src="img/timing.dio.svg" /></p>
-<h2 id="ロジック-ic">ロジック IC</h2>
-<ul>
-<li>入手性を考えて、できるだけ少ない種類で実装したい。</li>
-<li>高機能 IC は入手性が悪いので単純な IC で作りたい。</li>
-<li>MUX を 3 ステートで作るか、MUX の IC で作るか問題
-<ul>
-<li>157 は A/B の選択に加え、出力を 0 にする ST ピンがある</li>
-<li>541 はピン配置が綺麗なので基板の配線が楽になる</li>
-<li>541 は排他回路が必要</li>
-</ul></li>
-</ul>
-<h2 id="ram">RAM</h2>
-<p><a href="https://www.renesas.com/jp/en/document/dst/71016-data-sheet">Renesas 64K x 16 SRAM 71016</a></p>
-<p>これをメインメモリにします。ふつうの SRAM です。SRAM といってもフリップフロップが大量に並んでるだけなので、使い方は単純です。</p>
-<ul>
-<li>Note
-<ul>
-<li>出力は最大 50mA</li>
-<li>!CS=1 で Z 出力</li>
-<li>TSOP</li>
-<li>5V</li>
-</ul></li>
-<li>READ
-<ul>
-<li>!WE=1, !CS=0, !OE=0, !BHE=0, !BLE=0</li>
-<li>ADDRESS にアドレスを書き込めば、</li>
-<li>tAA &lt; 10ns でデータが出力される</li>
-</ul></li>
-<li>WRITE
-<ul>
-<li>!CS=0, !OE=1, !BHE=0, !BLE=0</li>
-<li>ADDRESS と DATA にセットします</li>
-<li>!WE の立ち上がりでデータが保存されます</li>
-</ul></li>
-</ul>
-<h3 id="io">IO</h3>
-<p>IO 領域のアドレスが指定された場合、SRAM の!CE=1 にします。</p>
-<h2 id="rom">ROM</h2>
-<p><a href="https://www.microchip.com/en-us/product/SST39VF200A">Microchip 2Mb Flash SST39VF200A</a> （<a href="https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/25001A.pdf">データシート</a>）</p>
-<ul>
-<li>Note
-<ul>
-<li>5V</li>
-<li>TSOP</li>
-</ul></li>
-<li>READ
-<ul>
-<li>!CE=0, !OE=0</li>
-<li>ADDRESS を入力すると</li>
-<li>TAA &lt; 55ns でデータが出力される</li>
-</ul></li>
-<li>WRITE
-<ul>
-<li>コントローラにコマンドを送る必要がある</li>
-<li>めんどいがライタでやるのでヨシ</li>
-</ul></li>
-</ul>
-<h3 id="rom-ライタ">ROM ライタ</h3>
-<p>ROM は別基板にして取り外せるようにします。</p>
-<p>ROM 基板を ROM ライタ基板に挿して Arduino で書き込みます。</p>
-<h2 id="alu-2">ALU</h2>
-<p>74181 を使って、plus・minus・not・and・or・xor の演算ができる。</p>
-<p>左シフトは 74181 の A plus A を使う</p>
-<p>シフト演算は、MUX の 0 出力を使う？</p>
-<h2 id="pfc">PFC</h2>
-<h2 id="クロック-1">クロック</h2>
-<p>マイコンの心臓だが…回路は単純</p>
-<h3 id="ステートカウンタ">ステートカウンタ</h3>
-<ul>
-<li>ジャンプなし
-<ul>
-<li>COUNT UP に POSEDGE を入れる</li>
-</ul></li>
-<li>ジャンプあり
-<ul>
-<li>DATA INPUT に次のアドレスをセットして、!LOAD に NEGEDGE を入れる</li>
-</ul></li>
-</ul>
-<h2 id="部品メモ">部品メモ</h2>
-<ul>
-<li><a href="https://akizukidenshi.com/catalog/g/gP-01137/">ボックスピンヘッダ</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/gC-08931/">フラットケーブル</a></li>
-</ul>
+<p>マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。 遅延はデータシート上ではどちらも 10 ns っぽい。</p>
+<h2 id="メモリ空間">メモリ空間</h2>
+<p><img src="img/circuit_mem.dio.svg" /></p>
+<h2 id="データパス">データパス</h2>
+<h2 id="npc">NPC</h2>
+<p><img src="img/circuit_npc.dio.svg" /></p>
+<h2 id="クロック">クロック</h2>
+<p><img src="img/clk_circuit.dio.svg" /></p>
+<p><img src="img/clk_timing.dio.svg" /></p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">

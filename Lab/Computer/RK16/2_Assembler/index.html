@@ -137,9 +137,8 @@
 <li><a href="#命令一覧">命令一覧</a></li>
 <li><a href="#命令変数定数のラベル">命令・変数・定数のラベル</a></li>
 <li><a href="#アセンブラの実装">アセンブラの実装</a></li>
-<li><a href="#慣用句">慣用句</a>
+<li><a href="#関数呼び出し">関数呼び出し</a>
 <ul>
-<li><a href="#サブルーチン">サブルーチン</a></li>
 <li><a href="#割り込み処理">割り込み処理</a></li>
 </ul></li>
 </ul></nav>
@@ -229,100 +228,148 @@ label:
 <li>ラベルの置換（リロケーション</li>
 <li>バイナリを出力</li>
 </ol>
-<h2 id="慣用句">慣用句</h2>
-<h3 id="サブルーチン">サブルーチン</h3>
-<p><a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考</a></p>
+<h2 id="関数呼び出し">関数呼び出し</h2>
+<p>　関数呼び出しの前後で変更していいレジスタと、いけないレジスタがあります。</p>
+<p><a href="https://valinux.hatenablog.com/entry/20210624">参考１</a> <a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考２</a></p>
 <table>
 <thead>
 <tr class="header">
-<th>RKASM</th>
-<th></th>
+<th style="text-align: left;">RKASM</th>
+<th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>subi sp sp 5</td>
-<td>スタックポインタを減算し、スタックを確保</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">関数呼び出し側の仕事 ←①</td>
 </tr>
 <tr class="even">
-<td>store s0 sp 0</td>
-<td>レジスタをスタックに退避</td>
+<td style="text-align: left;">push t0</td>
+<td style="text-align: left;">一時レジスタを退避</td>
 </tr>
 <tr class="odd">
-<td>store s1 sp 1</td>
-<td></td>
+<td style="text-align: left;">push t1</td>
+<td style="text-align: left;">関数呼び出し後に使わないなら</td>
 </tr>
 <tr class="even">
-<td>store s1 sp 2</td>
-<td></td>
+<td style="text-align: left;">push t2</td>
+<td style="text-align: left;">退避する必要なし</td>
 </tr>
 <tr class="odd">
-<td>store s1 sp 3</td>
-<td></td>
+<td style="text-align: left;">push t3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
-<td>store ra sp 4</td>
-<td>リターンアドレスも退避</td>
+<td style="text-align: left;">push ra</td>
+<td style="text-align: left;">RAを退避 (callで上書きされる)</td>
 </tr>
 <tr class="odd">
-<td>loadi a0 334</td>
-<td>引数をレジスタにセット</td>
+<td style="text-align: left;">push fp</td>
+<td style="text-align: left;">FPを退避 (FPは引数のポインタ)</td>
 </tr>
 <tr class="even">
-<td>loadi a1 2</td>
-<td>※ 引数レジスタが足りなければスタックにセット</td>
+<td style="text-align: left;">mov fp sp</td>
+<td style="text-align: left;">SPを退避</td>
 </tr>
 <tr class="odd">
-<td>jump ra func</td>
-<td>サブルーチンにジャンプ</td>
+<td style="text-align: left;">mov a0 xx</td>
+<td style="text-align: left;">引数を引数レジスタに入れる</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>ここに戻ってくる</td>
+<td style="text-align: left;">mov a1 yy</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
+<td style="text-align: left;">push zz</td>
+<td style="text-align: left;">入らない引数はスタックに入れる</td>
 </tr>
 <tr class="even">
-<td>func:</td>
-<td></td>
+<td style="text-align: left;">push ww</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td>—</td>
-<td>サブルーチンの処理</td>
+<td style="text-align: left;">call func</td>
+<td style="text-align: left;">サブルーチンにジャンプ ←②</td>
 </tr>
 <tr class="even">
-<td>—</td>
-<td></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ここに戻ってくる ←③</td>
 </tr>
 <tr class="odd">
-<td>l ra sp 0</td>
-<td>レジスタを復元</td>
+<td style="text-align: left;">mov sp fp</td>
+<td style="text-align: left;">SPを復元</td>
 </tr>
 <tr class="even">
-<td>l ra sp 1</td>
-<td></td>
+<td style="text-align: left;">pop fp</td>
+<td style="text-align: left;">FPを復元</td>
 </tr>
 <tr class="odd">
-<td>l ra sp 2</td>
-<td></td>
+<td style="text-align: left;">pop ra</td>
+<td style="text-align: left;">RAを復元 ←④</td>
 </tr>
 <tr class="even">
-<td>l ra sp 3</td>
-<td></td>
+<td style="text-align: left;">pop t3</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td>l ra sp 4</td>
-<td>リターンアドレスを復元</td>
+<td style="text-align: left;">pop t2</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
-<td>addi sp sp 5</td>
-<td>スタックポインタを加算</td>
+<td style="text-align: left;">pop t1</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td>jump zero ra 0</td>
-<td>PC を戻す</td>
+<td style="text-align: left;">pop t0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">func:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push s0</td>
+<td style="text-align: left;">保存レジスタの退避</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push s1</td>
+<td style="text-align: left;">関数内で上書きしなければ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">push s2</td>
+<td style="text-align: left;">退避する必要なし</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">push s3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nop</td>
+<td style="text-align: left;">関数の処理</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop s3</td>
+<td style="text-align: left;">保存レジスタを復元</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pop s2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop s1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pop s0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ret</td>
+<td style="text-align: left;">元の処理に戻る</td>
 </tr>
 </tbody>
 </table>

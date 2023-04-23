@@ -202,16 +202,6 @@ title: 研究室へようこそ
 
 [9.ハードウェア](./Computer/RK16/9_Hardware/)
 
-[9.1.ALU](./Computer/RK16/91_ALU/)
-
-[9.2.メモリ空間](./Computer/RK16/92_Memory/)
-
-[9.3.データパス](./Computer/RK16/93_DataPath/)
-
-[9.4.NPC](./Computer/RK16/94_NPC/)
-
-[9.5.ROM](./Computer/RK16/95_ROM/)
-
 ### 自作 CPU：RK8
 
 [RK8 の概要](./Computer/RK8/)
