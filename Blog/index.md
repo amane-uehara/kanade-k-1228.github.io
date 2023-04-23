@@ -18,4 +18,6 @@
 
 [フリーパスまとめ](./Travel/FreePass/)
 
+[柏→筑波山経路](./Travel/KashiwaTukubasan/)
+
 ## 動画
