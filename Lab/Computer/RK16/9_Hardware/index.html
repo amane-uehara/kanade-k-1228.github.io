@@ -134,10 +134,7 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#alu">ALU</a>
-<ul>
-<li><a href="#部品表">部品表</a></li>
-</ul></li>
+<li><a href="#alu">ALU</a></li>
 <li><a href="#メモリ空間">メモリ空間</a></li>
 <li><a href="#データパス">データパス</a></li>
 <li><a href="#npc">NPC</a></li>
@@ -225,7 +222,7 @@
 </tbody>
 </table>
 <details>
-<p><summary>比較演算</summary></p>
+<p><summary>比較演算回路の原理</summary></p>
 <p>　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
 <h4 id="一致不一致">一致/不一致</h4>
 <p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。</p>
@@ -264,7 +261,8 @@ A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 </table>
 <p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
 </details>
-<h3 id="部品表">部品表</h3>
+<details>
+<p><summary>部品表</summary></p>
 <table>
 <thead>
 <tr class="header">
@@ -316,7 +314,7 @@ A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 </tr>
 </tbody>
 </table>
-<p>マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。 遅延はデータシート上ではどちらも 10 ns っぽい。</p>
+</details>
 <h2 id="メモリ空間">メモリ空間</h2>
 <p><img src="img/circuit_mem.dio.svg" /></p>
 <h2 id="データパス">データパス</h2>

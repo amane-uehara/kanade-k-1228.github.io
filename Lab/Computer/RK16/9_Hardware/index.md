@@ -20,7 +20,7 @@ title: ロジックICで組む
 | 左シフト     | A<<1              | sl  | 右シフト(unsigned) | A>>1 | sru |
 
 <details>
-  <summary>比較演算</summary>
+  <summary>比較演算回路の原理</summary>
   
 　真偽値は`0xffff`が`true`、`0x0000`が`false`です。
 
@@ -51,7 +51,8 @@ $$
 
 </details>
 
-### 部品表
+<details>
+<summary>部品表</summary>
 
 | BOM                |                              | #   |
 | ------------------ | ---------------------------- | --- |
@@ -64,8 +65,7 @@ $$
 | AND                |                              | 1   |
 | NAND (1bit MUX)    |                              | 1   |
 
-マルチプレクサ(74HC175)かトライステートバッファ(74HC541)か。
-遅延はデータシート上ではどちらも 10 ns っぽい。
+</details>
 
 ## メモリ空間
 
