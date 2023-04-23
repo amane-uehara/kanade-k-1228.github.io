@@ -143,86 +143,11 @@
      <p><img src="../1_Architecture/img/arch.dio.svg" /></p>
 <h2 id="alu">ALU</h2>
 <p><img src="img/circuit_ALU.dio.svg" /></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">演算</th>
-<th style="text-align: left;"></th>
-<th></th>
-<th style="text-align: left;">演算</th>
-<th style="text-align: left;"></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>74181</strong></td>
-<td style="text-align: left;"></td>
-<td></td>
-<td style="text-align: left;"><strong>比較回路</strong></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">加算</td>
-<td style="text-align: left;">A+B (mod 0x10000)</td>
-<td>add</td>
-<td style="text-align: left;">一致</td>
-<td style="text-align: left;">A==B</td>
-<td>eq</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">減算</td>
-<td style="text-align: left;">A-B (mod 0x10000)</td>
-<td>sub</td>
-<td style="text-align: left;">不一致</td>
-<td style="text-align: left;">A!=B</td>
-<td>neq</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">論理積</td>
-<td style="text-align: left;">A&amp;B</td>
-<td>and</td>
-<td style="text-align: left;">比較(signed)</td>
-<td style="text-align: left;">A&lt;B</td>
-<td>lts</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">論理和</td>
-<td style="text-align: left;">A|B</td>
-<td>or</td>
-<td style="text-align: left;">比較(unsigned)</td>
-<td style="text-align: left;">A&lt;B</td>
-<td>lsu</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">排他的論理和</td>
-<td style="text-align: left;">A^B</td>
-<td>xor</td>
-<td style="text-align: left;"><strong>シフト回路</strong></td>
-<td style="text-align: left;"></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">論理否定</td>
-<td style="text-align: left;">~A</td>
-<td>not</td>
-<td style="text-align: left;">右シフト(signed)</td>
-<td style="text-align: left;">A&gt;&gt;1</td>
-<td>srs</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">左シフト</td>
-<td style="text-align: left;">A&lt;&lt;1</td>
-<td>sl</td>
-<td style="text-align: left;">右シフト(unsigned)</td>
-<td style="text-align: left;">A&gt;&gt;1</td>
-<td>sru</td>
-</tr>
-</tbody>
-</table>
 <details>
-<p><summary>比較演算回路の原理</summary></p>
+<summary>演算の種類</summary> | 演算 | | | 演算 | | | | :———– | :—————- | — | :—————– | :— | — | | <strong>74181</strong> | | | <strong>比較回路</strong> | | | | 加算 | A+B (mod 0x10000) | add | 一致 | A==B | eq | | 減算 | A-B (mod 0x10000) | sub | 不一致 | A!=B | neq | | 論理積 | A&amp;B | and | 比較(signed) | A&lt;B | lts | | 論理和 | A|B | or | 比較(unsigned) | A&lt;B | lsu | | 排他的論理和 | A^B | xor | <strong>シフト回路</strong> | | | | 論理否定 | ~A | not | 右シフト(signed) | A&gt;&gt;1 | srs | | 左シフト | A&lt;&lt;1 | sl | 右シフト(unsigned) | A&gt;&gt;1 | sru |
+</details>
+<details>
+<p><summary>比較演算の原理</summary></p>
 <p>　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
 <h4 id="一致不一致">一致/不一致</h4>
 <p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。</p>
@@ -259,61 +184,10 @@ A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 </tr>
 </tbody>
 </table>
-<p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
+　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。
 </details>
 <details>
-<p><summary>部品表</summary></p>
-<table>
-<thead>
-<tr class="header">
-<th>BOM</th>
-<th></th>
-<th>#</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ALU</td>
-<td><a href="./doc/74HC181.pdf">74HC181</a></td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>Carry</td>
-<td><a href="./doc/74HC182.pdf">74HC182</a></td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>XOR</td>
-<td><a href="./doc/74HC86.pdf">74HC86</a></td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>Decoder</td>
-<td><a href="./doc/74HC138.pdf">74HC138</a></td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>3 State Buffer</td>
-<td><a href="./doc/74HC540.pdf">74HC541</a></td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>3 State Buffer Inv</td>
-<td><a href="./doc/74HC540.pdf">74HC540</a></td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>AND</td>
-<td></td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>NAND (1bit MUX)</td>
-<td></td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
+<summary>部品表</summary> | BOM | | # | | —————— | —————————- | — | | ALU | <a href="./doc/74HC181.pdf">74HC181</a> | 4 | | Carry | <a href="./doc/74HC182.pdf">74HC182</a> | 1 | | XOR | <a href="./doc/74HC86.pdf">74HC86</a> | 1 | | Decoder | <a href="./doc/74HC138.pdf">74HC138</a> | 2 | | 3 State Buffer | <a href="./doc/74HC540.pdf">74HC541</a> | 4 | | 3 State Buffer Inv | <a href="./doc/74HC540.pdf">74HC540</a> | 2 | | AND | | 1 | | NAND (1bit MUX) | | 1 |
 </details>
 <h2 id="メモリ空間">メモリ空間</h2>
 <p><img src="img/circuit_mem.dio.svg" /></p>
