@@ -136,7 +136,6 @@
         <nav><ul>
 <li><a href="#alu">ALU</a>
 <ul>
-<li><a href="#比較演算">比較演算</a></li>
 <li><a href="#部品表">部品表</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a></li>
@@ -225,8 +224,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="比較演算">比較演算</h3>
-<p>　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
+<details>
+<p><summary>比較演算</summary> 　真偽値は<code>0xffff</code>が<code>true</code>、<code>0x0000</code>が<code>false</code>です。</p>
 <h4 id="一致不一致">一致/不一致</h4>
 <p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。</p>
 <h4 id="大小比較">大小比較</h4>
@@ -241,7 +240,7 @@ A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <table>
 <thead>
 <tr class="header">
-<th></th>
+<th>74181</th>
 <th>A&lt;B</th>
 <th>A=B</th>
 <th>A&gt;B</th>
@@ -263,6 +262,7 @@ A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 </tbody>
 </table>
 <p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
+</details>
 <h3 id="部品表">部品表</h3>
 <table>
 <thead>
