@@ -55,35 +55,48 @@ label:
 2. ラベルの置換（リロケーション
 3. バイナリを出力
 
-## 慣用句
+## 関数呼び出し
 
-### サブルーチン
+　関数呼び出しの前後で変更していいレジスタと、いけないレジスタがあります。
 
-[参考](https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf)
+[参考１](https://valinux.hatenablog.com/entry/20210624)
+[参考２](https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf)
 
-| RKASM          |                                              |
-| -------------- | -------------------------------------------- |
-| subi sp sp 5   | スタックポインタを減算し、スタックを確保     |
-| store s0 sp 0  | レジスタをスタックに退避                     |
-| store s1 sp 1  |                                              |
-| store s1 sp 2  |                                              |
-| store s1 sp 3  |                                              |
-| store ra sp 4  | リターンアドレスも退避                       |
-| loadi a0 334   | 引数をレジスタにセット                       |
-| loadi a1 2     | ※ 引数レジスタが足りなければスタックにセット |
-| jump ra func   | サブルーチンにジャンプ                       |
-|                | ここに戻ってくる                             |
-|                |                                              |
-| func:          |                                              |
-| ---            | サブルーチンの処理                           |
-| ---            |                                              |
-| l ra sp 0      | レジスタを復元                               |
-| l ra sp 1      |                                              |
-| l ra sp 2      |                                              |
-| l ra sp 3      |                                              |
-| l ra sp 4      | リターンアドレスを復元                       |
-| addi sp sp 5   | スタックポインタを加算                       |
-| jump zero ra 0 | PC を戻す                                    |
+| RKASM     |                                |
+| :-------- | :----------------------------- |
+|           | 関数呼び出し側の仕事 ←①        |
+| push t0   | 一時レジスタを退避             |
+| push t1   | 関数呼び出し後に使わないなら   |
+| push t2   | 退避する必要なし               |
+| push t3   |                                |
+| push ra   | RAを退避 (callで上書きされる)  |
+| push fp   | FPを退避 (FPは引数のポインタ)  |
+| mov fp sp | SPを退避                       |
+| mov a0 xx | 引数を引数レジスタに入れる     |
+| mov a1 yy |                                |
+| push zz   | 入らない引数はスタックに入れる |
+| push ww   |                                |
+| call func | サブルーチンにジャンプ ←②      |
+|           | ここに戻ってくる ←③            |
+| mov sp fp | SPを復元                       |
+| pop fp    | FPを復元                       |
+| pop ra    | RAを復元 ←④                    |
+| pop t3    |                                |
+| pop t2    |                                |
+| pop t1    |                                |
+| pop t0    |                                |
+|           |                                |
+| func:     |                                |
+| push s0   | 保存レジスタの退避             |
+| push s1   | 関数内で上書きしなければ       |
+| push s2   | 退避する必要なし               |
+| push s3   |                                |
+| nop       | 関数の処理                     |
+| pop s3    | 保存レジスタを復元             |
+| pop s2    |                                |
+| pop s1    |                                |
+| pop s0    |                                |
+| ret       | 元の処理に戻る                 |
 
 ### 割り込み処理
 
