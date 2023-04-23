@@ -60,6 +60,10 @@ p {
     margin: 0.5em 0 0.5em 1em;
 }
 
+details {
+    margin: 0.5em 0 0.5em 1em;
+}
+
 small {
     font-size: 10px;
 }

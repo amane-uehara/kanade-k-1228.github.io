@@ -21,6 +21,7 @@ title: ロジックICで組む
 
 <details>
   <summary>比較演算</summary>
+  
 　真偽値は`0xffff`が`true`、`0x0000`が`false`です。
 
 #### 一致/不一致
