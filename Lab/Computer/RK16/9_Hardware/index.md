@@ -97,3 +97,7 @@ $$
 ![](img/clk_circuit.dio.svg)
 
 ![](img/clk_timing.dio.svg)
+
+## デコーダ
+
+![](img/decoder.dio.svg)
