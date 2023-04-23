@@ -10,6 +10,7 @@ title: ロジックICで組む
 
 <details>
 <summary>演算の種類</summary>
+
 | 演算         |                   |     | 演算               |      |     |
 | :----------- | :---------------- | --- | :----------------- | :--- | --- |
 | **74181**    |                   |     | **比較回路**       |      |     |
@@ -20,16 +21,17 @@ title: ロジックICで組む
 | 排他的論理和 | A^B               | xor | **シフト回路**     |      |     |
 | 論理否定     | ~A                | not | 右シフト(signed)   | A>>1 | srs |
 | 左シフト     | A<<1              | sl  | 右シフト(unsigned) | A>>1 | sru |
+
 </details>
 
 <details>
   <summary>比較演算の原理</summary>
 
-　真偽値は`0xffff`が`true`、`0x0000`が`false`です。
+　比較演算の結果は真偽値型です。結果は1bitなので16bitに広げます。（`true`→`0xffff`、`false`→`0x0000`）
 
 #### 一致/不一致
 
-　74181には `A=B` 出力があります。これと制御信号を XOR して eq A B / neq A B を計算し、16bitに広げてbool型に変換します。
+　74181には `A=B` 出力があります。これと制御信号を XOR すると eq A B / neq A B になります。
 
 #### 大小比較
 
@@ -55,6 +57,7 @@ $$
 
 <details>
 <summary>部品表</summary>
+
 | BOM                |                              | #   |
 | ------------------ | ---------------------------- | --- |
 | ALU                | [74HC181](./doc/74HC181.pdf) | 4   |
@@ -65,11 +68,23 @@ $$
 | 3 State Buffer Inv | [74HC540](./doc/74HC540.pdf) | 2   |
 | AND                |                              | 1   |
 | NAND (1bit MUX)    |                              | 1   |
+
 </details>
 
 ## メモリ空間
 
 ![](img/circuit_mem.dio.svg)
+
+<details>
+<summary>タイミングチャート</summary>
+
+#### SRAM
+
+#### レジスタ
+
+#### カウンタ
+
+</details>
 
 ## データパス
 
