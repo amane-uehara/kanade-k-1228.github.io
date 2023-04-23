@@ -51,6 +51,10 @@ h3 {
     margin: 1em 0 0.5em 0.5em;
 }
 
+summary {
+    font-weight: bold;
+}
+
 h4 {
     font-weight: bold;
     margin: 0.5em 0 0.5em 0.7em;
@@ -64,6 +68,7 @@ details {
     margin: 0.5em 0 0.5em 1em;
     cursor: pointer;
 }
+
 
 small {
     font-size: 10px;
