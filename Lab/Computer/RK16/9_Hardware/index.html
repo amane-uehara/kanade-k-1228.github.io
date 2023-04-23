@@ -137,7 +137,7 @@
 <li><a href="#alu">ALU</a>
 <ul>
 <li><a href="#比較演算">比較演算</a></li>
-<li><a href="#実装">実装</a></li>
+<li><a href="#部品表">部品表</a></li>
 </ul></li>
 <li><a href="#メモリ空間">メモリ空間</a></li>
 <li><a href="#データパス">データパス</a></li>
@@ -169,39 +169,39 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">加算</td>
-<td style="text-align: left;"><code>A+B</code> (mod 0x10000)</td>
+<td style="text-align: left;">A+B (mod 0x10000)</td>
 <td>add</td>
 <td style="text-align: left;">一致</td>
-<td style="text-align: left;"><code>A==B</code></td>
+<td style="text-align: left;">A==B</td>
 <td>eq</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">減算</td>
-<td style="text-align: left;"><code>A-B</code> (mod 0x10000)</td>
+<td style="text-align: left;">A-B (mod 0x10000)</td>
 <td>sub</td>
 <td style="text-align: left;">不一致</td>
-<td style="text-align: left;"><code>A!=B</code></td>
+<td style="text-align: left;">A!=B</td>
 <td>neq</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">論理積</td>
-<td style="text-align: left;"><code>A&amp;B</code></td>
+<td style="text-align: left;">A&amp;B</td>
 <td>and</td>
 <td style="text-align: left;">比較(signed)</td>
-<td style="text-align: left;"><code>A&lt;B</code></td>
+<td style="text-align: left;">A&lt;B</td>
 <td>lts</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">論理和</td>
-<td style="text-align: left;"><code>A\|B</code></td>
+<td style="text-align: left;">A|B</td>
 <td>or</td>
 <td style="text-align: left;">比較(unsigned)</td>
-<td style="text-align: left;"><code>A&lt;B</code></td>
+<td style="text-align: left;">A&lt;B</td>
 <td>lsu</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">排他的論理和</td>
-<td style="text-align: left;"><code>A^B</code></td>
+<td style="text-align: left;">A^B</td>
 <td>xor</td>
 <td style="text-align: left;"><strong>シフト回路</strong></td>
 <td style="text-align: left;"></td>
@@ -209,18 +209,18 @@
 </tr>
 <tr class="odd">
 <td style="text-align: left;">論理否定</td>
-<td style="text-align: left;"><code>~A</code></td>
+<td style="text-align: left;">~A</td>
 <td>not</td>
 <td style="text-align: left;">右シフト(signed)</td>
-<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
+<td style="text-align: left;">A&gt;&gt;1</td>
 <td>srs</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">左シフト</td>
-<td style="text-align: left;"><code>A&lt;&lt;1</code></td>
+<td style="text-align: left;">A&lt;&lt;1</td>
 <td>sl</td>
 <td style="text-align: left;">右シフト(unsigned)</td>
-<td style="text-align: left;"><code>A&gt;&gt;1</code></td>
+<td style="text-align: left;">A&gt;&gt;1</td>
 <td>sru</td>
 </tr>
 </tbody>
@@ -234,43 +234,36 @@
 <p><span class="math display">\[
 A-B=A+(10000-B)-10000=A+\bar{B}+1-10000
 \]</span></p>
-<p>　減算器は <span class="math inline">\(A+\bar{B}+1\)</span> を計算する回路です。</p>
-<p><span class="math display">\[
-A+\bar{B}+1=A-B+10000
-\]</span></p>
-<p>　キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、</p>
+<p>　減算器は実際には加算 <span class="math inline">\(A+\bar{B}+1\)</span> を計算します。キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、</p>
 <p><span class="math display">\[
 A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 \]</span></p>
-<p>を意味しています。逆にフラグが立っていない場合、</p>
-<p><span class="math display">\[
-A &lt; B
-\]</span></p>
-<p>ということになります。</p>
 <table>
 <thead>
 <tr class="header">
-<th>A:B</th>
-<th>Carry</th>
+<th></th>
+<th>A&lt;B</th>
+<th>A=B</th>
+<th>A&gt;B</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>A&gt;B</td>
+<td><strong>Carry</strong></td>
+<td>0</td>
+<td>1</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<td>A=B</td>
+<td><strong>A=B</strong></td>
+<td>0</td>
 <td>1</td>
-</tr>
-<tr class="odd">
-<td>A&lt;B</td>
 <td>0</td>
 </tr>
 </tbody>
 </table>
 <p>　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。</p>
-<h3 id="実装">実装</h3>
+<h3 id="部品表">部品表</h3>
 <table>
 <thead>
 <tr class="header">
