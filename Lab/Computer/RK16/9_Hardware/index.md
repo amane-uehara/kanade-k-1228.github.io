@@ -4,7 +4,7 @@ title: ロジックICで組む
 
 ![](../1_Architecture/img/arch.dio.svg)
 
-## ALU
+## 演算器
 
 ![](img/ALU.dio.svg)
 
@@ -35,16 +35,16 @@ title: ロジックICで組む
 
 #### 大小比較
 
-　比較には74181の減算を使います。まず、4bitの符号なし整数の減算 $A-B$ を考えます。ビット反転して1を足すと負の数になる ($10000-X=\bar{X}+1$) ことを利用して計算します。
+　比較には74181の減算を使います。まず、4bitの符号なし整数の減算 $A-B$ を考えます。ビット反転して1を足すと負の数になる ($10000-X=\overline{X}+1$) ことを利用して計算します。
 
 $$
-A-B=A+(10000-B)-10000=A+\bar{B}+1-10000
+A-B=A+(10000-B)-10000=A+\overline{B}+1-10000
 $$
 
-　減算器は実際には加算 $A+\bar{B}+1$ を計算します。キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、
+　減算器は実際には加算 $A+\overline{B}+1$ を計算します。キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、
 
 $$
-A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
+A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 $$
 
 | 74181     | A<B | A=B | A>B |
@@ -72,7 +72,7 @@ $$
 1bitのマルチプレクサは4個のNANDで構成できます。
 
 $$
-MUX = A \cdot S + B \cdot \bar{S} = \bar{\bar{A \codt S}\cdot\bar{A\cdot\bar{S}}}
+MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\overline{A\cdot\overline{S}}}
 $$
 
 </details>
