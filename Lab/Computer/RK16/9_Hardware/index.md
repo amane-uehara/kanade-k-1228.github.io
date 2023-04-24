@@ -6,7 +6,7 @@ title: ロジックICで組む
 
 ## ALU
 
-![](img/circuit_ALU.dio.svg)
+![](img/ALU.dio.svg)
 
 <details>
 <summary>演算の種類</summary>
@@ -59,21 +59,27 @@ $$
 <summary>部品表</summary>
 
 | BOM                |                              | #   |
-| ------------------ | ---------------------------- | --- |
+| :----------------- | ---------------------------- | --- |
 | ALU                | [74HC181](./doc/74HC181.pdf) | 4   |
 | Carry              | [74HC182](./doc/74HC182.pdf) | 1   |
 | XOR                | [74HC86](./doc/74HC86.pdf)   | 1   |
-| Decoder            | [74HC138](./doc/74HC138.pdf) | 2   |
-| 3 State Buffer     | [74HC541](./doc/74HC540.pdf) | 4   |
-| 3 State Buffer Inv | [74HC540](./doc/74HC540.pdf) | 2   |
-| AND                |                              | 1   |
-| NAND (1bit MUX)    |                              | 1   |
+| 4 to 16 Decoder    | [74HC154](./doc/74HC154.pdf) | 1   |
+| 3 State Buffer     | [74HC541](./doc/74HC540.pdf) | 2   |
+| 3 State Buffer Inv | [74HC540](./doc/74HC540.pdf) | 4   |
+| OR                 | 74HC12                       | 1   |
+| NAND (1bit MUX)    | 74HC00                       | 1   |
+
+1bitのマルチプレクサは4個のNANDで構成できます。
+
+$$
+MUX = A \cdot S + B \cdot \bar{S} = \bar{\bar{A \codt S}\cdot\bar{A\cdot\bar{S}}}
+$$
 
 </details>
 
 ## メモリ空間
 
-![](img/circuit_mem.dio.svg)
+![](img/RAM.dio.svg)
 
 <details>
 <summary>タイミングチャート</summary>
@@ -86,11 +92,33 @@ $$
 
 </details>
 
+<details>
+<summary>部品表<summary>
+
+| BOM             |                              | #   |
+| :-------------- | ---------------------------- | --- |
+| 4 to 16 Decoder | [74HC154](./doc/74HC154.pdf) | 3   |
+| 2 to 4 Decoder  | [74HC139](./doc/74HC139.pdf) | 1   |
+
+</details>
+
 ## データパス
 
 ## NPC
 
 ![](img/circuit_npc.dio.svg)
+
+<details>
+<summary>部品表<summary>
+
+| BOM         |                                | #   |
+| :---------- | ------------------------------ | --- |
+| Multiplexer | [74HC157](./doc/74HC154.pdf)   | 8   |
+| Adder       | [74HC283](./doc/74HC283.pdf)   | 4   |
+| DFF         | [74HC574](./doc/74HC564.pdf)   | 4   |
+| 8in OR      | [74HC4078](./doc/74HC4078.pdf) | 2   |
+
+</details>
 
 ## クロック
 
