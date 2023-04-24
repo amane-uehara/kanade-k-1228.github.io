@@ -93,7 +93,7 @@ $$
 </details>
 
 <details>
-<summary>部品表<summary>
+<summary>部品表</summary>
 
 | BOM             |                              | #   |
 | :-------------- | ---------------------------- | --- |
@@ -102,11 +102,9 @@ $$
 
 </details>
 
-## データパス
+## プログラム制御ユニット
 
-## NPC
-
-![](img/circuit_npc.dio.svg)
+![](img/PFC.dio.svg)
 
 <details>
 <summary>部品表<summary>
@@ -119,6 +117,10 @@ $$
 | 8in OR      | [74HC4078](./doc/74HC4078.pdf) | 2   |
 
 </details>
+
+## データパス
+
+![](img/datapath.dio.svg)
 
 ## クロック
 
