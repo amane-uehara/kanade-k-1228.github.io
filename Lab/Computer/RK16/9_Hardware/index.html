@@ -134,7 +134,7 @@
 
     <!-- Table of Contents -->
         <nav><ul>
-<li><a href="#alu">ALU</a></li>
+<li><a href="#演算器">演算器</a></li>
 <li><a href="#メモリ空間">メモリ空間</a></li>
 <li><a href="#データパス">データパス</a></li>
 <li><a href="#npc">NPC</a></li>
@@ -142,7 +142,7 @@
 <li><a href="#デコーダ">デコーダ</a></li>
 </ul></nav>
      <p><img src="../1_Architecture/img/arch.dio.svg" /></p>
-<h2 id="alu">ALU</h2>
+<h2 id="演算器">演算器</h2>
 <p><img src="img/ALU.dio.svg" /></p>
 <details>
 <p><summary>演算の種類</summary></p>
@@ -231,13 +231,13 @@
 <h4 id="一致不一致">一致/不一致</h4>
 <p>　74181には <code>A=B</code> 出力があります。これと制御信号を XOR すると eq A B / neq A B になります。</p>
 <h4 id="大小比較">大小比較</h4>
-<p>　比較には74181の減算を使います。まず、4bitの符号なし整数の減算 <span class="math inline">\(A-B\)</span> を考えます。ビット反転して1を足すと負の数になる (<span class="math inline">\(10000-X=\bar{X}+1\)</span>) ことを利用して計算します。</p>
+<p>　比較には74181の減算を使います。まず、4bitの符号なし整数の減算 <span class="math inline">\(A-B\)</span> を考えます。ビット反転して1を足すと負の数になる (<span class="math inline">\(10000-X=\overline{X}+1\)</span>) ことを利用して計算します。</p>
 <p><span class="math display">\[
-A-B=A+(10000-B)-10000=A+\bar{B}+1-10000
+A-B=A+(10000-B)-10000=A+\overline{B}+1-10000
 \]</span></p>
-<p>　減算器は実際には加算 <span class="math inline">\(A+\bar{B}+1\)</span> を計算します。キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、</p>
+<p>　減算器は実際には加算 <span class="math inline">\(A+\overline{B}+1\)</span> を計算します。キャリー出力は結果が10000以上であることを表しています。つまり、減算器のキャリーフラグが立っているとき、</p>
 <p><span class="math display">\[
-A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
+A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 \]</span></p>
 <table>
 <thead>
@@ -320,7 +320,7 @@ A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 </table>
 <p>1bitのマルチプレクサは4個のNANDで構成できます。</p>
 <p><span class="math display">\[
-MUX = A \cdot S + B \cdot \bar{S} = \bar{\bar{A \codt S}\cdot\bar{A\cdot\bar{S}}}
+MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\overline{A\cdot\overline{S}}}
 \]</span></p>
 </details>
 <h2 id="メモリ空間">メモリ空間</h2>
