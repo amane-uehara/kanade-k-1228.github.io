@@ -143,7 +143,7 @@
 </ul></nav>
      <p><img src="../1_Architecture/img/arch.dio.svg" /></p>
 <h2 id="alu">ALU</h2>
-<p><img src="img/circuit_ALU.dio.svg" /></p>
+<p><img src="img/ALU.dio.svg" /></p>
 <details>
 <p><summary>演算の種類</summary></p>
 <table>
@@ -270,66 +270,128 @@ A+\bar{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <table>
 <thead>
 <tr class="header">
-<th>BOM</th>
+<th style="text-align: left;">BOM</th>
 <th></th>
 <th>#</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>ALU</td>
+<td style="text-align: left;">ALU</td>
 <td><a href="./doc/74HC181.pdf">74HC181</a></td>
 <td>4</td>
 </tr>
 <tr class="even">
-<td>Carry</td>
+<td style="text-align: left;">Carry</td>
 <td><a href="./doc/74HC182.pdf">74HC182</a></td>
 <td>1</td>
 </tr>
 <tr class="odd">
-<td>XOR</td>
+<td style="text-align: left;">XOR</td>
 <td><a href="./doc/74HC86.pdf">74HC86</a></td>
 <td>1</td>
 </tr>
 <tr class="even">
-<td>Decoder</td>
-<td><a href="./doc/74HC138.pdf">74HC138</a></td>
-<td>2</td>
+<td style="text-align: left;">4 to 16 Decoder</td>
+<td><a href="./doc/74HC154.pdf">74HC154</a></td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td>3 State Buffer</td>
+<td style="text-align: left;">3 State Buffer</td>
 <td><a href="./doc/74HC540.pdf">74HC541</a></td>
-<td>4</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td>3 State Buffer Inv</td>
+<td style="text-align: left;">3 State Buffer Inv</td>
 <td><a href="./doc/74HC540.pdf">74HC540</a></td>
-<td>2</td>
+<td>4</td>
 </tr>
 <tr class="odd">
-<td>AND</td>
-<td></td>
+<td style="text-align: left;">OR</td>
+<td>74HC12</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<td>NAND (1bit MUX)</td>
-<td></td>
+<td style="text-align: left;">NAND (1bit MUX)</td>
+<td>74HC00</td>
 <td>1</td>
 </tr>
 </tbody>
 </table>
+<p>1bitのマルチプレクサは4個のNANDで構成できます。</p>
+<p><span class="math display">\[
+MUX = A \cdot S + B \cdot \bar{S} = \bar{\bar{A \codt S}\cdot\bar{A\cdot\bar{S}}}
+\]</span></p>
 </details>
 <h2 id="メモリ空間">メモリ空間</h2>
-<p><img src="img/circuit_mem.dio.svg" /></p>
+<p><img src="img/RAM.dio.svg" /></p>
 <details>
 <p><summary>タイミングチャート</summary></p>
 <h4 id="sram">SRAM</h4>
 <h4 id="レジスタ">レジスタ</h4>
 <h4 id="カウンタ">カウンタ</h4>
 </details>
+<details>
+<p><summary>部品表<summary></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">BOM</th>
+<th></th>
+<th>#</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">4 to 16 Decoder</td>
+<td><a href="./doc/74HC154.pdf">74HC154</a></td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2 to 4 Decoder</td>
+<td><a href="./doc/74HC139.pdf">74HC139</a></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="データパス">データパス</h2>
 <h2 id="npc">NPC</h2>
 <p><img src="img/circuit_npc.dio.svg" /></p>
+<details>
+<p><summary>部品表<summary></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">BOM</th>
+<th></th>
+<th>#</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Multiplexer</td>
+<td><a href="./doc/74HC154.pdf">74HC157</a></td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adder</td>
+<td><a href="./doc/74HC283.pdf">74HC283</a></td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DFF</td>
+<td><a href="./doc/74HC564.pdf">74HC574</a></td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8in OR</td>
+<td><a href="./doc/74HC4078.pdf">74HC4078</a></td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="クロック">クロック</h2>
 <p><img src="img/clk_circuit.dio.svg" /></p>
 <p><img src="img/clk_timing.dio.svg" /></p>
