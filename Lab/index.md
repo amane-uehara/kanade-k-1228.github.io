@@ -92,6 +92,8 @@ title: 研究室へようこそ
 
 [ロジック IC リスト](Electronics/Misc/LogicIC/)
 
+[マイコンの選び方](Electronics/Misc/SelectMicon/)
+
 ### 電子回路
 
 [ダイオード](Electronics/Circuit/Diode/)
