@@ -323,6 +323,87 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\overline{A\cdot\overline{S}}}
 \]</span></p>
 </details>
+<details>
+<p><summary>74HC181の演算コード</summary></p>
+<table>
+<thead>
+<tr class="header">
+<th>74181</th>
+<th>Cn</th>
+<th>M</th>
+<th>S<sub>3</sub></th>
+<th>S<sub>2</sub></th>
+<th>S<sub>1</sub></th>
+<th>S<sub>0</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ADD +</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>SL &lt;&lt;</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>SUB -</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>AND &amp;</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>OR |</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>XOR ^</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>NOT ~</td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="メモリ空間">メモリ空間</h2>
 <p><img src="img/RAM.dio.svg" /></p>
 <details>
@@ -358,7 +439,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <h2 id="プログラム制御ユニット">プログラム制御ユニット</h2>
 <p><img src="img/PFC.dio.svg" /></p>
 <details>
-<p><summary>部品表<summary></p>
+<p><summary>部品表</summary></p>
 <table>
 <thead>
 <tr class="header">
