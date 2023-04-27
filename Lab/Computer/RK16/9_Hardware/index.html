@@ -333,11 +333,11 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <th>Code</th>
 <th>74181</th>
 <th>S<sub>3</sub></th>
-<th>S<sub>2</sub></th>
-<th>S<sub>1</sub></th>
+<th>!S<sub>2</sub></th>
+<th>!S<sub>1</sub></th>
 <th>S<sub>0</sub></th>
 <th>M</th>
-<th>!C<sub>0</sub></th>
+<th>!!C<sub>0</sub></th>
 <th>COMP_US</th>
 <th>SR_US</th>
 <th>SR_SEL</th>
@@ -348,14 +348,14 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">加算</td>
-<td>add</td>
+<td style="text-align: left;">減算</td>
+<td>sub</td>
 <td>0000</td>
-<td>A + B</td>
-<td>1</td>
+<td>A - B</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -366,12 +366,30 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>ALU</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">減算</td>
-<td>sub</td>
+<td style="text-align: left;">加算</td>
+<td>add</td>
 <td>0001</td>
-<td>A - B</td>
-<td>0</td>
+<td>A + B</td>
 <td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">左シフト</td>
+<td>sl</td>
+<td>0010</td>
+<td>A + A</td>
+<td>1</td>
+<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -383,14 +401,32 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>ALU</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">論理積</td>
-<td>and</td>
-<td>0010</td>
-<td>A &amp; B</td>
+<tr class="even">
+<td style="text-align: left;">左巡回</td>
+<td>lrot</td>
+<td>0011</td>
+<td>A + A + MSB</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
+<td>0</td>
+<td>0</td>
+<td>MSB</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">論理積</td>
+<td>and</td>
+<td>0100</td>
+<td>A &amp; B</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>-</td>
@@ -404,11 +440,11 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <tr class="even">
 <td style="text-align: left;">論理和</td>
 <td>or</td>
-<td>0011</td>
+<td>0101</td>
 <td>A | B</td>
 <td>1</td>
-<td>1</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>-</td>
@@ -422,11 +458,11 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <tr class="odd">
 <td style="text-align: left;">排他的論理和</td>
 <td>xor</td>
-<td>0100</td>
+<td>0110</td>
 <td>A ^ B</td>
 <td>0</td>
-<td>1</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>-</td>
@@ -440,50 +476,14 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <tr class="even">
 <td style="text-align: left;">論理反転</td>
 <td>not</td>
-<td>0101</td>
+<td>0111</td>
 <td>~A</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>ALU</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">左シフト</td>
-<td>sl</td>
-<td>0110</td>
-<td>A + A</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
 <td>1</td>
-<td>0</td>
 <td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>ALU</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">左巡回</td>
-<td>lrot</td>
-<td>0111</td>
-<td>A + A + MSB</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>MSB</td>
 <td>0</td>
 <td>-</td>
 <td>-</td>
@@ -569,11 +569,11 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>1100</td>
 <td>A - B - 1</td>
 <td>0</td>
-<td>1</td>
-<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>-</td>
 <td>-</td>
@@ -587,11 +587,11 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>1101</td>
 <td>A - B - 1</td>
 <td>0</td>
-<td>1</td>
-<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>-</td>
 <td>-</td>
@@ -605,11 +605,11 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>1110</td>
 <td>A - B - 1</td>
 <td>0</td>
-<td>1</td>
-<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>-</td>
 <td>-</td>
@@ -623,11 +623,11 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>1111</td>
 <td>A - B - 1</td>
 <td>0</td>
-<td>1</td>
-<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>-</td>
 <td>-</td>
