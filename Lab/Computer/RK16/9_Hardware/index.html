@@ -274,6 +274,349 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 　符号つき整数の場合、符号ビットを反転してから同じことをやれば比較ができます。「符号ビットを反転し符号なし整数として解釈する」という操作は、大小関係を保存するからです。
 </details>
 <details>
+<p><summary>演算のデコード</summary></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">演算</th>
+<th></th>
+<th>Code</th>
+<th>74181</th>
+<th>S<sub>3</sub></th>
+<th>!S<sub>2</sub></th>
+<th>!S<sub>1</sub></th>
+<th>S<sub>0</sub></th>
+<th>M</th>
+<th>!!C<sub>0</sub></th>
+<th>COMP_US</th>
+<th>SR_US</th>
+<th>SR_SEL</th>
+<th>EQ_NEQ</th>
+<th>BOOL_SEL</th>
+<th>OUT_SEL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>○</td>
+<td>○</td>
+<td>◎</td>
+<td></td>
+<td></td>
+<td>◎</td>
+<td>◎</td>
+<td>◎</td>
+<td>◎</td>
+<td>○</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">加算</td>
+<td>add</td>
+<td>0000</td>
+<td>A + B</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">論理反転</td>
+<td>not</td>
+<td>0001</td>
+<td>~A</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">左シフト</td>
+<td>sl</td>
+<td>0010</td>
+<td>A + A</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">左巡回</td>
+<td>lrot</td>
+<td>0011</td>
+<td>A + A + MSB</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>MSB</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">論理積</td>
+<td>and</td>
+<td>0100</td>
+<td>A &amp; B</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">論理和</td>
+<td>or</td>
+<td>0101</td>
+<td>A | B</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">排他的論理和</td>
+<td>xor</td>
+<td>0110</td>
+<td>A ^ B</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">減算</td>
+<td>sub</td>
+<td>0111</td>
+<td>A - B</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">一致</td>
+<td>eq</td>
+<td>1000</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>0</td>
+<td>001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">不一致</td>
+<td>neq</td>
+<td>1001</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">比較（符号なし）</td>
+<td>ltu</td>
+<td>1010</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">比較（符号付き）</td>
+<td>lts</td>
+<td>1011</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">右シフト（符号なし）</td>
+<td>sru</td>
+<td>1100</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">右シフト（符号付き）</td>
+<td>srs</td>
+<td>1101</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">右巡回</td>
+<td>rrot</td>
+<td>1110</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td></td>
+<td>1111</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>S<sub>1</sub> = OR(C<sub>1</sub>,C<sub>0</sub>)</li>
+<li>S<sub>0</sub> = NOR(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</li>
+<li>M = C<sub>2</sub></li>
+<li>COMP_US = AND(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</li>
+<li>SR_US = C<sub>3</sub></li>
+<li>SR_SEL = C<sub>2</sub></li>
+<li>EQ_NEQ = C<sub>3</sub></li>
+<li>BOOL_SEL = C<sub>2</sub></li>
+</ul>
+</details>
+<details>
 <p><summary>部品表</summary></p>
 <table>
 <thead>
@@ -300,8 +643,8 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">4 to 16 Decoder</td>
-<td><a href="./doc/74HC154.pdf">74HC154</a></td>
+<td style="text-align: left;">3 to 8 Decoder</td>
+<td><a href="./doc/74HC138.pdf">74HC138</a></td>
 <td>1</td>
 </tr>
 <tr class="odd">
@@ -330,321 +673,6 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <p><span class="math display">\[
 MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\overline{A\cdot\overline{S}}}
 \]</span></p>
-</details>
-<details>
-<p><summary>演算のデコード</summary></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">演算</th>
-<th></th>
-<th>Code</th>
-<th>74181</th>
-<th>S<sub>3</sub></th>
-<th>!S<sub>2</sub></th>
-<th>!S<sub>1</sub></th>
-<th>S<sub>0</sub></th>
-<th>M</th>
-<th>!!C<sub>0</sub></th>
-<th>COMP_US</th>
-<th>SR_US</th>
-<th>SR_SEL</th>
-<th>EQ_NEQ</th>
-<th>BOOL_SEL</th>
-<th>OUT_SEL</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">加算</td>
-<td>add</td>
-<td>0000</td>
-<td>A + B</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">減算</td>
-<td>sub</td>
-<td>0001</td>
-<td>A - B</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">左シフト</td>
-<td>sl</td>
-<td>0010</td>
-<td>A + A</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">左巡回</td>
-<td>lrot</td>
-<td>0011</td>
-<td>A + A + MSB</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>MSB</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">論理積</td>
-<td>and</td>
-<td>0100</td>
-<td>A &amp; B</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">論理和</td>
-<td>or</td>
-<td>0101</td>
-<td>A | B</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">排他的論理和</td>
-<td>xor</td>
-<td>0110</td>
-<td>A ^ B</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">論理反転</td>
-<td>not</td>
-<td>0111</td>
-<td>~A</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">一致</td>
-<td>eq</td>
-<td>1000</td>
-<td>A - B - 1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>0</td>
-<td>0</td>
-<td>001</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">不一致</td>
-<td>neq</td>
-<td>1001</td>
-<td>A - B - 1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>001</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">比較（符号なし）</td>
-<td>ltu</td>
-<td>1010</td>
-<td>A - B - 1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>001</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">比較（符号付き）</td>
-<td>lts</td>
-<td>1011</td>
-<td>A - B - 1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>001</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">右シフト（符号なし）</td>
-<td>sru</td>
-<td>1100</td>
-<td></td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>010</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">右シフト（符号付き）</td>
-<td>srs</td>
-<td>1101</td>
-<td></td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>010</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">右巡回</td>
-<td>rrot</td>
-<td>1110</td>
-<td></td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>-</td>
-<td>-</td>
-<td>010</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td></td>
-<td>1111</td>
-<td></td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>-</td>
-<td>-</td>
-<td>010</td>
-</tr>
-</tbody>
-</table>
 </details>
 <details>
 <p><summary>テスト</summary></p>
@@ -696,6 +724,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <p>メモリ空間は16入力16出力で状態空間が 2<sup>16</sup>(2^16) 。状態が独立で相互作用がないと考えれば、各bitごとに読み書きをチェックすればいい。また、各チップごとにランダムにエントリを選択して読み書きする。</p>
 </details>
 <h2 id="プログラム制御ユニット">プログラム制御ユニット</h2>
+<p>リセット時、74157のSTを使ってPCを0にする。</p>
 <p><img src="img/PFC.dio.svg" /></p>
 <details>
 <p><summary>部品表</summary></p>
@@ -710,7 +739,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Multiplexer</td>
-<td><a href="./doc/74HC154.pdf">74HC157</a></td>
+<td><a href="./doc/74HC157.pdf">74HC157</a></td>
 <td>8</td>
 </tr>
 <tr class="even">
@@ -727,6 +756,16 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td style="text-align: left;">8in OR</td>
 <td><a href="./doc/74HC4078.pdf">74HC4078</a></td>
 <td>2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AND</td>
+<td>74HC08</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+<td>19</td>
 </tr>
 </tbody>
 </table>
