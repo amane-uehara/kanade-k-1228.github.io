@@ -222,6 +222,14 @@
 <td style="text-align: left;">A&gt;&gt;1</td>
 <td>sru</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">左循環</td>
+<td style="text-align: left;">A&lt;&lt;1 + MSB</td>
+<td>rotl</td>
+<td style="text-align: left;">右循環</td>
+<td style="text-align: left;">A&gt;&gt;1</td>
+<td>rotr</td>
+</tr>
 </tbody>
 </table>
 </details>
@@ -638,6 +646,19 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 </tbody>
 </table>
 </details>
+<details>
+<p><summary>テスト</summary></p>
+<p>ALUは36入力16出力の組み合わせ回路。2^36パターンを全検査する。</p>
+<p><img src="img/ALU_test.dio.svg" /></p>
+<ol type="1">
+<li>入力レジスタにセット</li>
+<li>パルスを送信</li>
+<li>ALUの計算を待つ</li>
+<li>規定の遅延時間後の出力がラッチされる</li>
+<li>出力を読み取る</li>
+<li>一致するか確認</li>
+</ol>
+</details>
 <h2 id="メモリ空間">メモリ空間</h2>
 <p><img src="img/RAM.dio.svg" /></p>
 <details>
@@ -669,6 +690,10 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 </tr>
 </tbody>
 </table>
+</details>
+<details>
+<p><summary>テスト</summary></p>
+<p>メモリ空間は16入力16出力で状態空間が 2<sup>16</sup>(2^16) 。状態が独立で相互作用がないと考えれば、各bitごとに読み書きをチェックすればいい。また、各チップごとにランダムにエントリを選択して読み書きする。</p>
 </details>
 <h2 id="プログラム制御ユニット">プログラム制御ユニット</h2>
 <p><img src="img/PFC.dio.svg" /></p>
