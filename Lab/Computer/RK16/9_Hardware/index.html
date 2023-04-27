@@ -324,82 +324,316 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 \]</span></p>
 </details>
 <details>
-<p><summary>74HC181の演算コード</summary></p>
+<p><summary>演算のデコード</summary></p>
 <table>
 <thead>
 <tr class="header">
+<th style="text-align: left;">演算</th>
+<th></th>
+<th>Code</th>
 <th>74181</th>
-<th>Cn</th>
-<th>M</th>
 <th>S<sub>3</sub></th>
 <th>S<sub>2</sub></th>
 <th>S<sub>1</sub></th>
 <th>S<sub>0</sub></th>
+<th>M</th>
+<th>!C<sub>0</sub></th>
+<th>COMP_US</th>
+<th>SR_US</th>
+<th>SR_SEL</th>
+<th>EQ_NEQ</th>
+<th>BOOL_SEL</th>
+<th>OUT_SEL</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>ADD +</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: left;">加算</td>
+<td>add</td>
+<td>0000</td>
+<td>A + B</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
 </tr>
 <tr class="even">
-<td>SL &lt;&lt;</td>
+<td style="text-align: left;">減算</td>
+<td>sub</td>
+<td>0001</td>
+<td>A - B</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>1</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
 </tr>
 <tr class="odd">
-<td>SUB -</td>
+<td style="text-align: left;">論理積</td>
+<td>and</td>
+<td>0010</td>
+<td>A &amp; B</td>
 <td>1</td>
 <td>0</td>
-<td>0</td>
 <td>1</td>
 <td>1</td>
+<td>1</td>
+<td>-</td>
 <td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
 </tr>
 <tr class="even">
-<td>AND &amp;</td>
-<td>-</td>
-<td>1</td>
+<td style="text-align: left;">論理和</td>
+<td>or</td>
+<td>0011</td>
+<td>A | B</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
+<td>1</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
 </tr>
 <tr class="odd">
-<td>OR |</td>
-<td>-</td>
+<td style="text-align: left;">排他的論理和</td>
+<td>xor</td>
+<td>0100</td>
+<td>A ^ B</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
 </tr>
 <tr class="even">
-<td>XOR ^</td>
+<td style="text-align: left;">論理反転</td>
+<td>not</td>
+<td>0101</td>
+<td>~A</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
 <td>-</td>
-<td>1</td>
-<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
 </tr>
 <tr class="odd">
-<td>NOT ~</td>
-<td>-</td>
+<td style="text-align: left;">左シフト</td>
+<td>sl</td>
+<td>0110</td>
+<td>A + A</td>
+<td>1</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">左巡回</td>
+<td>lrot</td>
+<td>0111</td>
+<td>A + A + MSB</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>MSB</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>ALU</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">右シフト（符号なし）</td>
+<td>sru</td>
+<td>1000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>RSHIFT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">右シフト(符号付き)</td>
+<td>srs</td>
+<td>1001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>RSHIFT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">右巡回</td>
+<td>rrot</td>
+<td>1010</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>RSHIFT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+<td>1011</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>RSHIFT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">一致</td>
+<td>eq</td>
+<td>1100</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>0</td>
+<td>BOOL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">不一致</td>
+<td>neq</td>
+<td>1101</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>BOOL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">比較（符号なし）</td>
+<td>ltu</td>
+<td>1110</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>BOOL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">比較（符号付き）</td>
+<td>lts</td>
+<td>1111</td>
+<td>A - B - 1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>BOOL</td>
 </tr>
 </tbody>
 </table>
