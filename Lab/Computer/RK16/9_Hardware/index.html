@@ -363,7 +363,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
+<td>100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">減算</td>
@@ -381,7 +381,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
+<td>100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">左シフト</td>
@@ -399,7 +399,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
+<td>100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">左巡回</td>
@@ -417,7 +417,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
+<td>100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">論理積</td>
@@ -435,7 +435,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
+<td>100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">論理和</td>
@@ -453,7 +453,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
+<td>100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">排他的論理和</td>
@@ -471,7 +471,7 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
+<td>100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">論理反転</td>
@@ -489,84 +489,12 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ALU</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">右シフト（符号なし）</td>
-<td>sru</td>
-<td>1000</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>-</td>
-<td>0</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>RSHIFT</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">右シフト(符号付き)</td>
-<td>srs</td>
-<td>1001</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>-</td>
-<td>1</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-<td>RSHIFT</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">右巡回</td>
-<td>rrot</td>
-<td>1010</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>-</td>
-<td>-</td>
-<td>RSHIFT</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td></td>
-<td>1011</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>-</td>
-<td>-</td>
-<td>RSHIFT</td>
+<td>100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">一致</td>
 <td>eq</td>
-<td>1100</td>
+<td>1000</td>
 <td>A - B - 1</td>
 <td>0</td>
 <td>0</td>
@@ -579,12 +507,12 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>0</td>
 <td>0</td>
-<td>BOOL</td>
+<td>001</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">不一致</td>
 <td>neq</td>
-<td>1101</td>
+<td>1001</td>
 <td>A - B - 1</td>
 <td>0</td>
 <td>0</td>
@@ -597,12 +525,12 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>1</td>
 <td>0</td>
-<td>BOOL</td>
+<td>001</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">比較（符号なし）</td>
 <td>ltu</td>
-<td>1110</td>
+<td>1010</td>
 <td>A - B - 1</td>
 <td>0</td>
 <td>0</td>
@@ -615,12 +543,12 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>1</td>
-<td>BOOL</td>
+<td>001</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">比較（符号付き）</td>
 <td>lts</td>
-<td>1111</td>
+<td>1011</td>
 <td>A - B - 1</td>
 <td>0</td>
 <td>0</td>
@@ -633,7 +561,79 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <td>-</td>
 <td>-</td>
 <td>1</td>
-<td>BOOL</td>
+<td>001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">右シフト（符号なし）</td>
+<td>sru</td>
+<td>1100</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">右シフト（符号付き）</td>
+<td>srs</td>
+<td>1101</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">右巡回</td>
+<td>rrot</td>
+<td>1110</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+<td>1111</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
 </tr>
 </tbody>
 </table>
