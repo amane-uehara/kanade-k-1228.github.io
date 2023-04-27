@@ -53,6 +53,7 @@ h3 {
 
 summary {
     font-weight: bold;
+    cursor: pointer;
 }
 
 h4 {
@@ -66,7 +67,6 @@ p {
 
 details {
     margin: 0.5em 0 0.5em 1em;
-    cursor: pointer;
 }
 
 
