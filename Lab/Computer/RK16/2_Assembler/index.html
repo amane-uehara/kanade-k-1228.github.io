@@ -134,79 +134,152 @@
 
     <!-- Table of Contents -->
         <nav><ul>
+<li><a href="#設計思想">設計思想</a></li>
 <li><a href="#命令一覧">命令一覧</a></li>
-<li><a href="#命令変数定数のラベル">命令・変数・定数のラベル</a></li>
+<li><a href="#命令変数定数のラベル">命令・変数・定数のラベル</a>
+<ul>
+<li><a href="#制御ラベル">制御ラベル</a></li>
+<li><a href="#変数ラベル">変数ラベル</a></li>
+<li><a href="#定数ラベル">定数ラベル</a></li>
+<li><a href="#構造体ラベル">構造体ラベル</a></li>
+</ul></li>
+<li><a href="#即値内演算">即値内演算</a></li>
+<li><a href="#型チェック">型チェック</a>
+<ul>
+<li><a href="#演算の型チェック">演算の型チェック</a></li>
+</ul></li>
 <li><a href="#アセンブラの実装">アセンブラの実装</a></li>
 <li><a href="#関数呼び出し">関数呼び出し</a>
 <ul>
 <li><a href="#割り込み処理">割り込み処理</a></li>
 </ul></li>
 </ul></nav>
-     <h2 id="命令一覧">命令一覧</h2>
-<table>
-<thead>
-<tr class="header">
-<th>命令</th>
-<th>アセンブリ</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>レジスタ演算</td>
-<td>add rd rs1 rs2</td>
-<td>rd = rs1 + rs2</td>
-</tr>
-<tr class="even">
-<td>即値演算</td>
-<td>addi rd rs1 imm</td>
-<td>rd = rs1 + imm</td>
-</tr>
-<tr class="odd">
-<td>ロード</td>
-<td>load rd rs1 imm</td>
-<td>rd = mem[rs1 + imm]</td>
-</tr>
-<tr class="even">
-<td>ストア</td>
-<td>store rs1 rs2 imm</td>
-<td>mem[rs1 + imm] = rs2</td>
-</tr>
-<tr class="odd">
-<td>即値ロード</td>
-<td>loadi rd imm</td>
-<td>rd = imm</td>
-</tr>
-<tr class="even">
-<td>ジャンプ</td>
-<td>jump rd rs1 imm</td>
-<td>rd = PC + 1, PC = rs1 + imm</td>
-</tr>
-<tr class="odd">
-<td>条件分岐（＝）</td>
-<td>breq rs1 rs2 imm</td>
-<td>if(rs1 = rs2) PC = imm</td>
-</tr>
-<tr class="even">
-<td>条件分岐（＜）</td>
-<td>brlt rs1 rs2 imm</td>
-<td>if(rs1 &lt; rs2) PC = imm</td>
-</tr>
-</tbody>
-</table>
+     <h2 id="設計思想">設計思想</h2>
+<p>機械語と一対一に対応するプログラミング言語という点ではアセンブラですが、できるだけ高級な表現ができるようにします。</p>
+<p>たとえば、RKISAでは相対ジャンプができず、全て絶対ジャンプです。そのため、プログラムが分岐する部分には<code>calif</code>命令が、合流する部分はラベルが存在します。これによって制御フローが見やすくなります。</p>
+<pre><code>const int N=10;
+for(int i=N;i;--i){
+   print(i);
+}</code></pre>
+<pre><code>@0x0100 cout
+#0d0010 N
+   loadi t0 N
+for0:
+   if t0 for0_break
+   store t0 zero cout
+   jump for0
+for0_break:</code></pre>
+<p>アセンブラを<code>calif</code>かラベルで区切っていくと、プログラムの制御単位が簡単に取り出せます。</p>
+<h2 id="命令一覧">命令一覧</h2>
+<p><img src="../1_Architecture/img/isa.png" /></p>
 <h2 id="命令変数定数のラベル">命令・変数・定数のラベル</h2>
-<p>一般的なアセンブラには、ラベルというものがあります。</p>
+<h3 id="制御ラベル">制御ラベル</h3>
+<p>制御ラベルは、<code>ラベル名:</code>で定義できます。</p>
 <pre><code>   jump label
 ~~~
 label:
    addi s0 s0 4</code></pre>
-<p>プログラム中のある命令を指定します。</p>
-<pre><code>0x0010:
-0x0011: 0x</code></pre>
-<p>この機能を拡張して、変数と定数を定義できるようにします。</p>
-<pre><code>@0xf010 hoge
-#0x0334 hanshin</code></pre>
-<p>ちょっと機能を追加して、アセンブリのコーディングが楽になるようにします。</p>
+<p>制御ラベルは、ある命令アドレスを指定します。</p>
+<h3 id="変数ラベル">変数ラベル</h3>
+<p>変数ラベルは、<code>@アドレス ラベル名</code>で定義できます。</p>
+<pre><code>@0x0123 hoge</code></pre>
+<h3 id="定数ラベル">定数ラベル</h3>
+<p>定数ラベルは <code>#値 ラベル名</code>で定義できます。</p>
+<pre><code>#0x0334 hanshin
+loadi t0 hanshin</code></pre>
+<p>↓</p>
+<pre><code>loadi t0 0x0334</code></pre>
+<h3 id="構造体ラベル">構造体ラベル</h3>
+<p><code>.相対アドレス ラベル名</code> で相対ラベルを定義できます。相対ラベルは構造体のメンバの位置を表現するために使います。</p>
+<pre><code>@0x0123 foo
+.0 hoge
+.1 fuga
+.2 piyo
+load t0 foo+hoge
+load t1 foo+fuga
+load t2 foo+piyo</code></pre>
+<p>↓</p>
+<pre><code>load t0 0x0123
+load t1 0x0124
+load t2 0x0125</code></pre>
+<p>ここでは、後述する演算子<code>+</code>を使用しています。</p>
+<h2 id="即値内演算">即値内演算</h2>
+<p>コンパイル時に確定している値（ラベル、リテラル）であれば、即値オペランドに演算を書くことができます。</p>
+<pre><code>loadi t0 1+2
+#0x1111 hoge
+#0x2222 fuga
+loadi t0 hoge+fuga</code></pre>
+<pre><code>loadi t0 0x0003
+loadi t0 0x3333</code></pre>
+<p>対応している演算は以下の通り。</p>
+<ul>
+<li>加算 <code>+</code></li>
+<li>相対 <code>.</code></li>
+<li>減算 <code>-</code></li>
+<li>乗算 <code>*</code></li>
+<li>優先順位 <code>(</code> <code>)</code></li>
+</ul>
+<h2 id="型チェック">型チェック</h2>
+<p>各命令が即値としてとりうるラベルは以下の通り。</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>制御</th>
+<th>変数</th>
+<th>定数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>calc</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>calci</td>
+<td>×</td>
+<td>○</td>
+<td>○</td>
+</tr>
+<tr class="odd">
+<td>load</td>
+<td>×</td>
+<td>○</td>
+<td>×</td>
+</tr>
+<tr class="even">
+<td>store</td>
+<td>×</td>
+<td>○</td>
+<td>×</td>
+</tr>
+<tr class="odd">
+<td>calif</td>
+<td>○</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p>違う型のラベルがあったら、Warningを表示します。</p>
+<h3 id="演算の型チェック">演算の型チェック</h3>
+<p>演算は左結合です。演算が可能か、また可能なら返値の型を書きます。リテラルは定数ラベルと同じ扱いです。</p>
+<h4 id="制御ラベル-1">制御ラベル</h4>
+<p>制御ラベルに対しては、どんな演算もできません。</p>
+<h4 id="変数ラベル-1">変数ラベル</h4>
+<ul>
+<li>加算 : 定数 <code>+</code> 定数→定数</li>
+<li>相対 : 変数 <code>.</code> 相対→変数</li>
+<li>減算 : 定数 <code>-</code> 定数→定数</li>
+</ul>
+<h4 id="乗算">乗算</h4>
+<p>定数<code>*</code>定数→定数</p>
+<h4 id="制御ラベル-2">制御ラベル</h4>
+<p>制御ラベルに対しては、どんな演算もできません。</p>
+<h4 id="変数ラベル-2">変数ラベル</h4>
+<h4 id="定数ラベル-1">定数ラベル</h4>
 <h2 id="アセンブラの実装">アセンブラの実装</h2>
 <ol type="1">
 <li>一行づつ読み取る
@@ -229,8 +302,7 @@ label:
 <li>バイナリを出力</li>
 </ol>
 <h2 id="関数呼び出し">関数呼び出し</h2>
-<p>　関数呼び出しの前後で変更していいレジスタと、いけないレジスタがあります。</p>
-<p><a href="https://valinux.hatenablog.com/entry/20210624">参考１</a> <a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考２</a></p>
+<p>　関数呼び出しの前後で変更していいレジスタと、いけないレジスタがあります <a href="https://valinux.hatenablog.com/entry/20210624">参考１</a> <a href="https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Calling_Convention.pdf">参考２</a></p>
 <table>
 <thead>
 <tr class="header">

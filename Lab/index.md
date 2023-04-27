@@ -184,13 +184,13 @@ title: 研究室へようこそ
 
 ### 自作マイコン：RK16
 
-[0.マイコンを作りたい！](./Computer/RK16/0_About/)
+[マイコンを作りたい！](./Computer/RK16/0_About/)
 
-[1.自作マイコンのアーキテクチャ](./Computer/RK16/1_Architecture/)
+[自作マイコンのアーキテクチャ](./Computer/RK16/1_Architecture/)
 
-[2.アセンブラ](./Computer/RK16/2_Assembler/)
+[アセンブラ](./Computer/RK16/2_Assembler/)
 
-[3.エミュレータ](./Computer/RK16/3_Emulator/)
+[エミュレータ](./Computer/RK16/3_Emulator/)
 
 アセンブリプログラミング
 
@@ -202,7 +202,7 @@ title: 研究室へようこそ
 
 [汎用OS](./Computer/RK16/8_OS/)
 
-[9.ハードウェア](./Computer/RK16/9_Hardware/)
+[ハードウェア](./Computer/RK16/9_Hardware/)
 
 ### 自作 CPU：RK8
 
