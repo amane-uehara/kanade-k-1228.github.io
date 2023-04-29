@@ -777,6 +777,114 @@ MUX = A \cdot S + B \cdot \overline{S} = \overline{\overline{A \cdot S}\cdot\ove
 <p><img src="img/clk_timing.dio.svg" /></p>
 <h2 id="デコーダ">デコーダ</h2>
 <p><img src="img/decoder.dio.svg" /></p>
+<details>
+<p><summary>デコード</summary></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>ALU</th>
+<th>S2</th>
+<th>DIN</th>
+<th>1.ADR</th>
+<th>2.ADR</th>
+<th>3.ADR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>add</td>
+<td>Func</td>
+<td>RS2</td>
+<td>ALU</td>
+<td>RS1</td>
+<td>RS2</td>
+<td>RD</td>
+</tr>
+<tr class="even">
+<td>addi</td>
+<td>Func</td>
+<td>IMM</td>
+<td>ALU</td>
+<td>RS1</td>
+<td>-</td>
+<td>RD</td>
+</tr>
+<tr class="odd">
+<td>load</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>RS2</td>
+<td>RS1</td>
+<td>ALU</td>
+<td>RD</td>
+</tr>
+<tr class="even">
+<td>store</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>RS2</td>
+<td>RS1</td>
+<td>RS2</td>
+<td>ALU</td>
+</tr>
+<tr class="odd">
+<td>callif</td>
+<td>ADD</td>
+<td>IMM</td>
+<td>RA</td>
+<td>RS1</td>
+<td>RS2</td>
+<td>RD</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<p><summary>Verilog</summary></p>
+<pre class="language-verilog"><code>`define CALC  4&#39;b0000
+`define CALCI 4&#39;b0001
+`define LOAD  4&#39;b0011
+`define STORE 4&#39;b0111
+`define CALIF 4&#39;b1111
+
+module ID(
+    input  wire [31: 0] OP,
+    output wire [ 3: 0] RS1,
+    output wire [ 3: 0] RS2,
+    output wire [ 3: 0] RD,
+    output wire [31:16] IMM,
+    output wire [ 1: 0] DIN_SEL,
+    output wire [ 1: 0] ADDR_SEL,
+    output wire [ 3: 0] ALU_CTRL,
+    output wire         PFC_CTRL,
+);
+
+wire [3:0] OPC;
+
+assign RS1 = OP[ 3: 0];
+assign RS2 = OP[ 7: 4];
+assign RD  = OP[11: 8];
+assign OPC = OP[15:12];
+assign IMM = OP[31:16];
+
+assign ALU_CTRL = OPC==`CALC  ? OP[19:16]
+                : OPC==`CALCI ? OP[ 7: 4]
+                : `ALU_ADD;
+
+assign ADDR_SEL = STAGE==0 ? `ADDR_RS1
+                : STAGE==1 ? `ADDR_RS2
+                : STAGE==2 ? `ADDR_RD;
+
+assign DIN_SEL = OPC==`CALC|`CALCI ? `DIN_ALU 
+               : OPC==`LOAD|`STORE ? `DIN_RS2
+               : OPC==`CALLIF     ? `DIN_RA;
+
+assign S2_SEL = OPC==`CALC ? `S2_RS2 
+                           : `S2_IMM;
+
+endmodule</code></pre>
+</details>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
