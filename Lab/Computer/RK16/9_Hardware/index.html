@@ -275,29 +275,29 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 </details>
 <details>
 <p><summary>演算のデコード</summary></p>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col style="width: 12%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
-<col style="width: 6%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
-<col style="width: 8%" />
-<col style="width: 12%" />
-<col style="width: 1%" />
-<col style="width: 1%" />
-<col style="width: 3%" />
-<col style="width: 3%" />
-<col style="width: 12%" />
+<col style="width: 16%" />
 <col style="width: 3%" />
 <col style="width: 3%" />
 <col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 9%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
 <col style="width: 5%" />
 <col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+<col style="width: 5%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -693,28 +693,75 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>-</td>
 <td>010</td>
 </tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">OUT</th>
+<th style="text-align: left;">Deode</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>-</td>
-<td></td>
-<td></td>
-<td>OR(C<sub>1</sub>,C<sub>0</sub>)</td>
-<td>NOR(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</td>
-<td></td>
-<td>-</td>
-<td>C<sub>2</sub></td>
-<td></td>
-<td>AND(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</td>
-<td>C<sub>3</sub></td>
-<td>C<sub>2</sub></td>
-<td>C<sub>3</sub></td>
-<td>C<sub>2</sub></td>
-<td></td>
+<td style="text-align: left;">S<sub>3</sub></td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S<sub>2</sub></td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S<sub>1</sub></td>
+<td style="text-align: left;">OR(C<sub>1</sub>,C<sub>0</sub>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S<sub>0</sub></td>
+<td style="text-align: left;">NOR(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C_SEL</td>
+<td style="text-align: left;">C<sub>2</sub></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C_USE</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COMP_US</td>
+<td style="text-align: left;">AND(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SR_US</td>
+<td style="text-align: left;">C<sub>3</sub></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SR_SEL</td>
+<td style="text-align: left;">C<sub>2</sub></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EQ_NEQ</td>
+<td style="text-align: left;">C<sub>3</sub></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BOOL_SEL</td>
+<td style="text-align: left;">C<sub>2</sub></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OUT_SEL_ALU</td>
+<td style="text-align: left;">NOT(C<sub>3</sub>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OUT_SEL_BOOL</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OUT_SEL_SHIFT</td>
+<td style="text-align: left;">?</td>
 </tr>
 </tbody>
 </table>
