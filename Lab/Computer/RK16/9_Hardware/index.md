@@ -78,23 +78,23 @@ $$
 | 右巡回               | rrot |      |      | 1    | 0    | -           | -    | -    | -    | -    | -   | -   | -     | -     | -       | -     | 1      | -      | -        | 010     |
 | -                    |      |      |      |      | 1    | -           | -    | -    | -    | -    | -   | -   | -     | -     | -       | -     | 1      | -      | -        | 010     |
 
-| OUT           | Deode               |
-| :------------ | :------------------ |
-| S~3~          | ?                   |
-| S~2~          | ?                   |
-| S~1~          | OR(C~1~,C~0~)       |
-| S~0~          | NOR(C~3~,C~1~,C~0~) |
-| M             | ?                   |
-| C_SEL         | C~2~                |
-| C_USE         | ?                   |
-| COMP_US       | AND(C~3~,C~1~,C~0~) |
-| SR_US         | C~3~                |
-| SR_SEL        | C~2~                |
-| EQ_NEQ        | C~3~                |
-| BOOL_SEL      | C~2~                |
-| OUT_SEL_ALU   | NOT(C~3~)           |
-| OUT_SEL_BOOL  | ?                   |
-| OUT_SEL_SHIFT | ?                   |
+| OUT           | Deode                          |
+| :------------ | :----------------------------- |
+| S~3~          | ?                              |
+| S~2~          | ?                              |
+| S~1~          | OR(C~3~,C~2~) / XOR(C~3~,C~2~) |
+| S~0~          | NOR(C~3~,C~1~,C~0~)            |
+| M             | ?                              |
+| C_SEL         | C~2~                           |
+| C_USE         | AND(NOT(C~3~),C~1~,C~0~)       |
+| COMP_US       | AND(C~3~,C~1~,C~0~)            |
+| SR_US         | C~3~                           |
+| SR_SEL        | C~2~                           |
+| EQ_NEQ        | C~3~                           |
+| BOOL_SEL      | C~2~                           |
+| OUT_SEL_ALU   | NOT(C~3~)                      |
+| OUT_SEL_BOOL  | ?                              |
+| OUT_SEL_SHIFT | ?                              |
 
 
 </details>
@@ -266,3 +266,7 @@ endmodule
 ```
 
 </details>
+
+## ハードウェア構成
+
+
