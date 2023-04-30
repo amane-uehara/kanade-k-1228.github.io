@@ -276,18 +276,46 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <details>
 <p><summary>演算のデコード</summary></p>
 <table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 6%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 12%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 5%" />
+<col style="width: 4%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">演算</th>
 <th></th>
-<th>Code</th>
+<th>C<sub>3</sub></th>
+<th>C<sub>2</sub></th>
+<th>C<sub>1</sub></th>
+<th>C<sub>0</sub></th>
 <th>74181</th>
 <th>S<sub>3</sub></th>
-<th>!S<sub>2</sub></th>
-<th>!S<sub>1</sub></th>
+<th>S<sub>2</sub></th>
+<th>S<sub>1</sub></th>
 <th>S<sub>0</sub></th>
 <th>M</th>
-<th>!!C<sub>0</sub></th>
+<th>C</th>
+<th>C_SEL</th>
+<th>C_USE</th>
 <th>COMP_US</th>
 <th>SR_US</th>
 <th>SR_SEL</th>
@@ -298,52 +326,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>○</td>
-<td>○</td>
-<td>◎</td>
-<td></td>
-<td></td>
-<td>◎</td>
-<td>◎</td>
-<td>◎</td>
-<td>◎</td>
-<td>○</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">加算</td>
 <td>add</td>
-<td>0000</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>A + B</td>
 <td>1</td>
-<td>1</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
+<td>-</td>
 <td>0</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">論理反転</td>
-<td>not</td>
-<td>0001</td>
-<td>~A</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>-</td>
 <td>0</td>
 <td>-</td>
 <td>-</td>
@@ -352,16 +349,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>100</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">左シフト</td>
-<td>sl</td>
-<td>0010</td>
-<td>A + A</td>
+<td style="text-align: left;">論理反転</td>
+<td>not</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
+<td>~A</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 <td>0</td>
 <td>-</td>
 <td>-</td>
@@ -370,33 +372,66 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>100</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">左巡回</td>
-<td>lrot</td>
-<td>0011</td>
-<td>A + A + MSB</td>
-<td>1</td>
+<td style="text-align: left;">左シフト</td>
+<td>sl</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
+<td>0</td>
+<td>A + A</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">左巡回</td>
+<td>lrot</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>A + A + MSB</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>MSB</td>
 <td>0</td>
+<td>1</td>
+<td>0</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
 <td>100</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">論理積</td>
 <td>and</td>
-<td>0100</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>A &amp; B</td>
 <td>1</td>
-<td>1</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
 <td>-</td>
 <td>0</td>
 <td>-</td>
@@ -405,16 +440,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>-</td>
 <td>100</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">排他的論理和</td>
 <td>xor</td>
-<td>0101</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
 <td>A ^ B</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
 <td>1</td>
+<td>-</td>
+<td>-</td>
 <td>-</td>
 <td>0</td>
 <td>-</td>
@@ -423,16 +463,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>-</td>
 <td>100</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">論理和</td>
 <td>or</td>
-<td>0110</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
 <td>A | B</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
 <td>1</td>
+<td>-</td>
+<td>-</td>
 <td>-</td>
 <td>0</td>
 <td>-</td>
@@ -441,16 +486,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>-</td>
 <td>100</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">減算</td>
 <td>sub</td>
-<td>0111</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 <td>A - B</td>
 <td>0</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
+<td>1</td>
 <td>1</td>
 <td>0</td>
 <td>-</td>
@@ -459,16 +509,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>-</td>
 <td>100</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">一致</td>
 <td>eq</td>
-<td>1000</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>A - B - 1</td>
 <td>0</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
+<td>-</td>
 <td>0</td>
 <td>0</td>
 <td>-</td>
@@ -477,16 +532,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>0</td>
 <td>001</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">不一致</td>
 <td>neq</td>
-<td>1001</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
 <td>A - B - 1</td>
 <td>0</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
+<td>-</td>
 <td>0</td>
 <td>0</td>
 <td>-</td>
@@ -495,16 +555,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>0</td>
 <td>001</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">比較（符号なし）</td>
 <td>ltu</td>
-<td>1010</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
 <td>A - B - 1</td>
 <td>0</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
+<td>-</td>
 <td>0</td>
 <td>0</td>
 <td>-</td>
@@ -513,16 +578,21 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>1</td>
 <td>001</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">比較（符号付き）</td>
 <td>lts</td>
-<td>1011</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
 <td>A - B - 1</td>
 <td>0</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
+<td>-</td>
 <td>0</td>
 <td>1</td>
 <td>-</td>
@@ -531,11 +601,16 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>1</td>
 <td>001</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">右シフト（符号なし）</td>
 <td>sru</td>
-<td>1100</td>
-<td></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
@@ -549,11 +624,16 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>-</td>
 <td>010</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">右シフト（符号付き）</td>
 <td>srs</td>
-<td>1101</td>
-<td></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
@@ -567,11 +647,39 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <td>-</td>
 <td>010</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">右巡回</td>
 <td>rrot</td>
-<td>1110</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-</td>
 <td></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
@@ -588,33 +696,28 @@ A+\overline{B}+1=A-B+10000 \geq 10000 \Rightarrow A \geq B
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td></td>
-<td>1111</td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td>-</td>
+<td></td>
+<td></td>
+<td>OR(C<sub>1</sub>,C<sub>0</sub>)</td>
+<td>NOR(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</td>
+<td></td>
 <td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>1</td>
-<td>-</td>
-<td>-</td>
-<td>010</td>
+<td>C<sub>2</sub></td>
+<td></td>
+<td>AND(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</td>
+<td>C<sub>3</sub></td>
+<td>C<sub>2</sub></td>
+<td>C<sub>3</sub></td>
+<td>C<sub>2</sub></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>S<sub>1</sub> = OR(C<sub>1</sub>,C<sub>0</sub>)</li>
-<li>S<sub>0</sub> = NOR(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</li>
-<li>M = C<sub>2</sub></li>
-<li>COMP_US = AND(C<sub>3</sub>,C<sub>1</sub>,C<sub>0</sub>)</li>
-<li>SR_US = C<sub>3</sub></li>
-<li>SR_SEL = C<sub>2</sub></li>
-<li>EQ_NEQ = C<sub>3</sub></li>
-<li>BOOL_SEL = C<sub>2</sub></li>
-</ul>
 </details>
 <details>
 <p><summary>部品表</summary></p>
