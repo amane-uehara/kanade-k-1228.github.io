@@ -18,6 +18,12 @@
 
 [フリーパスまとめ](./Travel/FreePass/)
 
-[柏→筑波山経路](./Travel/KashiwaTukubasan/)
+[柏 → 筑波山経路](./Travel/KashiwaTukubasan/)
+
+## 登山記
+
+筑波山
+
+[御岳山・大岳山](./Mountain/Ontake/)
 
 ## 動画
