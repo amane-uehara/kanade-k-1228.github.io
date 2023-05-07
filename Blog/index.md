@@ -19,7 +19,7 @@ toc: false
 
 夏の東北小旅行
 
-[大寒波！雪の東北旅](./Travel/2021-12-Touhoku/)
+[大寒波！雪の東北旅](./2021-12-31-Touhoku/)
 
 夏の北海道旅
 
@@ -27,7 +27,7 @@ toc: false
 
 筑波山
 
-[御岳山・大岳山](./Mountain/Ontake/)
+[御岳山・大岳山](./2023-05-03-Ontake/)
 
 中国四国
 
@@ -35,6 +35,6 @@ toc: false
 
 行ってみたい所
 
-[フリーパスまとめ](./Travel/FreePass/)
+[フリーパスまとめ](./0_Plan/FreePass/)
 
-[柏 → 筑波山経路](./Travel/KashiwaTukubasan/)
+[柏 → 筑波山経路](./0_Plan/KashiwaTukubasan/)
