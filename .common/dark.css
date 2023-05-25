@@ -2,11 +2,11 @@ body {
   margin: 0;
   /* background-color: #fcfeff; */
   /* background-color: #e4f0fc; */
-  background-color: hsl(208, 100%, 97%);
+  background-color: hsl(210, 5%, 17%);
   font-size: 16px;
   font-family: "Kosugi Maru", "UD Digi Kyokasho NK-R", sans-serif;
   line-height: 1.5;
-  color: hsl(0, 0%, 13%);
+  color: hsl(0, 0%, 100%);
 }
 
 article {
@@ -150,7 +150,7 @@ div#header-links > a {
 nav {
   border: 1px solid;
   border-radius: 2px;
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(210, 5%, 17%);
   margin: 0.5em 1em 0.5em 1em;
 }
 
