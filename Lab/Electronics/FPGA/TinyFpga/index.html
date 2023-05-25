@@ -141,6 +141,7 @@
 <li><a href="#tinyfpga-内蔵ブートローダのアップデート">TinyFPGA 内蔵ブートローダのアップデート</a></li>
 <li><a href="#開発環境">開発環境</a></li>
 <li><a href="#l-チカ">L チカ</a></li>
+<li><a href="#wsl2での環境構築">WSL2での環境構築</a></li>
 </ul></nav>
      <p>TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボードです。iCE40 は一連の開発ツールが完全にオープンソース化されている数少ない FPGA です。</p>
 <h2 id="情報リンク">情報リンク</h2>
@@ -222,6 +223,14 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hzZ5VPpSlpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 <p>※ うまくいかない場合、<strong>USB アダプタに接続して電源のみを供給</strong> すると、L チカするはずです。PC に接続すると、ブートローダは通信待機状態で起動してしまい、ユーザーイメージを読み込みません。</p>
+<h2 id="wsl2での環境構築">WSL2での環境構築</h2>
+<p>WSL2でUSBを使うには、<a href="https://learn.microsoft.com/ja-jp/windows/wsl/connect-usb">USB デバイスを接続する</a></p>
+<p>PowerShellをadminで開き、</p>
+<pre><code>usbipd wsl list
+usbipd wsl attach --busid &lt;BUS-ID&gt;</code></pre>
+<p>WSL2側で</p>
+<pre><code>lsusb</code></pre>
+<p>※ attach でエラーが出る。FPGA側のUSBを書き換える必要がありそう。</p>
 
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="126.444 2.281 589 589"
       style="margin: auto; padding: 0; display: block" onclick="tweet();">
