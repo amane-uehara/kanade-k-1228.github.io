@@ -2,11 +2,11 @@ body {
   margin: 0;
   /* background-color: #fcfeff; */
   /* background-color: #e4f0fc; */
-  background-color: hsl(204, 5%, 18%);
+  background-color: hsl(208, 100%, 97%);
   font-size: 16px;
   font-family: "Kosugi Maru", "UD Digi Kyokasho NK-R", sans-serif;
   line-height: 1.5;
-  color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 13%);
 }
 
 article {
@@ -30,20 +30,20 @@ h1 {
   display: block;
   margin: 0.5em 0 0.5em 0;
   padding: 8px;
-  color: #d64acf;
+  color: hsl(303, 63%, 56%);
   font-size: 25px;
   font-weight: bold;
-  background-color: #ffccff;
+  background-color: hsl(300, 100%, 90%);
 }
 
 h2 {
   display: block;
   margin: 0.5em 0 0.5em 0;
   padding: 8px;
-  color: #2c8ecf;
+  color: hsl(204, 65%, 49%);
   font-size: 20px;
   font-weight: bold;
-  background: #bbddff;
+  background: hsl(210, 100%, 87%);
 }
 
 h3 {
@@ -82,14 +82,14 @@ th {
   border: 1px solid;
   padding: 0.3em;
   text-align: center;
-  background-color: #e8ffbd;
+  background-color: hsl(81, 100%, 87%);
 }
 
 td {
   border: 1px solid;
   padding: 0.3em;
   text-align: center;
-  background-color: #f0f0ff;
+  background-color: hsl(240, 100%, 97%);
 }
 
 ul,
@@ -108,7 +108,7 @@ ol ol ol {
 blockquote {
   border: 1px solid;
   border-radius: 2px;
-  background-color: white;
+  background-color: hsl(0, 0%, 100%);
   margin: 0.5em 1em 0.5em 1em;
 }
 
@@ -150,7 +150,7 @@ div#header-links > a {
 nav {
   border: 1px solid;
   border-radius: 2px;
-  background-color: white;
+  background-color: hsl(0, 0%, 100%);
   margin: 0.5em 1em 0.5em 1em;
 }
 
@@ -173,7 +173,7 @@ code {
   padding: 1px;
   border-width: 1px;
   border-radius: 5px;
-  background: rgba(175, 184, 193, 0.2);
+  background: hsla(210, 13%, 72%, 0.2);
   font-family: "Ricty Diminished", "Ricty", "Myrica M", "Migu 1M",
     "Source Han Code JP", "SFMono-Regular", "Consolas", "Liberation Mono",
     "Menlo", "Courier", monospace;

@@ -10,9 +10,11 @@ window.addEventListener('keydown',(e) => {
     if(e.key==="l"){
         css.href = light;
         document.cookie = "style=light"
+        console.log(document.cookie)
     }
     if(e.key==="d"){
         css.href = dark;
         document.cookie = "style=dark"
+        console.log(document.cookie)
     }
 })
