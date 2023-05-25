@@ -2,8 +2,7 @@ const light = "https://kanade-k-1228.github.io/.common/light.css";
 const dark = "https://kanade-k-1228.github.io/.common/dark.css";
 
 window.addEventListener('load',()=>{
-    console.log(allCookies)
-    document.cookie
+    console.log(document.cookie)
 })
 
 window.addEventListener('keydown',(e) => {
