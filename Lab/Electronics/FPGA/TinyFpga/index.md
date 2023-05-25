@@ -96,3 +96,22 @@ L チカしました。
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hzZ5VPpSlpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ※ うまくいかない場合、**USB アダプタに接続して電源のみを供給** すると、L チカするはずです。PC に接続すると、ブートローダは通信待機状態で起動してしまい、ユーザーイメージを読み込みません。
+
+## WSL2での環境構築
+
+WSL2でUSBを使うには、[USB デバイスを接続する](https://learn.microsoft.com/ja-jp/windows/wsl/connect-usb)
+
+PowerShellをadminで開き、
+
+```
+usbipd wsl list
+usbipd wsl attach --busid <BUS-ID>
+```
+
+WSL2側で
+
+```
+lsusb
+```
+
+※ attach でエラーが出る。FPGA側のUSBを書き換える必要がありそう。
