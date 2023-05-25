@@ -7,9 +7,12 @@ window.addEventListener('load',()=>{
 
 window.addEventListener('keydown',(e) => {
     const css = document.getElementById("style");
+    if(e.key==="l"){
+        css.href = light;
+        document.cookie = "style=light"
+    }
     if(e.key==="d"){
         css.href = dark;
-    }if(e.key==="l"){
-        css.href = light;
+        document.cookie = "style=dark"
     }
 })
