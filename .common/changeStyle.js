@@ -6,7 +6,11 @@ window.addEventListener('load',()=>{
     document.cookie
 })
 
-const changeStyle = ()=>{
+window.addEventListener('keydown',(e) => {
     const css = document.getElementById("style");
-    css.href = css.href === light ? dark : light;
-}
+    if(e.key==="d"){
+        css.href = dark;
+    }if(e.key==="l"){
+        css.href = light;
+    }
+})
