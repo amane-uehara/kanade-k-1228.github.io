@@ -182,6 +182,8 @@ title: 研究室へようこそ
 
 [RISC-V](./Computer/Misc/RISC-V/)
 
+[C言語をそのまま実行するプロセッサ](./Computer/Misc/ClangProcessor/)
+
 ### 自作マイコン：RK16
 
 [マイコンを作りたい！](./Computer/RK16/0_About/)
