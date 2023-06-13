@@ -174,3 +174,53 @@ description: 自炊メモと日記
 ### 5 月 30 日
 
 ![](img/230530.jpg)
+
+### 5 月 29 日
+
+![](img/230529.jpg)
+
+### 5 月 25 日
+
+![](img/230525_2.jpg)
+
+![](img/230525_3.jpg)
+
+![](img/230525_4.jpg)
+
+![](img/230525_5.jpg)
+
+### 5 月 19 日
+
+![](img/230519_1.jpg)
+
+シジミもとぅるんって頑張ってる。
+
+![](img/230519_2.jpg)
+
+音 MAD 鑑賞会が開かれた。
+
+あと、「お米食べろ！」の場所特定した。
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.9548555616229!2d134.2440529244397!3d35.01122519556879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35544d83fb4f8baf%3A0x3db894a2248437cb!2z44CSNzA5LTQyNDcg5bKh5bGx55yM576O5L2c5biC5bGx5Z-O!5e0!3m2!1sja!2sjp!4v1686668599520!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+### 5 月 17 日
+
+![](img/230517.jpg)
+
+### 5 月 2 日
+
+![](img/230502_1.jpg)
+
+前日に茹でて置いた。70 度付近で甘くなるらしい。
+
+![](img/230502_2.jpg)
+
+ジャーマンポテト。
+
+## 4 月
+
+### 4 月 30 日
+
+![](img/230430_1.jpg)
+
+![](img/230430_2.jpg)
