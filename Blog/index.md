@@ -3,6 +3,8 @@ title: 雑記
 toc: false
 ---
 
+[かな飯](./Kanameshi/)
+
 [プログラミング勉強したいんだけど何したらいいのと言われたときに見せるページ](./0_Misc/Programing/)
 
 [音楽理論について](./0_Misc/MusicTheory/)
