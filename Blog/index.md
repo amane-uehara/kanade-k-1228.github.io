@@ -37,6 +37,8 @@ toc: false
 
 行ってみたい所
 
+[東海道を歩く](./0_Plan/Tokaido/)
+
 [フリーパスまとめ](./0_Plan/FreePass/)
 
 [柏 → 筑波山経路](./0_Plan/KashiwaTukubasan/)
