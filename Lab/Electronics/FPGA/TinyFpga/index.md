@@ -59,7 +59,6 @@ tinyprog --update-bootloader
 - Lattice の iCEcube2
   - iCE40 ユーザーガイドに書かれてる方法
 - OSS の CLI ツールでやる方法
-  - [TinyFPGA BX で RISC-V を動かしてみる（その1）](https://flogics.com/wp/ja/2019/12/running-risc-v-on-tinyfpga-bx/)
 - APIO (Atom プラグイン)
   - オープンソースのツールチェーン
   - [APIO ドキュメント](https://apiodoc.readthedocs.io/en/stable/source/installation.html)
@@ -100,9 +99,84 @@ L チカしました。
 
 ※ うまくいかない場合、**USB アダプタに接続して電源のみを供給** すると、L チカするはずです。PC に接続すると、ブートローダは通信待機状態で起動してしまい、ユーザーイメージを読み込みません。
 
-## WSL2での環境構築
+## WSL2 + Ubuntu での環境構築
 
-yosys,nextpnr,などのツールでビットストリームを生成
+[Project Ice Storm](https://clifford.at/icestorm)
+
+makeは-jで適宜並列化してね
+
+```
+sudo apt update
+sudo apt install build-essential git cmake clang bison flex libreadline-dev gawk tcl-dev libffi-dev mercurial graphviz xdot pkg-config libftdi-dev qt5-default libboost-all-dev libeigen3-dev python python3 python3-dev
+```
+
+#### icestorm
+
+```
+git clone https://github.com/YosysHQ/icestorm.git
+cd icestorm
+make
+sudo make install
+```
+
+#### arachine-pnr
+
+```
+git clone https://github.com/cseed/arachne-pnr.git
+cd arachne-pnr
+make
+sudo make install
+```
+
+#### nextpnr
+
+```
+git clone https://github.com/YosysHQ/nextpnr.git
+cd nextpnr
+cmake . -DARCH=ice40
+make
+sudo make install
+```
+
+#### yosys
+
+```
+git clone https://github.com/YosysHQ/yosys.git
+cd yosys
+git checkout <select release commit (yosys-0.30)>
+sudo apt update
+sudo apt install build-essential clang bison flex \
+	libreadline-dev gawk tcl-dev libffi-dev git \
+	graphviz xdot pkg-config python3 libboost-system-dev \
+	libboost-python-dev libboost-filesystem-dev zlib1g-dev
+make
+sudo make install
+make test
+```
+
+#### riscv-gnu-toolchain
+
+```
+git clone https://github.com/riscv/riscv-gnu-toolchain
+sudo apt-get install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev
+```
+
+ここでターゲットのアーキテクチャを指定します。
+multilib　にするといろいろなISA（IとかMとかC）に対応できる。
+
+```
+./configure --prefix=/opt/riscv --enable-multilib
+make newlib
+```
+
+### RISC-VでLチカ
+
+[TinyFPGA-BX](https://github.com/tinyfpga/TinyFPGA-BX)にあるサンプルを試します。
+
+#### 参考
+
+- [TinyFPGA BX で RISC-V を動かしてみる（その1）](https://flogics.com/wp/ja/2019/12/running-risc-v-on-tinyfpga-bx/)
+- [TinyFPGA BX で RISC-V を動かしてみる（nextpnr 編）](https://flogics.com/wp/ja/2019/12/running-risc-v-on-tinyfpga-bx-part2/)
 
 ### WSL2 に USB を渡す
 
