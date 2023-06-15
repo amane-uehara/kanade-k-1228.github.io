@@ -197,6 +197,42 @@ WSL2側で `lsusb` すれば認識されてるはず。
 
 WSL側からWindowsのプロセスを起動し書き込みを行う。
 
+Windowsの環境変数に `$env:WSLHome = \\wsl.localhost\Ubuntu\home\[user]` を追加し、PowerShellで、
+
 ```
-cmd.exe /c "tinyprog ..."
+tinyprog -p $env:WSLHome\TinyFPGA-BX\examples\picosoc\hardware.bin -u $env:WSLHome\TinyFPGA-BX\examples\picosoc\hardware.bin
+```
+
+すれば書き込めます。これをWSL側から起動します。Makefile参照。Windowsの環境変数 `$env:WSLHome` を使うには、Linuxの環境変数記号 `$` をエスケープして `\$env:WSLHome` とし、Makefileの変数記号 `$` をエスケープするために `\$$env:WSLHome` とする。
+
+### Makefile
+
+```
+CC=riscv64-unknown-elf-gcc
+OBJCOPY=riscv64-unknown-elf-objcopy
+
+upload: hardware.bin firmware.bin
+	powershell.exe /c "tinyprog -p \$$env:WSLHome\TinyFPGA-BX\examples\picosoc\hardware.bin -u \$$env:WSLHome\TinyFPGA-BX\examples\picosoc\firmware.bin"
+
+hardware.json: hardware.v spimemio.v simpleuart.v picosoc.v picorv32.v
+	yosys -ql hardware.log -p 'synth_ice40 -top hardware -json hardware.json' $^
+
+hardware.asc: hardware.pcf hardware.json
+	nextpnr-ice40 --lp8k --package cm81 --asc hardware.asc --pcf hardware.pcf --json hardware.json
+
+hardware.bin: hardware.asc
+	icetime -d lp8k -c 12 -mtr hardware.rpt hardware.asc
+	icepack hardware.asc hardware.bin
+
+
+firmware.elf: sections.lds start.S firmware.c 
+	$(CC) -march=rv32imc -mabi=ilp32 -nostartfiles -Wl,-Bstatic,-T,sections.lds,--strip-debug,-Map=firmware.map,--cref  -ffreestanding -nostdlib -o firmware.elf start.S firmware.c
+
+firmware.bin: firmware.elf
+	$(OBJCOPY) -O binary firmware.elf /dev/stdout > firmware.bin
+
+
+clean:
+	rm -f firmware.elf firmware.hex firmware.bin firmware.o firmware.map \
+	      hardware.json hardware.log hardware.asc hardware.rpt hardware.bin
 ```
