@@ -204,6 +204,7 @@
 <li><a href="#risc-vでlチカ">RISC-VでLチカ</a></li>
 <li><a href="#wsl2-に-usb-を渡す">WSL2 に USB を渡す</a></li>
 <li><a href="#windows-側で書き込む">Windows 側で書き込む</a></li>
+<li><a href="#makefile">Makefile</a></li>
 </ul></li>
 </ul></nav>
        <p>TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボードです。iCE40 は一連の開発ツールが完全にオープンソース化されている数少ない FPGA です。</p>
@@ -345,7 +346,37 @@ usbipd wsl attach --busid &lt;BUS-ID&gt;</code></pre>
 <p>※ attach でエラーが出る。FPGA側のUSBを書き換える必要がありそう。</p>
 <h3 id="windows-側で書き込む">Windows 側で書き込む</h3>
 <p>WSL側からWindowsのプロセスを起動し書き込みを行う。</p>
-<pre><code>cmd.exe /c &quot;tinyprog ...&quot;</code></pre>
+<p>Windowsの環境変数に <code>$env:WSLHome = \\wsl.localhost\Ubuntu\home\[user]</code> を追加し、PowerShellで、</p>
+<pre><code>tinyprog -p $env:WSLHome\TinyFPGA-BX\examples\picosoc\hardware.bin -u $env:WSLHome\TinyFPGA-BX\examples\picosoc\hardware.bin</code></pre>
+<p>すれば書き込めます。これをWSL側から起動します。Makefile参照。Windowsの環境変数 <code>$env:WSLHome</code> を使うには、Linuxの環境変数記号 <code>$</code> をエスケープして <code>\$env:WSLHome</code> とし、Makefileの変数記号 <code>$</code> をエスケープするために <code>\$$env:WSLHome</code> とする。</p>
+<h3 id="makefile">Makefile</h3>
+<pre><code>CC=riscv64-unknown-elf-gcc
+OBJCOPY=riscv64-unknown-elf-objcopy
+
+upload: hardware.bin firmware.bin
+    powershell.exe /c &quot;tinyprog -p \$$env:WSLHome\TinyFPGA-BX\examples\picosoc\hardware.bin -u \$$env:WSLHome\TinyFPGA-BX\examples\picosoc\firmware.bin&quot;
+
+hardware.json: hardware.v spimemio.v simpleuart.v picosoc.v picorv32.v
+    yosys -ql hardware.log -p &#39;synth_ice40 -top hardware -json hardware.json&#39; $^
+
+hardware.asc: hardware.pcf hardware.json
+    nextpnr-ice40 --lp8k --package cm81 --asc hardware.asc --pcf hardware.pcf --json hardware.json
+
+hardware.bin: hardware.asc
+    icetime -d lp8k -c 12 -mtr hardware.rpt hardware.asc
+    icepack hardware.asc hardware.bin
+
+
+firmware.elf: sections.lds start.S firmware.c 
+    $(CC) -march=rv32imc -mabi=ilp32 -nostartfiles -Wl,-Bstatic,-T,sections.lds,--strip-debug,-Map=firmware.map,--cref  -ffreestanding -nostdlib -o firmware.elf start.S firmware.c
+
+firmware.bin: firmware.elf
+    $(OBJCOPY) -O binary firmware.elf /dev/stdout &gt; firmware.bin
+
+
+clean:
+    rm -f firmware.elf firmware.hex firmware.bin firmware.o firmware.map \
+          hardware.json hardware.log hardware.asc hardware.rpt hardware.bin</code></pre>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
