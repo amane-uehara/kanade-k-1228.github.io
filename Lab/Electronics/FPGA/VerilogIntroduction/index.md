@@ -175,16 +175,26 @@ FPGAも通常のLSIと同じように、IOバッファがあります。
 
 ## System Verilog
 
+System Verilog (Verilog2005) は、Verilog の進化版です。
+ちょうどC言語に対するC++のようなイメージです。
+
+古いIDEだとサポートされてなかったり…
+
+完全に規格に準拠した実装はあまりないですが…
+
 ### logic
 
 上で述べた通り、wireとregには本質的な違いはありません。
-SVではこれらの違いを考えずにlogicと書けます。
+System Verilog ではこれらの違いを考えずに logic と書けます。
 
 ### always_comb
 
-Verilog では wire は if else を使えないという面倒な制約がありましたが、
-SV では wire でも if else を使えます。
+Verilog では、if else による真理値表の記述は、always中に限られているという制約がありましたが、
+SystemVerilog では wire でも if else を使えます。
 
 ### interface
 
-上2つはVerilogの失敗を修正しただけですが、interfaceは抽象化にとって
+上2つはVerilogの ~~失敗を修正しただけ~~ 開発当初の思想と現代の使われ方の違いによる矛盾を解消するものですが、
+interface はハードウェアの抽象化に重要な機能です。
+
+interface の中にロジックを記述することができ、特にバスを作るときに便利です。
