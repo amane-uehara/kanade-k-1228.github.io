@@ -56,7 +56,10 @@ tinyprog --update-bootloader
 
 ## 開発環境
 
-- Lattice の iCEcube2 ← iCE40 ユーザーガイドに書かれてる方法
+- Lattice の iCEcube2
+  - iCE40 ユーザーガイドに書かれてる方法
+- OSS の CLI ツールでやる方法
+  - [TinyFPGA BX で RISC-V を動かしてみる（その1）](https://flogics.com/wp/ja/2019/12/running-risc-v-on-tinyfpga-bx/)
 - APIO (Atom プラグイン)
   - オープンソースのツールチェーン
   - [APIO ドキュメント](https://apiodoc.readthedocs.io/en/stable/source/installation.html)
@@ -99,6 +102,10 @@ L チカしました。
 
 ## WSL2での環境構築
 
+yosys,nextpnr,などのツールでビットストリームを生成
+
+### WSL2 に USB を渡す
+
 WSL2でUSBを使うには、[USB デバイスを接続する](https://learn.microsoft.com/ja-jp/windows/wsl/connect-usb)
 
 PowerShellをadminで開き、
@@ -108,10 +115,14 @@ usbipd wsl list
 usbipd wsl attach --busid <BUS-ID>
 ```
 
-WSL2側で
-
-```
-lsusb
-```
+WSL2側で `lsusb` すれば認識されてるはず。
 
 ※ attach でエラーが出る。FPGA側のUSBを書き換える必要がありそう。
+
+### Windows 側で書き込む
+
+WSL側からWindowsのプロセスを起動し書き込みを行う。
+
+```
+cmd.exe /c "tinyprog ..."
+```
