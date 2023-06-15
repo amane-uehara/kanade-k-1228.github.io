@@ -199,7 +199,11 @@
 <li><a href="#tinyfpga-内蔵ブートローダのアップデート">TinyFPGA 内蔵ブートローダのアップデート</a></li>
 <li><a href="#開発環境">開発環境</a></li>
 <li><a href="#l-チカ">L チカ</a></li>
-<li><a href="#wsl2での環境構築">WSL2での環境構築</a></li>
+<li><a href="#wsl2での環境構築">WSL2での環境構築</a>
+<ul>
+<li><a href="#wsl2-に-usb-を渡す">WSL2 に USB を渡す</a></li>
+<li><a href="#windows-側で書き込む">Windows 側で書き込む</a></li>
+</ul></li>
 </ul></nav>
        <p>TinyFPGA BX は Lattice 社製の FPGA、iCE40LP8K を搭載した開発ボードです。iCE40 は一連の開発ツールが完全にオープンソース化されている数少ない FPGA です。</p>
 <h2 id="情報リンク">情報リンク</h2>
@@ -249,7 +253,14 @@
 <p>※ TinyFPGA BX にはプログラマ基板が不要です。その代わり、FPGA の一部にプログラマ回路が書き込まれています。間違えて上書きしてしまった場合、Arduino を使ってブートローダを復元することができます。参考 → <a href="https://github.com/tinyfpga/TinyFPGA-B-Series/tree/master/programmer_arduino">Programming with an Arduino</a></p>
 <h2 id="開発環境">開発環境</h2>
 <ul>
-<li>Lattice の iCEcube2 ← iCE40 ユーザーガイドに書かれてる方法</li>
+<li>Lattice の iCEcube2
+<ul>
+<li>iCE40 ユーザーガイドに書かれてる方法</li>
+</ul></li>
+<li>OSS の CLI ツールでやる方法
+<ul>
+<li><a href="https://flogics.com/wp/ja/2019/12/running-risc-v-on-tinyfpga-bx/">TinyFPGA BX で RISC-V を動かしてみる（その1）</a></li>
+</ul></li>
 <li>APIO (Atom プラグイン)
 <ul>
 <li>オープンソースのツールチェーン</li>
@@ -282,13 +293,17 @@
 </iframe>
 <p>※ うまくいかない場合、<strong>USB アダプタに接続して電源のみを供給</strong> すると、L チカするはずです。PC に接続すると、ブートローダは通信待機状態で起動してしまい、ユーザーイメージを読み込みません。</p>
 <h2 id="wsl2での環境構築">WSL2での環境構築</h2>
+<p>yosys,nextpnr,などのツールでビットストリームを生成</p>
+<h3 id="wsl2-に-usb-を渡す">WSL2 に USB を渡す</h3>
 <p>WSL2でUSBを使うには、<a href="https://learn.microsoft.com/ja-jp/windows/wsl/connect-usb">USB デバイスを接続する</a></p>
 <p>PowerShellをadminで開き、</p>
 <pre><code>usbipd wsl list
 usbipd wsl attach --busid &lt;BUS-ID&gt;</code></pre>
-<p>WSL2側で</p>
-<pre><code>lsusb</code></pre>
+<p>WSL2側で <code>lsusb</code> すれば認識されてるはず。</p>
 <p>※ attach でエラーが出る。FPGA側のUSBを書き換える必要がありそう。</p>
+<h3 id="windows-側で書き込む">Windows 側で書き込む</h3>
+<p>WSL側からWindowsのプロセスを起動し書き込みを行う。</p>
+<pre><code>cmd.exe /c &quot;tinyprog ...&quot;</code></pre>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
