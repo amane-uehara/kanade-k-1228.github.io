@@ -156,6 +156,8 @@ title: 研究室へようこそ
 
 [Verilog超入門](./Electronics/FPGA/VerilogIntroduction/)
 
+[PicoRV32で自作マイコン](./Electronics/FPGA/MySoC/)
+
 <!-- [FPGA で VGA 映像出力](./Electronics/FPGA/FPGAVGA/) -->
 
 <!-- [FPGA で音源 IC を作って鳴らしてみた](./Electronics/FPGASound/) -->
