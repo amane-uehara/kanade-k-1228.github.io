@@ -19,7 +19,7 @@ Interfaceのおかげで全人類FPGAに入門しているので、この記事�
 ```
 git clone https://github.com/YosysHQ/yosys.git
 cd yosys
-git checkout <select release commit (yosys-0.30)>
+git checkout yosys-0.30 # select latest release commit
 sudo apt update
 sudo apt install build-essential clang bison flex \
 	libreadline-dev gawk tcl-dev libffi-dev git \
@@ -36,34 +36,6 @@ make test
 yosys -p "synth_gowin -json top.json -top top" $^
 ```
 
-## [nextpnr](https://github.com/YosysHQ/nextpnr)
-
-これまたおなじみなんでも配置配線 (place and route) してくれるnextpnr先生。
-
-以下インストール手順です。
-
-```
-git clone https://github.com/YosysHQ/nextpnr.git
-cd nextpnr
-cmake . -DARCH=gowin
-make
-sudo make install
-```
-
-nextpnrはたくさんのFPGAを使ってるオタク君に優しいギャルなので、
-
-```
-cmake . -DARCH="ice40;gowin"
-```
-
-というように、`;` 区切りにすれば複数のアーキテクチャに対応したビルドができます。
-
-pnrのコマンドは、
-
-```
-nextpnr --json top.json --write top.pack --device GW1N-LV1QN48C6/I5 --cst tangnano.cst
-```
-
 ## [apicula](https://github.com/YosysHQ/apicula)
 
 Gowin の FPGA をリバースエンジニアリングしてオープンソース化するプロジェクトみたいです。ありがたい話し❗️助かる❗️助かる❗️
@@ -78,6 +50,48 @@ pip install apycula
 
 ```
 gowin_pack -d GW1N-1 -o top.fs top.pack
+```
+
+## [nextpnr](https://github.com/YosysHQ/nextpnr)
+
+これまたおなじみなんでも配置配線 (place and route) してくれるnextpnr先生。
+
+以下インストール手順です。
+
+```
+git clone https://github.com/YosysHQ/nextpnr.git
+cd nextpnr
+git checkout nextpnr-0.6 # select latest release commit
+cmake . -DARCH=gowin
+make
+sudo make install
+```
+
+nextpnrはたくさんのFPGAを使ってるオタク君に優しいギャルなので、
+
+```
+cmake . -DARCH="ice40;gowin"
+```
+
+というように、`;` 区切りにすれば複数のアーキテクチャに対応したビルドができます。
+
+また、cmakeでgowin_bbrが見つからないと言われたら、
+
+```
+cmake . -DARCH=gowin -DGOWIN_BBA_EXECUTABLE=`which gowin_bba`
+```
+してください。それでも怒られたら、たぶんパスが通ってないので、
+
+```
+export PATH=$HOME/.local/bin:$PATH
+```
+
+してください。
+
+pnrのコマンドは、
+
+```
+nextpnr --json top.json --write top.pack --device GW1N-LV1QN48C6/I5 --cst tangnano.cst
 ```
 
 ## [openFPGALoader](https://github.com/trabucayre/openFPGALoader)
@@ -127,6 +141,9 @@ pacman -S mingw-w64-ucrt-x86_64-openFPGALoader
 
 4. `openFPGAloader` を実行します。
 
+## Makefile
+
+**! TODO**
 
 ## Docker化
 
