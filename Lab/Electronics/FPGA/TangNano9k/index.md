@@ -101,6 +101,7 @@ nextpnr --json top.json --write top.pack --device GW1N-LV1QN48C6/I5 --cst tangna
 ```
 git clone https://github.com/trabucayre/openFPGALoader.git
 cd openFPGALoader
+git checkout v0.10.0 # select latest release commit
 mkdir build
 cd build
 cmake ../ 
