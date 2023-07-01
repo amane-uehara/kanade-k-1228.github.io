@@ -342,6 +342,7 @@ make newlib</code></pre>
 <p>PowerShellをadminで開き、</p>
 <pre><code>usbipd wsl list
 usbipd wsl attach --busid &lt;BUS-ID&gt;</code></pre>
+<p>ここでエラーが出たので、 <a href="https://github.com/dorssel/usbipd-win/wiki/WSL-support">WSL-support</a> に従ってコマンドをたたいたら、いけました。</p>
 <p>WSL2側で <code>lsusb</code> すれば認識されてるはず。</p>
 <p>※ attach でエラーが出る。FPGA側のUSBを書き換える必要がありそう。</p>
 <h3 id="windows-側で書き込む">Windows 側で書き込む</h3>

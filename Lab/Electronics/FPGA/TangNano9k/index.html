@@ -267,6 +267,7 @@ sudo make install</code></pre>
 <p>PowerShellをadminで開き、</p>
 <pre><code>usbipd wsl list
 usbipd wsl attach --busid &lt;BUS-ID&gt;</code></pre>
+<p>ここでエラーが出たので、 <a href="https://github.com/dorssel/usbipd-win/wiki/WSL-support">WSL-support</a> に従ってコマンドをたたいたら、いけました。</p>
 <p>WSL2側で <code>lsusb</code> すれば認識されてるはず。</p>
 <h3 id="windows">Windows</h3>
 <p>MSYS2を使えば Windows で実行できるようです。</p>
