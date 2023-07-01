@@ -82,7 +82,7 @@ gowin_pack -d GW1N-1 -o top.fs top.pack
 
 ## [openFPGALoader](https://github.com/trabucayre/openFPGALoader)
 
-なんでも書き込みしてくれる先生。
+なんでも書き込みしてくれるopenFPGALoader先生。
 
 ```
 git clone https://github.com/trabucayre/openFPGALoader.git
@@ -100,6 +100,34 @@ sudo make install
 openFPGALoader -b tangnano top.fs
 ```
 
+### WSL
+
+WSL2でUSBを使うには、[USB デバイスを接続する](https://learn.microsoft.com/ja-jp/windows/wsl/connect-usb)
+
+PowerShellをadminで開き、
+
+```
+usbipd wsl list
+usbipd wsl attach --busid <BUS-ID>
+```
+
+WSL2側で `lsusb` すれば認識されてるはず。
+
+### Windows
+
+MSYS2を使えば Windows で実行できるようです。
+
+1. MSYS2 をインストール
+2. UCRT x64 環境（黄色のロゴ）を起動
+3. openFPGAloaderをインストール
+
+```
+pacman -S mingw-w64-ucrt-x86_64-openFPGALoader
+```
+
+4. `openFPGAloader` を実行します。
+
+
 ## Docker化
 
 というわけで、積み上げた開発環境を爆破し更地にして、Docker化します。
@@ -110,4 +138,5 @@ openFPGALoader -b tangnano top.fs
 
 ## 参考
 
-[OS Toolchain Manual Installation | lushaylabs](https://learn.lushaylabs.com/os-toolchain-manual-installation/)
+- [OS Toolchain Manual Installation | lushaylabs](https://learn.lushaylabs.com/os-toolchain-manual-installation/)
+- [MIT 6205 fall 2022](https://fpga.mit.edu/6205/F22/documentation/openFPGA)
