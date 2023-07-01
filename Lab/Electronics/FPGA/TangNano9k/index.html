@@ -198,7 +198,11 @@
 <li><a href="#yosys"><span>yosys</span></a></li>
 <li><a href="#nextpnr"><span>nextpnr</span></a></li>
 <li><a href="#apicula"><span>apicula</span></a></li>
-<li><a href="#openfpgaloader"><span>openFPGALoader</span></a></li>
+<li><a href="#openfpgaloader"><span>openFPGALoader</span></a>
+<ul>
+<li><a href="#wsl">WSL</a></li>
+<li><a href="#windows">Windows</a></li>
+</ul></li>
 <li><a href="#docker化">Docker化</a></li>
 <li><a href="#参考">参考</a></li>
 </ul></nav>
@@ -241,7 +245,7 @@ sudo make install</code></pre>
 <p>パッキングのコマンドは、</p>
 <pre><code>gowin_pack -d GW1N-1 -o top.fs top.pack</code></pre>
 <h2 id="openfpgaloader"><a href="https://github.com/trabucayre/openFPGALoader">openFPGALoader</a></h2>
-<p>なんでも書き込みしてくれる先生。</p>
+<p>なんでも書き込みしてくれるopenFPGALoader先生。</p>
 <pre><code>git clone https://github.com/trabucayre/openFPGALoader.git
 cd openFPGALoader
 mkdir build
@@ -251,12 +255,32 @@ cmake --build .
 sudo make install</code></pre>
 <p>書き込みコマンドは</p>
 <pre><code>openFPGALoader -b tangnano top.fs</code></pre>
+<h3 id="wsl">WSL</h3>
+<p>WSL2でUSBを使うには、<a href="https://learn.microsoft.com/ja-jp/windows/wsl/connect-usb">USB デバイスを接続する</a></p>
+<p>PowerShellをadminで開き、</p>
+<pre><code>usbipd wsl list
+usbipd wsl attach --busid &lt;BUS-ID&gt;</code></pre>
+<p>WSL2側で <code>lsusb</code> すれば認識されてるはず。</p>
+<h3 id="windows">Windows</h3>
+<p>MSYS2を使えば Windows で実行できるようです。</p>
+<ol type="1">
+<li>MSYS2 をインストール</li>
+<li>UCRT x64 環境（黄色のロゴ）を起動</li>
+<li>openFPGAloaderをインストール</li>
+</ol>
+<pre><code>pacman -S mingw-w64-ucrt-x86_64-openFPGALoader</code></pre>
+<ol start="4" type="1">
+<li><code>openFPGAloader</code> を実行します。</li>
+</ol>
 <h2 id="docker化">Docker化</h2>
 <p>というわけで、積み上げた開発環境を爆破し更地にして、Docker化します。</p>
 <p>コマンドたちがさえずる綺麗な環境を守りたい。。。</p>
 <p><strong>! TODO</strong></p>
 <h2 id="参考">参考</h2>
-<p><a href="https://learn.lushaylabs.com/os-toolchain-manual-installation/">OS Toolchain Manual Installation | lushaylabs</a></p>
+<ul>
+<li><a href="https://learn.lushaylabs.com/os-toolchain-manual-installation/">OS Toolchain Manual Installation | lushaylabs</a></li>
+<li><a href="https://fpga.mit.edu/6205/F22/documentation/openFPGA">MIT 6205 fall 2022</a></li>
+</ul>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
