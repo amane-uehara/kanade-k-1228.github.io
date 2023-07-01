@@ -152,11 +152,13 @@ title: 研究室へようこそ
 
 ### FPGA
 
-[TinyFPGA を使ってみた](./Electronics/FPGA/TinyFpga/)
+[TinyFPGA の使い方](./Electronics/FPGA/TinyFpga/)
+
+[TangNano9K の使い方](./Electronics/FPGA/TangNano9k/)
 
 [Verilog超入門](./Electronics/FPGA/VerilogIntroduction/)
 
-[PicoRV32で自作マイコン](./Electronics/FPGA/MySoC/)
+<!-- [PicoRV32で自作マイコン](./Electronics/FPGA/MySoC/) -->
 
 <!-- [FPGA で VGA 映像出力](./Electronics/FPGA/FPGAVGA/) -->
 
