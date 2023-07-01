@@ -125,6 +125,10 @@ usbipd wsl list
 usbipd wsl attach --busid <BUS-ID>
 ```
 
+ここでエラーが出たので、
+[WSL-support](https://github.com/dorssel/usbipd-win/wiki/WSL-support)
+に従ってコマンドをたたいたら、いけました。
+
 WSL2側で `lsusb` すれば認識されてるはず。
 
 ### Windows
