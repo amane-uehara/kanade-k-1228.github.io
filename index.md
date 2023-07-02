@@ -3,42 +3,30 @@ title: ようこそ！
 toc: false
 ---
 
-## プロジェクト
+## 新着記事
 
-### 実行中
-
-- 自作CPUを語る会
-- FPGA開発環境
-- 自作CPU + 自作言語 + 自作RTOS
-  - 次のMFTに間に合わせたい…
-
-### やりたい
-
-- 自作ALU LSI : 2023
-- 自作CPU LSI : 2024
-
-### 停止中
-
-- FPGA講座動画
-- リレーコンピュータ改
+[TangNano9K の使い方](./Lab/Electronics/FPGA/TangNano9k/)
 
 ## おしらせ
 
-### 第1回 自作CPUを語る会 を開催します！
+### IPA 未踏 IT 人材発掘・育成事業 に採択されました
 
-2023年6月11日、サイボウズ東京オフィスで「自作CPUを語る会」を開催します。
-参加登録は [connpass](https://connpass.com/event/278142/) から！
+[未踏 IT 人材発掘・育成事業：2023 年度採択プロジェクト概要（太田 PJ）](https://www.ipa.go.jp/jinzai/mitou/it/2023/gaiyou_tn-1.html)
 
 ## これまで
 
+### 第 1 回 自作 CPU を語る会 を開催しました
+
+2023 年 6 月 11 日、サイボウズ東京オフィスで「[自作 CPU を語る会](https://making-cpu.github.io/)」を開催しました。
+
 ### 応用物理学会で発表しました
 
-2023年3月15-18日、上智大学四谷キャンパスで開催された[第70回応用物理学会春季学術講演会](https://meeting.jsap.or.jp/)にて「二酸化スズの吸光特性を利用した波長センサ」の発表をしました。
+2023 年 3 月 15-18 日、上智大学四谷キャンパスで開催された[第 70 回応用物理学会春季学術講演会](https://meeting.jsap.or.jp/)にて「二酸化スズの吸光特性を利用した波長センサ」の発表をしました。
 
 ### Maker Faire Tokyo 2022 に出展しました
 
-2022年9月3~4日、東京ビックサイトで開催された「[Maker Faire Tokyo 2022](https://makezine.jp/event/makers-mft2022/m0083/)」に、リレーコンピュータを出展しました。
+2022 年 9 月 3~4 日、東京ビックサイトで開催された「[Maker Faire Tokyo 2022](https://makezine.jp/event/makers-mft2022/m0083/)」に、リレーコンピュータを出展しました。
 
 ### Maker Faire Tokyo 2021 に出展しました
 
-2022年10月2/3日、~~東京ビックサイト~~ オンラインで開催された「[Maker Faire Tokyo 2021](https://makezine.jp/event/makers-mft2021/m0035/)」に、リレーコンピュータを出展しました。
+2022 年 10 月 2/3 日、~~東京ビックサイト~~ オンラインで開催された「[Maker Faire Tokyo 2021](https://makezine.jp/event/makers-mft2021/m0035/)」に、リレーコンピュータを出展しました。
