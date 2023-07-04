@@ -94,6 +94,14 @@ highlight-js を使う
 
 - [参考](https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai)
 
+### RSS ジェネレータ
+
+[pandoc-rss-template](https://github.com/leosumi/pandoc-rss-template/)
+
+RSS を YAML 形式で書くことができます。
+
+各RSSタグの意味は[RSS 2.0タグリファレンス](http://www.openspc2.org/RSS/200/index.html)を見てください。
+
 ### 追加予定
 
 - git にある差分から変更があったファイルだけ調べて変換をすると早くなるよね
