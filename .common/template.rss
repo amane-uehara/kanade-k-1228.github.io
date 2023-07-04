@@ -1,0 +1,19 @@
+<rss version="2.0">
+<channel>
+
+<language>ja</language>
+<copyright>© kanade-k-1228</copyright>
+<pubDate>Tue, 04 Jul 2023 08:18:02 GMT</pubDate>
+
+<title>Kanade's Lab</title>
+<link>https://kanade-k-1228.github.io/</link>
+<description>半導体からWebまで幅広く。</description>
+
+<item>
+<title>GitHubとPandocで超簡単にブログサイトを作る</title>
+<link>https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/</link>
+<pubDate>Tue, 04 Jul 2023 07:37:22 GMT</pubDate>
+</item>
+
+</channel>
+</rss>
