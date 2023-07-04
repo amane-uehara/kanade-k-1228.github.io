@@ -5,11 +5,11 @@
 <link>https://kanade-k-1228.github.io/</link>
 <description>数学・物理から、半導体、Web技術まで。幅広く取り揃えております。</description>
 <language>ja</language>
+<copyright>Kanade Kanzawa</copyright>
 
 
 
-<pubDate>Tue, 10 Jun 2003 04:00:00 GMT</pubDate>
-<lastBuildDate>Tue, 10 Jun 2003 09:41:01 GMT</lastBuildDate>
+
 
 
 
@@ -25,7 +25,7 @@
 
 
 <item>
-<title>Star City</title>
+<title>GitHubとPandocで超簡単にブログサイトを作る</title>
 <link>https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/</link>
 <description>令和のインターネットを生き延びるためのWebサイト構築方法！</description>
 
@@ -36,7 +36,7 @@
 
 
 
-<pubDate>Tue, 03 Jun 2003 09:39:21 GMT</pubDate>
+<pubDate>Tue, 04 Jul 2023 18:00:00 GMT</pubDate>
 
 </item>
 </channel>
