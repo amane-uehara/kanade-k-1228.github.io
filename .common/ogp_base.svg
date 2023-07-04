@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- 背景色 -->
+    <rect x="0" y="0" width="1200" height="630" fill="hsl(159, 91%, 25%)" />
+
+    <!-- 配線 -->
+    <path style="fill:none; stroke-width:15; stroke:hsl(152, 57%, 54%);" stroke-linejoin="round" d="
+        M 120 500,
+        l 110 110,
+        H 920,
+        L 950 580" />
+    <circle cx="950" cy="580" r="20" style="fill:#FFFFFF;" />
+    <circle cx="950" cy="580" r="20" style="stroke:#fec002; stroke-width:10; fill:none;" />
+
+    <!-- パスコン -->
+    <circle cx="1030" cy="80" r="7" fill="#fec002" />
+    <circle cx="1110" cy="80" r="7" fill="#fec002" />
+    <line x1="1030" x2="1110" y1="80" y2="80" stroke="hsl(120, 2%, 83%)" stroke-width="6" stroke-linecap="round" />
+    <ellipse cx="1070" cy="80" rx="30" ry="15" fill="#00acee" />
+
+    <!-- DIP -->
+    <rect x="1020" y="120" width="100" height="430" fill="black" rx="4" ry="4" />
+    <circle cx="1070" cy="120" r="16" fill="hsl(159, 91%, 25%)" />
+    <clipPath id="gh-clip">
+        <circle cx="35" cy="35" r="30" />
+    </clipPath>
+    <image xlink:href="./github.png" height="70" width="70" transform="translate(1105, 145) rotate(90)"
+        clip-path="url(#gh-clip)" />
+    <text fill="lightgray" font-size="40" transform="translate(1070, 230) rotate(90)"
+        alignment-baseline="central">kanade-k-1228</text>
+    <g fill="hsl(120, 2%, 83%)">
+        <rect x="1010" y="135" width="10" height="15" />
+        <rect x="1010" y="160" width="10" height="20" />
+        <rect x="1010" y="190" width="10" height="20" />
+        <rect x="1010" y="220" width="10" height="20" />
+        <rect x="1010" y="250" width="10" height="20" />
+        <rect x="1010" y="280" width="10" height="20" />
+        <rect x="1010" y="310" width="10" height="20" />
+        <rect x="1010" y="340" width="10" height="20" />
+        <rect x="1010" y="370" width="10" height="20" />
+        <rect x="1010" y="400" width="10" height="20" />
+        <rect x="1010" y="430" width="10" height="20" />
+        <rect x="1010" y="460" width="10" height="20" />
+        <rect x="1010" y="490" width="10" height="20" />
+        <rect x="1010" y="520" width="10" height="15" />
+
+        <rect x="1120" y="135" width="10" height="15" />
+        <rect x="1120" y="160" width="10" height="20" />
+        <rect x="1120" y="190" width="10" height="20" />
+        <rect x="1120" y="220" width="10" height="20" />
+        <rect x="1120" y="250" width="10" height="20" />
+        <rect x="1120" y="280" width="10" height="20" />
+        <rect x="1120" y="310" width="10" height="20" />
+        <rect x="1120" y="340" width="10" height="20" />
+        <rect x="1120" y="370" width="10" height="20" />
+        <rect x="1120" y="400" width="10" height="20" />
+        <rect x="1120" y="430" width="10" height="20" />
+        <rect x="1120" y="460" width="10" height="20" />
+        <rect x="1120" y="490" width="10" height="20" />
+        <rect x="1120" y="520" width="10" height="15" />
+    </g>
+
+    <!-- 名前テキスト -->
+    <text x="600" y="580" fill="#FFFFFF" font-size="90" text-anchor="middle">Kanade's Lab</text>
+
+    <!-- アイコン画像 -->
+    <clipPath id="icon-clip">
+        <circle cx="120" cy="500" r="90" />
+    </clipPath>
+    <image xlink:href="./icon.png" x="20" y="400" height="200" width="200" clip-path="url(#icon-clip)" />
+    <circle cx="120" cy="500" r="90" style="stroke:#fec002; stroke-width:10; fill:none;" />
+
+    <!-- タイトルエリア -->
+    <rect x="250" y="30" width="700" height="450" fill="hsl(152,57%,54%)" rx=" 20" ry="20" />
+
+    <!-- タイトル -->
+    <text x="600" y="120" fill="black" font-size="60" text-anchor="middle">Welcome to</text>
+    <text x="600" y="220" fill="black" font-size="60" text-anchor="middle">Kanade's</text>
+    <text x="600" y="320" fill="black" font-size="60" text-anchor="middle">Homepage</text>
+    <text x="600" y="420" fill="black" font-size="60" text-anchor="middle"></text>
+
+</svg>
