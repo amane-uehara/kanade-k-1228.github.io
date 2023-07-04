@@ -3,6 +3,12 @@ title: ようこそ！
 toc: false
 ---
 
+## RSSフィード生成システムを構築しています
+
+[このサイトのRSSフィード](./main.rss)
+
+↑登録してね！まだ実装中だからバグるかもだけど。
+
 ## 新着記事
 
 [TangNano9K の使い方](./Lab/Electronics/FPGA/TangNano9k/)
