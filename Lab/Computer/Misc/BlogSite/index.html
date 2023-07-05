@@ -210,12 +210,21 @@
 <li><a href="#コマンドの使い方">コマンドの使い方</a></li>
 <li><a href="#テンプレートと変数">テンプレートと変数</a></li>
 </ul></li>
+<li><a href="#github">GitHub</a>
+<ul>
 <li><a href="#github-pages">GitHub Pages</a></li>
 <li><a href="#github-actions">GitHub Actions</a></li>
-<li><a href="#数式">数式</a></li>
-<li><a href="#コードのハイライト">コードのハイライト</a></li>
+</ul></li>
+<li><a href="#追加の機能">追加の機能</a>
+<ul>
+<li><a href="#rss">RSS</a></li>
 <li><a href="#ogp">OGP</a></li>
-<li><a href="#rss-ジェネレータ">RSS ジェネレータ</a></li>
+</ul></li>
+<li><a href="#エンジニア向け機能">エンジニア向け機能</a>
+<ul>
+<li><a href="#tex数式の表示">TeX数式の表示</a></li>
+<li><a href="#コードのハイライト">コードのハイライト</a></li>
+</ul></li>
 <li><a href="#今後追加したい機能">今後追加したい機能</a></li>
 </ul></nav>
        <p>自由度が高く保守性も高いブログシステム（このサイト）が無料で簡単に作れちゃいます。</p>
@@ -233,6 +242,9 @@ sudo apt -y install pandoc</code></pre>
 <p><code>--no-highlight</code>と<code>--mathjax</code>については後述します。</p>
 <p>最後に、変換するファイル <code>test.md</code> を渡してやります。</p>
 <p>標準出力に出た変換結果をリダイレクトしてファイル <code>test.html</code> に保存します。</p>
+<p>本サイトでは、以下のコマンドで変換をしています。</p>
+<pre><code>find . -name &quot;*index.md&quot; | while read i; do pandoc -f markdown -t html --template=.common/template.html --toc --no-highlight --mathjax &quot;${i}&quot; &gt;&gt; &quot;${i%.md}.html&quot;; done</code></pre>
+<p><code>index.md</code> という名前のファイルを全て探索し、<code>index.html</code> というファイルに変換しています。</p>
 <h3 id="テンプレートと変数">テンプレートと変数</h3>
 <p>Pandocは、markdownの中身を読み取り、HTMLに変換し、 テンプレート中の <code>$body$</code> に流し込みます。</p>
 <p>また、メタデータは、Pandoc変数を使ってテンプレートに書き込みます。</p>
@@ -255,38 +267,84 @@ $endif$
 <p>と書いておくと、<code>$title$</code>が、<code>たいとる</code> に置換されて書き込まれます。</p>
 <p>また、上の例の<code>$keywords$</code>のように、if文を使って出力を制御することもできます。 この場合では、<code>keywords</code>変数が空なので、 <code>$if(keywords)$</code>~<code>$endif$</code>で囲まれた部分は出力されません。</p>
 <p>詳細はドキュメント：<a href="https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html">Pandoc User’s Guide 日本語版</a>を見てください。</p>
-<h2 id="github-pages">GitHub Pages</h2>
-<p>GitHub で静的サイトをホスティングできるサービスです。</p>
+<p>本サイトのテンプレートは、<a href="https://kanade-k-1228.github.io/.common/template.html">https://kanade-k-1228.github.io/.common/template.html</a>にあります。</p>
+<h2 id="github">GitHub</h2>
+<h3 id="github-pages">GitHub Pages</h3>
+<p>GitHub で静的サイトをホスティングできるサービスです。 単に html ファイルを置いておくだけのサイトなら作れます。 サーバーで処理が必要な機能（コメント、アクセスカウントなど）は、GitHub Pagesだけでは作れません。 （別途自分でサーバー建てればできます。）</p>
 <ol type="1">
 <li>[User Name].github.io という名前のリポジトリを作る。</li>
-<li>リポジトリの Settings &gt; Pages &gt; Source を None から Main に変更。Main ブランチ以下が https://[UserName].github.io/ にデプロイされたよ。</li>
+<li>リポジトリの Settings &gt; Pages &gt; Source を None から Main に変更。Main ブランチ以下が https://[UserName].github.io/ に公開されます。</li>
 </ol>
-<h2 id="github-actions">GitHub Actions</h2>
-<p>GitHubにPushされると、<code>.github/workflows/main.yml</code> に書かれたコマンドが実行されます。</p>
-<p><a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/blob/main/.github/workflows/main.yml">ソースコード</a></p>
-<ol type="1">
-<li>Ubuntu を立ち上げて Pandoc をインストール</li>
-<li>ディレクトリ内の index.md を探して index.html に変換</li>
-<li>gh-pages にデプロイ</li>
-</ol>
-<h2 id="数式">数式</h2>
+<h3 id="github-actions">GitHub Actions</h3>
+<p>GitHub Actionsでは、様々な処理をGitHubのサーバー上で行うことができます。</p>
+<p>本サイトでは、Pandocによる Markdown → HTML 変換を、GitHub Actioinsで実行しています。</p>
+<p>Actionsの設定は、リポジトリの <code>.github/workflows</code> 以下に記述します。</p>
+<p>本サイトのActioinsの<a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/blob/main/.github/workflows/main.yml">ソースコード</a>です。</p>
+<pre class="yml:"><code>name: Convert and Deploy
+
+# main にプッシュされたときに、以下のコマンドを実行します
+on:
+  push:
+    branches: [main]
+
+jobs:
+  convert_via_pandoc:
+  # 最新のubuntu環境上で実行します
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+    # pandoc をインストールします
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install pandoc
+          pandoc --version
+    # RSS を生成します
+      - name: Generate RSS
+        run: pandoc feed.yml --template .common/template.rss &gt;&gt; feed.rss
+    # Markdown を HTML に変換します
+      - name: Convert MD to HTML
+        # index.md を全て index.html に変換します
+        run: find . -name &quot;*index.md&quot; | while read i; do pandoc -f markdown -t html --template=.common/template.html --toc --no-highlight --mathjax &quot;${i}&quot; &gt;&gt; &quot;${i%.md}.html&quot;; done
+    # GitHub Pages 上に公開します
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./</code></pre>
+<h2 id="追加の機能">追加の機能</h2>
+<h3 id="rss">RSS</h3>
+<p>RSSフィードはサイトの更新情報を記述したファイルです。</p>
+<p>ユーザはRSSを定期的に読みに行くことで、サイトが更新されたか知ることができます。</p>
+<p>それを自動的にやってくれるのが、RSSリーダというソフトウェアで、 好きなサイトのRSSを登録しておくと、定期的に取得しに行って、新着通知とかを出してくれます。</p>
+<p>このシステムは、特定のサービスに依存していません。 サーバとネットワークが生きてる限り、RSSのシステムは使えます。 突然、謎のマスクマンが現れ、インターネットを完膚なきまで破壊し尽くさない限り、使えます。</p>
+<p>ということで、RSSを書いてみましょう。</p>
+<h4 id="rssのフォーマット">RSSのフォーマット</h4>
+<p>RSSはXML形式です。 そこまで難しくないので、ニュースサイトのRSS、たとえば<a href="https://news.yahoo.co.jp/rss/topics/science.xml">YahooニュースのRSS</a>とかを見れば、だいたいわかると思います。</p>
+<p>各RSSタグの意味は<a href="http://www.openspc2.org/RSS/200/index.html">RSS 2.0タグリファレンス</a>、または<a href="https://cyber.harvard.edu/rss/rss.html">RSS 2.0 at Harvard Law</a>を見てください。</p>
+<h4 id="yamlによる記述">Yamlによる記述</h4>
+<p>RSSはXML形式で、人間が手書きするには複雑すぎるので、YAML 形式で書き、pandoc で変換します。</p>
+<pre><code>pandoc feed.yml --template template.rss &gt;&gt; feed.rss</code></pre>
+<p>参考：<a href="https://github.com/leosumi/pandoc-rss-template/">pandoc-rss-template</a></p>
+<h3 id="ogp">OGP</h3>
+<p>Twitterでリンクをツイートしたら、サムネイル画像が出てくる、アレです。</p>
+<ul>
+<li><a href="https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai">参考</a></li>
+</ul>
+<h2 id="エンジニア向け機能">エンジニア向け機能</h2>
+<h3 id="tex数式の表示">TeX数式の表示</h3>
 <p>Mathjaxを使って、TeXの数式をきれいに表示します。</p>
-<h2 id="コードのハイライト">コードのハイライト</h2>
-<p>highlight-js を使う</p>
+<h4 id="マクロの設定">マクロの設定</h4>
+<h4 id="vscodeの設定">VSCodeの設定</h4>
+<h3 id="コードのハイライト">コードのハイライト</h3>
+<p>highlight-js を使って、ページ内のコードに色をつけます。</p>
 <ol type="1">
 <li>https://highlightjs.org/download/ から、必要な言語をポチポチして、ダウンロードする</li>
 <li>サイトの<a href="https://github.com/kanade-k-1228/kanade-k-1228.github.io/tree/main/hljs">どこか</a>にjsとcssをおいておく</li>
 <li>html中にhljsをロードするjsを書き込む</li>
-<li>Pandocのデフォルトのハイライタを使わない設定にする <code>pandoc --no-highlight ~options~ index.md</code></li>
+<li>Pandocのデフォルトのハイライタを使わない設定にする <code>--no-highlight</code> オプションを与えます。</li>
 </ol>
-<h2 id="ogp">OGP</h2>
-<ul>
-<li><a href="https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai">参考</a></li>
-</ul>
-<h2 id="rss-ジェネレータ">RSS ジェネレータ</h2>
-<p><a href="https://github.com/leosumi/pandoc-rss-template/">pandoc-rss-template</a></p>
-<p>RSS を YAML 形式で書くことができます。</p>
-<p>各RSSタグの意味は<a href="http://www.openspc2.org/RSS/200/index.html">RSS 2.0タグリファレンス</a>を見てください。</p>
 <h2 id="今後追加したい機能">今後追加したい機能</h2>
 <ul>
 <li>git にある差分から変更があったファイルだけ調べて変換をすると早くなるよね</li>
