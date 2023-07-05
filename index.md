@@ -1,7 +1,7 @@
 ---
 title: ようこそ！
 toc: false
-ogp: /
+ogp:
 ---
 
 ## RSSフィード生成システムを構築しています
