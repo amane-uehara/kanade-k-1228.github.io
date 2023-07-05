@@ -7,6 +7,8 @@
 <language>ja</language>
 <copyright>kanade-k-1228</copyright>
 <docs>https://kanade-k-1228.github.io/feed.rss</docs>
+$if(pubDate)$<pubDate>$pubDate$</pubDate>$endif$
+$if(lastBuildDate)$<lastBuildDate>$lastBuildDate$</lastBuildDate>$endif$
 
 <image>
 <url>https://kanade-k-1228.github.io</url>

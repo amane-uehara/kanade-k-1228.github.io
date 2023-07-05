@@ -7,6 +7,8 @@
 <language>ja</language>
 <copyright>kanade-k-1228</copyright>
 <docs>https://kanade-k-1228.github.io/feed.rss</docs>
+<pubDate>Wed, 05 Jul 2023 00:00:00 GMT</pubDate>
+
 
 <image>
 <url>https://kanade-k-1228.github.io</url>
@@ -26,13 +28,7 @@
 <title>GitHubとPandocで超簡単にブログサイトを作る</title>
  <link>https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/</link>
  <description>令和のインターネットを生き延びるためのWebサイト構築方法！</description>
-    <pubDate>Tue, 04 Jul 2023 18:00:00 GMT</pubDate>
- </item>
-<item>
-<title>GitHubとPandocで超簡単にブログサイトを作る</title>
- <link>https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/</link>
- <description>令和のインターネットを生き延びるためのWebサイト構築方法！</description>
-    <pubDate>Tue, 04 Jul 2023 18:00:00 GMT</pubDate>
+    <pubDate>Wed, 05 Jul 2023 00:00:00 GMT</pubDate>
  </item>
 </channel>
 </rss>
