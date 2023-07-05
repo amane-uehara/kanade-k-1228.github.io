@@ -57,6 +57,19 @@
         <meta property="og:description" content="Twitterが終わった今こそ、各々がWebサイトを持っていた昔のインターネットに回帰しよう。" />
         <meta property="og:site_name" content="Kanade's Website" />
         <!-- END OGP -->
+
+    <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kanade_k_1228" />
+    <meta name="twitter:domain" content="kanade-k-1228.github.io" />
+    <meta name="twitter:title" content="GitHubを使ったブログサイトの作り方" />
+        <meta name="twitter:description" content="Twitterが終わった今こそ、各々がWebサイトを持っていた昔のインターネットに回帰しよう。" />
+        <meta
+      name="twitter:image"
+      content="https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/img/ogp.png"
+    />
+        <!-- END Twitter Card -->
+
     <link
       rel="stylesheet"
       href="https://kanade-k-1228.github.io/.common/light.css"
@@ -219,6 +232,7 @@
 <ul>
 <li><a href="#rss">RSS</a></li>
 <li><a href="#ogp">OGP</a></li>
+<li><a href="#twitter-カード">Twitter カード</a></li>
 </ul></li>
 <li><a href="#エンジニア向け機能">エンジニア向け機能</a>
 <ul>
@@ -332,6 +346,17 @@ jobs:
 <ul>
 <li><a href="https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai">参考</a></li>
 </ul>
+<h3 id="twitter-カード">Twitter カード</h3>
+<p>Twitterのリンクで大きな画像を表示するには、twitter用のmetaタグを設定する必要があるみたいです。</p>
+<pre><code>&lt;meta name=&quot;twitter:card&quot; content=&quot;Twitter card type&quot; /&gt;
+&lt;meta name=&quot;twitter:site&quot; content=&quot;@user name” /&gt;
+&lt;meta name=&quot;twitter:domain&quot; content=&quot;domain name&quot; /&gt;
+&lt;meta name=&quot;twitter:title&quot; content=&quot;title&quot; /&gt;
+&lt;meta name=&quot;twitter:description&quot; content=&quot;description&quot; /&gt;
+&lt;meta name=&quot;twitter:image&quot; content=&quot;url to image&quot; /&gt;</code></pre>
+<p>cardには4種類あるようです。 - Summary Card - 正方形の小さい画像 - Summary Card with Large Image - 大きい画像 - Player Card - 動画付き - App Card - アプリへのリンク</p>
+<p>下2つが作れるのかは未確認。</p>
+<p><a href="https://cards-dev.twitter.com/validator">Card Validator</a>サ終してて草。</p>
 <h2 id="エンジニア向け機能">エンジニア向け機能</h2>
 <h3 id="tex数式の表示">TeX数式の表示</h3>
 <p>Mathjaxを使って、TeXの数式をきれいに表示します。</p>

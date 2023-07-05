@@ -189,6 +189,32 @@ Twitterでリンクをツイートしたら、サムネイル画像が出てく�
 
 - [参考](https://speakerdeck.com/kubotak/ssgnasaitodeogphua-xiang-wodong-de-sheng-cheng-sitai)
 
+### Twitter カード
+
+Twitterのリンクで大きな画像を表示するには、twitter用のmetaタグを設定する必要があるみたいです。
+
+```
+<meta name="twitter:card" content="Twitter card type" />
+<meta name="twitter:site" content="@user name” />
+<meta name="twitter:domain" content="domain name" />
+<meta name="twitter:title" content="title" />
+<meta name="twitter:description" content="description" />
+<meta name="twitter:image" content="url to image" />
+```
+cardには4種類あるようです。
+- Summary Card
+  - 正方形の小さい画像
+- Summary Card with Large Image
+  - 大きい画像
+- Player Card
+  - 動画付き
+- App Card
+  - アプリへのリンク
+
+下2つが作れるのかは未確認。
+
+[Card Validator](https://cards-dev.twitter.com/validator)サ終してて草。
+
 ## エンジニア向け機能
 
 ### TeX数式の表示
