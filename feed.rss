@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
 <channel>
-<title>Kanade’s Lab.</title>
+<title>Kanade's Lab.</title>
 <link>https://kanade-k-1228.github.io/</link>
 <description>数学・物理から、半導体、Web技術まで。幅広く取り揃えております。</description>
 <language>ja</language>
-<copyright>Kanade Kanzawa</copyright>
-
-
-
-
-
-
-
-
+<copyright>kanade-k-1228</copyright>
 <docs>https://kanade-k-1228.github.io/feed.rss</docs>
-
-
 
 
 
@@ -26,18 +16,9 @@
 
 <item>
 <title>GitHubとPandocで超簡単にブログサイトを作る</title>
-<link>https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/</link>
-<description>令和のインターネットを生き延びるためのWebサイト構築方法！</description>
-
-
-
-
-
-
-
-
-<pubDate>Tue, 04 Jul 2023 18:00:00 GMT</pubDate>
-
-</item>
+ <link>https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/</link>
+ <description>令和のインターネットを生き延びるためのWebサイト構築方法！</description>
+    <pubDate>Tue, 04 Jul 2023 18:00:00 GMT</pubDate>
+ </item>
 </channel>
 </rss>
