@@ -1,10 +1,4 @@
 ---
-title: Kanade's Lab.
-link: https://kanade-k-1228.github.io/
-description: 数学・物理から、半導体、Web技術まで。幅広く取り揃えております。
-language: ja
-copyright: Kanade Kanzawa
-docs: https://kanade-k-1228.github.io/feed.rss
 item:
   - title: GitHubとPandocで超簡単にブログサイトを作る
     link: https://kanade-k-1228.github.io/Lab/Computer/Misc/BlogSite/
