@@ -1,6 +1,7 @@
 ---
 title: GitHubとPandocで超簡単にブログサイトを作る
-date: 2021-06-20
+date: 2023-07-05
+ogp: Lab/Computer/Misc/BlogSite
 description: Twitterが終わった今こそ昔のインターネットに回帰しよう。
 ---
 
