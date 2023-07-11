@@ -174,7 +174,7 @@ title: 研究室へようこそ
 
 ## 情報工学
 
-[GitHubとPandocで超簡単にブログサイトを作る](./Computer/Misc/BlogSite/)
+[GitHubを使ったブログサイトの作り方](./Computer/Misc/BlogSite/)
 
 [TLA+ 入門](./Computer/Misc/TLA/)
 

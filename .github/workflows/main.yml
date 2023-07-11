@@ -15,6 +15,8 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install pandoc
           pandoc --version
+      - name: Generate RSS
+        run: pandoc feed.yml --template .common/template.rss >> feed.rss
       - name: Convert MD to HTML
         run: find . -name "*index.md" | while read i; do pandoc -f markdown -t html --template=.common/template.html --toc --no-highlight --mathjax "${i}" >> "${i%.md}.html"; done
       - name: Deploy to GitHub Pages
