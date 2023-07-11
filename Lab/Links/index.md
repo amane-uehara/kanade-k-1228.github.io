@@ -1,38 +1,35 @@
 ---
 title: リンク集
+toc: false
 ---
 
 ## 相互リンク
 
-### [ちぇりーたくあんの web サイト](https://cherry-takuan.org/)
-
 [![](img/cherry-takuan.png)](https://cherry-takuan.org/)
 
-NAND だけで CPU 作ってる方。[ちぇりーたくあん 🍒](https://twitter.com/cherry_takuan)
-
-CMS も自作とのこと。
-
-[ニコニコ](https://www.nicovideo.jp/user/120639958)
-
-### [ロジック IC の部屋](https://logicroom.jp/)
+[ちぇりーたくあん 🍒](https://twitter.com/cherry_takuan)
+NAND だけで CPU 作ってる方。
+†インターネット†の雰囲気をとどめる、趣深い Web サイト。 CMS も自作とのこと。
+動画も†ニコニコ動画†感があるのでおすすめ。[ニコニコ](https://www.nicovideo.jp/user/120639958)
 
 [![](img/logicroom.png)](https://logicroom.jp/)
 
-ロジック IC を蒐集してる方。[ENgelou](https://twitter.com/EN_gelou)
-
-### [青兎久遠のホームページ](http://kuon-aoto.sakura.ne.jp/)
+[ENgelou](https://twitter.com/EN_gelou)
+ロジック IC を蒐集してる方。
 
 [![](img/kuon-aoto.png)](http://kuon-aoto.sakura.ne.jp/)
 
-リレーコンピュータ作ってる方。[青兎 久遠](https://twitter.com/Kuon_Aoto)
-
-[ニコニコ](https://www.nicovideo.jp/user/124273630) |
+[青兎 久遠](https://twitter.com/Kuon_Aoto)
+リレーコンピュータ作ってる方。
+[ニコニコ](https://www.nicovideo.jp/user/124273630)
 
 ### [VLSI.jp](https://vlsi.jp)
 
 [![](img/vlsi.png)](https://vlsi.jp)
 
-LSI の民主化の最前線に立っている。[Cra2yPierr0t](https://twitter.com/Cra2yPierr0t)
+[Cra2yPierr0t](https://twitter.com/Cra2yPierr0t) ＜ 我々は LSI の民主化の最前線に立っている。）
+自作 CPU をチップにされてる方。
+OpenMPW の貴重な日本語ドキュメントなど。
 
 ## 片リンク
 
