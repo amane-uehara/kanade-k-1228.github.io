@@ -23,8 +23,6 @@ NAND だけで CPU 作ってる方。
 リレーコンピュータ作ってる方。
 [ニコニコ](https://www.nicovideo.jp/user/124273630)
 
-### [VLSI.jp](https://vlsi.jp)
-
 [![](img/vlsi.png)](https://vlsi.jp)
 
 [Cra2yPierr0t](https://twitter.com/Cra2yPierr0t) ＜ 我々は LSI の民主化の最前線に立っている。）
