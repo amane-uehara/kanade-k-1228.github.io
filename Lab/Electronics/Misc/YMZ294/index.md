@@ -18,25 +18,15 @@ title: ヤマハ製の音源 IC YMZ294 を使ってみた
 
 ## チュートリアル
 
-1. ソースコードをダウンロード
-   - [リポジトリのページ](https://github.com/kanade-k-1228/YMZ294/)右上の Code から、zip を選択しダウンロード
-   - または、コマンドライン上で `git clone https://github.com/kanade-k-1228/YMZ294.git`
-2. ライブラリのインクルード
-   - ダウンロードした `YMZ294/libralies` に含まれる `PlayMusic` と `YMZ294` を
-   - Arduino のライブラリが置いてあるディレクトリに移動
-     - Windows なら `C:\Users\[ユーザー名]\Documents\Arduino\libraries`
-3. ライブラリのテスト
-   - ArduinoIDE で `YMZ294/sample/00_include` を開いて、
-   - 「検証」を押してみて、エラーが起きなければ、無事にインストール完了です！
-4. ブレッドボードで配線
+1. [リポジトリのページ](https://github.com/kanade-k-1228/YMZ294/)右上の Code から、zip を選択しダウンロード
+2. ダウンロードした zip ファイルを Arduino IDE に取り込む（Sketch > Include Library > Add .ZIP Library...）
+3. サンプルコードを開きます (File > Examples > YMZ294 > 00_include ) 見つからない場合は、Arduino IDEを再起動すると見つかると思います
+4. 検証(✓マーク)を押してみて、エラーが起きなければ、無事にインストール完了です！
+5. Arduino と YMZ294 を配線で繋ぎます
 
 ![](img/circuit.dio.svg)
 
-5. テスト
-
-- ArduinoIDE で `YMZ294/sample/01_sound` を開いて、
-- ボードの設定を確認して、
-- 書き込み！
+6. サンプルコードから、01_sound を開いて、書き込んだら、音が鳴るはずです！
 
 ## トラブルシューティング
 

@@ -231,35 +231,16 @@ YMZ294でロックマン <a href="https://t.co/W3yztZKuT6">pic.twitter.com/W3yzt
 </ul>
 <h2 id="チュートリアル">チュートリアル</h2>
 <ol type="1">
-<li>ソースコードをダウンロード
-<ul>
 <li><a href="https://github.com/kanade-k-1228/YMZ294/">リポジトリのページ</a>右上の Code から、zip を選択しダウンロード</li>
-<li>または、コマンドライン上で <code>git clone https://github.com/kanade-k-1228/YMZ294.git</code></li>
-</ul></li>
-<li>ライブラリのインクルード
-<ul>
-<li>ダウンロードした <code>YMZ294/libralies</code> に含まれる <code>PlayMusic</code> と <code>YMZ294</code> を</li>
-<li>Arduino のライブラリが置いてあるディレクトリに移動
-<ul>
-<li>Windows なら <code>C:\Users\[ユーザー名]\Documents\Arduino\libraries</code></li>
-</ul></li>
-</ul></li>
-<li>ライブラリのテスト
-<ul>
-<li>ArduinoIDE で <code>YMZ294/sample/00_include</code> を開いて、</li>
-<li>「検証」を押してみて、エラーが起きなければ、無事にインストール完了です！</li>
-</ul></li>
-<li>ブレッドボードで配線</li>
+<li>ダウンロードした zip ファイルを Arduino IDE に取り込む（Sketch &gt; Include Library &gt; Add .ZIP Library…）</li>
+<li>サンプルコードを開きます (File &gt; Examples &gt; YMZ294 &gt; 00_include ) 見つからない場合は、Arduino IDEを再起動すると見つかると思います</li>
+<li>検証(✓マーク)を押してみて、エラーが起きなければ、無事にインストール完了です！</li>
+<li>Arduino と YMZ294 を配線で繋ぎます</li>
 </ol>
 <p><img src="img/circuit.dio.svg" /></p>
-<ol start="5" type="1">
-<li>テスト</li>
+<ol start="6" type="1">
+<li>サンプルコードから、01_sound を開いて、書き込んだら、音が鳴るはずです！</li>
 </ol>
-<ul>
-<li>ArduinoIDE で <code>YMZ294/sample/01_sound</code> を開いて、</li>
-<li>ボードの設定を確認して、</li>
-<li>書き込み！</li>
-</ul>
 <h2 id="トラブルシューティング">トラブルシューティング</h2>
 <ul>
 <li>音が出ない！！！
