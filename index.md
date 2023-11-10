@@ -4,23 +4,29 @@ toc: false
 ogp: /
 ---
 
-## RSSフィード生成システムを構築しています
-
-[このサイトのRSSフィード](./feed.rss)
-
-↑登録してね！まだ実装中だからバグるかもだけど。
-
 ## 新着記事
 
-[TangNano9K の使い方](./Lab/Electronics/FPGA/TangNano9k/)
-
 ## おしらせ
+
+### コミックマーケット C103 に出展します
+
+2023 年 12 月 31 日、東京ビックサイトで開催される [C103](https://webcatalog-free.circle.ms/Circle/18023807) にて、「マイコンから作る電子工作（予定）」を頒布します。場所は「東ヘ 27b」です。
+
+### 第 2 回 自作 CPU を語る会 を開催します
+
+2023 年 12 月 3 日、サイボウズ東京オフィスで「[自作 CPU を語る会](https://making-cpu.github.io/)」を開催します。
+
+参加登録は → [connpass](https://connpass.com/event/287012/)
+
+## これまで
+
+### SWEST25 で発表しました
+
+2023 年 8 月 31 日、下呂温泉水明館で開催された [SWEST25](https://swest.toppers.jp/SWEST25/) にて「FPGA を用いたプロトタイピングを容易にするフレームワーク」の発表をし、学生賞を受賞しました。
 
 ### IPA 未踏 IT 人材発掘・育成事業 に採択されました
 
 [未踏 IT 人材発掘・育成事業：2023 年度採択プロジェクト概要（太田 PJ）](https://www.ipa.go.jp/jinzai/mitou/it/2023/gaiyou_tn-1.html)
-
-## これまで
 
 ### 第 1 回 自作 CPU を語る会 を開催しました
 
