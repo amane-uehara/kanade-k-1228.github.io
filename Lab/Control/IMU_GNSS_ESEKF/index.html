@@ -197,14 +197,108 @@
       <!-- Table of Contents -->
             <nav><ul>
 <li><a href="#カルマンフィルタの基礎">カルマンフィルタの基礎</a></li>
+<li><a href="#誤差状態カルマンフィルタ">誤差状態カルマンフィルタ</a>
+<ul>
 <li><a href="#状態方程式">状態方程式</a></li>
+</ul></li>
 </ul></nav>
-       <p>IMUとGNSSを使ったカルマンフィルタによる自己位置推定を推定を実装します。</p>
+       <p><span class="math display">\[
+\newcommand{\rot}{\mathrm{Rot}}
+\]</span></p>
+<p>IMUとGNSSを使ったカルマンフィルタによる自己位置推定を推定を実装します。</p>
 <p>https://arxiv.org/abs/1711.02508</p>
 <p>東京大学航空宇宙工学専攻の土屋研究室の方々が翻訳された論文</p>
 <p>https://www.flight.t.u-tokyo.ac.jp/?p=800</p>
 <h2 id="カルマンフィルタの基礎">カルマンフィルタの基礎</h2>
-<h2 id="状態方程式">状態方程式</h2>
+<h2 id="誤差状態カルマンフィルタ">誤差状態カルマンフィルタ</h2>
+<h3 id="状態方程式">状態方程式</h3>
+<p>真の状態 <span class="math inline">\(x_t\)</span> に対する状態方程式を <span class="math inline">\(f\)</span> とする。</p>
+<p><span class="math display">\[
+\dot{x_t} = f(x_t)
+\]</span></p>
+<p>真の状態 <span class="math inline">\(x_t\)</span> をノミナル状態 <span class="math inline">\(x\)</span> と誤差状態 <span class="math inline">\(\delta x\)</span> に分解する。</p>
+<p><span class="math display">\[
+x_t = x \oplus \delta x
+\]</span></p>
+<p>状態方程式も、状態方程式と誤差状態方程式に分解する。</p>
+<p><span class="math display">\[
+f(x_t) = f(x) \oplus f_e(x,\delta x)
+\]</span></p>
+<p><span class="math display">\[
+\dot{x} = f(x)
+\]</span></p>
+<p><span class="math display">\[
+\dot{\delta x} = f_e(x,\delta x)
+\]</span></p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 18%" />
+<col style="width: 10%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>状態</th>
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(\dot{x}\)</span></th>
+<th><span class="math inline">\(\delta x\)</span></th>
+<th><span class="math inline">\(\dot{\delta x}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>位置</td>
+<td><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(\dot{p} = v\)</span></td>
+<td><span class="math inline">\(\delta p\)</span></td>
+<td><span class="math inline">\(\dot{\delta p} = \delta v\)</span></td>
+</tr>
+<tr class="even">
+<td>姿勢</td>
+<td><span class="math inline">\(q\)</span></td>
+<td><span class="math inline">\(\dot{q} = \frac{1}{2}q\omega\)</span></td>
+<td><span class="math inline">\(\delta \theta\)</span></td>
+<td><span class="math inline">\(\dot{\delta \theta} = \rot(\delta \theta) \, \rot(q) \, (\omega + \delta \omega)\)</span></td>
+</tr>
+<tr class="odd">
+<td>速度</td>
+<td><span class="math inline">\(v\)</span></td>
+<td><span class="math inline">\(\dot{v} = \rot(q) \, a\)</span></td>
+<td><span class="math inline">\(\delta v\)</span></td>
+<td><span class="math inline">\(\dot{\delta v} = \rot(\delta \theta) \, \rot(q) \, (a + \delta a)\)</span></td>
+</tr>
+<tr class="even">
+<td>加速度</td>
+<td><span class="math inline">\(a\)</span></td>
+<td></td>
+<td><span class="math inline">\(\delta a\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>加速度センサバイアス</td>
+<td><span class="math inline">\(a_b\)</span></td>
+<td></td>
+<td><span class="math inline">\(\delta a_b\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>角速度</td>
+<td><span class="math inline">\(\omega\)</span></td>
+<td></td>
+<td><span class="math inline">\(\delta \omega\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>角速度センサバイアス</td>
+<td><span class="math inline">\(\omega_b\)</span></td>
+<td></td>
+<td><span class="math inline">\(\delta \omega_b\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"

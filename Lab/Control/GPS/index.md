@@ -7,18 +7,24 @@ GPSから取得された緯度・経度をそのままXY座標として扱って
 
 ## 座標系
 ​
-### Earth-Centered Earth-Fixed : {x, y, z}
+### Earth-Centered Earth-Fixed
+
+`{x, y, z}`
 ​
 地球の中心を原点とし、`{lat:0, lng:0}`　方向をx軸、`{lat:90, lng:0}`方向をy軸、北極方向をz軸とした座標系である。
 ​
-### Geodetic : {lat, lng, alt}
+### Geodetic
+
+`{lat, lng, alt}`
 ​
 基準点からz軸周りの角度を`lng`、赤道からの角度を`lat`、その緯度経度における高度基準点からの高度を`alt`とする座標系である。
 高度基準点の取り方は測地系で定められているため、どの測地系で測られた値なのかをよく確認する必要がある。
 GPSで使用されている `WGS84` は、地球を楕円体とみなして高度基準点を設定している。
 国土地理院で使用されている測地系はこれとは異なるようである。
 ​
-### Local Tangent Plane : {n, e, d}
+### Local Tangent Plane
+
+`{n, e, d}`
 ​
 Geodetic上のある点 `{lat, lng, alt}` を中心に、北方向をn座標、東方向をe座標、地球中心方向をd座標とした座標系である。
 点ごとに座標系が定義されることに注意されたい。
