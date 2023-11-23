@@ -70,6 +70,8 @@ title: 研究室へようこそ
 
 [ドローンの制御](./Control/Drone/)
 
+### ドローンを作りたい
+
 [車輪型倒立振子の制御](./Control/Segway/)
 
 [GPSデータの座標系と変換](./Control/GPS/)
