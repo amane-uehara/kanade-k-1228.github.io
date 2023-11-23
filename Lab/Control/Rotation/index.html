@@ -42,7 +42,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
-          <title>ジャイロセンサの信号処理 | Kanade's Website</title>
+          <title>姿勢と回転の表現形式と変換 | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -84,7 +84,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "ジャイロセンサの信号処理",
+            "姿勢と回転の表現形式と変換",
           "_blank"
         );
       }
@@ -161,7 +161,7 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">ジャイロセンサの信号処理</h1>
+                <h1 style="margin: 0">姿勢と回転の表現形式と変換</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -195,7 +195,35 @@
     </p>
 
       <!-- Table of Contents -->
-       
+            <nav><ul>
+<li><a href="#表現形式">表現形式</a>
+<ul>
+<li><a href="#オイラー角">オイラー角</a></li>
+<li><a href="#回転行列">回転行列</a></li>
+<li><a href="#クオータニオン">クオータニオン</a></li>
+</ul></li>
+<li><a href="#回転の合成">回転の合成</a></li>
+<li><a href="#四元数の代数">四元数の代数</a>
+<ul>
+<li><a href="#オイラーの公式">オイラーの公式</a></li>
+</ul></li>
+</ul></nav>
+       <p>ロボットの制御には、位置と姿勢の制御が必要である。位置・速度は慣れ親しんだxyzの空間で表現できるが、姿勢・角速度は回転群で表現する必要がある。</p>
+<h2 id="表現形式">表現形式</h2>
+<p>回転は数学的には特殊ユニタリ群SO(3)と呼ばれる群であり、この表現として以下の3つの表現がよく使われている。</p>
+<h3 id="オイラー角">オイラー角</h3>
+<p>xyz軸周りの回転を順番に表したものである。 自然な表現ではあるが、大きな回転を表そうとすると無理が生じる。基本的には小さな回転を表現するのに適した形式であることを気に留めておきたい。</p>
+<h3 id="回転行列">回転行列</h3>
+<p>座標系A→座標系Bの変換が回転行列であることを</p>
+<ul>
+<li>基底ベクトルが直交を保つ</li>
+<li>基底ベクトルが長さを保つ</li>
+<li>右手系・左手系が一致する</li>
+</ul>
+<h3 id="クオータニオン">クオータニオン</h3>
+<h2 id="回転の合成">回転の合成</h2>
+<h2 id="四元数の代数">四元数の代数</h2>
+<h3 id="オイラーの公式">オイラーの公式</h3>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"

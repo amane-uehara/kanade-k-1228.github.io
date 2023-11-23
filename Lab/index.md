@@ -72,6 +72,10 @@ title: 研究室へようこそ
 
 [車輪型倒立振子の制御](./Control/Segway/)
 
+[GPSデータの座標系と変換](./Control/GPS/)
+
+[姿勢と回転の表現形式と変換](./Control/Rotation/)
+
 ## 機械工学
 
 [生産技術](./Mech/Manufacturing/)
