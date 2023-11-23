@@ -196,22 +196,65 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#座標系">座標系</a></li>
+<li><a href="#座標系">座標系</a>
+<ul>
+<li><a href="#earth-centered-earth-fixed">Earth Centered Earth Fixed</a></li>
+<li><a href="#geodetic">Geodetic</a></li>
+<li><a href="#local-tangent-plane">Local Tangent Plane</a></li>
+</ul></li>
+<li><a href="#座標変換">座標変換</a>
+<ul>
+<li><a href="#geo-ecef">Geo ⇄ ECEF</a></li>
+<li><a href="#ned-ecef">NED ⇄ ECEF</a></li>
+</ul></li>
+<li><a href="#gpsデータの変換">GPSデータの変換</a>
+<ul>
+<li><a href="#緯度経度高度">緯度・経度・高度</a></li>
+<li><a href="#速度">速度</a></li>
+</ul></li>
 </ul></nav>
        <p>GPSから取得された緯度・経度をそのままXY座標として扱ってしまった場合、あなたは地球平面論者とみなされても仕方がない。測地データの正しい扱い方を知り、世界の中から世界の形状を理解する多様体の喜びを享受しよう。</p>
 <h2 id="座標系">座標系</h2>
-<p>​ ### Earth-Centered Earth-Fixed</p>
-<p><code>{x, y, z}</code> ​ 地球の中心を原点とし、<code>{lat:0, lng:0}</code>　方向をx軸、<code>{lat:90, lng:0}</code>方向をy軸、北極方向をz軸とした座標系である。 ​ ### Geodetic</p>
-<p><code>{lat, lng, alt}</code> ​ 基準点からz軸周りの角度を<code>lng</code>、赤道からの角度を<code>lat</code>、その緯度経度における高度基準点からの高度を<code>alt</code>とする座標系である。 高度基準点の取り方は測地系で定められているため、どの測地系で測られた値なのかをよく確認する必要がある。 GPSで使用されている <code>WGS84</code> は、地球を楕円体とみなして高度基準点を設定している。 国土地理院で使用されている測地系はこれとは異なるようである。 ​ ### Local Tangent Plane</p>
-<p><code>{n, e, d}</code> ​ Geodetic上のある点 <code>{lat, lng, alt}</code> を中心に、北方向をn座標、東方向をe座標、地球中心方向をd座標とした座標系である。 点ごとに座標系が定義されることに注意されたい。 ​ ## 座標変換 ​ 座標変換の数式は以下のWikipediaを参照されたい。 ​ <a href="https://en.wikipedia.org/wiki/Geographic_coordinate_conversion">Geographic coordinate conversion - Wikipedia</a> ​ ### Geo ⇄ ECEF ​ Geo → ECEF は三角関数を用いた単純な座標変換である。 ​ 逆に ECEF → Geo は陽に解くことができない。 ​ #### Python ​ <code>pymap3d</code> というパッケージを使用する。 ​ https://github.com/geospace-code/pymap3d ​</p>
+<h3 id="earth-centered-earth-fixed">Earth Centered Earth Fixed</h3>
+<p><code>{x, y, z}</code></p>
+<p>地球の中心を原点とし、<code>{lat:0, lng:0}</code>　方向をx軸、<code>{lat:90, lng:0}</code>方向をy軸、北極方向をz軸とした座標系である。</p>
+<h3 id="geodetic">Geodetic</h3>
+<p><code>{lat, lng, alt}</code></p>
+<p>基準点からz軸周りの角度を<code>lng</code>、赤道からの角度を<code>lat</code>、その緯度経度における高度基準点からの高度を<code>alt</code>とする座標系である。 高度基準点の取り方は測地系で定められているため、どの測地系で測られた値なのかをよく確認する必要がある。 GPSで使用されている <code>WGS84</code> は、地球を楕円体とみなして高度基準点を設定している。 国土地理院で使用されている測地系はこれとは異なるようである。</p>
+<h3 id="local-tangent-plane">Local Tangent Plane</h3>
+<p><code>{n, e, d}</code></p>
+<p>Geodetic上のある点 <code>{lat, lng, alt}</code> を中心に、北方向をn座標、東方向をe座標、地球中心方向をd座標とした座標系である。 点ごとに座標系が定義されることに注意されたい。</p>
+<h2 id="座標変換">座標変換</h2>
+<p>座標変換の数式は以下のWikipediaを参照されたい。</p>
+<p><a href="https://en.wikipedia.org/wiki/Geographic_coordinate_conversion">Geographic coordinate conversion - Wikipedia</a></p>
+<h3 id="geo-ecef">Geo ⇄ ECEF</h3>
+<p>Geo → ECEF は三角関数を用いた単純な座標変換である。</p>
+<p>逆に ECEF → Geo は陽に解くことができない。</p>
+<h4 id="python">Python</h4>
+<p><code>pymap3d</code> というパッケージを使用する。</p>
+<p>https://github.com/geospace-code/pymap3d</p>
 <pre class="python:"><code>import pymap3d as pm
 x,y,z = pm.geodetic2ecef(lat, lng, alt)</code></pre>
-<p>​ #### C++ ​ <code>pymap3d</code> の C++ 版である <code>cppmap3d</code> というライブラリを使用する。 ​ https://github.com/ClancyWalters/cppmap3d ​</p>
+<h4 id="c">C++</h4>
+<p><code>pymap3d</code> の C++ 版である <code>cppmap3d</code> というライブラリを使用する。</p>
+<p>https://github.com/ClancyWalters/cppmap3d</p>
 <pre class="cpp:"><code>#include &quot;cppmap3d.hh&quot;
-​
+
 double x, y, z;
 cppmap3d::geodetic2ecef(lat, lon, alt, x, y, z);</code></pre>
-<p>​ ECEF → Geodetic の変換アルゴリズムをまとめたリポジトリが存在している。 ​ https://github.com/planet36/ecef-geodetic ​ ### NED ⇄ ECEF ​ NEDからECEFに変換するには、NEDの原点の座標が必要である。なぜなら、NEDは地球上の点に対して定義された局所座標系であるからだ。 ​ #### Python ​ ​ #### C++ ​ ## GPSデータの変換 ​ GPSモジュールの中では、複数の衛星から受信したGPS信号を用いて位置と速度を求める計算処理が行われているが、ユーザはそれらを気にせずに整理されたデータを使うことができる。 ​ ### 緯度・経度・高度 ​ Geo 座標であるから、WGS84 の Geo → ECEF の変換式にそのまま入れればよい。 ​ ### 速度 ​ NED 座標における速度である。NED → ECEF の変換式にそのまま入れればよいと思われるかもしれないが、速度はベクトルであるので回転するだけでよい。回転行列は緯度経度から求められる。 ​ #### Python ​</p>
+<p>ECEF → Geodetic の変換アルゴリズムをまとめたリポジトリが存在している。</p>
+<p>https://github.com/planet36/ecef-geodetic</p>
+<h3 id="ned-ecef">NED ⇄ ECEF</h3>
+<p>NEDからECEFに変換するには、NEDの原点の座標が必要である。なぜなら、NEDは地球上の点に対して定義された局所座標系であるからだ。</p>
+<h4 id="python-1">Python</h4>
+<h4 id="c-1">C++</h4>
+<h2 id="gpsデータの変換">GPSデータの変換</h2>
+<p>GPSモジュールの中では、複数の衛星から受信したGPS信号を用いて位置と速度を求める計算処理が行われているが、ユーザはそれらを気にせずに整理されたデータを使うことができる。</p>
+<h3 id="緯度経度高度">緯度・経度・高度</h3>
+<p>Geo 座標であるから、WGS84 の Geo → ECEF の変換式にそのまま入れればよい。</p>
+<h3 id="速度">速度</h3>
+<p>NED 座標における速度である。NED → ECEF の変換式にそのまま入れればよいと思われるかもしれないが、速度はベクトルであるので回転するだけでよい。回転行列は緯度経度から求められる。</p>
+<h4 id="python-2">Python</h4>
 <pre class="python:"><code>enu2uvw(e,n,-d,lat,lon)</code></pre>
 
       <svg
