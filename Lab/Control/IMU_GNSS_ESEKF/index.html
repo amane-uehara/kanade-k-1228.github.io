@@ -205,6 +205,12 @@
 <li><a href="#誤差状態カルマンフィルタ">誤差状態カルマンフィルタ</a>
 <ul>
 <li><a href="#状態方程式">状態方程式</a></li>
+<li><a href="#観測方程式">観測方程式</a></li>
+</ul></li>
+<li><a href="#ドローンの場合">ドローンの場合</a>
+<ul>
+<li><a href="#状態方程式-1">状態方程式</a></li>
+<li><a href="#観測方程式-1">観測方程式</a></li>
 </ul></li>
 </ul></nav>
        <p><span class="math display">\[
@@ -276,20 +282,39 @@ P_{t|t} = (I-K_tH)P_{t|t-1}
 <p><span class="math display">\[
 \dot{x_t} = f(x_t)
 \]</span></p>
-<p>真の状態 <span class="math inline">\(x_t\)</span> をノミナル状態 <span class="math inline">\(x\)</span> と誤差状態 <span class="math inline">\(\delta x\)</span> に分解する。</p>
+<p>誤差状態カルマンフィルタでは、真の状態 <span class="math inline">\(x_t\)</span> をノミナル状態 <span class="math inline">\(x\)</span> と誤差状態 <span class="math inline">\(\delta x\)</span> に分解する。</p>
 <p><span class="math display">\[
 x_t = x \oplus \delta x
 \]</span></p>
-<p>状態方程式も、状態方程式と誤差状態方程式に分解する。</p>
+<p>ここで演算子 <span class="math inline">\(\oplus\)</span> は、状態の「自然な足し算」を表す。具体的には、位置に対しては並進（ベクトルの加算）を、姿勢に対しては回転（回転群の積）を意味する。</p>
+<p>状態方程式も、ノミナル状態方程式と誤差状態方程式に分解する。</p>
 <p><span class="math display">\[
-f(x_t) = f(x) \oplus f_e(x,\delta x)
+f(x_t) =  f(x \oplus \delta x)= f(x) \oplus f_e(x,\delta x)
 \]</span></p>
+<p>ノミナル状態方程式は、真の状態方程式と同じである。</p>
 <p><span class="math display">\[
 \dot{x} = f(x)
 \]</span></p>
+<p>誤差状態方程式は、ノミナル状態と真の状態の差分である。</p>
 <p><span class="math display">\[
 \dot{\delta x} = f_e(x,\delta x)
 \]</span></p>
+<p>誤差状態方程式は、<span class="math inline">\(O(\delta x^2) \rightarrow 0\)</span> とみなして線形化できる。</p>
+<h3 id="観測方程式">観測方程式</h3>
+<p><span class="math display">\[
+z = h(x_t) = h(x \oplus \delta x)
+\]</span></p>
+<p>誤差状態カルマンフィルタでは、観測をもとに誤差状態を補正する。</p>
+<p><span class="math display">\[
+H := \left. \frac{\partial h}{\partial \delta x}\right|_x
+\]</span></p>
+<p>これは連鎖律から求めることができる。</p>
+<p><span class="math display">\[
+\left. \frac{\partial h}{\partial \delta x}\right|_x = \left. \frac{\partial h}{\partial x_t}\right|_x \left. \frac{\partial x_t}{\partial \delta x}\right|_x =: H_x X_{\delta x}
+\]</span></p>
+<p><span class="math inline">\(H_x\)</span> は観測方程式次第、つまりセンサ次第だが、<span class="math inline">\(X_{\delta x}\)</span> はモデルの状態ベクトルから自動的に定まる。</p>
+<h2 id="ドローンの場合">ドローンの場合</h2>
+<h3 id="状態方程式-1">状態方程式</h3>
 <table>
 <colgroup>
 <col style="width: 14%" />
@@ -359,6 +384,7 @@ f(x_t) = f(x) \oplus f_e(x,\delta x)
 </tr>
 </tbody>
 </table>
+<h3 id="観測方程式-1">観測方程式</h3>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
