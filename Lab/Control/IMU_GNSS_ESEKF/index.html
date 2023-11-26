@@ -207,20 +207,26 @@
 <li><a href="#状態方程式">状態方程式</a></li>
 <li><a href="#観測方程式">観測方程式</a></li>
 </ul></li>
-<li><a href="#ドローンの場合">ドローンの場合</a>
+<li><a href="#状態方程式-1">状態方程式</a>
 <ul>
-<li><a href="#状態方程式-1">状態方程式</a></li>
-<li><a href="#観測方程式-1">観測方程式</a></li>
+<li><a href="#ヤコビアン">ヤコビアン</a></li>
+</ul></li>
+<li><a href="#観測方程式-1">観測方程式</a>
+<ul>
+<li><a href="#imu">IMU</a></li>
+<li><a href="#gps">GPS</a></li>
+<li><a href="#カメラオドメトリ">カメラオドメトリ</a></li>
 </ul></li>
 </ul></nav>
-       <p><span class="math display">\[
+       <p>Joan Solà の論文を参考に、ドローンの自己位置推定を実装する。</p>
+<p><a href="https://arxiv.org/abs/1711.02508">Joan Solà, Quaternion kinematics for the error-state Kalman filter</a></p>
+<p>東京大学 航空宇宙工学専攻 土屋研究室の方々による和訳版もある。</p>
+<p><a href="https://www.flight.t.u-tokyo.ac.jp/?p=800">Joan Solá著”Quaternion kinematics for the error-state Kalman filter”の日本語翻訳の公開について | 土屋研究室 -東京大学</a></p>
+<p>論文では加速度と角速度を操作量として扱っているが、本稿では状態量として扱っている点に注意されたい。</p>
+<p><span class="math display">\[
 \newcommand{\rot}{\mathrm{Rot}}
 \newcommand{\w}{\omega}
 \]</span></p>
-<p>IMUとGNSSを使ったカルマンフィルタによる自己位置推定を推定を実装する。</p>
-<p><a href="https://arxiv.org/abs/1711.02508">Joan Solà, Quaternion kinematics for the error-state Kalman filter</a></p>
-<p>東京大学航空宇宙工学専攻の土屋研究室の方々が翻訳された論文</p>
-<p><a href="https://www.flight.t.u-tokyo.ac.jp/?p=800">Joan Solá著”Quaternion kinematics for the error-state Kalman filter”の日本語翻訳の公開について | 土屋研究室 -東京大学</a></p>
 <h2 id="カルマンフィルタの基礎">カルマンフィルタの基礎</h2>
 <ul>
 <li>状態方程式: <span class="math inline">\(x = Fx + Gw\)</span>, <span class="math inline">\(w \sim N(0,Q)\)</span>
@@ -313,8 +319,7 @@ H := \left. \frac{\partial h}{\partial \delta x}\right|_x
 \left. \frac{\partial h}{\partial \delta x}\right|_x = \left. \frac{\partial h}{\partial x_t}\right|_x \left. \frac{\partial x_t}{\partial \delta x}\right|_x =: H_x X_{\delta x}
 \]</span></p>
 <p><span class="math inline">\(H_x\)</span> は観測方程式次第、つまりセンサ次第だが、<span class="math inline">\(X_{\delta x}\)</span> はモデルの状態ベクトルから自動的に定まる。</p>
-<h2 id="ドローンの場合">ドローンの場合</h2>
-<h3 id="状態方程式-1">状態方程式</h3>
+<h2 id="状態方程式-1">状態方程式</h2>
 <table>
 <colgroup>
 <col style="width: 14%" />
@@ -384,7 +389,18 @@ H := \left. \frac{\partial h}{\partial \delta x}\right|_x
 </tr>
 </tbody>
 </table>
-<h3 id="観測方程式-1">観測方程式</h3>
+<h3 id="ヤコビアン">ヤコビアン</h3>
+<h2 id="観測方程式-1">観測方程式</h2>
+<p>各種センサをカルマンフィルタで使う方法</p>
+<h3 id="imu">IMU</h3>
+<p>加速度の計測値 ＝ 機体の加速度 + 重力加速度 + バイアス + ノイズ</p>
+<p>角速度の計測値 = 機体の角速度 + バイアス + ノイズ</p>
+<h3 id="gps">GPS</h3>
+<p>位置：緯度・経度・高度</p>
+<p>速度：NED座標系での速度</p>
+<p>姿勢：</p>
+<h3 id="カメラオドメトリ">カメラオドメトリ</h3>
+<p>速度・角速度：前のフレームから現在のフレームへの移動量を、機体座標系で出してきます</p>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
