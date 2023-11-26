@@ -2,18 +2,20 @@
 title: カルマンフィルタ
 ---
 
+Joan Solà の論文を参考に、ドローンの自己位置推定を実装する。
+
+[Joan Solà, Quaternion kinematics for the error-state Kalman filter](https://arxiv.org/abs/1711.02508)
+
+東京大学 航空宇宙工学専攻 土屋研究室の方々による和訳版もある。
+
+[Joan Solá著”Quaternion kinematics for the error-state Kalman filter”の日本語翻訳の公開について | 土屋研究室 -東京大学](https://www.flight.t.u-tokyo.ac.jp/?p=800)
+
+論文では加速度と角速度を操作量として扱っているが、本稿では状態量として扱っている点に注意されたい。
+
 $$
 \newcommand{\rot}{\mathrm{Rot}}
 \newcommand{\w}{\omega}
 $$
-
-IMUとGNSSを使ったカルマンフィルタによる自己位置推定を推定を実装する。
-
-[Joan Solà, Quaternion kinematics for the error-state Kalman filter](https://arxiv.org/abs/1711.02508)
-
-東京大学航空宇宙工学専攻の土屋研究室の方々が翻訳された論文
-
-[Joan Solá著”Quaternion kinematics for the error-state Kalman filter”の日本語翻訳の公開について | 土屋研究室 -東京大学](https://www.flight.t.u-tokyo.ac.jp/?p=800)
 
 ## カルマンフィルタの基礎
 
@@ -150,9 +152,7 @@ $$
 
 $H_x$ は観測方程式次第、つまりセンサ次第だが、$X_{\delta x}$ はモデルの状態ベクトルから自動的に定まる。
 
-## ドローンの場合
-
-### 状態方程式
+## 状態方程式
 
 | 状態                 | $x$    | $\dot{x}$                   | $\delta x$      | $\dot{\delta x}$                                                           |
 | :------------------- | :----- | :-------------------------- | :-------------- | :------------------------------------------------------------------------- |
@@ -164,6 +164,26 @@ $H_x$ は観測方程式次第、つまりセンサ次第だが、$X_{\delta x}$
 | 角速度               | $\w$   |                             | $\delta \w$     |                                                                            |
 | 角速度センサバイアス | $\w_b$ |                             | $\delta \w_b$   |                                                                            |
 
-### 観測方程式
+### ヤコビアン
 
+## 観測方程式
 
+各種センサをカルマンフィルタで使う方法
+
+### IMU
+
+加速度の計測値 ＝ 機体の加速度 + 重力加速度 + バイアス + ノイズ
+
+角速度の計測値 = 機体の角速度 + バイアス + ノイズ
+
+### GPS
+
+位置：緯度・経度・高度
+
+速度：NED座標系での速度
+
+姿勢：
+
+### カメラオドメトリ
+
+速度・角速度：前のフレームから現在のフレームへの移動量を、機体座標系で出してきます
