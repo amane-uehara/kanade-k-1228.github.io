@@ -37,4 +37,4 @@ toc: false
 
 ## そのほか
 
-[自作CPUを語る会](./2023-12-01-AdventCalendar/)
+[第２回自作CPUを語る会やるよ！](./2023-12-01-AdventCalendar/)
