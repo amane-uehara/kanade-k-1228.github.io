@@ -196,6 +196,8 @@ title: 研究室へようこそ
 
 [C言語をそのまま実行するプロセッサ](./Computer/Misc/ClangProcessor/)
 
+[74181でSIMDをする](./Computer/CPU/SIMD_ALU/)
+
 ### 自作マイコン：RK16
 
 [マイコンを作りたい！](./Computer/RK16/0_About/)
