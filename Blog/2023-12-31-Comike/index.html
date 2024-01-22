@@ -42,6 +42,7 @@
       rel="shortcut icon"
       href="https://avatars.githubusercontent.com/u/54773334"
     />
+        <meta name="dcterms.date" content="2023-12-31" />
           <title>コミケに初参加した | Kanade's Website</title>
 
     <!-- OGP -->
@@ -163,6 +164,7 @@
         <!-- Title -->
                 <h1 style="margin: 0">コミケに初参加した</h1>
                 <!-- Date -->
+                <p align="right">2023-12-31</p>
                 <!-- Description -->
               </header>
 
@@ -200,9 +202,11 @@
 <ul>
 <li><a href="#本の作り方">本の作り方</a></li>
 <li><a href="#環境構築">環境構築</a></li>
-<li><a href="#中身を書く">中身を書く</a></li>
 <li><a href="#印刷所">印刷所</a></li>
+<li><a href="#中身を書く">中身を書く</a></li>
+<li><a href="#表紙を描く">表紙を描く</a></li>
 </ul></li>
+<li><a href="#ブースの用意をする">ブースの用意をする</a></li>
 <li><a href="#コミケに出る">コミケに出る</a></li>
 </ul></nav>
        <h2 id="本を作る">本を作る</h2>
@@ -211,71 +215,32 @@
 <img src="img/circle.png" alt="" /><figcaption>サークルカット</figcaption>
 </figure>
 <h3 id="本の作り方">本の作り方</h3>
-<p>本を作るとなると、InDesign とか使って特殊な形式にしないといけないのかなぁ…俺も Adobe 税を納めるかぁ…と思っていたのですが、pdf で大丈夫だそうです。（pdf もよく考えたら Adobe なんだよなぁ）</p>
-<p>技術書界隈では Re:VIEW というツールがよく使われているようです。これは文書変換ソフトウェアの一種で、Re:VIEW 形式 →TeX→PDF と変換して本が作れるようです。</p>
-<p>そして <a href="https://kauplan.org/reviewstarter/">Re:VIEW Starter</a> というツールを使うことで、デザインのテンプレートを簡単に構築できるようです。</p>
-<p>このあたりは全部青兎さんに教えてもらいました。感謝…！</p>
+<p>技術同人誌でよく使われている <a href="https://kauplan.org/reviewstarter/">Re:VIEW Starter</a> というツールを使います。これは文書変換ソフトウェアの一種で、Re:VIEW → LaTeX → PDF と変換します。Re:VIEW Starter は Re:VIEW のフォークで、デザインを Web サイト上で簡単に構築でたり、Re:VIEW の機能を拡張したりしています。このあたりは青兎さんに教えてもらいました。感謝…！</p>
 <h3 id="環境構築">環境構築</h3>
 <p><a href="https://kauplan.org/reviewstarter/">Re:VIEW Starter</a> を開き、設定をポチポチしていくと、プロジェクトファイルの雛形が生成されます。</p>
 <p><a href="https://qiita.com/kauplan/items/d01e6e39a05be0b908a1">技術系同人誌を書く人の味方「Re:VIEW Starter」の紹介</a></p>
 <p>Docker イメージがあるので、既存の TeX 環境と競合して壊れることなくビルドできます。しかし私は手元で Docker すら動かすのが面倒な現代っ子なので、GitHub Actions でビルドします。</p>
 <p><a href="https://zenn.dev/orange634nty/articles/b57be747dff41f0a0f64">GitHub Actions を使って Re:VIEW Starter の PDF をビルドする</a></p>
-<h3 id="中身を書く">中身を書く</h3>
-<p>中身を書きます。</p>
 <h3 id="印刷所">印刷所</h3>
 <p>印刷所は日光企画さんにすることとしました。別にステマではなく、技術書典の提携印刷所なので、後々技術書典に出すときにも使えるなぁと思ったというだけです。</p>
 <p><a href="https://www.nikko-pc.com/only-event/events/2023/1231.html">冬コミ 2 日目締切</a></p>
-<p>いろいろな選択肢がありますが、表紙と本文の紙と印刷方式が違うようです。</p>
-<p>オフセットは版を作る印刷で、オンデマンドはプリンタのように版を作らない印刷のようです。なので、オフセットのほうが締め切りが早く、オンデマンドのほうが締め切りが遅いようです。</p>
-<p>中綴じは、A4 の紙を半分に折って、折り目をホッチキス止めにする製本方法。 平綴じは、紙を並べて奥をノリで止めた製本。</p>
-<ul>
-<li><a href="https://www.nikko-pc.com/onde/hira/hirakihonA5B6.html">オンデマンド平綴じ基本</a>
-<ul>
-<li>表紙：黒、本文：黒</li>
-<li>12980 (A5 32 ㌻ 50 冊) 260 円/冊</li>
-<li>締め切り
-<ul>
-<li>通常 : 25</li>
-<li>+5% : 26</li>
-<li>+20% : 29</li>
-</ul></li>
-</ul></li>
-<li><a href="https://www.nikko-pc.com/onde/naka/nakakihon.html">オンデマンド中綴じ基本</a>
-<ul>
-<li>表紙：黒、本文：黒</li>
-<li>14880 (A5 32 ㌻ 50 冊) 298 円/冊</li>
-<li>締め切り
-<ul>
-<li>通常 : 27</li>
-<li>+5% : 28</li>
-<li>+15% : 29</li>
-</ul></li>
-</ul></li>
-<li><a href="https://www.nikko-pc.com/set/a-marutoku.html">マルトク安々セット</a>
-<ul>
-<li>オフセット、平綴じ</li>
-<li>表紙：１色、本文：黒</li>
-<li>18990 円 (A5 36 ㌻ 50 冊) 380 円/冊</li>
-<li>締め切り
-<ul>
-<li>通常 : 26</li>
-<li>+10% : 27</li>
-</ul></li>
-</ul></li>
-<li><a href="https://www.nikko-pc.com/offset/pp/onoffFCA5.html">オン＋オフセット</a>
-<ul>
-<li>オフセット、平綴じ</li>
-<li>表紙：フルカラー、本文：黒</li>
-<li>23250 円 (A5 32 ㌻ 50 冊) 465 円/冊</li>
-<li>締め切り
-<ul>
-<li>通常 : 26</li>
-<li>+10% : 27</li>
-<li>+15% : 28</li>
-</ul></li>
-</ul></li>
-</ul>
+<p>印刷にはいろいろな選択肢があります。</p>
+<p>印刷方法は主にオフセットとオンデマンドの 2 択です。オフセットは版を作る印刷で、オンデマンドはプリンタのように版を作らない印刷のようです。そのため、オフセットは大量生産、オンデマンドは少量生産に向いています。また、オフセットのほうが締め切りが早く、オンデマンドのほうが締め切りが遅いです。</p>
+<p>色は、表紙色と本文色をそれぞれ選ぶことができます。色の種類が少ないほうが安いです。表紙本文ともに黒単色にしました。</p>
+<p>綴じ方は主に中綴じか平綴じの２択です。中綴じは紙を半分に折って折り目をホッチキスか紐で留める方法、平綴じは紙を並べて奥を糊かホッチキスで留める方法です。中綴じはパンフレット感があるかなと思ったので、平綴じで印刷することにします。</p>
+<p><a href="https://www.nikko-pc.com/onde/od-1day-2day/od-1.html">オンデマンド印刷　１日本</a>の「オンデマンド平トジ基本料金」にしました。</p>
+<p>印刷所は、まず印刷方法、紙の種類、ページ数、納品先などを指定して発注します。<strong>ページ数＝本文＋表紙(4)</strong> です。発注したら、入金に</p>
+<p>その後入稿フォームに本文の PDF と表紙の PDF を入稿します。</p>
+<h3 id="中身を書く">中身を書く</h3>
+<p>本文を書きます。ドキュメントの書き方についてググって出てきたサイトをいくつか読みました。</p>
+<h3 id="表紙を描く">表紙を描く</h3>
+<p><a href="https://www.nikko-pc.com/index/2022/content/template/template.html">表紙テンプレート</a>から PSD ファイルをダウンロードして、GIMP で編集しました。</p>
+<h2 id="ブースの用意をする">ブースの用意をする</h2>
+<p>100 均で小さいアルミラックを買ってポスター立てを作りました。</p>
+<p>パワポで簡単にお品書きも作りました。</p>
 <h2 id="コミケに出る">コミケに出る</h2>
+<p>スーツケースに物を詰めて、ビックサイトへ向かいます。 オタクの川の流れに乗って、いつもの逆三角の下を通って東館へ向かいます。</p>
+<p>ブースに着くと、本が納品されてました。 見本誌票を貼って所定の場所に提出します。</p>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
