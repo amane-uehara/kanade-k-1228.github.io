@@ -74,7 +74,7 @@ title: 研究室へようこそ
 
 [車輪型倒立振子の制御](./Control/Segway/)
 
-[GPSデータの座標系と変換](./Control/GPS/)
+[GPS データの座標系と変換](./Control/GPS/)
 
 [姿勢と回転の表現形式と変換](./Control/Rotation/)
 
@@ -164,7 +164,7 @@ title: 研究室へようこそ
 
 [TangNano9K の使い方](./Electronics/FPGA/TangNano9k/)
 
-[Verilog超入門](./Electronics/FPGA/VerilogIntroduction/)
+[Verilog 超入門](./Electronics/FPGA/VerilogIntroduction/)
 
 <!-- [PicoRV32で自作マイコン](./Electronics/FPGA/MySoC/) -->
 
@@ -178,11 +178,11 @@ title: 研究室へようこそ
 
 ### LSI
 
-[自作CPU用ALU](./Electronics/LSI/MyALU/)
+[自作 CPU 用 ALU](./Electronics/LSI/MyALU/)
 
 ## 情報工学
 
-[GitHubを使ったブログサイトの作り方](./Computer/Misc/BlogSite/)
+[GitHub を使ったブログサイトの作り方](./Computer/Misc/BlogSite/)
 
 [TLA+ 入門](./Computer/Misc/TLA/)
 
@@ -194,9 +194,13 @@ title: 研究室へようこそ
 
 [RISC-V](./Computer/Misc/RISC-V/)
 
-[C言語をそのまま実行するプロセッサ](./Computer/Misc/ClangProcessor/)
+[C 言語をそのまま実行するプロセッサ](./Computer/Misc/ClangProcessor/)
 
-[74181でSIMDをする](./Computer/CPU/SIMD_ALU/)
+[74181 で SIMD をする](./Computer/CPU/SIMD_ALU/)
+
+### RISC-V
+
+[自作 RISC-V マイコンを Rust で動かす](./Computer/RISCV/Rust/)
 
 ### 自作マイコン：RK16
 
@@ -210,13 +214,13 @@ title: 研究室へようこそ
 
 アセンブリプログラミング
 
-[リアルタイムOS](./Computer/RK16/5_RTOS/)
+[リアルタイム OS](./Computer/RK16/5_RTOS/)
 
 [自作言語:C--](./Computer/RK16/6_Cyy/)
 
 [コンパイラ](./Computer/RK16/7_Compiler/)
 
-[汎用OS](./Computer/RK16/8_OS/)
+[汎用 OS](./Computer/RK16/8_OS/)
 
 [ハードウェア](./Computer/RK16/9_Hardware/)
 
