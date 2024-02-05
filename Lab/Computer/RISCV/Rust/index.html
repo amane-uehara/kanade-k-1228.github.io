@@ -159,7 +159,12 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#コンパイラ">コンパイラ</a></li>
+<li><a href="#コンパイラ">コンパイラ</a>
+<ul>
+<li><a href="#ツールチェーン">ツールチェーン</a></li>
+<li><a href="#最初のプログラム">最初のプログラム</a></li>
+<li><a href="#cargo">Cargo</a></li>
+</ul></li>
 <li><a href="#abi">ABI</a></li>
 <li><a href="#リンカ">リンカ</a></li>
 <li><a href="#アセンブラ">アセンブラ</a>
@@ -178,17 +183,102 @@
 </ul></li>
 <li><a href="#アセンブリの比較">アセンブリの比較</a></li>
 </ul></nav>
-       <p>いままで C++ でマイコンをプログラミングしていましたが、最近 Rust をちゃんと使い始め、良い概念でハマってるので、自作マイコンのプログラミングで使うために調べました。 OS のない世界でどの程度 Rust の恩恵が受けられるのか未知ですが、きっと nostdlib でも良い概念なんでしょう。</p>
-<p>以下の本を参考にしています。</p>
+       <p>いままで C++ をメインの言語として使ってきたのですが、最近コンパイラを作るのに Rust を使ってみたところかなり良かったので、今後作るものは Rust で書いきたいと思っています。ということで今回は FPGA に実装した自作 RISC-V マイコンを Rust で動かす方法を調べて実装してみます。</p>
+<p>以下の資料を参考にしました。</p>
+<p><a href="https://speakerdeck.com/tomoyuki/baremetal-rust-for-risc-v">Baremetal Rust for RISC-V</a></p>
 <p><a href="https://tomoyuki-nakabayashi.github.io/embedded-rust-techniques/">Embedded Rust Techniques</a></p>
+<p><a href="https://tomoyuki-nakabayashi.github.io/embedonomicon/">The Embedonomicon</a></p>
 <p><a href="https://tomoyuki-nakabayashi.github.io/book/">The Embedded Rust Book</a></p>
 <p><a href="https://doc.rust-jp.rs/rust-nomicon-ja/">Rust 裏本 高度で危険な Rust Programming のための闇の技法</a></p>
+<p>環境は以下の通り。</p>
+<pre><code>$ cat /etc/issue
+Ubuntu 20.04.6 LTS \n \l
+$ rustc -V
+rustc 1.75.0 (82e1608df 2023-12-21)
+$ cargo -V
+cargo 1.75.0 (1d8b05cdd 2023-11-20)</code></pre>
 <h2 id="コンパイラ">コンパイラ</h2>
 <p>以下のコマンドで使いたいマシンが対応してるか調べることができます。</p>
 <pre><code>$ rustc --print target-list
 &gt; riscv32imc-unknown-none-elf</code></pre>
+<p>これを target triplet と言い、コンパイラがどの計算機環境での実行バイナリを吐けばいいのかを、以下の項目で指定します。</p>
+<ul>
+<li>arch: riscv32</li>
+<li>sub: imc</li>
+<li>vendor: unknown</li>
+<li>sys: none</li>
+<li>abi: elf</li>
+</ul>
 <p>以下のコマンドでクロスコンパイラをインストールします。</p>
 <pre><code>$ rustup target add riscv32imc-unknown-none-elf</code></pre>
+<h3 id="ツールチェーン">ツールチェーン</h3>
+<p>objdump や nm などのツールをインストールします。</p>
+<pre><code>$ cargo install cargo-binutils
+$ rustup component add llvm-tools-preview</code></pre>
+<h3 id="最初のプログラム">最初のプログラム</h3>
+<p><code>main.rs</code> を書きます。最小限のプログラムです。main すら存在しません。</p>
+<pre><code>#![no_main]
+#![no_std]
+
+use core::panic::PanicInfo;
+
+#[panic_handler]
+fn panic(_panic: &amp;PanicInfo&lt;&#39;_&gt;) -&gt; ! {
+    loop {}
+}</code></pre>
+<p>ターゲットを指定してコンパイルします。</p>
+<pre><code>$ rustc --target riscv32imc-unknown-none-elf main.rs</code></pre>
+<p>言語仕様上パニックハンドラだけは定義する必要があるようです。パニックハンドラを消すと、このようなエラーが出ます。</p>
+<pre><code>error: `#[panic_handler]` function required, but not found</code></pre>
+<p>吐かれたバイナリ中身を見てみます。</p>
+<pre><code>$ rust-objdump ./main -x
+
+./main: file format elf32-littleriscv
+architecture: riscv32
+start address: 0x00000000
+
+Program Header:
+    PHDR off    0x00000034 vaddr 0x00010034 paddr 0x00010034 align 2**2
+         filesz 0x00000080 memsz 0x00000080 flags r--
+    LOAD off    0x00000000 vaddr 0x00010000 paddr 0x00010000 align 2**12
+         filesz 0x000000b4 memsz 0x000000b4 flags r--
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**64
+         filesz 0x00000000 memsz 0x00000000 flags rw-
+ UNKNOWN off    0x000000f4 vaddr 0x00000000 paddr 0x00000000 align 2**0
+         filesz 0x00000026 memsz 0x00000026 flags r--
+
+Dynamic Section:
+
+Sections:
+Idx Name              Size     VMA      Type
+  0                   00000000 00000000
+  1 .comment          00000040 00000000
+  2 .riscv.attributes 00000026 00000000
+  3 .symtab           00000020 00000000
+  4 .shstrtab         00000036 00000000
+  5 .strtab           0000001d 00000000
+
+SYMBOL TABLE:
+00000000 l    df *ABS*  00000000 main.7c41ea6d61ccd5c8-cgu.0</code></pre>
+<h3 id="cargo">Cargo</h3>
+<p>Cargo を使えるようにします。 新しくディレクトリを作ります。</p>
+<pre><code>$ mkdir rvrs
+$ cd rvrs
+$ cargo init</code></pre>
+<p>設定ファイルを書きます。</p>
+<pre><code># .cargo/config
+[build]
+target = &quot;riscv32imc-unknown-none-elf&quot;</code></pre>
+<p><code>src/main.rs</code> を上記のコードで書き換えます。</p>
+<p>以下のコマンドでコンパイルできます。</p>
+<pre><code>$ cargo build</code></pre>
+<p>以下のコマンドで逆アセンブルできます。</p>
+<pre><code>$ cargo objdump --bin rvrs -- -x
+(省略)</code></pre>
+<p>謎のシンボルが増えていますが、<code>cargo build</code> がデフォルトでデバッグビルドをするためのようです。</p>
+<p><code>--release</code> オプションを付けると、リリースビルドをして、逆アセンブルできます。</p>
+<pre><code>$ cargo build --release
+$ cargo objdump --bin rvrs --release -- -x</code></pre>
 <h2 id="abi">ABI</h2>
 <p>Rust には安定した ABI がない <a href="https://github.com/rust-lang/rfcs/issues/600">Define a Rust ABI #600</a> そうです。</p>
 <p>最適化の自由度を残すためにも、統一的な ABI を定義し使い続けるということはないんだろうなと思っています。少なくとも rustc の世界で完結している限り、ABI について気にすることはそんなにありません。</p>
