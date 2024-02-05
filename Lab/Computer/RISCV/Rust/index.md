@@ -1,17 +1,32 @@
 ---
 title: 自作 RISC-V マイコンを Rust で動かす
+keyword: rust, riscv, picorv32, rv32, マイコン, RISC-V
 ---
 
-いままで C++ でマイコンをプログラミングしていましたが、最近 Rust をちゃんと使い始め、良い概念でハマってるので、自作マイコンのプログラミングで使うために調べました。
-OS のない世界でどの程度 Rust の恩恵が受けられるのか未知ですが、きっと nostdlib でも良い概念なんでしょう。
+いままで C++ をメインの言語として使ってきたのですが、最近コンパイラを作るのに Rust を使ってみたところかなり良かったので、今後作るものは Rust で書いきたいと思っています。ということで今回は FPGA に実装した自作 RISC-V マイコンを Rust で動かす方法を調べて実装してみます。
 
-以下の本を参考にしています。
+以下の資料を参考にしました。
+
+[Baremetal Rust for RISC-V](https://speakerdeck.com/tomoyuki/baremetal-rust-for-risc-v)
 
 [Embedded Rust Techniques](https://tomoyuki-nakabayashi.github.io/embedded-rust-techniques/)
+
+[The Embedonomicon](https://tomoyuki-nakabayashi.github.io/embedonomicon/)
 
 [The Embedded Rust Book](https://tomoyuki-nakabayashi.github.io/book/)
 
 [Rust 裏本 高度で危険な Rust Programming のための闇の技法](https://doc.rust-jp.rs/rust-nomicon-ja/)
+
+環境は以下の通り。
+
+```
+$ cat /etc/issue
+Ubuntu 20.04.6 LTS \n \l
+$ rustc -V
+rustc 1.75.0 (82e1608df 2023-12-21)
+$ cargo -V
+cargo 1.75.0 (1d8b05cdd 2023-11-20)
+```
 
 ## コンパイラ
 
@@ -22,10 +37,132 @@ $ rustc --print target-list
 > riscv32imc-unknown-none-elf
 ```
 
+これを target triplet と言い、コンパイラがどの計算機環境での実行バイナリを吐けばいいのかを、以下の項目で指定します。
+
+- arch: riscv32
+- sub: imc
+- vendor: unknown
+- sys: none
+- abi: elf
+
 以下のコマンドでクロスコンパイラをインストールします。
 
 ```
 $ rustup target add riscv32imc-unknown-none-elf
+```
+
+### ツールチェーン
+
+objdump や nm などのツールをインストールします。
+
+```
+$ cargo install cargo-binutils
+$ rustup component add llvm-tools-preview
+```
+
+### 最初のプログラム
+
+`main.rs` を書きます。最小限のプログラムです。main すら存在しません。
+
+```
+#![no_main]
+#![no_std]
+
+use core::panic::PanicInfo;
+
+#[panic_handler]
+fn panic(_panic: &PanicInfo<'_>) -> ! {
+    loop {}
+}
+```
+
+ターゲットを指定してコンパイルします。
+
+```
+$ rustc --target riscv32imc-unknown-none-elf main.rs
+```
+
+言語仕様上パニックハンドラだけは定義する必要があるようです。パニックハンドラを消すと、このようなエラーが出ます。
+
+```
+error: `#[panic_handler]` function required, but not found
+```
+
+吐かれたバイナリ中身を見てみます。
+
+```
+$ rust-objdump ./main -x
+
+./main: file format elf32-littleriscv
+architecture: riscv32
+start address: 0x00000000
+
+Program Header:
+    PHDR off    0x00000034 vaddr 0x00010034 paddr 0x00010034 align 2**2
+         filesz 0x00000080 memsz 0x00000080 flags r--
+    LOAD off    0x00000000 vaddr 0x00010000 paddr 0x00010000 align 2**12
+         filesz 0x000000b4 memsz 0x000000b4 flags r--
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**64
+         filesz 0x00000000 memsz 0x00000000 flags rw-
+ UNKNOWN off    0x000000f4 vaddr 0x00000000 paddr 0x00000000 align 2**0
+         filesz 0x00000026 memsz 0x00000026 flags r--
+
+Dynamic Section:
+
+Sections:
+Idx Name              Size     VMA      Type
+  0                   00000000 00000000
+  1 .comment          00000040 00000000
+  2 .riscv.attributes 00000026 00000000
+  3 .symtab           00000020 00000000
+  4 .shstrtab         00000036 00000000
+  5 .strtab           0000001d 00000000
+
+SYMBOL TABLE:
+00000000 l    df *ABS*  00000000 main.7c41ea6d61ccd5c8-cgu.0
+```
+
+### Cargo
+
+Cargo を使えるようにします。
+新しくディレクトリを作ります。
+
+```
+$ mkdir rvrs
+$ cd rvrs
+$ cargo init
+```
+
+設定ファイルを書きます。
+
+```
+# .cargo/config
+[build]
+target = "riscv32imc-unknown-none-elf"
+```
+
+`src/main.rs` を上記のコードで書き換えます。
+
+以下のコマンドでコンパイルできます。
+
+```
+$ cargo build
+```
+
+以下のコマンドで逆アセンブルできます。
+
+```
+$ cargo objdump --bin rvrs -- -x
+(省略)
+```
+
+謎のシンボルが増えていますが、`cargo build` がデフォルトでデバッグビルドをするためのようです。
+
+`--release` オプションを付けると、リリースビルドをして、逆アセンブルできます。
+
+```
+$ cargo build --release
+$ cargo objdump --bin rvrs --release -- -x
 ```
 
 ## ABI
