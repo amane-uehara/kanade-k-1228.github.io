@@ -200,6 +200,8 @@ title: 研究室へようこそ
 
 ### RISC-V
 
+[RISC-V の ISA](./Computer/RISCV/ISA/)
+
 [自作 RISC-V マイコンを Rust で動かす](./Computer/RISCV/Rust/)
 
 ### 自作マイコン：RK16

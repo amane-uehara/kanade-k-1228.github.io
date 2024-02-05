@@ -5,7 +5,9 @@ keyword: rust, riscv, picorv32, rv32, マイコン, RISC-V
 
 いままで C++ をメインの言語として使ってきたのですが、最近コンパイラを作るのに Rust を使ってみたところかなり良かったので、今後作るものは Rust で書いきたいと思っています。ということで今回は FPGA に実装した自作 RISC-V マイコンを Rust で動かす方法を調べて実装してみます。
 
-以下の資料を参考にしました。
+ソースコードは [@tnakabayashi](https://twitter.com/tnakabayashi) さんの [riscv-rust-hello](https://github.com/tomoyuki-nakabayashi/riscv-rust-hello) を参考にしています。
+
+また以下のドキュメントを参照しました。
 
 [Baremetal Rust for RISC-V](https://speakerdeck.com/tomoyuki/baremetal-rust-for-risc-v)
 
@@ -28,7 +30,7 @@ $ cargo -V
 cargo 1.75.0 (1d8b05cdd 2023-11-20)
 ```
 
-## コンパイラ
+## 環境構築
 
 以下のコマンドで使いたいマシンが対応してるか調べることができます。
 
@@ -60,7 +62,7 @@ $ cargo install cargo-binutils
 $ rustup component add llvm-tools-preview
 ```
 
-### 最初のプログラム
+## 最初のプログラム
 
 `main.rs` を書きます。最小限のプログラムです。main すら存在しません。
 
@@ -165,13 +167,77 @@ $ cargo build --release
 $ cargo objdump --bin rvrs --release -- -x
 ```
 
+### L チカ (仮)
+
+`0x0300_0000`番地に LED に繋がったレジスタがあるとしましょう。
+L チカのコードは以下のようになります。
+
+```
+#![no_main]
+#![no_std]
+
+#[no_mangle]
+pub extern "C" fn __start_rust() -> ! {
+    let led = 0x0300_0000 as *mut u8;
+    loop {
+        unsafe {
+            *led = 0;
+            *led = 1;
+        }
+    }
+}
+
+use core::panic::PanicInfo;
+#[panic_handler]
+#[no_mangle]
+pub fn panic(_info: &PanicInfo) -> ! {
+    loop {}
+}
+```
+
+`__start_rust` は Rust のエントリポイントです。
+`led` というポインタを作って、それの指すアドレスに対して 0 と 1 を交互に書き込んで L チカしています。
+
+これをビルドして中身を見てみます。
+
+```
+$ cargo build
+$ cargo objdump --bin rvrs -- -d
+
+rvrs:   file format elf32-littleriscv
+
+Disassembly of section .text.__start_rust:
+
+80000000 <_bss_start>:
+80000000: 41 11         addi    sp, sp, -16
+80000002: 37 05 00 03   lui     a0, 12288
+80000006: 2a c6         sw      a0, 12(sp)
+80000008: 09 a0         j       0x8000000a <_bss_start+0xa>
+8000000a: b7 05 00 03   lui     a1, 12288
+8000000e: 01 45         li      a0, 0
+80000010: 23 80 a5 00   sb      a0, 0(a1)
+80000014: 05 45         li      a0, 1
+80000016: 23 80 a5 00   sb      a0, 0(a1)
+8000001a: c5 bf         j       0x8000000a <_bss_start+0xa>
+```
+
+`12288 = 0x3000` です。
+
+## エントリポイントまで
+
+実際に動作するバイナリを作っていきましょう！
+
+### リンカスクリプト
+
+`.` は変数です！
+
+マイコンが起動すると、まず ROM の 0 番地にある命令が実行されます。
+これをリセットベクタと言ったりするのですが、
+
 ## ABI
 
 Rust には安定した ABI がない [Define a Rust ABI #600](https://github.com/rust-lang/rfcs/issues/600) そうです。
 
-最適化の自由度を残すためにも、統一的な ABI を定義し使い続けるということはないんだろうなと思っています。少なくとも rustc の世界で完結している限り、ABI について気にすることはそんなにありません。
-
-組み込み領域ではきちんと定義された ABI が不可欠です。
 C 的人間がこのような関数を見たら、引数は順番にスタックに push されると考えがちですが、Rust ではそこに取り決めはないようです。最適化の中でフィールドの順番が入れ替わっているかもしれません。
 
 ```
