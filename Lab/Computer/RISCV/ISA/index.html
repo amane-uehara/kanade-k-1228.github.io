@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <meta name="author" content="@kanade_k_1228" />
     <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/54773334" />
-          <title>RISC-V | Kanade's Website</title>
+          <title>RISC-V の ISA | Kanade's Website</title>
 
     <!-- OGP -->
         <!-- END OGP -->
@@ -61,7 +61,7 @@
           "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
             location.href +
             "&text=" +
-            "RISC-V",
+            "RISC-V の ISA",
           "_blank"
         );
       }
@@ -124,7 +124,7 @@
         </div>
         <!-- End Top Nav -->
         <!-- Title -->
-                <h1 style="margin: 0">RISC-V</h1>
+                <h1 style="margin: 0">RISC-V の ISA</h1>
                 <!-- Date -->
                 <!-- Description -->
               </header>
@@ -165,8 +165,6 @@
 <li><a href="#命令フォーマット">命令フォーマット</a></li>
 <li><a href="#ロード">ロード</a></li>
 <li><a href="#ストア">ストア</a></li>
-<li><a href="#分岐ジャンプ">分岐・ジャンプ</a></li>
-<li><a href="#特権モード">特権モード</a></li>
 </ul></li>
 <li><a href="#rv32c">RV32C</a></li>
 </ul></nav>
@@ -257,11 +255,6 @@
 <h3 id="ストア">ストア</h3>
 <p><code>M[ x[rs1] + sext(imm) ] = x[rs2] [7?15?31?:0]</code></p>
 <p>b(byte)/h(halfword)/w(word)で，メモリに書き込む長さを決めます．</p>
-<h3 id="分岐ジャンプ">分岐・ジャンプ</h3>
-<h3 id="特権モード">特権モード</h3>
-<ol type="1">
-<li>マシン・モード</li>
-</ol>
 <h2 id="rv32c">RV32C</h2>
 <p>命令長を 16bit にした圧縮命令セット。</p>
 

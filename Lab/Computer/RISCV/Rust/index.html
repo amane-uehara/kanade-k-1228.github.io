@@ -159,11 +159,18 @@
 
       <!-- Table of Contents -->
             <nav><ul>
-<li><a href="#コンパイラ">コンパイラ</a>
+<li><a href="#環境構築">環境構築</a>
 <ul>
 <li><a href="#ツールチェーン">ツールチェーン</a></li>
-<li><a href="#最初のプログラム">最初のプログラム</a></li>
+</ul></li>
+<li><a href="#最初のプログラム">最初のプログラム</a>
+<ul>
 <li><a href="#cargo">Cargo</a></li>
+<li><a href="#l-チカ-仮">L チカ (仮)</a></li>
+</ul></li>
+<li><a href="#エントリポイントまで">エントリポイントまで</a>
+<ul>
+<li><a href="#リンカスクリプト">リンカスクリプト</a></li>
 </ul></li>
 <li><a href="#abi">ABI</a></li>
 <li><a href="#リンカ">リンカ</a></li>
@@ -184,7 +191,8 @@
 <li><a href="#アセンブリの比較">アセンブリの比較</a></li>
 </ul></nav>
        <p>いままで C++ をメインの言語として使ってきたのですが、最近コンパイラを作るのに Rust を使ってみたところかなり良かったので、今後作るものは Rust で書いきたいと思っています。ということで今回は FPGA に実装した自作 RISC-V マイコンを Rust で動かす方法を調べて実装してみます。</p>
-<p>以下の資料を参考にしました。</p>
+<p>ソースコードは <span class="citation" data-cites="tnakabayashi">[@tnakabayashi]</span>(https://twitter.com/tnakabayashi) さんの <a href="https://github.com/tomoyuki-nakabayashi/riscv-rust-hello">riscv-rust-hello</a> を参考にしています。</p>
+<p>また以下のドキュメントを参照しました。</p>
 <p><a href="https://speakerdeck.com/tomoyuki/baremetal-rust-for-risc-v">Baremetal Rust for RISC-V</a></p>
 <p><a href="https://tomoyuki-nakabayashi.github.io/embedded-rust-techniques/">Embedded Rust Techniques</a></p>
 <p><a href="https://tomoyuki-nakabayashi.github.io/embedonomicon/">The Embedonomicon</a></p>
@@ -197,7 +205,7 @@ $ rustc -V
 rustc 1.75.0 (82e1608df 2023-12-21)
 $ cargo -V
 cargo 1.75.0 (1d8b05cdd 2023-11-20)</code></pre>
-<h2 id="コンパイラ">コンパイラ</h2>
+<h2 id="環境構築">環境構築</h2>
 <p>以下のコマンドで使いたいマシンが対応してるか調べることができます。</p>
 <pre><code>$ rustc --print target-list
 &gt; riscv32imc-unknown-none-elf</code></pre>
@@ -215,7 +223,7 @@ cargo 1.75.0 (1d8b05cdd 2023-11-20)</code></pre>
 <p>objdump や nm などのツールをインストールします。</p>
 <pre><code>$ cargo install cargo-binutils
 $ rustup component add llvm-tools-preview</code></pre>
-<h3 id="最初のプログラム">最初のプログラム</h3>
+<h2 id="最初のプログラム">最初のプログラム</h2>
 <p><code>main.rs</code> を書きます。最小限のプログラムです。main すら存在しません。</p>
 <pre><code>#![no_main]
 #![no_std]
@@ -279,10 +287,57 @@ target = &quot;riscv32imc-unknown-none-elf&quot;</code></pre>
 <p><code>--release</code> オプションを付けると、リリースビルドをして、逆アセンブルできます。</p>
 <pre><code>$ cargo build --release
 $ cargo objdump --bin rvrs --release -- -x</code></pre>
+<h3 id="l-チカ-仮">L チカ (仮)</h3>
+<p><code>0x0300_0000</code>番地に LED に繋がったレジスタがあるとしましょう。 L チカのコードは以下のようになります。</p>
+<pre><code>#![no_main]
+#![no_std]
+
+#[no_mangle]
+pub extern &quot;C&quot; fn __start_rust() -&gt; ! {
+    let led = 0x0300_0000 as *mut u8;
+    loop {
+        unsafe {
+            *led = 0;
+            *led = 1;
+        }
+    }
+}
+
+use core::panic::PanicInfo;
+#[panic_handler]
+#[no_mangle]
+pub fn panic(_info: &amp;PanicInfo) -&gt; ! {
+    loop {}
+}</code></pre>
+<p><code>__start_rust</code> は Rust のエントリポイントです。 <code>led</code> というポインタを作って、それの指すアドレスに対して 0 と 1 を交互に書き込んで L チカしています。</p>
+<p>これをビルドして中身を見てみます。</p>
+<pre><code>$ cargo build
+$ cargo objdump --bin rvrs -- -d
+
+rvrs:   file format elf32-littleriscv
+
+Disassembly of section .text.__start_rust:
+
+80000000 &lt;_bss_start&gt;:
+80000000: 41 11         addi    sp, sp, -16
+80000002: 37 05 00 03   lui     a0, 12288
+80000006: 2a c6         sw      a0, 12(sp)
+80000008: 09 a0         j       0x8000000a &lt;_bss_start+0xa&gt;
+8000000a: b7 05 00 03   lui     a1, 12288
+8000000e: 01 45         li      a0, 0
+80000010: 23 80 a5 00   sb      a0, 0(a1)
+80000014: 05 45         li      a0, 1
+80000016: 23 80 a5 00   sb      a0, 0(a1)
+8000001a: c5 bf         j       0x8000000a &lt;_bss_start+0xa&gt;</code></pre>
+<p><code>12288 = 0x3000</code> です。</p>
+<h2 id="エントリポイントまで">エントリポイントまで</h2>
+<p>実際に動作するバイナリを作っていきましょう！</p>
+<h3 id="リンカスクリプト">リンカスクリプト</h3>
+<p><code>.</code> は変数です！</p>
+<p>マイコンが起動すると、まず ROM の 0 番地にある命令が実行されます。 これをリセットベクタと言ったりするのですが、</p>
 <h2 id="abi">ABI</h2>
 <p>Rust には安定した ABI がない <a href="https://github.com/rust-lang/rfcs/issues/600">Define a Rust ABI #600</a> そうです。</p>
-<p>最適化の自由度を残すためにも、統一的な ABI を定義し使い続けるということはないんだろうなと思っています。少なくとも rustc の世界で完結している限り、ABI について気にすることはそんなにありません。</p>
-<p>組み込み領域ではきちんと定義された ABI が不可欠です。 C 的人間がこのような関数を見たら、引数は順番にスタックに push されると考えがちですが、Rust ではそこに取り決めはないようです。最適化の中でフィールドの順番が入れ替わっているかもしれません。</p>
+<p>C 的人間がこのような関数を見たら、引数は順番にスタックに push されると考えがちですが、Rust ではそこに取り決めはないようです。最適化の中でフィールドの順番が入れ替わっているかもしれません。</p>
 <pre><code>fn hoge(a: u8, b: u32, c: u8) -&gt; u32 {
     a + b + c
 }</code></pre>
